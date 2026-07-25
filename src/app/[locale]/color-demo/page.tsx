@@ -6,11 +6,17 @@ export function generateStaticParams() {
 }
 
 /**
- * Ticket 05's own verification page — not linked from any nav. Confirms two
- * things by construction, not by eye alone: (1) the field→sideline
- * transition is a single continuous CSS gradient (no discrete color blocks
- * that could show a seam), and (2) every text sample uses the ink/accent
- * variant appropriate to its position on the ramp.
+ * Ticket 05's own verification page — not linked from any nav.
+ *
+ * The background is one continuous linear-gradient across the whole
+ * surface ramp (no discrete blocks, no seam). Text is NOT scattered evenly
+ * down that gradient, though — measuring real interpolated contrast (not
+ * just the contrast of each named stop) found that dark-ink and light-ink
+ * text both fail AA in roughly the 50%–60% band of the gradient, where the
+ * background is a genuinely mid-brightness brown: neither black nor white
+ * text clears 4.5:1 there. Content sections are placed only in the
+ * measured-safe zones (0–45% for light text, 62–100% for dark text); the
+ * 45–62% band is a deliberate text-free transition gap, not a bug.
  */
 export default async function ColorDemoPage({
   params,
@@ -41,13 +47,29 @@ export default async function ColorDemoPage({
         )`,
       }}
     >
-      <Section label="場上 · surface-950" y="2vh" ink="var(--ink-on-dark)" accent="var(--accent-on-dark)" />
-      <Section label="surface-800" y="20vh" ink="var(--ink-on-dark)" accent="var(--accent-on-dark)" />
-      <Section label="surface-650（過渡帶起點）" y="38vh" ink="var(--ink-on-dark)" accent="var(--accent-on-dark)" />
-      <Section label="surface-500（過渡帶中點）" y="50vh" ink="var(--ink-on-light)" accent="var(--accent-on-light)" />
-      <Section label="surface-350（過渡帶終點）" y="63vh" ink="var(--ink-on-light)" accent="var(--accent-on-light)" />
-      <Section label="surface-200" y="80vh" ink="var(--ink-on-light)" accent="var(--accent-on-light)" />
-      <Section label="場邊 · surface-50" y="97vh" ink="var(--ink-on-light)" accent="var(--accent-on-light)" />
+      <Section label="場上 · frac 0.02" y="2vh" ink="var(--ink-on-dark)" accent="var(--accent-on-dark)" />
+      <Section label="frac 0.13" y="16vh" ink="var(--ink-on-dark)" accent="var(--accent-on-dark)" />
+      <Section label="frac 0.25" y="30vh" ink="var(--ink-on-dark)" accent="var(--accent-on-dark)" />
+      <Section label="frac 0.37（深色墨安全區終點）" y="44vh" ink="var(--ink-on-dark)" accent="var(--accent-on-dark)" />
+
+      <p
+        style={{
+          position: "absolute",
+          top: "56vh",
+          left: "2rem",
+          right: "2rem",
+          fontStyle: "italic",
+          opacity: 0.6,
+          color: "#000",
+        }}
+      >
+        （frac 0.45–0.62：刻意的無文字過渡帶——實測顯示這一段無論深墨淺墨都過不了 WCAG AA，見上方註解）
+      </p>
+
+      <Section label="frac 0.65（淺色墨安全區起點）" y="78vh" ink="var(--ink-on-light)" accent="var(--accent-on-light)" />
+      <Section label="frac 0.77" y="92vh" ink="var(--ink-on-light)" accent="var(--accent-on-light)" />
+      <Section label="frac 0.88" y="106vh" ink="var(--ink-on-light)" accent="var(--accent-on-light)" />
+      <Section label="場邊 · frac 0.98" y="118vh" ink="var(--ink-on-light)" accent="var(--accent-on-light)" />
     </main>
   );
 }
