@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "title": "OldBabyInfo",
+    "description": "Taiwan's Beyblade X reference site"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "zh-TW": "繁體中文",
+    "ja": "日本語",
+    "en": "English"
+  }
+}
