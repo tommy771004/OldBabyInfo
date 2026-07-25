@@ -1,0 +1,3611 @@
+[
+  {
+    "id": "SCORPIOSPEAR",
+    "nameEn": "Scorpio Spear",
+    "nameJa": "スコーピオスピア",
+    "nameZhTw": "天蠍長矛",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-04-25",
+    "type": "blade",
+    "stats": {
+      "attack": 25,
+      "defense": 55,
+      "stamina": 30
+    },
+    "modes": [
+      {
+        "label": "Defense",
+        "stats": {
+          "attack": 25,
+          "defense": 55,
+          "stamina": 30
+        }
+      },
+      {
+        "label": "Attack",
+        "stats": {
+          "attack": 55,
+          "defense": 25,
+          "stamina": 30
+        }
+      }
+    ],
+    "statEditions": [
+      {
+        "label": "BXG61_ScorpioSpear0-70Z",
+        "releaseAt": "2026-04-24",
+        "stats": {
+          "attack": 30,
+          "defense": 60,
+          "stamina": 35
+        }
+      }
+    ]
+  },
+  {
+    "id": "SAMURAISABER",
+    "nameEn": "Samurai Saber",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": null,
+    "type": "blade",
+    "stats": {
+      "attack": 65,
+      "defense": 20,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "HELLSHAMMER",
+    "nameEn": "HellsHammer",
+    "nameJa": "ヘルズハンマー メタルコート:ブルー",
+    "nameZhTw": "惡魔重錘 金屬塗層:藍",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "type": "blade",
+    "stats": {
+      "attack": 50,
+      "defense": 25,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "UX10_HellsHammer",
+        "releaseAt": "2024-11-01",
+        "stats": {
+          "attack": 55,
+          "defense": 30,
+          "stamina": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "TYRANNOBEAT",
+    "nameEn": "Tyranno Beat",
+    "nameJa": "ティラノビート",
+    "nameZhTw": "暴龍霸擊",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-04-26",
+    "type": "blade",
+    "stats": {
+      "attack": 65,
+      "defense": 30,
+      "stamina": 5
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "UX10_TiranoBeat1-60RA",
+        "releaseAt": "2024-11-01",
+        "stats": {
+          "attack": 70,
+          "defense": 35,
+          "stamina": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "CRIMSONGARUDA",
+    "nameEn": "Crimson Garuda",
+    "nameJa": "クリムゾンガルーダ",
+    "nameZhTw": "赫燃天鳳",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "type": "blade",
+    "stats": {
+      "attack": 45,
+      "defense": 25,
+      "stamina": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "BULLETGRIFFON",
+    "nameEn": "BulletGriffon",
+    "nameJa": "バレットグリフォン",
+    "nameZhTw": "彈丸獅鷲",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-04-24",
+    "type": "blade",
+    "stats": {
+      "attack": 45,
+      "defense": 45,
+      "stamina": 40
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "STORMSPRIGGAN",
+    "nameEn": "Storm Spriggan",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": null,
+    "type": "blade",
+    "stats": {
+      "attack": 30,
+      "defense": 40,
+      "stamina": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "DRANSWORD",
+    "nameEn": "Dran Sword",
+    "nameJa": "ドランソード",
+    "nameZhTw": "蒼龍神劍",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "blade",
+    "stats": {
+      "attack": 60,
+      "defense": 30,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BX01_DranSword3-60F",
+        "releaseAt": "2022-05-10",
+        "stats": {
+          "attack": 55,
+          "defense": 25,
+          "stamina": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "COBALTDRAGOON",
+    "nameEn": "Cobalt Dragoon",
+    "nameJa": "コバルトドラグーン",
+    "nameZhTw": "蒼穹龍騎士",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-07-12",
+    "type": "blade",
+    "stats": {
+      "attack": 65,
+      "defense": 20,
+      "stamina": 30
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BX34_CobaltDragoon2-60C",
+        "releaseAt": "2024-07-12",
+        "stats": {
+          "attack": 60,
+          "defense": 15,
+          "stamina": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "WHALEWAVE",
+    "nameEn": "Whale Wave",
+    "nameJa": "ホエールウェーブ",
+    "nameZhTw": "巨鯨怒濤",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-09-13",
+    "type": "blade",
+    "stats": {
+      "attack": 50,
+      "defense": 40,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BX36_WhaleWave5-80E",
+        "releaseAt": "2024-09-13",
+        "stats": {
+          "attack": 45,
+          "defense": 35,
+          "stamina": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "AEROPEGASUS",
+    "nameEn": "Aero Pegasus",
+    "nameJa": "エアロペガサス ダブルメタルコート:ブルーｘグリーン",
+    "nameZhTw": "空力天馬 金屬塗層:藍/綠",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-07-29",
+    "type": "blade",
+    "stats": {
+      "attack": 70,
+      "defense": 30,
+      "stamina": 35
+    },
+    "modes": [
+      {
+        "label": "UX-00 Aero Pegasus Metallic Coat: Double (Blue & Green)",
+        "stats": {
+          "attack": 70,
+          "defense": 30,
+          "stamina": 35
+        }
+      },
+      {
+        "label": "UX-00 Aero Pegasus Red Ver.",
+        "stats": {
+          "attack": 70,
+          "defense": 30,
+          "stamina": 35
+        }
+      }
+    ],
+    "statEditions": [
+      {
+        "label": "BXG24_AeroPegasus3-70A",
+        "releaseAt": "2026-02-20",
+        "stats": {
+          "attack": 60,
+          "defense": 25,
+          "stamina": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "SHARKEDGE",
+    "nameEn": "Shark Edge",
+    "nameJa": "シャークエッジ",
+    "nameZhTw": "鮫鯊鋒鰭",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "blade",
+    "stats": {
+      "attack": 65,
+      "defense": 30,
+      "stamina": 20
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BX14_SharkEdge3-60LF",
+        "releaseAt": "2022-05-10",
+        "stats": {
+          "attack": 60,
+          "defense": 25,
+          "stamina": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "TUSKMAMMOTH",
+    "nameEn": "Tusk Mammoth",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": null,
+    "type": "blade",
+    "stats": {
+      "attack": 38,
+      "defense": 40,
+      "stamina": 37
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "HELLSSCYTHE",
+    "nameEn": "Hells Scythe",
+    "nameJa": "ヘルズサイズ",
+    "nameZhTw": "惡魔紅鐮",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "blade",
+    "stats": {
+      "attack": 35,
+      "defense": 40,
+      "stamina": 40
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BX02_HellsScythe4-60T",
+        "releaseAt": "2022-05-10",
+        "stats": {
+          "attack": 30,
+          "defense": 35,
+          "stamina": 35
+        }
+      }
+    ]
+  },
+  {
+    "id": "DRANBUSTER",
+    "nameEn": "Dran Buster",
+    "nameJa": "ドランバスター",
+    "nameZhTw": "蒼龍爆刃",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-03-29",
+    "type": "blade",
+    "stats": {
+      "attack": 75,
+      "defense": 25,
+      "stamina": 15
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "UX01_DranBuster1-60A",
+        "releaseAt": "2024-03-29",
+        "stats": {
+          "attack": 70,
+          "defense": 20,
+          "stamina": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "MUMMYCURSE",
+    "nameEn": "Mummy Curse",
+    "nameJa": "マミーカース",
+    "nameZhTw": "古屍詛咒",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-12-26",
+    "type": "blade",
+    "stats": {
+      "attack": 30,
+      "defense": 60,
+      "stamina": 20
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "DRANDAGGER",
+    "nameEn": "Dran Dagger",
+    "nameJa": "ドランダガー",
+    "nameZhTw": "蒼龍利刃",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-10-01",
+    "type": "blade",
+    "stats": {
+      "attack": 50,
+      "defense": 25,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BXG14_DranDagger2-80GP",
+        "releaseAt": "2024-08-02",
+        "stats": {
+          "attack": 55,
+          "defense": 30,
+          "stamina": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "WEISSTIGER",
+    "nameEn": "Weiss Tiger",
+    "nameJa": "ヴァイスタイガー",
+    "nameZhTw": "皓戰猛虎",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-06-14",
+    "type": "blade",
+    "stats": {
+      "attack": 45,
+      "defense": 30,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "DRAGOONSTORM",
+    "nameEn": "Dragoon Storm",
+    "nameJa": "ドラグーンストーム",
+    "nameZhTw": "龍騎士S",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-20",
+    "type": "blade",
+    "stats": {
+      "attack": 55,
+      "defense": 30,
+      "stamina": 15
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "METEORDRAGOON",
+    "nameEn": "Meteor Dragoon",
+    "nameJa": "メテオドラグーン メタルコート:ホワイト",
+    "nameZhTw": "隕星龍騎士 金屬塗層:白色",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-12-26",
+    "type": "blade",
+    "stats": {
+      "attack": 75,
+      "defense": 15,
+      "stamina": 35
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "OROCHICLUSTER",
+    "nameEn": "Orochi Cluster",
+    "nameJa": "オロチクラスタ",
+    "nameZhTw": "OROCHICLUSTER",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-11-13",
+    "type": "blade",
+    "stats": {
+      "attack": 65,
+      "defense": 15,
+      "stamina": 20
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GOLEMROCK",
+    "nameEn": "Golem Rock",
+    "nameJa": "ゴーレムロック",
+    "nameZhTw": "魔像奇岩",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-01-24",
+    "type": "blade",
+    "stats": {
+      "attack": 35,
+      "defense": 65,
+      "stamina": 15
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "UX13_GolemRock1-60UN",
+        "releaseAt": "2025-01-24",
+        "stats": {
+          "attack": 30,
+          "defense": 60,
+          "stamina": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "SHARKGILL",
+    "nameEn": "Shark Gill",
+    "nameJa": "シャークギル",
+    "nameZhTw": "鮫鯊撕裂",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-10-31",
+    "type": "blade",
+    "stats": {
+      "attack": 20,
+      "defense": 25,
+      "stamina": 55
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "WYVERNHOVER",
+    "nameEn": "Wyvern Hover",
+    "nameJa": "DMMくじA賞 ワイバーンホバー",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-10-23",
+    "type": "blade",
+    "stats": {
+      "attack": 13,
+      "defense": 60,
+      "stamina": 27
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BXG39_WyvernHover2-80GN02",
+        "releaseAt": "2025-10-23",
+        "stats": {
+          "attack": 18,
+          "defense": 65,
+          "stamina": 32
+        }
+      }
+    ]
+  },
+  {
+    "id": "CLOCKMIRAGE",
+    "nameEn": "Clock Mirage",
+    "nameJa": "クロックミラージュ",
+    "nameZhTw": "時鐘幻象",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-10-10",
+    "type": "blade",
+    "stats": {
+      "attack": 10,
+      "defense": 10,
+      "stamina": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "COBALTDRAKE",
+    "nameEn": "Cobalt Drake",
+    "nameJa": "コバルトドレイク メタルコート:ブルー",
+    "nameZhTw": "蒼穹龍神 金屬塗層:藍",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "blade",
+    "stats": {
+      "attack": 70,
+      "defense": 35,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BXG23_CobaltDrake4-60F",
+        "releaseAt": "2024-11-27",
+        "stats": {
+          "attack": 65,
+          "defense": 30,
+          "stamina": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "GOATTACKLE",
+    "nameEn": "Goat Tackle",
+    "nameJa": "ゴートタックル",
+    "nameZhTw": "戰羊阻截",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-10-10",
+    "type": "blade",
+    "stats": {
+      "attack": 13,
+      "defense": 65,
+      "stamina": 22
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "SAMURAICALIBUR",
+    "nameEn": "Samurai Calibur",
+    "nameJa": "サムライカリバー",
+    "nameZhTw": "武士魂斬",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-08-08",
+    "type": "blade",
+    "stats": {
+      "attack": 40,
+      "defense": 30,
+      "stamina": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "SHARKSCALE",
+    "nameEn": "Shark Scale",
+    "nameJa": "シャークスケイル",
+    "nameZhTw": "鮫鯊狂鱗",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-08-08",
+    "type": "blade",
+    "stats": {
+      "attack": 70,
+      "defense": 15,
+      "stamina": 15
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "TYRANNOROAR",
+    "nameEn": "Tyranno Roar",
+    "nameJa": "ティラノロア",
+    "nameZhTw": "暴龍咆哮",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-08-08",
+    "type": "blade",
+    "stats": {
+      "attack": 60,
+      "defense": 28,
+      "stamina": 12
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "BLACKSHELL",
+    "nameEn": "Black Shell",
+    "nameJa": "ブラックシェル",
+    "nameZhTw": "玄冥戰甲",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-07-12",
+    "type": "blade",
+    "stats": {
+      "attack": 10,
+      "defense": 65,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "ROCKLEONE",
+    "nameEn": "Rock Leone",
+    "nameJa": "ロックレオーネ",
+    "nameZhTw": "巨岩雄獅",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-07-18",
+    "type": "blade",
+    "stats": {
+      "attack": 30,
+      "defense": 55,
+      "stamina": 15
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "KNIGHTMAIL",
+    "nameEn": "Knight Mail",
+    "nameJa": "ナイトメイル",
+    "nameZhTw": "騎士圓甲",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "type": "blade",
+    "stats": {
+      "attack": 15,
+      "defense": 70,
+      "stamina": 40
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "UX10_KnightMail3-85BS",
+        "releaseAt": "2024-11-01",
+        "stats": {
+          "attack": 10,
+          "defense": 65,
+          "stamina": 35
+        }
+      }
+    ]
+  },
+  {
+    "id": "TRICERAPRESS",
+    "nameEn": "Tricera Press",
+    "nameJa": "トリケラプレス",
+    "nameZhTw": "三角強襲",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-06-27",
+    "type": "blade",
+    "stats": {
+      "attack": 20,
+      "defense": 65,
+      "stamina": 15
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "SAMURAISTEEL",
+    "nameEn": "Samurai Steel",
+    "nameJa": "サムライスチール メタルコート:ホワイト",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-05-14",
+    "type": "blade",
+    "stats": {
+      "attack": 45,
+      "defense": 42,
+      "stamina": 28
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "LEONCREST",
+    "nameEn": "Leon Crest",
+    "nameJa": "レオンクレスト",
+    "nameZhTw": "雄獅巔峰",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-08-09",
+    "type": "blade",
+    "stats": {
+      "attack": 15,
+      "defense": 70,
+      "stamina": 15
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "PHOENIXRUDDER",
+    "nameEn": "Phoenix Rudder",
+    "nameJa": "フェニックスラダー メタルコート:レッド",
+    "nameZhTw": "鳳凰尾翼 金屬塗層:火紅",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-08-09",
+    "type": "blade",
+    "stats": {
+      "attack": 10,
+      "defense": 35,
+      "stamina": 55
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "UX07_PhoenixRudder9-70G",
+        "releaseAt": "2024-08-09",
+        "stats": {
+          "attack": 15,
+          "defense": 40,
+          "stamina": 60
+        }
+      }
+    ]
+  },
+  {
+    "id": "XENOXCALIBUR",
+    "nameEn": "Xeno Xcalibur",
+    "nameJa": "ゼノエクスカリバー",
+    "nameZhTw": "神力聖劍",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "type": "blade",
+    "stats": {
+      "attack": 65,
+      "defense": 25,
+      "stamina": 10
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "STORMPEGASIS",
+    "nameEn": "Storm Pegasis",
+    "nameJa": "ストームペガシス",
+    "nameZhTw": "暴風天馬",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-20",
+    "type": "blade",
+    "stats": {
+      "attack": 55,
+      "defense": 15,
+      "stamina": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "VICTORYVALKYRIE",
+    "nameEn": "Victory Valkyrie",
+    "nameJa": "ビクトリーヴァルキリー",
+    "nameZhTw": "天翼戰神",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-20",
+    "type": "blade",
+    "stats": {
+      "attack": 55,
+      "defense": 20,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "PHOENIXFEATHER",
+    "nameEn": "Phoenix Feather",
+    "nameJa": "フェニックスフェザー ブレード",
+    "nameZhTw": "鳳凰翔羽",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-10-25",
+    "type": "blade",
+    "stats": {
+      "attack": 55,
+      "defense": 25,
+      "stamina": 35
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BXC01_PhoenixFether",
+        "releaseAt": "2023-10-25",
+        "stats": {
+          "attack": 50,
+          "defense": 20,
+          "stamina": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "PHOENIXWING",
+    "nameEn": "Phoenix Wing",
+    "nameJa": "フェニックスウイング メタルコート:レッド",
+    "nameZhTw": "鳳凰飛翼 金屬塗層:火紅",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-12-26",
+    "type": "blade",
+    "stats": {
+      "attack": 65,
+      "defense": 30,
+      "stamina": 20
+    },
+    "modes": [
+      {
+        "label": "BX-23 Phoenix Wing Metallic Coat: Red",
+        "stats": {
+          "attack": 65,
+          "defense": 30,
+          "stamina": 20
+        }
+      },
+      {
+        "label": "BX-35 Phoenix Wing",
+        "stats": {
+          "attack": 65,
+          "defense": 30,
+          "stamina": 20
+        }
+      },
+      {
+        "label": "BX-00 Phoenix Wing Metallic Coat: Navy",
+        "stats": {
+          "attack": 65,
+          "defense": 30,
+          "stamina": 20
+        }
+      },
+      {
+        "label": "BX-00 Phoenix Wing Metallic Coat: Black キタニタツヤ Ver.",
+        "stats": {
+          "attack": 65,
+          "defense": 30,
+          "stamina": 20
+        }
+      }
+    ],
+    "statEditions": [
+      {
+        "label": "BX35_PhenixWing5-80H",
+        "releaseAt": "2024-07-12",
+        "stats": {
+          "attack": 60,
+          "defense": 25,
+          "stamina": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "SHELTERDRAKE",
+    "nameEn": "Shelter Drake",
+    "nameJa": "シェルタードレイク",
+    "nameZhTw": "護城龍神",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-02-14",
+    "type": "blade",
+    "stats": {
+      "attack": 25,
+      "defense": 40,
+      "stamina": 35
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "CROCCRUNCH",
+    "nameEn": "Croc Crunch",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": null,
+    "type": "blade",
+    "stats": {
+      "attack": 65,
+      "defense": 27,
+      "stamina": 23
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "IMPACTDRAKE",
+    "nameEn": "Impact Drake",
+    "nameJa": "インパクトドレイク",
+    "nameZhTw": "衝擊龍神",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-12-26",
+    "type": "blade",
+    "stats": {
+      "attack": 75,
+      "defense": 25,
+      "stamina": 10
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GHOSTCIRCLE",
+    "nameEn": "Ghost Circle",
+    "nameJa": "ゴーストサークル",
+    "nameZhTw": "幽靈元魂",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-12-26",
+    "type": "blade",
+    "stats": {
+      "attack": 5,
+      "defense": 40,
+      "stamina": 55
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "SHINOBISHADOW",
+    "nameEn": "Shinobi Shadow",
+    "nameJa": "シノビシャドウ",
+    "nameZhTw": "忍者闇影",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-05-17",
+    "type": "blade",
+    "stats": {
+      "attack": 10,
+      "defense": 70,
+      "stamina": 20
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "LEONCLAW",
+    "nameEn": "Leon Claw",
+    "nameJa": "レオンクロー",
+    "nameZhTw": "雄獅獵爪",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-09-10",
+    "type": "blade",
+    "stats": {
+      "attack": 40,
+      "defense": 40,
+      "stamina": 20
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BXG05_LeonCrow5-60P",
+        "releaseAt": "2024-01-21",
+        "stats": {
+          "attack": 45,
+          "defense": 45,
+          "stamina": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "WYVERNGALE",
+    "nameEn": "Wyvern Gale",
+    "nameJa": "ワイバーンゲイル",
+    "nameZhTw": "飛龍旋翼",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-12-26",
+    "type": "blade",
+    "stats": {
+      "attack": 10,
+      "defense": 40,
+      "stamina": 50
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "DRACIELSHIELD",
+    "nameEn": "Draciel Shield",
+    "nameJa": "ドラシエルシールド",
+    "nameZhTw": "堅甲戰龜S",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-12-26",
+    "type": "blade",
+    "stats": {
+      "attack": 30,
+      "defense": 50,
+      "stamina": 20
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "SHINOBIKNIFE",
+    "nameEn": "Shinobi Knife",
+    "nameJa": "シノビナイフ メタルコート:ブルー",
+    "nameZhTw": "忍者刺刀 金屬塗層:水藍",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-13",
+    "type": "blade",
+    "stats": {
+      "attack": 28,
+      "defense": 55,
+      "stamina": 32
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "PTERASWING",
+    "nameEn": "Ptera Swing",
+    "nameJa": "プテラスイング",
+    "nameZhTw": "翼龍神翼",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "type": "blade",
+    "stats": {
+      "attack": 27,
+      "defense": 23,
+      "stamina": 50
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "BEARSCRATCH",
+    "nameEn": "Bear Scratch",
+    "nameJa": "ベアスクラッチ",
+    "nameZhTw": "悍熊猛爪",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-10-11",
+    "type": "blade",
+    "stats": {
+      "attack": 25,
+      "defense": 45,
+      "stamina": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "SILVERWOLF",
+    "nameEn": "Silver Wolf",
+    "nameJa": "シルバーウルフ",
+    "nameZhTw": "霜輝銀狼",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-10-11",
+    "type": "blade",
+    "stats": {
+      "attack": 15,
+      "defense": 30,
+      "stamina": 65
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "LIGHTNING L-DRAGO",
+    "nameEn": "Lightning L-Drago",
+    "nameJa": "ライトニングエルドラゴ（アッパー型）",
+    "nameZhTw": "雷霆天龍 (上升攻擊型)",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-09-13",
+    "type": "blade",
+    "stats": {
+      "attack": 55,
+      "defense": 25,
+      "stamina": 20
+    },
+    "modes": [
+      {
+        "label": "Upper Type",
+        "stats": {
+          "attack": 55,
+          "defense": 25,
+          "stamina": 20
+        }
+      },
+      {
+        "label": "Rapid-Hit Type",
+        "stats": {
+          "attack": 50,
+          "defense": 30,
+          "stamina": 20
+        }
+      }
+    ],
+    "statEditions": [
+      {
+        "label": "BXG07_LightningLdrago1-60F_renda",
+        "releaseAt": "2024-09-13",
+        "stats": {
+          "attack": 50,
+          "defense": 30,
+          "stamina": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "SPHINXCOWL",
+    "nameEn": "Sphinx Cowl",
+    "nameJa": "スフィンクスカウル",
+    "nameZhTw": "魔獸護甲",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-02-21",
+    "type": "blade",
+    "stats": {
+      "attack": 35,
+      "defense": 55,
+      "stamina": 10
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "DRANZERSPIRAL",
+    "nameEn": "Dranzer Spiral",
+    "nameJa": "ドランザースパイラル",
+    "nameZhTw": "烈焰飛鳳S",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "blade",
+    "stats": {
+      "attack": 35,
+      "defense": 30,
+      "stamina": 35
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "UNICORNSTING",
+    "nameEn": "Unicorn Sting",
+    "nameJa": "ユニコーンスティング",
+    "nameZhTw": "幻獸刺心",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-01-26",
+    "type": "blade",
+    "stats": {
+      "attack": 35,
+      "defense": 35,
+      "stamina": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "WIZARDROD",
+    "nameEn": "Wizard Rod",
+    "nameJa": "ウィザードロッド",
+    "nameZhTw": "魔導神杖",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-03-29",
+    "type": "blade",
+    "stats": {
+      "attack": 15,
+      "defense": 25,
+      "stamina": 60
+    },
+    "modes": [
+      {
+        "label": "UX-03 Wizard Rod",
+        "stats": {
+          "attack": 15,
+          "defense": 25,
+          "stamina": 60
+        }
+      },
+      {
+        "label": "BX-35 Wizard Rod",
+        "stats": {
+          "attack": 15,
+          "defense": 25,
+          "stamina": 60
+        }
+      }
+    ],
+    "statEditions": [
+      {
+        "label": "BXH09_WizardRod5-70DB",
+        "releaseAt": "2024-05-31",
+        "stats": {
+          "attack": 20,
+          "defense": 30,
+          "stamina": 65
+        }
+      }
+    ]
+  },
+  {
+    "id": "VIPERTAIL",
+    "nameEn": "Viper Tail",
+    "nameJa": "ヴァイパーテイル",
+    "nameZhTw": "王蛇鞭尾",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-09-10",
+    "type": "blade",
+    "stats": {
+      "attack": 30,
+      "defense": 20,
+      "stamina": 50
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "HELLSCHAIN",
+    "nameEn": "Hells Chain",
+    "nameJa": "ヘルズチェイン",
+    "nameZhTw": "惡魔鎖鏈",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-10-01",
+    "type": "blade",
+    "stats": {
+      "attack": 40,
+      "defense": 45,
+      "stamina": 30
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BX21_HellsChain5-60HT",
+        "releaseAt": "2023-10-01",
+        "stats": {
+          "attack": 35,
+          "defense": 40,
+          "stamina": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "RHINOHORN",
+    "nameEn": "Rhino Horn",
+    "nameJa": "ライノホーン",
+    "nameZhTw": "戰犀重角",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-10-01",
+    "type": "blade",
+    "stats": {
+      "attack": 20,
+      "defense": 50,
+      "stamina": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "DRIGERSLASH",
+    "nameEn": "Driger Slash",
+    "nameJa": "ドライガースラッシュ",
+    "nameZhTw": "銀牙烈虎",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-04-26",
+    "type": "blade",
+    "stats": {
+      "attack": 40,
+      "defense": 35,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "KNIGHTLANCE",
+    "nameEn": "Knight Lance",
+    "nameJa": "ナイトランス",
+    "nameZhTw": "騎士長槍",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "blade",
+    "stats": {
+      "attack": 25,
+      "defense": 60,
+      "stamina": 15
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "WIZARDARROW",
+    "nameEn": "Wizard Arrow",
+    "nameJa": "ウィザードアロー",
+    "nameZhTw": "魔導幻箭",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "blade",
+    "stats": {
+      "attack": 15,
+      "defense": 30,
+      "stamina": 55
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "KNIGHTSHIELD",
+    "nameEn": "Knight Shield",
+    "nameJa": "ナイトシールド メタルコート:ゴールド",
+    "nameZhTw": "騎士重盾 金屬塗層:燦金",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "blade",
+    "stats": {
+      "attack": 20,
+      "defense": 55,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BXH02_KnightShield3-80N",
+        "releaseAt": "2022-05-10",
+        "stats": {
+          "attack": 25,
+          "defense": 60,
+          "stamina": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "FLARE",
+    "nameEn": "Flare",
+    "nameJa": "フレア メタルコート:レッド",
+    "nameZhTw": "閃焰 金屬塗層:火紅",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-01-23",
+    "type": "blade",
+    "stats": {
+      "attack": 25,
+      "defense": 40,
+      "stamina": 10
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "BRUSH",
+    "nameEn": "Brush",
+    "nameJa": "ブラッシュ",
+    "nameZhTw": "九尾",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-05-16",
+    "type": "blade",
+    "stats": {
+      "attack": 40,
+      "defense": 15,
+      "stamina": 5
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "BRAVE",
+    "nameEn": "Brave",
+    "nameJa": "ブレイブ",
+    "nameZhTw": "勇氣",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "type": "blade",
+    "stats": {
+      "attack": 40,
+      "defense": 10,
+      "stamina": 10
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BXH16_DranBraveS6-60V_GOLD",
+        "releaseAt": "2025-05-02",
+        "stats": {
+          "attack": 45,
+          "defense": 15,
+          "stamina": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "FANG",
+    "nameEn": "Fang",
+    "nameJa": "ファング レッドVer.",
+    "nameZhTw": "獠牙 火紅Ver.",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-11-12",
+    "type": "blade",
+    "stats": {
+      "attack": 35,
+      "defense": 10,
+      "stamina": 15
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "HUNT",
+    "nameEn": "Hunt",
+    "nameJa": "ハント",
+    "nameZhTw": "狩獵",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-10-31",
+    "type": "blade",
+    "stats": {
+      "attack": 20,
+      "defense": 10,
+      "stamina": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "MIGHT",
+    "nameEn": "Might",
+    "nameJa": "マイト メタルコート:ブラック",
+    "nameZhTw": "威能 金屬塗層:闇黑",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-10-31",
+    "type": "blade",
+    "stats": {
+      "attack": 25,
+      "defense": 25,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "ECLIPSE",
+    "nameEn": "Eclipse",
+    "nameJa": "エクリプス",
+    "nameZhTw": "滅世",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-09-26",
+    "type": "blade",
+    "stats": {
+      "attack": 30,
+      "defense": 20,
+      "stamina": 10
+    },
+    "modes": [
+      {
+        "label": "Upper",
+        "stats": {
+          "attack": 30,
+          "defense": 20,
+          "stamina": 10
+        }
+      },
+      {
+        "label": "Smash",
+        "stats": {
+          "attack": 20,
+          "defense": 30,
+          "stamina": 10
+        }
+      }
+    ],
+    "statEditions": []
+  },
+  {
+    "id": "ARC",
+    "nameEn": "Arc",
+    "nameJa": "アーク",
+    "nameZhTw": "至尊",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "type": "blade",
+    "stats": {
+      "attack": 15,
+      "defense": 15,
+      "stamina": 45
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "CX02_WizardArcR4-55LO",
+        "releaseAt": "2025-03-28",
+        "stats": {
+          "attack": 10,
+          "defense": 10,
+          "stamina": 40
+        }
+      }
+    ]
+  },
+  {
+    "id": "BLAST",
+    "nameEn": "Blast",
+    "nameJa": "ブラスト メタルコート:グリーン",
+    "nameZhTw": "爆擊 金屬塗層:碧綠",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-07-18",
+    "type": "blade",
+    "stats": {
+      "attack": 50,
+      "defense": 10,
+      "stamina": 15
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "FLAME",
+    "nameEn": "Flame",
+    "nameJa": "フレイム",
+    "nameZhTw": "烈焰",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-07-18",
+    "type": "blade",
+    "stats": {
+      "attack": 5,
+      "defense": 15,
+      "stamina": 40
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "DARK",
+    "nameEn": "Dark",
+    "nameJa": "ダーク メタルコート:ゴールド",
+    "nameZhTw": "幽冥 金屬塗層:燦金",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "type": "blade",
+    "stats": {
+      "attack": 10,
+      "defense": 40,
+      "stamina": 10
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "BXH15_PerseusDarkB6-80W",
+        "releaseAt": "2025-03-28",
+        "stats": {
+          "attack": 15,
+          "defense": 45,
+          "stamina": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "VOLT",
+    "nameEn": "Volt",
+    "nameJa": "ボルト メタルコート:ゴールド",
+    "nameZhTw": "伏特 金屬塗層:燦金",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-07-16",
+    "type": "blade",
+    "stats": {
+      "attack": 45,
+      "defense": 15,
+      "stamina": 15
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "REAPER",
+    "nameEn": "Reaper",
+    "nameJa": "リーパー",
+    "nameZhTw": "獵魂",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-04-25",
+    "type": "blade",
+    "stats": {
+      "attack": 25,
+      "defense": 10,
+      "stamina": 25
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "YELLKONG",
+    "nameEn": "Yell Kong",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": null,
+    "type": "blade",
+    "stats": {
+      "attack": 13,
+      "defense": 37,
+      "stamina": 50
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "DELTA",
+    "nameEn": "Delta",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": null,
+    "type": "blade",
+    "stats": {
+      "attack": 15,
+      "defense": 15,
+      "stamina": 10
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "BLITZ",
+    "nameEn": "Blitz",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": null,
+    "type": "blade",
+    "stats": {
+      "attack": 30,
+      "defense": 15,
+      "stamina": 10
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "FORTRESS",
+    "nameEn": "Fortress",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": null,
+    "type": "blade",
+    "stats": {
+      "attack": 10,
+      "defense": 20,
+      "stamina": 10
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "RAGE",
+    "nameEn": "Rage",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": null,
+    "type": "blade",
+    "stats": {
+      "attack": 10,
+      "defense": 10,
+      "stamina": 20
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "0-70",
+    "nameEn": "0-70",
+    "nameJa": "0-70（ゼロセブンティー）",
+    "nameZhTw": "0-70",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-04-25",
+    "type": "ratchet",
+    "stats": {
+      "attack": 3,
+      "defense": 13,
+      "stamina": 14
+    },
+    "statEditions": []
+  },
+  {
+    "id": "3-60",
+    "nameEn": "3-60",
+    "nameJa": "3-60（スリーシクスティー）",
+    "nameZhTw": "3-60",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "ratchet",
+    "stats": {
+      "attack": 15,
+      "defense": 9,
+      "stamina": 6
+    },
+    "statEditions": []
+  },
+  {
+    "id": "1-80",
+    "nameEn": "1-80",
+    "nameJa": "1-80（ワンエイティー）",
+    "nameZhTw": "1-80",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-05-17",
+    "type": "ratchet",
+    "stats": {
+      "attack": 17,
+      "defense": 4,
+      "stamina": 9
+    },
+    "statEditions": []
+  },
+  {
+    "id": "9-65",
+    "nameEn": "9-65",
+    "nameJa": "9-65（ナインシクスティーファイブ）",
+    "nameZhTw": "9-65",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-10-10",
+    "type": "ratchet",
+    "stats": {
+      "attack": 13,
+      "defense": 10,
+      "stamina": 7
+    },
+    "statEditions": []
+  },
+  {
+    "id": "3-85",
+    "nameEn": "3-85",
+    "nameJa": "3-85（スリーエイティーファイブ）",
+    "nameZhTw": "3-85",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "type": "ratchet",
+    "stats": {
+      "attack": 5,
+      "defense": 15,
+      "stamina": 10
+    },
+    "statEditions": []
+  },
+  {
+    "id": "7-80",
+    "nameEn": "7-80",
+    "nameJa": "7-80（セブンエイティー）",
+    "nameZhTw": "7-80",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-02-14",
+    "type": "ratchet",
+    "stats": {
+      "attack": 7,
+      "defense": 14,
+      "stamina": 9
+    },
+    "statEditions": []
+  },
+  {
+    "id": "1-50",
+    "nameEn": "1-50",
+    "nameJa": "1-50（ワンフィフティー）",
+    "nameZhTw": "1-50",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-03-27",
+    "type": "ratchet",
+    "stats": {
+      "attack": 18,
+      "defense": 9,
+      "stamina": 3
+    },
+    "statEditions": []
+  },
+  {
+    "id": "8-70",
+    "nameEn": "8-70",
+    "nameJa": "8-70（エイトセブンティー）",
+    "nameZhTw": "8-70",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-03-27",
+    "type": "ratchet",
+    "stats": {
+      "attack": 8,
+      "defense": 10,
+      "stamina": 12
+    },
+    "statEditions": []
+  },
+  {
+    "id": "4-55",
+    "nameEn": "4-55",
+    "nameJa": "4-55（フォーフィフティーファイブ）",
+    "nameZhTw": "4-55",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "type": "ratchet",
+    "stats": {
+      "attack": 7,
+      "defense": 11,
+      "stamina": 12
+    },
+    "statEditions": []
+  },
+  {
+    "id": "2-70",
+    "nameEn": "2-70",
+    "nameJa": "2-70（ツーセブンティー）",
+    "nameZhTw": "2-70",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "type": "ratchet",
+    "stats": {
+      "attack": 10,
+      "defense": 12,
+      "stamina": 8
+    },
+    "statEditions": []
+  },
+  {
+    "id": "1-60",
+    "nameEn": "1-60",
+    "nameJa": "1-60（ワンシクスティー）",
+    "nameZhTw": "1-60",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-03-29",
+    "type": "ratchet",
+    "stats": {
+      "attack": 17,
+      "defense": 9,
+      "stamina": 4
+    },
+    "statEditions": []
+  },
+  {
+    "id": "9-60",
+    "nameEn": "9-60",
+    "nameJa": "9-60（ナインシクスティー）",
+    "nameZhTw": "9-60",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-12-26",
+    "type": "ratchet",
+    "stats": {
+      "attack": 13,
+      "defense": 10,
+      "stamina": 7
+    },
+    "statEditions": []
+  },
+  {
+    "id": "3-70",
+    "nameEn": "3-70",
+    "nameJa": "3-70（スリーセブンティー）",
+    "nameZhTw": "3-70",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-03-29",
+    "type": "ratchet",
+    "stats": {
+      "attack": 15,
+      "defense": 8,
+      "stamina": 7
+    },
+    "statEditions": []
+  },
+  {
+    "id": "9-80",
+    "nameEn": "9-80",
+    "nameJa": "9-80（ナインエイティー）",
+    "nameZhTw": "9-80",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-02-21",
+    "type": "ratchet",
+    "stats": {
+      "attack": 13,
+      "defense": 10,
+      "stamina": 7
+    },
+    "statEditions": []
+  },
+  {
+    "id": "4-70",
+    "nameEn": "4-70",
+    "nameJa": "4-70（フォーセブンティー）",
+    "nameZhTw": "4-70",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-04-26",
+    "type": "ratchet",
+    "stats": {
+      "attack": 11,
+      "defense": 12,
+      "stamina": 7
+    },
+    "statEditions": []
+  },
+  {
+    "id": "7-60",
+    "nameEn": "7-60",
+    "nameJa": "7-60（セブンシクスティー）",
+    "nameZhTw": "7-60",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-08-09",
+    "type": "ratchet",
+    "stats": {
+      "attack": 8,
+      "defense": 14,
+      "stamina": 8
+    },
+    "statEditions": []
+  },
+  {
+    "id": "2-80",
+    "nameEn": "2-80",
+    "nameJa": "2-80（ツーエイティー）",
+    "nameZhTw": "2-80",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-08-02",
+    "type": "ratchet",
+    "stats": {
+      "attack": 10,
+      "defense": 11,
+      "stamina": 9
+    },
+    "statEditions": []
+  },
+  {
+    "id": "2-60",
+    "nameEn": "2-60",
+    "nameJa": "2-60（ツーシクスティー）",
+    "nameZhTw": "2-60",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-07-12",
+    "type": "ratchet",
+    "stats": {
+      "attack": 10,
+      "defense": 13,
+      "stamina": 7
+    },
+    "statEditions": [
+      {
+        "label": "BX34_CobaltDragoon2-60C",
+        "releaseAt": "2024-07-12",
+        "stats": {
+          "attack": 16,
+          "defense": 8,
+          "stamina": 6
+        }
+      }
+    ]
+  },
+  {
+    "id": "7-55",
+    "nameEn": "7-55",
+    "nameJa": "7-55（セブンフィフティーファイブ）",
+    "nameZhTw": "7-55",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-12-26",
+    "type": "ratchet",
+    "stats": {
+      "attack": 6,
+      "defense": 14,
+      "stamina": 10
+    },
+    "statEditions": []
+  },
+  {
+    "id": "4-60",
+    "nameEn": "4-60",
+    "nameJa": "4-60（フォーシクスティー）",
+    "nameZhTw": "4-60",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "ratchet",
+    "stats": {
+      "attack": 11,
+      "defense": 13,
+      "stamina": 6
+    },
+    "statEditions": []
+  },
+  {
+    "id": "9-70",
+    "nameEn": "9-70",
+    "nameJa": "9-70（ナインセブンティー）",
+    "nameZhTw": "9-70",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-08-09",
+    "type": "ratchet",
+    "stats": {
+      "attack": 13,
+      "defense": 10,
+      "stamina": 7
+    },
+    "statEditions": []
+  },
+  {
+    "id": "4-80",
+    "nameEn": "4-80",
+    "nameJa": "4-80（フォーエイティー）",
+    "nameZhTw": "4-80",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "ratchet",
+    "stats": {
+      "attack": 11,
+      "defense": 11,
+      "stamina": 8
+    },
+    "statEditions": []
+  },
+  {
+    "id": "6-60",
+    "nameEn": "6-60",
+    "nameJa": "6-60（シックスシクスティー）",
+    "nameZhTw": "6-60",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "type": "ratchet",
+    "stats": {
+      "attack": 14,
+      "defense": 8,
+      "stamina": 8
+    },
+    "statEditions": []
+  },
+  {
+    "id": "0-60",
+    "nameEn": "0-60",
+    "nameJa": "0-60（ゼロシクスティー）",
+    "nameZhTw": "0-60",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-10-31",
+    "type": "ratchet",
+    "stats": {
+      "attack": 3,
+      "defense": 14,
+      "stamina": 13
+    },
+    "statEditions": []
+  },
+  {
+    "id": "M-85",
+    "nameEn": "M-85",
+    "nameJa": "M-85（エムエイティーファイブ）",
+    "nameZhTw": "M-85",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-06-27",
+    "type": "ratchet",
+    "stats": {
+      "attack": 8,
+      "defense": 19,
+      "stamina": 13
+    },
+    "statEditions": []
+  },
+  {
+    "id": "5-60",
+    "nameEn": "5-60",
+    "nameJa": "5-60（ファイブシクスティー）",
+    "nameZhTw": "5-60",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-09-10",
+    "type": "ratchet",
+    "stats": {
+      "attack": 12,
+      "defense": 9,
+      "stamina": 9
+    },
+    "statEditions": []
+  },
+  {
+    "id": "7-70",
+    "nameEn": "7-70",
+    "nameJa": "7-70（セブンセブンティー）",
+    "nameZhTw": "7-70",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "type": "ratchet",
+    "stats": {
+      "attack": 8,
+      "defense": 12,
+      "stamina": 10
+    },
+    "statEditions": []
+  },
+  {
+    "id": "5-70",
+    "nameEn": "5-70",
+    "nameJa": "5-70（ファイブセブンティー）",
+    "nameZhTw": "5-70",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-03-29",
+    "type": "ratchet",
+    "stats": {
+      "attack": 12,
+      "defense": 8.5,
+      "stamina": 9.5
+    },
+    "statEditions": []
+  },
+  {
+    "id": "6-70",
+    "nameEn": "6-70",
+    "nameJa": "6-70（シックスセブンティー）",
+    "nameZhTw": "6-70",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-08-08",
+    "type": "ratchet",
+    "stats": {
+      "attack": 14,
+      "defense": 7,
+      "stamina": 9
+    },
+    "statEditions": []
+  },
+  {
+    "id": "4-50",
+    "nameEn": "4-50",
+    "nameJa": "4-50（フォーフィフティー）",
+    "nameZhTw": "4-50",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-08-08",
+    "type": "ratchet",
+    "stats": {
+      "attack": 12,
+      "defense": 13,
+      "stamina": 5
+    },
+    "statEditions": []
+  },
+  {
+    "id": "1-70",
+    "nameEn": "1-70",
+    "nameJa": "1-70（ワンセブンティー）",
+    "nameZhTw": "1-70",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-08-08",
+    "type": "ratchet",
+    "stats": {
+      "attack": 17,
+      "defense": 6,
+      "stamina": 7
+    },
+    "statEditions": []
+  },
+  {
+    "id": "5-80",
+    "nameEn": "5-80",
+    "nameJa": "5-80（ファイブエイティー）",
+    "nameZhTw": "5-80",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-09-10",
+    "type": "ratchet",
+    "stats": {
+      "attack": 12,
+      "defense": 8,
+      "stamina": 10
+    },
+    "statEditions": []
+  },
+  {
+    "id": "6-80",
+    "nameEn": "6-80",
+    "nameJa": "6-80（シックスエイティー）",
+    "nameZhTw": "6-80",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "type": "ratchet",
+    "stats": {
+      "attack": 14,
+      "defense": 6,
+      "stamina": 10
+    },
+    "statEditions": []
+  },
+  {
+    "id": "0-80",
+    "nameEn": "0-80",
+    "nameJa": "0-80（ゼロエイティー）",
+    "nameZhTw": "0-80",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-12-26",
+    "type": "ratchet",
+    "stats": {
+      "attack": 3,
+      "defense": 12,
+      "stamina": 15
+    },
+    "statEditions": []
+  },
+  {
+    "id": "3-80",
+    "nameEn": "3-80",
+    "nameJa": "3-80（スリーエイティー）",
+    "nameZhTw": "3-80",
+    "aliases": [],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "ratchet",
+    "stats": {
+      "attack": 15,
+      "defense": 7,
+      "stamina": 8
+    },
+    "statEditions": []
+  },
+  {
+    "id": "Z",
+    "nameEn": "Zap",
+    "nameJa": "Z（ザップ）",
+    "nameZhTw": "Z",
+    "aliases": [
+      "Z"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-04-25",
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 20,
+      "stamina": 15,
+      "xDash": 35,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GU",
+    "nameEn": "Gear Unite",
+    "nameJa": "GU（ギヤユナイト）",
+    "nameZhTw": "GU",
+    "aliases": [
+      "GU"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-04-24",
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 20,
+      "stamina": 20,
+      "xDash": 30,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GR",
+    "nameEn": "Gear Rush",
+    "nameJa": "GR（ギヤラッシュ）",
+    "nameZhTw": "GR",
+    "aliases": [
+      "GR"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-05-16",
+    "type": "bit",
+    "stats": {
+      "attack": 45,
+      "defense": 10,
+      "stamina": 10,
+      "xDash": 35,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "LO",
+    "nameEn": "Low Orb",
+    "nameJa": "LO（ローオーブ）",
+    "nameZhTw": "LO",
+    "aliases": [
+      "LO"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "type": "bit",
+    "stats": {
+      "attack": 5,
+      "defense": 25,
+      "stamina": 55,
+      "xDash": 15,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "N",
+    "nameEn": "Needle",
+    "nameJa": "N（ニードル）",
+    "nameZhTw": "N",
+    "aliases": [
+      "N"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 50,
+      "stamina": 30,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "H",
+    "nameEn": "Hexa",
+    "nameJa": "H（ヘキサ）",
+    "nameZhTw": "H",
+    "aliases": [
+      "H"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-03-29",
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 35,
+      "stamina": 20,
+      "xDash": 15,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "I",
+    "nameEn": "Ignition",
+    "nameJa": "I（イグニッション）",
+    "nameZhTw": "I",
+    "aliases": [
+      "I"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-03-27",
+    "type": "bit",
+    "stats": {
+      "attack": 50,
+      "defense": 15,
+      "stamina": 5,
+      "xDash": 30,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "UN",
+    "nameEn": "Under Needle",
+    "nameJa": "UN（アンダーニードル）",
+    "nameZhTw": "UN",
+    "aliases": [
+      "UN"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-01-24",
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 60,
+      "stamina": 20,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "Y",
+    "nameEn": "Yield",
+    "nameJa": "Y（イールディング）",
+    "nameZhTw": "Y",
+    "aliases": [
+      "Y"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-03-27",
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 15,
+      "stamina": 65,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "M",
+    "nameEn": "Merge",
+    "nameJa": "M（マージ）",
+    "nameZhTw": "M",
+    "aliases": [
+      "M"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-08-08",
+    "type": "bit",
+    "stats": {
+      "attack": 50,
+      "defense": 20,
+      "stamina": 10,
+      "xDash": 20,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "V",
+    "nameEn": "Vortex",
+    "nameJa": "V（ボルテックス）",
+    "nameZhTw": "V",
+    "aliases": [
+      "V"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "type": "bit",
+    "stats": {
+      "attack": 45,
+      "defense": 10,
+      "stamina": 5,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "F",
+    "nameEn": "Flat",
+    "nameJa": "F（フラット）",
+    "nameZhTw": "F",
+    "aliases": [
+      "F"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "bit",
+    "stats": {
+      "attack": 40,
+      "defense": 15,
+      "stamina": 10,
+      "xDash": 35,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GF",
+    "nameEn": "Gear Flat",
+    "nameJa": "GF（ギヤフラット）",
+    "nameZhTw": "GF",
+    "aliases": [
+      "GF"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-12-26",
+    "type": "bit",
+    "stats": {
+      "attack": 50,
+      "defense": 5,
+      "stamina": 5,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "A",
+    "nameEn": "Accel",
+    "nameJa": "A（アクセル）",
+    "nameZhTw": "A",
+    "aliases": [
+      "A"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-03-29",
+    "type": "bit",
+    "stats": {
+      "attack": 40,
+      "defense": 10,
+      "stamina": 10,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "E",
+    "nameEn": "Elevate",
+    "nameJa": "E（エレベート）",
+    "nameZhTw": "E",
+    "aliases": [
+      "E"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-09-13",
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 15,
+      "stamina": 20,
+      "xDash": 35,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "S",
+    "nameEn": "Spike",
+    "nameJa": "S（スパイク）",
+    "nameZhTw": "S",
+    "aliases": [
+      "S"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-10-01",
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 45,
+      "stamina": 35,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GB",
+    "nameEn": "Gear Ball",
+    "nameJa": "GB（ギヤボール）",
+    "nameZhTw": "GB",
+    "aliases": [
+      "GB"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-12-26",
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 15,
+      "stamina": 45,
+      "xDash": 30,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "Q",
+    "nameEn": "Quake",
+    "nameJa": "Q（クエイク）",
+    "nameZhTw": "Q",
+    "aliases": [
+      "Q"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-04-26",
+    "type": "bit",
+    "stats": {
+      "attack": 55,
+      "defense": 15,
+      "stamina": 5,
+      "xDash": 25,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GP",
+    "nameEn": "Gear Point",
+    "nameJa": "GP（ギヤポイント）",
+    "nameZhTw": "GP",
+    "aliases": [
+      "GP"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-01-26",
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 25,
+      "stamina": 15,
+      "xDash": 30,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "WW",
+    "nameEn": "Wall Wedge",
+    "nameJa": "WW（ウォールウェッジ）",
+    "nameZhTw": "WW",
+    "aliases": [
+      "WW"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-01-23",
+    "type": "bit",
+    "stats": {
+      "attack": 5,
+      "defense": 60,
+      "stamina": 25,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "O",
+    "nameEn": "Orb",
+    "nameJa": "O（オーブ）",
+    "nameZhTw": "O",
+    "aliases": [
+      "O"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-09-10",
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 30,
+      "stamina": 50,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "D",
+    "nameEn": "Dot",
+    "nameJa": "D（ドット）",
+    "nameZhTw": "D",
+    "aliases": [
+      "D"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-07-12",
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 55,
+      "stamina": 25,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "W",
+    "nameEn": "Wedge",
+    "nameJa": "W（ウェッジ）",
+    "nameZhTw": "W",
+    "aliases": [
+      "W"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "type": "bit",
+    "stats": {
+      "attack": 5,
+      "defense": 55,
+      "stamina": 30,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "C",
+    "nameEn": "Cyclone",
+    "nameJa": "C（サイクロン）",
+    "nameZhTw": "C",
+    "aliases": [
+      "C"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-07-12",
+    "type": "bit",
+    "stats": {
+      "attack": 40,
+      "defense": 5,
+      "stamina": 10,
+      "xDash": 45,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "TP",
+    "nameEn": "Trans Point",
+    "nameJa": "TP（トランスポイント）",
+    "nameZhTw": "TP",
+    "aliases": [
+      "TP"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "type": "bit",
+    "stats": {
+      "attack": 35,
+      "defense": 25,
+      "stamina": 25,
+      "xDash": 15,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "G",
+    "nameEn": "Glide",
+    "nameJa": "G（グライド）",
+    "nameZhTw": "G",
+    "aliases": [
+      "G"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-08-09",
+    "type": "bit",
+    "stats": {
+      "attack": 20,
+      "defense": 10,
+      "stamina": 55,
+      "xDash": 15,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "LR",
+    "nameEn": "Low Rush",
+    "nameJa": "LR（ローラッシュ）",
+    "nameZhTw": "LR",
+    "aliases": [
+      "LR"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-12-26",
+    "type": "bit",
+    "stats": {
+      "attack": 45,
+      "defense": 5,
+      "stamina": 15,
+      "xDash": 35,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "RA",
+    "nameEn": "Rubber Accel",
+    "nameJa": "RA（ラバーアクセル）",
+    "nameZhTw": "RA",
+    "aliases": [
+      "RA"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "type": "bit",
+    "stats": {
+      "attack": 60,
+      "defense": 17,
+      "stamina": 3,
+      "xDash": 20,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "J",
+    "nameEn": "Jolt",
+    "nameJa": "J（ジョルト）",
+    "nameZhTw": "J",
+    "aliases": [
+      "J"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-12-26",
+    "type": "bit",
+    "stats": {
+      "attack": 35,
+      "defense": 10,
+      "stamina": 15,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "T",
+    "nameEn": "Taper",
+    "nameJa": "T（テーパー）",
+    "nameZhTw": "T",
+    "aliases": [
+      "T"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "bit",
+    "stats": {
+      "attack": 35,
+      "defense": 20,
+      "stamina": 20,
+      "xDash": 25,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "B",
+    "nameEn": "Ball",
+    "nameJa": "B（ボール）",
+    "nameZhTw": "B",
+    "aliases": [
+      "B"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "bit",
+    "stats": {
+      "attack": 15,
+      "defense": 25,
+      "stamina": 50,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "LF",
+    "nameEn": "Low Flat",
+    "nameJa": "LF（ローフラット）",
+    "nameZhTw": "LF",
+    "aliases": [
+      "LF"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "bit",
+    "stats": {
+      "attack": 45,
+      "defense": 5,
+      "stamina": 10,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "P",
+    "nameEn": "Point",
+    "nameJa": "P（ポイント）",
+    "nameZhTw": "P",
+    "aliases": [
+      "P"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-09-10",
+    "type": "bit",
+    "stats": {
+      "attack": 25,
+      "defense": 25,
+      "stamina": 25,
+      "xDash": 25,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "DB",
+    "nameEn": "Disc Ball",
+    "nameJa": "DB（ディスクボール）",
+    "nameZhTw": "DB",
+    "aliases": [
+      "DB"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-03-29",
+    "type": "bit",
+    "stats": {
+      "attack": 15,
+      "defense": 20,
+      "stamina": 55,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "Op",
+    "nameEn": "Operate",
+    "nameJa": "Op（オペレート）",
+    "nameZhTw": "Op",
+    "aliases": [
+      "Op"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-10-31",
+    "type": "bit",
+    "stats": {
+      "attack": 50,
+      "defense": 35,
+      "stamina": 10,
+      "xDash": 0,
+      "burstResistance": 0
+    },
+    "modes": [
+      {
+        "label": "Attack Mode",
+        "stats": {
+          "attack": 50,
+          "defense": 35,
+          "stamina": 10,
+          "xDash": 0,
+          "burstResistance": 0
+        }
+      },
+      {
+        "label": "Defense Mode",
+        "stats": {
+          "attack": 20,
+          "defense": 50,
+          "stamina": 50,
+          "xDash": 0,
+          "burstResistance": 0
+        }
+      }
+    ],
+    "statEditions": [
+      {
+        "label": "CX11_EmperorMightHOp_Sharp",
+        "releaseAt": "2025-10-31",
+        "stats": {
+          "attack": 20,
+          "defense": 50,
+          "stamina": 50,
+          "xDash": 10,
+          "burstResistance": 30
+        }
+      },
+      {
+        "label": "CX11_EmperorMightHOp",
+        "releaseAt": "2025-10-31",
+        "stats": {
+          "attack": 50,
+          "defense": 35,
+          "stamina": 10,
+          "xDash": 35,
+          "burstResistance": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "HN",
+    "nameEn": "High Needle",
+    "nameJa": "HN（ハイニードル）",
+    "nameZhTw": "HN",
+    "aliases": [
+      "HN"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2022-05-10",
+    "type": "bit",
+    "stats": {
+      "attack": 15,
+      "defense": 55,
+      "stamina": 20,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "FB",
+    "nameEn": "Free Ball",
+    "nameJa": "FB（フリーボール）",
+    "nameZhTw": "FB",
+    "aliases": [
+      "FB"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-10-11",
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 25,
+      "stamina": 60,
+      "xDash": 5,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GN",
+    "nameEn": "Gear Needle",
+    "nameJa": "GN（ギヤニードル）",
+    "nameZhTw": "GN",
+    "aliases": [
+      "GN"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-02-21",
+    "type": "bit",
+    "stats": {
+      "attack": 20,
+      "defense": 40,
+      "stamina": 10,
+      "xDash": 30,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "R",
+    "nameEn": "Rush",
+    "nameJa": "R（ラッシュ）",
+    "nameZhTw": "R",
+    "aliases": [
+      "R"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-10-01",
+    "type": "bit",
+    "stats": {
+      "attack": 40,
+      "defense": 10,
+      "stamina": 20,
+      "xDash": 30,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "TK",
+    "nameEn": "Trans Kick",
+    "nameJa": "TK（トランスキック）",
+    "nameZhTw": "TK",
+    "aliases": [
+      "TK"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-09-26",
+    "type": "bit",
+    "stats": {
+      "attack": 35,
+      "defense": 30,
+      "stamina": 20,
+      "xDash": 15,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "UF",
+    "nameEn": "Under Flat",
+    "nameJa": "UF（アンダーフラット）",
+    "nameZhTw": "UF",
+    "aliases": [
+      "UF"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-08-08",
+    "type": "bit",
+    "stats": {
+      "attack": 55,
+      "defense": 5,
+      "stamina": 5,
+      "xDash": 35,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "L",
+    "nameEn": "Level",
+    "nameJa": "L（レベル）",
+    "nameZhTw": "L",
+    "aliases": [
+      "L"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "type": "bit",
+    "stats": {
+      "attack": 40,
+      "defense": 5,
+      "stamina": 15,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "Tr",
+    "nameEn": "Turbo",
+    "nameJa": "Tr（ターボ）",
+    "nameZhTw": "Tr",
+    "aliases": [
+      "Tr"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-07-18",
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 30,
+      "stamina": 60,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": [
+      {
+        "label": "CX07_PegasusBlastATr",
+        "releaseAt": "2025-07-18",
+        "stats": {
+          "attack": 55,
+          "defense": 20,
+          "stamina": 10,
+          "xDash": 45,
+          "burstResistance": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "WB",
+    "nameEn": "Wall Ball",
+    "nameJa": "WB（ウォールボール）",
+    "nameZhTw": "WB",
+    "aliases": [
+      "WB"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-07-18",
+    "type": "bit",
+    "stats": {
+      "attack": 15,
+      "defense": 30,
+      "stamina": 45,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "HT",
+    "nameEn": "High Taper",
+    "nameJa": "HT（ハイテーパー）",
+    "nameZhTw": "HT",
+    "aliases": [
+      "HT"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-10-01",
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 25,
+      "stamina": 20,
+      "xDash": 25,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "MN",
+    "nameEn": "Metal Needle",
+    "nameJa": "MN（メタルニードル）",
+    "nameZhTw": "MN",
+    "aliases": [
+      "MN"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-05-17",
+    "type": "bit",
+    "stats": {
+      "attack": 8,
+      "defense": 57,
+      "stamina": 30,
+      "xDash": 5,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "BS",
+    "nameEn": "Bound Spike",
+    "nameJa": "BS（バウンドスパイク）",
+    "nameZhTw": "BS",
+    "aliases": [
+      "BS"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "type": "bit",
+    "stats": {
+      "attack": 5,
+      "defense": 60,
+      "stamina": 30,
+      "xDash": 5,
+      "burstResistance": 30
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "K",
+    "nameEn": "Kick",
+    "nameJa": "K（キック）",
+    "nameZhTw": "K",
+    "aliases": [
+      "K"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-04-25",
+    "type": "bit",
+    "stats": {
+      "attack": 35,
+      "defense": 25,
+      "stamina": 15,
+      "xDash": 25,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "U",
+    "nameEn": "Unite",
+    "nameJa": "U（ユナイト）",
+    "nameZhTw": "U",
+    "aliases": [
+      "U"
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-06-14",
+    "type": "bit",
+    "stats": {
+      "attack": 25,
+      "defense": 25,
+      "stamina": 30,
+      "xDash": 20,
+      "burstResistance": 80
+    },
+    "modes": [],
+    "statEditions": []
+  }
+]

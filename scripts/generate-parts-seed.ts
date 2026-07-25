@@ -1,0 +1,321 @@
+/**
+ * One-off maintenance script (ADR-0001: 零件人工策展) — NOT part of the
+ * build. Run manually with `node scripts/generate-parts-seed.ts` when new
+ * parts release, then review the diff to `data/parts.json` before merging.
+ *
+ * Canonical names + stats come from beybrew's beyparts.json (community-
+ * curated — see ADR-0007 on why we don't try to re-derive clean display
+ * names from MasterData.json ourselves). Stat Edition history is discovered
+ * by cross-referencing the same part's raw entries in MasterData.json.
+ */
+import { writeFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
+import { partsFileSchema, type Part } from "../src/lib/parts/schema.ts";
+import {
+  buildStatEditions,
+  type RawMasterDataEntry,
+} from "../src/lib/parts/build-stat-editions.ts";
+import { cleanLocalizedName } from "../src/lib/parts/clean-localized-name.ts";
+
+/** The richer raw shape actually present in MasterData.json — a superset of
+ *  RawMasterDataEntry (which only declares what stat-edition extraction
+ *  needs), so it's still assignable wherever that narrower type is expected. */
+interface RawEntry extends RawMasterDataEntry {
+  name?: Record<string, string>;
+}
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const OUTPUT_PATH = join(__dirname, "..", "data", "parts.json");
+
+const BEYPARTS_URL =
+  "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json";
+const MASTERDATA_URL =
+  "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json";
+
+interface BeypartsMode {
+  label: string;
+  attack: number;
+  defense: number;
+  stamina: number;
+  xDash?: number;
+  burstResistance?: number;
+}
+
+interface BeypartsEntry {
+  name: string;
+  altname?: string;
+  alias?: string;
+  /** Present on single-form parts; absent on parts with `modes` instead. */
+  attack?: number;
+  defense?: number;
+  stamina?: number;
+  xDash?: number;
+  burstResistance?: number;
+  /** Present on parts that physically transform between forms (e.g.
+   *  Scorpio Spear's X-DASH-triggered shape change) — see ADR-0007. */
+  modes?: BeypartsMode[];
+}
+
+interface BeypartsFile {
+  blades: BeypartsEntry[];
+  ratchets: BeypartsEntry[];
+  bits: BeypartsEntry[];
+}
+
+function normalizeKey(s: string): string {
+  return s.toUpperCase().replace(/[^A-Z0-9]/g, "");
+}
+
+async function fetchJson<T>(url: string): Promise<T> {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
+  return res.json() as Promise<T>;
+}
+
+async function fetchMasterData(): Promise<{
+  blades: RawEntry[];
+  ratchets: RawEntry[];
+  bits: RawEntry[];
+}> {
+  const raw = await fetchJson<{ masterData: string }>(MASTERDATA_URL);
+  const inner = JSON.parse(raw.masterData) as { data: Record<string, RawEntry[]> };
+  return {
+    blades: [
+      ...(inner.data.BeybladePartsBlade ?? []),
+      ...(inner.data.BeybladePartsMainBlade ?? []),
+    ],
+    ratchets: inner.data.BeybladePartsRatchet ?? [],
+    bits: inner.data.BeybladePartsBit ?? [],
+  };
+}
+
+/**
+ * Exact group_id match only. An earlier version also fell back to a
+ * model_name substring check, which for short aliases like "T" or "N"
+ * matched almost anything and silently collapsed distinct Bits into the
+ * same id. Missing a match here just means empty statEditions for that
+ * part (a safe degradation) — a wrong match causes real parts to vanish.
+ */
+function findMasterDataGroup(
+  candidateKeys: string[],
+  pool: RawEntry[],
+): { groupId: string; entries: RawEntry[] } | null {
+  for (const key of candidateKeys) {
+    const entries = pool.filter((e) => normalizeKey(e.group_id ?? "") === key);
+    if (entries.length > 0) {
+      return { groupId: entries[0]!.group_id, entries };
+    }
+  }
+  return null;
+}
+
+/**
+ * The earliest-released SKU in a group consistently carries the plainest
+ * title — later reissues add colorway/edition suffixes (verified across
+ * Dran Sword, Wizard Arrow, Shark Edge, Crimson Garuda; see ADR-0007-style
+ * reasoning in clean-localized-name.ts). Walks entries oldest-first and
+ * takes the first one where cleanLocalizedName succeeds, so a placeholder
+ * glyph on the very first release doesn't blank out the whole group.
+ */
+function localizedNamesOf(entries: RawEntry[]): { ja?: string; zhTw?: string } {
+  const sorted = [...entries].sort((a, b) =>
+    (a.release_at ?? "9999").localeCompare(b.release_at ?? "9999"),
+  );
+
+  let ja: string | undefined;
+  let zhTw: string | undefined;
+  for (const entry of sorted) {
+    if (!ja) {
+      const candidate = entry.name?.["ja-JP"];
+      if (candidate) ja = cleanLocalizedName(candidate) ?? undefined;
+    }
+    if (!zhTw) {
+      const candidate = entry.name?.["zh-TW"];
+      if (candidate) zhTw = cleanLocalizedName(candidate) ?? undefined;
+    }
+    if (ja && zhTw) break;
+  }
+  return { ja, zhTw };
+}
+
+/** The Part's own release date — when this physical product first went on
+ *  sale, as opposed to a Stat Edition's `releaseAt` (a later reissue). */
+function earliestReleaseDateOf(entries: RawEntry[]): string | null {
+  const dated = entries.filter((e) => e.release_at);
+  if (dated.length === 0) return null;
+  const earliest = dated.reduce((a, b) =>
+    (a.release_at ?? "") < (b.release_at ?? "") ? a : b,
+  );
+  return earliest.release_at!.slice(0, 10);
+}
+
+/** Top-level stats when present; otherwise the first mode's stats — a
+ *  multi-mode part still needs a single default `stats` block so plain
+ *  listing/sorting doesn't have to special-case it. See ADR-0007. */
+function primaryStatsOf(e: BeypartsEntry): BeypartsMode {
+  if (e.attack !== undefined && e.defense !== undefined && e.stamina !== undefined) {
+    return { label: "default", attack: e.attack, defense: e.defense, stamina: e.stamina, xDash: e.xDash, burstResistance: e.burstResistance };
+  }
+  if (e.modes && e.modes.length > 0) return e.modes[0]!;
+  throw new Error(`Part "${e.name}" has neither top-level stats nor modes`);
+}
+
+function toThreeStat(s: BeypartsMode) {
+  return { attack: s.attack, defense: s.defense, stamina: s.stamina };
+}
+
+function toFiveStat(s: BeypartsMode) {
+  return {
+    attack: s.attack,
+    defense: s.defense,
+    stamina: s.stamina,
+    xDash: s.xDash ?? 0,
+    burstResistance: s.burstResistance ?? 0,
+  };
+}
+
+/** `altname`/`alias` can be an empty string (not just absent) — `||` falls
+ *  through to `name` in that case, `??` would not. */
+function displayName(e: BeypartsEntry, preferred?: string): string {
+  return preferred || e.name;
+}
+
+/**
+ * Some catalog entries are structural placeholders, not real orderable
+ * parts: "RATCHET-integrated BLADE", "Turbo (Ratchet Integrated Bit)" —
+ * describing the CX-line fusion mechanic itself rather than a specific
+ * product. All-zero stats reliably identifies them; no real released part
+ * has zero in every dimension.
+ */
+function isStructuralPlaceholder(e: BeypartsEntry): boolean {
+  if (e.modes && e.modes.length > 0) return false;
+  return e.attack === 0 && e.defense === 0 && e.stamina === 0;
+}
+
+async function main() {
+  console.log("Fetching beyparts.json (canonical names + stats)...");
+  const beyparts = await fetchJson<BeypartsFile>(BEYPARTS_URL);
+
+  console.log("Fetching MasterData.json (for Stat Edition history)...");
+  const masterData = await fetchMasterData();
+
+  const parts: Part[] = [];
+  let matched = 0;
+  let unmatched = 0;
+
+  for (const entry of beyparts.blades) {
+    if (isStructuralPlaceholder(entry)) continue;
+    const keys = [normalizeKey(displayName(entry, entry.altname)), normalizeKey(entry.name)];
+    const group = findMasterDataGroup(keys, masterData.blades);
+    const primary = primaryStatsOf(entry);
+    const stats = toThreeStat(primary);
+    if (group) matched++;
+    else unmatched++;
+    const localized = group ? localizedNamesOf(group.entries) : {};
+
+    parts.push({
+      id: group?.groupId ?? normalizeKey(entry.name),
+      type: "blade",
+      nameEn: entry.name,
+      nameJa: localized.ja,
+      nameZhTw: localized.zhTw,
+      generation: "X",
+      releaseAt: group ? earliestReleaseDateOf(group.entries) : null,
+      stats,
+      modes: (entry.modes ?? []).map((m) => ({ label: m.label, stats: toThreeStat(m) })),
+      statEditions: group ? buildStatEditions(group.entries, stats, "three") : [],
+      moldBatches: [],
+      aliases: [],
+    });
+  }
+
+  for (const entry of beyparts.ratchets) {
+    if (isStructuralPlaceholder(entry)) continue;
+    const keys = [normalizeKey(displayName(entry, entry.altname)), normalizeKey(entry.name)];
+    const group = findMasterDataGroup(keys, masterData.ratchets);
+    const stats = toThreeStat(primaryStatsOf(entry));
+    if (group) matched++;
+    else unmatched++;
+    const localizedRatchet = group ? localizedNamesOf(group.entries) : {};
+
+    parts.push({
+      id: group?.groupId ?? normalizeKey(entry.name),
+      type: "ratchet",
+      nameEn: displayName(entry, entry.altname),
+      nameJa: localizedRatchet.ja,
+      nameZhTw: localizedRatchet.zhTw,
+      generation: "X",
+      releaseAt: group ? earliestReleaseDateOf(group.entries) : null,
+      stats,
+      statEditions: group ? buildStatEditions(group.entries, stats, "three") : [],
+      moldBatches: [],
+      aliases: [],
+    });
+  }
+
+  for (const entry of beyparts.bits) {
+    if (isStructuralPlaceholder(entry)) continue;
+    const keys = [
+      normalizeKey(displayName(entry, entry.alias)),
+      normalizeKey(entry.name),
+    ];
+    const group = findMasterDataGroup(keys, masterData.bits);
+    const primary = primaryStatsOf(entry);
+    const stats = toFiveStat(primary);
+    if (group) matched++;
+    else unmatched++;
+    const localizedBit = group ? localizedNamesOf(group.entries) : {};
+    const bitAliases = entry.alias && entry.alias !== entry.name ? [entry.alias] : [];
+
+    parts.push({
+      id: group?.groupId ?? normalizeKey(entry.name),
+      type: "bit",
+      nameEn: entry.name,
+      nameJa: localizedBit.ja,
+      nameZhTw: localizedBit.zhTw,
+      generation: "X",
+      releaseAt: group ? earliestReleaseDateOf(group.entries) : null,
+      stats,
+      aliases: bitAliases,
+      modes: (entry.modes ?? []).map((m) => ({ label: m.label, stats: toFiveStat(m) })),
+      statEditions: group ? buildStatEditions(group.entries, stats, "five") : [],
+      moldBatches: [],
+    });
+  }
+
+  // De-duplicate ids: two different beyparts entries can resolve to the same
+  // MasterData group_id (rare, but seen with ratchet/bit alias collisions).
+  // Keep the first, log the rest so a human can review.
+  const seen = new Set<string>();
+  const deduped: Part[] = [];
+  for (const part of parts) {
+    if (seen.has(part.id)) {
+      console.warn(`Skipping duplicate id "${part.id}" (${part.nameEn})`);
+      continue;
+    }
+    seen.add(part.id);
+    deduped.push(part);
+  }
+
+  const result = partsFileSchema.safeParse(deduped);
+  if (!result.success) {
+    console.error(`Generated seed data failed schema validation (${result.error.issues.length} issues). First 15:`);
+    for (const issue of result.error.issues.slice(0, 15)) {
+      const idx = issue.path[0];
+      const part = typeof idx === "number" ? deduped[idx] : undefined;
+      console.error(`  [${part?.nameEn ?? "?"} / ${part?.type ?? "?"}] ${issue.path.join(".")}: ${issue.message}`);
+    }
+    process.exit(1);
+  }
+
+  writeFileSync(OUTPUT_PATH, JSON.stringify(result.data, null, 2) + "\n");
+  console.log(
+    `Wrote ${result.data.length} parts to ${OUTPUT_PATH} (${matched} matched to MasterData, ${unmatched} unmatched — review before merging).`,
+  );
+}
+
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

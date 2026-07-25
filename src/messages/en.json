@@ -8,5 +8,34 @@
     "zh-TW": "繁體中文",
     "ja": "日本語",
     "en": "English"
+  },
+  "PartsPage": {
+    "title": "Parts",
+    "type_all": "All",
+    "type_blade": "Blade",
+    "type_ratchet": "Ratchet",
+    "type_bit": "Bit",
+    "stat_attack": "Attack",
+    "stat_defense": "Defense",
+    "stat_stamina": "Stamina",
+    "stat_xDash": "X-Dash",
+    "stat_burstResistance": "Burst",
+    "release_date": "Release date",
+    "no_results": "No parts match these filters",
+    "search_label": "Search parts",
+    "search_placeholder": "Search by Chinese, Japanese, or English name"
+  },
+  "EventsPage": {
+    "title": "Event Calendar",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "no_upcoming": "No known upcoming events right now",
+    "registration_onsite": "Register on-site",
+    "registration_online": "Register online",
+    "registration_phone": "Register by phone",
+    "registration_either": "On-site or online",
+    "registration_store_community": "Register via store's social group",
+    "capacity": "Capacity",
+    "source": "Source"
   }
 }

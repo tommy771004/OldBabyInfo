@@ -21,8 +21,8 @@ _Avoid_: 固鎖、齒輪、棘輪、disk
 _Avoid_: 軸心、軸尖、driver
 
 **Stat**：
-單一 Part 的四項數值之一：Attack、Defense、Stamina、Burst Resistance。來自官方資料，非本站評分。
-_Avoid_: 屬性、能力值、rating
+單一 Part 的五項數值之一：Attack、Defense、Stamina、X-Dash、Burst Resistance。來自官方資料，非本站評分。X-Dash 與 Burst Resistance 只存在於 Bit；Blade、Ratchet 只帶 Attack／Defense／Stamina。（04 號票驗證，見 [ADR-0007](docs/adr/0007-combo-stat-composition.md)。）
+_Avoid_: 屬性、能力值、rating、四維
 
 **Alias**：
 同一個 Part 在現實中被叫到的其他名字——中譯、日文、俗稱、簡稱、常見錯字。搜尋必須全部命中。Alias 是本站最難被複製的資產。
@@ -33,8 +33,12 @@ _Avoid_: 別名、暱稱、tag
 _Avoid_: 系列、series
 
 **Mold Batch**：
-同一 Part 在不同生產批次間的模具差異，會影響實戰表現。以產品上的批號辨識。
-_Avoid_: 版本、revision
+同一 Part、同一 Stat Edition 之下，不同生產批次間未見於官方數值的物理公差（模具磨損、材質批次），只能靠產品上的批號與玩家實戰歸納得知，官方不曾正式承認。與 Stat Edition（官方明文記載的數值版本差異）是兩件不同的事，來源與解析方式也不同：Mold Batch 只能從散文型社群文章用 LLM 抽取（35 號票）。
+_Avoid_: 版本、revision、Stat Edition
+
+**Stat Edition**：
+同一 Part 在不同 SKU／復刻版之間，官方結構化資料明文記載的數值差異（例如 Dran Sword 標準版 Attack 55 vs 特別版 60，見 [ADR-0007](docs/adr/0007-combo-stat-composition.md)）。直接來自官方資料，決定性解析取得，不經 LLM。Part 的正式數值採最新／最普遍流通的 Stat Edition；其餘版本記錄為該 Part 的歷史，不另開一個 Part。
+_Avoid_: 版本、revision、Mold Batch（物理公差，只能靠社群歸納，見上）
 
 ## 組裝
 

@@ -8,14 +8,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "typecheck": "tsc --noEmit && tsc --noEmit -p scripts/tsconfig.json",
+    "test": "vitest run",
+    "generate:parts": "node scripts/generate-parts-seed.ts",
+    "generate:events": "node scripts/generate-events-seed.ts"
   },
   "dependencies": {
     "next": "^15.5.21",
     "next-intl": "^4.13.4",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "zod": "^4.4.3"
   },
   "overrides": {
     "postcss": "^8.5.23",

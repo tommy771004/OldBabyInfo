@@ -1,0 +1,36 @@
+/**
+ * One palette, two ends (ADR-0006). The field end ("場上") and the sideline
+ * end ("場邊") are the same hue family — a warm umber-to-rust-to-clay ramp,
+ * not two separate palettes glued together. Deliberately not the cool
+ * blue-charcoal dark default, and not cream/oat for the light end (both are
+ * explicitly slop defaults).
+ *
+ * Every step-to-step contrast ratio and every ink/accent-on-background
+ * pairing here was computed against the real WCAG relative-luminance
+ * formula, not eyeballed. See ticket 05 for the numbers.
+ */
+:root {
+  /* Surface ramp: 950 = field (deepest), 50 = sideline (lightest). */
+  --surface-950: #1a120d;
+  --surface-900: #241a13;
+  --surface-800: #33241a;
+  --surface-700: #493323;
+  --surface-600: #65462f;
+  --surface-500: #87613f; /* transition midpoint — decorative use only, not a text background */
+  --surface-400: #a9825c;
+  --surface-300: #c7a37f;
+  --surface-200: #ddc2a3;
+  --surface-100: #eeddc4;
+  --surface-50: #faf1e9;
+
+  /* Ink: the ramp's own extremes, reused as text color on the opposite end. */
+  --ink-on-dark: var(--surface-50);
+  --ink-on-light: var(--surface-950);
+
+  /* Accent: the same hue, split into a variant tuned for each end — a
+   * single accent value cannot pass AA against both a near-black and a
+   * near-white background at once. Use sparingly (borders, links, active
+   * states) — never as a large fill. */
+  --accent-on-dark: #e08a5c;
+  --accent-on-light: #8c3a19;
+}

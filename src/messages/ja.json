@@ -8,5 +8,34 @@
     "zh-TW": "繁體中文",
     "ja": "日本語",
     "en": "English"
+  },
+  "PartsPage": {
+    "title": "パーツ一覧",
+    "type_all": "すべて",
+    "type_blade": "Blade",
+    "type_ratchet": "Ratchet",
+    "type_bit": "Bit",
+    "stat_attack": "Attack",
+    "stat_defense": "Defense",
+    "stat_stamina": "Stamina",
+    "stat_xDash": "X-Dash",
+    "stat_burstResistance": "Burst",
+    "release_date": "発売日",
+    "no_results": "条件に一致するパーツが見つかりません",
+    "search_label": "パーツを検索",
+    "search_placeholder": "中国語・日本語・英語で名前を入力"
+  },
+  "EventsPage": {
+    "title": "大会カレンダー",
+    "upcoming": "開催予定",
+    "past": "終了",
+    "no_upcoming": "近日開催予定の大会はありません",
+    "registration_onsite": "現地受付",
+    "registration_online": "オンライン申込",
+    "registration_phone": "電話申込",
+    "registration_either": "現地／オンライン",
+    "registration_store_community": "店舗SNS申込",
+    "capacity": "定員",
+    "source": "情報源"
   }
 }
