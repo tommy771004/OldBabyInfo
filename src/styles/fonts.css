@@ -1,23 +1,17 @@
 /**
- * Font roles (ticket 06). --font-display and --font-accent are injected by
- * next/font/local as CSS custom properties on <html> (see src/app/fonts.ts)
- * — each already resolves to the real font plus an automatic metrics-
- * matched fallback, so they're used directly, not redeclared here. "Taipei
- * Sans TC" is loaded via <link> in the root layout (font-splitter's
- * pre-split, unicode-range woff2 chunks — not routed through this file so
- * its relative url()s aren't rewritten by the CSS build pipeline).
+ * Font roles (ticket 06). --font-body, --font-display, --font-accent are
+ * injected by next/font/local as CSS custom properties on <html> (see
+ * src/app/fonts.ts) — each already resolves to the real font plus an
+ * automatic metrics-matched fallback, so they're used directly here, never
+ * redeclared (redeclaring one under its own name would self-reference).
  */
-:root {
-  --font-body: "Taipei Sans TC", system-ui, sans-serif;
-}
-
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 h1,
 h2,
 h3,
 .stat-value {
-  font-family: var(--font-display), Combat, serif;
+  font-family: var(--font-display), serif;
 }

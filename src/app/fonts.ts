@@ -1,6 +1,24 @@
 import localFont from "next/font/local";
 
 /**
+ * Body face — Taipei Sans TC (JT Foundry, SIL OFL 1.1), subsetted to the
+ * characters this site actually uses (UI strings + real Part/Event data —
+ * see scripts/subset-taipei-sans-tc.py) rather than the official npm
+ * package's per-Unicode-block split, which cost ~2.7MB on first load
+ * because common characters scatter across many block boundaries. ~110KB
+ * per weight instead. Re-run the script when new Chinese/Japanese text is
+ * added so this keeps covering what's on the page.
+ */
+export const bodyFont = localFont({
+  src: [
+    { path: "../fonts/taipei-sans-tc-regular.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/taipei-sans-tc-bold.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-body",
+  display: "swap",
+});
+
+/**
  * Display face for headlines and stat numerals — see ticket 06. Combat:
  * a 2015 revival of a bold antique serif from a 1915 French anarchist
  * newspaper (Velvetyne, SIL OFL 1.1). Chosen over Terminal Grotesque,
