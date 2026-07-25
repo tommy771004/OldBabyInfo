@@ -14,6 +14,7 @@
       "defense": 55,
       "stamina": 30
     },
+    "playstyle": "balance",
     "modes": [
       {
         "label": "Defense",
@@ -57,6 +58,7 @@
       "defense": 20,
       "stamina": 25
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -75,6 +77,7 @@
       "defense": 25,
       "stamina": 25
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": [
       {
@@ -103,6 +106,7 @@
       "defense": 30,
       "stamina": 5
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": [
       {
@@ -131,6 +135,7 @@
       "defense": 25,
       "stamina": 30
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -149,6 +154,7 @@
       "defense": 45,
       "stamina": 40
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -165,6 +171,7 @@
       "defense": 40,
       "stamina": 30
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -183,6 +190,7 @@
       "defense": 30,
       "stamina": 25
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": [
       {
@@ -211,6 +219,7 @@
       "defense": 20,
       "stamina": 30
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": [
       {
@@ -239,6 +248,7 @@
       "defense": 40,
       "stamina": 25
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": [
       {
@@ -267,6 +277,7 @@
       "defense": 30,
       "stamina": 35
     },
+    "playstyle": "attack",
     "modes": [
       {
         "label": "UX-00 Aero Pegasus Metallic Coat: Double (Blue & Green)",
@@ -312,6 +323,7 @@
       "defense": 30,
       "stamina": 20
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": [
       {
@@ -338,6 +350,7 @@
       "defense": 40,
       "stamina": 37
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -356,6 +369,7 @@
       "defense": 40,
       "stamina": 40
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": [
       {
@@ -384,6 +398,7 @@
       "defense": 25,
       "stamina": 15
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": [
       {
@@ -412,6 +427,7 @@
       "defense": 60,
       "stamina": 20
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -430,6 +446,7 @@
       "defense": 25,
       "stamina": 25
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": [
       {
@@ -458,6 +475,7 @@
       "defense": 30,
       "stamina": 25
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -476,6 +494,7 @@
       "defense": 30,
       "stamina": 15
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -494,6 +513,7 @@
       "defense": 15,
       "stamina": 35
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -512,6 +532,7 @@
       "defense": 15,
       "stamina": 20
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -530,6 +551,7 @@
       "defense": 65,
       "stamina": 15
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": [
       {
@@ -558,6 +580,7 @@
       "defense": 25,
       "stamina": 55
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -575,6 +598,7 @@
       "defense": 60,
       "stamina": 27
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": [
       {
@@ -603,6 +627,7 @@
       "defense": 10,
       "stamina": 80
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -621,6 +646,7 @@
       "defense": 35,
       "stamina": 25
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": [
       {
@@ -649,6 +675,7 @@
       "defense": 65,
       "stamina": 22
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -667,6 +694,7 @@
       "defense": 30,
       "stamina": 30
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -685,6 +713,7 @@
       "defense": 15,
       "stamina": 15
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -703,6 +732,7 @@
       "defense": 28,
       "stamina": 12
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -721,6 +751,7 @@
       "defense": 65,
       "stamina": 25
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -739,6 +770,7 @@
       "defense": 55,
       "stamina": 15
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -757,6 +789,7 @@
       "defense": 70,
       "stamina": 40
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": [
       {
@@ -785,6 +818,7 @@
       "defense": 65,
       "stamina": 15
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -802,6 +836,7 @@
       "defense": 42,
       "stamina": 28
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -820,6 +855,7 @@
       "defense": 70,
       "stamina": 15
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -838,6 +874,7 @@
       "defense": 35,
       "stamina": 55
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": [
       {
@@ -866,6 +903,7 @@
       "defense": 25,
       "stamina": 10
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -884,6 +922,7 @@
       "defense": 15,
       "stamina": 30
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -902,6 +941,7 @@
       "defense": 20,
       "stamina": 25
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -920,6 +960,7 @@
       "defense": 25,
       "stamina": 35
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": [
       {
@@ -948,6 +989,7 @@
       "defense": 30,
       "stamina": 20
     },
+    "playstyle": "attack",
     "modes": [
       {
         "label": "BX-23 Phoenix Wing Metallic Coat: Red",
@@ -1009,6 +1051,7 @@
       "defense": 40,
       "stamina": 35
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -1025,6 +1068,7 @@
       "defense": 27,
       "stamina": 23
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -1043,6 +1087,7 @@
       "defense": 25,
       "stamina": 10
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -1061,6 +1106,7 @@
       "defense": 40,
       "stamina": 55
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -1079,6 +1125,7 @@
       "defense": 70,
       "stamina": 20
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -1097,6 +1144,7 @@
       "defense": 40,
       "stamina": 20
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": [
       {
@@ -1125,6 +1173,7 @@
       "defense": 40,
       "stamina": 50
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -1143,6 +1192,7 @@
       "defense": 50,
       "stamina": 20
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -1161,6 +1211,7 @@
       "defense": 55,
       "stamina": 32
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -1179,6 +1230,7 @@
       "defense": 23,
       "stamina": 50
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -1197,6 +1249,7 @@
       "defense": 45,
       "stamina": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -1215,6 +1268,7 @@
       "defense": 30,
       "stamina": 65
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -1233,6 +1287,7 @@
       "defense": 25,
       "stamina": 20
     },
+    "playstyle": "attack",
     "modes": [
       {
         "label": "Upper Type",
@@ -1278,6 +1333,7 @@
       "defense": 55,
       "stamina": 10
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -1296,6 +1352,7 @@
       "defense": 30,
       "stamina": 35
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -1314,6 +1371,7 @@
       "defense": 35,
       "stamina": 30
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -1332,6 +1390,7 @@
       "defense": 25,
       "stamina": 60
     },
+    "playstyle": "stamina",
     "modes": [
       {
         "label": "UX-03 Wizard Rod",
@@ -1377,6 +1436,7 @@
       "defense": 20,
       "stamina": 50
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -1395,6 +1455,7 @@
       "defense": 45,
       "stamina": 30
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": [
       {
@@ -1423,6 +1484,7 @@
       "defense": 50,
       "stamina": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -1441,6 +1503,7 @@
       "defense": 35,
       "stamina": 25
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -1459,6 +1522,7 @@
       "defense": 60,
       "stamina": 15
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -1477,6 +1541,7 @@
       "defense": 30,
       "stamina": 55
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -1495,6 +1560,7 @@
       "defense": 55,
       "stamina": 25
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": [
       {
@@ -1523,6 +1589,7 @@
       "defense": 40,
       "stamina": 10
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -1541,6 +1608,7 @@
       "defense": 15,
       "stamina": 5
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -1559,6 +1627,7 @@
       "defense": 10,
       "stamina": 10
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": [
       {
@@ -1587,6 +1656,7 @@
       "defense": 10,
       "stamina": 15
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -1605,6 +1675,7 @@
       "defense": 10,
       "stamina": 30
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -1623,6 +1694,7 @@
       "defense": 25,
       "stamina": 25
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -1641,6 +1713,7 @@
       "defense": 20,
       "stamina": 10
     },
+    "playstyle": "balance",
     "modes": [
       {
         "label": "Upper",
@@ -1676,6 +1749,7 @@
       "defense": 15,
       "stamina": 45
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": [
       {
@@ -1704,6 +1778,7 @@
       "defense": 10,
       "stamina": 15
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -1722,6 +1797,7 @@
       "defense": 15,
       "stamina": 40
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -1740,6 +1816,7 @@
       "defense": 40,
       "stamina": 10
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": [
       {
@@ -1768,6 +1845,7 @@
       "defense": 15,
       "stamina": 15
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -1786,6 +1864,7 @@
       "defense": 10,
       "stamina": 25
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -1802,6 +1881,7 @@
       "defense": 37,
       "stamina": 50
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -1818,6 +1898,7 @@
       "defense": 15,
       "stamina": 10
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -1834,6 +1915,7 @@
       "defense": 15,
       "stamina": 10
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -1850,6 +1932,7 @@
       "defense": 20,
       "stamina": 10
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -1866,6 +1949,7 @@
       "defense": 10,
       "stamina": 20
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -1884,6 +1968,7 @@
       "defense": 13,
       "stamina": 14
     },
+    "height": 70,
     "statEditions": []
   },
   {
@@ -1901,6 +1986,7 @@
       "defense": 9,
       "stamina": 6
     },
+    "height": 60,
     "statEditions": []
   },
   {
@@ -1918,6 +2004,7 @@
       "defense": 4,
       "stamina": 9
     },
+    "height": 80,
     "statEditions": []
   },
   {
@@ -1935,6 +2022,7 @@
       "defense": 10,
       "stamina": 7
     },
+    "height": 65,
     "statEditions": []
   },
   {
@@ -1952,6 +2040,7 @@
       "defense": 15,
       "stamina": 10
     },
+    "height": 85,
     "statEditions": []
   },
   {
@@ -1969,6 +2058,7 @@
       "defense": 14,
       "stamina": 9
     },
+    "height": 80,
     "statEditions": []
   },
   {
@@ -1986,6 +2076,7 @@
       "defense": 9,
       "stamina": 3
     },
+    "height": 50,
     "statEditions": []
   },
   {
@@ -2003,6 +2094,7 @@
       "defense": 10,
       "stamina": 12
     },
+    "height": 70,
     "statEditions": []
   },
   {
@@ -2020,6 +2112,7 @@
       "defense": 11,
       "stamina": 12
     },
+    "height": 55,
     "statEditions": []
   },
   {
@@ -2037,6 +2130,7 @@
       "defense": 12,
       "stamina": 8
     },
+    "height": 70,
     "statEditions": []
   },
   {
@@ -2054,6 +2148,7 @@
       "defense": 9,
       "stamina": 4
     },
+    "height": 60,
     "statEditions": []
   },
   {
@@ -2071,6 +2166,7 @@
       "defense": 10,
       "stamina": 7
     },
+    "height": 60,
     "statEditions": []
   },
   {
@@ -2088,6 +2184,7 @@
       "defense": 8,
       "stamina": 7
     },
+    "height": 70,
     "statEditions": []
   },
   {
@@ -2105,6 +2202,7 @@
       "defense": 10,
       "stamina": 7
     },
+    "height": 80,
     "statEditions": []
   },
   {
@@ -2122,6 +2220,7 @@
       "defense": 12,
       "stamina": 7
     },
+    "height": 70,
     "statEditions": []
   },
   {
@@ -2139,6 +2238,7 @@
       "defense": 14,
       "stamina": 8
     },
+    "height": 60,
     "statEditions": []
   },
   {
@@ -2156,6 +2256,7 @@
       "defense": 11,
       "stamina": 9
     },
+    "height": 80,
     "statEditions": []
   },
   {
@@ -2173,6 +2274,7 @@
       "defense": 13,
       "stamina": 7
     },
+    "height": 60,
     "statEditions": [
       {
         "label": "BX34_CobaltDragoon2-60C",
@@ -2200,6 +2302,7 @@
       "defense": 14,
       "stamina": 10
     },
+    "height": 55,
     "statEditions": []
   },
   {
@@ -2217,6 +2320,7 @@
       "defense": 13,
       "stamina": 6
     },
+    "height": 60,
     "statEditions": []
   },
   {
@@ -2234,6 +2338,7 @@
       "defense": 10,
       "stamina": 7
     },
+    "height": 70,
     "statEditions": []
   },
   {
@@ -2251,6 +2356,7 @@
       "defense": 11,
       "stamina": 8
     },
+    "height": 80,
     "statEditions": []
   },
   {
@@ -2268,6 +2374,7 @@
       "defense": 8,
       "stamina": 8
     },
+    "height": 60,
     "statEditions": []
   },
   {
@@ -2285,6 +2392,7 @@
       "defense": 14,
       "stamina": 13
     },
+    "height": 60,
     "statEditions": []
   },
   {
@@ -2302,6 +2410,7 @@
       "defense": 19,
       "stamina": 13
     },
+    "height": 85,
     "statEditions": []
   },
   {
@@ -2319,6 +2428,7 @@
       "defense": 9,
       "stamina": 9
     },
+    "height": 60,
     "statEditions": []
   },
   {
@@ -2336,6 +2446,7 @@
       "defense": 12,
       "stamina": 10
     },
+    "height": 70,
     "statEditions": []
   },
   {
@@ -2353,6 +2464,7 @@
       "defense": 8.5,
       "stamina": 9.5
     },
+    "height": 70,
     "statEditions": []
   },
   {
@@ -2370,6 +2482,7 @@
       "defense": 7,
       "stamina": 9
     },
+    "height": 70,
     "statEditions": []
   },
   {
@@ -2387,6 +2500,7 @@
       "defense": 13,
       "stamina": 5
     },
+    "height": 50,
     "statEditions": []
   },
   {
@@ -2404,6 +2518,7 @@
       "defense": 6,
       "stamina": 7
     },
+    "height": 70,
     "statEditions": []
   },
   {
@@ -2421,6 +2536,7 @@
       "defense": 8,
       "stamina": 10
     },
+    "height": 80,
     "statEditions": []
   },
   {
@@ -2438,6 +2554,7 @@
       "defense": 6,
       "stamina": 10
     },
+    "height": 80,
     "statEditions": []
   },
   {
@@ -2455,6 +2572,7 @@
       "defense": 12,
       "stamina": 15
     },
+    "height": 80,
     "statEditions": []
   },
   {
@@ -2472,6 +2590,7 @@
       "defense": 7,
       "stamina": 8
     },
+    "height": 80,
     "statEditions": []
   },
   {
@@ -2493,6 +2612,7 @@
       "xDash": 35,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -2515,6 +2635,7 @@
       "xDash": 30,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -2537,6 +2658,7 @@
       "xDash": 35,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -2559,6 +2681,7 @@
       "xDash": 15,
       "burstResistance": 30
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -2581,6 +2704,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -2603,6 +2727,7 @@
       "xDash": 15,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -2625,6 +2750,7 @@
       "xDash": 30,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -2647,6 +2773,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -2669,6 +2796,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -2691,6 +2819,7 @@
       "xDash": 20,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -2713,6 +2842,7 @@
       "xDash": 40,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -2735,6 +2865,7 @@
       "xDash": 35,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -2757,6 +2888,7 @@
       "xDash": 40,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -2779,6 +2911,7 @@
       "xDash": 40,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -2801,6 +2934,7 @@
       "xDash": 35,
       "burstResistance": 30
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -2823,6 +2957,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -2845,6 +2980,7 @@
       "xDash": 30,
       "burstResistance": 30
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -2867,6 +3003,7 @@
       "xDash": 25,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -2889,6 +3026,7 @@
       "xDash": 30,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -2911,6 +3049,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -2933,6 +3072,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -2955,6 +3095,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -2977,6 +3118,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -2999,6 +3141,7 @@
       "xDash": 45,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -3021,6 +3164,7 @@
       "xDash": 15,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -3043,6 +3187,7 @@
       "xDash": 15,
       "burstResistance": 30
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -3065,6 +3210,7 @@
       "xDash": 35,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -3087,6 +3233,7 @@
       "xDash": 20,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -3109,6 +3256,7 @@
       "xDash": 40,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -3131,6 +3279,7 @@
       "xDash": 25,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -3153,6 +3302,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -3175,6 +3325,7 @@
       "xDash": 40,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -3197,6 +3348,7 @@
       "xDash": 25,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -3219,6 +3371,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -3241,6 +3394,7 @@
       "xDash": 0,
       "burstResistance": 0
     },
+    "playstyle": "balance",
     "modes": [
       {
         "label": "Attack Mode",
@@ -3307,6 +3461,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -3329,6 +3484,7 @@
       "xDash": 5,
       "burstResistance": 30
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -3351,6 +3507,7 @@
       "xDash": 30,
       "burstResistance": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -3373,6 +3530,7 @@
       "xDash": 30,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -3395,6 +3553,7 @@
       "xDash": 15,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -3417,6 +3576,7 @@
       "xDash": 35,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -3439,6 +3599,7 @@
       "xDash": 40,
       "burstResistance": 80
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -3461,6 +3622,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "attack",
     "modes": [],
     "statEditions": [
       {
@@ -3495,6 +3657,7 @@
       "xDash": 10,
       "burstResistance": 30
     },
+    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -3517,6 +3680,7 @@
       "xDash": 25,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -3539,6 +3703,7 @@
       "xDash": 5,
       "burstResistance": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -3561,6 +3726,7 @@
       "xDash": 5,
       "burstResistance": 30
     },
+    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -3583,6 +3749,7 @@
       "xDash": 25,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -3605,6 +3772,7 @@
       "xDash": 20,
       "burstResistance": 80
     },
+    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   }

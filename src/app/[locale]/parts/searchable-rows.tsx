@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { searchParts } from "@/lib/parts/search-parts.ts";
 import { buildQuery } from "@/lib/parts/build-query.ts";
+import { PlaystyleSymbol, RatchetHeightSymbol } from "@/components/type-symbols.tsx";
 import type { SortField } from "@/lib/parts/filter-sort.ts";
 import type { FilterSortState } from "@/lib/parts/parse-filter-sort-params.ts";
 import type { Part } from "@/lib/parts/schema.ts";
@@ -59,6 +60,7 @@ export function SearchableRows({
             <tr>
               <th>{t("type_blade")}</th>
               <th>Name</th>
+              <th>{t("playstyle_column")}</th>
               {STAT_FIELDS.map((field) => (
                 <th key={field}>
                   <SortLink field={field} state={state}>
@@ -78,6 +80,15 @@ export function SearchableRows({
               <tr key={part.id}>
                 <td>{t(`type_${part.type}`)}</td>
                 <td>{localizedNameOf(part, locale)}</td>
+                <td>
+                  {(part.type === "blade" || part.type === "bit") && part.playstyle ? (
+                    <PlaystyleSymbol playstyle={part.playstyle} locale={locale} />
+                  ) : part.type === "ratchet" ? (
+                    <RatchetHeightSymbol height={part.height} locale={locale} />
+                  ) : (
+                    "—"
+                  )}
+                </td>
                 <td>{part.stats.attack}</td>
                 <td>{part.stats.defense}</td>
                 <td>{part.stats.stamina}</td>

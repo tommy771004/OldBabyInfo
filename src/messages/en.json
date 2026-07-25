@@ -23,7 +23,8 @@
     "release_date": "Release date",
     "no_results": "No parts match these filters",
     "search_label": "Search parts",
-    "search_placeholder": "Search by Chinese, Japanese, or English name"
+    "search_placeholder": "Search by Chinese, Japanese, or English name",
+    "playstyle_column": "Type"
   },
   "EventsPage": {
     "title": "Event Calendar",

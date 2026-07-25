@@ -1,0 +1,10 @@
+import { chromium } from "playwright";
+const [path, scrollY, outfile] = process.argv.slice(2);
+const port = process.env.PORT ?? "3421";
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 700, height: 500 } });
+await page.goto(`http://localhost:${port}${path}`, { waitUntil: "networkidle" });
+await page.evaluate((y) => window.scrollTo(0, y), Number(scrollY));
+await page.screenshot({ path: outfile });
+await browser.close();
+console.log(`Saved ${outfile}`);

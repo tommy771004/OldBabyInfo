@@ -76,10 +76,21 @@ const basePartFields = {
   releaseAt: z.iso.date().nullable(),
 };
 
+/**
+ * The official four-way playstyle classification — present in the
+ * community data for both Blade and Bit (not Ratchet). Ticket 13's
+ * "attack/defense/stamina/balance" symbol set is this field visualized;
+ * for a Bit specifically, the same four values describe how it contacts
+ * the stadium floor (pointed/wide/round/mixed), not a separate taxonomy.
+ */
+export const playstyleSchema = z.enum(["attack", "defense", "stamina", "balance"]);
+
 export const bladeSchema = z.object({
   ...basePartFields,
   type: z.literal("blade"),
   stats: threeStatSchema,
+  /** Optional: a handful of parts never matched an official record. */
+  playstyle: playstyleSchema.optional(),
   modes: z.array(modeSchema(threeStatSchema)).default([]),
   statEditions: z.array(statEditionSchema(threeStatSchema)).default([]),
 });
@@ -88,6 +99,9 @@ export const ratchetSchema = z.object({
   ...basePartFields,
   type: z.literal("ratchet"),
   stats: threeStatSchema,
+  /** Encoded in every real ratchet's own name (e.g. "3-60" -> 60) —
+   *  required, not optional, unlike playstyle. */
+  height: z.number().positive(),
   statEditions: z.array(statEditionSchema(threeStatSchema)).default([]),
 });
 
@@ -95,6 +109,7 @@ export const bitSchema = z.object({
   ...basePartFields,
   type: z.literal("bit"),
   stats: fiveStatSchema,
+  playstyle: playstyleSchema.optional(),
   modes: z.array(modeSchema(fiveStatSchema)).default([]),
   statEditions: z.array(statEditionSchema(fiveStatSchema)).default([]),
 });

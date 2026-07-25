@@ -52,6 +52,9 @@ interface BeypartsEntry {
   stamina?: number;
   xDash?: number;
   burstResistance?: number;
+  /** The official four-way playstyle classification — present on blades
+   *  and bits, absent on ratchets. See schema.ts's playstyleSchema. */
+  type?: "attack" | "defense" | "stamina" | "balance";
   /** Present on parts that physically transform between forms (e.g.
    *  Scorpio Spear's X-DASH-triggered shape change) — see ADR-0007. */
   modes?: BeypartsMode[];
@@ -150,6 +153,14 @@ function earliestReleaseDateOf(entries: RawEntry[]): string | null {
   return earliest.release_at!.slice(0, 10);
 }
 
+/** Ratchet height is encoded in the ratchet's own name ("3-60" -> 60,
+ *  "M-85" -> 85) — the number after the last hyphen, whatever precedes it. */
+function parseRatchetHeight(name: string): number {
+  const match = name.match(/-(\d+)$/);
+  if (!match) throw new Error(`Ratchet name "${name}" has no parseable height`);
+  return Number(match[1]);
+}
+
 /** Top-level stats when present; otherwise the first mode's stats — a
  *  multi-mode part still needs a single default `stats` block so plain
  *  listing/sorting doesn't have to special-case it. See ADR-0007. */
@@ -223,6 +234,7 @@ async function main() {
       generation: "X",
       releaseAt: group ? earliestReleaseDateOf(group.entries) : null,
       stats,
+      playstyle: entry.type,
       modes: (entry.modes ?? []).map((m) => ({ label: m.label, stats: toThreeStat(m) })),
       statEditions: group ? buildStatEditions(group.entries, stats, "three") : [],
       moldBatches: [],
@@ -248,6 +260,7 @@ async function main() {
       generation: "X",
       releaseAt: group ? earliestReleaseDateOf(group.entries) : null,
       stats,
+      height: parseRatchetHeight(displayName(entry, entry.altname)),
       statEditions: group ? buildStatEditions(group.entries, stats, "three") : [],
       moldBatches: [],
       aliases: [],
@@ -277,6 +290,7 @@ async function main() {
       generation: "X",
       releaseAt: group ? earliestReleaseDateOf(group.entries) : null,
       stats,
+      playstyle: entry.type,
       aliases: bitAliases,
       modes: (entry.modes ?? []).map((m) => ({ label: m.label, stats: toFiveStat(m) })),
       statEditions: group ? buildStatEditions(group.entries, stats, "five") : [],

@@ -23,7 +23,8 @@
     "release_date": "發售日",
     "no_results": "找不到符合條件的零件",
     "search_label": "搜尋零件",
-    "search_placeholder": "輸入中文、日文或英文名稱"
+    "search_placeholder": "輸入中文、日文或英文名稱",
+    "playstyle_column": "傾向"
   },
   "EventsPage": {
     "title": "賽事行事曆",

@@ -31,6 +31,22 @@ function validBit(overrides: Record<string, unknown> = {}) {
   };
 }
 
+function validRatchet(overrides: Record<string, unknown> = {}) {
+  return {
+    id: "3-60",
+    type: "ratchet",
+    nameEn: "3-60",
+    generation: "X",
+    stats: { attack: 15, defense: 9, stamina: 6 },
+    height: 60,
+    releaseAt: "2022-05-10",
+    statEditions: [],
+    moldBatches: [],
+    aliases: [],
+    ...overrides,
+  };
+}
+
 describe("partSchema", () => {
   it("accepts a valid blade with three-stat shape", () => {
     const result = partSchema.safeParse(validBlade());
@@ -166,6 +182,49 @@ describe("partSchema", () => {
         moldBatches: [{ batchCode: "ABC123", note: "runs slightly heavier" }],
       }),
     );
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts a blade's playstyle — attack/defense/stamina/balance, the official four-way classification", () => {
+    const result = partSchema.safeParse(validBlade({ playstyle: "balance" }));
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects a playstyle outside the official four values", () => {
+    const result = partSchema.safeParse(validBlade({ playstyle: "speed" }));
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts a bit's playstyle — bits carry the same four-way classification as blades", () => {
+    const result = partSchema.safeParse(validBit({ playstyle: "attack" }));
+    expect(result.success).toBe(true);
+  });
+
+  it("playstyle is optional — a handful of parts never matched an official record", () => {
+    const result = partSchema.safeParse(validBlade());
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts a ratchet's height, parsed from its own name (e.g. \"3-60\" -> 60)", () => {
+    const result = partSchema.safeParse(validRatchet({ height: 60 }));
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects a non-positive ratchet height", () => {
+    const result = partSchema.safeParse(validRatchet({ height: 0 }));
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a ratchet with height omitted — every real ratchet name encodes one", () => {
+    const withoutHeight = {
+      id: "3-60",
+      type: "ratchet",
+      nameEn: "3-60",
+      generation: "X",
+      stats: { attack: 15, defense: 9, stamina: 6 },
+      releaseAt: "2022-05-10",
+    };
+    const result = partSchema.safeParse(withoutHeight);
     expect(result.success).toBe(false);
   });
 });
