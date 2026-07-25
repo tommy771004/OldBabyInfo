@@ -34,3 +34,18 @@
   --accent-on-dark: #e08a5c;
   --accent-on-light: #8c3a19;
 }
+
+/**
+ * Interim base application — real per-page composition against the
+ * continuous gradient is tickets 07/39/40/41. Until then, the site
+ * defaults to the field end (dark, "場上") rather than shipping unstyled
+ * black-on-white, which reads as broken.
+ */
+body {
+  background-color: var(--surface-950);
+  color: var(--ink-on-dark);
+}
+
+a {
+  color: var(--accent-on-dark);
+}
