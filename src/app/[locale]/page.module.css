@@ -17,7 +17,12 @@
 .hero {
   position: relative;
   min-height: 100svh;
-  overflow: hidden;
+  /* `clip`, not `hidden` — `hidden` establishes a scroll container, which
+     hijacks the arena SVG's `view()` timeline below (it starts resolving
+     progress against .hero itself, which never scrolls internally, instead
+     of the page) and freezes the rotation at a constant angle. `clip`
+     clips the same oversized bleed with no scroll-container side effect. */
+  overflow: clip;
   background-image: var(--grain), linear-gradient(to bottom, var(--surface-950) 0%, var(--surface-950) 72%, var(--surface-900) 100%);
   background-repeat: repeat, no-repeat;
   color: var(--ink-on-dark);
@@ -39,6 +44,34 @@
   width: min(150vw, 1500px);
   height: auto;
   flex-shrink: 0;
+}
+
+/*
+ * Ticket 40 — the arena turns as you scroll past it, not on a timer. Pure
+ * CSS scroll-driven animation (no JS): the rotation's progress is a direct
+ * function of the hero's own scroll position (`animation-timeline: view()`),
+ * so there's nothing to gate content on and nothing for a scroll listener
+ * to do off the compositor thread. Browsers without support simply show
+ * the art unrotated — still fully present, just not spinning; that's a
+ * clean progressive-enhancement fallback, not a broken one.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .heroArt svg {
+      animation: heroSpin linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+
+@keyframes heroSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(34deg);
+  }
 }
 
 .heroContent {
