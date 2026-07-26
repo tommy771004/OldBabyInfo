@@ -1,0 +1,330 @@
+.battleSection {
+  position: relative;
+  min-height: calc(100svh - 5rem);
+  overflow: clip;
+  padding: clamp(1.5rem, 3vw, 3rem) clamp(1.25rem, 5vw, 5rem) 4rem;
+  background:
+    var(--grain),
+    linear-gradient(135deg, var(--surface-950) 0%, var(--surface-900) 62%, var(--surface-700) 100%);
+  color: var(--ink-on-dark);
+}
+
+.searchHeader,
+.analysisCopy {
+  position: relative;
+  z-index: 2;
+  max-width: 54rem;
+  margin: 0 auto;
+}
+
+.searchHeader > p,
+.analysisEyebrow {
+  margin: 0 0 0.7rem;
+  color: var(--accent-on-dark);
+  font-family: var(--font-display), serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.searchLanes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.searchLane {
+  position: relative;
+}
+
+.searchLabel {
+  display: grid;
+  gap: 0.45rem;
+  color: color-mix(in srgb, var(--ink-on-dark) 72%, transparent);
+  font-size: 0.85rem;
+}
+
+.searchLabel input {
+  min-height: 3rem;
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 42%, transparent);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--surface-950) 72%, transparent);
+  color: var(--ink-on-dark);
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+}
+
+.searchLabel input::placeholder {
+  color: color-mix(in srgb, var(--ink-on-dark) 48%, transparent);
+}
+
+.searchLabel input:focus-visible,
+.result:focus-visible {
+  outline: 2px solid var(--accent-on-dark);
+  outline-offset: 3px;
+}
+
+.selectedSubject {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin: 0.8rem 0 0;
+  color: var(--ink-on-dark);
+  font-size: 0.95rem;
+}
+
+.selectedCode {
+  font-family: var(--font-display), serif;
+}
+
+.results {
+  position: absolute;
+  z-index: 4;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  left: 0;
+  background: var(--surface-900);
+}
+
+.result {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--ink-on-dark);
+  cursor: pointer;
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+}
+
+.result:hover {
+  background: color-mix(in srgb, var(--accent-on-dark) 12%, transparent);
+}
+
+.result span:last-child {
+  color: color-mix(in srgb, var(--ink-on-dark) 68%, transparent);
+}
+
+.emptyResult,
+.missingSubject {
+  margin: 0;
+  padding: 0.8rem;
+  color: color-mix(in srgb, var(--ink-on-dark) 75%, transparent);
+}
+
+.analysis {
+  position: relative;
+  min-height: 34rem;
+  max-width: 78rem;
+  margin: 2.5rem auto 0;
+}
+
+.arena {
+  position: absolute;
+  inset: 0;
+  min-height: 34rem;
+}
+
+.arenaGeometry {
+  position: absolute;
+  inset: -13rem -12rem -12rem;
+  opacity: 0.34;
+  transform: rotate(-7deg);
+}
+
+.arenaGeometry svg {
+  width: 100%;
+  height: 100%;
+}
+
+.competitor {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 0.45rem;
+  color: var(--ink-on-dark);
+  font-family: var(--font-display), serif;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+}
+
+.competitorLeft {
+  top: 5%;
+  left: 19%;
+}
+
+.competitorRight {
+  top: 5%;
+  right: 19%;
+}
+
+.partImage {
+  width: clamp(6rem, 12vw, 10rem);
+  height: auto;
+  object-fit: contain;
+}
+
+.imageFallback {
+  display: grid;
+  place-items: center;
+  width: clamp(6rem, 12vw, 10rem);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 40%, transparent);
+  color: color-mix(in srgb, var(--ink-on-dark) 70%, transparent);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.trajectoryLeft,
+.trajectoryRight {
+  position: absolute;
+  z-index: 1;
+  height: 1px;
+  transform-origin: left center;
+  background: color-mix(in srgb, var(--accent-on-dark) 76%, transparent);
+}
+
+.trajectoryLeft {
+  top: 45%;
+  left: 29%;
+  width: 33%;
+  transform: rotate(9deg);
+}
+
+.trajectoryRight {
+  top: 52%;
+  right: 29%;
+  width: 33%;
+  transform: rotate(171deg);
+}
+
+.collision {
+  position: absolute;
+  z-index: 2;
+  top: 49%;
+  left: 50%;
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1px solid var(--accent-on-dark);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.analysisCopy {
+  padding-top: clamp(15rem, 22vw, 18rem);
+  text-align: center;
+}
+
+.analysisCopy h2 {
+  max-width: 48rem;
+  margin: 0 auto 1.5rem;
+  color: var(--ink-on-dark);
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 0.98;
+}
+
+.analysisCopy h2 span {
+  margin: 0 0.25em;
+  color: var(--accent-on-dark);
+  font-size: 0.55em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statRows {
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.statRow {
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink-on-dark) 18%, transparent);
+}
+
+.statRow dt {
+  color: color-mix(in srgb, var(--ink-on-dark) 75%, transparent);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statRow dd {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.leftValue {
+  color: var(--ink-on-dark);
+  text-align: right;
+}
+
+.rightValue {
+  color: var(--accent-on-dark);
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arenaGeometry {
+    transform: rotate(-7deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .battleSection {
+    min-height: 0;
+    padding-inline: 1rem;
+  }
+
+  .searchLanes {
+    grid-template-columns: 1fr;
+  }
+
+  .analysis {
+    min-height: 31rem;
+  }
+
+  .arena {
+    min-height: 31rem;
+  }
+
+  .arenaGeometry {
+    inset: 1rem -10rem -7rem;
+  }
+
+  .competitorLeft {
+    top: 4%;
+    left: 5%;
+  }
+
+  .competitorRight {
+    right: 5%;
+    top: 4%;
+  }
+
+  .partImage,
+  .imageFallback {
+    width: 6rem;
+  }
+
+  .analysisCopy {
+    padding-top: 11.5rem;
+  }
+
+  .analysisCopy h2 {
+    font-size: clamp(1.8rem, 9vw, 3rem);
+  }
+
+  .statRow {
+    gap: 0.5rem;
+  }
+}

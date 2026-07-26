@@ -65,8 +65,8 @@ _Avoid_: 比賽、大會、tournament
 _Avoid_: 等級、rank
 
 **Meta Standing**：
-由實際 Event 結果統計出的 Combo 表現：使用率、前八強佔比、奪冠次數，必附樣本數與統計期間。本站不發布主觀強度分級。
-_Avoid_: Tier List、強度榜、排行、T0/S級
+由實際 Event 結果統計出的 Combo 表現：使用率、前八強佔比、奪冠次數，必附樣本數與統計期間。它只代表可計算的賽事結果，不包含外部作者或社群的主觀強度判斷。
+_Avoid_: Tier List、主觀推薦、本站評分
 
 **Sample Size**：
 一則 Meta Standing 背後的實際賽事筆數。樣本不足時必須顯示「資料不足」，不得排名。
@@ -90,9 +90,33 @@ _Avoid_: 貼文、留言串
 
 ## 資料來源
 
+**Field Authority**：
+被指定可決定某一類資料欄位的來源權責。非權責來源仍可提供觀察與 Discovery Source，但不能覆蓋該欄位的正式值。
+_Avoid_: 最後寫入者、來源優先序、fallback
+
+**Source Document**：
+具有 Publication Rights、可由 OldBabyInfo 保存並公開的完整來源內容。它保留原始文章結構，並作為其中所有 Assessment 的上下文。
+_Avoid_: Assessment、Discovery Source、備份頁
+
+**Assessment**：
+單一來源對某個 Part 或 Combo 提出的主觀 Tier、推薦配置、打法或操作判斷。它必須連回 Source Document 或 Discovery Source，並帶有 Attribution Status。
+_Avoid_: Meta Standing、官方 Stat、本站結論
+
+**Evidence Source**：
+實際承載一項主觀判斷的原始 LINE 貼文、LINE 訊息或影片。使用者必須能從它看見是誰在什麼語境下提出該判斷。
+_Avoid_: 來源網站、彙整頁、轉貼頁、aggregator
+
+**Discovery Source**：
+協助本站找到一項資料的中介頁面，例如 BeybladeHub、HackMD 或其他彙整站。找不到 Evidence Source 時，資料仍可發布，但 Discovery Source 不能被冒充為原作者。
+_Avoid_: Evidence Source、原始來源
+
 **Source Excerpt**：
-由語言模型從非結構化文字抽取欄位時，必須一併保留的原文片段與出處連結。沒有 Source Excerpt 的抽取結果一律拒收。
+從非結構化文字抽取欄位時一併保留的原文片段。它可以來自 Evidence Source 或 Discovery Source；缺少原始 Evidence Source 不阻擋主觀資訊發布，但不得假裝已有原始作者背書。
 _Avoid_: 引用、出處、citation
+
+**Attribution Status**：
+主觀資訊的來源歸屬狀態：有可定位 Evidence Source 時為 `attributed`，只有 Discovery Source 或找不到原始出處時為 `unattributed`。`unattributed` 仍可發布，但 UI 必須顯示「未附原始來源」。
+_Avoid_: Needs Review、可信度、審核狀態
 
 **Needs Review**：
 交叉驗證結果不一致、或未通過值域檢查的資料，標記為此狀態，必須經人工判斷才能發布。

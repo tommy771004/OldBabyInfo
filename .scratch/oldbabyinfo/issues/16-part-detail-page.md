@@ -15,6 +15,18 @@
 
 ## Comments
 
+**2026-07-26 資訊層級更新：** Part 詳情頁固定依序呈現：
+1. Part 名稱、真實產品圖／剪影、官方 Stat、Mode。
+2. Assessment：Tier、推薦 Combo、打法與來源分歧。
+3. Mold Batch／重量觀察。
+4. 哪裡買與抓取時間。
+5. 討論。
+
+這個順序讓 Field Authority 的官方事實先建立基線，再呈現可互相衝突的社群判斷；Assessment
+不得在視覺上冒充官方 Stat。Assessment 使用真正的分頁清單，使用者可選每頁
+5／10／15／20 則，預設每頁 10 則，不使用「只顯示三則再展開」的截斷方式。頁碼與每頁筆數
+寫入 `assessmentPage`／`assessmentSize` URL query，確保重新整理、返回與分享都保留同一狀態。
+
 **「四項 Stat」跟實際資料對不上，照真實資料實作。** 票面寫「四項 Stat」，但 ADR-0007（比這張
 票晚寫定案）已經確立 Blade／Ratchet 是 3 項（Attack/Defense/Stamina），只有 Bit 是 5 項
 （多 X-Dash／Burst Resistance）——資料庫裡從來不存在「四項」這個形狀。這是票面文字寫在

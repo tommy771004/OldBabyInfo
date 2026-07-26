@@ -1,7 +1,7 @@
 /*
- * Homepage composition (ticket 39) plus the continuous color temperature
- * required by ticket 41 (ADR-0006's "one world, two lightings"). Zero
- * animation on purpose — ticket 40 adds scroll-driven behaviour on top.
+ * Homepage shell for the source-backed battle search. The arena itself owns
+ * the radial geometry and reduced-motion fallback; this file keeps the page
+ * surface continuous as the lower sections continue below it.
  *
  * Every section's background is a gradient, not a flat fill, and each
  * one's edge color matches its neighbor's exactly, so there's no seam to
@@ -17,116 +17,14 @@
 .hero {
   position: relative;
   min-height: 100svh;
-  /* `clip`, not `hidden` — `hidden` establishes a scroll container, which
-     hijacks the arena SVG's `view()` timeline below (it starts resolving
-     progress against .hero itself, which never scrolls internally, instead
-     of the page) and freezes the rotation at a constant angle. `clip`
-     clips the same oversized bleed with no scroll-container side effect. */
+  /* Keep decorative arena geometry inside the hero without creating an
+     inner scroll container for the public page. */
   overflow: clip;
   background-image: var(--grain), linear-gradient(to bottom, var(--surface-950) 0%, var(--surface-950) 72%, var(--surface-900) 100%);
   background-repeat: repeat, no-repeat;
   color: var(--ink-on-dark);
   display: flex;
   flex-direction: column;
-}
-
-.heroArt {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.heroArt svg {
-  width: min(150vw, 1500px);
-  height: auto;
-  flex-shrink: 0;
-}
-
-/*
- * Ticket 40 — the arena turns as you scroll past it, not on a timer. Pure
- * CSS scroll-driven animation (no JS): the rotation's progress is a direct
- * function of the hero's own scroll position (`animation-timeline: view()`),
- * so there's nothing to gate content on and nothing for a scroll listener
- * to do off the compositor thread. Browsers without support simply show
- * the art unrotated — still fully present, just not spinning; that's a
- * clean progressive-enhancement fallback, not a broken one.
- */
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .heroArt svg {
-      animation: heroSpin linear both;
-      animation-timeline: view();
-      animation-range: cover 0% cover 100%;
-    }
-  }
-}
-
-@keyframes heroSpin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(34deg);
-  }
-}
-
-.heroContent {
-  position: relative;
-  z-index: 1;
-  margin-top: auto;
-  max-width: 72rem;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1.5rem 4.5rem;
-}
-
-.heroContent h1 {
-  font-size: clamp(2.75rem, 7vw, 5rem);
-  line-height: 1.05;
-  margin: 0 0 1rem;
-  max-width: 16ch;
-}
-
-.heroLede {
-  font-size: 1.1rem;
-  max-width: 38ch;
-  margin: 0 0 2rem;
-  color: color-mix(in srgb, var(--ink-on-dark) 82%, transparent);
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: transparent;
-  color: var(--accent-on-dark);
-  border: 1.5px solid var(--accent-on-dark);
-  font-weight: 700;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.15s ease;
-}
-
-.cta:hover {
-  background-color: color-mix(in srgb, var(--accent-on-dark) 12%, transparent);
-}
-
-.statLine {
-  margin-top: 1.75rem;
-  font-size: 0.95rem;
-  color: color-mix(in srgb, var(--ink-on-dark) 72%, transparent);
-}
-
-.statLine :global(.stat-value) {
-  color: var(--ink-on-dark);
-  font-size: 1.2em;
-  margin: 0 0.15em;
 }
 
 /* Shared section rhythm */

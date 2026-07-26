@@ -3,11 +3,12 @@ import { setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation.ts";
 import { SiteHeader } from "@/components/site-header.tsx";
-import { StadiumSignature } from "@/components/stadium-signature.tsx";
+import { BattleSearch } from "@/components/battle-search.tsx";
 import { PlaystyleSymbol } from "@/components/type-symbols.tsx";
 import { DiagonalArrow } from "@/components/diagonal-arrow.tsx";
 import { LocaleSwitcher } from "@/components/locale-switcher.tsx";
-import { getAllParts } from "@/lib/parts/repository.ts";
+import { getAllParts, getPartById, getPartImage } from "@/lib/parts/repository.ts";
+import { defaultBattleCombos } from "@/lib/parts/battle-subjects.ts";
 import { filterByType, sortParts } from "@/lib/parts/filter-sort.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { getAllEvents } from "@/lib/events/repository.ts";
@@ -47,16 +48,24 @@ export default async function HomePage({
   const parts = getAllParts();
   const topAttackBlade = sortParts(filterByType(parts, "blade"), "attack", "desc")[0];
   const topStaminaBit = sortParts(filterByType(parts, "bit"), "stamina", "desc")[0];
+  const defaultLeft = getPartById("DRANSWORD") ?? topAttackBlade;
+  const defaultRight = getPartById("COBALTDRAGOON") ?? topStaminaBit;
   const { upcoming } = splitByDate(getAllEvents(), todayIsoDate());
   const nextEvent = upcoming[0];
 
   return (
     <HomeContent
       locale={locale}
-      partsCount={parts.length}
-      eventsCount={upcoming.length}
-      topAttackBlade={topAttackBlade}
-      topStaminaBit={topStaminaBit}
+      allParts={parts}
+      combos={defaultBattleCombos(parts)}
+      partImages={Object.fromEntries(
+        parts.flatMap((part) => {
+          const image = getPartImage(part.id);
+          return image ? [[part.id, image]] : [];
+        }),
+      )}
+      topAttackBlade={defaultLeft}
+      topStaminaBit={defaultRight}
       nextEvent={nextEvent}
     />
   );
@@ -64,15 +73,17 @@ export default async function HomePage({
 
 function HomeContent({
   locale,
-  partsCount,
-  eventsCount,
+  allParts,
+  combos,
+  partImages,
   topAttackBlade,
   topStaminaBit,
   nextEvent,
 }: {
   locale: Locale;
-  partsCount: number;
-  eventsCount: number;
+  allParts: Part[];
+  combos: ReturnType<typeof defaultBattleCombos>;
+  partImages: Record<string, { url: string; width: number; height: number }>;
   topAttackBlade: Part | undefined;
   topStaminaBit: Part | undefined;
   nextEvent: Event | undefined;
@@ -84,26 +95,26 @@ function HomeContent({
     <main>
       <section className={styles.hero}>
         <SiteHeader />
-
-        <div className={styles.heroArt}>
-          <StadiumSignature />
-        </div>
-
-        <div className={styles.heroContent}>
-          <h1>{t("hero_headline")}</h1>
-          <p className={styles.heroLede}>{t("hero_lede")}</p>
-          <Link href="/parts" className={styles.cta}>
-            {t("cta_parts")}
-            <DiagonalArrow />
-          </Link>
-          <p className={styles.statLine}>
-            <span className="stat-value">{partsCount}</span>
-            {t("stat_parts_label")}
-            {" · "}
-            <span className="stat-value">{eventsCount}</span>
-            {t("stat_events_label")}
-          </p>
-        </div>
+        <BattleSearch
+          allParts={allParts}
+          combos={combos}
+          initialLeft={topAttackBlade}
+          initialRight={topStaminaBit}
+          locale={locale}
+          images={partImages}
+          labels={{
+            searchLabel: t("battle_search_label"),
+            searchPlaceholder: t("battle_search_placeholder"),
+            leftLabel: t("battle_left_label"),
+            rightLabel: t("battle_right_label"),
+            empty: t("battle_empty"),
+            analysisLabel: t("battle_analysis_label"),
+            versus: t("battle_versus"),
+            statAttack: t("battle_stat_attack"),
+            statDefense: t("battle_stat_defense"),
+            statStamina: t("battle_stat_stamina"),
+          }}
+        />
       </section>
 
       <section className={styles.partsSection}>

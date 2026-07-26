@@ -19,7 +19,7 @@ If any of these files don't exist, **proceed silently**. Don't flag their absenc
 ├── docs/adr/
 │   ├── 0001-part-data-is-static-not-in-the-database.md
 │   ├── 0002-discussion-is-anchored-to-data-not-a-forum.md
-│   ├── 0003-objective-standings-instead-of-a-tier-list.md
+│   ├── 0009-source-labeled-subjective-information.md
 │   ├── 0004-llm-is-a-format-converter-not-a-source-of-truth.md
 │   ├── 0005-english-name-as-key-aliases-as-the-search-layer.md
 │   └── 0006-one-world-two-lightings.md
@@ -30,7 +30,7 @@ If any of these files don't exist, **proceed silently**. Don't flag their absenc
 
 When your output names a domain concept (in an issue title, a refactor proposal, a hypothesis, a test name), use the term as defined in `CONTEXT.md`. Don't drift to synonyms the glossary explicitly avoids.
 
-In particular: this project says **Combo**, not 配招; **Meta Standing**, not Tier List; **Part**, not 配件; and **Blade / Ratchet / Bit**, not 上蓋 / 固鎖 / 軸心.
+In particular: this project says **Combo**, not 配招; **Meta Standing** only for Event-derived statistics; **Part**, not 配件; and **Blade / Ratchet / Bit**, not 上蓋 / 固鎖 / 軸心. Source-labeled Tier or recommendation data is allowed, but it must not be renamed Meta Standing.
 
 If the concept you need isn't in the glossary yet, that's a signal — either you're inventing language the project doesn't use (reconsider) or there's a real gap (note it for `/domain-modeling`).
 
@@ -38,4 +38,4 @@ If the concept you need isn't in the glossary yet, that's a signal — either yo
 
 If your output contradicts an existing ADR, surface it explicitly rather than silently overriding:
 
-> _Contradicts ADR-0003 (objective standings instead of a tier list) — but worth reopening because…_
+> _Contradicts an active ADR — but worth reopening because…_

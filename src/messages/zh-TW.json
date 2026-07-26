@@ -23,7 +23,17 @@
     "event_next_label": "最近一場",
     "view_all_events": "查看完整賽事行事曆",
     "footer_sources_label": "資料整理自",
-    "footer_colophon": "OldBabyInfo 是玩家自製的查詢工具，非官方網站。"
+    "footer_colophon": "OldBabyInfo 是玩家自製的查詢工具，非官方網站。",
+    "battle_search_label": "零件／組合對戰分析",
+    "battle_search_placeholder": "輸入中文、日文、英文或玩家俗稱",
+    "battle_left_label": "左側對手",
+    "battle_right_label": "右側對手",
+    "battle_empty": "找不到符合的零件",
+    "battle_analysis_label": "競技場分析",
+    "battle_versus": "對戰",
+    "battle_stat_attack": "攻擊",
+    "battle_stat_defense": "防禦",
+    "battle_stat_stamina": "持久"
   },
   "LocaleSwitcher": {
     "label": "語言",

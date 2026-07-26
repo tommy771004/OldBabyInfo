@@ -1,0 +1,9 @@
+# 每類資料有固定的 Field Authority
+
+五個來源彼此重疊，而且官方數值、通路快照與社群判斷的可信方式不同，因此不能使用「最後抓到的值」覆蓋同名欄位。Part 名稱、官方 Stat、Mode 與零件關係由 BeyBrew 所附官方 App MasterData 決定；售價、庫存與商品連結由 Funbox 等實際通路決定；Event 排程由原始賽事試算表決定；BeybladeHub、HackMD、Go-Shoot 可提供 Tier、配置、打法、重量觀察、Mold Batch 與 Alias，但不得覆蓋官方 Stat。
+
+## Consequences
+
+- 來源間的客觀欄位衝突不是自動合併問題；非 Field Authority 的值只能保留為觀察或送人工檢查。
+- 每條抓取管線只能寫入自己擁有的資料家族。
+- 更換 Field Authority 是資料遷移與重新驗證，不是調整爬蟲優先順序。

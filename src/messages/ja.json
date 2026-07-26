@@ -23,7 +23,17 @@
     "event_next_label": "直近の大会",
     "view_all_events": "大会カレンダーをすべて見る",
     "footer_sources_label": "データ出典",
-    "footer_colophon": "OldBabyInfoはファンが作った非公式の情報サイトです。"
+    "footer_colophon": "OldBabyInfoはファンが作った非公式の情報サイトです。",
+    "battle_search_label": "パーツ／コンボ対戦分析",
+    "battle_search_placeholder": "中国語・日本語・英語・通称で検索",
+    "battle_left_label": "左側の対戦相手",
+    "battle_right_label": "右側の対戦相手",
+    "battle_empty": "一致するパーツが見つかりません",
+    "battle_analysis_label": "スタジアム分析",
+    "battle_versus": "対戦",
+    "battle_stat_attack": "攻撃",
+    "battle_stat_defense": "防御",
+    "battle_stat_stamina": "持久"
   },
   "LocaleSwitcher": {
     "label": "言語",
