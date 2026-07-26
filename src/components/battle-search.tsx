@@ -13,6 +13,8 @@ import {
   type BattleSubject,
 } from "@/lib/parts/battle-subjects.ts";
 import { StadiumSignature } from "./stadium-signature.tsx";
+import { SpinWind } from "./spin-wind.tsx";
+import { windDurationSeconds } from "@/lib/parts/wind-speed.ts";
 import styles from "./battle-search.module.css";
 
 type PartImage = { url: string; width: number; height: number };
@@ -207,11 +209,17 @@ function BattleArena({
           <StadiumSignature />
         </div>
         <div className={`${styles.competitor} ${styles.competitorLeft}`}>
-          <PartImage subject={left} image={images[imagePartOf(left).id]} />
+          <span className={styles.competitorFigure}>
+            <SpinWind durationSeconds={windDurationSeconds(subjectStatsOf(left).attack)} />
+            <PartImage subject={left} image={images[imagePartOf(left).id]} />
+          </span>
           <span>{subjectNameOf(left, locale)}</span>
         </div>
         <div className={`${styles.competitor} ${styles.competitorRight}`}>
-          <PartImage subject={right} image={images[imagePartOf(right).id]} />
+          <span className={styles.competitorFigure}>
+            <SpinWind durationSeconds={windDurationSeconds(subjectStatsOf(right).attack)} />
+            <PartImage subject={right} image={images[imagePartOf(right).id]} />
+          </span>
           <span>{subjectNameOf(right, locale)}</span>
         </div>
         <span className={styles.trajectoryLeft} aria-hidden="true" />

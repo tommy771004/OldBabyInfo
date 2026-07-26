@@ -171,7 +171,20 @@
   right: 19%;
 }
 
+/* Anchors the wind rings to the product image itself rather than to the
+   competitor block, which also contains the name label — centring on the
+   block would push the rings visibly low. */
+.competitorFigure {
+  position: relative;
+  display: grid;
+  place-items: center;
+  /* The rings overflow this box by design; nothing here may clip them. */
+  overflow: visible;
+}
+
 .partImage {
+  position: relative;
+  z-index: 1;
   width: clamp(6rem, 12vw, 10rem);
   height: auto;
   object-fit: contain;

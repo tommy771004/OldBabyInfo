@@ -1,0 +1,49 @@
+/*
+ * Wind rings sit behind their Beyblade and never intercept a click —
+ * the product image and its label stay the only interactive/readable
+ * things in that corner of the arena.
+ */
+
+.wind {
+  position: absolute;
+  /* Centred on the image, deliberately larger than it so the airflow
+     reads as coming off the top rather than hugging its outline. The
+     scale is kept modest so the outermost ring still clears the hero's
+     own `overflow: clip` boundary at the arena's top edge. */
+  top: 50%;
+  left: 50%;
+  width: 152%;
+  height: 152%;
+  translate: -50% -50%;
+  pointer-events: none;
+  color: color-mix(in srgb, var(--ink-on-dark) 38%, transparent);
+  overflow: visible;
+}
+
+.ring {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation-name: wind-orbit;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes wind-orbit {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+/*
+ * Reduced motion stops the orbit but keeps every ring drawn — the arcs
+ * are part of the composition, not a reveal, so removing them would
+ * change the layout rather than just calm it.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .ring {
+    animation: none;
+  }
+}
