@@ -25,11 +25,16 @@
 }
 
 .searchHeader > h1 {
-  max-width: 14ch;
+  /* No `ch` cap here: `ch` is the width of "0" (~0.5em), but CJK glyphs
+     are a full 1em, so a 14ch limit actually fits only ~7 characters and
+     was breaking 「零件 / 組合對戰分析」 with 「析」 stranded alone on
+     line 2. The container's own 54rem bounds the measure; `balance`
+     splits the remainder evenly instead of orphaning one glyph. */
   color: var(--ink-on-dark);
   font-size: clamp(2.4rem, 6vw, 5.6rem);
   line-height: 0.96;
   letter-spacing: 0.01em;
+  text-wrap: balance;
 }
 
 .searchLanes {
@@ -260,6 +265,9 @@
   color: var(--ink-on-dark);
   font-size: clamp(2rem, 5vw, 4.5rem);
   line-height: 0.98;
+  /* Two real part names either side of 對戰 routinely exceed one line;
+     without balancing this stranded 「士」 on its own line. */
+  text-wrap: balance;
 }
 
 .analysisCopy h2 span {
@@ -268,6 +276,9 @@
   font-size: 0.55em;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  /* CJK breaks between any two characters, which was splitting 「對戰」
+     across the line break. It is one word and must stay whole. */
+  white-space: nowrap;
 }
 
 .statRows {

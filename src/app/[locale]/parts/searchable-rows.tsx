@@ -8,11 +8,6 @@ import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { slugify } from "@/lib/parts/slug.ts";
 import { searchParts } from "@/lib/parts/search-parts.ts";
 import { buildQuery } from "@/lib/parts/build-query.ts";
-import { PlaystyleSymbol, RatchetHeightSymbol } from "@/components/type-symbols.tsx";
-import { BladeSilhouette, BladeSilhouettePlaceholder } from "@/components/blade-silhouette.tsx";
-import { RatchetSilhouette } from "@/components/ratchet-silhouette.tsx";
-import { BitSilhouette } from "@/components/bit-silhouette.tsx";
-import { wingCountFor, hasObservedWingCount } from "@/lib/parts/blade-wing-count.ts";
 import type { SortField } from "@/lib/parts/filter-sort.ts";
 import type { FilterSortState } from "@/lib/parts/parse-filter-sort-params.ts";
 import type { Part } from "@/lib/parts/schema.ts";
@@ -65,8 +60,6 @@ export function SearchableRows({
             <tr>
               <th scope="col">{t("type_blade")}</th>
               <th scope="col">Name</th>
-              <th scope="col">{t("silhouette_column")}</th>
-              <th scope="col">{t("playstyle_column")}</th>
               {STAT_FIELDS.map((field) => (
                 <th key={field} scope="col">
                   <SortLink field={field} state={state}>
@@ -87,37 +80,6 @@ export function SearchableRows({
                 <td>{t(`type_${part.type}`)}</td>
                 <td>
                   <Link href={`/parts/${slugify(part.nameEn)}`}>{localizedNameOf(part, locale)}</Link>
-                </td>
-                <td>
-                  {part.type === "blade" && hasObservedWingCount(part.id) ? (
-                    <BladeSilhouette
-                      wingCount={wingCountFor(part.id)}
-                      label={t("silhouette_label", { count: wingCountFor(part.id) })}
-                    />
-                  ) : part.type === "blade" ? (
-                    <BladeSilhouettePlaceholder label={t("silhouette_unknown_label")} />
-                  ) : part.type === "ratchet" ? (
-                    <RatchetSilhouette
-                      height={part.height}
-                      label={t("silhouette_ratchet_label", { height: part.height })}
-                    />
-                  ) : part.playstyle ? (
-                    <BitSilhouette
-                      playstyle={part.playstyle}
-                      label={t(`silhouette_bit_${part.playstyle}`)}
-                    />
-                  ) : (
-                    <BladeSilhouettePlaceholder label={t("silhouette_unknown_label")} />
-                  )}
-                </td>
-                <td>
-                  {(part.type === "blade" || part.type === "bit") && part.playstyle ? (
-                    <PlaystyleSymbol playstyle={part.playstyle} locale={locale} />
-                  ) : part.type === "ratchet" ? (
-                    <RatchetHeightSymbol height={part.height} locale={locale} />
-                  ) : (
-                    "—"
-                  )}
                 </td>
                 <td>{part.stats.attack}</td>
                 <td>{part.stats.defense}</td>
