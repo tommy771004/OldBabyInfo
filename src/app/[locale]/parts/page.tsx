@@ -7,6 +7,8 @@ import {
   getGenerationCatalogSnapshot,
 } from "@/lib/generation-catalog/repository.ts";
 import { generationIdSchema, type GenerationId } from "@/lib/generation-catalog/schema.ts";
+import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
+import { selectCatalogRecordsForPage } from "@/lib/generation-catalog/payload.ts";
 import { GenerationCatalogBrowser } from "@/components/generation-catalog-browser.tsx";
 import { filterByType, sortParts, type PartType } from "@/lib/parts/filter-sort.ts";
 import { parseFilterSortParams, type FilterSortState } from "@/lib/parts/parse-filter-sort-params.ts";
@@ -40,8 +42,24 @@ export default async function PartsPage({
     : "x";
   const selectedSystem = firstParam(catalogParams.catalogSystem);
   const selectedKind = firstParam(catalogParams.catalogKind);
+  const catalogQuery = firstParam(catalogParams.catalogQuery);
+  const selectedPartType = firstParam(catalogParams.catalogPartType);
   const catalogRecordId = firstParam(catalogParams.catalogRecordId);
+  const hasCatalogGeneration = generationIdSchema.safeParse(catalogGeneration).success;
+  const hasCatalogSearchParams = ["catalogQuery", "catalogSystem", "catalogKind", "catalogPartType"]
+    .some((key) => catalogParams[key] !== undefined);
   const catalog = getGenerationCatalogSnapshot();
+  const searchAcrossGenerations = hasCatalogSearchParams && !hasCatalogGeneration;
+  const browserRecords = hasCatalogSearchParams
+    ? searchGenerationCatalog(catalog.records, catalogQuery ?? "", {
+      generationId: hasCatalogGeneration ? selectedGeneration : undefined,
+      system: selectedSystem,
+      kind: selectedKind === "beyblade" || selectedKind === "part" || selectedKind === "release" || selectedKind === "equipment"
+        ? selectedKind
+        : undefined,
+      partType: selectedPartType,
+    })
+    : selectCatalogRecordsForPage(catalog.records, selectedGeneration, false);
   const filtered = filterByType(getAllParts(), state.type);
   const sorted = state.sort ? sortParts(filtered, state.sort, state.direction) : filtered;
 
@@ -51,9 +69,15 @@ export default async function PartsPage({
       locale={locale}
       state={state}
       catalog={catalog}
+      catalogRecords={browserRecords}
       selectedGeneration={selectedGeneration}
       selectedSystem={selectedSystem}
-      selectedKind={selectedKind === "beyblade" || selectedKind === "part" ? selectedKind : undefined}
+      selectedKind={selectedKind === "beyblade" || selectedKind === "part" || selectedKind === "release" || selectedKind === "equipment"
+        ? selectedKind
+        : undefined}
+      selectedPartType={selectedPartType}
+      searchQuery={catalogQuery}
+      searchAcrossGenerations={searchAcrossGenerations}
       selectedRecordId={catalogRecordId}
     />
   );
@@ -68,18 +92,26 @@ function PartsPageBody({
   locale,
   state,
   catalog,
+  catalogRecords,
   selectedGeneration,
   selectedSystem,
   selectedKind,
+  selectedPartType,
+  searchQuery,
+  searchAcrossGenerations,
   selectedRecordId,
 }: {
   parts: Part[];
   locale: Locale;
   state: FilterSortState;
   catalog: ReturnType<typeof getGenerationCatalogSnapshot>;
+  catalogRecords: ReturnType<typeof getGenerationCatalogSnapshot>["records"];
   selectedGeneration: GenerationId;
   selectedSystem?: string;
-  selectedKind?: "beyblade" | "part";
+  selectedKind?: "beyblade" | "part" | "release" | "equipment";
+  selectedPartType?: string;
+  searchQuery?: string;
+  searchAcrossGenerations?: boolean;
   selectedRecordId?: string;
 }) {
   const t = useTranslations("PartsPage");
@@ -92,10 +124,13 @@ function PartsPageBody({
         locale={locale}
         generations={catalog.generations}
         systems={catalog.systems}
-        records={catalog.records}
+        records={catalogRecords}
         selectedGeneration={selectedGeneration}
         selectedSystem={selectedSystem}
         selectedKind={selectedKind}
+        selectedPartType={selectedPartType}
+        searchQuery={searchQuery}
+        searchAcrossGenerations={searchAcrossGenerations}
         selectedRecordId={selectedRecordId}
         labels={{
           heading: t("catalog_heading"),
@@ -111,6 +146,10 @@ function PartsPageBody({
           releaseContentsHeading: t("catalog_release_contents"),
           releaseLabel: t("catalog_release"),
           equipmentLabel: t("catalog_equipment"),
+          searchLabel: t("catalog_search"),
+          searchPlaceholder: t("catalog_search_placeholder"),
+          searchSubmitLabel: t("catalog_search_submit"),
+          partTypeLabel: t("catalog_part_type"),
         }}
       />
 

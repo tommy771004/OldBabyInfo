@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "node scripts/report-generation-catalog.ts",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit && tsc --noEmit -p scripts/tsconfig.json",
@@ -16,6 +17,8 @@
     "generate:assessments": "node scripts/generate-assessments-seed.ts",
     "check:community-sources": "node scripts/check-community-source-policy.ts",
     "smoke:public-journey": "node scripts/smoke-public-journey.ts",
+    "report:generation-catalog": "node scripts/report-generation-catalog.ts",
+    "refresh:generation-catalog": "node scripts/scrape-generation-catalog.ts",
     "scrape:generation-catalog": "node scripts/scrape-generation-catalog.ts",
     "scrape:products": "node scripts/scrape-products.ts"
   },

@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { GenerationCatalogBrowser } from "@/components/generation-catalog-browser.tsx";
 import { getGenerationCatalogSnapshot } from "@/lib/generation-catalog/repository.ts";
 import type { GenerationId } from "@/lib/generation-catalog/schema.ts";
+import { selectCatalogRecordsForPage } from "@/lib/generation-catalog/payload.ts";
 import { type Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation.ts";
 import styles from "../../page.module.css";
@@ -64,7 +65,7 @@ function GenerationCatalogRecordBody({
         locale={locale}
         generations={snapshot.generations}
         systems={snapshot.systems}
-        records={snapshot.records}
+        records={selectCatalogRecordsForPage(snapshot.records, generationId, false)}
         selectedGeneration={generationId}
         selectedSystem={system}
         selectedRecordId={recordId}

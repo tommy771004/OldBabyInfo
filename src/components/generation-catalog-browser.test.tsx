@@ -155,4 +155,61 @@ describe("GenerationCatalogBrowser", () => {
       link.getAttribute("href") === "/en/parts/catalog/x%3Abeyblade%3Acx01",
     )).toBe(true);
   });
+
+  it("searches multilingual aliases across Generations and labels every result kind", () => {
+    const crossGenerationRecords = [
+      ...records,
+      {
+        id: "x:beyblade:dran-sword",
+        generationId: "x" as const,
+        system: "cx",
+        kind: "beyblade" as const,
+        partType: null,
+        name: "Dran Sword",
+        aliases: ["ドランソード"],
+        components: [],
+        sourceId: "fixture-source",
+        sourceRecordId: "dran-sword",
+        sourceUrl: "https://example.com/dran-sword",
+        sourceVersion: "fixture:1",
+        verificationStatus: "officially_verified" as const,
+        publicationStatus: "accepted" as const,
+      },
+      {
+        id: "burst:beyblade:dran-sword",
+        generationId: "burst" as const,
+        system: "burst-standard",
+        kind: "beyblade" as const,
+        partType: null,
+        name: "Dran Sword",
+        aliases: ["ドランソード"],
+        components: [],
+        sourceId: "fixture-source",
+        sourceRecordId: "burst-dran-sword",
+        sourceUrl: "https://example.com/burst-dran-sword",
+        sourceVersion: "fixture:1",
+        verificationStatus: "officially_verified" as const,
+        publicationStatus: "accepted" as const,
+      },
+    ];
+
+    render(
+      <GenerationCatalogBrowser
+        locale="ja"
+        generations={generations}
+        systems={systems}
+        records={crossGenerationRecords}
+        selectedGeneration="x"
+        searchQuery="ドランソード"
+        searchAcrossGenerations
+        labels={{ ...labels, searchLabel: "Catalog search", searchPlaceholder: "Search catalog" }}
+      />,
+    );
+
+    expect(screen.getByRole("searchbox", { name: "Catalog search" })).toHaveValue("ドランソード");
+    expect(screen.getAllByRole("search").some((form) => form.getAttribute("action") === "/ja/parts")).toBe(true);
+    expect(screen.getAllByRole("link", { name: "Dran Sword" })).toHaveLength(2);
+    expect(screen.getAllByText("Complete Beyblades").length).toBeGreaterThanOrEqual(2);
+    expect(screen.getAllByRole("combobox", { name: "Entity type" }).length).toBeGreaterThan(0);
+  });
 });

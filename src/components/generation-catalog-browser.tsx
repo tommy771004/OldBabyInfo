@@ -4,6 +4,7 @@ import type {
   GenerationId,
   GenerationSystem,
 } from "@/lib/generation-catalog/schema.ts";
+import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
 
 export interface GenerationCatalogBrowserLabels {
   heading: string;
@@ -19,6 +20,10 @@ export interface GenerationCatalogBrowserLabels {
   releaseContentsHeading?: string;
   releaseLabel?: string;
   equipmentLabel?: string;
+  searchLabel?: string;
+  searchPlaceholder?: string;
+  searchSubmitLabel?: string;
+  partTypeLabel?: string;
 }
 
 interface GenerationCatalogBrowserProps {
@@ -28,7 +33,10 @@ interface GenerationCatalogBrowserProps {
   records: GenerationCatalogRecord[];
   selectedGeneration: GenerationId;
   selectedSystem?: string;
-  selectedKind?: "beyblade" | "part";
+  selectedKind?: GenerationCatalogRecord["kind"];
+  selectedPartType?: string;
+  searchQuery?: string;
+  searchAcrossGenerations?: boolean;
   selectedRecordId?: string;
   labels: GenerationCatalogBrowserLabels;
 }
@@ -41,18 +49,30 @@ export function GenerationCatalogBrowser({
   selectedGeneration,
   selectedSystem,
   selectedKind,
+  selectedPartType,
+  searchQuery,
+  searchAcrossGenerations = false,
   selectedRecordId,
   labels,
 }: GenerationCatalogBrowserProps) {
   const generationRecords = records.filter((record) => record.generationId === selectedGeneration);
   const generationSystems = systems.filter((system) => system.generationId === selectedGeneration);
   const selectedSystemDefinition = generationSystems.find((system) => system.id === selectedSystem);
-  const visibleRecords = generationRecords.filter((record) =>
-    (!selectedSystem || record.system === selectedSystem) &&
-    (!selectedKind || record.kind === selectedKind),
-  );
+  const visibleRecords = searchAcrossGenerations || searchQuery !== undefined
+    ? searchGenerationCatalog(records, searchQuery ?? "", {
+      generationId: searchAcrossGenerations ? undefined : selectedGeneration,
+      system: selectedSystem,
+      kind: selectedKind,
+      partType: selectedPartType,
+    })
+    : generationRecords.filter((record) =>
+      (!selectedSystem || record.system === selectedSystem) &&
+      (!selectedKind || record.kind === selectedKind) &&
+      (!selectedPartType || record.partType === selectedPartType),
+    );
   const selectedRecord = generationRecords.find((record) => record.id === selectedRecordId);
   const prefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
+  const formIdSuffix = (selectedRecordId ?? selectedGeneration).replace(/[^a-zA-Z0-9_-]/g, "-");
 
   const hrefFor = (params: Record<string, string | undefined>) => {
     const query = new URLSearchParams();
@@ -67,6 +87,47 @@ export function GenerationCatalogBrowser({
   return (
     <section aria-labelledby="generation-catalog-heading">
       <h2 id="generation-catalog-heading">{labels.heading}</h2>
+
+      <form method="get" action={`${prefix}/parts`} role="search">
+        <label htmlFor={`catalog-query-${formIdSuffix}`}>{labels.searchLabel ?? "Search catalog"}</label>
+        <input
+          id={`catalog-query-${formIdSuffix}`}
+          name="catalogQuery"
+          type="search"
+          placeholder={labels.searchPlaceholder ?? "Search by name or alias"}
+          defaultValue={searchQuery}
+        />
+        <label htmlFor={`catalog-generation-filter-${formIdSuffix}`}>{labels.generationLabel}</label>
+        <select
+          id={`catalog-generation-filter-${formIdSuffix}`}
+          name="catalogGeneration"
+          defaultValue={searchAcrossGenerations ? "" : selectedGeneration}
+        >
+          <option value="">{labels.allLabel}</option>
+          {generations.map((generation) => <option key={generation.id} value={generation.id}>{generation.nameEn}</option>)}
+        </select>
+        <label htmlFor={`catalog-system-filter-${formIdSuffix}`}>{labels.systemLabel}</label>
+        <select id={`catalog-system-filter-${formIdSuffix}`} name="catalogSystem" defaultValue={selectedSystem ?? ""}>
+          <option value="">{labels.allLabel}</option>
+          {systems.map((system) => <option key={system.id} value={system.id}>{system.nameEn}</option>)}
+        </select>
+        <label htmlFor={`catalog-kind-filter-${formIdSuffix}`}>{labels.kindLabel}</label>
+        <select id={`catalog-kind-filter-${formIdSuffix}`} name="catalogKind" defaultValue={selectedKind ?? ""}>
+          <option value="">{labels.allLabel}</option>
+          <option value="beyblade">{labels.beybladeLabel}</option>
+          <option value="part">{labels.partLabel}</option>
+          <option value="release">{labels.releaseLabel ?? "Release"}</option>
+          <option value="equipment">{labels.equipmentLabel ?? "Equipment"}</option>
+        </select>
+        <label htmlFor={`catalog-part-type-filter-${formIdSuffix}`}>{labels.partTypeLabel ?? "Part kind"}</label>
+        <select id={`catalog-part-type-filter-${formIdSuffix}`} name="catalogPartType" defaultValue={selectedPartType ?? ""}>
+          <option value="">{labels.allLabel}</option>
+          {Array.from(new Set(systems.flatMap((system) => system.partTypes))).sort().map((partType) => (
+            <option key={partType} value={partType}>{labels.partTypeLabel ?? "Part kind"}: {partType}</option>
+          ))}
+        </select>
+        <button type="submit">{labels.searchSubmitLabel ?? "Search"}</button>
+      </form>
 
       <nav aria-label={labels.generationLabel}>
         {generations.map((generation) => (
@@ -105,6 +166,8 @@ export function GenerationCatalogBrowser({
           [undefined, labels.allLabel],
           ["beyblade", labels.beybladeLabel],
           ["part", labels.partLabel],
+          ["release", labels.releaseLabel ?? "Release"],
+          ["equipment", labels.equipmentLabel ?? "Equipment"],
         ].map(([kind, label]) => (
           <a
             key={label}

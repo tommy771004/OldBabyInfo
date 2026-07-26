@@ -7,3 +7,13 @@
 - 來源間的客觀欄位衝突不是自動合併問題；非 Field Authority 的值只能保留為觀察或送人工檢查。
 - 每條抓取管線只能寫入自己擁有的資料家族。
 - 更換 Field Authority 是資料遷移與重新驗證，不是調整爬蟲優先順序。
+
+## Cross-generation Catalog authority extension
+
+- Official Takara Tomy history determines the four top-level Generations and their chronology.
+- Official product pages and manuals determine System structure, complete Beyblade composition, Release SKU／region／colorway／reissue facts, and Equipment contents within their scope.
+- BeyBrew MasterData remains the Field Authority for X App-derived Part names, official Stats, Modes, and X Part relationships; it is not an authority for Original Generation, Metal Fight, or Burst.
+- Licensed community catalogs may provide candidate names, aliases, and historical Part indexes. They retain community provenance and cannot overwrite an official value.
+- Funbox is the Field Authority for its own Stock Listing price, availability, URL, and capture time. A retailer row may attach to a Release only after a unique source-backed match.
+- BeybladeHub, HackMD, Go-Shoot, and similar pages are Discovery Sources for aliases, observations, and leads. They do not decide official structure, SKU, or Stats.
+- Wikipedia and other general references are cross-checks for Generation-level facts only, never Part or SKU authorities.

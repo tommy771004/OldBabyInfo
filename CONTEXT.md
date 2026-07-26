@@ -29,8 +29,28 @@ _Avoid_: 屬性、能力值、rating、四維
 _Avoid_: 別名、暱稱、tag
 
 **Generation**：
-陀螺的世代（X、Burst、Metal Fight…）。目前僅收錄 X，但每筆 Part 都帶此欄位。
+陀螺的世代（Original Generation、Metal Fight、Burst、X）。Generation 是跨系統的第一層分類；每筆 Catalog entity 都帶此欄位。
 _Avoid_: 系列、series
+
+**System**：
+同一 Generation 內定義可替換 Part 種類、完整陀螺結構與相容規則的產品系統，例如 Plastic、HMS、Burst、BX、UX、CX。System 之間不可假設可以混裝。
+_Avoid_: 世代、series
+
+**Complete Beyblade**：
+依某一 Generation／System 的正式結構，由多個 Parts 組成、可作為完整商品模型瀏覽的陀螺實體。它不是單一 Part，也不是販售時的 Release。
+_Avoid_: stock combo、商品、build
+
+**Release**：
+官方販售的一個 SKU 或產品版本，可記錄區域、色彩、復刻、隨機款與組合內容，並透過關係指向 Complete Beyblade、Parts 或 Equipment；它不複製底層 Part。
+_Avoid_: Part、Stock Listing
+
+**Equipment**：
+隨 Release 販售但不能進入 Combo 的用品，例如 Launcher、Stadium、Grip 或 Case。Equipment 仍是可搜尋的 Catalog entity。
+_Avoid_: Part、配件
+
+**Generation-scoped assembly**：
+由 Generation 與 System 共同決定的完整陀螺組裝結構。X 的 Blade／Ratchet／Bit Combo 只是 X 系統規則，不得套用到 Burst、Metal Fight、Plastic 或 HMS。
+_Avoid_: universal Combo、跨世代組裝
 
 **Mold Batch**：
 同一 Part、同一 Stat Edition 之下，不同生產批次間未見於官方數值的物理公差（模具磨損、材質批次），只能靠產品上的批號與玩家實戰歸納得知，官方不曾正式承認。與 Stat Edition（官方明文記載的數值版本差異）是兩件不同的事，來源與解析方式也不同：Mold Batch 只能從散文型社群文章用 LLM 抽取（35 號票）。

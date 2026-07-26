@@ -77,7 +77,11 @@
   "catalog_releases": "Releases",
   "catalog_release_contents": "Release contents",
   "catalog_release": "Release",
-  "catalog_equipment": "Equipment"
+  "catalog_equipment": "Equipment",
+  "catalog_search": "Search catalog",
+  "catalog_search_placeholder": "Search by official name, alias, or abbreviation",
+  "catalog_search_submit": "Search",
+  "catalog_part_type": "Part kind"
   },
   "GuidesPage": {
     "title": "Getting started",

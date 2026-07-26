@@ -5,4 +5,6 @@
 ## Consequences
 
 - 新增或修正一支 Part 需要重新建置部署，不是改一筆資料庫紀錄。這是刻意的——它讓每次資料變動都留下 git history 且可 revert。
-- 搜尋與篩選在客戶端完成，因此 Part 資料集必須維持在可全量載入的規模。若日後收錄多個 Generation 導致資料量暴增，此決策需重新評估。
+- Cross-generation Catalog 仍以 repo JSON 為單一真實來源，但普通 Generation browse/detail route 只載入目前 Generation 的 accepted records；跨世代搜尋在伺服器端先篩選，再只傳搜尋結果。
+- 2026-07-26 的測量為 1,942 筆 accepted records、1,172,555 bytes；最大單一 Generation 為 Burst 591,751 bytes，低於 650,000-byte regression budget，因此目前不需改用資料庫或重新開 ADR。
+- 若任一 Generation payload 超過 650,000 bytes，`npm test` 的 payload budget assertion 會失敗，屆時必須重新評估此 ADR。

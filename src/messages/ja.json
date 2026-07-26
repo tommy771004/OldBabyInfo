@@ -77,7 +77,11 @@
   "catalog_releases": "リリース",
   "catalog_release_contents": "リリース内容",
   "catalog_release": "リリース",
-  "catalog_equipment": "用品"
+  "catalog_equipment": "用品",
+  "catalog_search": "カタログを検索",
+  "catalog_search_placeholder": "公式名・別名・略称で検索",
+  "catalog_search_submit": "検索",
+  "catalog_part_type": "パーツ種別"
   },
   "GuidesPage": {
     "title": "初心者ガイド",
