@@ -4,6 +4,7 @@ import {
   getGenerationCatalogNeedsReview,
   getGenerationCatalogRecords,
   getGenerationCatalogSnapshot,
+  getXCatalogCrosswalk,
   getLegacyPartForCatalogRecord,
 } from "./repository.ts";
 
@@ -137,5 +138,22 @@ describe("generation catalog repository", () => {
     );
     expect(cxPart).toBeDefined();
     expect(getLegacyPartForCatalogRecord(cxPart!.id)).toBeUndefined();
+  });
+
+  it("exposes deterministic crosswalk review results for the refresh/review seam", () => {
+    const crosswalk = getXCatalogCrosswalk();
+    const dranSword = getAllGenerationCatalogRecords().find((record) =>
+      record.generationId === "x" && record.kind === "part" && record.name === "Dran Sword",
+    );
+
+    expect(dranSword).toBeDefined();
+    expect(crosswalk.matches).toContainEqual({
+      catalogRecordId: dranSword!.id,
+      legacyPartId: "DRANSWORD",
+    });
+    expect(crosswalk.needsReview).toContainEqual({
+      catalogRecordId: "beybrew:master-beybladepartsbit-6cb165c98a",
+      reason: "unmatched",
+    });
   });
 });

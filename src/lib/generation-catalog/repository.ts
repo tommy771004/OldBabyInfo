@@ -8,14 +8,15 @@ import {
 } from "./schema.ts";
 import { getAllParts } from "../parts/repository.ts";
 import type { Part } from "../parts/schema.ts";
-import { buildXCatalogCrosswalk } from "./legacy-x-bridge.ts";
+import { buildXCatalogCrosswalk, type XCatalogCrosswalk } from "./legacy-x-bridge.ts";
 
 const catalog = generationCatalogSnapshotSchema.parse(catalogJson);
 const needsReview = generationCatalogSnapshotSchema.parse(needsReviewJson);
 const legacyParts = getAllParts();
 const legacyPartById = new Map(legacyParts.map((part) => [part.id, part] as const));
+const xCatalogCrosswalk = buildXCatalogCrosswalk(catalog.records, legacyParts);
 const legacyPartByCatalogRecordId = new Map(
-  buildXCatalogCrosswalk(catalog.records, legacyParts).matches.map((match) => [
+  xCatalogCrosswalk.matches.map((match) => [
     match.catalogRecordId,
     legacyPartById.get(match.legacyPartId),
   ] as const),
@@ -41,4 +42,11 @@ export function getGenerationCatalogNeedsReview(): GenerationCatalogRecord[] {
 
 export function getLegacyPartForCatalogRecord(recordId: string): Part | undefined {
   return legacyPartByCatalogRecordId.get(recordId);
+}
+
+export function getXCatalogCrosswalk(): XCatalogCrosswalk {
+  return {
+    matches: [...xCatalogCrosswalk.matches],
+    needsReview: [...xCatalogCrosswalk.needsReview],
+  };
 }
