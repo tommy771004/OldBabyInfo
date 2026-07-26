@@ -1,7 +1,26 @@
 {
   "HomePage": {
     "title": "OldBabyInfo",
-    "description": "台湾のベイブレードX情報サイト"
+    "description": "台湾のベイブレードX情報サイト",
+    "nav_label": "メインナビゲーション",
+    "nav_parts": "パーツ一覧",
+    "nav_events": "大会カレンダー",
+    "hero_headline": "見つかる、そして正確",
+    "hero_lede": "各所に散らばったパーツデータを、正確に調べられる一つの場所にまとめました。",
+    "cta_parts": "パーツ一覧を見る",
+    "stat_parts_label": "パーツ収録",
+    "stat_events_label": "大会実績",
+    "section_parts_heading": "すべての数字に、出典がある",
+    "section_parts_lede": "すべてのデータは実際の対戦記録と公式資料に基づいており、仮のデータではありません。",
+    "part_highlight_attack_label": "現在最高攻撃力",
+    "part_highlight_stamina_label": "現在最高スタミナ",
+    "view_all_parts": "パーツ一覧をすべて見る",
+    "section_events_heading": "次の大会は、すぐそこに",
+    "section_events_lede": "店舗の告知をもとに、申込方法・定員・会場をまとめています。",
+    "event_next_label": "直近の大会",
+    "view_all_events": "大会カレンダーをすべて見る",
+    "footer_sources_label": "データ出典",
+    "footer_colophon": "OldBabyInfoはファンが作った非公式の情報サイトです。"
   },
   "LocaleSwitcher": {
     "label": "言語",
@@ -31,6 +50,7 @@
     "upcoming": "開催予定",
     "past": "終了",
     "no_upcoming": "近日開催予定の大会はありません",
+    "registration_label": "申込方法",
     "registration_onsite": "現地受付",
     "registration_online": "オンライン申込",
     "registration_phone": "電話申込",

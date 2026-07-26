@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink-on-dark) 16%, transparent);
+}
+
+.wordmark {
+  font-family: var(--font-display), serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-on-dark);
+  white-space: nowrap;
+}
+
+.wordmarkAccent {
+  color: var(--accent-on-dark);
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-right: auto;
+}
+
+.nav a {
+  color: var(--ink-on-dark);
+  text-decoration: none;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.nav a:hover {
+  color: var(--accent-on-dark);
+}
+
+@media (max-width: 480px) {
+  .header {
+    justify-content: center;
+  }
+
+  .nav {
+    margin-right: 0;
+    order: 1;
+    width: 100%;
+    justify-content: center;
+  }
+}

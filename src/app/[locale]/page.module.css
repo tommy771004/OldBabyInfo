@@ -1,0 +1,299 @@
+/*
+ * Homepage composition (ticket 39). Zero animation on purpose — this file
+ * proves the page is complete and legible with no motion at all; ticket 40
+ * adds scroll-driven behaviour on top, ticket 41 turns the section jumps
+ * below into one continuous gradient. Until then, each section pins to a
+ * single verified-safe step on the surface ramp (see ADR-0008 — the ramp's
+ * own 50-60% band fails contrast for both inks, so no section may land
+ * there).
+ */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background-color: var(--surface-950);
+  color: var(--ink-on-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+.heroArt {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.heroArt svg {
+  width: min(150vw, 1500px);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  max-width: 72rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem 4.5rem;
+}
+
+.heroContent h1 {
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+  max-width: 16ch;
+}
+
+.heroLede {
+  font-size: 1.1rem;
+  max-width: 38ch;
+  margin: 0 0 2rem;
+  color: color-mix(in srgb, var(--ink-on-dark) 82%, transparent);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--accent-on-dark);
+  border: 1.5px solid var(--accent-on-dark);
+  font-weight: 700;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.cta:hover {
+  background-color: color-mix(in srgb, var(--accent-on-dark) 12%, transparent);
+}
+
+.statLine {
+  margin-top: 1.75rem;
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--ink-on-dark) 72%, transparent);
+}
+
+.statLine :global(.stat-value) {
+  color: var(--ink-on-dark);
+  font-size: 1.2em;
+  margin: 0 0.15em;
+}
+
+/* Shared section rhythm */
+
+.sectionInner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.sectionInner h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin: 0 0 0.75rem;
+}
+
+.sectionLede {
+  max-width: 50ch;
+  margin: 0 0 3rem;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  font-weight: 500;
+  transition: opacity 0.15s ease;
+}
+
+.textLink:hover {
+  opacity: 0.72;
+}
+
+/* Parts section — surface-800, still dark-ink-safe */
+
+.partsSection {
+  background-color: var(--surface-800);
+  color: var(--ink-on-dark);
+}
+
+.partsSection .sectionLede {
+  color: color-mix(in srgb, var(--ink-on-dark) 78%, transparent);
+}
+
+.partsSection .textLink {
+  color: var(--accent-on-dark);
+}
+
+.partsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 3rem;
+  margin-bottom: 3rem;
+}
+
+.partCard {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  row-gap: 0.75rem;
+  align-content: start;
+}
+
+.partCardLabel {
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--ink-on-dark) 65%, transparent);
+}
+
+.partCardValue {
+  font-family: var(--font-display), serif;
+  font-size: 3rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.partCardName {
+  font-size: 1.05rem;
+}
+
+/* Events section — surface-600, the last dark-ink-safe step before the
+   ramp's dead zone (ADR-0008); the light-ink sections below jump straight
+   past it, since no section may render text inside that band at all. */
+
+.eventsSection {
+  background-color: var(--surface-600);
+  color: var(--ink-on-dark);
+}
+
+.eventsSection .sectionLede {
+  color: color-mix(in srgb, var(--ink-on-dark) 82%, transparent);
+}
+
+.eventsSection .textLink {
+  color: var(--ink-on-dark);
+}
+
+.eventCard {
+  max-width: 32rem;
+  margin: 0 0 2.5rem;
+  padding: 1.75rem;
+  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 22%, transparent);
+  border-radius: 10px;
+}
+
+.eventTier {
+  display: block;
+  font-family: var(--font-display), serif;
+  font-size: 1.1rem;
+  color: var(--accent-on-dark);
+  margin-bottom: 0.75rem;
+}
+
+.eventDetails {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.25rem;
+  row-gap: 0.5rem;
+  margin: 0;
+}
+
+.eventDetails dt {
+  color: color-mix(in srgb, var(--ink-on-dark) 65%, transparent);
+  font-size: 0.85rem;
+}
+
+.eventDetails dd {
+  margin: 0;
+}
+
+/* Footer — surface-100, light-ink-safe. One composed island, not two
+   clusters flung to opposite edges. */
+
+.footer {
+  background-color: var(--surface-100);
+  color: var(--ink-on-light);
+  padding-top: 4rem;
+}
+
+.footerTop {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem 2.5rem;
+  text-align: center;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footerLinks a {
+  color: var(--ink-on-light);
+  text-decoration: none;
+}
+
+.footerLinks a:hover {
+  color: var(--accent-on-light);
+}
+
+.footerSources {
+  max-width: 44rem;
+  margin: 1.75rem auto 0;
+  padding: 0 1.5rem;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--ink-on-light) 65%, transparent);
+  text-align: center;
+}
+
+.footerSources a {
+  color: inherit;
+}
+
+.footerColophon {
+  max-width: 72rem;
+  margin: 1.25rem auto 0;
+  padding: 0 1.5rem;
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--ink-on-light) 55%, transparent);
+  text-align: center;
+}
+
+.footerWordmark {
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.25rem, 13vw, 10rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: color-mix(in srgb, var(--ink-on-light) 92%, transparent);
+  text-align: center;
+  margin: 2.5rem 0 0;
+  padding: 0 1rem 0.22em;
+}
+
+@media (max-width: 640px) {
+  .partsGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footerTop {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}

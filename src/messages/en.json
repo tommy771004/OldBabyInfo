@@ -1,7 +1,26 @@
 {
   "HomePage": {
     "title": "OldBabyInfo",
-    "description": "Taiwan's Beyblade X reference site"
+    "description": "Taiwan's Beyblade X reference site",
+    "nav_label": "Main navigation",
+    "nav_parts": "Parts",
+    "nav_events": "Event calendar",
+    "hero_headline": "Findable. And accurate.",
+    "hero_lede": "Every part's real numbers, gathered into one place you can actually trust.",
+    "cta_parts": "Browse the parts library",
+    "stat_parts_label": "parts catalogued",
+    "stat_events_label": "real events tracked",
+    "section_parts_heading": "Every number has a source",
+    "section_parts_lede": "Every number here comes from real match records and official data, not placeholder content.",
+    "part_highlight_attack_label": "Current highest attack",
+    "part_highlight_stamina_label": "Current highest stamina",
+    "view_all_parts": "View all parts",
+    "section_events_heading": "The next one is close by",
+    "section_events_lede": "Registration, capacity, and venue, pulled straight from each store's own announcement.",
+    "event_next_label": "Coming up next",
+    "view_all_events": "View the full event calendar",
+    "footer_sources_label": "Data sourced from",
+    "footer_colophon": "OldBabyInfo is a fan-made reference tool, not an official site."
   },
   "LocaleSwitcher": {
     "label": "Language",
@@ -31,6 +50,7 @@
     "upcoming": "Upcoming",
     "past": "Past",
     "no_upcoming": "No known upcoming events right now",
+    "registration_label": "Registration",
     "registration_onsite": "Register on-site",
     "registration_online": "Register online",
     "registration_phone": "Register by phone",

@@ -1,7 +1,26 @@
 {
   "HomePage": {
     "title": "OldBabyInfo",
-    "description": "台灣戰鬥陀螺 X 查詢工具"
+    "description": "台灣戰鬥陀螺 X 查詢工具",
+    "nav_label": "主要導覽",
+    "nav_parts": "零件庫",
+    "nav_events": "賽事行事曆",
+    "hero_headline": "查得到，也要查得準",
+    "hero_lede": "把散落在各處的零件數據，整理成查得到、查得對的地方。",
+    "cta_parts": "進入零件庫",
+    "stat_parts_label": "個零件",
+    "stat_events_label": "場真實賽事",
+    "section_parts_heading": "每一顆數字，都有出處",
+    "section_parts_lede": "每一筆數據都來自真實對戰紀錄與官方資料，不是佔位內容。",
+    "part_highlight_attack_label": "目前最高攻擊",
+    "part_highlight_stamina_label": "目前最高持久",
+    "view_all_parts": "查看全部零件",
+    "section_events_heading": "下一場，就在附近",
+    "section_events_lede": "賽事資訊直接整理自店家公告，報名方式、名額、地點一次列清楚。",
+    "event_next_label": "最近一場",
+    "view_all_events": "查看完整賽事行事曆",
+    "footer_sources_label": "資料整理自",
+    "footer_colophon": "OldBabyInfo 是玩家自製的查詢工具，非官方網站。"
   },
   "LocaleSwitcher": {
     "label": "語言",
@@ -31,6 +50,7 @@
     "upcoming": "即將舉行",
     "past": "已結束",
     "no_upcoming": "近期沒有已知的賽事場次",
+    "registration_label": "報名方式",
     "registration_onsite": "現場報名",
     "registration_online": "線上報名",
     "registration_phone": "電話報名",
