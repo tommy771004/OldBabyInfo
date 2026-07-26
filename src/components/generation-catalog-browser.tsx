@@ -101,43 +101,53 @@ export function GenerationCatalogBrowser({
       </header>
 
       <form className={styles.searchForm} method="get" action={`${prefix}/parts`} role="search">
-        <label htmlFor={`catalog-query-${formIdSuffix}`}>{labels.searchLabel ?? "Search catalog"}</label>
-        <input
-          id={`catalog-query-${formIdSuffix}`}
-          name="catalogQuery"
-          type="search"
-          placeholder={labels.searchPlaceholder ?? "Search by name or alias"}
-          defaultValue={searchQuery}
-        />
-        <label htmlFor={`catalog-generation-filter-${formIdSuffix}`}>{labels.generationLabel}</label>
-        <select
-          id={`catalog-generation-filter-${formIdSuffix}`}
-          name="catalogGeneration"
-          defaultValue={searchAcrossGenerations ? "" : selectedGeneration}
-        >
-          <option value="">{labels.allLabel}</option>
-          {generations.map((generation) => <option key={generation.id} value={generation.id}>{generation.nameEn}</option>)}
-        </select>
-        <label htmlFor={`catalog-system-filter-${formIdSuffix}`}>{labels.systemLabel}</label>
-        <select id={`catalog-system-filter-${formIdSuffix}`} name="catalogSystem" defaultValue={selectedSystem ?? ""}>
-          <option value="">{labels.allLabel}</option>
-          {systems.map((system) => <option key={system.id} value={system.id}>{system.nameEn}</option>)}
-        </select>
-        <label htmlFor={`catalog-kind-filter-${formIdSuffix}`}>{labels.kindLabel}</label>
-        <select id={`catalog-kind-filter-${formIdSuffix}`} name="catalogKind" defaultValue={selectedKind ?? "all"}>
-          <option value="all">{labels.allLabel}</option>
-          <option value="beyblade">{labels.beybladeLabel}</option>
-          <option value="part">{labels.partLabel}</option>
-          <option value="release">{labels.releaseLabel ?? "Release"}</option>
-          <option value="equipment">{labels.equipmentLabel ?? "Equipment"}</option>
-        </select>
-        <label htmlFor={`catalog-part-type-filter-${formIdSuffix}`}>{labels.partTypeLabel ?? "Part kind"}</label>
-        <select id={`catalog-part-type-filter-${formIdSuffix}`} name="catalogPartType" defaultValue={selectedPartType ?? ""}>
-          <option value="">{labels.allLabel}</option>
-          {partTypeOptions.map((partType) => (
-            <option key={partType} value={partType}>{labels.partTypeLabel ?? "Part kind"}: {partType}</option>
-          ))}
-        </select>
+        <div className={styles.field}>
+          <label htmlFor={`catalog-query-${formIdSuffix}`}>{labels.searchLabel ?? "Search catalog"}</label>
+          <input
+            id={`catalog-query-${formIdSuffix}`}
+            name="catalogQuery"
+            type="search"
+            placeholder={labels.searchPlaceholder ?? "Search by name or alias"}
+            defaultValue={searchQuery}
+          />
+        </div>
+        <div className={styles.field}>
+          <label htmlFor={`catalog-generation-filter-${formIdSuffix}`}>{labels.generationLabel}</label>
+          <select
+            id={`catalog-generation-filter-${formIdSuffix}`}
+            name="catalogGeneration"
+            defaultValue={searchAcrossGenerations ? "" : selectedGeneration}
+          >
+            <option value="">{labels.allLabel}</option>
+            {generations.map((generation) => <option key={generation.id} value={generation.id}>{generation.nameEn}</option>)}
+          </select>
+        </div>
+        <div className={styles.field}>
+          <label htmlFor={`catalog-system-filter-${formIdSuffix}`}>{labels.systemLabel}</label>
+          <select id={`catalog-system-filter-${formIdSuffix}`} name="catalogSystem" defaultValue={selectedSystem ?? ""}>
+            <option value="">{labels.allLabel}</option>
+            {systems.map((system) => <option key={system.id} value={system.id}>{system.nameEn}</option>)}
+          </select>
+        </div>
+        <div className={styles.field}>
+          <label htmlFor={`catalog-kind-filter-${formIdSuffix}`}>{labels.kindLabel}</label>
+          <select id={`catalog-kind-filter-${formIdSuffix}`} name="catalogKind" defaultValue={selectedKind ?? "all"}>
+            <option value="all">{labels.allLabel}</option>
+            <option value="beyblade">{labels.beybladeLabel}</option>
+            <option value="part">{labels.partLabel}</option>
+            <option value="release">{labels.releaseLabel ?? "Release"}</option>
+            <option value="equipment">{labels.equipmentLabel ?? "Equipment"}</option>
+          </select>
+        </div>
+        <div className={styles.field}>
+          <label htmlFor={`catalog-part-type-filter-${formIdSuffix}`}>{labels.partTypeLabel ?? "Part kind"}</label>
+          <select id={`catalog-part-type-filter-${formIdSuffix}`} name="catalogPartType" defaultValue={selectedPartType ?? ""}>
+            <option value="">{labels.allLabel}</option>
+            {partTypeOptions.map((partType) => (
+              <option key={partType} value={partType}>{labels.partTypeLabel ?? "Part kind"}: {partType}</option>
+            ))}
+          </select>
+        </div>
         <button type="submit">{labels.searchSubmitLabel ?? "Search"}</button>
       </form>
 
