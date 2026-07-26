@@ -28,4 +28,4 @@
 
 `aliases[]` 欄位本身就位，且已知的一種真實 alias 有填入——Bit 的官方短代碼（如 Flat 的 `F`、Ball 的 `B`）,來自 beyparts.json 的 `alias` 欄位，可靠、非猜測。
 
-但票面要求的「俗稱、簡稱、常見錯字、Hasbro 名稱、Combo Style 名」**幾乎完全沒做**。這些是真人社群使用習慣（論壇用語、玩家口語、常見打字錯誤），沒有結構化資料來源可以程式化取得，需要實際瀏覽 beybladehub／hackmd／PTT／LINE 群這類社群場域人工蒐集，或至少用瀏覽器工具實際造訪 beybladehub 逐一核對——這超出本次可靠自動化的範圍，勉強生成會是憑空捏造，違反 ADR-0005「不自創」的精神。這一項有意保留未完成，不是遺漏，需要人工蒐集或另開一張專門的資料蒐集票。
+目前已補入一批可由 Go-Shoot 結構化 Part DB 直接核對的 alias：54 支 Part 共 75 個 abbreviation、Hasbro 名或 `aka` 值；只接受英文名稱的精確對應，並忽略一字母代碼，避免搜尋雜訊。這些資料由 `src/lib/parts/go-shoot-aliases.ts` 合併器與測試保護，且已寫入 `data/parts.json`。但論壇俗稱、常見錯字與 Combo Style 名仍沒有可靠結構化來源，不能把這 54 支誤宣稱為完整社群 alias 覆蓋；其餘仍需人工蒐集或另開專門資料票。

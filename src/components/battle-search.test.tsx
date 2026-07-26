@@ -17,7 +17,7 @@ function part(overrides: Partial<Part> = {}): Part {
     releaseAt: "2022-05-10",
     statEditions: [],
     moldBatches: [],
-    aliases: ["劍龍"],
+    aliases: ["劍龍", "DrSw"],
     ...overrides,
   } as Part;
 }
@@ -50,6 +50,23 @@ const labels = {
 
 describe("BattleSearch", () => {
   afterEach(cleanup);
+
+  it("finds a Part through a source-backed combo abbreviation", () => {
+    render(
+      <BattleSearch
+        allParts={[dranSword, cobaltDragoon]}
+        initialLeft={dranSword}
+        initialRight={cobaltDragoon}
+        locale="en"
+        labels={labels}
+      />,
+    );
+
+    const leftSearch = screen.getByRole("combobox", { name: "First subject" });
+    fireEvent.change(leftSearch, { target: { value: "DrSw" } });
+
+    expect(screen.getByRole("option", { name: /Dran Sword/ })).toBeInTheDocument();
+  });
 
   it("lets a player find and select two subjects across languages and aliases", () => {
     render(

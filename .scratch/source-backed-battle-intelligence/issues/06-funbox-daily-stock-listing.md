@@ -6,7 +6,7 @@
 
 **Status:** in-progress
 
-- [ ] 每筆 Stock Listing 顯示商品名稱、價格、庫存、通路與 captured time
+- [x] 每筆 Stock Listing 顯示商品名稱、價格、庫存、通路與 captured time
 - [x] 不鏡像商品描述或產品圖像
 - [x] 不顯示「可能過期」或其他推測性 stale 標記
 - [x] 外部連結直接前往 Funbox 商品頁，本站不經手交易

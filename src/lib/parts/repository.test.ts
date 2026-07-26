@@ -12,6 +12,10 @@ describe("parts repository", () => {
     expect(part?.stats).toEqual({ attack: 60, defense: 30, stamina: 25 });
   });
 
+  it("keeps the source-backed Go-Shoot abbreviation in the static Part record", () => {
+    expect(getPartById("DRANSWORD")?.aliases).toContain("DrSw");
+  });
+
   it("returns undefined for an id that does not exist", () => {
     expect(getPartById("NOT_A_REAL_PART")).toBeUndefined();
   });
