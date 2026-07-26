@@ -375,7 +375,7 @@ export async function fetchOpenRouterWithFallback(
           throw new Error(`API Error (${model}) on ${fetchUrl}: ${compactProviderError(response.status, errText)}`);
         }
 
-        const data = await response.json();
+        const data: any = await response.json();
         
         // Dynamic response payload adapter depending on protocol and model shapes
         let text = "";
