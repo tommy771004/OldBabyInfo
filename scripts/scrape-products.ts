@@ -1,11 +1,12 @@
 /**
  * Product scrape runner (tickets 21 and 23).
  *
- * The target file is intentionally empty until a real retailer URL and its
- * stable selectors have been reviewed. No invented product data belongs in
- * the catalog. Once targets are added, this runner prefers a structured JSON
- * endpoint, falls back to Playwright for dynamic pages, and persists through
- * the failure-safe Stock Listing repository.
+ * Manual targets remain empty until a real retailer URL and its stable
+ * selectors have been reviewed. Funbox category JSON is a separate
+ * structured-discovery path: only same-origin product rows with a unique Part
+ * match enter the Stock Listing repository. No invented product data belongs
+ * in the catalog; manual targets still prefer structured JSON and fall back to
+ * Playwright when necessary.
  */
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -14,7 +15,7 @@ import { chromium, type Browser } from "playwright";
 import { neon } from "@neondatabase/serverless";
 import { z } from "zod";
 import { scrapeProductTargets, type ProductTarget } from "../src/lib/stock/scraper.ts";
-import { persistScrapeResult } from "../src/lib/stock/repository.ts";
+import { persistScrapeResult, type ScrapeResult } from "../src/lib/stock/repository.ts";
 import {
   createSqlStockListingStore,
   type SqlClient,
@@ -23,9 +24,13 @@ import {
 import type { RawProductSnapshot } from "../src/lib/stock/parse-listing.ts";
 import { evaluateScrapeHealth } from "../src/lib/stock/scrape-health.ts";
 import { shouldSkipProductScrape } from "../src/lib/stock/scrape-runner.ts";
+import { discoverFunboxListings, type FunboxCategorySource } from "../src/lib/stock/funbox-discovery.ts";
+import { partsFileSchema, type Part } from "../src/lib/parts/schema.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TARGETS_PATH = join(__dirname, "..", "data", "product-targets.json");
+const FUNBOX_SOURCES_PATH = join(__dirname, "..", "data", "funbox-category-sources.json");
+const PARTS_PATH = join(__dirname, "..", "data", "parts.json");
 const userAgent = "OldBabyInfo product-data-bot/1.0 (https://oldbabyinfo.dev/data-policy)";
 
 const targetSchema = z.object({
@@ -44,6 +49,7 @@ const targetSchema = z.object({
 });
 
 const targetsSchema = z.array(targetSchema);
+const funboxSourcesSchema = z.array(z.object({ id: z.string().min(1), endpoint: z.url() }));
 const structuredSnapshotSchema = z.object({
   productName: z.string(),
   priceText: z.string(),
@@ -55,6 +61,22 @@ function readTargets(): ProductTarget[] {
     ...target,
     partId: target.partId,
   }));
+}
+
+function readFunboxSources(): FunboxCategorySource[] {
+  return funboxSourcesSchema.parse(JSON.parse(readFileSync(FUNBOX_SOURCES_PATH, "utf8")));
+}
+
+function readParts(): Part[] {
+  return partsFileSchema.parse(JSON.parse(readFileSync(PARTS_PATH, "utf8")));
+}
+
+async function fetchFunboxCategory(endpoint: string): Promise<unknown> {
+  const response = await fetch(endpoint, {
+    headers: { "user-agent": userAgent, accept: "application/json" },
+  });
+  if (!response.ok) throw new Error(`Funbox category returned ${response.status}`);
+  return response.json();
 }
 
 async function snapshotFromStructuredEndpoint(target: ProductTarget): Promise<RawProductSnapshot | null> {
@@ -93,8 +115,20 @@ function createPlaywrightLoader(browser: Browser) {
 
 async function main() {
   const targets = readTargets();
-  if (shouldSkipProductScrape(targets)) {
-    console.log(`No reviewed product targets are configured in ${TARGETS_PATH}; no Stock Listing data written.`);
+  const funboxDiscovery = await discoverFunboxListings(readFunboxSources(), readParts(), {
+    fetcher: fetchFunboxCategory,
+    minIntervalMs: Number(process.env.PRODUCT_SCRAPE_INTERVAL_MS ?? 10_000),
+  });
+  for (const failure of funboxDiscovery.failedSources) {
+    console.error(`Funbox ${failure.id}: ${failure.error}`);
+  }
+  if (funboxDiscovery.needsReview > 0) {
+    console.error(`Funbox discovery sent ${funboxDiscovery.needsReview} product rows to Needs Review; no ambiguous rows were published.`);
+  }
+
+  if (shouldSkipProductScrape(targets) && funboxDiscovery.listings.length === 0) {
+    console.log(`No reviewed product targets or safely matched Funbox products; no Stock Listing data written.`);
+    if (funboxDiscovery.failedSources.length > 0) process.exitCode = 1;
     return;
   }
 
@@ -103,7 +137,7 @@ async function main() {
 
   const dryRun = process.argv.includes("--dry-run");
   const minIntervalMs = Number(process.env.PRODUCT_SCRAPE_INTERVAL_MS ?? 10_000);
-  const browser = await chromium.launch();
+  let browser: Browser | undefined;
   try {
     const neonSql = neon(connectionString);
     const sql: SqlClient = {
@@ -113,14 +147,28 @@ async function main() {
       },
     };
     const store = createSqlStockListingStore(sql);
-    const results = await scrapeProductTargets(
-      targets,
-      {
-        structured: snapshotFromStructuredEndpoint,
-        playwright: createPlaywrightLoader(browser),
-      },
-      { minIntervalMs },
-    );
+    const discoveredResults: ScrapeResult[] = funboxDiscovery.listings.map((listing) => ({
+      id: listing.id,
+      partId: listing.partId,
+      retailer: "Funbox",
+      productUrl: listing.productUrl,
+      productName: listing.productName,
+      price: listing.price,
+      stockStatus: listing.stockStatus,
+    }));
+    let manualResults: ScrapeResult[] = [];
+    if (targets.length > 0) {
+      browser = await chromium.launch();
+      manualResults = await scrapeProductTargets(
+        targets,
+        {
+          structured: snapshotFromStructuredEndpoint,
+          playwright: createPlaywrightLoader(browser),
+        },
+        { minIntervalMs },
+      );
+    }
+    const results = [...discoveredResults, ...manualResults];
 
     const attemptedAt = new Date().toISOString();
     const expectedCountInput = process.env.PRODUCT_EXPECTED_COUNT?.trim();
@@ -145,9 +193,9 @@ async function main() {
     }
 
     console.log(`Scraped ${results.length} targets; ${failures} existing rows marked failed.`);
-    if (failures > 0 || !health.ok) process.exitCode = 1;
+    if (failures > 0 || !health.ok || funboxDiscovery.failedSources.length > 0) process.exitCode = 1;
   } finally {
-    await browser.close();
+    await browser?.close();
   }
 }
 

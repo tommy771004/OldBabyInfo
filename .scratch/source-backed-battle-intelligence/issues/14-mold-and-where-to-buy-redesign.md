@@ -19,4 +19,6 @@
 
 - Mold Batch lookup uses exact batch-code matching, and Part records now have separate optional weight and Source Excerpt fields. Unknown matches remain an explicit empty/needs-review state.
 - Where to Buy renders product, price, availability, retailer, captured time and direct external link; stale inference is absent and failure/empty states are tested.
+- Mold Batch empty and matched results are now announced through a status region, while the public search result list exposes its expanded state and relationship to the input for keyboard and assistive-technology users.
+- The shared public HTTP smoke now verifies that the Mold Batch and Where to Buy routes retain a `main`／`h1` landmark, labelled controls and explicit button types in their server-rendered HTML.
 - Full browser breakpoint verification remains open because the browser connector is unavailable; no claim is made for that unchecked item.

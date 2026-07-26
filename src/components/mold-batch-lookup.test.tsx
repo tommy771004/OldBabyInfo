@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it } from "vitest";
 import type { Part } from "@/lib/parts/schema.ts";
 import { MoldBatchLookup } from "./mold-batch-lookup.tsx";
 
@@ -25,6 +25,8 @@ const part: Part = {
 };
 
 describe("MoldBatchLookup", () => {
+  afterEach(cleanup);
+
   it("shows the linked Part and source when a batch code is found", () => {
     render(
       <MoldBatchLookup
@@ -51,5 +53,28 @@ describe("MoldBatchLookup", () => {
       "href",
       "https://example.com/dran-sword-batches",
     );
+  });
+
+  it("announces an empty result state to assistive technology", () => {
+    render(
+      <MoldBatchLookup
+        parts={[part]}
+        labels={{
+          searchLabel: "Batch code",
+          searchButton: "Look up",
+          emptyQuery: "Enter a batch code.",
+          noMatches: "No recorded batch matches that code.",
+          coverage: "Coverage: 1 of 1 Parts, 1 batch entries.",
+          source: "Source",
+        }}
+      />,
+    );
+
+    fireEvent.change(screen.getByRole("searchbox", { name: "Batch code" }), {
+      target: { value: "Z9" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Look up" }));
+
+    expect(screen.getByRole("status")).toHaveTextContent("No recorded batch matches that code.");
   });
 });

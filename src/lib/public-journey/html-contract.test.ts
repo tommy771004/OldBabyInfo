@@ -3,6 +3,7 @@ import {
   evaluateMoldBatchGuidanceHtml,
   evaluatePartDetailHtml,
   evaluatePublicNavigationHtml,
+  evaluatePublicSemanticsHtml,
 } from "./html-contract.ts";
 
 const validHtml = `
@@ -69,6 +70,39 @@ describe("public navigation HTML contract", () => {
     `);
 
     expect(result).toEqual({ status: "ok", failures: [] });
+  });
+});
+
+describe("public semantic HTML contract", () => {
+  it("accepts a labelled public page with usable form controls", () => {
+    const result = evaluatePublicSemanticsHtml(`
+      <html lang="en"><body>
+        <header><nav aria-label="Main navigation"><a href="/en/parts">Parts</a></nav></header>
+        <main><h1>Parts</h1>
+          <form><label for="query">Search</label><input id="query" name="query" type="search" />
+            <button type="submit">Search</button>
+          </form>
+          <label for="locale">Language</label><select id="locale"><option>English</option></select>
+        </main>
+      </body></html>
+    `);
+
+    expect(result).toEqual({ status: "ok", failures: [] });
+  });
+
+  it("rejects unlabeled controls and missing page landmarks", () => {
+    expect(evaluatePublicSemanticsHtml(`
+      <body><div><input type="search" /><button>Search</button></div></body>
+    `)).toEqual({
+      status: "invalid",
+      failures: [
+        "missing main landmark",
+        "missing h1 heading",
+        "missing document language",
+        "missing labelled form control: input",
+        "button is missing an explicit type",
+      ],
+    });
   });
 });
 

@@ -1,0 +1,9 @@
+[
+  {
+    "id": 12345,
+    "url": "/products/beyblade-x-dran-sword",
+    "title": "戰鬥陀螺X Dran Sword 基本組",
+    "price": 1299,
+    "variants": [{ "inventory_quantity": 2 }]
+  }
+]

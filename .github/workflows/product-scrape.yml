@@ -36,7 +36,7 @@ jobs:
       - name: Check reviewed product targets
         id: targets
         run: |
-          node -e 'const fs=require("node:fs"); const targets=JSON.parse(fs.readFileSync("data/product-targets.json", "utf8")); fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_targets=${targets.length > 0 ? "true" : "false"}\n`);'
+          node -e 'const fs=require("node:fs"); const targets=JSON.parse(fs.readFileSync("data/product-targets.json", "utf8")); const sources=JSON.parse(fs.readFileSync("data/funbox-category-sources.json", "utf8")); fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_targets=${targets.length > 0 ? "true" : "false"}\nhas_work=${targets.length > 0 || sources.length > 0 ? "true" : "false"}\n`);'
 
       - name: Install Chromium
         if: steps.targets.outputs.has_targets == 'true'
@@ -44,13 +44,13 @@ jobs:
 
       - name: Scrape and persist Stock Listings
         id: scrape
-        if: steps.targets.outputs.has_targets == 'true'
+        if: steps.targets.outputs.has_work == 'true'
         continue-on-error: true
         run: npm run scrape:products
 
       - name: Record safe no-op
-        if: steps.targets.outputs.has_targets != 'true'
-        run: echo "No reviewed product targets; Chromium install and scrape skipped."
+        if: steps.targets.outputs.has_work != 'true'
+        run: echo "No reviewed product targets or category sources; scrape skipped."
 
       - name: Record failure and fail the job
         if: steps.scrape.outcome == 'failure'

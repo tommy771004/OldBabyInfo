@@ -13,6 +13,45 @@ export type PartDetailHtmlContract =
   | { status: "ok"; failures: [] }
   | { status: "invalid"; failures: string[] };
 
+function attributeOf(tag: string, attribute: string): string | null {
+  const match = tag.match(new RegExp(`${attribute}=["']([^"']+)["']`, "i"));
+  return match?.[1] ?? null;
+}
+
+function controlHasLabel(html: string, tagName: "input" | "select" | "textarea", tag: string): boolean {
+  if (attributeOf(tag, "aria-label") || attributeOf(tag, "aria-labelledby")) return true;
+
+  const id = attributeOf(tag, "id");
+  if (id && new RegExp(`<label\\b[^>]*\\bfor=["']${id}["']`, "i").test(html)) return true;
+
+  // A native label may wrap a control, as the shared locale selector does.
+  return new RegExp(`<label\\b[^>]*>[\\s\\S]*?<${tagName}\\b`, "i").test(html);
+}
+
+export function evaluatePublicSemanticsHtml(html: string): PartDetailHtmlContract {
+  const failures: string[] = [];
+
+  if (!/<main\b/i.test(html)) failures.push("missing main landmark");
+  if (!/<h1\b/i.test(html)) failures.push("missing h1 heading");
+  if (!/<html\b[^>]*\blang=["'][^"']+["']/i.test(html)) {
+    failures.push("missing document language");
+  }
+
+  for (const tagName of ["input", "select", "textarea"] as const) {
+    const controls = html.match(new RegExp(`<${tagName}\\b[^>]*>`, "gi")) ?? [];
+    if (controls.some((tag) => !controlHasLabel(html, tagName, tag))) {
+      failures.push(`missing labelled form control: ${tagName}`);
+    }
+  }
+
+  const buttons = html.match(/<button\b[^>]*>/gi) ?? [];
+  if (buttons.some((tag) => !/\btype=["'][^"']+["']/i.test(tag))) {
+    failures.push("button is missing an explicit type");
+  }
+
+  return failures.length > 0 ? { status: "invalid", failures } : { status: "ok", failures: [] };
+}
+
 export function evaluatePublicNavigationHtml(html: string): PartDetailHtmlContract {
   const failures: string[] = [];
 

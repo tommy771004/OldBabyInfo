@@ -1,0 +1,42 @@
+[
+  {
+    "id": "beyblade-bxa",
+    "endpoint": "https://shop.funbox.com.tw/category_products/takaratomy/beyblade/XIKBXA.json?limit=18&page=1&sort_by=sell_from-desc"
+  },
+  {
+    "id": "beyblade-bxb",
+    "endpoint": "https://shop.funbox.com.tw/category_products/takaratomy/beyblade/XIKBXB.json?limit=18&page=1&sort_by=sell_from-desc"
+  },
+  {
+    "id": "beyblade-bxc",
+    "endpoint": "https://shop.funbox.com.tw/category_products/takaratomy/beyblade/XIKBXC.json?limit=18&page=1&sort_by=sell_from-desc"
+  },
+  {
+    "id": "beyblade-bxd",
+    "endpoint": "https://shop.funbox.com.tw/category_products/takaratomy/beyblade/XIKBXD.json?limit=18&page=1&sort_by=sell_from-desc"
+  },
+  {
+    "id": "beyblade-bxp",
+    "endpoint": "https://shop.funbox.com.tw/category_products/takaratomy/beyblade/XIKBXP.json?limit=18&page=1&sort_by=sell_from-desc"
+  },
+  {
+    "id": "beyblade-aa",
+    "endpoint": "https://shop.funbox.com.tw/category_products/takaratomy/beyblade/XIKBAA.json?limit=18&page=1&sort_by=sell_from-desc"
+  },
+  {
+    "id": "beyblade-bb",
+    "endpoint": "https://shop.funbox.com.tw/category_products/takaratomy/beyblade/XIKBBB.json?limit=18&page=1&sort_by=sell_from-desc"
+  },
+  {
+    "id": "beyblade-cc",
+    "endpoint": "https://shop.funbox.com.tw/category_products/takaratomy/beyblade/XIKBCC.json?limit=18&page=1&sort_by=sell_from-desc"
+  },
+  {
+    "id": "beyblade-cd",
+    "endpoint": "https://shop.funbox.com.tw/category_products/takaratomy/beyblade/XIKBCD.json?limit=18&page=1&sort_by=sell_from-desc"
+  },
+  {
+    "id": "beyblade-kb2x",
+    "endpoint": "https://shop.funbox.com.tw/category_products/takaratomy/beyblade/KB2X.json?limit=18&page=1&sort_by=sell_from-desc"
+  }
+]

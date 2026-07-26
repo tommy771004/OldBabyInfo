@@ -46,7 +46,7 @@ export function MoldBatchLookup({ parts, labels, partNames = {} }: MoldBatchLook
 
       <p>{labels.coverage}</p>
 
-      <div aria-live="polite">
+      <div role="status" aria-live="polite">
         {result.kind === "empty-query" ? <p>{labels.emptyQuery}</p> : null}
         {result.kind === "no-matches" ? <p>{labels.noMatches}</p> : null}
         {result.kind === "matches"

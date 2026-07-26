@@ -62,13 +62,14 @@ describe("BattleSearch", () => {
       />,
     );
 
-    const leftSearch = screen.getByRole("searchbox", { name: "First subject" });
+    expect(screen.getByRole("heading", { level: 1, name: "Battle subject" })).toBeInTheDocument();
+    const leftSearch = screen.getByRole("combobox", { name: "First subject" });
     fireEvent.change(leftSearch, { target: { value: "蒼龍神劍" } });
 
     expect(screen.getByRole("option", { name: /Dran Sword.*蒼龍神劍/ })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("option", { name: /Dran Sword.*蒼龍神劍/ }));
 
-    const rightSearch = screen.getByRole("searchbox", { name: "Second subject" });
+    const rightSearch = screen.getByRole("combobox", { name: "Second subject" });
     fireEvent.change(rightSearch, { target: { value: "龍王" } });
     expect(screen.getByRole("option", { name: /Cobalt Dragoon.*蒼龍騎兵/ })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("option", { name: /Cobalt Dragoon.*蒼龍騎兵/ }));
@@ -77,6 +78,58 @@ describe("BattleSearch", () => {
     expect(screen.getByText("Attack")).toBeInTheDocument();
     expect(screen.getByText("60")).toBeInTheDocument();
     expect(screen.getByText("45")).toBeInTheDocument();
+  });
+
+  it("exposes the result list state to keyboard and assistive technology", () => {
+    render(
+      <BattleSearch
+        allParts={[dranSword, cobaltDragoon]}
+        initialLeft={dranSword}
+        initialRight={cobaltDragoon}
+        locale="en"
+        labels={labels}
+      />,
+    );
+
+    const leftSearch = screen.getByRole("combobox", { name: "First subject" });
+    expect(leftSearch).toHaveAttribute("aria-autocomplete", "list");
+    expect(leftSearch).toHaveAttribute("aria-expanded", "false");
+
+    fireEvent.change(leftSearch, { target: { value: "Dran" } });
+
+    expect(leftSearch).toHaveAttribute("aria-expanded", "true");
+    const results = screen.getByRole("listbox", { name: "First subject results" });
+    expect(leftSearch).toHaveAttribute("aria-controls", results.id);
+  });
+
+  it("lets a keyboard user navigate, choose and dismiss a result", () => {
+    render(
+      <BattleSearch
+        allParts={[dranSword, cobaltDragoon]}
+        initialLeft={dranSword}
+        initialRight={cobaltDragoon}
+        locale="en"
+        labels={labels}
+      />,
+    );
+
+    const leftSearch = screen.getByRole("combobox", { name: "First subject" });
+    fireEvent.change(leftSearch, { target: { value: "Cobalt" } });
+    const results = screen.getByRole("listbox", { name: "First subject results" });
+    const firstOption = screen.getByRole("option", { name: /Cobalt Dragoon/ });
+
+    fireEvent.keyDown(leftSearch, { key: "ArrowDown" });
+    expect(leftSearch).toHaveAttribute("aria-activedescendant", firstOption.id);
+    fireEvent.keyDown(leftSearch, { key: "Enter" });
+    expect(screen.getByRole("heading", { level: 2, name: /Cobalt Dragoon.*versus.*Cobalt Dragoon/ })).toBeInTheDocument();
+    expect(leftSearch).toHaveValue("");
+    expect(leftSearch).not.toHaveAttribute("aria-activedescendant");
+    expect(results).not.toBeInTheDocument();
+
+    fireEvent.change(leftSearch, { target: { value: "Dran" } });
+    fireEvent.keyDown(leftSearch, { key: "Escape" });
+    expect(leftSearch).toHaveValue("");
+    expect(screen.queryByRole("listbox", { name: "First subject results" })).not.toBeInTheDocument();
   });
 
   it("lets a player find a complete Combo by its assembled name", () => {
@@ -91,7 +144,7 @@ describe("BattleSearch", () => {
       />,
     );
 
-    const leftSearch = screen.getByRole("searchbox", { name: "First subject" });
+    const leftSearch = screen.getByRole("combobox", { name: "First subject" });
     fireEvent.change(leftSearch, { target: { value: "Dran Sword 3-60F" } });
     expect(screen.getByRole("option", { name: /Dran Sword 3-60F/ })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("option", { name: /Dran Sword 3-60F/ }));
@@ -111,7 +164,7 @@ describe("BattleSearch", () => {
       />,
     );
 
-    const rightSearch = screen.getByRole("searchbox", { name: "Second subject" });
+    const rightSearch = screen.getByRole("combobox", { name: "Second subject" });
     fireEvent.change(rightSearch, { target: { value: "コバルトドラグーン" } });
     expect(screen.getByRole("option", { name: /Cobalt Dragoon/ })).toBeInTheDocument();
   });

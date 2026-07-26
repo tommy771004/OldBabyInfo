@@ -2,6 +2,7 @@ import {
   evaluateMoldBatchGuidanceHtml,
   evaluatePartDetailHtml,
   evaluatePublicNavigationHtml,
+  evaluatePublicSemanticsHtml,
 } from "../src/lib/public-journey/html-contract.ts";
 
 const baseUrl = process.env.PUBLIC_JOURNEY_BASE_URL ?? "http://localhost:3000";
@@ -33,6 +34,10 @@ for (const locale of locales) {
     const navigationResult = evaluatePublicNavigationHtml(html);
     if (navigationResult.status === "invalid") {
       throw new Error(`Public navigation contract failed for ${routeUrl}: ${navigationResult.failures.join("; ")}`);
+    }
+    const semanticsResult = evaluatePublicSemanticsHtml(html);
+    if (semanticsResult.status === "invalid") {
+      throw new Error(`Public semantic contract failed for ${routeUrl}: ${semanticsResult.failures.join("; ")}`);
     }
     if (route === "mold-batches") {
       const guidanceResult = evaluateMoldBatchGuidanceHtml(html);

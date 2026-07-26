@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import type { Locale } from "@/i18n/routing.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 import {
@@ -51,10 +51,40 @@ function SearchLane({
   onQueryChange: (query: string) => void;
   onSelect: (subject: BattleSubject) => void;
 }) {
+  const resultsId = useId();
+  const [activeIndex, setActiveIndex] = useState(-1);
   const matches = useMemo(
     () => (query.trim() ? searchBattleSubjects(allSubjects, query).slice(0, 6) : []),
     [allSubjects, query],
   );
+
+  function selectSubject(subject: BattleSubject) {
+    setActiveIndex(-1);
+    onSelect(subject);
+  }
+
+  function onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setActiveIndex(-1);
+      onQueryChange("");
+      return;
+    }
+
+    if (!query.trim() || matches.length === 0) return;
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActiveIndex((current) => Math.min(current + 1, matches.length - 1));
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActiveIndex((current) => Math.max(current - 1, -1));
+    } else if (event.key === "Enter" && activeIndex >= 0) {
+      event.preventDefault();
+      const subject = matches[activeIndex];
+      if (subject) selectSubject(subject);
+    }
+  }
 
   return (
     <div className={styles.searchLane}>
@@ -63,10 +93,20 @@ function SearchLane({
         <input
           aria-label={label}
           type="search"
+          role="combobox"
           value={query}
-          onChange={(event) => onQueryChange(event.target.value)}
+          onChange={(event) => {
+            setActiveIndex(-1);
+            onQueryChange(event.target.value);
+          }}
+          onKeyDown={onKeyDown}
           placeholder={placeholder}
           autoComplete="off"
+          aria-autocomplete="list"
+          aria-controls={resultsId}
+          aria-expanded={Boolean(query.trim())}
+          aria-haspopup="listbox"
+          aria-activedescendant={activeIndex >= 0 ? `${resultsId}-option-${activeIndex}` : undefined}
         />
       </label>
 
@@ -78,18 +118,20 @@ function SearchLane({
       ) : null}
 
       {query.trim() ? (
-        <div className={styles.results} role="listbox" aria-label={`${label} results`}>
+        <div id={resultsId} className={styles.results} role="listbox" aria-label={`${label} results`}>
           {matches.length > 0 ? (
-            matches.map((subject) => {
+            matches.map((subject, index) => {
               const localizedName = subjectNameOf(subject, locale);
               return (
                 <button
                   key={subject.id}
+                  id={`${resultsId}-option-${index}`}
                   type="button"
                   role="option"
-                  aria-selected={selected?.id === subject.id}
+                  aria-selected={activeIndex === index}
+                  data-active={activeIndex === index ? "true" : undefined}
                   className={styles.result}
-                  onClick={() => onSelect(subject)}
+                  onClick={() => selectSubject(subject)}
                 >
                   <span>{subject.nameEn}</span>
                   {localizedName !== subject.nameEn ? <span>{localizedName}</span> : null}
@@ -219,7 +261,7 @@ export function BattleSearch({
   return (
     <section className={styles.battleSection} aria-label={labels.searchLabel}>
       <div className={styles.searchHeader}>
-        <p>{labels.searchLabel}</p>
+        <h1>{labels.searchLabel}</h1>
         <div className={styles.searchLanes}>
           <SearchLane
             label={labels.leftLabel}
