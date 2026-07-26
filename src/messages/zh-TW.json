@@ -82,7 +82,9 @@
   "catalog_search_placeholder": "依官方名稱、別名或縮寫搜尋",
   "catalog_search_submit": "搜尋",
   "catalog_part_type": "零件種類",
-  "catalog_legacy_part": "開啟既有零件頁"
+  "catalog_legacy_part": "開啟既有零件頁",
+  "legacy_heading": "X 零件數值庫",
+  "legacy_description": "這裡保留既有 X 零件的官方數值、排序與比較入口；跨世代資料請使用上方 Catalog。"
   },
   "GuidesPage": {
     "title": "新手指南",

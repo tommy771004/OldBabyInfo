@@ -82,7 +82,9 @@
   "catalog_search_placeholder": "Search by official name, alias, or abbreviation",
   "catalog_search_submit": "Search",
   "catalog_part_type": "Part kind",
-  "catalog_legacy_part": "Open legacy part page"
+  "catalog_legacy_part": "Open legacy part page",
+  "legacy_heading": "X stats library",
+  "legacy_description": "The existing X stats, sorting, and comparison tools stay here. Use the Catalog above for cross-generation browsing."
   },
   "GuidesPage": {
     "title": "Getting started",

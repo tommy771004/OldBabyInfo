@@ -82,7 +82,9 @@
   "catalog_search_placeholder": "公式名・別名・略称で検索",
   "catalog_search_submit": "検索",
   "catalog_part_type": "パーツ種別",
-  "catalog_legacy_part": "旧パーツページを開く"
+  "catalog_legacy_part": "旧パーツページを開く",
+  "legacy_heading": "X パーツ数値ライブラリ",
+  "legacy_description": "既存の X パーツ数値・並べ替え・比較機能はこちらに残しています。世代横断の閲覧は上のカタログを使用してください。"
   },
   "GuidesPage": {
     "title": "初心者ガイド",

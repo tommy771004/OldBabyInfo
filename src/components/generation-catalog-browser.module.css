@@ -1,0 +1,206 @@
+.browser {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 2vw, 2rem);
+  border: 1px solid color-mix(in srgb, var(--ink-on-light) 14%, transparent);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface-50) 72%, transparent);
+}
+
+.header {
+  display: grid;
+  gap: .35rem;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--accent-on-light);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.header h2 {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.55rem, 2.8vw, 2.35rem);
+  letter-spacing: -.02em;
+}
+
+.lede {
+  margin: 0;
+  color: color-mix(in srgb, var(--ink-on-light) 62%, transparent);
+  font-size: .9rem;
+}
+
+.searchForm {
+  display: grid;
+  grid-template-columns: minmax(14rem, 2fr) repeat(4, minmax(8rem, 1fr)) auto;
+  gap: .75rem;
+  align-items: end;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--surface-100);
+}
+
+.searchForm label {
+  display: grid;
+  gap: .35rem;
+  min-width: 0;
+  color: color-mix(in srgb, var(--ink-on-light) 72%, transparent);
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.searchForm input,
+.searchForm select,
+.searchForm button {
+  min-height: 2.55rem;
+  border: 1px solid color-mix(in srgb, var(--ink-on-light) 20%, transparent);
+  border-radius: 7px;
+  background: var(--surface-50);
+  color: var(--ink-on-light);
+}
+
+.searchForm input,
+.searchForm select {
+  min-width: 0;
+  padding: .4rem .55rem;
+}
+
+.searchForm button {
+  padding: .4rem .85rem;
+  border-color: var(--accent-on-light);
+  background: var(--accent-on-light);
+  color: var(--surface-50);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.navGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  align-items: center;
+}
+
+.navGroup a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: .3rem .7rem;
+  border: 1px solid color-mix(in srgb, var(--ink-on-light) 15%, transparent);
+  border-radius: 999px;
+  color: var(--ink-on-light);
+  font-size: .82rem;
+  text-decoration: none;
+}
+
+.navGroup a[aria-current="page"] {
+  border-color: var(--accent-on-light);
+  background: var(--accent-on-light);
+  color: var(--surface-50);
+}
+
+.recordGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: .65rem;
+  max-height: 42rem;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+}
+
+.recordCard {
+  display: grid;
+  gap: .55rem;
+  min-height: 5rem;
+  padding: .85rem;
+  border: 1px solid color-mix(in srgb, var(--ink-on-light) 13%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface-50) 76%, transparent);
+}
+
+.recordMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  color: color-mix(in srgb, var(--ink-on-light) 56%, transparent);
+  font-size: .68rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.recordMeta span {
+  padding: .15rem .35rem;
+  border-radius: 4px;
+  background: var(--surface-200);
+}
+
+.recordLink {
+  color: var(--ink-on-light);
+  font-family: var(--font-display), serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.recordLink:hover,
+.recordLink:focus-visible {
+  color: var(--accent-on-light);
+  text-decoration: underline;
+}
+
+.details {
+  display: grid;
+  gap: .8rem;
+  padding: 1rem;
+  border-left: 3px solid var(--accent-on-light);
+  background: var(--surface-100);
+}
+
+.details h3,
+.details h4 {
+  margin: 0;
+}
+
+.details p {
+  margin: 0;
+}
+
+.details ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .searchForm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .searchForm label:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .browser {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .searchForm {
+    grid-template-columns: 1fr;
+  }
+
+  .searchForm label:first-child {
+    grid-column: auto;
+  }
+
+  .recordGrid {
+    grid-template-columns: 1fr;
+    max-height: 32rem;
+  }
+}

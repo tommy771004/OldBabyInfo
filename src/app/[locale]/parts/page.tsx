@@ -43,7 +43,10 @@ export default async function PartsPage({
     ? catalogGeneration as GenerationId
     : "x";
   const selectedSystem = firstParam(catalogParams.catalogSystem);
-  const selectedKind = firstParam(catalogParams.catalogKind);
+  const selectedKindParam = firstParam(catalogParams.catalogKind);
+  const selectedKind = selectedKindParam === "all" || selectedKindParam === "beyblade" || selectedKindParam === "part" || selectedKindParam === "release" || selectedKindParam === "equipment"
+    ? selectedKindParam
+    : undefined;
   const catalogQuery = firstParam(catalogParams.catalogQuery);
   const selectedPartType = firstParam(catalogParams.catalogPartType);
   const catalogRecordId = firstParam(catalogParams.catalogRecordId);
@@ -56,9 +59,7 @@ export default async function PartsPage({
     ? searchGenerationCatalog(catalog.records, catalogQuery ?? "", {
       generationId: hasCatalogGeneration ? selectedGeneration : undefined,
       system: selectedSystem,
-      kind: selectedKind === "beyblade" || selectedKind === "part" || selectedKind === "release" || selectedKind === "equipment"
-        ? selectedKind
-        : undefined,
+      kind: selectedKind === "all" ? undefined : selectedKind,
       partType: selectedPartType,
     })
     : selectCatalogRecordsForPage(catalog.records, selectedGeneration, false);
@@ -74,9 +75,7 @@ export default async function PartsPage({
       catalogRecords={browserRecords}
       selectedGeneration={selectedGeneration}
       selectedSystem={selectedSystem}
-      selectedKind={selectedKind === "beyblade" || selectedKind === "part" || selectedKind === "release" || selectedKind === "equipment"
-        ? selectedKind
-        : undefined}
+      selectedKind={selectedKind ?? "part"}
       selectedPartType={selectedPartType}
       searchQuery={catalogQuery}
       searchAcrossGenerations={searchAcrossGenerations}
@@ -110,7 +109,7 @@ function PartsPageBody({
   catalogRecords: ReturnType<typeof getGenerationCatalogSnapshot>["records"];
   selectedGeneration: GenerationId;
   selectedSystem?: string;
-  selectedKind?: "beyblade" | "part" | "release" | "equipment";
+  selectedKind: "all" | "beyblade" | "part" | "release" | "equipment";
   selectedPartType?: string;
   searchQuery?: string;
   searchAcrossGenerations?: boolean;
@@ -162,28 +161,36 @@ function PartsPageBody({
         }}
       />
 
-      <nav className={styles.filters} aria-label={t("type_all")}>
-        <Link
-          href={{ pathname: "/parts", query: buildQuery({ sort: state.sort, direction: state.direction }) }}
-          aria-current={state.type === undefined ? "true" : undefined}
-        >
-          {t("type_all")}
-        </Link>
-        {TYPES.map((type) => (
-          <Link
-            key={type}
-            href={{
-              pathname: "/parts",
-              query: buildQuery({ type, sort: state.sort, direction: state.direction }),
-            }}
-            aria-current={state.type === type ? "true" : undefined}
-          >
-            {t(`type_${type}`)}
-          </Link>
-        ))}
-      </nav>
-
-      <SearchableRows parts={parts} locale={locale} state={state} />
+      {selectedGeneration === "x" && selectedKind === "part" && !searchAcrossGenerations && !searchQuery ? (
+        <section className={styles.legacySection} aria-labelledby="legacy-x-parts-heading">
+          <header>
+            <p className={styles.sectionKicker}>LEGACY X PROJECTION</p>
+            <h2 id="legacy-x-parts-heading">{t("legacy_heading")}</h2>
+            <p>{t("legacy_description")}</p>
+          </header>
+          <nav className={styles.filters} aria-label={t("type_all")}>
+            <Link
+              href={{ pathname: "/parts", query: buildQuery({ sort: state.sort, direction: state.direction }) }}
+              aria-current={state.type === undefined ? "true" : undefined}
+            >
+              {t("type_all")}
+            </Link>
+            {TYPES.map((type) => (
+              <Link
+                key={type}
+                href={{
+                  pathname: "/parts",
+                  query: buildQuery({ type, sort: state.sort, direction: state.direction }),
+                }}
+                aria-current={state.type === type ? "true" : undefined}
+              >
+                {t(`type_${type}`)}
+              </Link>
+            ))}
+          </nav>
+          <SearchableRows parts={parts} locale={locale} state={state} />
+        </section>
+      ) : null}
     </main>
   );
 }
