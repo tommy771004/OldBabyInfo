@@ -43,7 +43,10 @@
     "no_results": "找不到符合條件的零件",
     "search_label": "搜尋零件",
     "search_placeholder": "輸入中文、日文或英文名稱",
-    "playstyle_column": "傾向"
+    "playstyle_column": "傾向",
+    "silhouette_column": "剪影",
+    "silhouette_label": "{count} 瓣造型",
+    "silhouette_unknown_label": "剪影尚未收錄"
   },
   "EventsPage": {
     "title": "賽事行事曆",

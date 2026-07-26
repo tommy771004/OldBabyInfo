@@ -43,7 +43,10 @@
     "no_results": "No parts match these filters",
     "search_label": "Search parts",
     "search_placeholder": "Search by Chinese, Japanese, or English name",
-    "playstyle_column": "Type"
+    "playstyle_column": "Type",
+    "silhouette_column": "Silhouette",
+    "silhouette_label": "{count}-wing silhouette",
+    "silhouette_unknown_label": "Silhouette not yet available"
   },
   "EventsPage": {
     "title": "Event Calendar",

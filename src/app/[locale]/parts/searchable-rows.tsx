@@ -8,6 +8,8 @@ import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { searchParts } from "@/lib/parts/search-parts.ts";
 import { buildQuery } from "@/lib/parts/build-query.ts";
 import { PlaystyleSymbol, RatchetHeightSymbol } from "@/components/type-symbols.tsx";
+import { BladeSilhouette, BladeSilhouettePlaceholder } from "@/components/blade-silhouette.tsx";
+import { wingCountFor, hasObservedWingCount } from "@/lib/parts/blade-wing-count.ts";
 import type { SortField } from "@/lib/parts/filter-sort.ts";
 import type { FilterSortState } from "@/lib/parts/parse-filter-sort-params.ts";
 import type { Part } from "@/lib/parts/schema.ts";
@@ -60,6 +62,7 @@ export function SearchableRows({
             <tr>
               <th>{t("type_blade")}</th>
               <th>Name</th>
+              <th>{t("silhouette_column")}</th>
               <th>{t("playstyle_column")}</th>
               {STAT_FIELDS.map((field) => (
                 <th key={field}>
@@ -80,6 +83,18 @@ export function SearchableRows({
               <tr key={part.id}>
                 <td>{t(`type_${part.type}`)}</td>
                 <td>{localizedNameOf(part, locale)}</td>
+                <td>
+                  {part.type === "blade" && hasObservedWingCount(part.id) ? (
+                    <BladeSilhouette
+                      wingCount={wingCountFor(part.id)}
+                      label={t("silhouette_label", { count: wingCountFor(part.id) })}
+                    />
+                  ) : part.type === "blade" ? (
+                    <BladeSilhouettePlaceholder label={t("silhouette_unknown_label")} />
+                  ) : (
+                    "—"
+                  )}
+                </td>
                 <td>
                   {(part.type === "blade" || part.type === "bit") && part.playstyle ? (
                     <PlaystyleSymbol playstyle={part.playstyle} locale={locale} />

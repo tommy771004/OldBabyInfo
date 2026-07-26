@@ -43,7 +43,10 @@
     "no_results": "条件に一致するパーツが見つかりません",
     "search_label": "パーツを検索",
     "search_placeholder": "中国語・日本語・英語で名前を入力",
-    "playstyle_column": "タイプ"
+    "playstyle_column": "タイプ",
+    "silhouette_column": "シルエット",
+    "silhouette_label": "{count}枚羽根の形状",
+    "silhouette_unknown_label": "シルエット未収録"
   },
   "EventsPage": {
     "title": "大会カレンダー",
