@@ -81,7 +81,8 @@
   "catalog_search": "搜尋零件庫",
   "catalog_search_placeholder": "依官方名稱、別名或縮寫搜尋",
   "catalog_search_submit": "搜尋",
-  "catalog_part_type": "零件種類"
+  "catalog_part_type": "零件種類",
+  "catalog_legacy_part": "開啟既有零件頁"
   },
   "GuidesPage": {
     "title": "新手指南",

@@ -4,6 +4,7 @@ import {
   getGenerationCatalogNeedsReview,
   getGenerationCatalogRecords,
   getGenerationCatalogSnapshot,
+  getLegacyPartForCatalogRecord,
 } from "./repository.ts";
 
 describe("generation catalog repository", () => {
@@ -122,5 +123,19 @@ describe("generation catalog repository", () => {
       byId.get(release.releaseOf)?.kind === "beyblade" &&
       (release.containsRecordIds ?? []).every((id) => byId.has(id)),
     )).toBe(true);
+  });
+
+  it("bridges an X Catalog Part back to the legacy X projection without bridging CX", () => {
+    const dranSword = getAllGenerationCatalogRecords().find((record) =>
+      record.generationId === "x" && record.kind === "part" && record.name === "Dran Sword",
+    );
+    expect(dranSword).toBeDefined();
+    expect(getLegacyPartForCatalogRecord(dranSword!.id)?.id).toBe("DRANSWORD");
+
+    const cxPart = getAllGenerationCatalogRecords().find((record) =>
+      record.generationId === "x" && record.system === "cx" && record.partType === "main_blade",
+    );
+    expect(cxPart).toBeDefined();
+    expect(getLegacyPartForCatalogRecord(cxPart!.id)).toBeUndefined();
   });
 });

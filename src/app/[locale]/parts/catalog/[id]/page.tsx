@@ -2,11 +2,15 @@ import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { GenerationCatalogBrowser } from "@/components/generation-catalog-browser.tsx";
-import { getGenerationCatalogSnapshot } from "@/lib/generation-catalog/repository.ts";
+import {
+  getGenerationCatalogSnapshot,
+  getLegacyPartForCatalogRecord,
+} from "@/lib/generation-catalog/repository.ts";
 import type { GenerationId } from "@/lib/generation-catalog/schema.ts";
 import { selectCatalogRecordsForPage } from "@/lib/generation-catalog/payload.ts";
 import { type Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation.ts";
+import { slugify } from "@/lib/parts/slug.ts";
 import styles from "../../page.module.css";
 
 export const dynamic = "force-dynamic";
@@ -56,6 +60,8 @@ function GenerationCatalogRecordBody({
   name: string;
 }) {
   const t = useTranslations("PartsPage");
+  const legacyPart = getLegacyPartForCatalogRecord(recordId);
+  const localePrefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
 
   return (
     <main className={styles.page}>
@@ -69,6 +75,7 @@ function GenerationCatalogRecordBody({
         selectedGeneration={generationId}
         selectedSystem={system}
         selectedRecordId={recordId}
+        legacyPartHrefForRecord={() => legacyPart ? `${localePrefix}/parts/${slugify(legacyPart.nameEn)}` : undefined}
         labels={{
           heading: t("catalog_heading"),
           generationLabel: t("catalog_generation"),
@@ -83,6 +90,7 @@ function GenerationCatalogRecordBody({
           releaseContentsHeading: t("catalog_release_contents"),
           releaseLabel: t("catalog_release"),
           equipmentLabel: t("catalog_equipment"),
+          legacyPartLabel: t("catalog_legacy_part"),
         }}
       />
     </main>

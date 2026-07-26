@@ -81,7 +81,8 @@
   "catalog_search": "Search catalog",
   "catalog_search_placeholder": "Search by official name, alias, or abbreviation",
   "catalog_search_submit": "Search",
-  "catalog_part_type": "Part kind"
+  "catalog_part_type": "Part kind",
+  "catalog_legacy_part": "Open legacy part page"
   },
   "GuidesPage": {
     "title": "Getting started",

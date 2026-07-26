@@ -24,6 +24,7 @@ export interface GenerationCatalogBrowserLabels {
   searchPlaceholder?: string;
   searchSubmitLabel?: string;
   partTypeLabel?: string;
+  legacyPartLabel?: string;
 }
 
 interface GenerationCatalogBrowserProps {
@@ -38,6 +39,7 @@ interface GenerationCatalogBrowserProps {
   searchQuery?: string;
   searchAcrossGenerations?: boolean;
   selectedRecordId?: string;
+  legacyPartHrefForRecord?: (recordId: string) => string | undefined;
   labels: GenerationCatalogBrowserLabels;
 }
 
@@ -53,6 +55,7 @@ export function GenerationCatalogBrowser({
   searchQuery,
   searchAcrossGenerations = false,
   selectedRecordId,
+  legacyPartHrefForRecord,
   labels,
 }: GenerationCatalogBrowserProps) {
   const generationRecords = records.filter((record) => record.generationId === selectedGeneration);
@@ -199,6 +202,7 @@ export function GenerationCatalogBrowser({
           allRecords={generationRecords}
           labels={labels}
           recordHref={recordHref}
+          legacyPartHref={legacyPartHrefForRecord?.(selectedRecord.id)}
         />
       ) : null}
     </section>
@@ -210,11 +214,13 @@ function CatalogRecordDetails({
   allRecords,
   labels,
   recordHref,
+  legacyPartHref,
 }: {
   record: GenerationCatalogRecord;
   allRecords: GenerationCatalogRecord[];
   labels: GenerationCatalogBrowserLabels;
   recordHref: (recordId: string) => string;
+  legacyPartHref?: string;
 }) {
   const parts = record.components.flatMap((component) => {
     const matched = component.recordId
@@ -243,6 +249,9 @@ function CatalogRecordDetails({
       <h3 id="catalog-record-heading">{record.name}</h3>
       <p>{kindLabel(record.kind, labels)}</p>
       <p data-catalog-provenance>{record.verificationStatus} · {record.sourceId}</p>
+      {record.kind === "part" && legacyPartHref ? (
+        <p><a href={legacyPartHref}>{labels.legacyPartLabel ?? "Open legacy part page"}</a></p>
+      ) : null}
       {record.kind === "beyblade" ? (
         <section aria-labelledby="catalog-composition-heading">
           <h4 id="catalog-composition-heading">{labels.compositionHeading}</h4>

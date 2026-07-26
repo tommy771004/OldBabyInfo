@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { getAllParts } from "@/lib/parts/repository.ts";
 import {
   getGenerationCatalogSnapshot,
+  getLegacyPartForCatalogRecord,
 } from "@/lib/generation-catalog/repository.ts";
 import { generationIdSchema, type GenerationId } from "@/lib/generation-catalog/schema.ts";
 import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
@@ -14,6 +15,7 @@ import { filterByType, sortParts, type PartType } from "@/lib/parts/filter-sort.
 import { parseFilterSortParams, type FilterSortState } from "@/lib/parts/parse-filter-sort-params.ts";
 import { buildQuery } from "@/lib/parts/build-query.ts";
 import type { Part } from "@/lib/parts/schema.ts";
+import { slugify } from "@/lib/parts/slug.ts";
 import { SearchableRows } from "./searchable-rows.tsx";
 import styles from "./page.module.css";
 
@@ -115,6 +117,11 @@ function PartsPageBody({
   selectedRecordId?: string;
 }) {
   const t = useTranslations("PartsPage");
+  const localePrefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
+  const legacyPartHrefForRecord = (recordId: string) => {
+    const legacyPart = getLegacyPartForCatalogRecord(recordId);
+    return legacyPart ? `${localePrefix}/parts/${slugify(legacyPart.nameEn)}` : undefined;
+  };
 
   return (
     <main className={styles.page}>
@@ -132,6 +139,7 @@ function PartsPageBody({
         searchQuery={searchQuery}
         searchAcrossGenerations={searchAcrossGenerations}
         selectedRecordId={selectedRecordId}
+        legacyPartHrefForRecord={legacyPartHrefForRecord}
         labels={{
           heading: t("catalog_heading"),
           generationLabel: t("catalog_generation"),
@@ -150,6 +158,7 @@ function PartsPageBody({
           searchPlaceholder: t("catalog_search_placeholder"),
           searchSubmitLabel: t("catalog_search_submit"),
           partTypeLabel: t("catalog_part_type"),
+          legacyPartLabel: t("catalog_legacy_part"),
         }}
       />
 

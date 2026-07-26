@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { GenerationCatalogBrowser } from "./generation-catalog-browser.tsx";
+import type { GenerationCatalogRecord } from "@/lib/generation-catalog/schema.ts";
 
 const generations = [{
   id: "x" as const,
@@ -211,5 +212,30 @@ describe("GenerationCatalogBrowser", () => {
     expect(screen.getAllByRole("link", { name: "Dran Sword" })).toHaveLength(2);
     expect(screen.getAllByText("Complete Beyblades").length).toBeGreaterThanOrEqual(2);
     expect(screen.getAllByRole("combobox", { name: "Entity type" }).length).toBeGreaterThan(0);
+  });
+
+  it("links an X Part to the legacy part page when a crosswalk match exists", () => {
+    render(
+      <GenerationCatalogBrowser
+        locale="en"
+        generations={generations}
+        systems={systems}
+        records={[{
+          ...(records[0] as GenerationCatalogRecord),
+          id: "x:part:dran-sword",
+          name: "Dran Sword",
+        }]}
+        selectedGeneration="x"
+        selectedSystem="cx"
+        selectedRecordId="x:part:dran-sword"
+        legacyPartHrefForRecord={(recordId) => recordId === "x:part:dran-sword" ? "/en/parts/dran-sword" : undefined}
+        labels={{ ...labels, legacyPartLabel: "Open legacy part page" }}
+      />,
+    );
+
+    expect(screen.getByRole("link", { name: "Open legacy part page" })).toHaveAttribute(
+      "href",
+      "/en/parts/dran-sword",
+    );
   });
 });

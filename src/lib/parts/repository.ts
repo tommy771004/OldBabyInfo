@@ -1,6 +1,6 @@
 import { z } from "zod";
-import partsJson from "../../../data/parts.json";
-import partImagesJson from "../../../data/part-images.json";
+import partsJson from "../../../data/parts.json" with { type: "json" };
+import partImagesJson from "../../../data/part-images.json" with { type: "json" };
 import { partsFileSchema, type Part } from "./schema.ts";
 import { slugify } from "./slug.ts";
 
