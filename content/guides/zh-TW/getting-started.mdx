@@ -1,0 +1,28 @@
+---
+title: 新手入門：三個核心零件怎麼組成一個 Combo
+description: 認識 Blade、Ratchet、Bit 各自負責什麼，以及 Combo 的數值是怎麼算出來的。
+---
+
+戰鬥陀螺 X 的每一顆陀螺，都是由三個可替換的 Part 組成：Blade、Ratchet、Bit。搞懂這三者各自的角色，是看懂任何一組 Combo 的第一步。
+
+## 三個部位各自負責什麼
+
+### Blade：決定攻擊形狀
+
+Blade 是陀螺最上層的組件，決定攻擊形狀與大部分的重量分布。不同 Blade 的瓣數與外形差異很大，直接影響碰撞時的力道傳遞方式。
+
+### Ratchet：決定高度與齒數
+
+Ratchet 夾在 Blade 與 Bit 之間，決定陀螺的固定高度與齒數。同一個「齒型」下也會有不同高度的版本，例如 `3-60` 與 `3-70` 齒型相同、高度不同。
+
+### Bit：決定移動軌跡
+
+Bit 是陀螺最下層的接地組件，決定移動軌跡與持久特性——是攻擊型的尖銳點地，還是持久型的圓滑滾動，都是 Bit 決定的。
+
+## Combo 的數值怎麼合成
+
+一組 Combo 的 Attack、Defense、Stamina 是三個部位各自數值的加總；X-Dash 與 Burst Resistance 則只讀 Bit 的數值，因為這兩項數值在官方資料裡本來就只存在於 Bit。
+
+> 資料來源：官方 `MasterData.json` 與社群工具 `comboUtils.js` 交叉驗證，詳見本站 ADR-0007。
+
+換句話說，同一個 Blade 換上不同 Bit，Attack／Defense／Stamina 只會有小幅變動，但 X-Dash／Burst Resistance 會完全跟著 Bit 改變。想直接動手試算，可以到零件庫的[組合建構器](/combo)自己搭一組看看。

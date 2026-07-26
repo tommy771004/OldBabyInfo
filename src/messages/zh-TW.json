@@ -53,6 +53,29 @@
     "silhouette_bit_stamina": "持久型剪影",
     "silhouette_bit_balance": "平衡型剪影"
   },
+  "GuidesPage": {
+    "title": "新手指南",
+    "empty": "目前尚無指南文章。"
+  },
+  "GuideDetailPage": {
+    "toc_heading": "目錄",
+    "back_to_guides": "← 回新手指南"
+  },
+  "MetaStandingPage": {
+    "title": "勝率榜",
+    "intro": "本站不發布主觀強度分級，這裡的排行完全來自真實賽事結果統計。",
+    "no_tier_list_note": "沒有 S／A／B 之類的等級標記——每一筆數據都附上樣本數與統計期間，由你自己判斷可信度。",
+    "empty_state_heading": "目前尚無已記錄的賽事結果資料",
+    "empty_state_body": "已收錄 {count} 筆賽事出場紀錄，數量不足以計算任何 Combo 的表現。等賽事結果資料累積後，這裡會顯示各 Combo 的使用率、前八強佔比與奪冠次數。",
+    "sample_size_label": "樣本數",
+    "period_label": "統計期間",
+    "usage_rate_label": "使用率",
+    "top8_rate_label": "前八強佔比",
+    "champion_count_label": "奪冠次數",
+    "insufficient_data": "資料不足",
+    "expand_parts": "查看組成零件",
+    "period_to": "至"
+  },
   "ComboBuilderPage": {
     "title": "組合建構器",
     "blade_slot": "Blade",

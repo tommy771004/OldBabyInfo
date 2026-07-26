@@ -53,6 +53,29 @@
     "silhouette_bit_stamina": "スタミナタイプのシルエット",
     "silhouette_bit_balance": "バランスタイプのシルエット"
   },
+  "GuidesPage": {
+    "title": "初心者ガイド",
+    "empty": "現在ガイド記事はありません。"
+  },
+  "GuideDetailPage": {
+    "toc_heading": "目次",
+    "back_to_guides": "← ガイド一覧に戻る"
+  },
+  "MetaStandingPage": {
+    "title": "使用率ランキング",
+    "intro": "本サイトは主観的なランク付けを行いません。ここでの順位は実際の大会結果の統計のみに基づきます。",
+    "no_tier_list_note": "S／A／Bのようなランク表記は使用しません——すべてのデータにサンプル数と集計期間が付き、信頼度はご自身で判断できます。",
+    "empty_state_heading": "現時点で記録された大会結果データはありません",
+    "empty_state_body": "現在{count}件の出場記録が登録されています。この件数ではどのComboの実績も計算できません。大会結果データが蓄積されると、各Comboの使用率、ベスト8進出率、優勝回数が表示されます。",
+    "sample_size_label": "サンプル数",
+    "period_label": "集計期間",
+    "usage_rate_label": "使用率",
+    "top8_rate_label": "ベスト8進出率",
+    "champion_count_label": "優勝回数",
+    "insufficient_data": "データ不足",
+    "expand_parts": "構成パーツを見る",
+    "period_to": "〜"
+  },
   "ComboBuilderPage": {
     "title": "コンボビルダー",
     "blade_slot": "Blade",

@@ -1,0 +1,140 @@
+/*
+ * Guide article typography (ticket 37). Lives at ADR-0006's "場邊" —
+ * inherits the site-wide light/warm default (ticket 41), no local color
+ * override needed here.
+ */
+
+.page {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: color-mix(in srgb, var(--ink-on-light) 75%, transparent);
+}
+
+/* Table of contents */
+
+.toc {
+  margin: 2rem 0 2.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--ink-on-light) 18%, transparent);
+  border-radius: 8px;
+}
+
+.tocHeading {
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.tocLevel1 {
+  margin-left: 0;
+}
+
+.tocLevel2 {
+  margin-left: 1.25rem;
+}
+
+.tocLevel3 {
+  margin-left: 2.5rem;
+}
+
+.toc a {
+  text-decoration: none;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+/*
+ * Article body — line length (38em, narrower than a Latin-tuned measure
+ * since dense CJK glyphs read comfortably shorter per line), line height
+ * (1.9, more breathing room than Latin's usual 1.5 for the same reason),
+ * heading hierarchy (h2/h3 use the display font via the existing global
+ * mapping in fonts.css), and `text-wrap: pretty` on paragraphs — the
+ * modern CSS orphan-prevention property, not a manual `<wbr>` hack.
+ */
+
+.article {
+  max-width: 38em;
+  line-height: 1.9;
+  font-size: 1.05rem;
+}
+
+.article p {
+  margin: 0 0 1.5em;
+  text-wrap: pretty;
+}
+
+.article h2 {
+  margin: 2.5em 0 1em;
+  font-size: 1.5rem;
+  text-wrap: balance;
+}
+
+.article h3 {
+  margin: 2em 0 0.75em;
+  font-size: 1.2rem;
+  text-wrap: balance;
+}
+
+.article ul,
+.article ol {
+  margin: 0 0 1.5em;
+  padding-left: 1.5em;
+}
+
+.article li {
+  margin-bottom: 0.5em;
+}
+
+/* Quotes and source citations both use the accent font (Iansui) — see
+   ticket 37's own requirement, and the content convention documented in
+   content/guides/README.md: author both as a blockquote. */
+.article blockquote {
+  font-family: var(--font-accent), serif;
+  font-size: 1.15em;
+  margin: 2em 0;
+  padding: 0.25em 0 0.25em 1.25rem;
+  border-left: 3px solid var(--accent-on-light);
+  color: color-mix(in srgb, var(--ink-on-light) 85%, transparent);
+}
+
+.article blockquote p {
+  margin: 0;
+}
+
+.article figure {
+  margin: 2em 0;
+}
+
+.article img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
+
+.article figcaption {
+  font-family: var(--font-accent), serif;
+  font-size: 0.9em;
+  margin-top: 0.5em;
+  color: color-mix(in srgb, var(--ink-on-light) 65%, transparent);
+  text-align: center;
+}
+
+.article :is(h2, h3)[id] {
+  scroll-margin-top: 1.5rem;
+}

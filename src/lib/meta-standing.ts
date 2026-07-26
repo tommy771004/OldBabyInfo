@@ -22,6 +22,14 @@ export function comboKeyOf(bladeId: string, ratchetId: string, bitId: string): s
   return `${bladeId}|${ratchetId}|${bitId}`;
 }
 
+export function parseComboKey(key: string): { bladeId: string; ratchetId: string; bitId: string } {
+  const [bladeId, ratchetId, bitId] = key.split("|");
+  if (!bladeId || !ratchetId || !bitId) {
+    throw new Error(`Malformed Combo key: ${key}`);
+  }
+  return { bladeId, ratchetId, bitId };
+}
+
 export type Placement = "champion" | "top8" | "entrant";
 
 export interface ComboAppearance {

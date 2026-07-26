@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { comboKeyOf, computeMetaStandings, type ComboAppearance } from "./meta-standing.ts";
+import {
+  comboKeyOf,
+  computeMetaStandings,
+  parseComboKey,
+  type ComboAppearance,
+} from "./meta-standing.ts";
 
 describe("comboKeyOf", () => {
   it("builds a stable key from the three part ids", () => {
@@ -10,6 +15,21 @@ describe("comboKeyOf", () => {
     // Same three named parts → same key, even though a real Blade might
     // have multiple Stat Editions behind the scenes (ADR-0007).
     expect(comboKeyOf("DRANSWORD", "3-60", "FLAT")).toBe(comboKeyOf("DRANSWORD", "3-60", "FLAT"));
+  });
+});
+
+describe("parseComboKey", () => {
+  it("round-trips with comboKeyOf", () => {
+    const key = comboKeyOf("DRANSWORD", "3-60", "FLAT");
+    expect(parseComboKey(key)).toEqual({
+      bladeId: "DRANSWORD",
+      ratchetId: "3-60",
+      bitId: "FLAT",
+    });
+  });
+
+  it("throws on a malformed key rather than silently returning partial data", () => {
+    expect(() => parseComboKey("not-a-real-key")).toThrow("Malformed Combo key");
   });
 });
 
