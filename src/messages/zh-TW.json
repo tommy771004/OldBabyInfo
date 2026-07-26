@@ -53,6 +53,44 @@
     "silhouette_bit_stamina": "持久型剪影",
     "silhouette_bit_balance": "平衡型剪影"
   },
+  "ComboBuilderPage": {
+    "title": "組合建構器",
+    "blade_slot": "Blade",
+    "ratchet_slot": "Ratchet",
+    "bit_slot": "Bit",
+    "search_placeholder": "輸入零件名稱",
+    "no_matches": "找不到符合的零件",
+    "clear": "清除",
+    "incomplete_notice": "尚未選滿三個部位，以下是目前已選零件的合計，不是完整 Combo 的數值。",
+    "stats_heading": "合成數值",
+    "weight_note": "官方原始資料裡的重量欄位恆為 0，並非真實物理重量，本站暫不提供重量數字，以免顯示錯誤資訊。",
+    "bit_only_note": "選擇 Bit 後才會顯示"
+  },
+  "ComparePage": {
+    "title": "零件比較",
+    "remove": "移除",
+    "add_label": "加入零件比較",
+    "add_placeholder": "輸入零件名稱",
+    "empty": "還沒有選擇任何零件，從下方搜尋加入。",
+    "no_matches": "找不到符合的零件",
+    "row_name": "名稱",
+    "row_type": "類型"
+  },
+  "PartDetailPage": {
+    "back_to_parts": "← 回零件庫",
+    "names_heading": "名稱",
+    "name_en": "英文",
+    "name_ja": "日文",
+    "name_zh_tw": "中文",
+    "aliases_label": "玩家俗稱",
+    "stats_heading": "數值",
+    "image_disclaimer": "產品圖片版權為 TAKARA TOMY 所有，經社群資料庫轉載，僅供識別用途。",
+    "image_missing": "尚無產品圖",
+    "release_label": "發售日",
+    "release_unknown": "未知",
+    "thread_heading": "討論",
+    "thread_placeholder": "討論功能即將推出。"
+  },
   "EventsPage": {
     "title": "賽事行事曆",
     "upcoming": "即將舉行",

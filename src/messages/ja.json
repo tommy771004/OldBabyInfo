@@ -53,6 +53,44 @@
     "silhouette_bit_stamina": "スタミナタイプのシルエット",
     "silhouette_bit_balance": "バランスタイプのシルエット"
   },
+  "ComboBuilderPage": {
+    "title": "コンボビルダー",
+    "blade_slot": "Blade",
+    "ratchet_slot": "Ratchet",
+    "bit_slot": "Bit",
+    "search_placeholder": "パーツ名を入力",
+    "no_matches": "一致するパーツが見つかりません",
+    "clear": "クリア",
+    "incomplete_notice": "まだ3つのパーツが揃っていません。以下は現在選択中のパーツの合計で、完全なコンボの数値ではありません。",
+    "stats_heading": "合成ステータス",
+    "weight_note": "公式の元データにある重量欄は常に0で、実際の物理的な重量ではないため、誤った情報を表示しないよう本サイトでは重量を表示していません。",
+    "bit_only_note": "Bitを選択すると表示されます"
+  },
+  "ComparePage": {
+    "title": "パーツ比較",
+    "remove": "削除",
+    "add_label": "比較に追加",
+    "add_placeholder": "パーツ名を入力",
+    "empty": "まだパーツが選択されていません。下から検索して追加してください。",
+    "no_matches": "一致するパーツが見つかりません",
+    "row_name": "名称",
+    "row_type": "種類"
+  },
+  "PartDetailPage": {
+    "back_to_parts": "← パーツ一覧に戻る",
+    "names_heading": "名称",
+    "name_en": "英語",
+    "name_ja": "日本語",
+    "name_zh_tw": "中国語",
+    "aliases_label": "プレイヤー間の呼び名",
+    "stats_heading": "ステータス",
+    "image_disclaimer": "製品画像の著作権はTAKARA TOMYに帰属します。コミュニティデータベース経由で転載しており、識別用途に限ります。",
+    "image_missing": "製品画像は未収録です",
+    "release_label": "発売日",
+    "release_unknown": "不明",
+    "thread_heading": "ディスカッション",
+    "thread_placeholder": "ディスカッション機能は近日公開予定です。"
+  },
   "EventsPage": {
     "title": "大会カレンダー",
     "upcoming": "開催予定",

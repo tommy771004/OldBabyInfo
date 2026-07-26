@@ -53,6 +53,44 @@
     "silhouette_bit_stamina": "Stamina-type silhouette",
     "silhouette_bit_balance": "Balance-type silhouette"
   },
+  "ComboBuilderPage": {
+    "title": "Combo builder",
+    "blade_slot": "Blade",
+    "ratchet_slot": "Ratchet",
+    "bit_slot": "Bit",
+    "search_placeholder": "Search for a part",
+    "no_matches": "No matching parts",
+    "clear": "Clear",
+    "incomplete_notice": "Not all three parts are selected yet — the totals below are just the parts you've picked so far, not a complete Combo.",
+    "stats_heading": "Combined stats",
+    "weight_note": "The official raw data's weight field is always 0, not a real physical weight, so this site doesn't show a weight number rather than display something misleading.",
+    "bit_only_note": "Shown once a Bit is selected"
+  },
+  "ComparePage": {
+    "title": "Compare parts",
+    "remove": "Remove",
+    "add_label": "Add to comparison",
+    "add_placeholder": "Search for a part",
+    "empty": "No parts selected yet — search below to add one.",
+    "no_matches": "No matching parts",
+    "row_name": "Name",
+    "row_type": "Type"
+  },
+  "PartDetailPage": {
+    "back_to_parts": "← Back to parts",
+    "names_heading": "Names",
+    "name_en": "English",
+    "name_ja": "Japanese",
+    "name_zh_tw": "Chinese",
+    "aliases_label": "Community nicknames",
+    "stats_heading": "Stats",
+    "image_disclaimer": "Product image copyright belongs to TAKARA TOMY, reproduced via a community database for identification purposes only.",
+    "image_missing": "No product image yet",
+    "release_label": "Release date",
+    "release_unknown": "Unknown",
+    "thread_heading": "Discussion",
+    "thread_placeholder": "Discussion is coming soon."
+  },
   "EventsPage": {
     "title": "Event Calendar",
     "upcoming": "Upcoming",

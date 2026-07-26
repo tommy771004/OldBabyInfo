@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import type { Locale } from "@/i18n/routing.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
+import { slugify } from "@/lib/parts/slug.ts";
 import { searchParts } from "@/lib/parts/search-parts.ts";
 import { buildQuery } from "@/lib/parts/build-query.ts";
 import { PlaystyleSymbol, RatchetHeightSymbol } from "@/components/type-symbols.tsx";
@@ -84,7 +85,9 @@ export function SearchableRows({
             {visible.map((part) => (
               <tr key={part.id}>
                 <td>{t(`type_${part.type}`)}</td>
-                <td>{localizedNameOf(part, locale)}</td>
+                <td>
+                  <Link href={`/parts/${slugify(part.nameEn)}`}>{localizedNameOf(part, locale)}</Link>
+                </td>
                 <td>
                   {part.type === "blade" && hasObservedWingCount(part.id) ? (
                     <BladeSilhouette
