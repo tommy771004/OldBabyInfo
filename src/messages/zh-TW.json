@@ -64,7 +64,20 @@
     "silhouette_bit_attack": "攻擊型剪影",
     "silhouette_bit_defense": "防禦型剪影",
     "silhouette_bit_stamina": "持久型剪影",
-    "silhouette_bit_balance": "平衡型剪影"
+    "silhouette_bit_balance": "平衡型剪影",
+    "catalog_heading": "跨世代零件庫",
+    "catalog_generation": "世代",
+    "catalog_system": "系統",
+    "catalog_kind": "資料類型",
+    "catalog_all": "全部",
+    "catalog_beyblades": "完整陀螺",
+    "catalog_parts": "零件",
+    "catalog_composition": "原廠組成",
+  "catalog_contained_by": "包含此零件的完整陀螺",
+  "catalog_releases": "發售版本",
+  "catalog_release_contents": "發售內容",
+  "catalog_release": "發售版本",
+  "catalog_equipment": "裝備"
   },
   "GuidesPage": {
     "title": "新手指南",

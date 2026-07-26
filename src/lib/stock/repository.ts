@@ -3,6 +3,7 @@ import type { StockStatus } from "./parse-listing.ts";
 export interface StockListing {
   id: string;
   partId: string | undefined;
+  releaseId?: string;
   productName: string;
   retailer: string;
   productUrl: string;
@@ -23,6 +24,7 @@ export type ScrapeResult =
   | {
       id: string;
       partId: string | undefined;
+      releaseId?: string;
       retailer: string;
       productUrl: string;
       productName: string;
@@ -32,6 +34,7 @@ export type ScrapeResult =
   | {
       id: string;
       partId: string | undefined;
+      releaseId?: string;
       retailer: string;
       productUrl: string;
       error: string;

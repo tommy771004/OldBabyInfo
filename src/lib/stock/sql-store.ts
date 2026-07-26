@@ -8,6 +8,7 @@ export interface SqlClient {
 export interface StockListingRow {
   id: string;
   part_id: string | null;
+  release_id?: string | null;
   product_name: string;
   retailer: string;
   product_url: string;
@@ -21,30 +22,40 @@ export interface StockListingRow {
 
 export interface StockListingReader {
   listByPartId(partId: string): Promise<StockListing[]>;
+  listByReleaseId(releaseId: string): Promise<StockListing[]>;
 }
 
 const SELECT_SQL = `
-  SELECT id, part_id, product_name, retailer, product_url, price,
+  SELECT id, part_id, release_id, product_name, retailer, product_url, price,
          stock_status, captured_at, last_attempt_at, scrape_status, error_message
   FROM stock_listings
   WHERE id = $1
 `;
 
 const SELECT_BY_PART_SQL = `
-  SELECT id, part_id, product_name, retailer, product_url, price,
+  SELECT id, part_id, release_id, product_name, retailer, product_url, price,
          stock_status, captured_at, last_attempt_at, scrape_status, error_message
   FROM stock_listings
   WHERE part_id = $1
   ORDER BY captured_at DESC, retailer ASC
 `;
 
+const SELECT_BY_RELEASE_SQL = `
+  SELECT id, part_id, release_id, product_name, retailer, product_url, price,
+         stock_status, captured_at, last_attempt_at, scrape_status, error_message
+  FROM stock_listings
+  WHERE release_id = $1
+  ORDER BY captured_at DESC, retailer ASC
+`;
+
 const UPSERT_SQL = `
   INSERT INTO stock_listings
-    (id, part_id, product_name, retailer, product_url, price, stock_status,
+    (id, part_id, release_id, product_name, retailer, product_url, price, stock_status,
      captured_at, last_attempt_at, scrape_status, error_message)
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
   ON CONFLICT (id) DO UPDATE SET
     part_id = EXCLUDED.part_id,
+    release_id = EXCLUDED.release_id,
     product_name = EXCLUDED.product_name,
     retailer = EXCLUDED.retailer,
     product_url = EXCLUDED.product_url,
@@ -73,6 +84,7 @@ function toListing(row: StockListingRow): StockListing {
     lastAttemptAt: iso(row.last_attempt_at),
     scrapeStatus: row.scrape_status,
   };
+  if (row.release_id) listing.releaseId = row.release_id;
   if (row.error_message !== null) listing.errorMessage = row.error_message;
   return listing;
 }
@@ -88,10 +100,15 @@ export function createSqlStockListingStore(sql: SqlClient): StockListingStore & 
       const result = await sql.query(SELECT_BY_PART_SQL, [partId]);
       return result.rows.map(toListing);
     },
+    async listByReleaseId(releaseId) {
+      const result = await sql.query(SELECT_BY_RELEASE_SQL, [releaseId]);
+      return result.rows.map(toListing);
+    },
     async save(row) {
       await sql.query(UPSERT_SQL, [
         row.id,
         row.partId ?? null,
+        row.releaseId ?? null,
         row.productName,
         row.retailer,
         row.productUrl,

@@ -26,6 +26,7 @@ import { evaluateScrapeHealth } from "../src/lib/stock/scrape-health.ts";
 import { shouldSkipProductScrape } from "../src/lib/stock/scrape-runner.ts";
 import { discoverFunboxListings, type FunboxCategorySource } from "../src/lib/stock/funbox-discovery.ts";
 import { partsFileSchema, type Part } from "../src/lib/parts/schema.ts";
+import { getAllGenerationCatalogRecords } from "../src/lib/generation-catalog/repository.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TARGETS_PATH = join(__dirname, "..", "data", "product-targets.json");
@@ -117,6 +118,7 @@ async function main() {
   const targets = readTargets();
   const funboxDiscovery = await discoverFunboxListings(readFunboxSources(), readParts(), {
     fetcher: fetchFunboxCategory,
+    releases: getAllGenerationCatalogRecords().filter((record) => record.kind === "release"),
     minIntervalMs: Number(process.env.PRODUCT_SCRAPE_INTERVAL_MS ?? 10_000),
   });
   for (const failure of funboxDiscovery.failedSources) {
@@ -150,6 +152,7 @@ async function main() {
     const discoveredResults: ScrapeResult[] = funboxDiscovery.listings.map((listing) => ({
       id: listing.id,
       partId: listing.partId,
+      releaseId: listing.releaseId,
       retailer: "Funbox",
       productUrl: listing.productUrl,
       productName: listing.productName,

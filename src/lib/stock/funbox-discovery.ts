@@ -1,4 +1,6 @@
 import type { Part } from "../parts/schema.ts";
+import type { GenerationCatalogRecord } from "../generation-catalog/schema.ts";
+import { matchFunboxRelease } from "../generation-catalog/releases.ts";
 import {
   matchFunboxProductToPart,
   parseFunboxCategoryProducts,
@@ -11,7 +13,8 @@ export interface FunboxCategorySource {
 }
 
 export interface FunboxDiscoveredListing extends FunboxCategoryListing {
-  partId: string;
+  partId?: string;
+  releaseId?: string;
 }
 
 export interface FunboxDiscoveryReport {
@@ -23,6 +26,7 @@ export interface FunboxDiscoveryReport {
 
 export interface FunboxDiscoveryOptions {
   fetcher: (endpoint: string) => Promise<unknown>;
+  releases?: GenerationCatalogRecord[];
   minIntervalMs?: number;
   sleep?: (durationMs: number) => Promise<void>;
 }
@@ -70,8 +74,17 @@ export async function discoverFunboxListings(
         const report = parseFunboxCategoryProducts(payload);
         skippedRows += report.skippedRows;
         for (const listing of report.listings) {
+          let releaseId: string | undefined;
+          if (options.releases) {
+            const releaseMatch = matchFunboxRelease(listing, options.releases);
+            if (releaseMatch.status === "needs_review" && releaseMatch.reason === "ambiguous") {
+              needsReview += 1;
+              continue;
+            }
+            if (releaseMatch.status === "matched") releaseId = releaseMatch.releaseId;
+          }
           const partId = matchFunboxProductToPart(listing.productName, parts);
-          if (!partId) {
+          if (!partId && !releaseId) {
             needsReview += 1;
             continue;
           }
@@ -79,7 +92,11 @@ export async function discoverFunboxListings(
             skippedRows += 1;
             continue;
           }
-          byId.set(listing.id, { ...listing, partId });
+          byId.set(listing.id, {
+            ...listing,
+            ...(partId ? { partId } : {}),
+            ...(releaseId ? { releaseId } : {}),
+          });
         }
 
         if (!Array.isArray(payload) || payload.length < pageSize) break;

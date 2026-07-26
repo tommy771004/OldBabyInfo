@@ -2,6 +2,34 @@ import { describe, expect, it } from "vitest";
 import { createSqlStockListingStore, type SqlClient } from "./sql-store.ts";
 
 describe("createSqlStockListingStore", () => {
+  it("reads Stock Listings attached to a Release", async () => {
+    const sql: SqlClient = {
+      async query() {
+        return {
+          rows: [{
+            id: "funbox-bx-01",
+            part_id: null,
+            release_id: "takaratomy:release:bx-01",
+            product_name: "BX-01",
+            retailer: "Funbox",
+            product_url: "https://example.com/bx-01",
+            price: 1299,
+            stock_status: "in_stock" as const,
+            captured_at: "2026-07-26T12:00:00.000Z",
+            last_attempt_at: "2026-07-26T12:00:00.000Z",
+            scrape_status: "ok" as const,
+            error_message: null,
+          }],
+        };
+      },
+    };
+
+    await expect(createSqlStockListingStore(sql).listByReleaseId("takaratomy:release:bx-01")).resolves.toMatchObject([{
+      id: "funbox-bx-01",
+      releaseId: "takaratomy:release:bx-01",
+    }]);
+  });
+
   it("reads a nullable Part id and timestamp fields from the SQL boundary", async () => {
     const sql: SqlClient = {
       async query() {
@@ -68,6 +96,7 @@ describe("createSqlStockListingStore", () => {
     expect(calls[0]?.params).toEqual([
       "funbox-dran-sword",
       "dran-sword",
+      null,
       "Dran Sword",
       "Funbox",
       "https://example.com/dran-sword",

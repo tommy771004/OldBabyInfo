@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import type { Part } from "../parts/schema.ts";
 import { discoverFunboxListings, type FunboxCategorySource } from "./funbox-discovery.ts";
+import { buildReleaseRecords } from "../generation-catalog/releases.ts";
 
 const part: Part = {
   id: "DRANSWORD",
@@ -24,6 +25,39 @@ const sources: FunboxCategorySource[] = [
 ];
 
 describe("discoverFunboxListings", () => {
+  it("attaches a unique Funbox row to a Release and isolates ambiguous rows", async () => {
+    const releases = buildReleaseRecords({
+      sourceId: "takaratomy-fixture",
+      sourceUrl: "https://example.com/releases",
+      sourceVersion: "revision:1",
+      generationId: "x",
+      system: "bx",
+      products: [
+        { sourceRecordId: "BX-01-JP", sku: "BX-01", name: "Dran Sword Starter", region: "JP" },
+        { sourceRecordId: "BX-01-TW", sku: "BX-01-TW", name: "Dran Sword Starter", region: "TW" },
+      ],
+    }).filter((record) => record.kind === "release");
+
+    const result = await discoverFunboxListings(
+      [sources[0]!],
+      [],
+      {
+        releases,
+        fetcher: vi.fn().mockResolvedValue([
+          { id: 40, url: "/products/bx-01", title: "BX-01", price: 1299, variants: [] },
+          { id: 41, url: "/products/ambiguous", title: "Dran Sword Starter", price: 999, variants: [] },
+        ]),
+        minIntervalMs: 0,
+      },
+    );
+
+    expect(result.listings).toMatchObject([{
+      id: "funbox-product-40",
+      releaseId: releases[0]!.id,
+    }]);
+    expect(result.needsReview).toBe(1);
+  });
+
   it("fetches categories, attaches uniquely matched Parts and keeps empty categories empty", async () => {
     const fetcher = vi.fn()
       .mockResolvedValueOnce([

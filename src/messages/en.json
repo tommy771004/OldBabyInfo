@@ -64,7 +64,20 @@
     "silhouette_bit_attack": "Attack-type silhouette",
     "silhouette_bit_defense": "Defense-type silhouette",
     "silhouette_bit_stamina": "Stamina-type silhouette",
-    "silhouette_bit_balance": "Balance-type silhouette"
+    "silhouette_bit_balance": "Balance-type silhouette",
+    "catalog_heading": "Cross-generation Parts Catalog",
+    "catalog_generation": "Generation",
+    "catalog_system": "System",
+    "catalog_kind": "Entity type",
+    "catalog_all": "All",
+    "catalog_beyblades": "Complete Beyblades",
+    "catalog_parts": "Parts",
+    "catalog_composition": "Stock composition",
+  "catalog_contained_by": "Contained in complete Beyblades",
+  "catalog_releases": "Releases",
+  "catalog_release_contents": "Release contents",
+  "catalog_release": "Release",
+  "catalog_equipment": "Equipment"
   },
   "GuidesPage": {
     "title": "Getting started",
