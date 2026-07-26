@@ -17,6 +17,8 @@ export function MoldBatchVariants({
           <li key={batch.batchCode}>
             <strong>{batch.batchCode}</strong>
             <p>{batch.note}</p>
+            {batch.weightGrams ? <p>{batch.weightGrams.min}–{batch.weightGrams.max} g</p> : null}
+            {batch.sourceExcerpt ? <p>{batch.sourceExcerpt}</p> : null}
             <a href={batch.sourceUrl} target="_blank" rel="noreferrer">
               {labels.source}
             </a>

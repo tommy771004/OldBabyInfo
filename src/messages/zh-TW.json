@@ -231,10 +231,12 @@
   },
   "EventsPage": {
     "title": "賽事行事曆",
+    "intro": "正式場次只讀取原始 Event 試算表；每筆資料都保留可回查的來源。",
     "upcoming": "即將舉行",
     "past": "已結束",
     "no_upcoming": "近期沒有已知的賽事場次",
     "registration_label": "報名方式",
+    "date": "日期",
     "registration_onsite": "現場報名",
     "registration_online": "線上報名",
     "registration_phone": "電話報名",

@@ -1,0 +1,14 @@
+.page { width: min(100% - 2rem, 72rem); margin: 0 auto; padding: 3rem 0 6rem; }
+.intro { max-width: 55ch; margin-bottom: 3rem; }
+.section { margin-top: 3.5rem; }
+.eventList { display: grid; gap: 1rem; padding: 0; list-style: none; }
+.event { display: grid; grid-template-columns: minmax(10rem, .7fr) minmax(0, 1.8fr) auto; gap: 1.25rem 2rem; padding: 1.25rem 0; border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 18%, transparent); }
+.eventTier { color: var(--accent-on-light); font-family: var(--font-display), serif; font-size: 1.35rem; }
+.event h3 { margin: 0; font-size: 1.25rem; }
+.address, .meta { margin: .35rem 0 0; color: color-mix(in srgb, var(--ink-on-light) 68%, transparent); }
+.details { display: grid; grid-template-columns: max-content 1fr; gap: .35rem .75rem; margin: 0; font-size: .9rem; }
+.details dt { color: color-mix(in srgb, var(--ink-on-light) 58%, transparent); }
+.details dd { margin: 0; }
+.source { display: inline-block; margin-top: .75rem; white-space: nowrap; }
+.past { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 18%, transparent); }
+@media (max-width: 720px) { .event { grid-template-columns: 1fr; gap: .7rem; } }

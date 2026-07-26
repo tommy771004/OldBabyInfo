@@ -1,5 +1,11 @@
 import { z } from "zod";
 
+const weightRangeSchema = z.object({ min: z.number().positive(), max: z.number().positive() }).check((ctx) => {
+  if (ctx.value.min > ctx.value.max) {
+    ctx.issues.push({ code: "custom", message: "Weight range min must not exceed max", input: ctx.value });
+  }
+});
+
 /**
  * What one model call is asked to find in a prose article (ticket 35):
  * a batch code, the production-period note a community writer attached to
@@ -11,6 +17,8 @@ export const moldBatchCandidateSchema = z.object({
   partNameRaw: z.string().min(1),
   batchCode: z.string().min(1),
   note: z.string().min(1),
+  sourceExcerpt: z.string().min(1).optional(),
+  weightGrams: weightRangeSchema.optional(),
 });
 
 export const moldBatchCandidateListSchema = z.array(moldBatchCandidateSchema);

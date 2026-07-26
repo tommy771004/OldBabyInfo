@@ -20,8 +20,12 @@ export default async function SourceDocumentPage({
   setRequestLocale(locale);
   const document = getSourceDocumentById(id);
   if (!document) notFound();
-  const t = useTranslations("SourceDocumentPage");
 
+  return <SourceDocumentBody document={document} />;
+}
+
+function SourceDocumentBody({ document }: { document: NonNullable<ReturnType<typeof getSourceDocumentById>> }) {
+  const t = useTranslations("SourceDocumentPage");
   return (
     <main>
       <p><Link href="/parts">{t("back_to_parts")}</Link></p>

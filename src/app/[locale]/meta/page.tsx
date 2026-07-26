@@ -7,6 +7,7 @@ import { computeMetaStandings, parseComboKey, type ComboMetaStanding } from "@/l
 import { getPartById } from "@/lib/parts/repository.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { slugify } from "@/lib/parts/slug.ts";
+import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -43,15 +44,15 @@ function MetaStandingBody({
   const t = useTranslations("MetaStandingPage");
 
   return (
-    <main>
+    <main className={styles.page}>
       <h1>{t("title")}</h1>
-      <p>{t("intro")}</p>
-      <p>{t("no_tier_list_note")}</p>
+      <p className={styles.intro}>{t("intro")}</p>
+      <p className={styles.note}>{t("no_tier_list_note")}</p>
 
       {standings.length === 0 ? (
-        <p>{t("empty_state_heading")} — {t("empty_state_body", { count: totalAppearances })}</p>
+        <p className={styles.empty}>{t("empty_state_heading")} : {t("empty_state_body", { count: totalAppearances })}</p>
       ) : (
-        <ul>
+        <ul className={styles.standingList}>
           {standings.map((standing) => (
             <StandingRow key={standing.comboKey} standing={standing} locale={locale} />
           ))}
@@ -69,8 +70,9 @@ function StandingRow({ standing, locale }: { standing: ComboMetaStanding; locale
   const bit = getPartById(bitId);
 
   return (
-    <li>
-      <dl>
+    <li className={styles.standing}>
+      <h2 className={styles.comboName}>{[blade, ratchet, bit].filter(Boolean).map((part) => part!.nameEn).join(" / ")}</h2>
+      <dl className={styles.stats}>
         <dt>{t("sample_size_label")}</dt>
         <dd className="stat-value">{standing.sampleSize}</dd>
 
@@ -99,7 +101,7 @@ function StandingRow({ standing, locale }: { standing: ComboMetaStanding; locale
 
       <details>
         <summary>{t("expand_parts")}</summary>
-        <ul>
+        <ul className={styles.parts}>
           {[blade, ratchet, bit].map((part) =>
             part ? (
               <li key={part.id}>

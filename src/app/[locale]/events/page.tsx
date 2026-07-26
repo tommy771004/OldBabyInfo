@@ -4,6 +4,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { getAllEvents } from "@/lib/events/repository.ts";
 import { splitByDate } from "@/lib/events/split-by-date.ts";
 import type { Event } from "@/lib/events/schema.ts";
+import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -31,15 +32,16 @@ function EventsPageBody({ upcoming, past }: { upcoming: Event[]; past: Event[] }
   const t = useTranslations("EventsPage");
 
   return (
-    <main>
+    <main className={styles.page}>
       <h1>{t("title")}</h1>
+      <p className={styles.intro}>{t("intro")}</p>
 
-      <section>
+      <section className={styles.section}>
         <h2>{t("upcoming")}</h2>
         {upcoming.length === 0 ? (
           <p>{t("no_upcoming")}</p>
         ) : (
-          <ul>
+          <ul className={styles.eventList}>
             {upcoming.map((event) => (
               <EventRow key={event.id} event={event} />
             ))}
@@ -48,11 +50,11 @@ function EventsPageBody({ upcoming, past }: { upcoming: Event[]; past: Event[] }
       </section>
 
       {past.length > 0 ? (
-        <details>
+        <details className={styles.past}>
           <summary>
             {t("past")} ({past.length})
           </summary>
-          <ul>
+          <ul className={styles.eventList}>
             {past.map((event) => (
               <EventRow key={event.id} event={event} />
             ))}
@@ -67,19 +69,22 @@ function EventRow({ event }: { event: Event }) {
   const t = useTranslations("EventsPage");
 
   return (
-    <li>
-      <span>{event.tier}</span>
-      <span>{event.venueName}</span>
-      <span>{event.venueAddress}</span>
-      <span>
-        {event.date} {event.time}
-      </span>
-      <span>{event.ageCategory}</span>
-      <span>
-        {t("capacity")}: {event.capacity}
-      </span>
-      <span>{t(`registration_${event.registrationMethod}`)}</span>
-      <a href={event.sourceUrl}>{t("source")}</a>
+    <li className={styles.event}>
+      <div className={styles.eventTier}>{event.tier}</div>
+      <div>
+        <h3>{event.venueName}</h3>
+        <p className={styles.address}>{event.venueAddress}</p>
+        <p className={styles.meta}>{event.ageCategory}</p>
+      </div>
+      <div>
+        <dl className={styles.details}>
+          <dt>{t("date")}</dt>
+          <dd><time dateTime={`${event.date}T${event.time}`}>{event.date} {event.time}</time></dd>
+          <dt>{t("capacity")}</dt><dd>{event.capacity}</dd>
+          <dt>{t("registration_label")}</dt><dd>{t(`registration_${event.registrationMethod}`)}</dd>
+        </dl>
+        <a className={styles.source} href={event.sourceUrl}>{t("source")}</a>
+      </div>
     </li>
   );
 }

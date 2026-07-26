@@ -46,6 +46,14 @@ const moldBatchSchema = z.object({
   batchCode: z.string().min(1),
   note: z.string().min(1),
   sourceUrl: z.url(),
+  sourceExcerpt: z.string().min(1).optional(),
+  capturedAt: z.iso.datetime().optional(),
+  attributionStatus: z.enum(["attributed", "unattributed"]).optional(),
+  weightGrams: z.object({ min: z.number().positive(), max: z.number().positive() }).check((ctx) => {
+    if (ctx.value.min > ctx.value.max) {
+      ctx.issues.push({ code: "custom", message: "Weight range min must not exceed max", input: ctx.value });
+    }
+  }).optional(),
 });
 
 /**

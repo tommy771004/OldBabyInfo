@@ -231,10 +231,12 @@
   },
   "EventsPage": {
     "title": "大会カレンダー",
+    "intro": "正式な大会情報は原本のEventシートから読み込み、各項目に出典へのリンクを残しています。",
     "upcoming": "開催予定",
     "past": "終了",
     "no_upcoming": "近日開催予定の大会はありません",
     "registration_label": "申込方法",
+    "date": "日付",
     "registration_onsite": "現地受付",
     "registration_online": "オンライン申込",
     "registration_phone": "電話申込",

@@ -231,10 +231,12 @@
   },
   "EventsPage": {
     "title": "Event Calendar",
+    "intro": "Official sessions come from the original Event sheets, with a source link retained for every entry.",
     "upcoming": "Upcoming",
     "past": "Past",
     "no_upcoming": "No known upcoming events right now",
     "registration_label": "Registration",
+    "date": "Date",
     "registration_onsite": "Register on-site",
     "registration_online": "Register online",
     "registration_phone": "Register by phone",

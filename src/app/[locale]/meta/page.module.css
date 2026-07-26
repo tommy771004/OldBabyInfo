@@ -1,0 +1,12 @@
+.page { width: min(100% - 2rem, 72rem); margin: 0 auto; padding: 3rem 0 6rem; }
+.intro { max-width: 58ch; }
+.note { max-width: 58ch; padding: 1rem 1.25rem; background: color-mix(in srgb, var(--surface-200) 62%, var(--surface-100)); }
+.standingList { display: grid; gap: 2.5rem; padding: 0; list-style: none; margin-top: 3rem; }
+.standing { padding-top: 1.25rem; border-top: 2px solid color-mix(in srgb, var(--accent-on-light) 34%, transparent); }
+.comboName { margin: 0 0 1rem; font-family: var(--font-display), serif; font-size: clamp(1.4rem, 4vw, 2.2rem); }
+.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; margin: 0; }
+.stats dt { color: color-mix(in srgb, var(--ink-on-light) 60%, transparent); font-size: .85rem; }
+.stats dd { margin: .25rem 0 0; font-family: var(--font-display), serif; font-size: 1.5rem; }
+.parts { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin-top: 1.25rem; padding-left: 1.1rem; }
+.empty { margin-top: 3rem; }
+@media (max-width: 760px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
