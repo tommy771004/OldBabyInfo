@@ -7,6 +7,7 @@
     "nav_events": "賽事行事曆",
     "nav_discussion": "最新討論",
     "nav_login": "登入",
+    "nav_terms": "使用條款",
     "hero_headline": "查得到，也要查得準",
     "hero_lede": "把散落在各處的零件數據，整理成查得到、查得對的地方。",
     "cta_parts": "進入零件庫",
@@ -177,6 +178,18 @@
     "signOut": "登出",
     "privacy": "只取用顯示討論作者所需的基本身分資料，不建立本站密碼。",
     "notConfigured": "登入功能尚未設定。管理者需要在環境變數提供 Auth.js secret 與 Google OAuth credentials。"
+  },
+  "TermsPage": {
+    "title": "使用條款與免責聲明",
+    "lede": "OldBabyInfo 是玩家整理的資料查詢工具，不是官方網站，也不代表任何品牌、店家或賽事主辦方。",
+    "communityHeading": "社群內容",
+    "communityBody": "討論內容是發言者的觀察與意見，不代表本站立場。請勿發布個人資料、騷擾、仇恨或侵權內容；本站得隱藏違規內容。",
+    "dataHeading": "資料與來源",
+    "dataBody": "零件、賽事與批號資料會附上來源或整理說明。資料可能不完整或有誤，重要決定請回到原始來源確認。",
+    "purchaseHeading": "購買與通路",
+    "purchaseBody": "本站不經手交易、不代收款，也不保證價格、庫存、品質或交付。離站前往通路後，購買關係由你與該通路自行建立。",
+    "reportHeading": "回報問題",
+    "reportBody": "若發現錯誤、侵權或不當內容，請透過專案維護管道回報；本站會依資料與情況處理。"
   },
   "EventsPage": {
     "title": "賽事行事曆",

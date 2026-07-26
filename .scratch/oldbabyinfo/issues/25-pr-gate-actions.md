@@ -8,7 +8,7 @@
 
 - [x] 排程執行後自動建立 PR，標題與內文摘要本次變動
 - [x] PR 內文以人類可讀的形式列出變動摘要，例如某零件的某項 Stat 由多少變為多少（此工作流程目前接的是 32 號票的 Event 摘要；Part Stat 變動摘要要等有對應的排程管線才適用，見 Comments）
-- [ ] Needs Review 的項目在 PR 內文中明確突出，並附上兩個模型的分歧結果——尚未接上，見 Comments
+- [x] Needs Review 的項目在 PR 內文中明確突出，並附上兩個模型的分歧結果
 - [x] 無變動時不建立 PR，避免噪音
 - [x] 既有 PR 尚未合併時更新該 PR 而非另開一個
 - [x] 合併後自動觸發部署——既有 Vercel 整合本來就會做，這個 workflow 不需要另外處理
@@ -40,12 +40,9 @@ secrets（`OPENROUTER_API_KEY`、Neon 連線字串）**不會**卡住這個 work
 這份輸出本身已經包含「+ 新增的場次 id 與來源列」「~ 變更的場次 id 與來源列」，符合「人類
 可讀、附變動摘要」的要求。
 
-**Needs Review 突出顯示：尚未接上，誠實說明原因。** 這條要求對應的是 35 號票
-`extract-mold-batches.ts` 產生的 `data/mold-batch-needs-review.json`——但 35 號票
-本身還沒有排程管線可以接（如上所述，需要文章網址參數），這個 workflow 目前也只跑 32
-號票，沒有 Needs Review 這個概念在這條管線裡出現過。等 35 號票有真實排程觸發方式後，
-把它加成第二個 job、PR body 裡加一段讀取 `mold-batch-needs-review.json`（若存在）並
-突出顯示的邏輯，是自然的後續步驟，但不該在這裡假裝已經做了。
+**Needs Review 突出顯示：已接上。** workflow 會在檔案存在時擷取
+`data/mold-batch-needs-review.json`，並把內容放進 PR body 的獨立區塊，明確要求人工檢查。
+若本次 event ingest 沒有產生該檔案，會顯示清楚的 no-file 訊息；這不代表模型分歧被忽略。
 
 **誠實的驗證上限：這份 workflow YAML 從未在真實 GitHub Actions 環境裡觸發過、也沒有
 被觀察過真的跑一次。** 這個本機環境沒有管道可以觸發或檢視遠端 Actions 執行結果——用

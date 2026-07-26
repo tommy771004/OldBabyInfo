@@ -7,6 +7,7 @@
     "nav_events": "Event calendar",
     "nav_discussion": "Latest discussion",
     "nav_login": "Sign in",
+    "nav_terms": "Terms",
     "hero_headline": "Findable. And accurate.",
     "hero_lede": "Every part's real numbers, gathered into one place you can actually trust.",
     "cta_parts": "Browse the parts library",
@@ -177,6 +178,18 @@
     "signOut": "Sign out",
     "privacy": "Only the basic identity needed to show a discussion author is used. OldBabyInfo does not create a password for you.",
     "notConfigured": "Sign-in is not configured yet. The maintainer must provide the Auth.js secret and Google OAuth credentials as environment variables."
+  },
+  "TermsPage": {
+    "title": "Terms and disclaimer",
+    "lede": "OldBabyInfo is a player-maintained reference tool. It is not an official site and does not represent any brand, retailer, or event organizer.",
+    "communityHeading": "Community content",
+    "communityBody": "Discussion posts are the observations and opinions of their authors, not statements by OldBabyInfo. Do not post personal data, harassment, hate, or infringing material. We may hide content that breaks these rules.",
+    "dataHeading": "Data and sources",
+    "dataBody": "Part, event, and batch data includes a source or collection note where available. Data may be incomplete or wrong, so confirm important decisions against the original source.",
+    "purchaseHeading": "Purchases and retailers",
+    "purchaseBody": "OldBabyInfo does not handle transactions, collect payment, or guarantee price, availability, quality, or delivery. After you leave for a retailer, the purchase is between you and that retailer.",
+    "reportHeading": "Report a problem",
+    "reportBody": "Report errors, infringement, or harmful content through the project maintenance channel. We will review reports according to the available evidence."
   },
   "EventsPage": {
     "title": "Event Calendar",

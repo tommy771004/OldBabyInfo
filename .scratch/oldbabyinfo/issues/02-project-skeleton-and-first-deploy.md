@@ -6,8 +6,13 @@
 
 **Status:** ready-for-agent
 
-- [ ] Next.js 15 App Router + TypeScript + Tailwind v4 專案可在本機啟動
-- [ ] next-intl 路由運作，`/`、`/ja`、`/en` 各自渲染且語言切換器可用
-- [ ] 部署至 Vercel，正式網址可開啟
-- [ ] Lint 與 type-check 在 CI 中通過
-- [ ] 尚未引入任何 UI 元件庫的預設樣式——版面是空的，但沒有任何預設外觀殘留
+- [x] Next.js 15 App Router + TypeScript + Tailwind v4 專案可在本機啟動
+- [x] next-intl 路由運作，`/`、`/ja`、`/en` 各自渲染且語言切換器可用
+- [x] 部署至 Vercel，正式網址可開啟——部署狀態沿用 01 號票的使用者確認
+- [x] Lint 與 type-check 在 CI 中通過
+- [x] 尚未引入任何 UI 元件庫的預設樣式——版面是空的，但沒有任何預設外觀殘留
+
+## Comments
+
+本次回歸：`npm run lint`、`npm run typecheck`、`npm test`（256/256）與
+`npm run build` 全部通過；build 產出 `/zh-TW`、`/ja`、`/en` 與條款頁等三語路由。

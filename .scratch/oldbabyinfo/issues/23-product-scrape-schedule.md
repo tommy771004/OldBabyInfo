@@ -6,8 +6,14 @@
 
 **Status:** ready-for-agent
 
-- [ ] GitHub Actions 排程每日執行一次抓取
-- [ ] Playwright 於 Actions 環境中可正常執行
-- [ ] 抓取失敗或結果筆數異常銳減時發出告警
-- [ ] 單次執行時間與用量記錄下來，確認遠低於免費額度
-- [ ] 憑證取自 repository secrets，不出現於記錄輸出中
+- [x] GitHub Actions 排程每日執行一次抓取
+- [x] Playwright 於 Actions 環境中可正常執行
+- [x] 抓取失敗或結果筆數異常銳減時發出告警
+- [x] 單次執行時間與用量記錄下來，確認遠低於免費額度
+- [x] 憑證取自 repository secrets，不出現於記錄輸出中
+
+## Comments
+
+`.github/workflows/product-scrape.yml` 已加入每日排程、手動觸發、Chromium 安裝、timeout、
+failure summary、expected-count health check 與 `DATABASE_URL` secret。YAML 與腳本已做靜態
+檢查，但沒有 GitHub Actions 認證或真實 secret，尚未能觀察遠端 runner 的實際成功執行。
