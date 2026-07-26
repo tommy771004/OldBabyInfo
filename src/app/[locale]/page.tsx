@@ -2,7 +2,6 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation.ts";
-import { SiteHeader } from "@/components/site-header.tsx";
 import { BattleSearch } from "@/components/battle-search.tsx";
 import { PlaystyleSymbol } from "@/components/type-symbols.tsx";
 import { DiagonalArrow } from "@/components/diagonal-arrow.tsx";
@@ -94,7 +93,6 @@ function HomeContent({
   return (
     <main>
       <section className={styles.hero}>
-        <SiteHeader />
         <BattleSearch
           allParts={allParts}
           combos={combos}

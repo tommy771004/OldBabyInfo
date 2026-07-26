@@ -15,6 +15,7 @@
     "generate:events": "node scripts/generate-events-seed.ts",
     "generate:assessments": "node scripts/generate-assessments-seed.ts",
     "check:community-sources": "node scripts/check-community-source-policy.ts",
+    "smoke:public-journey": "node scripts/smoke-public-journey.ts",
     "scrape:products": "node scripts/scrape-products.ts"
   },
   "dependencies": {

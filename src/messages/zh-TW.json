@@ -168,7 +168,14 @@
     "coverage": "目前涵蓋 {partsWithBatches} / {totalParts} 支零件，共 {batchEntries} 筆批號資料。",
     "source": "查看來源",
     "instructionsHeading": "在哪裡找批號",
-    "instructionsBody": "批號通常印在包裝或零件本體的細小區域。請照著原樣輸入英數字；不同生產批次的差異是玩家整理出的觀察，不等同於官方 Stat Edition。"
+    "instructionsBody": "批號通常印在包裝或零件本體的細小區域。請照著原樣輸入英數字；不同生產批次的差異是玩家整理出的觀察，不等同於官方 Stat Edition。",
+    "sourceGuidanceHeading": "來源提示",
+    "sourceGuidanceScope": "這是一般研究提示，不是特定 Part 的批次或重量觀察。",
+    "sourceGuidanceExcerpt": "來源片段",
+    "sourceGuidanceDiscoverySource": "發現來源",
+    "sourceGuidanceAttribution": "來源歸屬",
+    "sourceGuidanceUnattributed": "未附原始來源",
+    "sourceGuidanceCapturedAt": "抓取時間"
   },
   "WhereToBuyPage": {
     "title": "{partName} 哪裡買",

@@ -122,6 +122,40 @@
   margin: 0;
 }
 
+.sourceGuidance {
+  max-width: 44ch;
+  margin-top: 5rem;
+}
+
+.sourceGuidance :global(section) {
+  padding-top: 1.5rem;
+}
+
+.sourceGuidance :global(h2) {
+  margin: 0 0 0.75rem;
+  font-size: 1.45rem;
+}
+
+.sourceGuidance :global(p) {
+  margin: 0.75rem 0;
+}
+
+.sourceGuidance :global(dl) {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.45rem 1rem;
+  margin: 1.25rem 0 0;
+}
+
+.sourceGuidance :global(dt) {
+  font-weight: 700;
+}
+
+.sourceGuidance :global(dd) {
+  min-width: 0;
+  margin: 0;
+}
+
 @media (max-width: 460px) {
   .page :global(form) {
     grid-template-columns: 1fr;

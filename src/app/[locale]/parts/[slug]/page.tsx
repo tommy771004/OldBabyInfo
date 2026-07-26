@@ -155,8 +155,8 @@ function PartDetailBody({
         <AssessmentTracer headingId="part-assessment-heading" assessments={assessments} labels={{ heading: t("assessments_heading"), ...assessmentLabels }} pagination={pagination} />
       </section>
 
-      <section className={styles.physicalStage}>
-        {physicalAssessments.length > 0 ? <AssessmentTracer headingId="part-physical-heading" assessments={physicalAssessments} labels={{ heading: t("physical_heading"), ...assessmentLabels }} /> : <><h2>{t("physical_heading")}</h2><p>{t("physical_empty")}</p></>}
+      <section className={styles.physicalStage} aria-labelledby="part-physical-heading">
+        {physicalAssessments.length > 0 ? <AssessmentTracer headingId="part-physical-heading" assessments={physicalAssessments} labels={{ heading: t("physical_heading"), ...assessmentLabels }} /> : <><h2 id="part-physical-heading">{t("physical_heading")}</h2><p>{t("physical_empty")}</p></>}
         {part.moldBatches.length > 0 ? <MoldBatchVariants batches={part.moldBatches} labels={{ heading: t("mold_batches_heading"), source: t("mold_batch_source") }} /> : null}
         <p><Link href="/mold-batches">{t("mold_batches_lookup")}</Link></p>
       </section>

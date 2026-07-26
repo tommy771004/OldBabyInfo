@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { accentFont, bodyFont, displayFont } from "../fonts.ts";
+import { SiteHeader } from "@/components/site-header.tsx";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -34,7 +35,10 @@ export default async function LocaleLayout({
       className={`${bodyFont.variable} ${displayFont.variable} ${accentFont.variable}`}
     >
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <SiteHeader />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

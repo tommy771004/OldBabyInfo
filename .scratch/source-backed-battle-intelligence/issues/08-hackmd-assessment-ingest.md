@@ -24,3 +24,4 @@
 - The public Assessment repository and tracer already expose the imported shape and the no-Evidence state.
 - `.github/workflows/community-source-policy.yml` runs weekly and on manual dispatch, but `data/community-source-policy.json` keeps HackMD disabled while rights are unknown. The policy test rejects any enabled weekly automated source without documented compatible permission.
 - Full-text mirroring and source acquisition remain intentionally disabled until the acquisition method and Publication Rights are recorded; the current static file contains only the reviewed structured fixture.
+- The same deterministic manual seed now also accepts `data/go-shoot-assessment-fixture.json`; its reviewed V2 weight observation is merged without allowing the Go-Shoot Discovery Source to overwrite official Part facts.

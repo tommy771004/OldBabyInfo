@@ -22,4 +22,6 @@
 - `splitAssessmentsByStage()` keeps Tier/Combo/tactic separate from weight/Mold Batch observations; the Part page keeps the Assessment pagination only on the strategic list.
 - The page uses the repository image when available and a tested silhouette fallback when not, preserving image dimensions and avoiding invented assets.
 - `part-detail.module.css` prioritizes identity and official facts on narrow screens, while Stock Listing remains a direct retailer snapshot with captured time.
+- `src/lib/public-journey/html-contract.ts` and `scripts/smoke-public-journey.ts` validate the server-rendered five-stage order, all four page sizes, the HackMD Discovery Source link, the Where to Buy route and Discussion／empty-state headings for `zh-TW`, `en` and `ja`.
+- The physical stage now also renders the reviewed Go-Shoot `Dran Sword V2: +3g` weight Assessment with its unattributed Discovery Source; the HTML contract rejects a Part page that drops that observation or source link.
 - The remaining unchecked item is the browser-backed public journey; the local browser connector is unavailable in this environment, so it is not claimed as verified.

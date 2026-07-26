@@ -17,4 +17,6 @@
 ## Progress
 
 - Existing routes keep Discussion attached to Subject, expose only configured authentication providers, and explain source, rights and purchase boundaries in Terms. Their CSS modules use the shared warm palette, typography and focus treatment.
+- `SiteHeader` now lives in the locale layout, so Discussion, Login, Terms and the other public data routes share the same primary navigation instead of only the homepage rendering it. The public HTML contract checks all five navigation destinations.
 - `discussion-feed.test.tsx` verifies filtering and the return-to-subject link. The remaining external browser verification item is not claimed because the browser connector is unavailable.
+- The server-rendered Part journey smoke now runs against all three locales and confirms the Discussion empty-state heading is present; it does not replace the missing real keyboard and narrow-viewport browser pass.

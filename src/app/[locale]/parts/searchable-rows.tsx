@@ -63,18 +63,18 @@ export function SearchableRows({
         <table>
           <thead>
             <tr>
-              <th>{t("type_blade")}</th>
-              <th>Name</th>
-              <th>{t("silhouette_column")}</th>
-              <th>{t("playstyle_column")}</th>
+              <th scope="col">{t("type_blade")}</th>
+              <th scope="col">Name</th>
+              <th scope="col">{t("silhouette_column")}</th>
+              <th scope="col">{t("playstyle_column")}</th>
               {STAT_FIELDS.map((field) => (
-                <th key={field}>
+                <th key={field} scope="col">
                   <SortLink field={field} state={state}>
                     {t(`stat_${field}`)}
                   </SortLink>
                 </th>
               ))}
-              <th>
+              <th scope="col">
                 <SortLink field="releaseAt" state={state}>
                   {t("release_date")}
                 </SortLink>

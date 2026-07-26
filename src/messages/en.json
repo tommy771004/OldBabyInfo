@@ -168,7 +168,14 @@
     "coverage": "Coverage: {partsWithBatches} of {totalParts} Parts, {batchEntries} batch entries.",
     "source": "View source",
     "instructionsHeading": "Where to find the code",
-    "instructionsBody": "The code is usually printed in a small area on the packaging or the part itself. Enter the letters and numbers as printed. Batch differences are community observations, not official Stat Editions."
+    "instructionsBody": "The code is usually printed in a small area on the packaging or the part itself. Enter the letters and numbers as printed. Batch differences are community observations, not official Stat Editions.",
+    "sourceGuidanceHeading": "Source guidance",
+    "sourceGuidanceScope": "This is general research guidance, not a Part-specific batch or weight observation.",
+    "sourceGuidanceExcerpt": "Source excerpt",
+    "sourceGuidanceDiscoverySource": "Discovery Source",
+    "sourceGuidanceAttribution": "Attribution",
+    "sourceGuidanceUnattributed": "Original source not attached",
+    "sourceGuidanceCapturedAt": "Captured"
   },
   "WhereToBuyPage": {
     "title": "Where to buy {partName}",

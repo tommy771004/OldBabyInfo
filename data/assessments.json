@@ -16,5 +16,23 @@
     "attributionStatus": "unattributed",
     "publishedAt": "2026-07-26T00:00:00.000Z",
     "capturedAt": "2026-07-26T00:00:00.000Z"
+  },
+  {
+    "id": "assessment:part:DRANSWORD:weight:go-shoot-bxg-49-dran-sword-v2",
+    "subjectType": "part",
+    "subjectId": "DRANSWORD",
+    "kind": "weight",
+    "value": "Dran Sword V2: +3g",
+    "summary": "Go-Shoot 的產品更新資料將 BXG-49 的 Dran Sword V2 描述為重量提升 3g；這不是官方 Stat，也不是一般批次碼觀察。",
+    "sourceExcerpt": "新版本重量提升3g",
+    "evidenceSource": null,
+    "discoverySource": {
+      "kind": "website",
+      "label": "Go-Shoot X 產品更新資料",
+      "url": "https://go-shoot.github.io/x/db/-update.json"
+    },
+    "attributionStatus": "unattributed",
+    "publishedAt": "2026-07-18T18:00:00+08:00",
+    "capturedAt": "2026-07-26T00:00:00+08:00"
   }
 ]

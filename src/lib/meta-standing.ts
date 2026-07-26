@@ -1,12 +1,12 @@
 /**
- * Meta Standing computation (ticket 33, ADR-0003): objective stats
+ * Meta Standing computation (ticket 33): objective stats
  * computed from real Event results, never a subjective tier label.
  *
  * This module is pure computation over a `ComboAppearance[]` — it does
  * NOT read `Event.results` directly. `Event.results.topFour` (schema.ts)
  * is a flat list of strings with no per-entrant Combo attribution, and
- * the actual real usage data ADR-0003's spike found (1,215 real loadout
- * records, hackmd's "陀螺賽場統計2025" sheet) has never been ingested
+ * the actual real usage data found in the source review (1,215 real loadout
+ * records, HackMD's "陀螺賽場統計2025" sheet) has never been ingested
  * into this repo's schema — that ingestion is a separate, not-yet-written
  * step. This function is ready for whenever that data lands; it isn't
  * wired to a real source yet, and its test suite uses hand-built fixtures
@@ -42,10 +42,10 @@ export interface ComboAppearance {
 }
 
 /** Rate-based fields (top-8 rate, champion count) need enough of THIS
- *  combo's own appearances to mean anything — ADR-0003's spike found n=4
+ *  combo's own appearances to mean anything — the source review found n=4
  *  for the whole of 2025 for full standings, "完全撐不住統計意義". Usage
  *  rate doesn't need this gate: it's backed by the total field size, which
- *  the same spike found "紮實" (1,215 real records) independent of any one
+ *  the same review found "紮實" (1,215 real records) independent of any one
  *  Combo's own count. */
 const DEFAULT_MIN_SAMPLE_SIZE = 10;
 

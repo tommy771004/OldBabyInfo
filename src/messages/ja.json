@@ -168,7 +168,14 @@
     "coverage": "収録範囲: {totalParts} パーツ中 {partsWithBatches} 件、ロット記録 {batchEntries} 件。",
     "source": "出典を見る",
     "instructionsHeading": "番号の場所",
-    "instructionsBody": "番号はパッケージやパーツ本体の小さな部分に印刷されています。表示どおり英数字を入力してください。ロットごとの差異はプレイヤーの観察であり、公式のStat Editionとは異なります。"
+    "instructionsBody": "番号はパッケージやパーツ本体の小さな部分に印刷されています。表示どおり英数字を入力してください。ロットごとの差異はプレイヤーの観察であり、公式のStat Editionとは異なります。",
+    "sourceGuidanceHeading": "情報源の案内",
+    "sourceGuidanceScope": "これは一般的な調査の手がかりであり、特定Partのロットや重量の観察ではありません。",
+    "sourceGuidanceExcerpt": "情報源の抜粋",
+    "sourceGuidanceDiscoverySource": "Discovery Source",
+    "sourceGuidanceAttribution": "帰属",
+    "sourceGuidanceUnattributed": "原典未付与",
+    "sourceGuidanceCapturedAt": "取得時刻"
   },
   "WhereToBuyPage": {
     "title": "{partName} の購入先",

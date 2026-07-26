@@ -1,0 +1,18 @@
+[
+  {
+    "id": "go-shoot-x-general-mold-guidance",
+    "summary": {
+      "zh-TW": "Go-Shoot 的一般說明指出，X 世代部件可能頻繁出現模具變更；這是批次研究提示，不是特定 Part 的觀察。",
+      "en": "Go-Shoot gives general guidance that X-generation parts can have frequent mold changes; this is a research lead, not a Part-specific observation.",
+      "ja": "Go-Shoot の一般案内では、X世代のパーツは金型変更が頻繁な場合があると説明されています。これは調査の手がかりであり、特定Partの観察ではありません。"
+    },
+    "sourceExcerpt": "模具變更頗為頻繁（如重量提升）",
+    "discoverySource": {
+      "kind": "website",
+      "label": "Go-Shoot X 資訊站",
+      "url": "https://go-shoot.github.io/x/"
+    },
+    "attributionStatus": "unattributed",
+    "capturedAt": "2026-07-26T00:00:00.000Z"
+  }
+]

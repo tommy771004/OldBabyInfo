@@ -5,7 +5,7 @@
   padding: clamp(1.5rem, 3vw, 3rem) clamp(1.25rem, 5vw, 5rem) 4rem;
   background:
     var(--grain),
-    linear-gradient(135deg, var(--surface-950) 0%, var(--surface-900) 62%, var(--surface-700) 100%);
+    linear-gradient(135deg, var(--surface-950) 0%, var(--surface-900) 100%);
   color: var(--ink-on-dark);
 }
 
@@ -183,9 +183,21 @@
 .trajectoryRight {
   position: absolute;
   z-index: 1;
-  height: 1px;
+  height: 2px;
   transform-origin: left center;
   background: color-mix(in srgb, var(--accent-on-dark) 76%, transparent);
+}
+
+.trajectoryLeft::after,
+.trajectoryRight::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.25rem;
+  height: 2px;
+  background: var(--ink-on-dark);
+  animation: current-run 2.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
 .trajectoryLeft {
@@ -273,9 +285,19 @@
   text-align: left;
 }
 
+@keyframes current-run {
+  from { left: 0; }
+  to { left: calc(100% - 2.25rem); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .arenaGeometry {
     transform: rotate(-7deg);
+  }
+
+  .trajectoryLeft::after,
+  .trajectoryRight::after {
+    animation: none;
   }
 }
 

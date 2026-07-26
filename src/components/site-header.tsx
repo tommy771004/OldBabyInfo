@@ -4,10 +4,8 @@ import { LocaleSwitcher } from "@/components/locale-switcher.tsx";
 import styles from "./site-header.module.css";
 
 /**
- * The homepage's own top bar (ticket 39) — a contained, self-bordered strip
- * rather than a flush row of links pinned to the edges. Not (yet) shared
- * across every route; wiring it into the root layout is a separate,
- * un-ticketed step.
+ * Shared public shell navigation. It is deliberately a contained, self-
+ * bordered strip rather than a flush row of links pinned to the edges.
  */
 export function SiteHeader() {
   const t = useTranslations("HomePage");
@@ -23,6 +21,7 @@ export function SiteHeader() {
         <Link href="/events">{t("nav_events")}</Link>
         <Link href="/discussion">{t("nav_discussion")}</Link>
         <Link href="/login">{t("nav_login")}</Link>
+        <Link href="/terms">{t("nav_terms")}</Link>
       </nav>
 
       <LocaleSwitcher />
