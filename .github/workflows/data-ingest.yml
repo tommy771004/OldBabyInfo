@@ -1,0 +1,76 @@
+name: Data ingest
+
+# Ticket 25 — the PR gate ADR-0004 requires: a scheduled script does the
+# fetching, a human still approves before anything real merges. Scoped to
+# scripts/ingest-events.ts (ticket 32) for now — the one ingest pipeline
+# that's schedulable with no arguments and needs no model-call secret
+# (it's the deterministic CSV path; see ticket 32's own Comments for why).
+# scripts/extract-mold-batches.ts (ticket 35) needs a specific article URL
+# per run, not something a blind schedule can drive — wiring it in is a
+# separate step once there's a real list of articles to check.
+
+on:
+  schedule:
+    - cron: "0 18 * * *" # 18:00 UTC = 02:00 Asia/Taipei
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  ingest-events:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run event ingest
+        id: ingest
+        run: |
+          node scripts/ingest-events.ts | tee /tmp/ingest-output.txt
+          {
+            echo "summary<<INGEST_SUMMARY_EOF"
+            cat /tmp/ingest-output.txt
+            echo "INGEST_SUMMARY_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Check for real changes
+        id: diff
+        run: |
+          if git diff --quiet -- data/events.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # peter-evans/create-pull-request pushes to a fixed branch name and
+      # itself detects/updates an already-open PR from that branch rather
+      # than opening a duplicate — satisfies "既有 PR 尚未合併時更新該
+      # PR" without hand-rolled PR-lookup logic. It also only actually
+      # creates a PR when there's something to commit, so "無變動時不
+      # 建立 PR" is the action's own default behavior, not something this
+      # workflow has to implement — the explicit changed-check above is
+      # kept anyway so a no-op run is visibly a no-op in the job log.
+      - name: Open or update PR
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "資料更新：賽事行事曆自動匯入"
+          title: "賽事行事曆自動匯入"
+          body: |
+            自動排程執行 `scripts/ingest-events.ts` 產生的真實變動，來源是 Funbox／B4 門市時間表的公開 Google Sheets。
+
+            ```
+            ${{ steps.ingest.outputs.summary }}
+            ```
+
+            合併前請確認：新增／變更的場次資訊（日期、地點、報名方式、人數上限）看起來合理。合併後 Vercel 會依既有的 GitHub 整合自動部署，這個 workflow 不需要另外觸發部署。
+          branch: auto/event-ingest
+          labels: automated-data-ingest

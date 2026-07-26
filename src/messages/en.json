@@ -111,8 +111,24 @@
     "image_missing": "No product image yet",
     "release_label": "Release date",
     "release_unknown": "Unknown",
+    "mold_batches_heading": "Known mold batches",
+    "mold_batch_source": "View source",
+    "mold_batches_lookup": "Look up another batch code",
     "thread_heading": "Discussion",
     "thread_placeholder": "Discussion is coming soon."
+  },
+  "MoldBatchPage": {
+    "title": "Mold batch lookup",
+    "intro": "Enter the batch code printed on a part or its packaging to see recorded production notes. This page only covers batches that have been documented with a source.",
+    "backToParts": "← Back to parts",
+    "searchLabel": "Batch code",
+    "searchButton": "Look up",
+    "emptyQuery": "Enter a batch code first.",
+    "noMatches": "No recorded batch matches that code.",
+    "coverage": "Coverage: {partsWithBatches} of {totalParts} Parts, {batchEntries} batch entries.",
+    "source": "View source",
+    "instructionsHeading": "Where to find the code",
+    "instructionsBody": "The code is usually printed in a small area on the packaging or the part itself. Enter the letters and numbers as printed. Batch differences are community observations, not official Stat Editions."
   },
   "EventsPage": {
     "title": "Event Calendar",

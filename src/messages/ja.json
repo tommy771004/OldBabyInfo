@@ -111,8 +111,24 @@
     "image_missing": "製品画像は未収録です",
     "release_label": "発売日",
     "release_unknown": "不明",
+    "mold_batches_heading": "既知の製造ロット",
+    "mold_batch_source": "出典を見る",
+    "mold_batches_lookup": "別のロット番号を検索",
     "thread_heading": "ディスカッション",
     "thread_placeholder": "ディスカッション機能は近日公開予定です。"
+  },
+  "MoldBatchPage": {
+    "title": "製造ロット検索",
+    "intro": "パーツやパッケージに印刷されたロット番号を入力すると、記録されている製造時期とプレイヤーの観察を確認できます。出典付きで整理されたロットのみを掲載しています。",
+    "backToParts": "← パーツ一覧に戻る",
+    "searchLabel": "ロット番号",
+    "searchButton": "検索",
+    "emptyQuery": "ロット番号を入力してください。",
+    "noMatches": "このロット番号に一致する記録はありません。",
+    "coverage": "収録範囲: {totalParts} パーツ中 {partsWithBatches} 件、ロット記録 {batchEntries} 件。",
+    "source": "出典を見る",
+    "instructionsHeading": "番号の場所",
+    "instructionsBody": "番号はパッケージやパーツ本体の小さな部分に印刷されています。表示どおり英数字を入力してください。ロットごとの差異はプレイヤーの観察であり、公式のStat Editionとは異なります。"
   },
   "EventsPage": {
     "title": "大会カレンダー",

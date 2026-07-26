@@ -111,8 +111,24 @@
     "image_missing": "尚無產品圖",
     "release_label": "發售日",
     "release_unknown": "未知",
+    "mold_batches_heading": "已知批號變體",
+    "mold_batch_source": "查看來源",
+    "mold_batches_lookup": "查詢其他批號",
     "thread_heading": "討論",
     "thread_placeholder": "討論功能即將推出。"
+  },
+  "MoldBatchPage": {
+    "title": "批號查詢",
+    "intro": "輸入零件包裝或本體上的批號，查看目前收錄的生產期間與玩家觀察。這份資料只涵蓋已被整理並附來源的批次。",
+    "backToParts": "← 回零件庫",
+    "searchLabel": "批號",
+    "searchButton": "查詢",
+    "emptyQuery": "請先輸入批號。",
+    "noMatches": "目前沒有收錄符合這個批號的資料。",
+    "coverage": "目前涵蓋 {partsWithBatches} / {totalParts} 支零件，共 {batchEntries} 筆批號資料。",
+    "source": "查看來源",
+    "instructionsHeading": "在哪裡找批號",
+    "instructionsBody": "批號通常印在包裝或零件本體的細小區域。請照著原樣輸入英數字；不同生產批次的差異是玩家整理出的觀察，不等同於官方 Stat Edition。"
   },
   "EventsPage": {
     "title": "賽事行事曆",

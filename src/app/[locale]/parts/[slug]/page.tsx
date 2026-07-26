@@ -10,6 +10,7 @@ import { slugify } from "@/lib/parts/slug.ts";
 import { BladeSilhouette } from "@/components/blade-silhouette.tsx";
 import { RatchetSilhouette } from "@/components/ratchet-silhouette.tsx";
 import { BitSilhouette } from "@/components/bit-silhouette.tsx";
+import { MoldBatchVariants } from "@/components/mold-batch-variants.tsx";
 import { wingCountFor, hasObservedWingCount } from "@/lib/parts/blade-wing-count.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 
@@ -106,6 +107,17 @@ function PartDetailBody({ part, locale }: { part: Part; locale: Locale }) {
         <h2>{t("release_label")}</h2>
         <p>{part.releaseAt ?? t("release_unknown")}</p>
       </section>
+
+      {part.moldBatches.length > 0 ? (
+        <MoldBatchVariants
+          batches={part.moldBatches}
+          labels={{ heading: t("mold_batches_heading"), source: t("mold_batch_source") }}
+        />
+      ) : null}
+
+      <p>
+        <Link href="/mold-batches">{t("mold_batches_lookup")}</Link>
+      </p>
 
       <section>
         {image ? (

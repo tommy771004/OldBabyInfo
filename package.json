@@ -11,9 +11,11 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p scripts/tsconfig.json",
     "test": "vitest run",
     "generate:parts": "node scripts/generate-parts-seed.ts",
-    "generate:events": "node scripts/generate-events-seed.ts"
+    "generate:events": "node scripts/generate-events-seed.ts",
+    "scrape:products": "node scripts/scrape-products.ts"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
     "next": "^15.5.21",
