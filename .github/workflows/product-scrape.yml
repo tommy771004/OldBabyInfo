@@ -33,13 +33,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check reviewed product targets
+        id: targets
+        run: |
+          node -e 'const fs=require("node:fs"); const targets=JSON.parse(fs.readFileSync("data/product-targets.json", "utf8")); fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_targets=${targets.length > 0 ? "true" : "false"}\n`);'
+
       - name: Install Chromium
+        if: steps.targets.outputs.has_targets == 'true'
         run: npx playwright install --with-deps chromium
 
       - name: Scrape and persist Stock Listings
         id: scrape
+        if: steps.targets.outputs.has_targets == 'true'
         continue-on-error: true
         run: npm run scrape:products
+
+      - name: Record safe no-op
+        if: steps.targets.outputs.has_targets != 'true'
+        run: echo "No reviewed product targets; Chromium install and scrape skipped."
 
       - name: Record failure and fail the job
         if: steps.scrape.outcome == 'failure'

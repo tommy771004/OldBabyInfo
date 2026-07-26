@@ -1,0 +1,34 @@
+name: Community source policy gate
+
+on:
+  schedule:
+    - cron: "0 18 * * 0" # Sunday 02:00 Asia/Taipei
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Evaluate source acquisition policy
+        id: policy
+        run: npm run check:community-sources
+
+      - name: Explain disabled acquisition
+        if: steps.policy.outputs.eligible != 'true'
+        run: echo "No rights-compliant community source is enabled; no fetch or dataset write will run."
+
+      # This gate intentionally has no fetch step. A source must first be
+      # reviewed in data/community-source-policy.json, with compatible rights,
+      # before a future acquisition command can be enabled here.

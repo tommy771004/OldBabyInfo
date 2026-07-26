@@ -22,6 +22,7 @@ import { parseAssessmentPaginationParams } from "@/lib/assessments/pagination.ts
 import { splitAssessmentsByStage } from "@/lib/parts/detail-sections.ts";
 import { wingCountFor, hasObservedWingCount } from "@/lib/parts/blade-wing-count.ts";
 import type { Part } from "@/lib/parts/schema.ts";
+import type { AssessmentKind } from "@/lib/assessments/schema.ts";
 import styles from "./part-detail.module.css";
 
 export const dynamic = "force-dynamic";
@@ -98,8 +99,7 @@ function PartDetailBody({
       : (["attack", "defense", "stamina"] as const).map((field) => [field, part.stats[field]]);
 
   const assessmentLabels = {
-    kindLabel: (kind: Parameters<typeof t>[0] extends never ? never : "tier" | "recommendedCombo" | "tactic" | "weight" | "moldObservation") =>
-      t(`assessment_kind_${kind}`),
+    kindLabel: (kind: AssessmentKind) => t(`assessment_kind_${kind}`),
     unattributed: t("assessment_unattributed"),
     excerpt: t("assessment_excerpt"),
     discoverySource: t("assessment_discovery_source"),
@@ -152,13 +152,12 @@ function PartDetailBody({
       </section>
 
       <section className={styles.assessmentStage}>
-        <AssessmentTracer assessments={assessments} labels={{ heading: t("assessments_heading"), ...assessmentLabels }} pagination={pagination} />
+        <AssessmentTracer headingId="part-assessment-heading" assessments={assessments} labels={{ heading: t("assessments_heading"), ...assessmentLabels }} pagination={pagination} />
       </section>
 
-      <section className={styles.physicalStage} aria-labelledby="physical-observations-heading">
-        <h2 id="physical-observations-heading">{t("physical_heading")}</h2>
-        {physicalAssessments.length > 0 ? <AssessmentTracer assessments={physicalAssessments} labels={{ heading: t("physical_heading"), ...assessmentLabels }} /> : null}
-        {part.moldBatches.length > 0 ? <MoldBatchVariants batches={part.moldBatches} labels={{ heading: t("mold_batches_heading"), source: t("mold_batch_source") }} /> : <p>{t("physical_empty")}</p>}
+      <section className={styles.physicalStage}>
+        {physicalAssessments.length > 0 ? <AssessmentTracer headingId="part-physical-heading" assessments={physicalAssessments} labels={{ heading: t("physical_heading"), ...assessmentLabels }} /> : <><h2>{t("physical_heading")}</h2><p>{t("physical_empty")}</p></>}
+        {part.moldBatches.length > 0 ? <MoldBatchVariants batches={part.moldBatches} labels={{ heading: t("mold_batches_heading"), source: t("mold_batch_source") }} /> : null}
         <p><Link href="/mold-batches">{t("mold_batches_lookup")}</Link></p>
       </section>
 

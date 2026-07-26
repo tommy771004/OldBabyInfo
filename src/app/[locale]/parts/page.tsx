@@ -8,6 +8,7 @@ import { parseFilterSortParams, type FilterSortState } from "@/lib/parts/parse-f
 import { buildQuery } from "@/lib/parts/build-query.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 import { SearchableRows } from "./searchable-rows.tsx";
+import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -45,10 +46,10 @@ function PartsPageBody({
   const t = useTranslations("PartsPage");
 
   return (
-    <main>
+    <main className={styles.page}>
       <h1>{t("title")}</h1>
 
-      <nav aria-label={t("type_all")}>
+      <nav className={styles.filters} aria-label={t("type_all")}>
         <Link
           href={{ pathname: "/parts", query: buildQuery({ sort: state.sort, direction: state.direction }) }}
           aria-current={state.type === undefined ? "true" : undefined}

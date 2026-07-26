@@ -97,13 +97,17 @@ async function main() {
   const report = diffAgainstExisting(parsedRows, existingEvents);
 
   console.log(
-    `\n${report.added.length} added, ${report.changed.length} changed, ${report.unchanged} unchanged.`,
+    `\n${report.added.length} added, ${report.changed.length} changed, ` +
+      `${report.unchanged} unchanged, ${report.failed.length} failed.`,
   );
   for (const { event, rawRow } of report.added) {
     console.log(`  + ${event.id}\n    source: ${rawRow}`);
   }
   for (const { after, rawRow } of report.changed) {
     console.log(`  ~ ${after.id}\n    source: ${rawRow}`);
+  }
+  for (const failure of report.failed) {
+    console.log(`  ! failed\n    source: ${failure.rawRow}\n    reason: ${failure.reason}`);
   }
 
   if (report.added.length === 0 && report.changed.length === 0) {

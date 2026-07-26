@@ -22,6 +22,7 @@ import {
 } from "../src/lib/stock/sql-store.ts";
 import type { RawProductSnapshot } from "../src/lib/stock/parse-listing.ts";
 import { evaluateScrapeHealth } from "../src/lib/stock/scrape-health.ts";
+import { shouldSkipProductScrape } from "../src/lib/stock/scrape-runner.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TARGETS_PATH = join(__dirname, "..", "data", "product-targets.json");
@@ -92,8 +93,9 @@ function createPlaywrightLoader(browser: Browser) {
 
 async function main() {
   const targets = readTargets();
-  if (targets.length === 0) {
-    throw new Error(`No product targets are configured in ${TARGETS_PATH}`);
+  if (shouldSkipProductScrape(targets)) {
+    console.log(`No reviewed product targets are configured in ${TARGETS_PATH}; no Stock Listing data written.`);
+    return;
   }
 
   const connectionString = process.env.DATABASE_URL;

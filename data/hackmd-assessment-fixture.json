@@ -1,20 +1,14 @@
 [
   {
-    "id": "assessment:part:DRANSWORD:tactic:hackmd-launch-control",
+    "sourceKey": "launch-control",
     "subjectType": "part",
     "subjectId": "DRANSWORD",
     "kind": "tactic",
     "value": "平射與斜射控制",
     "summary": "來源筆記建議練習平射與斜射力道控制；目前無法定位原始 LINE 或影片，因此不標示原作者。",
     "sourceExcerpt": "練習平射、斜射力道控制",
-    "evidenceSource": null,
-    "discoverySource": {
-      "kind": "website",
-      "label": "HackMD Beyblade X 重要資料",
-      "url": "https://hackmd.io/@liangyutw/beyblade-important-record"
-    },
-    "attributionStatus": "unattributed",
     "publishedAt": "2026-07-26T00:00:00.000Z",
-    "capturedAt": "2026-07-26T00:00:00.000Z"
+    "capturedAt": "2026-07-26T00:00:00.000Z",
+    "evidenceSource": null
   }
 ]

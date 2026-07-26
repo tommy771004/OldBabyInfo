@@ -5,6 +5,7 @@ import { getAllParts, getPartBySlug } from "@/lib/parts/repository.ts";
 import { parseComboSlugs } from "@/lib/parts/combo-query.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 import { ComboBuilder } from "./combo-builder.tsx";
+import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -59,7 +60,7 @@ function ComboPageBody({
   const t = useTranslations("ComboBuilderPage");
 
   return (
-    <main>
+    <main className={styles.page}>
       <h1>{t("title")}</h1>
       <ComboBuilder blade={blade} ratchet={ratchet} bit={bit} allParts={allParts} locale={locale} />
     </main>

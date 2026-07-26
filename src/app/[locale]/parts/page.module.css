@@ -1,0 +1,11 @@
+.page { width: min(100% - 2rem, 88rem); margin: 0 auto; padding: 3rem 0 6rem; }
+.filters { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; margin: 2rem 0; }
+.page :global(label) { display: grid; gap: .45rem; }
+.page :global(input) { min-height: 2.6rem; padding: .45rem .65rem; border: 1px solid color-mix(in srgb, var(--ink-on-light) 30%, transparent); background: var(--surface-50); color: var(--ink-on-light); }
+.page :global(table) { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.page :global(th), .page :global(td) { padding: .75rem .6rem; text-align: left; vertical-align: middle; border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 16%, transparent); }
+.page :global(th) { color: color-mix(in srgb, var(--ink-on-light) 64%, transparent); font-size: .8rem; font-weight: 600; }
+.page :global(tbody tr:hover) { background: color-mix(in srgb, var(--surface-200) 45%, transparent); }
+.page :global(td:nth-child(n+5)) { font-variant-numeric: tabular-nums; }
+.page :global(td svg) { display: block; width: 3.5rem; height: 3.5rem; }
+@media (max-width: 760px) { .page { overflow-x: hidden; } .page :global(table) { min-width: 58rem; } .page :global(table) { display: block; overflow-x: auto; } }

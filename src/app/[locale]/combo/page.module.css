@@ -1,0 +1,6 @@
+.page { width: min(100% - 2rem, 72rem); margin: 0 auto; padding: 3rem 0 6rem; }
+.builder { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+.page :global(input) { width: 100%; min-height: 2.6rem; padding: .45rem .65rem; border: 1px solid color-mix(in srgb, var(--ink-on-light) 30%, transparent); background: var(--surface-50); color: var(--ink-on-light); }
+.page :global(dl) { display: grid; grid-template-columns: 1fr auto; gap: .55rem 1.5rem; max-width: 34rem; }
+.page :global(dd) { margin: 0; font-family: var(--font-display), serif; font-size: 1.35rem; }
+@media (max-width: 720px) { .builder { grid-template-columns: 1fr; } }

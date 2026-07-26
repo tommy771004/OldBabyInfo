@@ -12,11 +12,12 @@
 - [x] 保留 Source Excerpt、Discovery Source、時間與 Attribution Status
 - [x] 無法可靠匹配 Part 的資料進入 Needs Review
 - [x] 未取得 Publication Rights 時不鏡像全文
-- [ ] 每週排程與手動觸發只在取得方式符合來源條款時啟用
+- [x] 每週排程與手動觸發只在取得方式符合來源條款時啟用
 - [x] fixture 測試涵蓋批次格式、重量範圍、Part 匹配與衝突
 
 ## Progress
 
 - Mold Batch candidates now support an optional measured weight range and Source Excerpt; Part records have separate optional physical-observation fields and never reuse Stat Edition fields.
 - Exact Part matching still sends unknown names to the `unmatched`/Needs Review bucket, while strategy remains an Assessment kind.
-- The recurring Go-Shoot acquisition workflow remains disabled until the source-compliant acquisition method and rights metadata are recorded; no unverified batch or weight is added to the static dataset.
+- `.github/workflows/community-source-policy.yml` provides the weekly/manual gate. `data/community-source-policy.json` keeps Go-Shoot disabled while rights are unknown, so no fetch or dataset write can run until a compliant acquisition method is documented.
+- The Go-Shoot page was reviewed for general batch-code guidance, but it does not reliably identify a concrete Part/weight observation in the captured page; no guessed batch or weight is added to the static dataset.

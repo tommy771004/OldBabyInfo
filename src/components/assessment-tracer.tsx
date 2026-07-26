@@ -20,14 +20,16 @@ export function AssessmentTracer({
   assessments,
   labels,
   pagination,
+  headingId = "assessment-tracer-heading",
 }: {
   assessments: Assessment[];
   labels: AssessmentTracerLabels;
   pagination?: AssessmentPaginationState & { pathname: string };
+  headingId?: string;
 }) {
   return (
-    <section className={styles.section} aria-labelledby="assessment-tracer-heading">
-      <h2 id="assessment-tracer-heading">{labels.heading}</h2>
+    <section className={styles.section} aria-labelledby={headingId}>
+      <h2 id={headingId}>{labels.heading}</h2>
       {assessments.length > 0 ? (
         <div className={styles.list}>
           {assessments.map((assessment) => (

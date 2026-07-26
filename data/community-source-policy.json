@@ -1,0 +1,18 @@
+[
+  {
+    "sourceKey": "hackmd-important-record",
+    "canonicalUrl": "https://hackmd.io/@liangyutw/beyblade-important-record",
+    "acquisitionMethod": "manual_import",
+    "rights": "unknown",
+    "schedule": "none",
+    "enabled": false
+  },
+  {
+    "sourceKey": "go-shoot-x",
+    "canonicalUrl": "https://go-shoot.github.io/x/",
+    "acquisitionMethod": "manual_import",
+    "rights": "unknown",
+    "schedule": "none",
+    "enabled": false
+  }
+]

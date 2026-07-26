@@ -1,4 +1,5 @@
 import type { Assessment, AssessmentKind } from "./schema.ts";
+import type { EventLead } from "../events/leads.ts";
 
 const HACKMD_DISCOVERY_SOURCE = {
   kind: "website" as const,
@@ -17,11 +18,17 @@ export interface HackmdAssessmentDraft {
   publishedAt: string;
   capturedAt: string;
   evidenceSource: Assessment["evidenceSource"];
+  eventLead?: {
+    eventId: string;
+    sourceUrl: string;
+    sourceExcerpt: string;
+  };
 }
 
 export interface HackmdImportResult {
   assessments: Assessment[];
-  needsReview: { sourceKey: string; subjectId: string; reason: "Unknown subject" }[];
+  eventLeads: EventLead[];
+  needsReview: { sourceKey: string; subjectId: string; reason: "Unknown subject" | "Unknown event" }[];
 }
 
 /** Imports only curated structured facts and short excerpts. It does not
@@ -30,14 +37,24 @@ export interface HackmdImportResult {
 export function importHackmdAssessments(
   drafts: HackmdAssessmentDraft[],
   knownSubjectIds: Set<string>,
+  knownEventIds: Set<string> = new Set(),
 ): HackmdImportResult {
   const assessments: Assessment[] = [];
+  const eventLeads: HackmdImportResult["eventLeads"] = [];
   const needsReview: HackmdImportResult["needsReview"] = [];
 
   for (const draft of drafts) {
     if (!knownSubjectIds.has(draft.subjectId)) {
       needsReview.push({ sourceKey: draft.sourceKey, subjectId: draft.subjectId, reason: "Unknown subject" });
       continue;
+    }
+
+    if (draft.eventLead) {
+      if (!knownEventIds.has(draft.eventLead.eventId)) {
+        needsReview.push({ sourceKey: draft.sourceKey, subjectId: draft.eventLead.eventId, reason: "Unknown event" });
+      } else {
+        eventLeads.push(draft.eventLead);
+      }
     }
 
     assessments.push({
@@ -56,5 +73,11 @@ export function importHackmdAssessments(
     });
   }
 
-  return { assessments, needsReview };
+  return { assessments, eventLeads, needsReview };
+}
+
+export function mergeImportedAssessments(previous: Assessment[], incoming: Assessment[]): Assessment[] {
+  const byId = new Map(previous.map((assessment) => [assessment.id, assessment]));
+  for (const assessment of incoming) byId.set(assessment.id, assessment);
+  return [...byId.values()].sort((a, b) => a.id.localeCompare(b.id));
 }

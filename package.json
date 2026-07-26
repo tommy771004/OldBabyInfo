@@ -13,6 +13,8 @@
     "generate:parts": "node scripts/generate-parts-seed.ts",
     "refresh:parts": "node scripts/generate-parts-seed.ts",
     "generate:events": "node scripts/generate-events-seed.ts",
+    "generate:assessments": "node scripts/generate-assessments-seed.ts",
+    "check:community-sources": "node scripts/check-community-source-policy.ts",
     "scrape:products": "node scripts/scrape-products.ts"
   },
   "dependencies": {

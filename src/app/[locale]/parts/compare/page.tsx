@@ -4,6 +4,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { getAllParts, getPartBySlug } from "@/lib/parts/repository.ts";
 import { parseCompareSlugs } from "@/lib/parts/compare-query.ts";
 import { CompareTable } from "./compare-table.tsx";
+import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -40,7 +41,7 @@ function ComparePageBody({
   const t = useTranslations("ComparePage");
 
   return (
-    <main>
+    <main className={styles.page}>
       <h1>{t("title")}</h1>
       <CompareTable parts={parts} allParts={allParts} locale={locale} />
     </main>
