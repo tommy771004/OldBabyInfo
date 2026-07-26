@@ -171,6 +171,8 @@ function HomeContent({
         </div>
       </section>
 
+      <div className={styles.transitionBand} aria-hidden="true" />
+
       <footer className={styles.footer}>
         <div className={styles.footerTop}>
           <nav className={styles.footerLinks} aria-label={t("nav_label")}>

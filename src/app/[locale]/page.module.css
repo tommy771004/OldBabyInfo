@@ -1,18 +1,25 @@
 /*
- * Homepage composition (ticket 39). Zero animation on purpose — this file
- * proves the page is complete and legible with no motion at all; ticket 40
- * adds scroll-driven behaviour on top, ticket 41 turns the section jumps
- * below into one continuous gradient. Until then, each section pins to a
- * single verified-safe step on the surface ramp (see ADR-0008 — the ramp's
- * own 50-60% band fails contrast for both inks, so no section may land
- * there).
+ * Homepage composition (ticket 39) plus the continuous color temperature
+ * required by ticket 41 (ADR-0006's "one world, two lightings"). Zero
+ * animation on purpose — ticket 40 adds scroll-driven behaviour on top.
+ *
+ * Every section's background is a gradient, not a flat fill, and each
+ * one's edge color matches its neighbor's exactly, so there's no seam to
+ * see at any boundary. All of that walking only ever happens across the
+ * verified dark-ink-safe band (0-45% of the ramp, i.e. surface-950 through
+ * surface-600 — see ADR-0008): real text never sits anywhere past
+ * surface-600. The one span that has to cross the ramp's 50-60% dead zone
+ * (where neither ink passes AA) is .transitionBand between the events
+ * section and the footer — a tall, deliberately empty stretch with no
+ * text at all, exactly where ADR-0008 says that crossing is allowed.
  */
 
 .hero {
   position: relative;
   min-height: 100svh;
   overflow: hidden;
-  background-color: var(--surface-950);
+  background-image: var(--grain), linear-gradient(to bottom, var(--surface-950) 0%, var(--surface-950) 72%, var(--surface-900) 100%);
+  background-repeat: repeat, no-repeat;
   color: var(--ink-on-dark);
   display: flex;
   flex-direction: column;
@@ -121,10 +128,19 @@
   opacity: 0.72;
 }
 
-/* Parts section — surface-800, still dark-ink-safe */
+/* Parts section — walks surface-900 (matching the hero's own bottom edge)
+   down to surface-700 (matching the events section's top edge), staying
+   inside surface-800 for the whole text-bearing middle. */
 
 .partsSection {
-  background-color: var(--surface-800);
+  background-image: var(--grain), linear-gradient(
+    to bottom,
+    var(--surface-900) 0%,
+    var(--surface-800) 18%,
+    var(--surface-800) 78%,
+    var(--surface-700) 100%
+  );
+  background-repeat: repeat, no-repeat;
   color: var(--ink-on-dark);
 }
 
@@ -168,12 +184,18 @@
   font-size: 1.05rem;
 }
 
-/* Events section — surface-600, the last dark-ink-safe step before the
-   ramp's dead zone (ADR-0008); the light-ink sections below jump straight
-   past it, since no section may render text inside that band at all. */
+/* Events section — picks up at surface-700 (matching the parts section's
+   bottom edge) and settles into surface-600, the last dark-ink-safe step
+   before the ramp's dead zone (ADR-0008), for its whole text-bearing body. */
 
 .eventsSection {
-  background-color: var(--surface-600);
+  background-image: var(--grain), linear-gradient(
+    to bottom,
+    var(--surface-700) 0%,
+    var(--surface-600) 18%,
+    var(--surface-600) 100%
+  );
+  background-repeat: repeat, no-repeat;
   color: var(--ink-on-dark);
 }
 
@@ -218,8 +240,30 @@
   margin: 0;
 }
 
-/* Footer — surface-100, light-ink-safe. One composed island, not two
-   clusters flung to opposite edges. */
+/* The one span that has to cross the ramp's 50-60% dead zone (ADR-0008) —
+   real distance (not a seam line), grained against banding, and — the
+   part that makes crossing it legal — deliberately empty. No heading, no
+   copy, no link lives in this element; text resumes only once the footer
+   below has already settled on the light-ink-safe surface-100. */
+
+.transitionBand {
+  height: clamp(18rem, 32vw, 26rem);
+  background-image: var(--grain), linear-gradient(
+    to bottom,
+    var(--surface-600) 0%,
+    var(--surface-500) 24%,
+    var(--surface-400) 40%,
+    var(--surface-300) 56%,
+    var(--surface-200) 74%,
+    var(--surface-100) 100%
+  );
+  background-repeat: repeat, no-repeat;
+}
+
+/* Footer — surface-100, light-ink-safe (also the site-wide default now —
+   see colors.css — so a link out of here into Parts or Events lands on
+   the same temperature, not a jump back to black). One composed island,
+   not two clusters flung to opposite edges. */
 
 .footer {
   background-color: var(--surface-100);

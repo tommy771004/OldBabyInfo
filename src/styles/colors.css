@@ -33,19 +33,31 @@
    * states) — never as a large fill. */
   --accent-on-dark: #e08a5c;
   --accent-on-light: #8c3a19;
+
+  /* Fine white-noise grain (ticket 41) — tiled at very low alpha so large
+   * gradient spans don't band. Alpha-only (no hue), so it reads correctly
+   * layered over any step of the ramp, dark or light. Meant to sit as a
+   * second `background-image` layer under real content, never as its own
+   * stacked element — see page.module.css for usage. */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /**
- * Interim base application — real per-page composition against the
- * continuous gradient is tickets 07/39/40/41. Until then, the site
- * defaults to the field end (dark, "場上") rather than shipping unstyled
- * black-on-white, which reads as broken.
+ * Site-wide default (ticket 41): the sideline end ("場邊"), not the field.
+ * Most pages (Parts, Events, and every internal QA page) are the "read for
+ * twenty minutes" kind ADR-0006 describes, not the hero — they belong at
+ * the warm/light end. The homepage is the one deliberate exception: its
+ * hero section (see page.module.css's .hero) explicitly overrides back to
+ * the field end for its own first screen, then walks down to this same
+ * light default by its footer — so a link out of that footer into Parts or
+ * Events lands on a page that's already the same temperature, not a jump
+ * back to black.
  */
 body {
-  background-color: var(--surface-950);
-  color: var(--ink-on-dark);
+  background-color: var(--surface-100);
+  color: var(--ink-on-light);
 }
 
 a {
-  color: var(--accent-on-dark);
+  color: var(--accent-on-light);
 }
