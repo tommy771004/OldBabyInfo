@@ -46,7 +46,12 @@
     "playstyle_column": "Type",
     "silhouette_column": "Silhouette",
     "silhouette_label": "{count}-wing silhouette",
-    "silhouette_unknown_label": "Silhouette not yet available"
+    "silhouette_unknown_label": "Silhouette not yet available",
+    "silhouette_ratchet_label": "Height {height} silhouette",
+    "silhouette_bit_attack": "Attack-type silhouette",
+    "silhouette_bit_defense": "Defense-type silhouette",
+    "silhouette_bit_stamina": "Stamina-type silhouette",
+    "silhouette_bit_balance": "Balance-type silhouette"
   },
   "EventsPage": {
     "title": "Event Calendar",

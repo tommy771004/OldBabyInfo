@@ -46,7 +46,12 @@
     "playstyle_column": "タイプ",
     "silhouette_column": "シルエット",
     "silhouette_label": "{count}枚羽根の形状",
-    "silhouette_unknown_label": "シルエット未収録"
+    "silhouette_unknown_label": "シルエット未収録",
+    "silhouette_ratchet_label": "高さ{height}のシルエット",
+    "silhouette_bit_attack": "アタックタイプのシルエット",
+    "silhouette_bit_defense": "ディフェンスタイプのシルエット",
+    "silhouette_bit_stamina": "スタミナタイプのシルエット",
+    "silhouette_bit_balance": "バランスタイプのシルエット"
   },
   "EventsPage": {
     "title": "大会カレンダー",

@@ -9,6 +9,8 @@ import { searchParts } from "@/lib/parts/search-parts.ts";
 import { buildQuery } from "@/lib/parts/build-query.ts";
 import { PlaystyleSymbol, RatchetHeightSymbol } from "@/components/type-symbols.tsx";
 import { BladeSilhouette, BladeSilhouettePlaceholder } from "@/components/blade-silhouette.tsx";
+import { RatchetSilhouette } from "@/components/ratchet-silhouette.tsx";
+import { BitSilhouette } from "@/components/bit-silhouette.tsx";
 import { wingCountFor, hasObservedWingCount } from "@/lib/parts/blade-wing-count.ts";
 import type { SortField } from "@/lib/parts/filter-sort.ts";
 import type { FilterSortState } from "@/lib/parts/parse-filter-sort-params.ts";
@@ -91,8 +93,18 @@ export function SearchableRows({
                     />
                   ) : part.type === "blade" ? (
                     <BladeSilhouettePlaceholder label={t("silhouette_unknown_label")} />
+                  ) : part.type === "ratchet" ? (
+                    <RatchetSilhouette
+                      height={part.height}
+                      label={t("silhouette_ratchet_label", { height: part.height })}
+                    />
+                  ) : part.playstyle ? (
+                    <BitSilhouette
+                      playstyle={part.playstyle}
+                      label={t(`silhouette_bit_${part.playstyle}`)}
+                    />
                   ) : (
-                    "—"
+                    <BladeSilhouettePlaceholder label={t("silhouette_unknown_label")} />
                   )}
                 </td>
                 <td>

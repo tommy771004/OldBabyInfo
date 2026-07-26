@@ -46,7 +46,12 @@
     "playstyle_column": "傾向",
     "silhouette_column": "剪影",
     "silhouette_label": "{count} 瓣造型",
-    "silhouette_unknown_label": "剪影尚未收錄"
+    "silhouette_unknown_label": "剪影尚未收錄",
+    "silhouette_ratchet_label": "固定高度 {height} 造型",
+    "silhouette_bit_attack": "攻擊型剪影",
+    "silhouette_bit_defense": "防禦型剪影",
+    "silhouette_bit_stamina": "持久型剪影",
+    "silhouette_bit_balance": "平衡型剪影"
   },
   "EventsPage": {
     "title": "賽事行事曆",
