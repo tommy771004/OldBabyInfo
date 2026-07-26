@@ -42,7 +42,7 @@ async function main() {
 
     const events = results
       .filter((r) => r.status === "parsed")
-      .map((r) => r.event!);
+      .map((r) => (r.event && r.rawRow ? { ...r.event, sourceExcerpt: r.rawRow } : r.event!));
     console.log(`  ${events.length} events parsed`);
     allEvents.push(...events);
   }

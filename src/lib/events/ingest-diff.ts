@@ -39,6 +39,12 @@ export interface IngestReport {
   added: { event: Event; rawRow: string }[];
   changed: { before: Event; after: Event; rawRow: string }[];
   unchanged: number;
+  failed: { rawRow: string; reason: string }[];
+}
+
+function eventWithSourceExcerpt(row: SheetRowResult): Event | undefined {
+  if (!row.event) return undefined;
+  return row.rawRow ? { ...row.event, sourceExcerpt: row.rawRow } : row.event;
 }
 
 /**
@@ -49,15 +55,21 @@ export interface IngestReport {
  */
 export function diffAgainstExisting(parsed: SheetRowResult[], existing: Event[]): IngestReport {
   const existingById = new Map(existing.map((e) => [e.id, e]));
-  const report: IngestReport = { added: [], changed: [], unchanged: 0 };
+  const report: IngestReport = { added: [], changed: [], unchanged: 0, failed: [] };
 
   for (const row of parsed) {
-    if (row.status !== "parsed" || !row.event) continue;
-    const prior = existingById.get(row.event.id);
+    if (row.status === "failed") {
+      report.failed.push({ rawRow: row.rawRow ?? "", reason: row.reason ?? "Unknown parse failure" });
+      continue;
+    }
+    if (row.status !== "parsed") continue;
+    const event = eventWithSourceExcerpt(row);
+    if (!event) continue;
+    const prior = existingById.get(event.id);
     if (!prior) {
-      report.added.push({ event: row.event, rawRow: row.rawRow ?? "" });
-    } else if (JSON.stringify(prior) !== JSON.stringify(row.event)) {
-      report.changed.push({ before: prior, after: row.event, rawRow: row.rawRow ?? "" });
+      report.added.push({ event, rawRow: row.rawRow ?? "" });
+    } else if (JSON.stringify(prior) !== JSON.stringify(event)) {
+      report.changed.push({ before: prior, after: event, rawRow: row.rawRow ?? "" });
     } else {
       report.unchanged++;
     }

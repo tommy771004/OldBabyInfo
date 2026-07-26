@@ -48,8 +48,6 @@ function WhereToBuyContent({
   databaseConfigured: boolean;
 }) {
   const t = useTranslations("WhereToBuyPage");
-  const staleHours = Number(process.env.STOCK_LISTING_STALE_HOURS ?? 24);
-
   return (
     <main className={styles.page}>
       <p>
@@ -60,8 +58,6 @@ function WhereToBuyContent({
       {!databaseConfigured ? <p className={styles.notice}>{t("databaseUnavailable")}</p> : null}
       <WhereToBuyList
         listings={listings}
-        now={new Date().toISOString()}
-        staleAfterMs={staleHours * 60 * 60 * 1000}
         labels={{
           price: t("price"),
           availability: t("availability"),
@@ -69,7 +65,6 @@ function WhereToBuyContent({
           outOfStock: t("outOfStock"),
           unknownStock: t("unknownStock"),
           capturedAt: t("capturedAt"),
-          stale: t("stale"),
           visitRetailer: t("visitRetailer"),
           emptyHeading: t("emptyHeading"),
           emptyBody: t("emptyBody"),

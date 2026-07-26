@@ -25,6 +25,8 @@ export const eventSchema = z.object({
   registrationMethod: z.enum(["onsite", "online", "phone", "either", "store_community"]),
   ageCategory: z.string().min(1),
   sourceUrl: z.url(),
+  /** The original CSV row, retained as the public Event Source Excerpt. */
+  sourceExcerpt: z.string().min(1).optional(),
   /** Null for almost every event — see ticket 03's spike: the community
    *  records full results for essentially none of its scheduled events.
    *  This is expected, not a gap in the seed data. */

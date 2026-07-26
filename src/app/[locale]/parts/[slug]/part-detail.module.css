@@ -1,0 +1,141 @@
+.page {
+  width: min(100% - 2rem, 72rem);
+  margin: 0 auto;
+  padding: 2rem 0 6rem;
+  color: var(--ink-on-light);
+}
+
+.backLink {
+  margin: 0 0 2rem;
+}
+
+.identityStage,
+.officialStage,
+.assessmentStage,
+.physicalStage,
+.stockStage,
+.discussionStage {
+  padding: 3rem 0;
+}
+
+.identityStage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(15rem, 22rem);
+  gap: 3rem;
+  align-items: center;
+  min-height: 22rem;
+}
+
+.identityCopy h1 {
+  max-width: 12ch;
+  margin: 0.5rem 0;
+  font-size: clamp(2.8rem, 8vw, 6.5rem);
+  line-height: 0.95;
+}
+
+.typeLabel,
+.code {
+  margin: 0;
+  color: var(--accent-on-light);
+}
+
+.code {
+  font-family: var(--font-display), serif;
+  letter-spacing: 0.06em;
+}
+
+.partVisual {
+  min-height: 15rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.partVisual img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.partVisual p {
+  max-width: 30ch;
+  margin: 0.75rem auto 0;
+  font-size: 0.85rem;
+}
+
+.officialStage {
+  background: color-mix(in srgb, var(--surface-200) 55%, var(--surface-100));
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+.names,
+.stats {
+  display: grid;
+  grid-template-columns: minmax(8rem, max-content) 1fr;
+  gap: 0.55rem 1.5rem;
+  margin: 1rem 0 2.5rem;
+}
+
+.names dt,
+.stats dt {
+  color: color-mix(in srgb, var(--ink-on-light) 62%, transparent);
+}
+
+.names dd,
+.stats dd {
+  margin: 0;
+}
+
+.stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.stats div {
+  padding: 0.9rem 0;
+  border-top: 2px solid color-mix(in srgb, var(--accent-on-light) 26%, transparent);
+}
+
+.stats dd {
+  margin-top: 0.25rem;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.7rem, 4vw, 3rem);
+}
+
+.modeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.stockStage {
+  background: var(--surface-950);
+  color: var(--ink-on-dark);
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+.stockStage a {
+  color: var(--accent-on-dark);
+}
+
+.discussionStage {
+  padding-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .identityStage {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .identityCopy h1 {
+    max-width: 100%;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}

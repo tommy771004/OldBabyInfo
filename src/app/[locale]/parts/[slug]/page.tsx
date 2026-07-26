@@ -12,10 +12,17 @@ import { RatchetSilhouette } from "@/components/ratchet-silhouette.tsx";
 import { BitSilhouette } from "@/components/bit-silhouette.tsx";
 import { MoldBatchVariants } from "@/components/mold-batch-variants.tsx";
 import { DiscussionList } from "@/components/discussion-list.tsx";
+import { AssessmentTracer } from "@/components/assessment-tracer.tsx";
+import { WhereToBuyList } from "@/components/where-to-buy-list.tsx";
 import { createNeonThreadReader } from "@/lib/discussion/neon-repository.ts";
+import { createNeonStockListingReader } from "@/lib/stock/neon-store.ts";
 import type { ThreadWithAuthor } from "@/lib/discussion/sql-repository.ts";
+import { getAssessmentsForSubject } from "@/lib/assessments/repository.ts";
+import { parseAssessmentPaginationParams } from "@/lib/assessments/pagination.ts";
+import { splitAssessmentsByStage } from "@/lib/parts/detail-sections.ts";
 import { wingCountFor, hasObservedWingCount } from "@/lib/parts/blade-wing-count.ts";
 import type { Part } from "@/lib/parts/schema.ts";
+import styles from "./part-detail.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -29,10 +36,11 @@ const STAT_FIELDS = ["attack", "defense", "stamina", "xDash", "burstResistance"]
 
 export default async function PartDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  // Safe: the root layout already 404s on any locale outside `routing.locales`.
   const { locale, slug } = (await params) as { locale: Locale; slug: string };
   setRequestLocale(locale);
 
@@ -41,135 +49,132 @@ export default async function PartDetailPage({
 
   const connectionString = process.env.DATABASE_URL;
   const threadReader = connectionString ? createNeonThreadReader(connectionString) : undefined;
-  const threads = threadReader
-    ? await threadReader.listVisibleBySubject("part", part.id)
-    : [];
+  const threads = threadReader ? await threadReader.listVisibleBySubject("part", part.id) : [];
+  const stockReader = connectionString ? createNeonStockListingReader(connectionString) : undefined;
+  const listings = stockReader ? await stockReader.listByPartId(part.id) : [];
 
-  return <PartDetailBody part={part} locale={locale} threads={threads} />;
+  const allAssessments = getAssessmentsForSubject("part", part.id);
+  const stages = splitAssessmentsByStage(allAssessments);
+  const pagination = parseAssessmentPaginationParams(await searchParams, stages.assessment.length);
+
+  return (
+    <PartDetailBody
+      part={part}
+      locale={locale}
+      threads={threads}
+      assessments={stages.assessment.slice(pagination.start, pagination.end)}
+      physicalAssessments={stages.physical}
+      listings={listings}
+      pagination={{ ...pagination, pathname: `/${locale}/parts/${slug}` }}
+    />
+  );
 }
 
 function PartDetailBody({
   part,
   locale,
   threads,
+  assessments,
+  physicalAssessments,
+  listings,
+  pagination,
 }: {
   part: Part;
   locale: Locale;
   threads: ThreadWithAuthor[];
+  assessments: ReturnType<typeof getAssessmentsForSubject>;
+  physicalAssessments: ReturnType<typeof getAssessmentsForSubject>;
+  listings: Awaited<ReturnType<ReturnType<typeof createNeonStockListingReader>["listByPartId"]>>;
+  pagination: ReturnType<typeof parseAssessmentPaginationParams> & { pathname: string };
 }) {
   const t = useTranslations("PartDetailPage");
   const tp = useTranslations("PartsPage");
+  const tw = useTranslations("WhereToBuyPage");
   const image = getPartImage(part.id);
+  const modes = "modes" in part ? part.modes : [];
   const statEntries: [(typeof STAT_FIELDS)[number], number][] =
     part.type === "bit"
       ? STAT_FIELDS.map((field) => [field, part.stats[field]])
       : (["attack", "defense", "stamina"] as const).map((field) => [field, part.stats[field]]);
 
+  const assessmentLabels = {
+    kindLabel: (kind: Parameters<typeof t>[0] extends never ? never : "tier" | "recommendedCombo" | "tactic" | "weight" | "moldObservation") =>
+      t(`assessment_kind_${kind}`),
+    unattributed: t("assessment_unattributed"),
+    excerpt: t("assessment_excerpt"),
+    discoverySource: t("assessment_discovery_source"),
+    evidenceSource: t("assessment_evidence_source"),
+    capturedAt: t("assessment_captured_at"),
+    pageSize: t("assessment_page_size"),
+    pageStatus: (page: number, totalPages: number) => t("assessment_page_status", { page, totalPages }),
+    previousPage: t("assessment_previous_page"),
+    nextPage: t("assessment_next_page"),
+  };
+
   return (
-    <main>
-      <p>
-        <Link href="/parts">{t("back_to_parts")}</Link>
-      </p>
+    <main className={styles.page}>
+      <p className={styles.backLink}><Link href="/parts">{t("back_to_parts")}</Link></p>
 
-      <p>{tp(`type_${part.type}`)}</p>
-      <h1>{localizedNameOf(part, locale)}</h1>
-
-      <div>
-        {part.type === "blade" ? (
-          hasObservedWingCount(part.id) ? (
-            <BladeSilhouette
-              wingCount={wingCountFor(part.id)}
-              label={tp("silhouette_label", { count: wingCountFor(part.id) })}
-            />
-          ) : null
-        ) : part.type === "ratchet" ? (
-          <RatchetSilhouette
-            height={part.height}
-            label={tp("silhouette_ratchet_label", { height: part.height })}
-          />
-        ) : part.playstyle ? (
-          <BitSilhouette playstyle={part.playstyle} label={tp(`silhouette_bit_${part.playstyle}`)} />
-        ) : null}
-      </div>
-
-      <section>
-        <h2>{t("names_heading")}</h2>
-        <dl>
-          <dt>{t("name_en")}</dt>
-          <dd>{part.nameEn}</dd>
-          <dt>{t("name_ja")}</dt>
-          <dd>{part.nameJa ?? "—"}</dd>
-          <dt>{t("name_zh_tw")}</dt>
-          <dd>{part.nameZhTw ?? "—"}</dd>
-        </dl>
-
-        {part.aliases.length > 0 ? (
-          <p>
-            {t("aliases_label")}: {part.aliases.join("、")}
-          </p>
-        ) : null}
+      <section className={styles.identityStage} aria-labelledby="part-identity-heading">
+        <div className={styles.identityCopy}>
+          <p className={styles.typeLabel}>{tp(`type_${part.type}`)}</p>
+          <h1 id="part-identity-heading">{localizedNameOf(part, locale)}</h1>
+          <p className={styles.code}>{part.id}</p>
+        </div>
+        <div className={styles.partVisual}>
+          {image ? (
+            <Image src={image.url} alt={part.nameEn} width={image.width} height={image.height} />
+          ) : part.type === "blade" && hasObservedWingCount(part.id) ? (
+            <BladeSilhouette wingCount={wingCountFor(part.id)} label={tp("silhouette_label", { count: wingCountFor(part.id) })} />
+          ) : part.type === "ratchet" ? (
+            <RatchetSilhouette height={part.height} label={tp("silhouette_ratchet_label", { height: part.height })} />
+          ) : part.type === "bit" && part.playstyle ? (
+            <BitSilhouette playstyle={part.playstyle} label={tp(`silhouette_bit_${part.playstyle}`)} />
+          ) : null}
+          <p>{image ? t("image_disclaimer") : t("image_missing")}</p>
+        </div>
       </section>
 
-      <section>
+      <section className={styles.officialStage} aria-labelledby="official-facts-heading">
+        <h2 id="official-facts-heading">{t("official_heading")}</h2>
+        <dl className={styles.names}>
+          <dt>{t("name_en")}</dt><dd>{part.nameEn}</dd>
+          <dt>{t("name_ja")}</dt><dd>{part.nameJa ?? "—"}</dd>
+          <dt>{t("name_zh_tw")}</dt><dd>{part.nameZhTw ?? "—"}</dd>
+        </dl>
+        {part.aliases.length > 0 ? <p>{t("aliases_label")}: {part.aliases.join("、")}</p> : null}
         <h2>{t("stats_heading")}</h2>
-        <dl>
-          {statEntries.map(([field, value]) => (
-            <div key={field}>
-              <dt>{tp(`stat_${field}`)}</dt>
-              <dd className="stat-value">{value}</dd>
-            </div>
-          ))}
+        <dl className={styles.stats}>
+          {statEntries.map(([field, value]) => <div key={field}><dt>{tp(`stat_${field}`)}</dt><dd className="stat-value">{value}</dd></div>)}
         </dl>
+        <h2>{t("mode_heading")}</h2>
+        {modes.length > 0 ? <ul className={styles.modeList}>{modes.map((mode) => <li key={mode.label}>{mode.label}</li>)}</ul> : <p>{t("mode_default")}</p>}
       </section>
 
-      <section>
-        <h2>{t("release_label")}</h2>
-        <p>{part.releaseAt ?? t("release_unknown")}</p>
+      <section className={styles.assessmentStage}>
+        <AssessmentTracer assessments={assessments} labels={{ heading: t("assessments_heading"), ...assessmentLabels }} pagination={pagination} />
       </section>
 
-      {part.moldBatches.length > 0 ? (
-        <MoldBatchVariants
-          batches={part.moldBatches}
-          labels={{ heading: t("mold_batches_heading"), source: t("mold_batch_source") }}
-        />
-      ) : null}
-
-      <p>
-        <Link href="/mold-batches">{t("mold_batches_lookup")}</Link>
-      </p>
-      <p>
-        <Link href={`/parts/${slugify(part.nameEn)}/where-to-buy`}>{t("where_to_buy")}</Link>
-      </p>
-
-      <section>
-        {image ? (
-          <>
-            <Image
-              src={image.url}
-              alt={part.nameEn}
-              width={image.width}
-              height={image.height}
-              style={{ width: "auto", height: "auto", maxWidth: 400 }}
-            />
-            <p>{t("image_disclaimer")}</p>
-          </>
-        ) : (
-          <p>{t("image_missing")}</p>
-        )}
+      <section className={styles.physicalStage} aria-labelledby="physical-observations-heading">
+        <h2 id="physical-observations-heading">{t("physical_heading")}</h2>
+        {physicalAssessments.length > 0 ? <AssessmentTracer assessments={physicalAssessments} labels={{ heading: t("physical_heading"), ...assessmentLabels }} /> : null}
+        {part.moldBatches.length > 0 ? <MoldBatchVariants batches={part.moldBatches} labels={{ heading: t("mold_batches_heading"), source: t("mold_batch_source") }} /> : <p>{t("physical_empty")}</p>}
+        <p><Link href="/mold-batches">{t("mold_batches_lookup")}</Link></p>
       </section>
 
-      <section>
+      <section className={styles.stockStage} aria-labelledby="where-to-buy-heading">
+        <h2 id="where-to-buy-heading">{t("where_to_buy")}</h2>
+        <WhereToBuyList listings={listings} labels={{
+          price: tw("price"), availability: tw("availability"), inStock: tw("inStock"), outOfStock: tw("outOfStock"), unknownStock: tw("unknownStock"), capturedAt: tw("capturedAt"), visitRetailer: tw("visitRetailer"), emptyHeading: tw("emptyHeading"), emptyBody: tw("emptyBody"),
+        }} />
+        <p><Link href={`/parts/${slugify(part.nameEn)}/where-to-buy`}>{t("where_to_buy_full_page")}</Link></p>
+      </section>
+
+      <section className={styles.discussionStage}>
         <DiscussionList
           threads={threads.map(({ thread }) => thread)}
           authorNames={Object.fromEntries(threads.map(({ thread, authorName }) => [thread.authorId, authorName]))}
-          labels={{
-            heading: t("thread_heading"),
-            emptyHeading: t("thread_empty_heading"),
-            emptyBody: t("thread_empty_body"),
-            postedBy: t("thread_posted_by"),
-            noAuthor: t("thread_no_author"),
-            at: t("thread_at"),
-          }}
+          labels={{ heading: t("thread_heading"), emptyHeading: t("thread_empty_heading"), emptyBody: t("thread_empty_body"), postedBy: t("thread_posted_by"), noAuthor: t("thread_no_author"), at: t("thread_at") }}
         />
       </section>
     </main>

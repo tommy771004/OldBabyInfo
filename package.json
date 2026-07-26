@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p scripts/tsconfig.json",
     "test": "vitest run",
     "generate:parts": "node scripts/generate-parts-seed.ts",
+    "refresh:parts": "node scripts/generate-parts-seed.ts",
     "generate:events": "node scripts/generate-events-seed.ts",
     "scrape:products": "node scripts/scrape-products.ts"
   },

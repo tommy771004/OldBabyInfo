@@ -1,0 +1,53 @@
+name: Official Part refresh
+
+on:
+  schedule:
+    - cron: "17 18 * * 0" # 02:17 Monday Asia/Taipei
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: official-parts-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Refresh structured official Part facts
+        run: npm run refresh:parts
+
+      - name: Check for deterministic data changes
+        id: diff
+        run: |
+          if git diff --quiet -- data/parts.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open or update review PR
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "資料更新：官方 Part facts"
+          title: "官方 Part facts 更新"
+          body: |
+            `npm run refresh:parts` 產生的 deterministic diff。
+
+            這條管線只匯入 BeyBrew MasterData／beyparts 的結構化 Part 名稱、Stat、Mode、關係與 Stat Edition；不複製程式碼、全文或圖片。請人工審查 `data/parts.json` 後再合併。
+          branch: auto/official-parts-refresh
+          labels: automated-data-ingest

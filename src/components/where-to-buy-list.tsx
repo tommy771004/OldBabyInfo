@@ -1,5 +1,4 @@
 import type { StockListing } from "@/lib/stock/repository.ts";
-import { isStockListingStale } from "@/lib/stock/freshness.ts";
 
 export interface WhereToBuyLabels {
   price: string;
@@ -8,7 +7,6 @@ export interface WhereToBuyLabels {
   outOfStock: string;
   unknownStock: string;
   capturedAt: string;
-  stale: string;
   visitRetailer: string;
   emptyHeading: string;
   emptyBody: string;
@@ -16,13 +14,9 @@ export interface WhereToBuyLabels {
 
 export function WhereToBuyList({
   listings,
-  now,
-  staleAfterMs,
   labels,
 }: {
   listings: StockListing[];
-  now: string;
-  staleAfterMs?: number;
   labels: WhereToBuyLabels;
 }) {
   if (listings.length === 0) {
@@ -37,9 +31,6 @@ export function WhereToBuyList({
   return (
     <ul>
       {listings.map((listing) => {
-        const stale =
-          listing.scrapeStatus === "failed" ||
-          isStockListingStale(listing, now, staleAfterMs);
         const stockLabel =
           listing.stockStatus === "in_stock"
             ? labels.inStock
@@ -61,7 +52,6 @@ export function WhereToBuyList({
                 <time dateTime={listing.capturedAt}>{listing.capturedAt}</time>
               </dd>
             </dl>
-            {stale ? <p>{labels.stale}</p> : null}
             <a href={listing.productUrl} target="_blank" rel="noreferrer">
               {labels.visitRetailer}
             </a>

@@ -8,7 +8,7 @@
  * names from MasterData.json ourselves). Stat Edition history is discovered
  * by cross-referencing the same part's raw entries in MasterData.json.
  */
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { partsFileSchema, type Part } from "../src/lib/parts/schema.ts";
@@ -17,6 +17,7 @@ import {
   type RawMasterDataEntry,
 } from "../src/lib/parts/build-stat-editions.ts";
 import { cleanLocalizedName } from "../src/lib/parts/clean-localized-name.ts";
+import { refreshOfficialParts } from "../src/lib/official-parts/refresh.ts";
 
 /** The richer raw shape actually present in MasterData.json — a superset of
  *  RawMasterDataEntry (which only declares what stat-edition extraction
@@ -312,10 +313,10 @@ async function main() {
     deduped.push(part);
   }
 
-  const result = partsFileSchema.safeParse(deduped);
-  if (!result.success) {
-    console.error(`Generated seed data failed schema validation (${result.error.issues.length} issues). First 15:`);
-    for (const issue of result.error.issues.slice(0, 15)) {
+  const validation = partsFileSchema.safeParse(deduped);
+  if (!validation.success) {
+    console.error(`Generated seed data failed schema validation (${validation.error.issues.length} issues). First 15:`);
+    for (const issue of validation.error.issues.slice(0, 15)) {
       const idx = issue.path[0];
       const part = typeof idx === "number" ? deduped[idx] : undefined;
       console.error(`  [${part?.nameEn ?? "?"} / ${part?.type ?? "?"}] ${issue.path.join(".")}: ${issue.message}`);
@@ -323,9 +324,25 @@ async function main() {
     process.exit(1);
   }
 
-  writeFileSync(OUTPUT_PATH, JSON.stringify(result.data, null, 2) + "\n");
+  const previous = partsFileSchema.parse(JSON.parse(readFileSync(OUTPUT_PATH, "utf8")));
+  const refresh = await refreshOfficialParts(previous, async () => ({
+    sourceVersion: process.env.BEYBREW_SOURCE_VERSION ?? "yujinyuz/beybrew@main",
+    parts: validation.data,
+  }));
+  if (refresh.status === "failed") {
+    console.error(`Official Part refresh failed; keeping the previous seed: ${refresh.error}`);
+    process.exit(1);
+  }
+
+  if (refresh.status === "unchanged") {
+    console.log(`Official Part refresh unchanged at ${refresh.sourceVersion}; data/parts.json was not rewritten.`);
+    return;
+  }
+
+  writeFileSync(OUTPUT_PATH, JSON.stringify(refresh.parts, null, 2) + "\n");
   console.log(
-    `Wrote ${result.data.length} parts to ${OUTPUT_PATH} (${matched} matched to MasterData, ${unmatched} unmatched — review before merging).`,
+    `Wrote ${refresh.parts.length} parts to ${OUTPUT_PATH} from ${refresh.sourceVersion} (${matched} matched to MasterData, ${unmatched} unmatched — review before merging). ` +
+      `Added: ${refresh.diff.added.length}; changed: ${refresh.diff.changed.length}; removed: ${refresh.diff.removed.length}.`,
   );
 }
 

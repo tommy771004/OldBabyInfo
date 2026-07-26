@@ -72,7 +72,7 @@ describe("diffAgainstExisting", () => {
   });
 
   it("classifies a byte-identical existing record as unchanged, not added or changed", () => {
-    const existing = event({ id: "e1" });
+    const existing = event({ id: "e1", sourceExcerpt: "raw" });
     const report = diffAgainstExisting([parsedRow(event({ id: "e1" }))], [existing]);
     expect(report.unchanged).toBe(1);
     expect(report.added).toHaveLength(0);
@@ -96,10 +96,20 @@ describe("diffAgainstExisting", () => {
     ];
     const report = diffAgainstExisting(rows, []);
     expect(report.added).toHaveLength(1);
+    expect(report.failed).toEqual([{ rawRow: "bad row", reason: "nope" }]);
   });
 
   it("keeps the raw source row alongside each added/changed entry (ticket 32's Source Excerpt)", () => {
     const report = diffAgainstExisting([parsedRow(event({ id: "e1" }), "1,測試店,...")], []);
     expect(report.added[0]!.rawRow).toBe("1,測試店,...");
+    expect(report.added[0]!.event.sourceExcerpt).toBe("1,測試店,...");
+  });
+
+  it("does not classify the same source row as changed after its excerpt was persisted", () => {
+    const existing = event({ id: "e1", sourceExcerpt: "1,測試店,..." });
+    const report = diffAgainstExisting([parsedRow(event({ id: "e1" }), "1,測試店,...")], [existing]);
+
+    expect(report.unchanged).toBe(1);
+    expect(report.changed).toHaveLength(0);
   });
 });
