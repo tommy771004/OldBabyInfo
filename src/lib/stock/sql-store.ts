@@ -2,7 +2,7 @@ import type { StockListing, StockListingStore } from "./repository.ts";
 import type { StockStatus } from "./parse-listing.ts";
 
 export interface SqlClient {
-  query<T = StockListingRow>(text: string, params?: readonly unknown[]): Promise<{ rows: T[] }>;
+  query(text: string, params?: readonly unknown[]): Promise<{ rows: StockListingRow[] }>;
 }
 
 export interface StockListingRow {
@@ -80,12 +80,12 @@ function toListing(row: StockListingRow): StockListing {
 export function createSqlStockListingStore(sql: SqlClient): StockListingStore & StockListingReader {
   return {
     async get(id) {
-      const result = await sql.query<StockListingRow>(SELECT_SQL, [id]);
+      const result = await sql.query(SELECT_SQL, [id]);
       const row = result.rows[0];
       return row ? toListing(row) : undefined;
     },
     async listByPartId(partId) {
-      const result = await sql.query<StockListingRow>(SELECT_BY_PART_SQL, [partId]);
+      const result = await sql.query(SELECT_BY_PART_SQL, [partId]);
       return result.rows.map(toListing);
     },
     async save(row) {

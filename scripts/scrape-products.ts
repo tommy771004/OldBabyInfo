@@ -21,6 +21,7 @@ import {
   type StockListingRow,
 } from "../src/lib/stock/sql-store.ts";
 import type { RawProductSnapshot } from "../src/lib/stock/parse-listing.ts";
+import { evaluateScrapeHealth } from "../src/lib/stock/scrape-health.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TARGETS_PATH = join(__dirname, "..", "data", "product-targets.json");
@@ -120,6 +121,16 @@ async function main() {
     );
 
     const attemptedAt = new Date().toISOString();
+    const expectedCountInput = process.env.PRODUCT_EXPECTED_COUNT?.trim();
+    const expectedCount = expectedCountInput ? Number(expectedCountInput) : targets.length;
+    if (!Number.isInteger(expectedCount) || expectedCount < 0) {
+      throw new Error("PRODUCT_EXPECTED_COUNT must be a non-negative integer");
+    }
+    const successfulCount = results.filter((result) => !("error" in result)).length;
+    const health = evaluateScrapeHealth(successfulCount, expectedCount);
+    console.log(health.message);
+    if (!health.ok) console.error("Scrape health check failed: result count dropped.");
+
     let failures = 0;
     for (const result of results) {
       if (dryRun) {
@@ -132,7 +143,7 @@ async function main() {
     }
 
     console.log(`Scraped ${results.length} targets; ${failures} existing rows marked failed.`);
-    if (failures > 0) process.exitCode = 1;
+    if (failures > 0 || !health.ok) process.exitCode = 1;
   } finally {
     await browser.close();
   }

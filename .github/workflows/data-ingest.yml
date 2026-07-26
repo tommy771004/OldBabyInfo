@@ -50,6 +50,19 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Collect Needs Review items
+        id: review
+        run: |
+          if [ -f data/mold-batch-needs-review.json ]; then
+            {
+              echo "summary<<NEEDS_REVIEW_EOF"
+              cat data/mold-batch-needs-review.json
+              echo "NEEDS_REVIEW_EOF"
+            } >> "$GITHUB_OUTPUT"
+          else
+            echo "summary=No Needs Review file was produced by this run." >> "$GITHUB_OUTPUT"
+          fi
+
       # peter-evans/create-pull-request pushes to a fixed branch name and
       # itself detects/updates an already-open PR from that branch rather
       # than opening a duplicate — satisfies "既有 PR 尚未合併時更新該
@@ -69,6 +82,14 @@ jobs:
 
             ```
             ${{ steps.ingest.outputs.summary }}
+            ```
+
+            ## Needs Review
+
+            The following items require human judgment because the extraction models disagreed. Do not merge them without checking both candidate results:
+
+            ```
+            ${{ steps.review.outputs.summary }}
             ```
 
             合併前請確認：新增／變更的場次資訊（日期、地點、報名方式、人數上限）看起來合理。合併後 Vercel 會依既有的 GitHub 整合自動部署，這個 workflow 不需要另外觸發部署。

@@ -1,3 +1,26 @@
 @import "tailwindcss";
 @import "../styles/colors.css";
 @import "../styles/fonts.css";
+
+/* Keyboard focus is part of the surface, not a browser-default afterthought. */
+:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}

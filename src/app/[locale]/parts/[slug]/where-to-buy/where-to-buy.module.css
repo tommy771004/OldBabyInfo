@@ -1,0 +1,74 @@
+.page {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 7rem;
+}
+
+.page h1 {
+  margin: 2.5rem 0 1rem;
+  max-width: 18ch;
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1;
+}
+
+.intro {
+  max-width: 48ch;
+  margin: 0 0 2rem;
+}
+
+.notice,
+.disclaimer {
+  max-width: 52ch;
+  color: color-mix(in srgb, var(--ink-on-light) 68%, transparent);
+}
+
+.page :global(ul) {
+  display: grid;
+  gap: 1.5rem;
+  margin: 3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page :global(li) {
+  padding: 1.5rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 20%, transparent);
+}
+
+.page :global(li h2) {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+}
+
+.page :global(li > p) {
+  margin: 0.35rem 0;
+}
+
+.page :global(dl) {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.45rem 1.25rem;
+  margin: 1.1rem 0;
+}
+
+.page :global(dt) {
+  color: color-mix(in srgb, var(--ink-on-light) 68%, transparent);
+}
+
+.page :global(dd) {
+  margin: 0;
+}
+
+.page :global(time) {
+  font-variant-numeric: tabular-nums;
+}
+
+.page :global(li > a) {
+  display: inline-block;
+  margin-top: 0.65rem;
+  font-weight: 700;
+}
+
+.disclaimer {
+  margin-top: 4rem;
+}

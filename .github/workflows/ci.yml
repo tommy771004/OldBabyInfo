@@ -18,10 +18,13 @@ jobs:
 
       - run: npm ci
 
+      # Next generates .next/types as part of the build. Generate those
+      # declarations before the standalone typecheck so a clean runner does
+      # not fail merely because the directory does not exist yet.
+      - run: npm run build
+
       - run: npm run typecheck
 
       - run: npm run lint
 
       - run: npm test
-
-      - run: npm run build

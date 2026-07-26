@@ -5,6 +5,8 @@
     "nav_label": "メインナビゲーション",
     "nav_parts": "パーツ一覧",
     "nav_events": "大会カレンダー",
+    "nav_discussion": "最新ディスカッション",
+    "nav_login": "ログイン",
     "hero_headline": "見つかる、そして正確",
     "hero_lede": "各所に散らばったパーツデータを、正確に調べられる一つの場所にまとめました。",
     "cta_parts": "パーツ一覧を見る",
@@ -114,8 +116,14 @@
     "mold_batches_heading": "既知の製造ロット",
     "mold_batch_source": "出典を見る",
     "mold_batches_lookup": "別のロット番号を検索",
+    "where_to_buy": "購入先を見る",
     "thread_heading": "ディスカッション",
-    "thread_placeholder": "ディスカッション機能は近日公開予定です。"
+    "thread_placeholder": "ディスカッション機能は近日公開予定です。",
+    "thread_empty_heading": "最初の観察を残す",
+    "thread_empty_body": "まだディスカッションはありません。ログインすると、対戦での観察を共有できます。",
+    "thread_posted_by": "投稿者",
+    "thread_no_author": "プレイヤー",
+    "thread_at": "投稿日時"
   },
   "MoldBatchPage": {
     "title": "製造ロット検索",
@@ -129,6 +137,46 @@
     "source": "出典を見る",
     "instructionsHeading": "番号の場所",
     "instructionsBody": "番号はパッケージやパーツ本体の小さな部分に印刷されています。表示どおり英数字を入力してください。ロットごとの差異はプレイヤーの観察であり、公式のStat Editionとは異なります。"
+  },
+  "WhereToBuyPage": {
+    "title": "{partName} の購入先",
+    "backToPart": "← パーツ詳細に戻る",
+    "intro": "販売店ページから取得した最新のStock Listingです。価格と在庫は変動するため、購入時は販売店のページを確認してください。",
+    "databaseUnavailable": "商品データベースにはまだ接続されていません。商品がないという意味ではなく、現在表示できるスナップショットがない状態です。",
+    "price": "価格",
+    "availability": "在庫",
+    "inStock": "在庫あり",
+    "outOfStock": "売り切れ",
+    "unknownStock": "在庫不明",
+    "capturedAt": "取得時刻",
+    "stale": "この情報は古い可能性があります",
+    "visitRetailer": "販売店の商品ページを見る",
+    "emptyHeading": "収録済みの商品情報はありません",
+    "emptyBody": "このパーツの販売店スナップショットはまだありません。取得に成功すると、価格・在庫・取得時刻がここに表示されます。",
+    "disclaimer": "本サイトは取引を仲介しません。ページを離れた後の購入、価格、在庫は販売店が管理します。"
+  },
+  "DiscussionPage": {
+    "title": "最新ディスカッション",
+    "intro": "ディスカッションはPart、Combo、Eventに紐づきます。ここから説明対象のデータへ戻れます。",
+    "feedHeading": "最近の観察",
+    "filterLabel": "対象の種類",
+    "all": "すべて",
+    "part": "パーツ",
+    "combo": "Combo",
+    "event": "大会",
+    "emptyHeading": "まだディスカッションはありません",
+    "emptyBody": "新しい投稿は説明対象のデータに紐づき、ここに表示されます。"
+  },
+  "AuthPage": {
+    "title": "OldBabyInfoにログイン",
+    "signedInTitle": "ログイン中",
+    "signedInAs": "ログイン中のアカウント: {name}",
+    "player": "プレイヤー",
+    "continueWithGoogle": "Googleで続ける",
+    "continueWithLine": "LINEで続ける",
+    "signOut": "ログアウト",
+    "privacy": "ディスカッションの投稿者を表示するために必要な最低限の身元情報のみを利用します。本サイトでパスワードは作成しません。",
+    "notConfigured": "ログイン機能はまだ設定されていません。管理者がAuth.js secretとGoogle OAuth credentialsを環境変数に設定する必要があります。"
   },
   "EventsPage": {
     "title": "大会カレンダー",

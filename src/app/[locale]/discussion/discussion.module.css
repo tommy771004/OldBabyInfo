@@ -1,0 +1,64 @@
+.page {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 7rem;
+}
+
+.page h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1;
+}
+
+.intro {
+  max-width: 48ch;
+  margin: 0 0 4rem;
+}
+
+.page :global(section) {
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 20%, transparent);
+}
+
+.page :global(label) {
+  display: grid;
+  gap: 0.4rem;
+  max-width: 18rem;
+  margin-top: 1.5rem;
+  font-weight: 700;
+}
+
+.page :global(select) {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--ink-on-light) 32%, transparent);
+  border-radius: 4px;
+  background: var(--surface-50);
+  color: var(--ink-on-light);
+}
+
+.page :global(ol) {
+  display: grid;
+  gap: 1.25rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page :global(li) {
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 16%, transparent);
+}
+
+.page :global(li p) {
+  margin: 0.4rem 0;
+}
+
+.page :global(li time) {
+  color: color-mix(in srgb, var(--ink-on-light) 64%, transparent);
+}
+
+.page :global(section > div) {
+  margin-top: 3rem;
+  max-width: 40ch;
+}

@@ -43,8 +43,8 @@ describe("createSqlStockListingStore", () => {
   it("upserts a complete snapshot through one parameterized query", async () => {
     const calls: { text: string; params: unknown[] }[] = [];
     const sql: SqlClient = {
-      async query(text, params = []) {
-        calls.push({ text, params });
+    async query(text, params = []) {
+        calls.push({ text, params: [...params] });
         return { rows: [] };
       },
     };

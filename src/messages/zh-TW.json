@@ -5,6 +5,8 @@
     "nav_label": "主要導覽",
     "nav_parts": "零件庫",
     "nav_events": "賽事行事曆",
+    "nav_discussion": "最新討論",
+    "nav_login": "登入",
     "hero_headline": "查得到，也要查得準",
     "hero_lede": "把散落在各處的零件數據，整理成查得到、查得對的地方。",
     "cta_parts": "進入零件庫",
@@ -114,8 +116,14 @@
     "mold_batches_heading": "已知批號變體",
     "mold_batch_source": "查看來源",
     "mold_batches_lookup": "查詢其他批號",
+    "where_to_buy": "查看哪裡買",
     "thread_heading": "討論",
-    "thread_placeholder": "討論功能即將推出。"
+    "thread_placeholder": "討論功能即將推出。",
+    "thread_empty_heading": "來留下第一則觀察",
+    "thread_empty_body": "這裡還沒有討論。登入後，你可以分享實戰觀察，讓這支零件的資料更有用。",
+    "thread_posted_by": "作者",
+    "thread_no_author": "玩家",
+    "thread_at": "發表於"
   },
   "MoldBatchPage": {
     "title": "批號查詢",
@@ -129,6 +137,46 @@
     "source": "查看來源",
     "instructionsHeading": "在哪裡找批號",
     "instructionsBody": "批號通常印在包裝或零件本體的細小區域。請照著原樣輸入英數字；不同生產批次的差異是玩家整理出的觀察，不等同於官方 Stat Edition。"
+  },
+  "WhereToBuyPage": {
+    "title": "{partName} 哪裡買",
+    "backToPart": "← 回零件詳情",
+    "intro": "以下是最近一次從通路頁面抓到的 Stock Listing。價格與庫存會變動，請以原通路頁面為準。",
+    "databaseUnavailable": "目前尚未連上商品資料庫；這不是代表沒有商品，只代表本頁暫時沒有可查的快資料。",
+    "price": "售價",
+    "availability": "庫存",
+    "inStock": "有庫存",
+    "outOfStock": "售罄",
+    "unknownStock": "庫存未知",
+    "capturedAt": "抓取時間",
+    "stale": "這筆資料可能已過期",
+    "visitRetailer": "前往通路商品頁",
+    "emptyHeading": "目前沒有已收錄的商品快照",
+    "emptyBody": "這支零件還沒有可顯示的通路資料。之後有抓取結果時，會在這裡列出價格、庫存與時間。",
+    "disclaimer": "本站不經手交易；點擊後的購買、價格與庫存均由原通路負責。"
+  },
+  "DiscussionPage": {
+    "title": "最新討論",
+    "intro": "討論附著在 Part、Combo 與 Event 上；從這裡回到它所解釋的資料。",
+    "feedHeading": "最近有人說了什麼",
+    "filterLabel": "主題類型",
+    "all": "全部",
+    "part": "零件",
+    "combo": "Combo",
+    "event": "賽事",
+    "emptyHeading": "目前還沒有討論",
+    "emptyBody": "有新的留言後，會依附在對應的資料頁，並出現在這裡。"
+  },
+  "AuthPage": {
+    "title": "登入 OldBabyInfo",
+    "signedInTitle": "已登入",
+    "signedInAs": "目前身分：{name}",
+    "player": "玩家",
+    "continueWithGoogle": "使用 Google 繼續",
+    "continueWithLine": "使用 LINE 繼續",
+    "signOut": "登出",
+    "privacy": "只取用顯示討論作者所需的基本身分資料，不建立本站密碼。",
+    "notConfigured": "登入功能尚未設定。管理者需要在環境變數提供 Auth.js secret 與 Google OAuth credentials。"
   },
   "EventsPage": {
     "title": "賽事行事曆",

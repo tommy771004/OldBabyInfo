@@ -11,8 +11,13 @@ import { BladeSilhouette } from "@/components/blade-silhouette.tsx";
 import { RatchetSilhouette } from "@/components/ratchet-silhouette.tsx";
 import { BitSilhouette } from "@/components/bit-silhouette.tsx";
 import { MoldBatchVariants } from "@/components/mold-batch-variants.tsx";
+import { DiscussionList } from "@/components/discussion-list.tsx";
+import { createNeonThreadReader } from "@/lib/discussion/neon-repository.ts";
+import type { ThreadWithAuthor } from "@/lib/discussion/sql-repository.ts";
 import { wingCountFor, hasObservedWingCount } from "@/lib/parts/blade-wing-count.ts";
 import type { Part } from "@/lib/parts/schema.ts";
+
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -34,10 +39,24 @@ export default async function PartDetailPage({
   const part = getPartBySlug(slug);
   if (!part) notFound();
 
-  return <PartDetailBody part={part} locale={locale} />;
+  const connectionString = process.env.DATABASE_URL;
+  const threadReader = connectionString ? createNeonThreadReader(connectionString) : undefined;
+  const threads = threadReader
+    ? await threadReader.listVisibleBySubject("part", part.id)
+    : [];
+
+  return <PartDetailBody part={part} locale={locale} threads={threads} />;
 }
 
-function PartDetailBody({ part, locale }: { part: Part; locale: Locale }) {
+function PartDetailBody({
+  part,
+  locale,
+  threads,
+}: {
+  part: Part;
+  locale: Locale;
+  threads: ThreadWithAuthor[];
+}) {
   const t = useTranslations("PartDetailPage");
   const tp = useTranslations("PartsPage");
   const image = getPartImage(part.id);
@@ -118,6 +137,9 @@ function PartDetailBody({ part, locale }: { part: Part; locale: Locale }) {
       <p>
         <Link href="/mold-batches">{t("mold_batches_lookup")}</Link>
       </p>
+      <p>
+        <Link href={`/parts/${slugify(part.nameEn)}/where-to-buy`}>{t("where_to_buy")}</Link>
+      </p>
 
       <section>
         {image ? (
@@ -137,8 +159,18 @@ function PartDetailBody({ part, locale }: { part: Part; locale: Locale }) {
       </section>
 
       <section>
-        <h2>{t("thread_heading")}</h2>
-        <p>{t("thread_placeholder")}</p>
+        <DiscussionList
+          threads={threads.map(({ thread }) => thread)}
+          authorNames={Object.fromEntries(threads.map(({ thread, authorName }) => [thread.authorId, authorName]))}
+          labels={{
+            heading: t("thread_heading"),
+            emptyHeading: t("thread_empty_heading"),
+            emptyBody: t("thread_empty_body"),
+            postedBy: t("thread_posted_by"),
+            noAuthor: t("thread_no_author"),
+            at: t("thread_at"),
+          }}
+        />
       </section>
     </main>
   );

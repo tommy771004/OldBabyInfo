@@ -70,6 +70,6 @@ describe("scrapeProductTargets", () => {
       productUrl: target.productUrl,
       error: "timeout",
     });
-    expect(results[1]?.error).toContain("price");
+    expect(results[1]).toMatchObject({ error: expect.stringContaining("price") });
   });
 });

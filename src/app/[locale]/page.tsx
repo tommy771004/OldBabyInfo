@@ -178,6 +178,8 @@ function HomeContent({
           <nav className={styles.footerLinks} aria-label={t("nav_label")}>
             <Link href="/parts">{t("nav_parts")}</Link>
             <Link href="/events">{t("nav_events")}</Link>
+            <Link href="/discussion">{t("nav_discussion")}</Link>
+            <Link href="/login">{t("nav_login")}</Link>
           </nav>
           <LocaleSwitcher />
         </div>

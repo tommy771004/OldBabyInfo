@@ -5,6 +5,8 @@
     "nav_label": "Main navigation",
     "nav_parts": "Parts",
     "nav_events": "Event calendar",
+    "nav_discussion": "Latest discussion",
+    "nav_login": "Sign in",
     "hero_headline": "Findable. And accurate.",
     "hero_lede": "Every part's real numbers, gathered into one place you can actually trust.",
     "cta_parts": "Browse the parts library",
@@ -114,8 +116,14 @@
     "mold_batches_heading": "Known mold batches",
     "mold_batch_source": "View source",
     "mold_batches_lookup": "Look up another batch code",
+    "where_to_buy": "See where to buy",
     "thread_heading": "Discussion",
-    "thread_placeholder": "Discussion is coming soon."
+    "thread_placeholder": "Discussion is coming soon.",
+    "thread_empty_heading": "Leave the first observation",
+    "thread_empty_body": "There is no discussion here yet. Sign in to share a play observation and make this Part more useful.",
+    "thread_posted_by": "Posted by",
+    "thread_no_author": "Player",
+    "thread_at": "at"
   },
   "MoldBatchPage": {
     "title": "Mold batch lookup",
@@ -129,6 +137,46 @@
     "source": "View source",
     "instructionsHeading": "Where to find the code",
     "instructionsBody": "The code is usually printed in a small area on the packaging or the part itself. Enter the letters and numbers as printed. Batch differences are community observations, not official Stat Editions."
+  },
+  "WhereToBuyPage": {
+    "title": "Where to buy {partName}",
+    "backToPart": "← Back to part details",
+    "intro": "These are the latest Stock Listings captured from retailers. Prices and availability change; the retailer page is the source of truth for a purchase.",
+    "databaseUnavailable": "The product database is not connected yet. This does not mean the part is unavailable; this page simply has no live snapshot to show.",
+    "price": "Price",
+    "availability": "Availability",
+    "inStock": "In stock",
+    "outOfStock": "Sold out",
+    "unknownStock": "Availability unknown",
+    "capturedAt": "Captured",
+    "stale": "This listing may be out of date",
+    "visitRetailer": "Open retailer product page",
+    "emptyHeading": "No captured listings yet",
+    "emptyBody": "No retailer snapshot is available for this part yet. When a scrape succeeds, its price, availability, and capture time will appear here.",
+    "disclaimer": "OldBabyInfo does not handle transactions. The retailer is responsible for the purchase, price, and availability after you leave this page."
+  },
+  "DiscussionPage": {
+    "title": "Latest discussion",
+    "intro": "Discussion lives beside the Part, Combo, or Event it explains. Use this page to follow the latest useful observations back to their data.",
+    "feedHeading": "What players said recently",
+    "filterLabel": "Subject type",
+    "all": "All",
+    "part": "Parts",
+    "combo": "Combos",
+    "event": "Events",
+    "emptyHeading": "No discussion yet",
+    "emptyBody": "New posts will stay attached to the data they explain and appear here."
+  },
+  "AuthPage": {
+    "title": "Sign in to OldBabyInfo",
+    "signedInTitle": "You are signed in",
+    "signedInAs": "Signed in as {name}",
+    "player": "Player",
+    "continueWithGoogle": "Continue with Google",
+    "continueWithLine": "Continue with LINE",
+    "signOut": "Sign out",
+    "privacy": "Only the basic identity needed to show a discussion author is used. OldBabyInfo does not create a password for you.",
+    "notConfigured": "Sign-in is not configured yet. The maintainer must provide the Auth.js secret and Google OAuth credentials as environment variables."
   },
   "EventsPage": {
     "title": "Event Calendar",
