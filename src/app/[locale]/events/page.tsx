@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-import { routing, type Locale } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { getAllEvents } from "@/lib/events/repository.ts";
 import {
@@ -33,9 +33,7 @@ export default async function EventsPage({
   params: Promise<{ locale: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  // Safe: the root layout already 404s on any locale outside `routing.locales`.
-  const { locale } = (await params) as { locale: Locale };
-  setRequestLocale(locale);
+  await requireLocale(params);
 
   const filters = parseCalendarParams(await searchParams);
   const scoped = splitScope(getAllEvents(), todayIsoDate())[filters.scope];

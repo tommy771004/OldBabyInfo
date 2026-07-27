@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-07-26T14:01:06.867Z",
+  "capturedAt": "2026-07-27T02:29:02.043Z",
   "sources": [
     {
       "id": "takaratomy-history",
@@ -15429,22 +15429,6 @@
       "publicationStatus": "accepted"
     },
     {
-      "id": "beybrew:master-beybladepartsbit-6cb165c98a",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "part",
-      "partType": "bit",
-      "name": "■",
-      "aliases": [],
-      "components": [],
-      "sourceId": "beybrew",
-      "sourceRecordId": "master:BeybladePartsBit:■",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
       "id": "beybrew:master-beybladepartsblade-aeropegasus-5d3fcb595a",
       "generationId": "x",
       "system": "bx",
@@ -15583,22 +15567,6 @@
       "components": [],
       "sourceId": "beybrew",
       "sourceRecordId": "master:BeybladePartsBlade:DRANBUSTER",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:master-beybladepartsblade-dransword-6e9b2e0474",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "part",
-      "partType": "blade",
-      "name": "■",
-      "aliases": [],
-      "components": [],
-      "sourceId": "beybrew",
-      "sourceRecordId": "master:BeybladePartsBlade:DRANSWORD",
       "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
       "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
       "verificationStatus": "official_app_derived",
@@ -15871,6 +15839,22 @@
       "components": [],
       "sourceId": "beybrew",
       "sourceRecordId": "master:BeybladePartsBlade:PERSEUSDARK",
+      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
+      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+      "verificationStatus": "official_app_derived",
+      "publicationStatus": "accepted"
+    },
+    {
+      "id": "beybrew:master-beybladepartsblade-phoenixfeather-719f401193",
+      "generationId": "x",
+      "system": "bx",
+      "kind": "part",
+      "partType": "blade",
+      "name": "PHOENIXFEATHER Metallic Coat: Orange",
+      "aliases": [],
+      "components": [],
+      "sourceId": "beybrew",
+      "sourceRecordId": "master:BeybladePartsBlade:PHOENIXFEATHER",
       "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
       "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
       "verificationStatus": "official_app_derived",
@@ -16463,22 +16447,6 @@
       "components": [],
       "sourceId": "beybrew",
       "sourceRecordId": "master:BeybladePartsMetalBlade:RAGE",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:master-beybladepartsratchet-3-80-c51bf11a6e",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "part",
-      "partType": "ratchet",
-      "name": "■",
-      "aliases": [],
-      "components": [],
-      "sourceId": "beybrew",
-      "sourceRecordId": "master:BeybladePartsRatchet:3-80",
       "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
       "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
       "verificationStatus": "official_app_derived",
@@ -19385,64 +19353,6 @@
       "publicationStatus": "accepted"
     },
     {
-      "id": "beybrew:series-bxc01-phoenixfether-bbe169cc2e",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "PHOENIXFEATHER3-60F",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "■"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXC01_PhoenixFether",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:series-bxc02-hellsscythe3-80f-67aa231d3a",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "■",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "■"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXC02_HellsScythe3-80F",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
       "id": "beybrew:series-bxc03-dranbuster1-60a-58512c4e7a",
       "generationId": "x",
       "system": "bx",
@@ -19466,35 +19376,6 @@
       ],
       "sourceId": "beybrew",
       "sourceRecordId": "series:BXC03_DranBuster1-60A",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:series-bxc03-dransword-8c9e0960ce",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "■",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "■"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXC03_DranSword",
       "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
       "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
       "verificationStatus": "official_app_derived",
@@ -19570,14 +19451,6 @@
         {
           "partType": "blade",
           "name": "PHOENIXFEATHER Metallic Coat: Orange"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "■"
         }
       ],
       "sourceId": "beybrew",
@@ -20192,35 +20065,6 @@
       "publicationStatus": "accepted"
     },
     {
-      "id": "beybrew:series-bxg14-drandagger2-80gp-b7d2bc6345",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "■",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "GP"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXG14_DranDagger2-80GP",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
       "id": "beybrew:series-bxg15-dranzerspiral3-80t-73d45ea5f1",
       "generationId": "x",
       "system": "bx",
@@ -20273,122 +20117,6 @@
       ],
       "sourceId": "beybrew",
       "sourceRecordId": "series:BXG16_ShinobiKnife4-60LF",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:series-bxg17-bit-b-7e78f41c21",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "■",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "B Gold x Black"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXG17_Bit_B",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:series-bxg17-bit-f-40f1ea433c",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "■",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "F Gold x Black"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXG17_Bit_F",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:series-bxg17-bit-n-acdb962246",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "■",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "N Gold x Black"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXG17_Bit_N",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:series-bxg17-bit-t-33261afe6a",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "■",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "T Gold x Black"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXG17_Bit_T",
       "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
       "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
       "verificationStatus": "official_app_derived",
@@ -21145,122 +20873,6 @@
       ],
       "sourceId": "beybrew",
       "sourceRecordId": "series:BXG45_PegasusBlastATr_Sharp",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:series-bxg50-bit-b-decae9b438",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "■",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "B Silver x White"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXG50_Bit_B",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:series-bxg50-bit-f-b24db80439",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "■",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "F Silver x White"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXG50_Bit_F",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:series-bxg50-bit-n-4e271cf721",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "■",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "N Silver x White"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXG50_Bit_N",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:series-bxg50-bit-t-0896c2a895",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "■",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "blade",
-          "name": "■"
-        },
-        {
-          "partType": "ratchet",
-          "name": "■"
-        },
-        {
-          "partType": "bit",
-          "name": "T Silver x White"
-        }
-      ],
-      "sourceId": "beybrew",
-      "sourceRecordId": "series:BXG50_Bit_T",
       "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
       "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
       "verificationStatus": "official_app_derived",

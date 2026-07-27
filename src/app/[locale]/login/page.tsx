@@ -1,6 +1,7 @@
 import { auth, signIn, signOut } from "@/auth";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { routing, type Locale } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import styles from "./login.module.css";
 
 export const dynamic = "force-dynamic";
@@ -14,8 +15,7 @@ export default async function LoginPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = (await params) as { locale: Locale };
-  setRequestLocale(locale);
+  await requireLocale(params);
   const t = await getTranslations("AuthPage");
   const googleConfigured = Boolean(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET);
   const lineConfigured = Boolean(process.env.AUTH_LINE_ID && process.env.AUTH_LINE_SECRET);

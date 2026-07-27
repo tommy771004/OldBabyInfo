@@ -1,12 +1,11 @@
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation.ts";
 import { WhereToBuyList } from "@/components/where-to-buy-list.tsx";
 import { createNeonStockListingReader } from "@/lib/stock/neon-store.ts";
 import { getPartBySlug } from "@/lib/parts/repository.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
-import type { Locale } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { slugify } from "@/lib/parts/slug.ts";
 import styles from "./where-to-buy.module.css";
 
@@ -17,8 +16,7 @@ export default async function WhereToBuyPage({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale, slug } = (await params) as { locale: Locale; slug: string };
-  setRequestLocale(locale);
+  const { locale, slug } = await requireLocale(params);
   const part = getPartBySlug(slug);
   if (!part) notFound();
 

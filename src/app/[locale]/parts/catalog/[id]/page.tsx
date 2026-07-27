@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 import { GenerationCatalogBrowser } from "@/components/generation-catalog-browser.tsx";
 import {
   getGenerationCatalogSnapshot,
@@ -9,6 +8,7 @@ import {
 import type { GenerationId } from "@/lib/generation-catalog/schema.ts";
 import { selectCatalogRecordsForPage } from "@/lib/generation-catalog/payload.ts";
 import { type Locale } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { slugify } from "@/lib/parts/slug.ts";
 import styles from "../../page.module.css";
@@ -20,8 +20,7 @@ export default async function GenerationCatalogRecordPage({
 }: {
   params: Promise<{ locale: string; id: string }>;
 }) {
-  const { locale, id } = (await params) as { locale: Locale; id: string };
-  setRequestLocale(locale);
+  const { locale, id } = await requireLocale(params);
   const snapshot = getGenerationCatalogSnapshot();
   let recordId: string;
   try {

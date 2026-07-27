@@ -151,9 +151,19 @@ describe("generation catalog repository", () => {
       catalogRecordId: dranSword!.id,
       legacyPartId: "DRANSWORD",
     });
-    expect(crosswalk.needsReview).toContainEqual({
-      catalogRecordId: "beybrew:master-beybladepartsbit-6cb165c98a",
-      reason: "unmatched",
-    });
+
+    // Asserted by shape, not by a pinned record id: which SKU variants lack a
+    // legacy Stat row changes with every source refresh, but the seam's
+    // contract — one verdict per record, deterministically ordered — doesn't.
+    const byId = new Map(getAllGenerationCatalogRecords().map((record) => [record.id, record]));
+    const matched = new Set(crosswalk.matches.map((match) => match.catalogRecordId));
+    expect(crosswalk.needsReview.length).toBeGreaterThan(0);
+    expect(crosswalk.needsReview.every((review) =>
+      !matched.has(review.catalogRecordId) &&
+      byId.get(review.catalogRecordId)?.kind === "part" &&
+      ["blade", "ratchet", "bit"].includes(byId.get(review.catalogRecordId)?.partType ?? ""),
+    )).toBe(true);
+    expect(crosswalk.needsReview.map((review) => review.catalogRecordId))
+      .toEqual([...crosswalk.needsReview.map((review) => review.catalogRecordId)].sort());
   });
 });

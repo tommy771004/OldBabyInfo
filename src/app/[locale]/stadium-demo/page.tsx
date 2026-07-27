@@ -1,5 +1,5 @@
-import { setRequestLocale } from "next-intl/server";
-import { routing, type Locale } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { StadiumSignature } from "@/components/stadium-signature.tsx";
 
 export function generateStaticParams() {
@@ -12,8 +12,7 @@ export default async function StadiumDemoPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = (await params) as { locale: Locale };
-  setRequestLocale(locale);
+  await requireLocale(params);
 
   return (
     <main style={{ padding: "4rem", display: "flex", gap: "3rem", flexWrap: "wrap" }}>

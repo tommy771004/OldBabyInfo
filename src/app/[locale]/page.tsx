@@ -1,7 +1,6 @@
-import { hasLocale, useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { routing, type Locale } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { BattleSearch } from "@/components/battle-search.tsx";
 import { PlaystyleSymbol } from "@/components/type-symbols.tsx";
@@ -41,17 +40,7 @@ export default async function HomePage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  // The layout's own `notFound()` can't be relied on here: layout and page
-  // render concurrently, so a request like `/favicon.png` (a single segment
-  // with a dot — the middleware matcher skips those) reaches this page with
-  // `locale === "favicon.png"` and crashes on locale-keyed lookups such as
-  // PlaystyleSymbol's LABEL[locale] before the layout's 404 lands.
-  const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
-
-  setRequestLocale(locale);
+  const { locale } = await requireLocale(params);
 
   const parts = getAllParts();
   const topAttackBlade = sortParts(filterByType(parts, "blade"), "attack", "desc")[0];

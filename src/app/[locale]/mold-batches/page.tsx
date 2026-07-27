@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation.ts";
 import { routing, type Locale } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { MoldBatchLookup } from "@/components/mold-batch-lookup.tsx";
 import { MoldBatchSourceGuidance } from "@/components/mold-batch-source-guidance.tsx";
 import { getMoldBatchCoverage } from "@/lib/mold-batch/lookup.ts";
@@ -19,8 +19,7 @@ export default async function MoldBatchesPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = (await params) as { locale: Locale };
-  setRequestLocale(locale);
+  const { locale } = await requireLocale(params);
 
   const parts = getAllParts();
   const coverage = getMoldBatchCoverage(parts);

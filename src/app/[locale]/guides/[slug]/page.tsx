@@ -4,8 +4,8 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-import { routing, type Locale } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { getAllGuides, getGuideBySlug } from "@/lib/guides/repository.ts";
 import { extractHeadings } from "@/lib/guides/headings.ts";
@@ -27,7 +27,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { locale, slug } = (await params) as { locale: Locale; slug: string };
+  const { locale, slug } = await requireLocale(params);
   const guide = getGuideBySlug(locale, slug);
   if (!guide) return {};
   return { title: `${guide.title} — OldBabyInfo`, description: guide.description };
@@ -38,9 +38,7 @@ export default async function GuideDetailPage({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
-  // Safe: the root layout already 404s on any locale outside `routing.locales`.
-  const { locale, slug } = (await params) as { locale: Locale; slug: string };
-  setRequestLocale(locale);
+  const { locale, slug } = await requireLocale(params);
 
   const guide = getGuideBySlug(locale, slug);
   if (!guide) notFound();

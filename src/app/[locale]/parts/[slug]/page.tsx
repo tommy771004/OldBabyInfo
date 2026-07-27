@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { getAllParts, getPartBySlug, getPartImage } from "@/lib/parts/repository.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
@@ -42,8 +42,7 @@ export default async function PartDetailPage({
   params: Promise<{ locale: string; slug: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const { locale, slug } = (await params) as { locale: Locale; slug: string };
-  setRequestLocale(locale);
+  const { locale, slug } = await requireLocale(params);
 
   const part = getPartBySlug(slug);
   if (!part) notFound();

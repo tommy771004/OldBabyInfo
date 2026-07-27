@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-import { routing, type Locale } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { getAllSourceDocuments, getSourceDocumentById } from "@/lib/source-documents/repository.ts";
 
@@ -16,8 +16,7 @@ export default async function SourceDocumentPage({
 }: {
   params: Promise<{ locale: string; id: string }>;
 }) {
-  const { locale, id } = (await params) as { locale: Locale; id: string };
-  setRequestLocale(locale);
+  const { id } = await requireLocale(params);
   const document = getSourceDocumentById(id);
   if (!document) notFound();
 

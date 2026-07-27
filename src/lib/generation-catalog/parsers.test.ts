@@ -183,4 +183,43 @@ BB: Flat Base<br><br>
       ],
     });
   });
+
+  it("never lets an unfilled MasterData name outrank the real one", () => {
+    const records = buildBeybrewXRecords(
+      { blades: [{ name: "Dran Sword" }] },
+      {
+        data: {
+          BeybladeSeries: [
+            { model_name: "BX01_DranSword3-60F", name: { "en-US": "BX-01 DRANSWORD3-60F" } },
+            // A product whose own name never got filled in: no record, rather
+            // than one called "■".
+            { model_name: "BXC03_DranSword", name: { "en-US": "■" } },
+          ],
+          BeybladePartsBlade: [
+            {
+              group_id: "DRANSWORD",
+              model_name: "BX01_DranSword3-60F",
+              name: { "en-US": "<b>BX-01</b> DRANSWORD" },
+            },
+            // Shorter than every real name, and the reason the placeholder
+            // used to win and escape deduplication.
+            { group_id: "DRANSWORD", model_name: "BXC03_DranSword", name: { "en-US": "■" } },
+          ],
+        },
+      },
+      "commit:abc",
+    );
+
+    expect(records.every((record) => !record.name.includes("■"))).toBe(true);
+    expect(records.every((record) =>
+      record.components.every((component) => !component.name.includes("■")),
+    )).toBe(true);
+    // The MasterData blade resolves to "DRANSWORD", which is the beyparts
+    // "Dran Sword" — one Part, one record.
+    expect(records.filter((record) => record.partType === "blade")).toHaveLength(1);
+    expect(records.find((record) => record.partType === "blade")).toMatchObject({
+      name: "Dran Sword",
+      sourceRecordId: "blades:Dran Sword",
+    });
+  });
 });

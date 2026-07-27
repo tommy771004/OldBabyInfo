@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { accentFont, bodyFont, displayFont } from "../fonts.ts";
 import { SiteHeader } from "@/components/site-header.tsx";
 import "../globals.css";
@@ -22,12 +21,7 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
-
-  setRequestLocale(locale);
+  const { locale } = await requireLocale(params);
 
   return (
     <html

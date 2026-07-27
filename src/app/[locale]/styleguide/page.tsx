@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
-import { routing, type Locale } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { StadiumSignature } from "@/components/stadium-signature.tsx";
 import { ColorSwatches } from "./color-swatches.tsx";
 
@@ -24,8 +24,7 @@ export default async function StyleguidePage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = (await params) as { locale: Locale };
-  setRequestLocale(locale);
+  await requireLocale(params);
 
   return (
     <main style={{ padding: "3rem", display: "flex", flexDirection: "column", gap: "3rem" }}>

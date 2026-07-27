@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { getComboAppearances } from "@/lib/combo-appearances-repository.ts";
 import { computeMetaStandings, parseComboKey, type ComboMetaStanding } from "@/lib/meta-standing.ts";
@@ -18,9 +18,7 @@ export default async function MetaStandingPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  // Safe: the root layout already 404s on any locale outside `routing.locales`.
-  const { locale } = (await params) as { locale: Locale };
-  setRequestLocale(locale);
+  const { locale } = await requireLocale(params);
 
   const appearances = getComboAppearances();
   const standings = computeMetaStandings(appearances);

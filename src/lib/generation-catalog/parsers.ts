@@ -359,13 +359,25 @@ export interface MasterDataPayload {
   data?: Record<string, MasterDataEntry[]>;
 }
 
+/**
+ * MasterData ships entries whose localized name never got filled in and
+ * arrives as a placeholder glyph ("■"). It has to count as *no name*, not as
+ * a very short one: the caller keeps the shortest name per `group_id` (to
+ * prefer "Dran Sword" over "BX-01 DRANSWORD3-60F"), so a one-character
+ * placeholder would otherwise win every contest and publish a Part nobody
+ * can identify — and, having no real name to match on, it would escape
+ * deduplication against the properly named record of the same Part.
+ */
+const PLACEHOLDER_ONLY = /^[■□◼◻▪▫�\s]+$/u;
+
 function cleanMasterDataName(value: string | undefined): string | null {
   if (!value) return null;
   const cleaned = plainText(value)
     .replace(/^(?:BX|UX|CX|BXG|BXA|BXH)-?\d+\s*/i, "")
     .replace(/\s*【(?:rental|レンタル)】/gi, "")
     .trim();
-  return cleaned || null;
+  if (!cleaned || PLACEHOLDER_ONLY.test(cleaned)) return null;
+  return cleaned;
 }
 
 function xSystemForModel(modelName: string | undefined): string {

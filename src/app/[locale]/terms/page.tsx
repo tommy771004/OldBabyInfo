@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
-import { setRequestLocale } from "next-intl/server";
-import { routing, type Locale } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
+import { requireLocale } from "@/i18n/require-locale.ts";
 import styles from "./terms.module.css";
 
 export function generateStaticParams() {
@@ -12,8 +12,7 @@ export default async function TermsPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = (await params) as { locale: Locale };
-  setRequestLocale(locale);
+  await requireLocale(params);
   const t = await getTranslations("TermsPage");
 
   return (
