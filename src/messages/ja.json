@@ -100,7 +100,7 @@
     "catalog_search": "カタログを検索",
     "catalog_search_placeholder": "公式名・別名・略称で検索",
     "catalog_search_submit": "検索",
-    "catalog_part_type": "パーツ種別",
+    "catalog_record_count": "{count} 件",
     "catalog_legacy_part": "旧パーツページを開く"
   },
   "GuidesPage": {
@@ -259,7 +259,7 @@
     "continueWithLine": "LINEで続ける",
     "signOut": "ログアウト",
     "privacy": "ディスカッションの投稿者を表示するために必要な最低限の身元情報のみを利用します。本サイトでパスワードは作成しません。",
-    "notConfigured": "ログイン機能はまだ設定されていません。管理者がAuth.js secretとGoogle OAuth credentialsを環境変数に設定する必要があります。"
+    "notConfigured": "ログイン機能はまだ設定されていません。管理者がAuth.js secretと、GoogleまたはLINEいずれかのOAuth認証情報を環境変数に設定する必要があります。"
   },
   "TermsPage": {
     "title": "利用規約と免責事項",

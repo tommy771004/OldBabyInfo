@@ -30,7 +30,6 @@ export interface GenerationCatalogBrowserLabels {
   searchLabel?: string;
   searchPlaceholder?: string;
   searchSubmitLabel?: string;
-  partTypeLabel?: string;
   legacyPartLabel?: string;
 }
 
@@ -53,6 +52,8 @@ interface GenerationCatalogBrowserProps {
   searchAcrossGenerations?: boolean;
   selectedRecordId?: string;
   legacyPartHrefForRecord?: (recordId: string) => string | undefined;
+  /** Localized count for the visible list; a bare number when omitted. */
+  recordCountLabel?: (count: number) => string;
   /** Reader-facing name for a raw `partType` key; the raw key when omitted. */
   partTypeLabelFor?: (partType: string) => string;
   /** Filters that only make sense for the selected tab — a Blade's playstyle,
@@ -81,6 +82,7 @@ export function GenerationCatalogBrowser({
   searchAcrossGenerations = false,
   selectedRecordId,
   legacyPartHrefForRecord,
+  recordCountLabel = (count) => String(count),
   partTypeLabelFor = (partType) => partType,
   facetFilters,
   renderRecords,
@@ -131,7 +133,7 @@ export function GenerationCatalogBrowser({
       <header className={styles.header}>
         <p className={styles.kicker}>CATALOG / {selectedGeneration.toUpperCase()}</p>
         <h2 id="generation-catalog-heading">{labels.heading}</h2>
-        <p className={styles.lede}>{visibleKindLabel} · {visibleRecords.length} records</p>
+        <p className={styles.lede}>{visibleKindLabel} · {recordCountLabel(visibleRecords.length)}</p>
       </header>
 
       <form className={styles.searchForm} method="get" action={`${prefix}/parts`} role="search">

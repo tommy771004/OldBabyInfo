@@ -100,7 +100,7 @@
     "catalog_search": "Search catalog",
     "catalog_search_placeholder": "Search by official name, alias, or abbreviation",
     "catalog_search_submit": "Search",
-    "catalog_part_type": "Part kind",
+    "catalog_record_count": "{count} records",
     "catalog_legacy_part": "Open legacy part page"
   },
   "GuidesPage": {
@@ -259,7 +259,7 @@
     "continueWithLine": "Continue with LINE",
     "signOut": "Sign out",
     "privacy": "Only the basic identity needed to show a discussion author is used. OldBabyInfo does not create a password for you.",
-    "notConfigured": "Sign-in is not configured yet. The maintainer must provide the Auth.js secret and Google OAuth credentials as environment variables."
+    "notConfigured": "Sign-in is not configured yet. The maintainer must provide the Auth.js secret and either Google or LINE OAuth credentials as environment variables."
   },
   "TermsPage": {
     "title": "Terms and disclaimer",

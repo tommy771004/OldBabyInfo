@@ -349,6 +349,7 @@ function PartsPageBody({
         searchAcrossGenerations={searchAcrossGenerations}
         selectedRecordId={selectedRecordId}
         legacyPartHrefForRecord={legacyPartHrefForRecord}
+        recordCountLabel={(count) => t("catalog_record_count", { count })}
         partTypeLabelFor={partTypeLabelFor}
         facetFilters={facetRows}
         renderRecords={showStatTable
@@ -394,7 +395,6 @@ function PartsPageBody({
           searchLabel: t("catalog_search"),
           searchPlaceholder: t("catalog_search_placeholder"),
           searchSubmitLabel: t("catalog_search_submit"),
-          partTypeLabel: t("catalog_part_type"),
           legacyPartLabel: t("catalog_legacy_part"),
         }}
       />

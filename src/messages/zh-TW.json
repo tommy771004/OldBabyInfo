@@ -100,7 +100,7 @@
     "catalog_search": "搜尋零件庫",
     "catalog_search_placeholder": "依官方名稱、別名或縮寫搜尋",
     "catalog_search_submit": "搜尋",
-    "catalog_part_type": "零件種類",
+    "catalog_record_count": "{count} 筆",
     "catalog_legacy_part": "開啟既有零件頁"
   },
   "GuidesPage": {
@@ -259,7 +259,7 @@
     "continueWithLine": "使用 LINE 繼續",
     "signOut": "登出",
     "privacy": "只取用顯示討論作者所需的基本身分資料，不建立本站密碼。",
-    "notConfigured": "登入功能尚未設定。管理者需要在環境變數提供 Auth.js secret 與 Google OAuth credentials。"
+    "notConfigured": "登入功能尚未設定。管理者需要在環境變數提供 Auth.js secret，以及 Google 或 LINE 其中一組 OAuth 憑證。"
   },
   "TermsPage": {
     "title": "使用條款與免責聲明",
