@@ -73,7 +73,7 @@
     "stat_xDash": "X-Dash",
     "stat_burstResistance": "Burst",
     "weight_column": "重量",
-    "weight_note": "",
+    "weight_note": "重量為社群記錄的模具批次實測區間，非官方規格；未收錄者顯示為破折號。",
     "release_date": "發售日",
     "sort_label": "排序",
     "no_results": "找不到符合條件的零件",

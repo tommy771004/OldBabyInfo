@@ -73,7 +73,7 @@
     "stat_xDash": "X-Dash",
     "stat_burstResistance": "Burst",
     "weight_column": "重量",
-    "weight_note": "",
+    "weight_note": "重量はコミュニティが記録した金型ロットの実測レンジで、公式スペックではありません。記録がないものはダッシュで表示します。",
     "release_date": "発売日",
     "sort_label": "並べ替え",
     "no_results": "条件に一致するパーツが見つかりません",
