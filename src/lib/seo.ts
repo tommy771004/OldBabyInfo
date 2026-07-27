@@ -3,9 +3,21 @@ import { createElement } from "react";
 import type { Locale } from "@/i18n/routing";
 
 export const SITE_NAME = "OldBabyInfo";
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://oldbabyinfo.dev"
-).replace(/\/$/, "");
+function normalizeOrigin(value: string | undefined): string | undefined {
+  if (!value) return undefined;
+  const withProtocol = /^https?:\/\//.test(value) ? value : `https://${value}`;
+  return withProtocol.replace(/\/$/, "");
+}
+
+/** Prefer the explicitly configured canonical domain. Vercel fallbacks keep
+ * sitemap and canonical URLs valid on deployments where the env var has not
+ * been added yet; localhost is intentionally only the local-dev fallback. */
+export const SITE_URL =
+  normalizeOrigin(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      process.env.VERCEL_PROJECT_PRODUCTION_URL ??
+      process.env.VERCEL_URL,
+  ) ?? "http://localhost:3000";
 const GOOGLE_SITE_VERIFICATION = "6KE8Qp5p0dXMp1etepmmhRmw7fG_SRwVuBampfeCL5M";
 
 const localePathPrefix: Record<Locale, string> = {

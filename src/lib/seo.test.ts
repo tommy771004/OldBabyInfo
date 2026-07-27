@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { localizedAlternates, localizedPath, pageMetadata } from "./seo.ts";
+import { SITE_URL, localizedAlternates, localizedPath, pageMetadata } from "./seo.ts";
 
 describe("localized SEO URLs", () => {
   it("keeps the default locale unprefixed and prefixes Japanese and English", () => {
@@ -10,10 +10,10 @@ describe("localized SEO URLs", () => {
 
   it("emits reciprocal locale alternates with x-default", () => {
     expect(localizedAlternates("/parts").languages).toMatchObject({
-      "zh-TW": "https://oldbabyinfo.dev/parts",
-      ja: "https://oldbabyinfo.dev/ja/parts",
-      en: "https://oldbabyinfo.dev/en/parts",
-      "x-default": "https://oldbabyinfo.dev/parts",
+      "zh-TW": `${SITE_URL}/parts`,
+      ja: `${SITE_URL}/ja/parts`,
+      en: `${SITE_URL}/en/parts`,
+      "x-default": `${SITE_URL}/parts`,
     });
   });
 
@@ -24,7 +24,7 @@ describe("localized SEO URLs", () => {
       title: "パーツ一覧",
       description: "ベイブレードXのパーツ一覧",
     });
-    expect(metadata.alternates?.canonical).toBe("https://oldbabyinfo.dev/ja/parts");
+    expect(metadata.alternates?.canonical).toBe(`${SITE_URL}/ja/parts`);
   });
 
   it("includes the Google Search Console verification token", () => {
