@@ -41,6 +41,14 @@ interface GenerationCatalogBrowserProps {
   searchAcrossGenerations?: boolean;
   selectedRecordId?: string;
   legacyPartHrefForRecord?: (recordId: string) => string | undefined;
+  /** Reader-facing name for a raw `partType` key; the raw key when omitted. */
+  partTypeLabelFor?: (partType: string) => string;
+  /**
+   * Replaces the default card grid with another view of the same visible
+   * records — `/parts` swaps in the Stat table for X Parts so the page never
+   * shows two lists of the same Parts (see catalog-part-table.tsx).
+   */
+  renderRecords?: (records: GenerationCatalogRecord[]) => React.ReactNode;
   labels: GenerationCatalogBrowserLabels;
 }
 
@@ -57,6 +65,8 @@ export function GenerationCatalogBrowser({
   searchAcrossGenerations = false,
   selectedRecordId,
   legacyPartHrefForRecord,
+  partTypeLabelFor = (partType) => partType,
+  renderRecords,
   labels,
 }: GenerationCatalogBrowserProps) {
   const generationRecords = records.filter((record) => record.generationId === selectedGeneration);
@@ -144,7 +154,7 @@ export function GenerationCatalogBrowser({
           <select id={`catalog-part-type-filter-${formIdSuffix}`} name="catalogPartType" defaultValue={selectedPartType ?? ""}>
             <option value="">{labels.allLabel}</option>
             {partTypeOptions.map((partType) => (
-              <option key={partType} value={partType}>{labels.partTypeLabel ?? "Part kind"}: {partType}</option>
+              <option key={partType} value={partType}>{partTypeLabelFor(partType)}</option>
             ))}
           </select>
         </div>
@@ -209,17 +219,48 @@ export function GenerationCatalogBrowser({
         })}
       </nav>
 
-      <ul className={styles.recordGrid} aria-label={labels.heading}>
-        {visibleRecords.map((record) => (
-          <li className={styles.recordCard} key={record.id}>
-            <div className={styles.recordMeta}>
-              <span>{kindLabel(record.kind, labels)}</span>
-              {record.partType ? <span>{record.partType}</span> : null}
-            </div>
-            <a className={styles.recordLink} href={recordHref(record.id)}>{record.name}</a>
-          </li>
-        ))}
-      </ul>
+      {selectedKind === "part" && partTypeOptions.length > 0 ? (
+        <nav className={styles.navGroup} aria-label={labels.partTypeLabel ?? "Part kind"}>
+          <a
+            href={hrefFor({
+              catalogGeneration: selectedGeneration,
+              catalogSystem: selectedSystem,
+              catalogKind: "part",
+            })}
+            aria-current={!selectedPartType ? "page" : undefined}
+          >
+            {labels.allLabel}
+          </a>
+          {partTypeOptions.map((partType) => (
+            <a
+              key={partType}
+              href={hrefFor({
+                catalogGeneration: selectedGeneration,
+                catalogSystem: selectedSystem,
+                catalogKind: "part",
+                catalogPartType: partType,
+              })}
+              aria-current={partType === selectedPartType ? "page" : undefined}
+            >
+              {partTypeLabelFor(partType)}
+            </a>
+          ))}
+        </nav>
+      ) : null}
+
+      {renderRecords ? renderRecords(visibleRecords) : (
+        <ul className={styles.recordGrid} aria-label={labels.heading}>
+          {visibleRecords.map((record) => (
+            <li className={styles.recordCard} key={record.id}>
+              <div className={styles.recordMeta}>
+                <span>{kindLabel(record.kind, labels)}</span>
+                {record.partType ? <span>{partTypeLabelFor(record.partType)}</span> : null}
+              </div>
+              <a className={styles.recordLink} href={recordHref(record.id)}>{record.name}</a>
+            </li>
+          ))}
+        </ul>
+      )}
 
       {selectedRecord ? (
         <CatalogRecordDetails

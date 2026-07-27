@@ -1,13 +1,5 @@
 .page { width: min(100% - 2rem, 88rem); margin: 0 auto; padding: 3rem 0 6rem; }
 .page > h1 { margin: 0 0 1.5rem; font-family: var(--font-display), serif; font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.03em; }
-.filters { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; margin: 2rem 0; }
-.filters a { color: var(--ink-on-light); text-decoration: none; }
-.filters a[aria-current="true"] { color: var(--accent-on-light); font-weight: 800; text-decoration: underline; text-underline-offset: .25rem; }
-.legacySection { display: grid; gap: 1.25rem; margin-top: 2.5rem; padding: clamp(1.25rem, 2vw, 2rem); border: 1px solid color-mix(in srgb, var(--ink-on-light) 14%, transparent); border-radius: 18px; background: color-mix(in srgb, var(--surface-200) 42%, transparent); }
-.legacySection header { display: grid; gap: .35rem; }
-.legacySection h2 { margin: 0; font-family: var(--font-display), serif; font-size: clamp(1.4rem, 2.5vw, 2rem); }
-.legacySection p { margin: 0; color: color-mix(in srgb, var(--ink-on-light) 66%, transparent); }
-.sectionKicker { color: var(--accent-on-light) !important; font-size: .7rem; font-weight: 800; letter-spacing: .12em; }
 .page :global(label) { display: grid; gap: .45rem; }
 .page :global(input) { min-height: 2.6rem; padding: .45rem .65rem; border: 1px solid color-mix(in srgb, var(--ink-on-light) 30%, transparent); background: var(--surface-50); color: var(--ink-on-light); }
 .page :global(table) { width: 100%; border-collapse: collapse; font-size: .92rem; }

@@ -17,7 +17,7 @@ export function filterByType(parts: Part[], type: PartType | undefined): Part[] 
 
 /** xDash/burstResistance don't exist on Blade/Ratchet — 0 for sort purposes,
  *  matching the "—" shown for those cells in the list page. */
-function sortValueOf(part: Part, field: SortField): number {
+export function sortValueOf(part: Part, field: SortField): number {
   if (field === "releaseAt") {
     // null (never matched an official record) sorts as oldest, not newest —
     // an unknown release date shouldn't outrank every dated part.

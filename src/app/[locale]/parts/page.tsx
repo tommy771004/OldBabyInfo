@@ -1,29 +1,47 @@
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
-import { getAllParts } from "@/lib/parts/repository.ts";
 import {
   getGenerationCatalogSnapshot,
   getLegacyPartForCatalogRecord,
 } from "@/lib/generation-catalog/repository.ts";
-import { generationIdSchema, type GenerationId } from "@/lib/generation-catalog/schema.ts";
+import {
+  generationIdSchema,
+  type GenerationCatalogRecord,
+  type GenerationId,
+} from "@/lib/generation-catalog/schema.ts";
 import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
 import { selectCatalogRecordsForPage } from "@/lib/generation-catalog/payload.ts";
 import { GenerationCatalogBrowser } from "@/components/generation-catalog-browser.tsx";
-import { filterByType, sortParts, type PartType } from "@/lib/parts/filter-sort.ts";
+import {
+  humanizePartType,
+  projectedRecordsFirst,
+  publishableCatalogRecords,
+  sortCatalogPartRecords,
+  withProjectedSearchAliases,
+} from "@/lib/parts/catalog-part-rows.ts";
+import type { SortDirection, SortField } from "@/lib/parts/filter-sort.ts";
 import { parseFilterSortParams, type FilterSortState } from "@/lib/parts/parse-filter-sort-params.ts";
-import { buildQuery } from "@/lib/parts/build-query.ts";
-import type { Part } from "@/lib/parts/schema.ts";
 import { slugify } from "@/lib/parts/slug.ts";
-import { SearchableRows } from "./searchable-rows.tsx";
+import { CatalogPartTable } from "./catalog-part-table.tsx";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const TYPES: PartType[] = ["blade", "ratchet", "bit"];
+/** Every X Part kind the messages file names; anything else (Burst's
+ *  ドライバー, Metal Fight's fusion_wheel) falls back to a humanized key. */
+const NAMED_PART_TYPES = [
+  "blade",
+  "ratchet",
+  "bit",
+  "assist_blade",
+  "lock_chip",
+  "main_blade",
+  "metal_blade",
+  "over_blade",
+] as const;
 
 export default async function PartsPage({
   params,
@@ -55,20 +73,29 @@ export default async function PartsPage({
     .some((key) => catalogParams[key] !== undefined);
   const catalog = getGenerationCatalogSnapshot();
   const searchAcrossGenerations = hasCatalogSearchParams && !hasCatalogGeneration;
-  const browserRecords = hasCatalogSearchParams
-    ? searchGenerationCatalog(catalog.records, catalogQuery ?? "", {
+  // One list, built from the Catalog and carrying the X Stats where a Part
+  // projection exists — the two used to be stacked as separate sections. The
+  // projected names are folded in before the search runs, so a query for
+  // 蒼龍神劍 reaches the record that only knows itself as "Dran Sword".
+  const searchableRecords = withProjectedSearchAliases(
+    catalog.records,
+    getLegacyPartForCatalogRecord,
+  );
+  const foundRecords = hasCatalogSearchParams
+    ? searchGenerationCatalog(searchableRecords, catalogQuery ?? "", {
       generationId: hasCatalogGeneration ? selectedGeneration : undefined,
       system: selectedSystem,
       kind: selectedKind === "all" ? undefined : selectedKind,
       partType: selectedPartType,
     })
-    : selectCatalogRecordsForPage(catalog.records, selectedGeneration, false);
-  const filtered = filterByType(getAllParts(), state.type);
-  const sorted = state.sort ? sortParts(filtered, state.sort, state.direction) : filtered;
+    : selectCatalogRecordsForPage(searchableRecords, selectedGeneration, false);
+  const publishable = publishableCatalogRecords(foundRecords);
+  const browserRecords = state.sort
+    ? sortCatalogPartRecords(publishable, getLegacyPartForCatalogRecord, state.sort, state.direction)
+    : projectedRecordsFirst(publishable, getLegacyPartForCatalogRecord);
 
   return (
     <PartsPageBody
-      parts={sorted}
       locale={locale}
       state={state}
       catalog={catalog}
@@ -89,7 +116,6 @@ function firstParam(value: string | string[] | undefined): string | undefined {
 }
 
 function PartsPageBody({
-  parts,
   locale,
   state,
   catalog,
@@ -102,11 +128,10 @@ function PartsPageBody({
   searchAcrossGenerations,
   selectedRecordId,
 }: {
-  parts: Part[];
   locale: Locale;
   state: FilterSortState;
   catalog: ReturnType<typeof getGenerationCatalogSnapshot>;
-  catalogRecords: ReturnType<typeof getGenerationCatalogSnapshot>["records"];
+  catalogRecords: GenerationCatalogRecord[];
   selectedGeneration: GenerationId;
   selectedSystem?: string;
   selectedKind: "all" | "beyblade" | "part" | "release" | "equipment";
@@ -121,6 +146,25 @@ function PartsPageBody({
     const legacyPart = getLegacyPartForCatalogRecord(recordId);
     return legacyPart ? `${localePrefix}/parts/${slugify(legacyPart.nameEn)}` : undefined;
   };
+  const partTypeLabels: Record<string, string> = Object.fromEntries(
+    NAMED_PART_TYPES.map((partType) => [partType, t(`part_type_${partType}`)]),
+  );
+  const partTypeLabelFor = (partType: string) => partTypeLabels[partType] ?? humanizePartType(partType);
+  // Only the X Parts view has Stats to sort by, and only there does a table
+  // beat cards: every other Generation/kind keeps the card grid.
+  const showStatTable = selectedGeneration === "x" &&
+    selectedKind === "part" &&
+    !searchAcrossGenerations;
+  const sortQueryFor = (field: SortField, direction: SortDirection) => ({
+    catalogGeneration: selectedGeneration,
+    ...(selectedSystem ? { catalogSystem: selectedSystem } : {}),
+    catalogKind: selectedKind,
+    ...(selectedPartType ? { catalogPartType: selectedPartType } : {}),
+    ...(searchQuery ? { catalogQuery: searchQuery } : {}),
+    ...(selectedRecordId ? { catalogRecordId: selectedRecordId } : {}),
+    sort: field,
+    dir: direction,
+  });
 
   return (
     <main className={styles.page}>
@@ -139,6 +183,31 @@ function PartsPageBody({
         searchAcrossGenerations={searchAcrossGenerations}
         selectedRecordId={selectedRecordId}
         legacyPartHrefForRecord={legacyPartHrefForRecord}
+        partTypeLabelFor={partTypeLabelFor}
+        renderRecords={showStatTable
+          ? (records) => (
+            <CatalogPartTable
+              records={records}
+              projectionFor={getLegacyPartForCatalogRecord}
+              locale={locale}
+              sortField={state.sort}
+              sortDirection={state.direction}
+              sortQueryFor={sortQueryFor}
+              partTypeLabelFor={partTypeLabelFor}
+              labels={{
+                partTypeColumn: t("part_type_column"),
+                nameColumn: t("name_column"),
+                attack: t("stat_attack"),
+                defense: t("stat_defense"),
+                stamina: t("stat_stamina"),
+                xDash: t("stat_xDash"),
+                burstResistance: t("stat_burstResistance"),
+                releaseDate: t("release_date"),
+                empty: t("no_results"),
+              }}
+            />
+          )
+          : undefined}
         labels={{
           heading: t("catalog_heading"),
           generationLabel: t("catalog_generation"),
@@ -160,37 +229,6 @@ function PartsPageBody({
           legacyPartLabel: t("catalog_legacy_part"),
         }}
       />
-
-      {selectedGeneration === "x" && selectedKind === "part" && !searchAcrossGenerations && !searchQuery ? (
-        <section className={styles.legacySection} aria-labelledby="legacy-x-parts-heading">
-          <header>
-            <p className={styles.sectionKicker}>LEGACY X PROJECTION</p>
-            <h2 id="legacy-x-parts-heading">{t("legacy_heading")}</h2>
-            <p>{t("legacy_description")}</p>
-          </header>
-          <nav className={styles.filters} aria-label={t("type_all")}>
-            <Link
-              href={{ pathname: "/parts", query: buildQuery({ sort: state.sort, direction: state.direction }) }}
-              aria-current={state.type === undefined ? "true" : undefined}
-            >
-              {t("type_all")}
-            </Link>
-            {TYPES.map((type) => (
-              <Link
-                key={type}
-                href={{
-                  pathname: "/parts",
-                  query: buildQuery({ type, sort: state.sort, direction: state.direction }),
-                }}
-                aria-current={state.type === type ? "true" : undefined}
-              >
-                {t(`type_${type}`)}
-              </Link>
-            ))}
-          </nav>
-          <SearchableRows parts={parts} locale={locale} state={state} />
-        </section>
-      ) : null}
     </main>
   );
 }

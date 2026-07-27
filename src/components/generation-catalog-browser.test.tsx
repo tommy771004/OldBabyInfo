@@ -125,7 +125,9 @@ describe("GenerationCatalogBrowser", () => {
       "/en/parts/catalog/x%3Abeyblade%3Acx01",
     );
     expect(screen.getAllByText("Complete Beyblades").length).toBeGreaterThan(0);
-    expect(screen.getByText("main_blade")).toBeInTheDocument();
+    // Both the Part-kind filter and the record card name the kind; without a
+    // `partTypeLabelFor` the raw key is what a reader sees.
+    expect(screen.getAllByText("main_blade").length).toBeGreaterThan(0);
     expect(screen.getByRole("heading", { name: "Stock composition" })).toBeInTheDocument();
     expect(screen.getByText(/officially_verified/)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Releases" })).toBeInTheDocument();
