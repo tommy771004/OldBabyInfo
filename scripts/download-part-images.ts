@@ -28,7 +28,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import sharp from "sharp";
 import { partsFileSchema, type Part } from "../src/lib/parts/schema.ts";
-import partImagesJson from "../data/part-images.json" with { type: "json" };
+import { readFileSync } from "node:fs";
 import partsJson from "../data/parts.json" with { type: "json" };
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -58,6 +58,13 @@ function normalize(value: string): string {
   return value.toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
+/** A Part id can contain spaces ("LIGHTNING L-DRAGO"); a filename served
+ *  over HTTP should not. Ids are unique and this mapping is checked for
+ *  collisions below, so the file name stays traceable to its Part. */
+function fileNameOf(partId: string): string {
+  return partId.replace(/[^A-Za-z0-9._-]+/g, "_");
+}
+
 /** Go-Shoot files are keyed by abbreviation; Ratchets have no `names` at all
  *  because the key ("0-60") is already the Part's real name. */
 async function fetchGoShootAbbrs(): Promise<Map<string, string>> {
@@ -76,20 +83,35 @@ async function fetchGoShootAbbrs(): Promise<Map<string, string>> {
   return byPartName;
 }
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/**
+ * GitHub Pages rate-limits a burst of a few hundred requests, and a
+ * throttled response looks exactly like a missing file — an earlier run of
+ * this script silently "lost" 37 photos that way. Space the requests out and
+ * retry with a backoff so a 429 is never mistaken for a 404.
+ */
 async function download(url: string): Promise<Buffer | undefined> {
-  const res = await fetch(url);
-  if (!res.ok) return undefined;
-  return Buffer.from(await res.arrayBuffer());
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    const res = await fetch(url);
+    if (res.ok) return Buffer.from(await res.arrayBuffer());
+    if (res.status === 404) return undefined;
+    await sleep(1500 * 2 ** attempt);
+  }
+  throw new Error(`Gave up on ${url} — the host kept refusing`);
 }
 
 async function main() {
   const parts = partsFileSchema.parse(partsJson);
-  const existing = partImagesJson as Record<string, ImageEntry>;
+  // Read from disk, not as a static import: a previous run rewrites this
+  // file, and the fallback needs whatever remote URLs it still holds.
+  const existing = JSON.parse(readFileSync(MANIFEST_PATH, "utf8")) as Record<string, ImageEntry>;
   const abbrs = await fetchGoShootAbbrs();
 
   mkdirSync(OUTPUT_DIR, { recursive: true });
 
   const manifest: Record<string, ImageEntry> = {};
+  const fileNames = new Set<string>();
   const sourced = { goShoot: 0, existing: 0, missing: [] as string[] };
 
   for (const part of parts) {
@@ -104,6 +126,7 @@ async function main() {
     let written = false;
     for (const [index, url] of candidates.entries()) {
       const buffer = await download(url);
+      await sleep(120);
       if (!buffer) continue;
 
       // One format for every photo, so the manifest and the <Image> sizing
@@ -112,9 +135,13 @@ async function main() {
       const meta = await sharp(webp).metadata();
       if (!meta.width || !meta.height) continue;
 
-      writeFileSync(join(OUTPUT_DIR, `${part.id}.webp`), webp);
+      const fileName = `${fileNameOf(part.id)}.webp`;
+      if (fileNames.has(fileName)) throw new Error(`Two Parts map to ${fileName}`);
+      fileNames.add(fileName);
+
+      writeFileSync(join(OUTPUT_DIR, fileName), webp);
       manifest[part.id] = {
-        url: `${PUBLIC_PREFIX}/${part.id}.webp`,
+        url: `${PUBLIC_PREFIX}/${fileName}`,
         width: meta.width,
         height: meta.height,
       };
