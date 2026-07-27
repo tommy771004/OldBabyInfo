@@ -10,7 +10,14 @@
  * product photography, not ours — this script only records which real,
  * already-public URL (hosted by the same beybrew community project
  * generate-parts-seed.ts already trusts for stats) corresponds to which
- * Part id. It does not download or re-host the images themselves; the
+ * Part id.
+ *
+ * SUPERSEDED: data/part-images.json is now written by
+ * scripts/download-part-images.ts, which fetches the photos into
+ * public/parts and points the manifest at local paths. This script is kept
+ * for its URL-matching rules, which that one falls back on.
+ *
+ * It does not download or re-host the images themselves; the
  * detail page hotlinks them directly, with a visible copyright/disclaimer
  * line (see ticket 16's own requirement for one).
  *

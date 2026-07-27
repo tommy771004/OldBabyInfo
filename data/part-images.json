@@ -1,737 +1,807 @@
 {
-  "SCORPIOSPEAR": {
-    "url": "https://i.postimg.cc/TPDyfWSk/Blade-Scorpio-Spear.webp",
-    "width": 358,
-    "height": 339
-  },
-  "SAMURAISABER": {
-    "url": "https://i.postimg.cc/d0y7wTXn/Blade-Samurai-Saber.webp",
-    "width": 349,
-    "height": 334
-  },
-  "HELLSHAMMER": {
-    "url": "https://i.postimg.cc/Sx5XBGZh/Blade-Hells-Hammer.webp",
-    "width": 355,
-    "height": 330
-  },
-  "TYRANNOBEAT": {
-    "url": "https://i.postimg.cc/B6fj6n9R/Blade-Tyranno-Beat.webp",
-    "width": 307,
-    "height": 282
-  },
-  "CRIMSONGARUDA": {
-    "url": "https://i.postimg.cc/dVDkNfjn/Blade-Crimson-Garuda.webp",
-    "width": 350,
-    "height": 336
-  },
-  "STORMSPRIGGAN": {
-    "url": "https://i.postimg.cc/NMvKMjqV/Blade-Storm-Spriggan.webp",
-    "width": 358,
-    "height": 365
-  },
-  "DRANSWORD": {
-    "url": "https://i.postimg.cc/bwdDV5Rz/Blade-Dran-Sword.webp",
-    "width": 691,
-    "height": 682
-  },
-  "COBALTDRAGOON": {
-    "url": "https://i.postimg.cc/5NsQ3JLs/Blade-Cobalt-Dragoon.webp",
-    "width": 360,
-    "height": 338
-  },
-  "WHALEWAVE": {
-    "url": "https://i.postimg.cc/FRXYRHXH/Blade-Whale-Wave.webp",
-    "width": 352,
-    "height": 322
-  },
-  "AEROPEGASUS": {
-    "url": "https://i.postimg.cc/TYt59xg0/Blade-Aero-Pegasus.webp",
-    "width": 800,
-    "height": 800
-  },
-  "SHARKEDGE": {
-    "url": "https://i.postimg.cc/W4kDTJKf/Blade-Shark-Edge.webp",
-    "width": 352,
-    "height": 353
-  },
-  "HELLSSCYTHE": {
-    "url": "https://i.postimg.cc/vZj1JvP8/Blade-Hells-Scythe.webp",
-    "width": 693,
-    "height": 656
-  },
-  "DRANBUSTER": {
-    "url": "https://i.postimg.cc/BntL7zBM/Blade-Dran-Buster.webp",
-    "width": 355,
-    "height": 341
-  },
-  "MUMMYCURSE": {
-    "url": "https://i.postimg.cc/cLjKpcDw/Blade-Mummy-Curse.webp",
-    "width": 345,
-    "height": 333
-  },
-  "DRANDAGGER": {
-    "url": "https://i.postimg.cc/g2rXt7K9/Blade-Dran-Dagger.webp",
-    "width": 347,
-    "height": 347
-  },
-  "WEISSTIGER": {
-    "url": "https://i.postimg.cc/26N16SN8/Blade-Weiss-Tiger.webp",
-    "width": 358,
-    "height": 328
-  },
-  "DRAGOONSTORM": {
-    "url": "https://i.postimg.cc/pLyhcSJC/Blade-Dragoon-Storm.webp",
-    "width": 357,
-    "height": 339
-  },
-  "METEORDRAGOON": {
-    "url": "https://i.postimg.cc/dVX7b9WC/Blade-Meteor-Dragoon.webp",
-    "width": 318,
-    "height": 313
-  },
-  "OROCHICLUSTER": {
-    "url": "https://i.postimg.cc/VNCSmbT5/Blade-Orochi-Cluster.webp",
-    "width": 699,
-    "height": 720
-  },
-  "GOLEMROCK": {
-    "url": "https://i.postimg.cc/cLjKpcDq/Blade-Golem-Rock.webp",
-    "width": 358,
-    "height": 324
-  },
-  "CLOCKMIRAGE": {
-    "url": "https://i.postimg.cc/vH0xzyft/Blade-Clock-Mirage.webp",
-    "width": 353,
-    "height": 328
-  },
-  "COBALTDRAKE": {
-    "url": "https://i.postimg.cc/9FLwp2Zx/Blade-Cobalt-Drake.webp",
+  "0-60": {
+    "url": "/parts/0-60.webp",
     "width": 354,
-    "height": 336
-  },
-  "SAMURAICALIBUR": {
-    "url": "https://i.postimg.cc/k5bVqtZF/Blade-Samurai-Calibur.webp",
-    "width": 356,
-    "height": 327
-  },
-  "SHARKSCALE": {
-    "url": "https://i.postimg.cc/QMTBhWPy/Blade-Shark-Scale.webp",
-    "width": 359,
-    "height": 340
-  },
-  "BLACKSHELL": {
-    "url": "https://i.postimg.cc/8PZfHGMB/Blade-Black-Shell.webp",
-    "width": 322,
-    "height": 296
-  },
-  "ROCKLEONE": {
-    "url": "https://i.postimg.cc/d0y7wTXp/Blade-Rock-Leone.webp",
-    "width": 1280,
-    "height": 1211
-  },
-  "KNIGHTMAIL": {
-    "url": "https://i.postimg.cc/mgqcvSdD/Blade-Knight-Mail.webp",
-    "width": 352,
-    "height": 316
-  },
-  "TRICERAPRESS": {
-    "url": "https://i.postimg.cc/pTMmTLbg/Blade-Tricera-Press.webp",
-    "width": 354,
-    "height": 332
-  },
-  "LEONCREST": {
-    "url": "https://i.postimg.cc/Z5g9GLf9/Blade-Leon-Crest.webp",
-    "width": 340,
-    "height": 336
-  },
-  "PHOENIXRUDDER": {
-    "url": "https://i.postimg.cc/R0H34n8n/Blade-Phoenix-Rudder.webp",
-    "width": 338,
-    "height": 326
-  },
-  "XENOXCALIBUR": {
-    "url": "https://i.postimg.cc/V69dbPz5/Blade-Xeno-Xcalibur.webp",
-    "width": 718,
-    "height": 750
-  },
-  "PHOENIXFEATHER": {
-    "url": "https://i.postimg.cc/nLDspQ5s/Blade-Phoenix-Feather.webp",
-    "width": 515,
-    "height": 485
-  },
-  "PHOENIXWING": {
-    "url": "https://i.postimg.cc/N0HyBrVT/Blade-Phoenix-Wing.webp",
-    "width": 319,
-    "height": 302
-  },
-  "SHELTERDRAKE": {
-    "url": "https://i.postimg.cc/3RQkRx59/Blade-Shelter-Drake.webp",
-    "width": 370,
-    "height": 377
-  },
-  "IMPACTDRAKE": {
-    "url": "https://i.postimg.cc/Sx5XBGZy/Blade-Impact-Drake.webp",
-    "width": 354,
-    "height": 331
-  },
-  "GHOSTCIRCLE": {
-    "url": "https://i.postimg.cc/52GHhmsZ/Blade-Ghost-Circle.webp",
-    "width": 356,
-    "height": 333
-  },
-  "SHINOBISHADOW": {
-    "url": "https://i.postimg.cc/ydCDd84v/Blade-Shinobi-Shadow.webp",
-    "width": 356,
-    "height": 359
-  },
-  "LEONCLAW": {
-    "url": "https://i.postimg.cc/zGMLskd3/Blade-Leon-Claw.webp",
-    "width": 354,
-    "height": 348
-  },
-  "WYVERNGALE": {
-    "url": "https://i.postimg.cc/gJyn6bGp/Blade-Wyvern-Gale.webp",
-    "width": 322,
-    "height": 307
-  },
-  "DRACIELSHIELD": {
-    "url": "https://i.postimg.cc/QdV9YzJb/Blade-Draciel-Shield.webp",
-    "width": 357,
-    "height": 343
-  },
-  "SHINOBIKNIFE": {
-    "url": "https://i.postimg.cc/y85JMTfN/Blade-Knife-Shinobi.webp",
-    "width": 827,
-    "height": 750
-  },
-  "SILVERWOLF": {
-    "url": "https://i.postimg.cc/Y9Bv9CKX/Blade-Silver-Wolf.webp",
-    "width": 359,
-    "height": 341
-  },
-  "LIGHTNING L-DRAGO": {
-    "url": "https://i.postimg.cc/2SJqsxHb/Blade-Lightning-L-Drago(Upper-Type).webp",
-    "width": 357,
-    "height": 337
-  },
-  "SPHINXCOWL": {
-    "url": "https://i.postimg.cc/Y9Bv9CKD/Blade-Sphinx-Cowl.webp",
-    "width": 358,
-    "height": 353
-  },
-  "DRANZERSPIRAL": {
-    "url": "https://i.postimg.cc/cL6gkzcW/Blade-Dranzer-Spiral.webp",
-    "width": 336,
-    "height": 346
-  },
-  "UNICORNSTING": {
-    "url": "https://i.postimg.cc/TwvKw3vv/Blade-Unicorn-Sting.webp",
-    "width": 358,
-    "height": 336
-  },
-  "WIZARDROD": {
-    "url": "https://i.postimg.cc/63VyGxBX/Blade-Wizard-Rod.webp",
-    "width": 343,
-    "height": 320
-  },
-  "VIPERTAIL": {
-    "url": "https://i.postimg.cc/fLQVLRQw/Blade-Viper-Tail.webp",
-    "width": 354,
-    "height": 348
-  },
-  "HELLSCHAIN": {
-    "url": "https://i.postimg.cc/Mp4cCYsJ/Blade-Hells-Chain.webp",
-    "width": 350,
-    "height": 338
-  },
-  "RHINOHORN": {
-    "url": "https://i.postimg.cc/SKMXkz5L/Blade-Rhino-Horn.webp",
-    "width": 360,
-    "height": 346
-  },
-  "DRIGERSLASH": {
-    "url": "https://i.postimg.cc/pLyhcSBP/Blade-Driger-Slash.webp",
-    "width": 367,
-    "height": 354
-  },
-  "KNIGHTLANCE": {
-    "url": "https://i.postimg.cc/6pS7khH5/Blade-Knight-Lance.webp",
-    "width": 360,
-    "height": 335
-  },
-  "WIZARDARROW": {
-    "url": "https://i.postimg.cc/mD3tFWTb/Blade-Wizard-Arrow.webp",
-    "width": 709,
-    "height": 651
-  },
-  "KNIGHTSHIELD": {
-    "url": "https://i.postimg.cc/jS9Wph8L/Blade-Knight-Shield.webp",
-    "width": 706,
-    "height": 686
-  },
-  "FLARE": {
-    "url": "https://i.postimg.cc/wxV1qzWk/Main-Blade-Flare.webp",
-    "width": 358,
-    "height": 356
-  },
-  "BRUSH": {
-    "url": "https://i.postimg.cc/7hmhm1Gf/Main-Blade-Brush.webp",
-    "width": 356,
-    "height": 367
-  },
-  "BRAVE": {
-    "url": "https://i.postimg.cc/XqQqQKGJ/Main-Blade-Brave.webp",
-    "width": 356,
-    "height": 364
-  },
-  "FANG": {
-    "url": "https://i.postimg.cc/MHdHd0Mj/Main-Blade-Fang.webp",
-    "width": 166,
-    "height": 161
-  },
-  "HUNT": {
-    "url": "https://i.postimg.cc/XN8rjW2L/Main-Blade-Hunt.webp",
-    "width": 358,
-    "height": 358
-  },
-  "MIGHT": {
-    "url": "https://i.postimg.cc/T29KdxkC/Main-Blade-Might.webp",
-    "width": 357,
-    "height": 356
-  },
-  "ECLIPSE": {
-    "url": "https://i.postimg.cc/WzXzXmFq/Main-Blade-Eclipse-(Upper-Mode).webp",
-    "width": 356,
-    "height": 364
-  },
-  "ARC": {
-    "url": "https://i.postimg.cc/rsQsQG0y/Main-Blade-Arc.webp",
-    "width": 357,
-    "height": 341
-  },
-  "BLAST": {
-    "url": "https://i.postimg.cc/QC0C0g9M/Main-Blade-Blast.webp",
-    "width": 350,
-    "height": 348
-  },
-  "FLAME": {
-    "url": "https://i.postimg.cc/nVkXFxdG/Main-Blade-Flame.webp",
-    "width": 356,
-    "height": 363
-  },
-  "DARK": {
-    "url": "https://i.postimg.cc/KjJjJ7kK/Main-Blade-Dark.webp",
-    "width": 356,
-    "height": 338
-  },
-  "VOLT": {
-    "url": "https://i.postimg.cc/fWKVzs24/Main-Blade-Volt.webp",
-    "width": 800,
-    "height": 800
-  },
-  "REAPER": {
-    "url": "https://i.postimg.cc/6608WKHj/Main-Blade-Reaper.webp",
-    "width": 355,
-    "height": 357
-  },
-  "RAGE": {
-    "url": "https://i.postimg.cc/vH0xzyft/Blade-Clock-Mirage.webp",
-    "width": 353,
-    "height": 328
+    "height": 323
   },
   "0-70": {
-    "url": "https://i.postimg.cc/fTRJkPph/Ratchet0-70.webp",
-    "width": 350,
+    "url": "/parts/0-70.webp",
+    "width": 351,
     "height": 319
   },
-  "3-60": {
-    "url": "https://i.postimg.cc/Nfj5LnS9/Ratchet3-60.webp",
-    "width": 702,
-    "height": 604
+  "0-80": {
+    "url": "/parts/0-80.webp",
+    "width": 336,
+    "height": 304
+  },
+  "1-50": {
+    "url": "/parts/1-50.webp",
+    "width": 357,
+    "height": 334
+  },
+  "1-60": {
+    "url": "/parts/1-60.webp",
+    "width": 356,
+    "height": 335
+  },
+  "1-70": {
+    "url": "/parts/1-70.webp",
+    "width": 353,
+    "height": 325
   },
   "1-80": {
-    "url": "https://i.postimg.cc/3JxdWqVJ/Ratchet1-80.webp",
+    "url": "/parts/1-80.webp",
     "width": 313,
     "height": 300
   },
-  "9-65": {
-    "url": "https://i.postimg.cc/jd3CfXYk/Ratchet9-65.webp",
-    "width": 356,
-    "height": 316
-  },
-  "3-85": {
-    "url": "https://i.postimg.cc/rFwKzH3t/Ratchet3-85.webp",
-    "width": 352,
-    "height": 320
-  },
-  "7-80": {
-    "url": "https://i.postimg.cc/c4k63mGD/Ratchet7-80.webp",
-    "width": 356,
-    "height": 325
-  },
-  "1-50": {
-    "url": "https://i.postimg.cc/QxdHVzwj/Ratchet1-50.webp",
+  "2-60": {
+    "url": "/parts/2-60.webp",
     "width": 358,
-    "height": 333
-  },
-  "8-70": {
-    "url": "https://i.postimg.cc/X71X586H/Ratchet8-70.webp",
-    "width": 356,
-    "height": 322
-  },
-  "4-55": {
-    "url": "https://i.postimg.cc/CLxzd2Xb/Ratchet4-55.webp",
-    "width": 356,
-    "height": 319
+    "height": 334
   },
   "2-70": {
-    "url": "https://i.postimg.cc/Dyw8mNHZ/Ratchet2-70.webp",
+    "url": "/parts/2-70.webp",
     "width": 355,
+    "height": 319
+  },
+  "2-80": {
+    "url": "/parts/2-80.webp",
+    "width": 354,
+    "height": 332
+  },
+  "3-60": {
+    "url": "/parts/3-60.webp",
+    "width": 346,
+    "height": 299
+  },
+  "3-70": {
+    "url": "/parts/3-70.webp",
+    "width": 357,
+    "height": 327
+  },
+  "3-80": {
+    "url": "/parts/3-80.webp",
+    "width": 348,
+    "height": 302
+  },
+  "3-85": {
+    "url": "/parts/3-85.webp",
+    "width": 306,
+    "height": 279
+  },
+  "4-50": {
+    "url": "/parts/4-50.webp",
+    "width": 354,
+    "height": 323
+  },
+  "4-55": {
+    "url": "/parts/4-55.webp",
+    "width": 356,
     "height": 320
   },
-  "1-60": {
-    "url": "https://i.postimg.cc/fTRJkPpw/Ratchet1-60.webp",
-    "width": 356,
-    "height": 336
+  "4-60": {
+    "url": "/parts/4-60.webp",
+    "width": 326,
+    "height": 294
+  },
+  "4-70": {
+    "url": "/parts/4-70.webp",
+    "width": 302,
+    "height": 281
+  },
+  "4-80": {
+    "url": "/parts/4-80.webp",
+    "width": 326,
+    "height": 295
+  },
+  "5-60": {
+    "url": "/parts/5-60.webp",
+    "width": 340,
+    "height": 304
+  },
+  "5-70": {
+    "url": "/parts/5-70.webp",
+    "width": 359,
+    "height": 320
+  },
+  "5-80": {
+    "url": "/parts/5-80.webp",
+    "width": 340,
+    "height": 303
+  },
+  "6-60": {
+    "url": "/parts/6-60.webp",
+    "width": 358,
+    "height": 324
+  },
+  "6-70": {
+    "url": "/parts/6-70.webp",
+    "width": 350,
+    "height": 316
+  },
+  "6-80": {
+    "url": "/parts/6-80.webp",
+    "width": 357,
+    "height": 320
+  },
+  "7-55": {
+    "url": "/parts/7-55.webp",
+    "width": 227,
+    "height": 205
+  },
+  "7-60": {
+    "url": "/parts/7-60.webp",
+    "width": 338,
+    "height": 314
+  },
+  "7-70": {
+    "url": "/parts/7-70.webp",
+    "width": 354,
+    "height": 325
+  },
+  "7-80": {
+    "url": "/parts/7-80.webp",
+    "width": 357,
+    "height": 327
+  },
+  "8-70": {
+    "url": "/parts/8-70.webp",
+    "width": 357,
+    "height": 322
   },
   "9-60": {
-    "url": "https://i.postimg.cc/NfCLX4vC/Ratchet9-60.webp",
+    "url": "/parts/9-60.webp",
     "width": 343,
     "height": 313
   },
-  "3-70": {
-    "url": "https://i.postimg.cc/hPtfhY6f/Ratchet3-70.webp",
-    "width": 359,
-    "height": 328
-  },
-  "9-80": {
-    "url": "https://i.postimg.cc/xTpqmRVZ/Ratchet9-80.webp",
-    "width": 347,
-    "height": 313
-  },
-  "4-70": {
-    "url": "https://i.postimg.cc/vHZcDKkW/Ratchet4-70.webp",
-    "width": 320,
-    "height": 295
-  },
-  "7-60": {
-    "url": "https://i.postimg.cc/DypmGg36/Ratchet7-60.webp",
-    "width": 336,
-    "height": 313
-  },
-  "2-80": {
-    "url": "https://i.postimg.cc/m2gthnJk/Ratchet2-80.webp",
-    "width": 369,
-    "height": 336
-  },
-  "2-60": {
-    "url": "https://i.postimg.cc/TY3phsF3/Ratchet2-60.webp",
-    "width": 358,
-    "height": 335
-  },
-  "7-55": {
-    "url": "https://i.postimg.cc/L6QhPTFV/Ratchet7-55.webp",
-    "width": 228,
-    "height": 206
-  },
-  "4-60": {
-    "url": "https://i.postimg.cc/xTpqmRVc/Ratchet4-60.webp",
-    "width": 653,
-    "height": 589
+  "9-65": {
+    "url": "/parts/9-65.webp",
+    "width": 356,
+    "height": 317
   },
   "9-70": {
-    "url": "https://i.postimg.cc/m2ph9wW5/Ratchet9-70.webp",
+    "url": "/parts/9-70.webp",
     "width": 354,
     "height": 320
   },
-  "4-80": {
-    "url": "https://i.postimg.cc/VLZ5tRPr/Ratchet4-80.webp",
-    "width": 652,
-    "height": 587
-  },
-  "6-60": {
-    "url": "https://i.postimg.cc/J4YtXqCJ/Ratchet6-60.webp",
-    "width": 357,
-    "height": 323
-  },
-  "0-60": {
-    "url": "https://i.postimg.cc/CLxzd2Xp/Ratchet0-60.webp",
-    "width": 355,
-    "height": 324
-  },
-  "M-85": {
-    "url": "https://i.postimg.cc/VkSvWCz4/Ratchet-M-85.webp",
-    "width": 353,
-    "height": 321
-  },
-  "5-60": {
-    "url": "https://i.postimg.cc/VLZ5tRPS/Ratchet5-60.webp",
-    "width": 352,
-    "height": 303
-  },
-  "7-70": {
-    "url": "https://i.postimg.cc/9Fgz9pHJ/Ratchet7-70.webp",
-    "width": 353,
-    "height": 325
-  },
-  "5-70": {
-    "url": "https://i.postimg.cc/tCv765GV/Ratchet5-70.webp",
-    "width": 358,
-    "height": 320
-  },
-  "6-70": {
-    "url": "https://i.postimg.cc/5NKjz3W8/Ratchet6-70.webp",
-    "width": 351,
+  "9-80": {
+    "url": "/parts/9-80.webp",
+    "width": 348,
     "height": 315
   },
-  "4-50": {
-    "url": "https://i.postimg.cc/VLkd5hpM/Ratchet4-50.webp",
-    "width": 356,
-    "height": 323
-  },
-  "1-70": {
-    "url": "https://i.postimg.cc/c4Lr6z2x/Ratchet1-70.webp",
-    "width": 351,
-    "height": 324
-  },
-  "5-80": {
-    "url": "https://i.postimg.cc/65bTZ0xZ/Ratchet5-80.webp",
-    "width": 352,
-    "height": 303
-  },
-  "6-80": {
-    "url": "https://i.postimg.cc/DypmGg3d/Ratchet6-80.webp",
-    "width": 356,
-    "height": 321
-  },
-  "0-80": {
-    "url": "https://i.postimg.cc/QxdHVzws/Ratchet0-80.webp",
-    "width": 336,
-    "height": 305
-  },
-  "3-80": {
-    "url": "https://i.postimg.cc/fTRJkPpd/Ratchet3-80.webp",
-    "width": 694,
-    "height": 600
-  },
-  "Z": {
-    "url": "https://i.postimg.cc/tCBn5bWn/Bit-Zap.webp",
-    "width": 174,
-    "height": 276
-  },
-  "GU": {
-    "url": "https://i.postimg.cc/prZh3b72/Bit-Gear-Unite.webp",
-    "width": 184,
-    "height": 300
-  },
-  "GR": {
-    "url": "https://i.postimg.cc/zvjb4ZM1/Bit-Gear-Rush.webp",
-    "width": 176,
-    "height": 286
-  },
-  "LO": {
-    "url": "https://i.postimg.cc/QNkTF1My/Bit-Low-Orb.webp",
-    "width": 186,
-    "height": 283
-  },
-  "N": {
-    "url": "https://i.postimg.cc/VLfbnvSh/Bit-Needle.webp",
-    "width": 326,
-    "height": 515
-  },
-  "H": {
-    "url": "https://i.postimg.cc/KjNkCSVv/Bit-Hexa.webp",
-    "width": 175,
-    "height": 282
-  },
-  "I": {
-    "url": "https://i.postimg.cc/zDSgyKfw/Bit-Ignition.webp",
-    "width": 183,
-    "height": 285
-  },
-  "UN": {
-    "url": "https://i.postimg.cc/bNy2krDt/Bit-Under-Needle.webp",
-    "width": 187,
-    "height": 271
-  },
-  "Y": {
-    "url": "https://i.postimg.cc/sDTGcz7Q/Bit-Yielding.webp",
-    "width": 243,
-    "height": 232
-  },
-  "V": {
-    "url": "https://i.postimg.cc/9FLwp2ZQ/Bit-Vortex.webp",
-    "width": 172,
-    "height": 285
-  },
-  "F": {
-    "url": "https://i.postimg.cc/0jfMhR4V/Bit-Flat.webp",
-    "width": 332,
-    "height": 562
-  },
-  "GF": {
-    "url": "https://i.postimg.cc/Y03GTKPT/Bit-Gear-Flat.webp",
-    "width": 169,
-    "height": 297
-  },
   "A": {
-    "url": "https://i.postimg.cc/4yZH8NWp/Bit-Accel.webp",
-    "width": 175,
-    "height": 277
-  },
-  "S": {
-    "url": "https://i.postimg.cc/fTz0mytD/Bit-Spike.webp",
-    "width": 168,
-    "height": 276
-  },
-  "GB": {
-    "url": "https://i.postimg.cc/vTzgCFK2/Bit-Gear-Ball.webp",
-    "width": 173,
-    "height": 288
-  },
-  "Q": {
-    "url": "https://i.postimg.cc/dtsTr3kF/Bit-Quake.webp",
-    "width": 169,
-    "height": 281
-  },
-  "GP": {
-    "url": "https://i.postimg.cc/yxPg245q/Bit-Gear-Point.webp",
-    "width": 158,
-    "height": 281
-  },
-  "WW": {
-    "url": "https://i.postimg.cc/Nfd24tmK/Bit-Wall-Wedge.webp",
-    "width": 173,
+    "url": "/parts/A.webp",
+    "width": 176,
     "height": 280
   },
-  "O": {
-    "url": "https://i.postimg.cc/GhLsGtBN/Bit-Orb.webp",
-    "width": 166,
-    "height": 281
+  "AEROPEGASUS": {
+    "url": "/parts/AEROPEGASUS.webp",
+    "width": 304,
+    "height": 297
   },
-  "D": {
-    "url": "https://i.postimg.cc/8cDfyPZn/Bit-Dot.webp",
-    "width": 180,
-    "height": 292
-  },
-  "W": {
-    "url": "https://i.postimg.cc/7YKJV40C/Bit-Wedge.webp",
-    "width": 173,
-    "height": 271
-  },
-  "C": {
-    "url": "https://i.postimg.cc/Rh9JPVgs/Bit-Cyclone.webp",
-    "width": 184,
-    "height": 302
-  },
-  "TP": {
-    "url": "https://i.postimg.cc/4NfhVy7d/Bit-Trans-Point.webp",
-    "width": 205,
-    "height": 276
-  },
-  "G": {
-    "url": "https://i.postimg.cc/MHDMg24Z/Bit-Glide.webp",
-    "width": 183,
-    "height": 294
-  },
-  "LR": {
-    "url": "https://i.postimg.cc/nVYDXBL5/Bit-Low-Rush.webp",
-    "width": 181,
-    "height": 290
-  },
-  "RA": {
-    "url": "https://i.postimg.cc/8PprMcJT/Bit-Rubber-Accel.webp",
-    "width": 229,
-    "height": 292
-  },
-  "J": {
-    "url": "https://i.postimg.cc/FFgLY3Kg/Bit-Jolt.webp",
-    "width": 127,
-    "height": 195
-  },
-  "T": {
-    "url": "https://i.postimg.cc/FsrJ3zdK/Bit-Taper.webp",
-    "width": 328,
-    "height": 539
+  "ARC": {
+    "url": "/parts/ARC.webp",
+    "width": 357,
+    "height": 341
   },
   "B": {
-    "url": "https://i.postimg.cc/yxB3fYLy/Bit-Ball.webp",
-    "width": 326,
-    "height": 532
-  },
-  "LF": {
-    "url": "https://i.postimg.cc/NG7HKm0J/Bit-Low-Flat.webp",
-    "width": 156,
-    "height": 268
-  },
-  "P": {
-    "url": "https://i.postimg.cc/rFVtxsd7/Bit-Point.webp",
+    "url": "/parts/B.webp",
     "width": 166,
-    "height": 281
+    "height": 270
   },
-  "HN": {
-    "url": "https://i.postimg.cc/44b9YV39/Bit-High-Needle.webp",
-    "width": 161,
-    "height": 262
+  "BEARSCRATCH": {
+    "url": "/parts/BEARSCRATCH.webp",
+    "width": 360,
+    "height": 334
   },
-  "FB": {
-    "url": "https://i.postimg.cc/zvjb4ZQt/Bit-Free-Ball.webp",
-    "width": 180,
-    "height": 282
+  "BLACKSHELL": {
+    "url": "/parts/BLACKSHELL.webp",
+    "width": 326,
+    "height": 301
   },
-  "GN": {
-    "url": "https://i.postimg.cc/J0qDSVF9/Bit-Gear-Needle.webp",
-    "width": 187,
-    "height": 303
+  "BLAST": {
+    "url": "/parts/BLAST.webp",
+    "width": 350,
+    "height": 348
   },
-  "R": {
-    "url": "https://i.postimg.cc/c4x8wCgZ/Bit-Rush.webp",
-    "width": 169,
-    "height": 291
+  "BRAVE": {
+    "url": "/parts/BRAVE.webp",
+    "width": 356,
+    "height": 364
   },
-  "TK": {
-    "url": "https://i.postimg.cc/hPD7Tvzh/Bit-Trans-Kick.webp",
-    "width": 213,
-    "height": 285
-  },
-  "UF": {
-    "url": "https://i.postimg.cc/HsY7XncV/Bit-Under-Flat.webp",
-    "width": 181,
-    "height": 278
-  },
-  "L": {
-    "url": "https://i.postimg.cc/KcrM1BY9/Bit-Level.webp",
-    "width": 176,
-    "height": 287
-  },
-  "WB": {
-    "url": "https://i.postimg.cc/FsTkZv3s/Bit-Wall-Ball.webp",
-    "width": 183,
-    "height": 300
-  },
-  "HT": {
-    "url": "https://i.postimg.cc/XNcCrdvw/Bit-High-Taper.webp",
-    "width": 168,
-    "height": 292
-  },
-  "MN": {
-    "url": "https://i.postimg.cc/PrX8YJLF/Bit-Metal-Needle.webp",
-    "width": 176,
-    "height": 292
+  "BRUSH": {
+    "url": "/parts/BRUSH.webp",
+    "width": 356,
+    "height": 367
   },
   "BS": {
-    "url": "https://i.postimg.cc/Rh9JPVgc/Bit-Bound-Spike.webp",
+    "url": "/parts/BS.webp",
     "width": 186,
     "height": 293
   },
+  "BULLETGRIFFON": {
+    "url": "/parts/BULLETGRIFFON.webp",
+    "width": 304,
+    "height": 293
+  },
+  "C": {
+    "url": "/parts/C.webp",
+    "width": 184,
+    "height": 304
+  },
+  "CLOCKMIRAGE": {
+    "url": "/parts/CLOCKMIRAGE.webp",
+    "width": 356,
+    "height": 329
+  },
+  "COBALTDRAGOON": {
+    "url": "/parts/COBALTDRAGOON.webp",
+    "width": 358,
+    "height": 338
+  },
+  "COBALTDRAKE": {
+    "url": "/parts/COBALTDRAKE.webp",
+    "width": 304,
+    "height": 283
+  },
+  "CRIMSONGARUDA": {
+    "url": "/parts/CRIMSONGARUDA.webp",
+    "width": 354,
+    "height": 341
+  },
+  "D": {
+    "url": "/parts/D.webp",
+    "width": 177,
+    "height": 287
+  },
+  "DARK": {
+    "url": "/parts/DARK.webp",
+    "width": 356,
+    "height": 338
+  },
+  "DRACIELSHIELD": {
+    "url": "/parts/DRACIELSHIELD.webp",
+    "width": 358,
+    "height": 346
+  },
+  "DRAGOONSTORM": {
+    "url": "/parts/DRAGOONSTORM.webp",
+    "width": 356,
+    "height": 338
+  },
+  "DRANBUSTER": {
+    "url": "/parts/DRANBUSTER.webp",
+    "width": 354,
+    "height": 342
+  },
+  "DRANDAGGER": {
+    "url": "/parts/DRANDAGGER.webp",
+    "width": 350,
+    "height": 351
+  },
+  "DRANSWORD": {
+    "url": "/parts/DRANSWORD.webp",
+    "width": 347,
+    "height": 342
+  },
+  "DRANZERSPIRAL": {
+    "url": "/parts/DRANZERSPIRAL.webp",
+    "width": 350,
+    "height": 287
+  },
+  "DRIGERSLASH": {
+    "url": "/parts/DRIGERSLASH.webp",
+    "width": 370,
+    "height": 356
+  },
+  "E": {
+    "url": "/parts/E.webp",
+    "width": 265,
+    "height": 297
+  },
+  "ECLIPSE": {
+    "url": "/parts/ECLIPSE.webp",
+    "width": 356,
+    "height": 364
+  },
+  "F": {
+    "url": "/parts/F.webp",
+    "width": 163,
+    "height": 278
+  },
+  "FANG": {
+    "url": "/parts/FANG.webp",
+    "width": 166,
+    "height": 161
+  },
+  "FB": {
+    "url": "/parts/FB.webp",
+    "width": 180,
+    "height": 282
+  },
+  "FLAME": {
+    "url": "/parts/FLAME.webp",
+    "width": 356,
+    "height": 363
+  },
+  "FLARE": {
+    "url": "/parts/FLARE.webp",
+    "width": 358,
+    "height": 356
+  },
+  "G": {
+    "url": "/parts/G.webp",
+    "width": 181,
+    "height": 294
+  },
+  "GB": {
+    "url": "/parts/GB.webp",
+    "width": 173,
+    "height": 288
+  },
+  "GF": {
+    "url": "/parts/GF.webp",
+    "width": 169,
+    "height": 297
+  },
+  "GHOSTCIRCLE": {
+    "url": "/parts/GHOSTCIRCLE.webp",
+    "width": 358,
+    "height": 335
+  },
+  "GN": {
+    "url": "/parts/GN.webp",
+    "width": 187,
+    "height": 303
+  },
+  "GOATTACKLE": {
+    "url": "/parts/GOATTACKLE.webp",
+    "width": 349,
+    "height": 323
+  },
+  "GOLEMROCK": {
+    "url": "/parts/GOLEMROCK.webp",
+    "width": 359,
+    "height": 327
+  },
+  "GP": {
+    "url": "/parts/GP.webp",
+    "width": 158,
+    "height": 281
+  },
+  "GR": {
+    "url": "/parts/GR.webp",
+    "width": 176,
+    "height": 286
+  },
+  "GU": {
+    "url": "/parts/GU.webp",
+    "width": 184,
+    "height": 300
+  },
+  "H": {
+    "url": "/parts/H.webp",
+    "width": 176,
+    "height": 286
+  },
+  "HELLSCHAIN": {
+    "url": "/parts/HELLSCHAIN.webp",
+    "width": 353,
+    "height": 343
+  },
+  "HELLSHAMMER": {
+    "url": "/parts/HELLSHAMMER.webp",
+    "width": 356,
+    "height": 334
+  },
+  "HELLSSCYTHE": {
+    "url": "/parts/HELLSSCYTHE.webp",
+    "width": 349,
+    "height": 331
+  },
+  "HN": {
+    "url": "/parts/HN.webp",
+    "width": 161,
+    "height": 262
+  },
+  "HT": {
+    "url": "/parts/HT.webp",
+    "width": 168,
+    "height": 292
+  },
+  "HUNT": {
+    "url": "/parts/HUNT.webp",
+    "width": 358,
+    "height": 358
+  },
+  "I": {
+    "url": "/parts/I.webp",
+    "width": 183,
+    "height": 285
+  },
+  "IMPACTDRAKE": {
+    "url": "/parts/IMPACTDRAKE.webp",
+    "width": 358,
+    "height": 335
+  },
+  "J": {
+    "url": "/parts/J.webp",
+    "width": 126,
+    "height": 196
+  },
   "K": {
-    "url": "https://i.postimg.cc/fWj9Vmb5/Bit-Kick.webp",
-    "width": 186,
+    "url": "/parts/K.webp",
+    "width": 184,
     "height": 301
   },
-  "U": {
-    "url": "https://i.postimg.cc/SNSzCR2z/Bit-Unite.webp",
-    "width": 180,
+  "KNIGHTLANCE": {
+    "url": "/parts/KNIGHTLANCE.webp",
+    "width": 356,
+    "height": 332
+  },
+  "KNIGHTMAIL": {
+    "url": "/parts/KNIGHTMAIL.webp",
+    "width": 354,
+    "height": 321
+  },
+  "KNIGHTSHIELD": {
+    "url": "/parts/KNIGHTSHIELD.webp",
+    "width": 355,
+    "height": 346
+  },
+  "L": {
+    "url": "/parts/L.webp",
+    "width": 177,
+    "height": 292
+  },
+  "LEONCLAW": {
+    "url": "/parts/LEONCLAW.webp",
+    "width": 361,
+    "height": 350
+  },
+  "LEONCREST": {
+    "url": "/parts/LEONCREST.webp",
+    "width": 347,
+    "height": 342
+  },
+  "LF": {
+    "url": "/parts/LF.webp",
+    "width": 156,
+    "height": 268
+  },
+  "LIGHTNING L-DRAGO": {
+    "url": "/parts/LIGHTNING L-DRAGO.webp",
+    "width": 357,
+    "height": 337
+  },
+  "LO": {
+    "url": "/parts/LO.webp",
+    "width": 186,
     "height": 283
+  },
+  "LR": {
+    "url": "/parts/LR.webp",
+    "width": 181,
+    "height": 290
+  },
+  "M": {
+    "url": "/parts/M.webp",
+    "width": 177,
+    "height": 277
+  },
+  "M-85": {
+    "url": "/parts/M-85.webp",
+    "width": 353,
+    "height": 323
+  },
+  "METEORDRAGOON": {
+    "url": "/parts/METEORDRAGOON.webp",
+    "width": 317,
+    "height": 312
+  },
+  "MIGHT": {
+    "url": "/parts/MIGHT.webp",
+    "width": 357,
+    "height": 356
+  },
+  "MN": {
+    "url": "/parts/MN.webp",
+    "width": 176,
+    "height": 292
+  },
+  "MUMMYCURSE": {
+    "url": "/parts/MUMMYCURSE.webp",
+    "width": 341,
+    "height": 331
+  },
+  "N": {
+    "url": "/parts/N.webp",
+    "width": 166,
+    "height": 261
+  },
+  "O": {
+    "url": "/parts/O.webp",
+    "width": 164,
+    "height": 292
+  },
+  "Op": {
+    "url": "/parts/Op.webp",
+    "width": 358,
+    "height": 288
+  },
+  "OROCHICLUSTER": {
+    "url": "/parts/OROCHICLUSTER.webp",
+    "width": 486,
+    "height": 505
+  },
+  "P": {
+    "url": "/parts/P.webp",
+    "width": 163,
+    "height": 288
+  },
+  "PHOENIXFEATHER": {
+    "url": "/parts/PHOENIXFEATHER.webp",
+    "width": 270,
+    "height": 255
+  },
+  "PHOENIXRUDDER": {
+    "url": "/parts/PHOENIXRUDDER.webp",
+    "width": 340,
+    "height": 330
+  },
+  "PHOENIXWING": {
+    "url": "/parts/PHOENIXWING.webp",
+    "width": 322,
+    "height": 305
+  },
+  "PTERASWING": {
+    "url": "/parts/PTERASWING.webp",
+    "width": 351,
+    "height": 325
+  },
+  "Q": {
+    "url": "/parts/Q.webp",
+    "width": 170,
+    "height": 284
+  },
+  "R": {
+    "url": "/parts/R.webp",
+    "width": 173,
+    "height": 294
+  },
+  "RA": {
+    "url": "/parts/RA.webp",
+    "width": 229,
+    "height": 292
+  },
+  "RAGE": {
+    "url": "/parts/RAGE.webp",
+    "width": 353,
+    "height": 328
+  },
+  "REAPER": {
+    "url": "/parts/REAPER.webp",
+    "width": 355,
+    "height": 357
+  },
+  "RHINOHORN": {
+    "url": "/parts/RHINOHORN.webp",
+    "width": 364,
+    "height": 350
+  },
+  "ROCKLEONE": {
+    "url": "/parts/ROCKLEONE.webp",
+    "width": 358,
+    "height": 338
+  },
+  "S": {
+    "url": "/parts/S.webp",
+    "width": 171,
+    "height": 280
+  },
+  "SAMURAICALIBUR": {
+    "url": "/parts/SAMURAICALIBUR.webp",
+    "width": 357,
+    "height": 327
+  },
+  "SAMURAISABER": {
+    "url": "/parts/SAMURAISABER.webp",
+    "width": 350,
+    "height": 337
+  },
+  "SAMURAISTEEL": {
+    "url": "/parts/SAMURAISTEEL.webp",
+    "width": 330,
+    "height": 335
+  },
+  "SCORPIOSPEAR": {
+    "url": "/parts/SCORPIOSPEAR.webp",
+    "width": 359,
+    "height": 340
+  },
+  "SHARKEDGE": {
+    "url": "/parts/SHARKEDGE.webp",
+    "width": 354,
+    "height": 350
+  },
+  "SHARKGILL": {
+    "url": "/parts/SHARKGILL.webp",
+    "width": 358,
+    "height": 361
+  },
+  "SHARKSCALE": {
+    "url": "/parts/SHARKSCALE.webp",
+    "width": 359,
+    "height": 340
+  },
+  "SHELTERDRAKE": {
+    "url": "/parts/SHELTERDRAKE.webp",
+    "width": 371,
+    "height": 375
+  },
+  "SHINOBIKNIFE": {
+    "url": "/parts/SHINOBIKNIFE.webp",
+    "width": 287,
+    "height": 287
+  },
+  "SHINOBISHADOW": {
+    "url": "/parts/SHINOBISHADOW.webp",
+    "width": 357,
+    "height": 357
+  },
+  "SILVERWOLF": {
+    "url": "/parts/SILVERWOLF.webp",
+    "width": 359,
+    "height": 342
+  },
+  "SPHINXCOWL": {
+    "url": "/parts/SPHINXCOWL.webp",
+    "width": 359,
+    "height": 356
+  },
+  "STORMPEGASIS": {
+    "url": "/parts/STORMPEGASIS.webp",
+    "width": 306,
+    "height": 291
+  },
+  "STORMSPRIGGAN": {
+    "url": "/parts/STORMSPRIGGAN.webp",
+    "width": 304,
+    "height": 311
+  },
+  "T": {
+    "url": "/parts/T.webp",
+    "width": 166,
+    "height": 273
+  },
+  "TK": {
+    "url": "/parts/TK.webp",
+    "width": 213,
+    "height": 285
+  },
+  "TP": {
+    "url": "/parts/TP.webp",
+    "width": 205,
+    "height": 276
+  },
+  "Tr": {
+    "url": "/parts/Tr.webp",
+    "width": 355,
+    "height": 297
+  },
+  "TRICERAPRESS": {
+    "url": "/parts/TRICERAPRESS.webp",
+    "width": 356,
+    "height": 332
+  },
+  "TYRANNOBEAT": {
+    "url": "/parts/TYRANNOBEAT.webp",
+    "width": 309,
+    "height": 285
+  },
+  "TYRANNOROAR": {
+    "url": "/parts/TYRANNOROAR.webp",
+    "width": 349,
+    "height": 330
+  },
+  "U": {
+    "url": "/parts/U.webp",
+    "width": 182,
+    "height": 285
+  },
+  "UF": {
+    "url": "/parts/UF.webp",
+    "width": 181,
+    "height": 278
+  },
+  "UN": {
+    "url": "/parts/UN.webp",
+    "width": 187,
+    "height": 271
+  },
+  "UNICORNSTING": {
+    "url": "/parts/UNICORNSTING.webp",
+    "width": 358,
+    "height": 339
+  },
+  "V": {
+    "url": "/parts/V.webp",
+    "width": 174,
+    "height": 288
+  },
+  "VICTORYVALKYRIE": {
+    "url": "/parts/VICTORYVALKYRIE.webp",
+    "width": 358,
+    "height": 346
+  },
+  "VIPERTAIL": {
+    "url": "/parts/VIPERTAIL.webp",
+    "width": 358,
+    "height": 343
+  },
+  "VOLT": {
+    "url": "/parts/VOLT.webp",
+    "width": 800,
+    "height": 800
+  },
+  "W": {
+    "url": "/parts/W.webp",
+    "width": 173,
+    "height": 272
+  },
+  "WB": {
+    "url": "/parts/WB.webp",
+    "width": 183,
+    "height": 300
+  },
+  "WEISSTIGER": {
+    "url": "/parts/WEISSTIGER.webp",
+    "width": 359,
+    "height": 331
+  },
+  "WHALEWAVE": {
+    "url": "/parts/WHALEWAVE.webp",
+    "width": 358,
+    "height": 326
+  },
+  "WIZARDARROW": {
+    "url": "/parts/WIZARDARROW.webp",
+    "width": 356,
+    "height": 327
+  },
+  "WIZARDROD": {
+    "url": "/parts/WIZARDROD.webp",
+    "width": 343,
+    "height": 322
+  },
+  "WW": {
+    "url": "/parts/WW.webp",
+    "width": 173,
+    "height": 280
+  },
+  "WYVERNGALE": {
+    "url": "/parts/WYVERNGALE.webp",
+    "width": 325,
+    "height": 310
+  },
+  "WYVERNHOVER": {
+    "url": "/parts/WYVERNHOVER.webp",
+    "width": 306,
+    "height": 287
+  },
+  "XENOXCALIBUR": {
+    "url": "/parts/XENOXCALIBUR.webp",
+    "width": 357,
+    "height": 375
+  },
+  "Y": {
+    "url": "/parts/Y.webp",
+    "width": 243,
+    "height": 232
+  },
+  "Z": {
+    "url": "/parts/Z.webp",
+    "width": 175,
+    "height": 275
   }
 }
