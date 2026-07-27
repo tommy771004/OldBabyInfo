@@ -111,7 +111,9 @@
     "catalog_search_placeholder": "依官方名稱、別名或縮寫搜尋",
     "catalog_search_submit": "搜尋",
     "catalog_record_count": "{count} 筆",
-    "catalog_legacy_part": "開啟既有零件頁"
+    "catalog_legacy_part": "開啟既有零件頁",
+    "catalog_provenance": "資料來源",
+    "catalog_composition_unknown": "來源未記載這款陀螺的組成零件。"
   },
   "GuidesPage": {
     "title": "新手指南",
