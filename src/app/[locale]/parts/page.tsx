@@ -25,6 +25,7 @@ import {
   type CatalogFacetState,
 } from "@/lib/parts/catalog-facets.ts";
 import { ratchetTeethParam, type RatchetTeeth } from "@/lib/parts/ratchet-spec.ts";
+import type { BitShape, SpinDirection } from "@/lib/parts/catalog-facets.ts";
 import type { Playstyle } from "@/lib/parts/schema.ts";
 import {
   humanizePartType,
@@ -115,6 +116,8 @@ export default async function PartsPage({
   );
   const facets = parseCatalogFacetParams({
     playstyle: firstParam(catalogParams.playstyle),
+    spin: firstParam(catalogParams.spin),
+    shape: firstParam(catalogParams.shape),
     teeth: firstParam(catalogParams.teeth),
     height: firstParam(catalogParams.height),
   });
@@ -173,9 +176,13 @@ function buildFacetRows({
   labels: {
     allLabel: string;
     playstyle: string;
+    spin: string;
+    shape: string;
     teeth: string;
     height: string;
     playstyleOf: (playstyle: Playstyle) => string;
+    spinOf: (spin: SpinDirection) => string;
+    shapeOf: (shape: BitShape) => string;
     metal: string;
     heightOf: (height: number) => string;
   };
@@ -198,6 +205,46 @@ function buildFacetRows({
             label: labels.playstyleOf(playstyle),
             href: facetHref({ ...facets, playstyle }),
             selected: facets.playstyle === playstyle,
+          })),
+        ],
+      });
+    }
+
+    if (facet === "spinDirection" && values.spins.length > 0) {
+      rows.push({
+        label: labels.spin,
+        options: [
+          {
+            key: "all",
+            label: labels.allLabel,
+            href: facetHref({ ...facets, spin: undefined }),
+            selected: facets.spin === undefined,
+          },
+          ...values.spins.map((spin) => ({
+            key: spin,
+            label: labels.spinOf(spin),
+            href: facetHref({ ...facets, spin }),
+            selected: facets.spin === spin,
+          })),
+        ],
+      });
+    }
+
+    if (facet === "bitShape" && values.shapes.length > 0) {
+      rows.push({
+        label: labels.shape,
+        options: [
+          {
+            key: "all",
+            label: labels.allLabel,
+            href: facetHref({ ...facets, shape: undefined }),
+            selected: facets.shape === undefined,
+          },
+          ...values.shapes.map((shape) => ({
+            key: shape,
+            label: labels.shapeOf(shape),
+            href: facetHref({ ...facets, shape }),
+            selected: facets.shape === shape,
           })),
         ],
       });
@@ -323,9 +370,13 @@ function PartsPageBody({
     labels: {
       allLabel: t("catalog_all"),
       playstyle: t("facet_playstyle"),
+      spin: t("facet_spin"),
+      shape: t("facet_bit_shape"),
       teeth: t("facet_ratchet_teeth"),
       height: t("facet_ratchet_height"),
       playstyleOf: (playstyle) => t(`playstyle_${playstyle}`),
+      spinOf: (spin) => t(`spin_${spin}`),
+      shapeOf: (shape) => t(`bit_shape_${shape}`),
       metal: t("ratchet_teeth_metal"),
       heightOf: (height) => t("ratchet_height_value", { height }),
     },

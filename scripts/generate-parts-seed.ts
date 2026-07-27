@@ -17,7 +17,12 @@ import {
   type RawMasterDataEntry,
 } from "../src/lib/parts/build-stat-editions.ts";
 import { cleanLocalizedName } from "../src/lib/parts/clean-localized-name.ts";
-import { mergeGoShootAliases, type GoShootPartRecord } from "../src/lib/parts/go-shoot-aliases.ts";
+import {
+  mergeGoShootFacts,
+  parseGoShootFile,
+  type GoShootEntry,
+  type GoShootRecord,
+} from "../src/lib/parts/go-shoot-facts.ts";
 import { refreshOfficialParts } from "../src/lib/official-parts/refresh.ts";
 
 /** The richer raw shape actually present in MasterData.json — a superset of
@@ -34,8 +39,14 @@ const BEYPARTS_URL =
   "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json";
 const MASTERDATA_URL =
   "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json";
+/** The source splits Blades across three files — the main list, the
+ *  collaboration Blades (Dranzer, Driger, Pegasis and friends), and the CX
+ *  divided Blades. The first two carry Parts this seed knows about; the
+ *  divided file holds CX-only Part kinds, which live in the Generation
+ *  Catalog rather than here. */
 const GO_SHOOT_PART_URLS = [
   "https://go-shoot.github.io/x/db/part-blade.json",
+  "https://go-shoot.github.io/x/db/part-blade-collab.json",
   "https://go-shoot.github.io/x/db/part-ratchet.json",
   "https://go-shoot.github.io/x/db/part-bit.json",
 ] as const;
@@ -73,9 +84,7 @@ interface BeypartsFile {
   bits: BeypartsEntry[];
 }
 
-interface GoShootPartRecordFile {
-  [abbr: string]: GoShootPartRecord["names"];
-}
+type GoShootPartRecordFile = Record<string, GoShootEntry>;
 
 function normalizeKey(s: string): string {
   return s.toUpperCase().replace(/[^A-Z0-9]/g, "");
@@ -87,11 +96,9 @@ async function fetchJson<T>(url: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-async function fetchGoShootAliases(): Promise<GoShootPartRecord[]> {
+async function fetchGoShootFacts(): Promise<GoShootRecord[]> {
   const files = await Promise.all(GO_SHOOT_PART_URLS.map((url) => fetchJson<GoShootPartRecordFile>(url)));
-  return files.flatMap((file) =>
-    Object.entries(file).map(([abbr, names]) => ({ abbr, names })),
-  );
+  return files.flatMap(parseGoShootFile);
 }
 
 async function fetchMasterData(): Promise<{
@@ -229,7 +236,7 @@ async function main() {
   console.log("Fetching MasterData.json (for Stat Edition history)...");
   const masterData = await fetchMasterData();
   console.log("Fetching Go-Shoot Part aliases (combo abbreviations + source names)...");
-  const goShootAliases = await fetchGoShootAliases();
+  const goShootFacts = await fetchGoShootFacts();
 
   const parts: Part[] = [];
   let matched = 0;
@@ -332,7 +339,7 @@ async function main() {
     deduped.push(part);
   }
 
-  const withAliases = mergeGoShootAliases(deduped, goShootAliases);
+  const withAliases = mergeGoShootFacts(deduped, goShootFacts);
   const validation = partsFileSchema.safeParse(withAliases);
   if (!validation.success) {
     console.error(`Generated seed data failed schema validation (${validation.error.issues.length} issues). First 15:`);

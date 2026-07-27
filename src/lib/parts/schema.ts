@@ -82,6 +82,14 @@ const basePartFields = {
    *  matched an official record. Required (not defaulted) so the seed
    *  generator must always make an explicit call, never a silent omission. */
   releaseAt: z.iso.date().nullable(),
+  /**
+   * The Part's own weight as a published spec, in grams. Distinct from
+   * `moldBatches[].weightGrams`, which is a *range* observed across
+   * production runs: this is one figure a source states for the Part,
+   * that one is undocumented physical variance measured by players. Both
+   * can be true at once, so they are separate fields rather than one.
+   */
+  weightGrams: z.number().positive().optional(),
 };
 
 /**
@@ -101,6 +109,9 @@ export const bladeSchema = z.object({
   stats: threeStatSchema,
   /** Optional: a handful of parts never matched an official record. */
   playstyle: playstyleSchema.optional(),
+  /** Which way the Blade spins. Left-spin Blades need a matching left-spin
+   *  launcher, so this decides whether a player can even use one. */
+  spinDirection: z.enum(["right", "left"]).optional(),
   modes: z.array(modeSchema(threeStatSchema)).default([]),
   statEditions: z.array(statEditionSchema(threeStatSchema)).default([]),
 });
@@ -120,6 +131,11 @@ export const bitSchema = z.object({
   type: z.literal("bit"),
   stats: fiveStatSchema,
   playstyle: playstyleSchema.optional(),
+  /** The ground-contact shape family, which is what actually decides how a
+   *  Bit moves — distinct from `playstyle`, which is the official
+   *  classification of what it is *for*. A flat Bit and a round Bit can
+   *  share a playstyle and behave nothing alike. */
+  shape: z.enum(["flat", "round", "sharp", "multi"]).optional(),
   modes: z.array(modeSchema(fiveStatSchema)).default([]),
   statEditions: z.array(statEditionSchema(fiveStatSchema)).default([]),
 });

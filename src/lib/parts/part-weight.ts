@@ -6,22 +6,26 @@ export interface WeightRange {
 }
 
 /**
- * A Part's weight is a *range*, not a number: no official source publishes a
- * per-Part gram figure (checked against both BeyBrew feeds — neither carries
- * one), and what players actually measure varies by production run. That is
- * exactly the Mold Batch concept in CONTEXT.md, so the range is the envelope
- * of every batch weight recorded for the Part rather than a spec of its own.
+ * A Part's weight comes from one of two places, and measured beats published.
  *
- * A Part with no weighed batch has no range — it reads "—", never 0.
+ * `moldBatches[].weightGrams` is what players actually put on a scale across
+ * production runs, so when it exists the answer is the envelope of every
+ * weighed batch — the spread is the point. Failing that, `part.weightGrams`
+ * is the single figure a source states for the Part, shown as a range whose
+ * ends coincide.
+ *
+ * A Part with neither has no weight — it reads "—", never 0.
  */
 export function weightRangeOf(part: Part): WeightRange | undefined {
   const weighed = part.moldBatches.flatMap((batch) => batch.weightGrams ? [batch.weightGrams] : []);
-  if (weighed.length === 0) return undefined;
+  if (weighed.length > 0) {
+    return {
+      min: Math.min(...weighed.map((range) => range.min)),
+      max: Math.max(...weighed.map((range) => range.max)),
+    };
+  }
 
-  return {
-    min: Math.min(...weighed.map((range) => range.min)),
-    max: Math.max(...weighed.map((range) => range.max)),
-  };
+  return part.weightGrams === undefined ? undefined : { min: part.weightGrams, max: part.weightGrams };
 }
 
 /** Sorting a range needs one number; the midpoint keeps a tight heavy range
