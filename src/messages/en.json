@@ -113,7 +113,8 @@
     "catalog_record_count": "{count} records",
     "catalog_legacy_part": "Open legacy part page",
     "catalog_provenance": "Source",
-    "catalog_composition_unknown": "The source does not record which Parts this Beyblade is built from."
+    "catalog_composition_unknown": "The source does not record which Parts this Beyblade is built from.",
+    "beyblade_image_caption": "Pictured: this Beyblade's Blade, {part}"
   },
   "GuidesPage": {
     "title": "Getting started",

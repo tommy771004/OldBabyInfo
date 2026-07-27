@@ -38,8 +38,8 @@ import {
 import type { SortDirection, SortField } from "@/lib/parts/filter-sort.ts";
 import { parseFilterSortParams, type FilterSortState } from "@/lib/parts/parse-filter-sort-params.ts";
 import { slugify } from "@/lib/parts/slug.ts";
-import { getAllParts } from "@/lib/parts/repository.ts";
-import { buildPartNameIndex, composeBeybladeName } from "@/lib/generation-catalog/beyblade-name.ts";
+import { getAllParts, getPartImage } from "@/lib/parts/repository.ts";
+import { beybladeImagePartOf, buildPartNameIndex, composeBeybladeName } from "@/lib/generation-catalog/beyblade-name.ts";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { CatalogPartTable } from "./catalog-part-table.tsx";
 import styles from "./page.module.css";
@@ -345,6 +345,11 @@ function PartsPageBody({
   const partNameIndex = buildPartNameIndex(getAllParts());
   const recordNameFor = (record: GenerationCatalogRecord) =>
     composeBeybladeName(record, partNameIndex, locale) ?? record.name;
+  const recordImageFor = (record: GenerationCatalogRecord) => {
+    const imagePart = beybladeImagePartOf(record, partNameIndex)
+      ?? getLegacyPartForCatalogRecord(record.id);
+    return imagePart ? getPartImage(imagePart.id) : undefined;
+  };
   // Only the X Parts view has Stats to sort by, and only there does a table
   // beat cards: every other Generation/kind keeps the card grid.
   const showStatTable = selectedGeneration === "x" &&
@@ -410,6 +415,7 @@ function PartsPageBody({
         recordCountLabel={(count) => t("catalog_record_count", { count })}
         partTypeLabelFor={partTypeLabelFor}
         recordNameFor={recordNameFor}
+        recordImageFor={recordImageFor}
         facetFilters={facetRows}
         renderRecords={showStatTable
           ? (records) => (

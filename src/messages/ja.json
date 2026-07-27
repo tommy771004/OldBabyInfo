@@ -113,7 +113,8 @@
     "catalog_record_count": "{count} 件",
     "catalog_legacy_part": "旧パーツページを開く",
     "catalog_provenance": "出典",
-    "catalog_composition_unknown": "この製品の構成パーツは出典に記載がありません。"
+    "catalog_composition_unknown": "この製品の構成パーツは出典に記載がありません。",
+    "beyblade_image_caption": "写真はこのベイのブレード：{part}"
   },
   "GuidesPage": {
     "title": "初心者ガイド",

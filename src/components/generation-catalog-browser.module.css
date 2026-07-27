@@ -167,6 +167,16 @@
   font-weight: 700;
 }
 
+/* The photo is the Blade, which is what a player recognises a Beyblade by.
+   Decorative here: the card's link already names the record, so an alt
+   would only repeat it. */
+.recordImage {
+  width: 100%;
+  height: auto;
+  max-height: 6rem;
+  object-fit: contain;
+}
+
 .recordGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
@@ -264,7 +274,17 @@
     grid-column: auto;
   }
 
-  .recordGrid {
+  /* The photo is the Blade, which is what a player recognises a Beyblade by.
+   Decorative here: the card's link already names the record, so an alt
+   would only repeat it. */
+.recordImage {
+  width: 100%;
+  height: auto;
+  max-height: 6rem;
+  object-fit: contain;
+}
+
+.recordGrid {
     grid-template-columns: 1fr;
     max-height: 32rem;
   }
@@ -338,7 +358,17 @@
     font-size: 0.84rem;
   }
 
-  .recordGrid {
+  /* The photo is the Blade, which is what a player recognises a Beyblade by.
+   Decorative here: the card's link already names the record, so an alt
+   would only repeat it. */
+.recordImage {
+  width: 100%;
+  height: auto;
+  max-height: 6rem;
+  object-fit: contain;
+}
+
+.recordGrid {
     grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
     max-height: none;
   }

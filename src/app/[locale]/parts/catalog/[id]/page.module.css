@@ -52,6 +52,24 @@
   overflow-wrap: anywhere;
 }
 
+.figure {
+  margin: 0 0 2.5rem;
+  max-width: 20rem;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+}
+
+/* The photo is the Blade, not the boxed product — the caption says which
+   Part is pictured rather than letting the image imply more than it is. */
+.figure figcaption {
+  margin-top: 0.5rem;
+  color: color-mix(in srgb, var(--ink-on-light) 58%, transparent);
+  font-size: 0.78rem;
+}
+
 .header h1 {
   margin: 0;
   font-family: var(--font-display), serif;

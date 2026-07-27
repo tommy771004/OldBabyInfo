@@ -33,12 +33,12 @@ _Avoid_: 別名、暱稱、tag
 _Avoid_: 系列、series
 
 **System**：
-同一 Generation 內定義可替換 Part 種類、完整陀螺結構與相容規則的產品系統，例如 Plastic、HMS、Burst、BX、UX、CX。System 之間不可假設可以混裝。
+同一 Generation 內定義可替換 Part 種類、陀螺組裝結構與相容規則的產品系統，例如 Plastic、HMS、Burst、BX、UX、CX。System 之間不可假設可以混裝。
 _Avoid_: 世代、series
 
 **Complete Beyblade**：
-依某一 Generation／System 的正式結構，由多個 Parts 組成、可作為完整商品模型瀏覽的陀螺實體。它不是單一 Part，也不是販售時的 Release。
-_Avoid_: stock combo、商品、build
+依某一 Generation／System 的正式結構，由多個 Parts 組成、可作為完整商品模型瀏覽的陀螺實體。它不是單一 Part，也不是販售時的 Release。中文介面一律稱「陀螺」——玩家講的就是這個字，「完整陀螺」是照英文直譯出來的說法，沒有人這樣講。
+_Avoid_: 完整陀螺、stock combo、商品、build
 
 **Release**：
 官方販售的一個 SKU 或產品版本，可記錄區域、色彩、復刻、隨機款與組合內容，並透過關係指向 Complete Beyblade、Parts 或 Equipment；它不複製底層 Part。
@@ -49,7 +49,7 @@ _Avoid_: Part、Stock Listing
 _Avoid_: Part、配件
 
 **Generation-scoped assembly**：
-由 Generation 與 System 共同決定的完整陀螺組裝結構。X 的 Blade／Ratchet／Bit Combo 只是 X 系統規則，不得套用到 Burst、Metal Fight、Plastic 或 HMS。
+由 Generation 與 System 共同決定的陀螺組裝結構。X 的 Blade／Ratchet／Bit Combo 只是 X 系統規則，不得套用到 Burst、Metal Fight、Plastic 或 HMS。
 _Avoid_: universal Combo、跨世代組裝
 
 **Mold Batch**：

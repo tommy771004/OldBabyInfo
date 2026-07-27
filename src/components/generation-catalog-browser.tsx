@@ -4,6 +4,7 @@ import type {
   GenerationId,
   GenerationSystem,
 } from "@/lib/generation-catalog/schema.ts";
+import Image from "next/image";
 import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
 import { catalogTabsOf, isTabSelected } from "@/lib/generation-catalog/tabs.ts";
 import styles from "./generation-catalog-browser.module.css";
@@ -57,6 +58,8 @@ interface GenerationCatalogBrowserProps {
   /** Reader-facing name for a record whose own name is a model string — a
    *  complete Beyblade reads as its Parts. Falls back to `record.name`. */
   recordNameFor?: (record: GenerationCatalogRecord) => string;
+  /** Thumbnail for a record, when one can be resolved. */
+  recordImageFor?: (record: GenerationCatalogRecord) => { url: string; width: number; height: number } | undefined;
   /** Filters that only make sense for the selected tab — a Blade's playstyle,
    *  a Ratchet's teeth and height. Rendered directly under the tab bar. */
   facetFilters?: CatalogFacetRow[];
@@ -84,6 +87,7 @@ export function GenerationCatalogBrowser({
   recordCountLabel = (count) => String(count),
   partTypeLabelFor = (partType) => partType,
   recordNameFor = (record) => record.name,
+  recordImageFor,
   facetFilters,
   renderRecords,
   labels,
@@ -238,15 +242,28 @@ export function GenerationCatalogBrowser({
 
       {renderRecords ? renderRecords(visibleRecords) : (
         <ul className={styles.recordGrid} aria-label={labels.heading}>
-          {visibleRecords.map((record) => (
-            <li className={styles.recordCard} key={record.id}>
-              <div className={styles.recordMeta}>
-                <span>{kindLabel(record.kind, labels)}</span>
-                {record.partType ? <span>{partTypeLabelFor(record.partType)}</span> : null}
-              </div>
-              <a className={styles.recordLink} href={recordHref(record.id)}>{recordNameFor(record)}</a>
-            </li>
-          ))}
+          {visibleRecords.map((record) => {
+            const image = recordImageFor?.(record);
+            return (
+              <li className={styles.recordCard} key={record.id}>
+                {image ? (
+                  <Image
+                    className={styles.recordImage}
+                    src={image.url}
+                    alt=""
+                    width={image.width}
+                    height={image.height}
+                    sizes="8rem"
+                  />
+                ) : null}
+                <div className={styles.recordMeta}>
+                  <span>{kindLabel(record.kind, labels)}</span>
+                  {record.partType ? <span>{partTypeLabelFor(record.partType)}</span> : null}
+                </div>
+                <a className={styles.recordLink} href={recordHref(record.id)}>{recordNameFor(record)}</a>
+              </li>
+            );
+          })}
         </ul>
       )}
 

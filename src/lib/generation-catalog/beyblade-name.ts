@@ -79,3 +79,30 @@ export function productCodeOf(record: GenerationCatalogRecord): string | undefin
   const model = /^series:([A-Z]{2,3})(\d{2,3})_/.exec(record.sourceRecordId);
   return model ? `${model[1]}-${model[2]}` : undefined;
 }
+
+/**
+ * The Part whose photo stands for a whole Beyblade.
+ *
+ * No source we ingest carries a product shot of an assembled Beyblade —
+ * BeyBrew's image index is 457 Part photos and nothing else, and Go-Shoot's
+ * product rows carry a video id, not an image. What a player recognises a
+ * Beyblade by is its Blade anyway (it is the visible top face, and it is
+ * what the name leads with), so the Blade's own photo represents it. The
+ * same rule already decides the image for a Combo in the battle arena.
+ *
+ * This is the Blade's photo, not a boxed product shot, and the UI says so.
+ */
+export function beybladeImagePartOf(
+  record: GenerationCatalogRecord,
+  index: PartNameIndex,
+): Part | undefined {
+  if (record.kind !== "beyblade") return undefined;
+
+  const bladeKinds = ["blade", "main_blade", "metal_blade", "over_blade"];
+  for (const partType of bladeKinds) {
+    const component = record.components.find((entry) => entry.partType === partType);
+    const part = component && index.find(partType, component.name);
+    if (part) return part;
+  }
+  return undefined;
+}

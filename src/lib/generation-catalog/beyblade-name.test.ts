@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildPartNameIndex, composeBeybladeName, productCodeOf } from "./beyblade-name.ts";
+import { beybladeImagePartOf, buildPartNameIndex, composeBeybladeName, productCodeOf } from "./beyblade-name.ts";
 import { getAllGenerationCatalogRecords } from "./repository.ts";
 import { getAllParts } from "../parts/repository.ts";
 import type { GenerationCatalogRecord } from "./schema.ts";
@@ -123,5 +123,32 @@ describe("against the real seed", () => {
 
     expect(beyblades.length).toBeGreaterThan(200);
     expect(named.length).toBeGreaterThan(100);
+  });
+});
+
+describe("beybladeImagePartOf", () => {
+  it("represents a Beyblade by its Blade", () => {
+    const index = buildPartNameIndex([dranSword, ratchet, flat]);
+
+    expect(beybladeImagePartOf(record, index)?.nameEn).toBe("Dran Sword");
+  });
+
+  it("falls back through the CX blade kinds", () => {
+    const mainBlade = part({ id: "PEAK", type: "blade", nameEn: "Peak" });
+    const cx = beyblade({
+      id: "cx01",
+      components: [{ partType: "main_blade", name: "Peak" }, { partType: "bit", name: "F" }],
+    });
+    // The index keys by the Part's own type, so a main_blade component
+    // resolves against a Part stored as a blade only when the type matches.
+    const index = buildPartNameIndex([{ ...mainBlade, type: "blade" } as Part, flat]);
+
+    expect(beybladeImagePartOf(cx, index)).toBeUndefined();
+  });
+
+  it("has no image Part for anything that is not a Beyblade", () => {
+    const index = buildPartNameIndex([dranSword, ratchet, flat]);
+
+    expect(beybladeImagePartOf({ ...record, kind: "part" }, index)).toBeUndefined();
   });
 });

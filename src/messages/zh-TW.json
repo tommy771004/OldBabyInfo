@@ -99,10 +99,10 @@
     "catalog_system": "系統",
     "catalog_kind": "資料類型",
     "catalog_all": "全部",
-    "catalog_beyblades": "完整陀螺",
+    "catalog_beyblades": "陀螺",
     "catalog_parts": "零件",
     "catalog_composition": "原廠組成",
-    "catalog_contained_by": "包含此零件的完整陀螺",
+    "catalog_contained_by": "包含此零件的陀螺",
     "catalog_releases": "發售版本",
     "catalog_release_contents": "發售內容",
     "catalog_release": "發售版本",
@@ -113,7 +113,8 @@
     "catalog_record_count": "{count} 筆",
     "catalog_legacy_part": "開啟既有零件頁",
     "catalog_provenance": "資料來源",
-    "catalog_composition_unknown": "來源未記載這款陀螺的組成零件。"
+    "catalog_composition_unknown": "來源未記載這款陀螺的組成零件。",
+    "beyblade_image_caption": "圖為此陀螺的刃：{part}"
   },
   "GuidesPage": {
     "title": "新手指南",

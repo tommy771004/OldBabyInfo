@@ -10,7 +10,14 @@ import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { slugify } from "@/lib/parts/slug.ts";
 import { getAllParts } from "@/lib/parts/repository.ts";
-import { buildPartNameIndex, composeBeybladeName, productCodeOf } from "@/lib/generation-catalog/beyblade-name.ts";
+import {
+  beybladeImagePartOf,
+  buildPartNameIndex,
+  composeBeybladeName,
+  productCodeOf,
+} from "@/lib/generation-catalog/beyblade-name.ts";
+import { getPartImage } from "@/lib/parts/repository.ts";
+import Image from "next/image";
 import { pageMetadata } from "@/lib/seo.ts";
 import styles from "./page.module.css";
 
@@ -88,6 +95,8 @@ function GenerationCatalogRecordBody({
     return composeBeybladeName(related, partNameIndex, locale) ?? related.name;
   };
   const productCode = productCodeOf(record);
+  const imagePart = beybladeImagePartOf(record, partNameIndex);
+  const image = imagePart ? getPartImage(imagePart.id) : undefined;
   const kindLabel = record.kind === "beyblade"
     ? t("catalog_beyblades")
     : record.kind === "part"
@@ -110,6 +119,19 @@ function GenerationCatalogRecordBody({
         <h1>{composedName ?? record.name}</h1>
         {composedName ? <p className={styles.modelName}>{record.name}</p> : null}
       </header>
+
+      {image && imagePart ? (
+        <figure className={styles.figure}>
+          <Image
+            src={image.url}
+            alt={localizedNameOf(imagePart, locale)}
+            width={image.width}
+            height={image.height}
+            sizes="(max-width: 640px) 60vw, 20rem"
+          />
+          <figcaption>{t("beyblade_image_caption", { part: localizedNameOf(imagePart, locale) })}</figcaption>
+        </figure>
+      ) : null}
 
       <CatalogRecordDetails
         record={record}
