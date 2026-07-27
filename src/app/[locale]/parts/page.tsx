@@ -373,6 +373,7 @@ function PartsPageBody({
                 weight: t("weight_column"),
                 weightNote: t("weight_note"),
                 releaseDate: t("release_date"),
+                sortLabel: t("sort_label"),
                 empty: t("no_results"),
               }}
             />

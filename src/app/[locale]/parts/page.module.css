@@ -8,4 +8,13 @@
 .page :global(tbody tr:hover) { background: color-mix(in srgb, var(--surface-200) 45%, transparent); }
 .page :global(td:nth-child(n+5)) { font-variant-numeric: tabular-nums; }
 .page :global(td svg) { display: block; width: 3.5rem; height: 3.5rem; }
-@media (max-width: 760px) { .page { overflow-x: hidden; } .page :global(table) { min-width: 58rem; } .page :global(table) { display: block; overflow-x: auto; } }
+/* Between phone and desktop the table still needs to scroll sideways; at
+   phone width catalog-part-table.module.css turns it into cards instead. */
+@media (min-width: 641px) and (max-width: 760px) {
+  .page { overflow-x: hidden; }
+  .page :global(table) { display: block; min-width: 58rem; overflow-x: auto; }
+}
+
+@media (max-width: 640px) {
+  .page { width: min(100% - 1.5rem, 88rem); padding: 2rem 0 4rem; }
+}

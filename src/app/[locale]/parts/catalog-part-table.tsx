@@ -6,6 +6,7 @@ import type { SortDirection, SortField } from "@/lib/parts/filter-sort.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { formatWeightRange, weightRangeOf } from "@/lib/parts/part-weight.ts";
 import { slugify } from "@/lib/parts/slug.ts";
+import styles from "./catalog-part-table.module.css";
 
 const STAT_FIELDS = ["attack", "defense", "stamina", "xDash", "burstResistance"] as const;
 
@@ -20,6 +21,7 @@ export interface CatalogPartTableLabels {
   weight: string;
   weightNote: string;
   releaseDate: string;
+  sortLabel: string;
   empty: string;
 }
 
@@ -59,8 +61,34 @@ export function CatalogPartTable({
     burstResistance: labels.burstResistance,
   };
 
+  const sortFields = [...STAT_FIELDS, "weight", "releaseAt"] as const;
+  const columnLabels: Record<(typeof sortFields)[number], string> = {
+    ...statLabels,
+    weight: labels.weight,
+    releaseAt: labels.releaseDate,
+  };
+
   return (
-    <table>
+    <>
+      {/* Phone width turns each row into a card and drops the header row with
+          it, so the sort controls need a home of their own. Same links, same
+          state — only the presentation differs. */}
+      <nav className={styles.sortRow} aria-label={labels.sortLabel}>
+        <span className={styles.sortRowLabel}>{labels.sortLabel}</span>
+        {sortFields.map((field) => (
+          <SortLink
+            key={field}
+            field={field}
+            sortField={sortField}
+            sortDirection={sortDirection}
+            sortQueryFor={sortQueryFor}
+          >
+            {columnLabels[field]}
+          </SortLink>
+        ))}
+      </nav>
+
+      <table className={styles.table}>
       <caption>{labels.weightNote}</caption>
       <thead>
         <tr>
@@ -108,26 +136,44 @@ export function CatalogPartTable({
 
           return (
             <tr key={record.id}>
-              <td>{record.partType ? partTypeLabelFor(record.partType) : "—"}</td>
-              <td>
+              <td className={styles.kindCell} data-label={labels.partTypeColumn}>
+                {record.partType ? partTypeLabelFor(record.partType) : "—"}
+              </td>
+              <td className={styles.nameCell} data-label={labels.nameColumn}>
                 {part ? (
                   <Link href={`/parts/${slugify(part.nameEn)}`}>{localizedNameOf(part, locale)}</Link>
                 ) : (
                   <Link href={`/parts/catalog/${encodeURIComponent(record.id)}`}>{record.name}</Link>
                 )}
               </td>
-              <td>{part ? part.stats.attack : "—"}</td>
-              <td>{part ? part.stats.defense : "—"}</td>
-              <td>{part ? part.stats.stamina : "—"}</td>
-              <td>{isBit ? part.stats.xDash : "—"}</td>
-              <td>{isBit ? part.stats.burstResistance : "—"}</td>
-              <td>{weightRange ? formatWeightRange(weightRange) : "—"}</td>
-              <td>{part?.releaseAt ?? "—"}</td>
+              <Cell label={statLabels.attack} value={part?.stats.attack} />
+              <Cell label={statLabels.defense} value={part?.stats.defense} />
+              <Cell label={statLabels.stamina} value={part?.stats.stamina} />
+              <Cell label={statLabels.xDash} value={isBit ? part.stats.xDash : undefined} />
+              <Cell label={statLabels.burstResistance} value={isBit ? part.stats.burstResistance : undefined} />
+              <Cell label={labels.weight} value={weightRange ? formatWeightRange(weightRange) : undefined} />
+              <Cell label={labels.releaseDate} value={part?.releaseAt ?? undefined} />
             </tr>
           );
         })}
       </tbody>
-    </table>
+      </table>
+    </>
+  );
+}
+
+/**
+ * One value cell. `data-label` is what the card layout shows in place of the
+ * column header, and `data-empty` is what lets it drop the row entirely —
+ * a card listing six "—" lines is worse than a card that simply says less.
+ * The table keeps the em dash, because a column has to line up.
+ */
+function Cell({ label, value }: { label: string; value: string | number | undefined }) {
+  const empty = value === undefined;
+  return (
+    <td data-label={label} data-empty={empty ? "true" : undefined}>
+      {empty ? "—" : value}
+    </td>
   );
 }
 

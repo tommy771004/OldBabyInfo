@@ -74,6 +74,7 @@
     "weight_column": "Weight",
     "weight_note": "Weight is the measured range across community-recorded mold batches, not an official spec; Parts with no record read “—”.",
     "release_date": "Release date",
+    "sort_label": "Sort",
     "no_results": "No parts match these filters",
     "playstyle_column": "Type",
     "silhouette_column": "Silhouette",

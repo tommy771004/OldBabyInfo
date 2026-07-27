@@ -269,3 +269,77 @@
     max-height: 32rem;
   }
 }
+
+/*
+ * Phone width. Three things change and each one is about a thumb, not a
+ * mouse: the filter form stops trying to be a row, every chip strip swipes
+ * sideways instead of wrapping into a wall, and the strips lose their
+ * scrollbars (a swipe surface does not need to announce itself).
+ */
+@media (max-width: 640px) {
+  .browser {
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .searchForm {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    padding: 0.85rem;
+  }
+
+  .searchForm button {
+    width: 100%;
+  }
+
+  /* Swipeable strips: no wrapping, no visible scrollbar, and a padded end
+     so the last chip never sits flush against the edge. */
+  .navGroup,
+  .facetRow {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .navGroup::-webkit-scrollbar,
+  .facetRow::-webkit-scrollbar,
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navGroup > a,
+  .facetRow .navGroup {
+    flex: 0 0 auto;
+  }
+
+  .facetRow {
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .facetLabel {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    min-width: 0;
+    padding-right: 0.15rem;
+    background: color-mix(in srgb, var(--surface-50) 72%, transparent);
+  }
+
+  .tabs {
+    gap: 0.2rem;
+    scrollbar-width: none;
+  }
+
+  .tabs a {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.84rem;
+  }
+
+  .recordGrid {
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    max-height: none;
+  }
+}

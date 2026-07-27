@@ -1,0 +1,152 @@
+/*
+ * One markup, two shapes. On a wide screen this stays a real table, because
+ * comparing Stats across Parts is a column job. On a phone every column is
+ * narrower than its own numbers, so each row becomes a card and each cell
+ * becomes a labelled line — and any cell with nothing in it drops out
+ * entirely (`[data-empty]`), which is why a Lock Chip card is three lines
+ * while a Bit card is eight.
+ */
+
+.sortRow {
+  display: none;
+}
+
+.table {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  /* Sort lives in the header row on desktop; the card layout has no header
+     row, so it gets its own scrollable strip. */
+  .sortRow {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.4rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .sortRow::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sortRowLabel {
+    flex: 0 0 auto;
+    color: color-mix(in srgb, var(--ink-on-light) 62%, transparent);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .sortRow a {
+    flex: 0 0 auto;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--ink-on-light) 15%, transparent);
+    border-radius: 999px;
+    color: var(--ink-on-light);
+    font-size: 0.82rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .sortRow a[aria-current="true"] {
+    border-color: var(--accent-on-light);
+    background: var(--accent-on-light);
+    color: var(--surface-50);
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+  }
+
+  .table {
+    border-collapse: separate;
+  }
+
+  /* The header row's job (naming each column) is done per-cell below. */
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .table caption {
+    margin-bottom: 0.75rem;
+    text-align: left;
+  }
+
+  .table tr {
+    margin-bottom: 0.65rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--ink-on-light) 14%, transparent);
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--surface-50) 55%, transparent);
+  }
+
+  .table td {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    border: 0;
+    text-align: right;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    flex: 0 0 auto;
+    color: color-mix(in srgb, var(--ink-on-light) 60%, transparent);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  /* A field with no value earns no line. */
+  .table td[data-empty] {
+    display: none;
+  }
+
+  /* Card header: the name leads, the Part kind rides above it as an
+     eyebrow — neither needs its column label repeated. */
+  .table .nameCell {
+    order: -1;
+    display: block;
+    padding: 0 0 0.15rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .table .kindCell {
+    order: -2;
+    display: block;
+    padding: 0;
+    color: color-mix(in srgb, var(--ink-on-light) 58%, transparent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .table .nameCell::before,
+  .table .kindCell::before {
+    content: none;
+  }
+
+  .table tr {
+    display: flex;
+    flex-direction: column;
+  }
+}
