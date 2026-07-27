@@ -70,7 +70,6 @@ function EventsPageBody({
   return (
     <main className={styles.page}>
       <h1>{t("title")}</h1>
-      <p className={styles.intro}>{t("intro")}</p>
 
       <nav className={styles.scopeTabs} aria-label={t("title")}>
         {(["upcoming", "past"] as const).map((scope) => (

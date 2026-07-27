@@ -52,7 +52,6 @@ function WhereToBuyContent({
         <Link href={`/parts/${partSlug}`}>{t("backToPart")}</Link>
       </p>
       <h1>{t("title", { partName })}</h1>
-      <p className={styles.intro}>{t("intro")}</p>
       {!databaseConfigured ? <p className={styles.notice}>{t("databaseUnavailable")}</p> : null}
       <WhereToBuyList
         listings={listings}

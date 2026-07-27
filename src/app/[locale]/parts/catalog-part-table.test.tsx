@@ -28,6 +28,7 @@ const labels = {
   weight: "Weight",
   weightNote: "Weight is the measured range across community-recorded mold batches.",
   releaseDate: "Release date",
+  sortLabel: "Sort",
   empty: "No parts match these filters",
 };
 
@@ -116,10 +117,11 @@ describe("CatalogPartTable", () => {
   it("flips the sort direction on the column that is already sorted", () => {
     renderTable({ sortField: "attack", sortDirection: "asc" });
 
-    const attack = screen.getByRole("link", { name: /Attack/ });
-    expect(attack).toHaveAttribute("aria-current", "true");
-    expect(attack).toHaveAttribute("href", "/parts?sort=attack&dir=desc");
-    expect(screen.getByRole("link", { name: /Defense/ })).toHaveAttribute(
+    const attack = screen.getAllByRole("link", { name: /Attack/ });
+    expect(attack).toHaveLength(2); // column header + mobile sort strip
+    expect(attack.every((link) => link.getAttribute("aria-current") === "true")).toBe(true);
+    expect(attack[0]).toHaveAttribute("href", "/parts?sort=attack&dir=desc");
+    expect(screen.getAllByRole("link", { name: /Defense/ })[0]).toHaveAttribute(
       "href",
       "/parts?sort=defense&dir=asc",
     );
@@ -147,7 +149,7 @@ describe("CatalogPartTable", () => {
 
     // One range across every weighed batch, not one figure per batch.
     expect(screen.getAllByText("34.2–35.1 g").length).toBeGreaterThan(0);
-    expect(screen.getByRole("link", { name: /Weight/ })).toHaveAttribute(
+    expect(screen.getAllByRole("link", { name: /Weight/ })[0]).toHaveAttribute(
       "href",
       "/parts?sort=weight&dir=asc",
     );
@@ -157,6 +159,21 @@ describe("CatalogPartTable", () => {
     renderTable();
 
     expect(screen.getByText(/community-recorded mold batches/)).toBeInTheDocument();
+  });
+
+  it("marks a cell with no value so the card layout can drop the line", () => {
+    renderTable();
+
+    const row = screen.getByRole("link", { name: "Dran" }).closest("tr");
+    const cells = [...row!.querySelectorAll("td")];
+    // Lock Chip: no Stats, no weight, no release date — every value field
+    // is empty, leaving a card of just the kind and the name.
+    expect(cells.filter((cell) => cell.hasAttribute("data-empty"))).toHaveLength(7);
+    // Every value cell still names its column, which is what the card shows
+    // in place of a header row.
+    expect(cells.map((cell) => cell.getAttribute("data-label"))).toEqual([
+      "Kind", "Name", "Attack", "Defense", "Stamina", "X-Dash", "Burst", "Weight", "Release date",
+    ]);
   });
 
   it("shows the empty state instead of a headerless table", () => {

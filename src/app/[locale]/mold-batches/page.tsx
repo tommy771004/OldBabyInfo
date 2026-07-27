@@ -53,7 +53,6 @@ function MoldBatchesContent({
         <Link href="/parts">{t("backToParts")}</Link>
       </p>
       <h1>{t("title")}</h1>
-      <p className={styles.intro}>{t("intro")}</p>
 
       <MoldBatchLookup
         parts={parts}

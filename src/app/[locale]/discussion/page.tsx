@@ -22,7 +22,6 @@ function DiscussionPageContent() {
   return (
     <main className={styles.page}>
       <h1>{t("title")}</h1>
-      <p className={styles.intro}>{t("intro")}</p>
       <DiscussionFeed
         items={[]}
         labels={{
