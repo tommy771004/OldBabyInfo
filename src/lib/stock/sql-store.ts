@@ -12,7 +12,10 @@ export interface StockListingRow {
   product_name: string;
   retailer: string;
   product_url: string;
-  price: number;
+  /** `numeric` comes back from node-postgres and the Neon driver as a
+   *  *string*, not a number — the column is `numeric(10, 2)`. Typed as it
+   *  really arrives so the conversion below cannot be forgotten. */
+  price: string | number;
   stock_status: StockStatus;
   captured_at: string | Date;
   last_attempt_at: string | Date;
@@ -78,7 +81,9 @@ function toListing(row: StockListingRow): StockListing {
     productName: row.product_name,
     retailer: row.retailer,
     productUrl: row.product_url,
-    price: row.price,
+    // Without this the price reaches the page as "250.00" and
+    // `toLocaleString` silently ignores its options on a string.
+    price: Number(row.price),
     stockStatus: row.stock_status,
     capturedAt: iso(row.captured_at),
     lastAttemptAt: iso(row.last_attempt_at),

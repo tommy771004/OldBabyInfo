@@ -138,3 +138,33 @@ describe("createSqlStockListingStore", () => {
     expect(rows[0]?.partId).toBe("dran-sword");
   });
 });
+
+describe("numeric columns", () => {
+  it("turns a numeric price into a number, whatever the driver returns", async () => {
+    // Postgres `numeric` arrives as a string; the page then calls
+    // toLocaleString on it, which silently ignores its options.
+    const store = createSqlStockListingStore({
+      async query() {
+        return {
+          rows: [{
+            id: "listing-1",
+            part_id: "DRANSWORD",
+            product_name: "Dran Sword",
+            retailer: "Funbox",
+            product_url: "https://example.com/p",
+            price: "250.00",
+            stock_status: "in_stock" as const,
+            captured_at: "2026-07-27T00:00:00.000Z",
+            last_attempt_at: "2026-07-27T00:00:00.000Z",
+            scrape_status: "ok" as const,
+            error_message: null,
+          }],
+        };
+      },
+    });
+
+    const [listing] = await store.listByPartId("DRANSWORD");
+    expect(listing?.price).toBe(250);
+    expect(typeof listing?.price).toBe("number");
+  });
+});
