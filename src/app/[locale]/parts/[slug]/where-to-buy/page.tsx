@@ -10,6 +10,7 @@ import { requireLocale } from "@/i18n/require-locale.ts";
 import { slugify } from "@/lib/parts/slug.ts";
 import { pageMetadata } from "@/lib/seo.ts";
 import styles from "./where-to-buy.module.css";
+import { optionalRead } from "@/lib/db/optional-read.ts";
 
 export const dynamic = "force-dynamic";
 
@@ -42,7 +43,9 @@ export default async function WhereToBuyPage({
 
   const connectionString = process.env.DATABASE_URL;
   const reader = connectionString ? createNeonStockListingReader(connectionString) : undefined;
-  const listings = reader ? await reader.listByPartId(part.id) : [];
+  const listings = reader
+    ? await optionalRead("where-to-buy listings", () => reader.listByPartId(part.id), [])
+    : [];
 
   return (
     <WhereToBuyContent

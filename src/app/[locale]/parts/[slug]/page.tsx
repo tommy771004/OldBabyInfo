@@ -22,6 +22,7 @@ import type { ThreadWithAuthor } from "@/lib/discussion/sql-repository.ts";
 import { getAssessmentsForSubject } from "@/lib/assessments/repository.ts";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { parseAssessmentPaginationParams } from "@/lib/assessments/pagination.ts";
+import { optionalRead } from "@/lib/db/optional-read.ts";
 import { splitAssessmentsByStage } from "@/lib/parts/detail-sections.ts";
 import { wingCountFor, hasObservedWingCount } from "@/lib/parts/blade-wing-count.ts";
 import type { Part } from "@/lib/parts/schema.ts";
@@ -70,10 +71,16 @@ export default async function PartDetailPage({
   if (!part) notFound();
 
   const connectionString = process.env.DATABASE_URL;
+  // Both panels are supplementary; the Part's own facts are static and always
+  // render. See optional-read.ts for why this is not just a null check.
   const threadReader = connectionString ? createNeonThreadReader(connectionString) : undefined;
-  const threads = threadReader ? await threadReader.listVisibleBySubject("part", part.id) : [];
+  const threads = threadReader
+    ? await optionalRead("part discussion threads", () => threadReader.listVisibleBySubject("part", part.id), [])
+    : [];
   const stockReader = connectionString ? createNeonStockListingReader(connectionString) : undefined;
-  const listings = stockReader ? await stockReader.listByPartId(part.id) : [];
+  const listings = stockReader
+    ? await optionalRead("part stock listings", () => stockReader.listByPartId(part.id), [])
+    : [];
 
   const allAssessments = getAssessmentsForSubject("part", part.id);
   const stages = splitAssessmentsByStage(allAssessments);
