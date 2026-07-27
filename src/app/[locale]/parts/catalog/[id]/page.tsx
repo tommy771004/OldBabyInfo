@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { CatalogRecordDetails } from "@/components/catalog-record-details.tsx";
@@ -7,9 +8,34 @@ import { type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { slugify } from "@/lib/parts/slug.ts";
+import { getAllParts } from "@/lib/parts/repository.ts";
+import { buildPartNameIndex, composeBeybladeName, productCodeOf } from "@/lib/generation-catalog/beyblade-name.ts";
+import { pageMetadata } from "@/lib/seo.ts";
 import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; id: string }>;
+}): Promise<Metadata> {
+  const { locale, id } = await requireLocale(params);
+  let recordId: string;
+  try {
+    recordId = decodeURIComponent(id);
+  } catch {
+    return {};
+  }
+  const record = getGenerationCatalogSnapshot().records.find((candidate) => candidate.id === recordId);
+  if (!record) return {};
+  return pageMetadata({
+    locale,
+    pathname: `/parts/catalog/${encodeURIComponent(record.id)}`,
+    title: record.name,
+    description: `${record.name} — ${record.generationId} ${record.system} catalog record on OldBabyInfo.`,
+  });
+}
 
 export default async function GenerationCatalogRecordPage({
   params,
@@ -50,6 +76,10 @@ function GenerationCatalogRecordBody({
   const t = useTranslations("PartsPage");
   const legacyPart = getLegacyPartForCatalogRecord(record.id);
   const prefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
+  // A complete Beyblade's model string is unreadable on its own; the name
+  // built from its Parts is what a player would actually say out loud.
+  const composedName = composeBeybladeName(record, buildPartNameIndex(getAllParts()), locale);
+  const productCode = productCodeOf(record);
   const kindLabel = record.kind === "beyblade"
     ? t("catalog_beyblades")
     : record.kind === "part"
@@ -65,8 +95,12 @@ function GenerationCatalogRecordBody({
       </nav>
 
       <header className={styles.header}>
-        <p className={styles.kicker}>{kindLabel}</p>
-        <h1>{record.name}</h1>
+        <p className={styles.kicker}>
+          {productCode ? <span className={styles.code}>{productCode}</span> : null}
+          {kindLabel}
+        </p>
+        <h1>{composedName ?? record.name}</h1>
+        {composedName ? <p className={styles.modelName}>{record.name}</p> : null}
       </header>
 
       <CatalogRecordDetails

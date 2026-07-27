@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -18,6 +19,7 @@ import { createNeonThreadReader } from "@/lib/discussion/neon-repository.ts";
 import { createNeonStockListingReader } from "@/lib/stock/neon-store.ts";
 import type { ThreadWithAuthor } from "@/lib/discussion/sql-repository.ts";
 import { getAssessmentsForSubject } from "@/lib/assessments/repository.ts";
+import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { parseAssessmentPaginationParams } from "@/lib/assessments/pagination.ts";
 import { splitAssessmentsByStage } from "@/lib/parts/detail-sections.ts";
 import { wingCountFor, hasObservedWingCount } from "@/lib/parts/blade-wing-count.ts";
@@ -31,6 +33,25 @@ export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
     getAllParts().map((part) => ({ locale, slug: slugify(part.nameEn) })),
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await requireLocale(params);
+  const part = getPartBySlug(slug);
+  if (!part) return {};
+
+  const name = localizedNameOf(part, locale);
+  const copy = localizedSeoCopy("parts", locale);
+  return pageMetadata({
+    locale,
+    pathname: `/parts/${slug}`,
+    title: `${name} · ${copy.title}`,
+    description: `${name} — ${copy.description}`,
+  });
 }
 
 const STAT_FIELDS = ["attack", "defense", "stamina", "xDash", "burstResistance"] as const;

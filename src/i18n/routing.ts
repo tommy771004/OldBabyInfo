@@ -9,6 +9,7 @@ export const routing = defineRouting({
   locales: ["zh-TW", "ja", "en"],
   defaultLocale: "zh-TW",
   localePrefix: "as-needed",
+  localeDetection: true,
 });
 
 export type Locale = (typeof routing.locales)[number];

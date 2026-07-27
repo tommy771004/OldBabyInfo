@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
@@ -15,11 +16,21 @@ import {
   type VenueGroup,
 } from "@/lib/events/calendar.ts";
 import { buildCalendarQuery, parseCalendarParams } from "@/lib/events/parse-calendar-params.ts";
+import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { CalendarFilters as FilterForm } from "./calendar-filters.tsx";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await requireLocale(params);
+  return pageMetadata({ locale, pathname: "/events", ...localizedSeoCopy("events", locale) });
 }
 
 function todayIsoDate(): string {

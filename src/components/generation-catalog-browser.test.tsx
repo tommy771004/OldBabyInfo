@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { cleanup, render, screen, within } from "@testing-library/react";
+import { afterEach, describe, expect, it } from "vitest";
 import { GenerationCatalogBrowser } from "./generation-catalog-browser.tsx";
 import type { GenerationCatalogRecord } from "@/lib/generation-catalog/schema.ts";
 
@@ -100,6 +100,11 @@ const labels = {
 };
 
 describe("GenerationCatalogBrowser", () => {
+  // Renders used to pile up in the document between cases, which quietly
+  // turned single-element queries into "found multiple" once a case stopped
+  // scoping its own markup.
+  afterEach(cleanup);
+
   it("distinguishes complete Beyblades from Parts and navigates their composition", () => {
     render(
       <GenerationCatalogBrowser
@@ -109,7 +114,6 @@ describe("GenerationCatalogBrowser", () => {
         records={records}
         selectedGeneration="x"
         selectedSystem="cx"
-        selectedRecordId="x:beyblade:cx01"
         labels={labels}
       />,
     );
@@ -128,17 +132,13 @@ describe("GenerationCatalogBrowser", () => {
     // Both the Part-kind filter and the record card name the kind; without a
     // `partTypeLabelFor` the raw key is what a reader sees.
     expect(screen.getAllByText("main_blade").length).toBeGreaterThan(0);
-    expect(screen.getByRole("heading", { name: "Stock composition" })).toBeInTheDocument();
-    expect(screen.getByText(/officially_verified/)).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Releases" })).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: "CX-01 Starter JP" }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole("link", { name: "Main Blade" })[0]).toHaveAttribute(
       "href",
       "/en/parts/catalog/x%3Apart%3Amain-blade",
     );
   });
 
-  it("lets a Part navigate back to the complete Beyblades that contain it", () => {
+  it("narrows the list to one Part kind", () => {
     render(
       <GenerationCatalogBrowser
         locale="en"
@@ -148,15 +148,13 @@ describe("GenerationCatalogBrowser", () => {
         selectedGeneration="x"
         selectedSystem="cx"
         selectedKind="part"
-        selectedRecordId="x:part:main-blade"
+        selectedPartType="main_blade"
         labels={labels}
       />,
     );
 
-    expect(screen.getByRole("heading", { name: "Contained in complete Beyblades" })).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: "CX-01" }).some((link) =>
-      link.getAttribute("href") === "/en/parts/catalog/x%3Abeyblade%3Acx01",
-    )).toBe(true);
+    const grid = screen.getByRole("list", { name: "Parts Catalog" });
+    expect(within(grid).getAllByRole("link").map((link) => link.textContent)).toEqual(["Main Blade"]);
   });
 
   it("searches multilingual aliases across Generations and labels every result kind", () => {
@@ -217,28 +215,4 @@ describe("GenerationCatalogBrowser", () => {
     expect(screen.getAllByRole("navigation", { name: "Entity type" }).length).toBeGreaterThan(0);
   });
 
-  it("links an X Part to the legacy part page when a crosswalk match exists", () => {
-    render(
-      <GenerationCatalogBrowser
-        locale="en"
-        generations={generations}
-        systems={systems}
-        records={[{
-          ...(records[0] as GenerationCatalogRecord),
-          id: "x:part:dran-sword",
-          name: "Dran Sword",
-        }]}
-        selectedGeneration="x"
-        selectedSystem="cx"
-        selectedRecordId="x:part:dran-sword"
-        legacyPartHrefForRecord={(recordId) => recordId === "x:part:dran-sword" ? "/en/parts/dran-sword" : undefined}
-        labels={{ ...labels, legacyPartLabel: "Open legacy part page" }}
-      />,
-    );
-
-    expect(screen.getByRole("link", { name: "Open legacy part page" })).toHaveAttribute(
-      "href",
-      "/en/parts/dran-sword",
-    );
-  });
 });

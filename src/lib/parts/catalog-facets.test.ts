@@ -85,8 +85,10 @@ const projectionFor = (recordId: string) => parts[recordId];
 
 describe("facetsForPartType", () => {
   it("offers each Part kind only the facets its data can answer", () => {
-    expect(facetsForPartType("blade")).toEqual(["playstyle"]);
-    expect(facetsForPartType("bit")).toEqual(["playstyle"]);
+    expect(facetsForPartType("blade")).toEqual(["playstyle", "spinDirection"]);
+    // A Bit's tip shape decides how it moves; a Blade's spin decides whether
+    // a player's launcher can even fire it.
+    expect(facetsForPartType("bit")).toEqual(["playstyle", "bitShape"]);
     expect(facetsForPartType("ratchet")).toEqual(["ratchetTeeth", "ratchetHeight"]);
     // A Lock Chip has no sourced classification — no facet row at all.
     expect(facetsForPartType("lock_chip")).toEqual([]);

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation.ts";
 import { routing, type Locale } from "@/i18n/routing";
@@ -8,10 +9,20 @@ import { getMoldBatchCoverage } from "@/lib/mold-batch/lookup.ts";
 import { getMoldBatchGuidance } from "@/lib/mold-batch/guidance.ts";
 import { getAllParts } from "@/lib/parts/repository.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
+import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import styles from "./mold-batches.module.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await requireLocale(params);
+  return pageMetadata({ locale, pathname: "/mold-batches", ...localizedSeoCopy("moldBatches", locale) });
 }
 
 export default async function MoldBatchesPage({

@@ -1,14 +1,25 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { routing, type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import { getAllParts, getPartBySlug } from "@/lib/parts/repository.ts";
 import { parseComboSlugs } from "@/lib/parts/combo-query.ts";
+import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 import { ComboBuilder } from "./combo-builder.tsx";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await requireLocale(params);
+  return pageMetadata({ locale, pathname: "/combo", ...localizedSeoCopy("combo", locale) });
 }
 
 /** A slug resolving to the wrong Part type (a hand-edited or stale URL)

@@ -48,10 +48,23 @@ describe("weightRangeOf", () => {
     expect(weightSortValueOf(blade([batch("A", { min: 34, max: 36 })]))).toBe(35);
   });
 
-  it("is empty for every Part in the current seed — no source publishes weights yet", () => {
-    // Guards the "—" path the whole list renders today; when Mold Batch
-    // weights land this flips and the column starts carrying real data.
-    expect(getAllParts().filter((part) => weightRangeOf(part))).toEqual([]);
+  it("reads the published weight now that the seed carries one", () => {
+    // This assertion used to be `toEqual([])` — no ingested source published
+    // a per-Part weight. Go-Shoot's Part database does, and the seed now
+    // folds it in, so the column carries real figures for most Parts.
+    const weighed = getAllParts().filter((part) => weightRangeOf(part));
+
+    expect(weighed.length).toBeGreaterThan(100);
+    expect(weighed.every((part) => weightRangeOf(part)!.min > 0)).toBe(true);
+  });
+
+  it("prefers a measured batch range over the published figure", () => {
+    const published = blade([]);
+    published.weightGrams = 35;
+    expect(weightRangeOf(published)).toEqual({ min: 35, max: 35 });
+
+    const measured = { ...published, moldBatches: [batch("A", { min: 34, max: 36 })] };
+    expect(weightRangeOf(measured)).toEqual({ min: 34, max: 36 });
   });
 });
 

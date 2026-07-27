@@ -4,6 +4,7 @@ import { routing } from "./routing";
 describe("routing", () => {
   it("serves zh-TW as the default, unprefixed locale", () => {
     expect(routing.defaultLocale).toBe("zh-TW");
+    expect(routing.localeDetection).toBe(true);
   });
 
   it("supports zh-TW, ja, and en", () => {

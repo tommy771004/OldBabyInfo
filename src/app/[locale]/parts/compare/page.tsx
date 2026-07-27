@@ -1,13 +1,24 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { routing, type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import { getAllParts, getPartBySlug } from "@/lib/parts/repository.ts";
 import { parseCompareSlugs } from "@/lib/parts/compare-query.ts";
+import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { CompareTable } from "./compare-table.tsx";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await requireLocale(params);
+  return pageMetadata({ locale, pathname: "/parts/compare", ...localizedSeoCopy("compare", locale) });
 }
 
 export default async function ComparePage({

@@ -9,6 +9,7 @@ import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { getAllGuides, getGuideBySlug } from "@/lib/guides/repository.ts";
 import { extractHeadings } from "@/lib/guides/headings.ts";
+import { pageMetadata } from "@/lib/seo.ts";
 import styles from "./guide.module.css";
 
 export function generateStaticParams() {
@@ -30,7 +31,13 @@ export async function generateMetadata({
   const { locale, slug } = await requireLocale(params);
   const guide = getGuideBySlug(locale, slug);
   if (!guide) return {};
-  return { title: `${guide.title} — OldBabyInfo`, description: guide.description };
+  return pageMetadata({
+    locale,
+    pathname: `/guides/${slug}`,
+    title: guide.title,
+    description: guide.description,
+    alternateLocales: [locale],
+  });
 }
 
 export default async function GuideDetailPage({

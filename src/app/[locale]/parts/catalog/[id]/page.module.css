@@ -26,6 +26,32 @@
   text-transform: uppercase;
 }
 
+.kicker {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* The product code is how every shop and every player refers to a complete
+   Beyblade, so it leads the header rather than hiding in the URL. */
+.code {
+  padding: 0.15rem 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--accent-on-light) 45%, transparent);
+  border-radius: 2px;
+  color: var(--accent-on-light);
+  letter-spacing: 0.06em;
+}
+
+/* The source's own model string, kept visible under the composed name —
+   it is what the box and the spreadsheets say. */
+.modelName {
+  margin: 0.5rem 0 0;
+  color: color-mix(in srgb, var(--ink-on-light) 55%, transparent);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
+}
+
 .header h1 {
   margin: 0;
   font-family: var(--font-display), serif;

@@ -1,11 +1,22 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { getAllGuides } from "@/lib/guides/repository.ts";
+import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await requireLocale(params);
+  return pageMetadata({ locale, pathname: "/guides", ...localizedSeoCopy("guides", locale) });
 }
 
 export default async function GuidesPage({

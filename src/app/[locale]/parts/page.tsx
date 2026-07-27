@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { routing, type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
@@ -37,11 +38,23 @@ import {
 import type { SortDirection, SortField } from "@/lib/parts/filter-sort.ts";
 import { parseFilterSortParams, type FilterSortState } from "@/lib/parts/parse-filter-sort-params.ts";
 import { slugify } from "@/lib/parts/slug.ts";
+import { getAllParts } from "@/lib/parts/repository.ts";
+import { buildPartNameIndex, composeBeybladeName } from "@/lib/generation-catalog/beyblade-name.ts";
+import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { CatalogPartTable } from "./catalog-part-table.tsx";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await requireLocale(params);
+  return pageMetadata({ locale, pathname: "/parts", ...localizedSeoCopy("parts", locale) });
 }
 
 /** Every X Part kind the messages file names; anything else (Burst's
@@ -79,7 +92,6 @@ export default async function PartsPage({
     : undefined;
   const catalogQuery = firstParam(catalogParams.catalogQuery);
   const selectedPartType = firstParam(catalogParams.catalogPartType);
-  const catalogRecordId = firstParam(catalogParams.catalogRecordId);
   const hasCatalogGeneration = generationIdSchema.safeParse(catalogGeneration).success;
   const hasCatalogSearchParams = ["catalogQuery", "catalogSystem", "catalogKind", "catalogPartType"]
     .some((key) => catalogParams[key] !== undefined);
@@ -145,7 +157,6 @@ export default async function PartsPage({
       selectedPartType={selectedPartType}
       searchQuery={catalogQuery}
       searchAcrossGenerations={searchAcrossGenerations}
-      selectedRecordId={catalogRecordId}
       facets={facets}
       facetValues={facetValues}
     />
@@ -306,7 +317,6 @@ function PartsPageBody({
   selectedPartType,
   searchQuery,
   searchAcrossGenerations,
-  selectedRecordId,
   facets,
   facetValues,
 }: {
@@ -321,20 +331,20 @@ function PartsPageBody({
   selectedPartType?: string;
   searchQuery?: string;
   searchAcrossGenerations?: boolean;
-  selectedRecordId?: string;
   facets: CatalogFacetState;
   facetValues: ReturnType<typeof availableFacetValues>;
 }) {
   const t = useTranslations("PartsPage");
   const localePrefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
-  const legacyPartHrefForRecord = (recordId: string) => {
-    const legacyPart = getLegacyPartForCatalogRecord(recordId);
-    return legacyPart ? `${localePrefix}/parts/${slugify(legacyPart.nameEn)}` : undefined;
-  };
   const partTypeLabels: Record<string, string> = Object.fromEntries(
     NAMED_PART_TYPES.map((partType) => [partType, t(`part_type_${partType}`)]),
   );
   const partTypeLabelFor = (partType: string) => partTypeLabels[partType] ?? humanizePartType(partType);
+  // A complete Beyblade's own name is a run-together model string; the card
+  // shows what its Parts spell out instead.
+  const partNameIndex = buildPartNameIndex(getAllParts());
+  const recordNameFor = (record: GenerationCatalogRecord) =>
+    composeBeybladeName(record, partNameIndex, locale) ?? record.name;
   // Only the X Parts view has Stats to sort by, and only there does a table
   // beat cards: every other Generation/kind keeps the card grid.
   const showStatTable = selectedGeneration === "x" &&
@@ -346,7 +356,6 @@ function PartsPageBody({
     catalogKind: selectedKind,
     ...(selectedPartType ? { catalogPartType: selectedPartType } : {}),
     ...(searchQuery ? { catalogQuery: searchQuery } : {}),
-    ...(selectedRecordId ? { catalogRecordId: selectedRecordId } : {}),
   };
   const sortQueryFor = (field: SortField, direction: SortDirection) => ({
     ...tabQuery,
@@ -398,10 +407,9 @@ function PartsPageBody({
         selectedPartType={selectedPartType}
         searchQuery={searchQuery}
         searchAcrossGenerations={searchAcrossGenerations}
-        selectedRecordId={selectedRecordId}
-        legacyPartHrefForRecord={legacyPartHrefForRecord}
         recordCountLabel={(count) => t("catalog_record_count", { count })}
         partTypeLabelFor={partTypeLabelFor}
+        recordNameFor={recordNameFor}
         facetFilters={facetRows}
         renderRecords={showStatTable
           ? (records) => (

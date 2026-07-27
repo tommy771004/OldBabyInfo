@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation.ts";
@@ -7,9 +8,28 @@ import { getPartBySlug } from "@/lib/parts/repository.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import { slugify } from "@/lib/parts/slug.ts";
+import { pageMetadata } from "@/lib/seo.ts";
 import styles from "./where-to-buy.module.css";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await requireLocale(params);
+  const part = getPartBySlug(slug);
+  if (!part) return {};
+  const partName = localizedNameOf(part, locale);
+  return pageMetadata({
+    locale,
+    pathname: `/parts/${slug}/where-to-buy`,
+    title: `${partName} · Where to buy`,
+    description: `Current retailer availability and price listings for ${partName}.`,
+    noIndex: true,
+  });
+}
 
 export default async function WhereToBuyPage({
   params,

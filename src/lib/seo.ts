@@ -1,0 +1,230 @@
+import type { Metadata } from "next";
+import { createElement } from "react";
+import type { Locale } from "@/i18n/routing";
+
+export const SITE_NAME = "OldBabyInfo";
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://oldbabyinfo.dev"
+).replace(/\/$/, "");
+const GOOGLE_SITE_VERIFICATION = "6KE8Qp5p0dXMp1etepmmhRmw7fG_SRwVuBampfeCL5M";
+
+const localePathPrefix: Record<Locale, string> = {
+  "zh-TW": "",
+  ja: "/ja",
+  en: "/en",
+};
+
+/** Build the public URL for a locale while keeping the existing as-needed
+ * routing contract: Traditional Chinese is the unprefixed default. */
+export function localizedPath(locale: Locale, pathname = "/"): string {
+  const normalizedPath = pathname === "/" ? "" : `/${pathname.replace(/^\/+/, "")}`;
+  return `${localePathPrefix[locale]}${normalizedPath}` || "/";
+}
+
+export function absoluteUrl(pathname: string): string {
+  return new URL(pathname, `${SITE_URL}/`).toString();
+}
+
+export function localizedUrl(locale: Locale, pathname = "/"): string {
+  return absoluteUrl(localizedPath(locale, pathname));
+}
+
+const allLocales: readonly Locale[] = ["zh-TW", "ja", "en"];
+
+export function localizedAlternates(
+  pathname = "/",
+  locales: readonly Locale[] = allLocales,
+) {
+  const languages = Object.fromEntries(
+    locales.map((locale) => [locale, localizedUrl(locale, pathname)]),
+  );
+  const xDefaultLocale = locales.includes("zh-TW") ? "zh-TW" : locales[0];
+
+  return {
+    canonical: localizedUrl("zh-TW", pathname),
+    languages: {
+      ...languages,
+      ...(xDefaultLocale ? { "x-default": localizedUrl(xDefaultLocale, pathname) } : {}),
+    },
+  };
+}
+
+const pageKeywords: Record<Locale, string[]> = {
+  "zh-TW": ["戰鬥陀螺 X", "Beyblade X", "零件資料", "賽事結果", "Combo"],
+  ja: ["ベイブレードX", "Beyblade X", "パーツデータ", "大会結果", "コンボ"],
+  en: ["Beyblade X", "Beyblade parts", "event results", "combo builder", "parts data"],
+};
+
+export function pageMetadata({
+  locale,
+  pathname,
+  title,
+  description,
+  noIndex = false,
+  alternateLocales = allLocales,
+}: {
+  locale: Locale;
+  pathname?: string;
+  title: string;
+  description: string;
+  noIndex?: boolean;
+  alternateLocales?: readonly Locale[];
+}): Metadata {
+  const url = localizedUrl(locale, pathname);
+
+  return {
+    metadataBase: new URL(`${SITE_URL}/`),
+    title: `${title} | ${SITE_NAME}`,
+    description,
+    keywords: pageKeywords[locale],
+    verification: { google: GOOGLE_SITE_VERIFICATION },
+    alternates: {
+      ...localizedAlternates(pathname, alternateLocales),
+      canonical: url,
+    },
+    robots: noIndex ? { index: false, follow: true } : { index: true, follow: true },
+    openGraph: {
+      type: "website",
+      url,
+      siteName: SITE_NAME,
+      title: `${title} | ${SITE_NAME}`,
+      description,
+      locale: locale === "zh-TW" ? "zh_TW" : locale,
+    },
+    twitter: {
+      card: "summary",
+      title: `${title} | ${SITE_NAME}`,
+      description,
+    },
+  };
+}
+
+const seoCopy = {
+  home: {
+    "zh-TW": {
+      title: "戰鬥陀螺 X 查詢工具",
+      description: "查詢 Beyblade X 零件、官方數值、Combo 組合與台灣賽事資料。每筆數據標示來源，讓你查得到也查得準。",
+    },
+    ja: {
+      title: "ベイブレードX パーツ検索",
+      description: "ベイブレードXのパーツ、公式ステータス、コンボ、台湾大会情報を検索。出典付きのデータを正確に確認できます。",
+    },
+    en: {
+      title: "Beyblade X Parts & Event Database",
+      description: "Search Beyblade X parts, official stats, combos, and Taiwan event data with sources for every number.",
+    },
+  },
+  parts: {
+    "zh-TW": { title: "Beyblade X 零件庫", description: "瀏覽 Beyblade X 的 Blade、Ratchet、Bit 零件、官方數值、別名與發售資料。" },
+    ja: { title: "ベイブレードX パーツ一覧", description: "ベイブレードXのBlade、Ratchet、Bit、公式ステータス、別名、発売情報を検索できます。" },
+    en: { title: "Beyblade X Parts Library", description: "Browse Beyblade X Blades, Ratchets, Bits, official stats, aliases, and release data." },
+  },
+  guides: {
+    "zh-TW": { title: "戰鬥陀螺 X 新手指南", description: "從零開始了解 Beyblade X 規則、零件、發射器、競技場與參賽方式。" },
+    ja: { title: "ベイブレードX 初心者ガイド", description: "ベイブレードXのルール、パーツ、ランチャー、スタジアム、大会参加を基礎から解説します。" },
+    en: { title: "Beyblade X Beginner Guides", description: "Learn Beyblade X rules, parts, launchers, stadiums, and how to join events." },
+  },
+  events: {
+    "zh-TW": { title: "台灣 Beyblade X 賽事行事曆", description: "查詢台灣 Beyblade X 賽事日期、地點、報名方式、名額與主辦方公告。" },
+    ja: { title: "台湾ベイブレードX 大会カレンダー", description: "台湾で開催されるベイブレードX大会の日程、会場、申込方法、定員を確認できます。" },
+    en: { title: "Taiwan Beyblade X Event Calendar", description: "Find Taiwan Beyblade X event dates, venues, registration methods, capacity, and source announcements." },
+  },
+  discussion: {
+    "zh-TW": { title: "Beyblade X 最新討論", description: "瀏覽附著在零件、Combo 與賽事資料上的 Beyblade X 玩家觀察與討論。" },
+    ja: { title: "ベイブレードX 最新ディスカッション", description: "パーツ、コンボ、大会データに紐づいたベイブレードXプレイヤーの観察と議論。" },
+    en: { title: "Latest Beyblade X Discussions", description: "Read Beyblade X player observations and discussions attached to parts, combos, and events." },
+  },
+  combo: {
+    "zh-TW": { title: "Beyblade X Combo 建構器", description: "組合 Blade、Ratchet、Bit，快速查看 Beyblade X Combo 的合成數值。" },
+    ja: { title: "ベイブレードX コンボビルダー", description: "Blade、Ratchet、Bitを組み合わせ、ベイブレードXコンボの合成ステータスを確認できます。" },
+    en: { title: "Beyblade X Combo Builder", description: "Combine a Blade, Ratchet, and Bit to calculate Beyblade X combo stats." },
+  },
+  compare: {
+    "zh-TW": { title: "Beyblade X 零件比較", description: "並排比較 Beyblade X 零件的類型、數值、重量與其他官方資料。" },
+    ja: { title: "ベイブレードX パーツ比較", description: "ベイブレードXパーツの種類、ステータス、重量、公式データを並べて比較できます。" },
+    en: { title: "Compare Beyblade X Parts", description: "Compare Beyblade X part types, stats, weights, and official data side by side." },
+  },
+  meta: {
+    "zh-TW": { title: "Beyblade X Combo 勝率榜", description: "根據實際賽事結果查看 Beyblade X Combo 使用率、前八強佔比與奪冠次數。" },
+    ja: { title: "ベイブレードX コンボ使用率ランキング", description: "実際の大会結果からベイブレードXコンボの使用率、ベスト8率、優勝回数を確認できます。" },
+    en: { title: "Beyblade X Combo Event Standings", description: "Explore Beyblade X combo usage, top-eight rates, and championship counts from recorded event results." },
+  },
+  moldBatches: {
+    "zh-TW": { title: "Beyblade X 模具批號查詢", description: "查詢 Beyblade X 零件的模具批次觀察與社群實測資料，並查看每筆資料的來源。" },
+    ja: { title: "ベイブレードX 金型ロット検索", description: "ベイブレードXパーツの金型ロット観察とコミュニティ実測データを出典付きで確認できます。" },
+    en: { title: "Beyblade X Mold Batch Lookup", description: "Look up Beyblade X mold batch observations and community measurements with source attribution." },
+  },
+  terms: {
+    "zh-TW": { title: "使用條款與免責聲明", description: "OldBabyInfo 的資料來源、社群內容、購物連結與非官方網站免責說明。" },
+    ja: { title: "利用規約と免責事項", description: "OldBabyInfoの出典、コミュニティ投稿、購入リンク、非公式サイトに関する免責事項。" },
+    en: { title: "Terms and Disclaimer", description: "OldBabyInfo terms covering sources, community content, retailer links, and its unofficial status." },
+  },
+  login: {
+    "zh-TW": { title: "登入 OldBabyInfo", description: "登入 OldBabyInfo 以參與附著在資料上的社群討論。" },
+    ja: { title: "OldBabyInfoにログイン", description: "OldBabyInfoにログインして、データに紐づくコミュニティディスカッションに参加します。" },
+    en: { title: "Sign in to OldBabyInfo", description: "Sign in to OldBabyInfo to join discussions attached to reference data." },
+  },
+} as const;
+
+export type SeoPage = keyof typeof seoCopy;
+
+export function localizedSeoCopy(page: SeoPage, locale: Locale) {
+  return seoCopy[page][locale];
+}
+
+export function pageJsonLd({
+  locale,
+  pathname,
+  title,
+  description,
+}: {
+  locale: Locale;
+  pathname: string;
+  title: string;
+  description: string;
+}) {
+  const url = localizedUrl(locale, pathname);
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: title,
+    description,
+    inLanguage: locale,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
+export function siteJsonLd(locale: Locale) {
+  const home = localizedSeoCopy("home", locale);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        description: home.description,
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: localizedUrl(locale),
+        name: SITE_NAME,
+        description: home.description,
+        inLanguage: locale,
+        publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+    ],
+  };
+}
+
+export function JsonLd({ data }: { data: object }) {
+  return createElement("script", {
+    type: "application/ld+json",
+    dangerouslySetInnerHTML: { __html: JSON.stringify(data) },
+  });
+}

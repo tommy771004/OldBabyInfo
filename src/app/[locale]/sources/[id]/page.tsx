@@ -1,14 +1,32 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { getAllSourceDocuments, getSourceDocumentById } from "@/lib/source-documents/repository.ts";
+import { pageMetadata } from "@/lib/seo.ts";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
     getAllSourceDocuments().map((document) => ({ locale, id: document.id })),
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; id: string }>;
+}): Promise<Metadata> {
+  const { locale, id } = await requireLocale(params);
+  const document = getSourceDocumentById(id);
+  if (!document) return {};
+  return pageMetadata({
+    locale,
+    pathname: `/sources/${id}`,
+    title: document.title,
+    description: `${document.title} — ${document.publisher}. Source document captured by OldBabyInfo.`,
+  });
 }
 
 export default async function SourceDocumentPage({
