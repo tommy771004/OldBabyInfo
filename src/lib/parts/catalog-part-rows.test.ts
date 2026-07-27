@@ -131,6 +131,21 @@ describe("sortCatalogPartRecords", () => {
     }
   });
 
+  it("sinks undated Parts in both directions when sorting by release date", () => {
+    // Ascending used to lead with every dateless Part, because a null date
+    // reads as -Infinity.
+    const records = [record({ id: "undated" }), record({ id: "dated" })];
+    const parts: Record<string, Part> = {
+      undated: blade("undated", 10, null),
+      dated: blade("dated", 10, "2024-01-01"),
+    };
+
+    for (const direction of ["asc", "desc"] as const) {
+      expect(sortCatalogPartRecords(records, (id) => parts[id], "releaseAt", direction).map((r) => r.id))
+        .toEqual(["dated", "undated"]);
+    }
+  });
+
   it("does not mutate the input order", () => {
     const input = [...records];
     sortCatalogPartRecords(input, projectionFor, "attack", "desc");

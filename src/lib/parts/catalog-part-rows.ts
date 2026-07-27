@@ -69,11 +69,19 @@ export function projectedRecordsFirst(
   return projected.length === 0 || rest.length === 0 ? records : [...projected, ...rest];
 }
 
+/** Which columns a Part can simply have no answer for, and how to tell. */
+function unknownFor(field: SortField): ((part: Part) => boolean) | undefined {
+  if (field === "weight") return (part) => weightSortValueOf(part) === undefined;
+  if (field === "releaseAt") return (part) => part.releaseAt === null;
+  return undefined;
+}
+
 /**
- * Sorting a list where only some rows carry Stats: a record with no X
- * projection has no value on any Stat or release axis at all, so it sinks to
- * the bottom in both directions rather than pretending to be a zero — an
- * ascending Attack sort must not open with a screenful of "—".
+ * Sorting a list where only some rows can answer the column: a record with no
+ * X projection, a Part nobody has weighed, a Part with no recorded release
+ * date — each sinks to the bottom in both directions rather than pretending
+ * to be a zero or an infinitely old date. An ascending sort must not open
+ * with a screenful of "—".
  */
 export function sortCatalogPartRecords(
   records: GenerationCatalogRecord[],
@@ -90,15 +98,18 @@ export function sortCatalogPartRecords(
     if (!leftPart) return 1;
     if (!rightPart) return -1;
 
-    if (field === "weight") {
-      // Weight comes from Mold Batch observations, not from the Stat block,
-      // so most Parts have none — those sink like an unprojected row rather
-      // than crowding the top of an ascending sort.
-      const leftWeight = weightSortValueOf(leftPart);
-      const rightWeight = weightSortValueOf(rightPart);
-      if (leftWeight === undefined && rightWeight === undefined) return 0;
-      if (leftWeight === undefined) return 1;
-      if (rightWeight === undefined) return -1;
+    // One rule for every column a Part can fail to answer: an unknown value
+    // sinks in *both* directions, the same way a record with no projection
+    // does. Otherwise an ascending sort opens on a screenful of "—" — which
+    // is exactly what `sort=releaseAt&dir=asc` used to do, because a null
+    // date reads as -Infinity and -Infinity sorts first.
+    const unknown = unknownFor(field);
+    if (unknown) {
+      const leftUnknown = unknown(leftPart);
+      const rightUnknown = unknown(rightPart);
+      if (leftUnknown && rightUnknown) return 0;
+      if (leftUnknown) return 1;
+      if (rightUnknown) return -1;
     }
 
     const leftValue = sortValueOf(leftPart, field);
