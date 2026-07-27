@@ -12,7 +12,20 @@ import {
 } from "@/lib/generation-catalog/schema.ts";
 import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
 import { selectCatalogRecordsForPage } from "@/lib/generation-catalog/payload.ts";
-import { GenerationCatalogBrowser } from "@/components/generation-catalog-browser.tsx";
+import {
+  GenerationCatalogBrowser,
+  type CatalogFacetRow,
+} from "@/components/generation-catalog-browser.tsx";
+import {
+  availableFacetValues,
+  catalogFacetQuery,
+  facetsForPartType,
+  filterCatalogRecordsByFacets,
+  parseCatalogFacetParams,
+  type CatalogFacetState,
+} from "@/lib/parts/catalog-facets.ts";
+import { ratchetTeethParam, type RatchetTeeth } from "@/lib/parts/ratchet-spec.ts";
+import type { Playstyle } from "@/lib/parts/schema.ts";
 import {
   humanizePartType,
   projectedRecordsFirst,
@@ -88,9 +101,33 @@ export default async function PartsPage({
     })
     : selectCatalogRecordsForPage(searchableRecords, selectedGeneration, false);
   const publishable = publishableCatalogRecords(foundRecords);
+  // The tab bar counts the Generation (and System, and search hit) pool
+  // *before* the selected tab narrows it, so every tab stays reachable and
+  // its count answers "how many are there under this tab".
+  const tabRecords = publishableCatalogRecords(
+    catalogQuery !== undefined || searchAcrossGenerations
+      ? searchGenerationCatalog(searchableRecords, catalogQuery ?? "", {
+        generationId: searchAcrossGenerations ? undefined : selectedGeneration,
+        system: selectedSystem,
+      })
+      : selectCatalogRecordsForPage(searchableRecords, selectedGeneration, false)
+        .filter((record) => !selectedSystem || record.system === selectedSystem),
+  );
+  const facets = parseCatalogFacetParams({
+    playstyle: firstParam(catalogParams.playstyle),
+    teeth: firstParam(catalogParams.teeth),
+    height: firstParam(catalogParams.height),
+  });
+  const faceted = filterCatalogRecordsByFacets(publishable, getLegacyPartForCatalogRecord, facets);
   const browserRecords = state.sort
-    ? sortCatalogPartRecords(publishable, getLegacyPartForCatalogRecord, state.sort, state.direction)
-    : projectedRecordsFirst(publishable, getLegacyPartForCatalogRecord);
+    ? sortCatalogPartRecords(faceted, getLegacyPartForCatalogRecord, state.sort, state.direction)
+    : projectedRecordsFirst(faceted, getLegacyPartForCatalogRecord);
+  // Facet chips offer only values present before facet filtering, so picking
+  // one never leaves the row showing options that would empty the page.
+  const facetValues = availableFacetValues(
+    publishable.filter((record) => !selectedPartType || record.partType === selectedPartType),
+    getLegacyPartForCatalogRecord,
+  );
 
   return (
     <PartsPageBody
@@ -98,6 +135,7 @@ export default async function PartsPage({
       state={state}
       catalog={catalog}
       catalogRecords={browserRecords}
+      tabRecords={tabRecords}
       selectedGeneration={selectedGeneration}
       selectedSystem={selectedSystem}
       selectedKind={selectedKind ?? "part"}
@@ -105,6 +143,8 @@ export default async function PartsPage({
       searchQuery={catalogQuery}
       searchAcrossGenerations={searchAcrossGenerations}
       selectedRecordId={catalogRecordId}
+      facets={facets}
+      facetValues={facetValues}
     />
   );
 }
@@ -113,11 +153,106 @@ function firstParam(value: string | string[] | undefined): string | undefined {
   return Array.isArray(value) ? value[0] : value;
 }
 
+/**
+ * One chip row per facet the selected tab supports — the Blade tab asks how a
+ * Part plays, the Ratchet tab asks for its physical spec, and a tab with no
+ * sourceable facet (Lock Chip, complete Beyblades) gets no row at all rather
+ * than an empty control.
+ */
+function buildFacetRows({
+  partType,
+  facets,
+  values,
+  facetHref,
+  labels,
+}: {
+  partType: string | undefined;
+  facets: CatalogFacetState;
+  values: ReturnType<typeof availableFacetValues>;
+  facetHref: (next: CatalogFacetState) => string;
+  labels: {
+    allLabel: string;
+    playstyle: string;
+    teeth: string;
+    height: string;
+    playstyleOf: (playstyle: Playstyle) => string;
+    metal: string;
+    heightOf: (height: number) => string;
+  };
+}): CatalogFacetRow[] {
+  const rows: CatalogFacetRow[] = [];
+
+  for (const facet of facetsForPartType(partType)) {
+    if (facet === "playstyle" && values.playstyles.length > 0) {
+      rows.push({
+        label: labels.playstyle,
+        options: [
+          {
+            key: "all",
+            label: labels.allLabel,
+            href: facetHref({ ...facets, playstyle: undefined }),
+            selected: facets.playstyle === undefined,
+          },
+          ...values.playstyles.map((playstyle) => ({
+            key: playstyle,
+            label: labels.playstyleOf(playstyle),
+            href: facetHref({ ...facets, playstyle }),
+            selected: facets.playstyle === playstyle,
+          })),
+        ],
+      });
+    }
+
+    if (facet === "ratchetTeeth" && values.teeth.length > 0) {
+      rows.push({
+        label: labels.teeth,
+        options: [
+          {
+            key: "all",
+            label: labels.allLabel,
+            href: facetHref({ ...facets, teeth: undefined }),
+            selected: facets.teeth === undefined,
+          },
+          ...values.teeth.map((teeth: RatchetTeeth) => ({
+            key: ratchetTeethParam(teeth),
+            label: teeth === "metal" ? labels.metal : String(teeth),
+            href: facetHref({ ...facets, teeth }),
+            selected: facets.teeth === teeth,
+          })),
+        ],
+      });
+    }
+
+    if (facet === "ratchetHeight" && values.heights.length > 0) {
+      rows.push({
+        label: labels.height,
+        options: [
+          {
+            key: "all",
+            label: labels.allLabel,
+            href: facetHref({ ...facets, height: undefined }),
+            selected: facets.height === undefined,
+          },
+          ...values.heights.map((height) => ({
+            key: String(height),
+            label: labels.heightOf(height),
+            href: facetHref({ ...facets, height }),
+            selected: facets.height === height,
+          })),
+        ],
+      });
+    }
+  }
+
+  return rows;
+}
+
 function PartsPageBody({
   locale,
   state,
   catalog,
   catalogRecords,
+  tabRecords,
   selectedGeneration,
   selectedSystem,
   selectedKind,
@@ -125,11 +260,14 @@ function PartsPageBody({
   searchQuery,
   searchAcrossGenerations,
   selectedRecordId,
+  facets,
+  facetValues,
 }: {
   locale: Locale;
   state: FilterSortState;
   catalog: ReturnType<typeof getGenerationCatalogSnapshot>;
   catalogRecords: GenerationCatalogRecord[];
+  tabRecords: GenerationCatalogRecord[];
   selectedGeneration: GenerationId;
   selectedSystem?: string;
   selectedKind: "all" | "beyblade" | "part" | "release" | "equipment";
@@ -137,6 +275,8 @@ function PartsPageBody({
   searchQuery?: string;
   searchAcrossGenerations?: boolean;
   selectedRecordId?: string;
+  facets: CatalogFacetState;
+  facetValues: ReturnType<typeof availableFacetValues>;
 }) {
   const t = useTranslations("PartsPage");
   const localePrefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
@@ -153,15 +293,42 @@ function PartsPageBody({
   const showStatTable = selectedGeneration === "x" &&
     selectedKind === "part" &&
     !searchAcrossGenerations;
-  const sortQueryFor = (field: SortField, direction: SortDirection) => ({
+  const tabQuery = {
     catalogGeneration: selectedGeneration,
     ...(selectedSystem ? { catalogSystem: selectedSystem } : {}),
     catalogKind: selectedKind,
     ...(selectedPartType ? { catalogPartType: selectedPartType } : {}),
     ...(searchQuery ? { catalogQuery: searchQuery } : {}),
     ...(selectedRecordId ? { catalogRecordId: selectedRecordId } : {}),
+  };
+  const sortQueryFor = (field: SortField, direction: SortDirection) => ({
+    ...tabQuery,
+    ...catalogFacetQuery(facets),
     sort: field,
     dir: direction,
+  });
+  const facetHref = (next: CatalogFacetState) => {
+    const query = new URLSearchParams({
+      ...tabQuery,
+      ...catalogFacetQuery(next),
+      ...(state.sort ? { sort: state.sort, dir: state.direction } : {}),
+    });
+    return `${localePrefix}/parts?${query.toString()}`;
+  };
+  const facetRows = buildFacetRows({
+    partType: selectedPartType,
+    facets,
+    values: facetValues,
+    facetHref,
+    labels: {
+      allLabel: t("catalog_all"),
+      playstyle: t("facet_playstyle"),
+      teeth: t("facet_ratchet_teeth"),
+      height: t("facet_ratchet_height"),
+      playstyleOf: (playstyle) => t(`playstyle_${playstyle}`),
+      metal: t("ratchet_teeth_metal"),
+      heightOf: (height) => t("ratchet_height_value", { height }),
+    },
   });
 
   return (
@@ -173,6 +340,7 @@ function PartsPageBody({
         generations={catalog.generations}
         systems={catalog.systems}
         records={catalogRecords}
+        tabRecords={tabRecords}
         selectedGeneration={selectedGeneration}
         selectedSystem={selectedSystem}
         selectedKind={selectedKind}
@@ -182,6 +350,7 @@ function PartsPageBody({
         selectedRecordId={selectedRecordId}
         legacyPartHrefForRecord={legacyPartHrefForRecord}
         partTypeLabelFor={partTypeLabelFor}
+        facetFilters={facetRows}
         renderRecords={showStatTable
           ? (records) => (
             <CatalogPartTable

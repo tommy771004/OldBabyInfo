@@ -213,7 +213,8 @@ describe("GenerationCatalogBrowser", () => {
     expect(screen.getAllByRole("search").some((form) => form.getAttribute("action") === "/ja/parts")).toBe(true);
     expect(screen.getAllByRole("link", { name: "Dran Sword" })).toHaveLength(2);
     expect(screen.getAllByText("Complete Beyblades").length).toBeGreaterThanOrEqual(2);
-    expect(screen.getAllByRole("combobox", { name: "Entity type" }).length).toBeGreaterThan(0);
+    // The kind selection lives in the tab bar, not in the search form.
+    expect(screen.getAllByRole("navigation", { name: "Entity type" }).length).toBeGreaterThan(0);
   });
 
   it("links an X Part to the legacy part page when a crosswalk match exists", () => {

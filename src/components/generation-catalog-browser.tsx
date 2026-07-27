@@ -5,7 +5,13 @@ import type {
   GenerationSystem,
 } from "@/lib/generation-catalog/schema.ts";
 import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
+import { catalogTabsOf, isTabSelected } from "@/lib/generation-catalog/tabs.ts";
 import styles from "./generation-catalog-browser.module.css";
+
+export interface CatalogFacetRow {
+  label: string;
+  options: Array<{ key: string; label: string; href: string; selected: boolean }>;
+}
 
 export interface GenerationCatalogBrowserLabels {
   heading: string;
@@ -33,6 +39,12 @@ interface GenerationCatalogBrowserProps {
   generations: GenerationDefinition[];
   systems: GenerationSystem[];
   records: GenerationCatalogRecord[];
+  /**
+   * The pool the tab bar counts, before the selected tab narrows it — the
+   * `records` prop arrives already filtered to one tab, which would leave the
+   * bar showing a single tab and no way back out.
+   */
+  tabRecords?: GenerationCatalogRecord[];
   selectedGeneration: GenerationId;
   selectedSystem?: string;
   selectedKind?: "all" | GenerationCatalogRecord["kind"];
@@ -43,6 +55,9 @@ interface GenerationCatalogBrowserProps {
   legacyPartHrefForRecord?: (recordId: string) => string | undefined;
   /** Reader-facing name for a raw `partType` key; the raw key when omitted. */
   partTypeLabelFor?: (partType: string) => string;
+  /** Filters that only make sense for the selected tab — a Blade's playstyle,
+   *  a Ratchet's teeth and height. Rendered directly under the tab bar. */
+  facetFilters?: CatalogFacetRow[];
   /**
    * Replaces the default card grid with another view of the same visible
    * records — `/parts` swaps in the Stat table for X Parts so the page never
@@ -57,6 +72,7 @@ export function GenerationCatalogBrowser({
   generations,
   systems,
   records,
+  tabRecords,
   selectedGeneration,
   selectedSystem,
   selectedKind,
@@ -66,6 +82,7 @@ export function GenerationCatalogBrowser({
   selectedRecordId,
   legacyPartHrefForRecord,
   partTypeLabelFor = (partType) => partType,
+  facetFilters,
   renderRecords,
   labels,
 }: GenerationCatalogBrowserProps) {
@@ -85,10 +102,17 @@ export function GenerationCatalogBrowser({
       (!selectedPartType || record.partType === selectedPartType),
     );
   const selectedRecord = generationRecords.find((record) => record.id === selectedRecordId);
-  const visibleKindLabel = selectedKind === "all" || !selectedKind ? labels.allLabel : kindLabel(selectedKind, labels);
-  const partTypeOptions = selectedSystemDefinition
-    ? selectedSystemDefinition.partTypes
-    : Array.from(new Set(generationSystems.flatMap((system) => system.partTypes))).sort();
+  const visibleKindLabel = selectedPartType
+    ? partTypeLabelFor(selectedPartType)
+    : selectedKind === "all" || !selectedKind
+      ? labels.allLabel
+      : kindLabel(selectedKind, labels);
+  // Tab counts describe the same pool the list is drawn from, so a search
+  // turns the tab bar into a per-category hit count instead of going stale.
+  const tabBase = tabRecords ?? (searchAcrossGenerations
+    ? records
+    : generationRecords.filter((record) => !selectedSystem || record.system === selectedSystem));
+  const tabs = catalogTabsOf(tabBase, generationSystems);
   const prefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
   const formIdSuffix = (selectedRecordId ?? selectedGeneration).replace(/[^a-zA-Z0-9_-]/g, "-");
 
@@ -139,25 +163,8 @@ export function GenerationCatalogBrowser({
             {systems.map((system) => <option key={system.id} value={system.id}>{system.nameEn}</option>)}
           </select>
         </div>
-        <div className={styles.field}>
-          <label htmlFor={`catalog-kind-filter-${formIdSuffix}`}>{labels.kindLabel}</label>
-          <select id={`catalog-kind-filter-${formIdSuffix}`} name="catalogKind" defaultValue={selectedKind ?? "all"}>
-            <option value="all">{labels.allLabel}</option>
-            <option value="beyblade">{labels.beybladeLabel}</option>
-            <option value="part">{labels.partLabel}</option>
-            <option value="release">{labels.releaseLabel ?? "Release"}</option>
-            <option value="equipment">{labels.equipmentLabel ?? "Equipment"}</option>
-          </select>
-        </div>
-        <div className={styles.field}>
-          <label htmlFor={`catalog-part-type-filter-${formIdSuffix}`}>{labels.partTypeLabel ?? "Part kind"}</label>
-          <select id={`catalog-part-type-filter-${formIdSuffix}`} name="catalogPartType" defaultValue={selectedPartType ?? ""}>
-            <option value="">{labels.allLabel}</option>
-            {partTypeOptions.map((partType) => (
-              <option key={partType} value={partType}>{partTypeLabelFor(partType)}</option>
-            ))}
-          </select>
-        </div>
+        <input type="hidden" name="catalogKind" value={selectedKind ?? "part"} />
+        {selectedPartType ? <input type="hidden" name="catalogPartType" value={selectedPartType} /> : null}
         <button type="submit">{labels.searchSubmitLabel ?? "Search"}</button>
       </form>
 
@@ -193,59 +200,39 @@ export function GenerationCatalogBrowser({
         <p data-catalog-compatibility>{selectedSystemDefinition.compatibilityRules.join(" ")}</p>
       ) : null}
 
-      <nav className={styles.navGroup} aria-label={labels.kindLabel}>
-        {[
-          [undefined, labels.allLabel],
-          ["beyblade", labels.beybladeLabel],
-          ["part", labels.partLabel],
-          ["release", labels.releaseLabel ?? "Release"],
-          ["equipment", labels.equipmentLabel ?? "Equipment"],
-        ].map(([kind, label]) => {
-          const allKinds = kind === undefined;
-          const kindParam = allKinds ? "all" : kind;
-          return (
-            <a
-              key={label}
-              href={hrefFor({
-                catalogGeneration: selectedGeneration,
-                catalogSystem: selectedSystem,
-                catalogKind: kindParam,
-              })}
-              aria-current={(allKinds ? selectedKind === "all" || !selectedKind : selectedKind === kind) ? "page" : undefined}
-            >
-              {label}
-            </a>
-          );
-        })}
-      </nav>
-
-      {selectedKind === "part" && partTypeOptions.length > 0 ? (
-        <nav className={styles.navGroup} aria-label={labels.partTypeLabel ?? "Part kind"}>
+      <nav className={styles.tabs} aria-label={labels.kindLabel}>
+        {tabs.map((tab) => (
           <a
+            key={`${tab.kind}:${tab.partType ?? ""}`}
             href={hrefFor({
               catalogGeneration: selectedGeneration,
               catalogSystem: selectedSystem,
-              catalogKind: "part",
+              catalogKind: tab.kind,
+              catalogPartType: tab.partType,
             })}
-            aria-current={!selectedPartType ? "page" : undefined}
+            aria-current={isTabSelected(tab, selectedKind, selectedPartType) ? "page" : undefined}
           >
-            {labels.allLabel}
+            {tab.partType ? partTypeLabelFor(tab.partType) : kindLabel(tab.kind, labels)}
+            <span className={styles.tabCount}>{tab.count}</span>
           </a>
-          {partTypeOptions.map((partType) => (
-            <a
-              key={partType}
-              href={hrefFor({
-                catalogGeneration: selectedGeneration,
-                catalogSystem: selectedSystem,
-                catalogKind: "part",
-                catalogPartType: partType,
-              })}
-              aria-current={partType === selectedPartType ? "page" : undefined}
-            >
-              {partTypeLabelFor(partType)}
-            </a>
+        ))}
+      </nav>
+
+      {facetFilters && facetFilters.length > 0 ? (
+        <div className={styles.facets}>
+          {facetFilters.map((row) => (
+            <nav className={styles.facetRow} key={row.label} aria-label={row.label}>
+              <span className={styles.facetLabel}>{row.label}</span>
+              <span className={styles.navGroup}>
+                {row.options.map((option) => (
+                  <a key={option.key} href={option.href} aria-current={option.selected ? "page" : undefined}>
+                    {option.label}
+                  </a>
+                ))}
+              </span>
+            </nav>
           ))}
-        </nav>
+        </div>
       ) : null}
 
       {renderRecords ? renderRecords(visibleRecords) : (

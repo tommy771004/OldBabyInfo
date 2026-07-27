@@ -93,6 +93,8 @@ const basePartFields = {
  */
 export const playstyleSchema = z.enum(["attack", "defense", "stamina", "balance"]);
 
+export type Playstyle = z.infer<typeof playstyleSchema>;
+
 export const bladeSchema = z.object({
   ...basePartFields,
   type: z.literal("blade"),
