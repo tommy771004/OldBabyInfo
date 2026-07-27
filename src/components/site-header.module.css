@@ -42,16 +42,17 @@
   color: var(--accent-on-dark);
 }
 
-@media (max-width: 480px) {
+/* Phone width: the floating glass pill (mobile-nav.module.css) is the
+   navigation, so the text row steps aside entirely rather than wrapping to a
+   second cramped line. */
+@media (max-width: 640px) {
   .header {
-    justify-content: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
   }
 
   .nav {
-    margin-right: 0;
-    order: 1;
-    width: 100%;
-    justify-content: center;
-    gap: 0.65rem 0.95rem;
+    display: none;
   }
 }

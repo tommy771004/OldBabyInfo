@@ -272,3 +272,113 @@
     text-align: left;
   }
 }
+
+/* ── Scroll motion ─────────────────────────────────────────────────────────
+ *
+ * Driven by the scroll position itself (`animation-timeline: view()`), not by
+ * a JS observer: nothing to hydrate, nothing to run on the main thread, and
+ * scrubbing back up reverses the motion instead of leaving elements stuck in
+ * their revealed state.
+ *
+ * Two guards matter here and neither is optional:
+ *
+ * 1. `@supports` — a browser without scroll-driven animations gets no
+ *    keyframes at all, so content is simply visible. The reveal is never
+ *    load-bearing: no element is hidden by default outside this block.
+ * 2. `prefers-reduced-motion` — globals.css collapses animation *duration*
+ *    site-wide, which does nothing to a scroll-driven animation (a timeline
+ *    ignores duration entirely). The whole block is therefore scoped to
+ *    `no-preference`.
+ *
+ * Intensity follows ADR-0006's field-to-sideline gradient: the Parts section
+ * nearest the arena travels furthest, Events is calmer, and the footer only
+ * settles. Motion is translation and opacity only — no glow, no parallax on
+ * text, nothing that competes with the arena for attention.
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(var(--rise-from, 2rem));
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes settle {
+      from {
+        opacity: 0;
+        transform: scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Field end: the sections closest to the arena carry the most travel. */
+    .partsSection h2,
+    .partsSection .sectionLede,
+    .partsSection .textLink,
+    .partCard {
+      --rise-from: 2.5rem;
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 32%;
+    }
+
+    /* The two highlights arrive one after the other, not as a pair. */
+    .partCard:nth-child(2) {
+      animation-range: entry 5% cover 40%;
+    }
+
+    /* Sideline end: less travel, resolving sooner. */
+    .eventsSection h2,
+    .eventsSection .sectionLede,
+    .eventsSection .textLink,
+    .eventCard {
+      --rise-from: 1.5rem;
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 30%;
+    }
+
+    .footerTop,
+    .footerSources,
+    .footerColophon {
+      animation: settle linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 28%;
+    }
+
+    /* The wordmark is the page's last beat: it grows very slightly across a
+       long range, so it is still resolving as the page runs out. */
+    .footerWordmark {
+      animation: settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 55%;
+    }
+
+    /* Decorative only — the empty band's grain drifts against the scroll,
+       giving the ramp's dead zone (ADR-0008) something to read as depth
+       without putting anything readable in it. */
+    .transitionBand {
+      animation: bandDrift linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+
+    @keyframes bandDrift {
+      from {
+        background-position: 0 -12%, center top;
+      }
+      to {
+        background-position: 0 12%, center top;
+      }
+    }
+  }
+}

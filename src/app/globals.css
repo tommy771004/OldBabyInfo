@@ -24,3 +24,11 @@ select {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Room for the floating mobile navigation (mobile-nav.module.css), which is
+   fixed over the page rather than in flow. */
+@media (max-width: 640px) {
+  body {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+  }
+}

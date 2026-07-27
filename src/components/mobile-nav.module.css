@@ -1,0 +1,68 @@
+/*
+ * Liquid glass, built the honest way: a translucent fill that actually
+ * samples what is behind it (backdrop-filter), a bright specular top edge
+ * and a dark lower edge (inset shadows) so the pill reads as a thick piece
+ * of glass rather than a flat translucent rectangle, and a wide soft drop
+ * shadow to lift it off the page.
+ *
+ * The tint is drawn from the ramp's field end (ADR-0008), not from a neutral
+ * grey — a grey pane over this warm palette reads as dirty. No glow, no
+ * neon: the depth comes from the edges, not from light bleed.
+ */
+
+.bar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .bar {
+    position: fixed;
+    z-index: 40;
+    bottom: calc(0.9rem + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.15rem;
+    padding: 0.35rem;
+    border: 1px solid color-mix(in srgb, var(--ink-on-dark) 20%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--surface-900) 52%, transparent);
+    box-shadow:
+      /* lift */
+      0 10px 34px color-mix(in srgb, var(--surface-950) 55%, transparent),
+      /* specular top edge */
+      inset 0 1px 0 color-mix(in srgb, var(--ink-on-dark) 30%, transparent),
+      /* the glass's own thickness, catching the page below */
+      inset 0 -1px 0 color-mix(in srgb, var(--surface-950) 45%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  /* Without backdrop sampling the pill would be a see-through smear over
+     live text — fall back to an opaque pane instead. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .bar {
+      background: color-mix(in srgb, var(--surface-900) 94%, transparent);
+    }
+  }
+}
+
+.item {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent);
+  text-decoration: none;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.item:active {
+  background: color-mix(in srgb, var(--ink-on-dark) 12%, transparent);
+}
+
+.item[aria-current="page"] {
+  color: var(--accent-on-dark);
+  background: color-mix(in srgb, var(--accent-on-dark) 16%, transparent);
+}
