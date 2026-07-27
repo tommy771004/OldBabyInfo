@@ -373,7 +373,7 @@
   background: linear-gradient(
     to bottom,
     color-mix(in srgb, var(--ink-on-dark) 55%, transparent) 0 1px,
-    var(--accent-on-dark) 1px calc(100% - 2px),
+    var(--strike-on-dark) 1px calc(100% - 2px),
     color-mix(in srgb, var(--surface-950) 70%, transparent) calc(100% - 2px) 100%
   );
 }

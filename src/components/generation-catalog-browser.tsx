@@ -245,7 +245,7 @@ export function GenerationCatalogBrowser({
           {visibleRecords.map((record) => {
             const image = recordImageFor?.(record);
             return (
-              <li className={styles.recordCard} key={record.id}>
+              <li className={`${styles.recordCard} current-border`} key={record.id}>
                 {image ? (
                   <Image
                     className={styles.recordImage}

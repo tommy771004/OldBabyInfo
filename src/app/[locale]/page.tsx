@@ -150,7 +150,7 @@ function HomeContent({
           <p className={styles.sectionLede}>{t("section_events_lede")}</p>
 
           {nextEvent ? (
-            <div className={styles.eventCard}>
+            <div className={`${styles.eventCard} current-border current-border-dark`}>
               <span className={styles.eventTier}>{nextEvent.tier}</span>
               <dl className={styles.eventDetails}>
                 <dt>{t("event_next_label")}</dt>
@@ -225,7 +225,7 @@ function PartHighlight({
   locale: Locale;
 }) {
   return (
-    <div className={styles.partCard}>
+    <div className={`${styles.partCard} current-border current-border-dark`}>
       <span className={styles.partCardLabel}>{label}</span>
       <span className={styles.partCardValue}>
         {(part.type === "blade" || part.type === "bit") && part.playstyle ? (

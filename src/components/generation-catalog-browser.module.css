@@ -99,9 +99,11 @@
   text-decoration: none;
 }
 
+/* The selected filter is the one thing on this page that is a decision, so
+   it takes the strike colour. #faf1e9 on #b03426 measures 5.59 (colors.css). */
 .navGroup a[aria-current="page"] {
-  border-color: var(--accent-on-light);
-  background: var(--accent-on-light);
+  border-color: var(--strike-on-light);
+  background: var(--strike-on-light);
   color: var(--surface-50);
 }
 
@@ -130,9 +132,9 @@
 }
 
 .tabs a[aria-current="page"] {
-  border-bottom-color: var(--accent-on-light);
-  background: color-mix(in srgb, var(--accent-on-light) 8%, transparent);
-  color: var(--accent-on-light);
+  border-bottom-color: var(--strike-on-light);
+  background: color-mix(in srgb, var(--strike-on-light) 8%, transparent);
+  color: var(--strike-on-light);
 }
 
 .tabCount {
@@ -145,7 +147,7 @@
 }
 
 .tabs a[aria-current="page"] .tabCount {
-  background: color-mix(in srgb, var(--accent-on-light) 18%, transparent);
+  background: color-mix(in srgb, var(--strike-on-light) 18%, transparent);
 }
 
 .facets {
@@ -170,10 +172,13 @@
 /* The photo is the Blade, which is what a player recognises a Beyblade by.
    Decorative here: the card's link already names the record, so an alt
    would only repeat it. */
+/* An explicit height, not `auto`: a `width: 100%` image inside a grid whose
+   column width depends on the row makes the browser resolve the row from the
+   card's min-height instead of the content, and every card overflows its own
+   box. A known height breaks that circular dependency. */
 .recordImage {
   width: 100%;
-  height: auto;
-  max-height: 6rem;
+  height: 6rem;
   object-fit: contain;
 }
 
@@ -188,10 +193,14 @@
   list-style: none;
 }
 
+/* No `min-height`: the grid above scrolls (`max-height` + `overflow: auto`),
+   and a constrained grid container sizes its rows from each item's *minimum*
+   contribution — so a min-height became the row height and every card's
+   content spilled over the next one. Padding already keeps a short card from
+   collapsing. */
 .recordCard {
   display: grid;
   gap: .55rem;
-  min-height: 5rem;
   padding: .85rem;
   border: 1px solid color-mix(in srgb, var(--ink-on-light) 13%, transparent);
   border-radius: 10px;
@@ -277,10 +286,13 @@
   /* The photo is the Blade, which is what a player recognises a Beyblade by.
    Decorative here: the card's link already names the record, so an alt
    would only repeat it. */
+/* An explicit height, not `auto`: a `width: 100%` image inside a grid whose
+   column width depends on the row makes the browser resolve the row from the
+   card's min-height instead of the content, and every card overflows its own
+   box. A known height breaks that circular dependency. */
 .recordImage {
   width: 100%;
-  height: auto;
-  max-height: 6rem;
+  height: 6rem;
   object-fit: contain;
 }
 
@@ -361,10 +373,13 @@
   /* The photo is the Blade, which is what a player recognises a Beyblade by.
    Decorative here: the card's link already names the record, so an alt
    would only repeat it. */
+/* An explicit height, not `auto`: a `width: 100%` image inside a grid whose
+   column width depends on the row makes the browser resolve the row from the
+   card's min-height instead of the content, and every card overflows its own
+   box. A known height breaks that circular dependency. */
 .recordImage {
   width: 100%;
-  height: auto;
-  max-height: 6rem;
+  height: 6rem;
   object-fit: contain;
 }
 

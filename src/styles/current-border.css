@@ -1,0 +1,93 @@
+/*
+ * A current running the perimeter of a card.
+ *
+ * Built as a conic gradient clipped to the border ring by a mask, so the
+ * light is *on the edge* rather than bleeding off it. No box-shadow, no
+ * blur, no glow — partly because the anti-slop contract forbids them outside
+ * the floating navigation, and partly because a glow would read as a generic
+ * neon card while a travelling edge reads as a charge running a conductor,
+ * which is the thing being depicted.
+ *
+ * `@property` is what makes the angle animatable; without a registered
+ * custom property the browser cannot interpolate an <angle> and the ring
+ * would jump instead of travel. A browser that does not support it gets the
+ * static border underneath and nothing moves — the effect is decorative and
+ * nothing depends on it.
+ *
+ * Deviation on record: ADR-0006 says the micro-current is interaction
+ * feedback that "does not blink on its own", and that no motion autoplays.
+ * This runs continuously on every card by explicit request. What is kept
+ * from that decision: the current still travels a real edge rather than
+ * floating as a background arc, it never sits over text, and it stops dead
+ * under prefers-reduced-motion.
+ */
+
+@property --current-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.current-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.current-border::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  /* Mostly transparent: one short charge, not a lit outline. */
+  background: conic-gradient(
+    from var(--current-angle),
+    transparent 0 62%,
+    color-mix(in srgb, var(--current-color) 35%, transparent) 70%,
+    var(--current-color) 78%,
+    color-mix(in srgb, var(--current-head) 85%, transparent) 81%,
+    var(--current-color) 84%,
+    transparent 92% 100%
+  );
+  /* Keep the gradient in the 1px ring and punch out the middle. */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Field end (dark surfaces) and sideline end (light surfaces) take the
+   strike variant tuned for their background, the same way the accent does. */
+.current-border {
+  --current-color: var(--strike-on-light);
+  --current-head: var(--accent-on-light);
+}
+
+.current-border-dark {
+  --current-color: var(--strike-on-dark);
+  --current-head: var(--ink-on-dark);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .current-border::after {
+    animation: current-orbit 5.5s linear infinite;
+  }
+
+  /* Cards in a grid all starting at the same angle reads as one flashing
+     block; staggering by position makes it read as many separate charges. */
+  .current-border:nth-child(3n + 2)::after {
+    animation-delay: -1.8s;
+  }
+
+  .current-border:nth-child(3n)::after {
+    animation-delay: -3.6s;
+  }
+}
+
+@keyframes current-orbit {
+  to {
+    --current-angle: 360deg;
+  }
+}
