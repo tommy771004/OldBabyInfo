@@ -1,10 +1,9 @@
+/* No card around the controls: a rounded box holding the whole page is the
+   default answer, and here it only narrowed the content and added an edge
+   that means nothing. The filters sit on the page. */
 .browser {
   display: grid;
-  gap: 1.5rem;
-  padding: clamp(1.25rem, 2vw, 2rem);
-  border: 1px solid color-mix(in srgb, var(--ink-on-light) 14%, transparent);
-  border-radius: 18px;
-  background: color-mix(in srgb, var(--surface-50) 72%, transparent);
+  gap: 1.25rem;
 }
 
 .header {
@@ -28,7 +27,7 @@
 }
 
 .lede {
-  margin: 0;
+  margin: -0.35rem 0 0;
   color: color-mix(in srgb, var(--ink-on-light) 62%, transparent);
   font-size: .9rem;
 }
@@ -270,11 +269,6 @@
 }
 
 @media (max-width: 560px) {
-  .browser {
-    padding: 1rem;
-    border-radius: 12px;
-  }
-
   .searchForm {
     grid-template-columns: 1fr;
   }
@@ -311,8 +305,6 @@
 @media (max-width: 640px) {
   .browser {
     gap: 1rem;
-    padding: 1rem;
-    border-radius: 14px;
   }
 
   .searchForm {

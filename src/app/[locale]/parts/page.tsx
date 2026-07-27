@@ -398,7 +398,10 @@ function PartsPageBody({
 
   return (
     <main className={styles.page}>
-      <h1>{t("title")}</h1>
+      <header className={styles.pageHeader}>
+        <p className={styles.kicker}>CATALOG / {selectedGeneration.toUpperCase()}</p>
+        <h1>{t("title")}</h1>
+      </header>
 
       <GenerationCatalogBrowser
         locale={locale}

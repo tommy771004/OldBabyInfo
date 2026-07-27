@@ -132,12 +132,10 @@ export function GenerationCatalogBrowser({
   const recordHref = (recordId: string) => `${prefix}/parts/catalog/${encodeURIComponent(recordId)}`;
 
   return (
-    <section className={styles.browser} aria-labelledby="generation-catalog-heading">
-      <header className={styles.header}>
-        <p className={styles.kicker}>CATALOG / {selectedGeneration.toUpperCase()}</p>
-        <h2 id="generation-catalog-heading">{labels.heading}</h2>
-        <p className={styles.lede}>{visibleKindLabel} · {recordCountLabel(visibleRecords.length)}</p>
-      </header>
+    <section className={styles.browser} aria-label={labels.heading}>
+      {/* No heading here: the page's own <h1> already names this, and two
+          titles saying the same thing was the first thing on the page. */}
+      <p className={styles.lede}>{visibleKindLabel} · {recordCountLabel(visibleRecords.length)}</p>
 
       <form className={styles.searchForm} method="get" action={`${prefix}/parts`} role="search">
         <div className={styles.field}>

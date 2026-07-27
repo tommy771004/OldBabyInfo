@@ -118,7 +118,10 @@ describe("GenerationCatalogBrowser", () => {
       />,
     );
 
-    expect(screen.getByRole("heading", { name: "Parts Catalog" })).toBeInTheDocument();
+    // The browser no longer prints its own heading — the page's <h1> names
+    // it, and two titles saying the same thing opened every visit. It still
+    // has to be a named region.
+    expect(screen.getByRole("region", { name: "Parts Catalog" })).toBeInTheDocument();
     expect(screen.getByText(/incompatible with other Systems/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Beyblade Burst" })).toHaveAttribute(
       "href",

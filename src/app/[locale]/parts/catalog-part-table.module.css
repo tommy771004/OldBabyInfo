@@ -15,6 +15,16 @@
   width: 100%;
 }
 
+/* Left-aligned and quiet: a centred full-width sentence above the table read
+   as an announcement, when it is a note about where one column comes from. */
+.table caption {
+  margin-bottom: 0.75rem;
+  color: color-mix(in srgb, var(--ink-on-light) 58%, transparent);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
 @media (max-width: 640px) {
   /* Sort lives in the header row on desktop; the card layout has no header
      row, so it gets its own scrollable strip. */
