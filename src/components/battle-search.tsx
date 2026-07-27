@@ -223,27 +223,39 @@ function BattleArena({
 
   return (
     <section className={styles.analysis} aria-labelledby="battle-analysis-heading">
-      <div className={styles.arena} data-collision-strength={collisionStrength}>
+      <div
+        className={styles.arena}
+        data-collision-strength={collisionStrength}
+        style={{ "--collision": collisionStrength } as React.CSSProperties}
+      >
         <div className={styles.arenaGeometry} aria-hidden="true">
           <StadiumSignature />
         </div>
+        {/* No name under the figure: the analysis heading below already reads
+            "<left> versus <right>", so a label here was the same words twice,
+            printed straight over that heading. */}
         <div className={`${styles.competitor} ${styles.competitorLeft}`}>
           <span className={styles.competitorFigure}>
             <SpinWind durationSeconds={windDurationSeconds(subjectStatsOf(left).attack)} />
             <PartImage subject={left} image={images[imagePartOf(left).id]} />
           </span>
-          <span>{subjectNameOf(left, locale)}</span>
         </div>
         <div className={`${styles.competitor} ${styles.competitorRight}`}>
           <span className={styles.competitorFigure}>
             <SpinWind durationSeconds={windDurationSeconds(subjectStatsOf(right).attack)} />
             <PartImage subject={right} image={images[imagePartOf(right).id]} />
           </span>
-          <span>{subjectNameOf(right, locale)}</span>
         </div>
         <span className={styles.trajectoryLeft} aria-hidden="true" />
         <span className={styles.trajectoryRight} aria-hidden="true" />
-        <span className={styles.collision} aria-hidden="true" />
+        {/* The strike itself: an X, because this Generation's whole mechanic
+            is the X-Dash and the mark it leaves is the thing being depicted.
+            Its size is the two Parts' combined Attack, so a heavy pairing
+            visibly hits harder than a light one. */}
+        <span className={styles.collision} aria-hidden="true">
+          <span className={styles.collisionArm} />
+          <span className={styles.collisionArm} />
+        </span>
       </div>
 
       <div className={styles.analysisCopy}>

@@ -167,13 +167,13 @@
 }
 
 .competitorLeft {
-  top: 5%;
-  left: 19%;
+  top: 8%;
+  left: 15%;
 }
 
 .competitorRight {
-  top: 5%;
-  right: 19%;
+  top: 14%;
+  right: 15%;
 }
 
 /* Anchors the wind rings to the product image itself rather than to the
@@ -190,7 +190,7 @@
 .partImage {
   position: relative;
   z-index: 1;
-  width: clamp(6rem, 12vw, 10rem);
+  width: clamp(7.5rem, 16vw, 13.5rem);
   height: auto;
   object-fit: contain;
 }
@@ -242,21 +242,59 @@
   transform: rotate(171deg);
 }
 
+/* Combined Attack runs 0-160 in practice; mapping it onto a 2.5-6rem arm
+   keeps a weak pairing visibly smaller than a heavy one without letting the
+   mark take over the arena. */
 .collision {
   position: absolute;
   z-index: 2;
   top: 49%;
   left: 50%;
-  width: 0.6rem;
-  height: 0.6rem;
-  border: 1px solid var(--accent-on-dark);
-  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  width: calc(2.5rem + (var(--collision, 40) / 160) * 3.5rem);
+  aspect-ratio: 1;
   transform: translate(-50%, -50%);
 }
 
+/* Two struck arms, each drawn as the same moulded rail the Stat contest
+   uses — lit top edge, body, shadowed underside. No glow. */
+.collisionArm {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  border-radius: 1px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--ink-on-dark) 60%, transparent) 0 1px,
+    var(--strike-on-dark) 1px calc(100% - 1px),
+    color-mix(in srgb, var(--surface-950) 70%, transparent) calc(100% - 1px) 100%
+  );
+}
+
+.collisionArm:first-child {
+  transform: rotate(34deg);
+}
+
+.collisionArm:last-child {
+  transform: rotate(-34deg);
+}
+
 .analysisCopy {
-  padding-top: clamp(15rem, 22vw, 18rem);
+  padding-top: clamp(19rem, 27vw, 23rem);
   text-align: center;
+}
+
+/* Out of the bowl and onto the left edge, where a section label belongs —
+   centred it sat inside the inner ring and read as part of the geometry. */
+.analysisEyebrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .analysisCopy h2 {
