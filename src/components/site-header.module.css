@@ -45,14 +45,45 @@
 /* Phone width: the floating glass pill (mobile-nav.module.css) is the
    navigation, so the text row steps aside entirely rather than wrapping to a
    second cramped line. */
+.corner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Sign-in is already a text link in the wide nav; the icon button is the
+   phone-only stand-in for it. */
+.cornerLogin {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
     justify-content: space-between;
     gap: 0.75rem;
-    padding: 1rem 1.25rem;
+    padding: 0.85rem 1.1rem;
   }
 
   .nav {
     display: none;
+  }
+
+  .cornerLogin {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid color-mix(in srgb, var(--ink-on-dark) 22%, transparent);
+    border-radius: 999px;
+    color: var(--ink-on-dark);
+    text-decoration: none;
+  }
+
+  .cornerLogin[aria-current="page"] {
+    border-color: var(--accent-on-dark);
+    color: var(--accent-on-dark);
   }
 }

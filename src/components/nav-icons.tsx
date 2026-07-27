@@ -8,9 +8,15 @@
  * rings, read here as a Blade from above) rather than a generic cog, so the
  * bar stays inside the one visual language ADR-0006 asks for.
  */
-export type NavIconName = "parts" | "events" | "discussion" | "login" | "terms";
+export type NavIconName = "home" | "parts" | "events" | "discussion" | "login" | "terms";
 
 const PATHS: Record<NavIconName, React.ReactNode> = {
+  home: (
+    <>
+      <path d="M3.6 10.4 L12 3.6 L20.4 10.4 V19.2 a1.2 1.2 0 0 1 -1.2 1.2 H4.8 a1.2 1.2 0 0 1 -1.2 -1.2 Z" />
+      <path d="M9.6 20.4 V14.4 h4.8 v6" />
+    </>
+  ),
   parts: (
     <>
       <path d="M12 3.4 L19.6 8 V16 L12 20.6 L4.4 16 V8 Z" />

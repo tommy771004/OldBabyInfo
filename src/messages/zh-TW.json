@@ -3,6 +3,7 @@
     "title": "OldBabyInfo",
     "description": "台灣戰鬥陀螺 X 查詢工具",
     "nav_label": "主要導覽",
+    "nav_home": "首頁",
     "nav_parts": "零件庫",
     "nav_events": "賽事行事曆",
     "nav_discussion": "最新討論",
@@ -72,7 +73,7 @@
     "stat_xDash": "X-Dash",
     "stat_burstResistance": "Burst",
     "weight_column": "重量",
-    "weight_note": "重量為社群記錄的模具批次實測區間，非官方規格；未收錄者顯示為 —。",
+    "weight_note": "",
     "release_date": "發售日",
     "sort_label": "排序",
     "no_results": "找不到符合條件的零件",
@@ -137,7 +138,7 @@
     "clear": "清除",
     "incomplete_notice": "尚未選滿三個部位，以下是目前已選零件的合計，不是完整 Combo 的數值。",
     "stats_heading": "合成數值",
-    "weight_note": "官方原始資料裡的重量欄位恆為 0，並非真實物理重量，本站暫不提供重量數字，以免顯示錯誤資訊。",
+    "weight_note": "",
     "bit_only_note": "選擇 Bit 後才會顯示"
   },
   "ComparePage": {

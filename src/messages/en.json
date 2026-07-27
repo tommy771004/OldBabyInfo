@@ -3,6 +3,7 @@
     "title": "OldBabyInfo",
     "description": "Taiwan's Beyblade X reference site",
     "nav_label": "Main navigation",
+    "nav_home": "Home",
     "nav_parts": "Parts",
     "nav_events": "Event calendar",
     "nav_discussion": "Latest discussion",
@@ -72,7 +73,7 @@
     "stat_xDash": "X-Dash",
     "stat_burstResistance": "Burst",
     "weight_column": "Weight",
-    "weight_note": "Weight is the measured range across community-recorded mold batches, not an official spec; Parts with no record read “—”.",
+    "weight_note": "“—”.",
     "release_date": "Release date",
     "sort_label": "Sort",
     "no_results": "No parts match these filters",
@@ -137,7 +138,7 @@
     "clear": "Clear",
     "incomplete_notice": "Not all three parts are selected yet — the totals below are just the parts you've picked so far, not a complete Combo.",
     "stats_heading": "Combined stats",
-    "weight_note": "The official raw data's weight field is always 0, not a real physical weight, so this site doesn't show a weight number rather than display something misleading.",
+    "weight_note": "",
     "bit_only_note": "Shown once a Bit is selected"
   },
   "ComparePage": {

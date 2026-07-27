@@ -3,6 +3,7 @@
     "title": "OldBabyInfo",
     "description": "台湾のベイブレードX情報サイト",
     "nav_label": "メインナビゲーション",
+    "nav_home": "ホーム",
     "nav_parts": "パーツ一覧",
     "nav_events": "大会カレンダー",
     "nav_discussion": "最新ディスカッション",
@@ -72,7 +73,7 @@
     "stat_xDash": "X-Dash",
     "stat_burstResistance": "Burst",
     "weight_column": "重量",
-    "weight_note": "重量はコミュニティが記録した金型ロットの実測レンジで、公式スペックではありません。記録がないものは — と表示します。",
+    "weight_note": "",
     "release_date": "発売日",
     "sort_label": "並べ替え",
     "no_results": "条件に一致するパーツが見つかりません",
@@ -137,7 +138,7 @@
     "clear": "クリア",
     "incomplete_notice": "まだ3つのパーツが揃っていません。以下は現在選択中のパーツの合計で、完全なコンボの数値ではありません。",
     "stats_heading": "合成ステータス",
-    "weight_note": "公式の元データにある重量欄は常に0で、実際の物理的な重量ではないため、誤った情報を表示しないよう本サイトでは重量を表示していません。",
+    "weight_note": "",
     "bit_only_note": "Bitを選択すると表示されます"
   },
   "ComparePage": {
