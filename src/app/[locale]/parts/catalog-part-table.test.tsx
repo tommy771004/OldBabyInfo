@@ -25,6 +25,8 @@ const labels = {
   stamina: "Stamina",
   xDash: "X-Dash",
   burstResistance: "Burst",
+  weight: "Weight",
+  weightNote: "Weight is the measured range across community-recorded mold batches.",
   releaseDate: "Release date",
   empty: "No parts match these filters",
 };
@@ -95,8 +97,8 @@ describe("CatalogPartTable", () => {
     expect(screen.getByRole("link", { name: "蒼龍神劍" })).toHaveAttribute("href", "/parts/dran-sword");
     expect(within(row!).getByText("60")).toBeInTheDocument();
     expect(within(row!).getByText("2022-05-10")).toBeInTheDocument();
-    // X-Dash and Burst Resistance exist only on a Bit (ADR-0007).
-    expect(within(row!).getAllByText("—")).toHaveLength(2);
+    // X-Dash, Burst Resistance (Bit-only, ADR-0007) and an unweighed Part.
+    expect(within(row!).getAllByText("—")).toHaveLength(3);
   });
 
   it("keeps a record with no X Stats in the same list instead of hiding it", () => {
@@ -108,7 +110,7 @@ describe("CatalogPartTable", () => {
       "href",
       "/parts/catalog/x%3Apart%3Alock-chip",
     );
-    expect(within(row!).getAllByText("—")).toHaveLength(6);
+    expect(within(row!).getAllByText("—")).toHaveLength(7);
   });
 
   it("flips the sort direction on the column that is already sorted", () => {
@@ -121,6 +123,40 @@ describe("CatalogPartTable", () => {
       "href",
       "/parts?sort=defense&dir=asc",
     );
+  });
+
+  it("shows the weighed range for a Part with recorded mold batches", () => {
+    const weighed: Part = {
+      ...dranSword,
+      moldBatches: [
+        {
+          batchCode: "A",
+          note: "early run",
+          sourceUrl: "https://example.com/a",
+          weightGrams: { min: 34.2, max: 34.6 },
+        },
+        {
+          batchCode: "B",
+          note: "later run",
+          sourceUrl: "https://example.com/b",
+          weightGrams: { min: 34.4, max: 35.1 },
+        },
+      ],
+    };
+    renderTable({ projectionFor: () => weighed });
+
+    // One range across every weighed batch, not one figure per batch.
+    expect(screen.getAllByText("34.2–35.1 g").length).toBeGreaterThan(0);
+    expect(screen.getByRole("link", { name: /Weight/ })).toHaveAttribute(
+      "href",
+      "/parts?sort=weight&dir=asc",
+    );
+  });
+
+  it("says where the weight came from, since it is not an official spec", () => {
+    renderTable();
+
+    expect(screen.getByText(/community-recorded mold batches/)).toBeInTheDocument();
   });
 
   it("shows the empty state instead of a headerless table", () => {

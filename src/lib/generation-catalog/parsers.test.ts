@@ -184,6 +184,43 @@ BB: Flat Base<br><br>
     });
   });
 
+  it("takes a Part's product line from what the source states, not from a model code", () => {
+    const records = buildBeybrewXRecords(
+      {
+        blades: [
+          { name: "Dran Sword", line: "BX" },
+          { name: "Scorpio Spear", line: "UX" },
+          // No line stated: shared rather than guessed into one.
+          { name: "Yell Kong" },
+        ],
+        // Ratchets and Bits belong to no single line, and the source says so
+        // by not recording one.
+        ratchets: [{ name: "3-60" }],
+        bits: [{ name: "Flat", alias: "F" }],
+      },
+      {
+        data: {
+          BeybladePartsBlade: [{
+            group_id: "TYRANNOBEAT",
+            model_name: "BXG49_TyrannoBeat",
+            tags: ["ux", "reprint"],
+            name: { "en-US": "TYRANNOBEAT Metallic Coat: Red" },
+          }],
+        },
+      },
+      "commit:abc",
+    );
+    const systemOf = (name: string) => records.find((record) => record.name === name)?.system;
+
+    expect(systemOf("Dran Sword")).toBe("bx");
+    expect(systemOf("Scorpio Spear")).toBe("ux");
+    expect(systemOf("Yell Kong")).toBe("x");
+    expect(systemOf("3-60")).toBe("x");
+    expect(systemOf("Flat")).toBe("x");
+    // The line tag wins over the "BXG49" model code the record came from.
+    expect(systemOf("TYRANNOBEAT Metallic Coat: Red")).toBe("ux");
+  });
+
   it("never lets an unfilled MasterData name outrank the real one", () => {
     const records = buildBeybrewXRecords(
       { blades: [{ name: "Dran Sword" }] },

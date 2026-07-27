@@ -1,5 +1,6 @@
 import type { GenerationCatalogRecord } from "../generation-catalog/schema.ts";
 import { sortValueOf, type SortDirection, type SortField } from "./filter-sort.ts";
+import { weightSortValueOf } from "./part-weight.ts";
 import type { Part } from "./schema.ts";
 
 /**
@@ -88,6 +89,17 @@ export function sortCatalogPartRecords(
     if (!leftPart && !rightPart) return 0;
     if (!leftPart) return 1;
     if (!rightPart) return -1;
+
+    if (field === "weight") {
+      // Weight comes from Mold Batch observations, not from the Stat block,
+      // so most Parts have none — those sink like an unprojected row rather
+      // than crowding the top of an ascending sort.
+      const leftWeight = weightSortValueOf(leftPart);
+      const rightWeight = weightSortValueOf(rightPart);
+      if (leftWeight === undefined && rightWeight === undefined) return 0;
+      if (leftWeight === undefined) return 1;
+      if (rightWeight === undefined) return -1;
+    }
 
     const leftValue = sortValueOf(leftPart, field);
     const rightValue = sortValueOf(rightPart, field);

@@ -369,6 +369,8 @@ function PartsPageBody({
                 stamina: t("stat_stamina"),
                 xDash: t("stat_xDash"),
                 burstResistance: t("stat_burstResistance"),
+                weight: t("weight_column"),
+                weightNote: t("weight_note"),
                 releaseDate: t("release_date"),
                 empty: t("no_results"),
               }}

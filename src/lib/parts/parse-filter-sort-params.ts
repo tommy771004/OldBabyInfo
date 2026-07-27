@@ -8,6 +8,7 @@ const VALID_FIELDS: SortField[] = [
   "xDash",
   "burstResistance",
   "releaseAt",
+  "weight",
 ];
 
 export interface FilterSortState {

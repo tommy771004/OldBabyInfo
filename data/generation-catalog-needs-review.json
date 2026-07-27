@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-07-27T02:29:02.043Z",
+  "capturedAt": "2026-07-27T03:36:23.675Z",
   "sources": [
     {
       "id": "takaratomy-history",
@@ -345,14 +345,14 @@
     {
       "id": "x",
       "generationId": "x",
-      "nameEn": "BEYBLADE X",
+      "nameEn": "Shared",
       "partTypes": [
         "blade",
         "ratchet",
         "bit"
       ],
       "compatibilityRules": [
-        "blade + ratchet + bit is system-scoped; incompatible with other Systems."
+        "Ratchets and Bits are shared across BX, UX and CX; they are not scoped to one line."
       ]
     },
     {

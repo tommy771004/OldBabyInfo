@@ -180,7 +180,8 @@ const generations: GenerationDefinition[] = [
   },
 ];
 
-const systemSeeds: Array<[string, GenerationId, string, string[]]> = [
+/** `[id, generationId, nameEn, partTypes, compatibilityRule?]` */
+const systemSeeds: Array<[string, GenerationId, string, string[], string?]> = [
   ["plastic", "bakuten_shoot", "Plastic", ["attack_ring", "weight_disk", "blade_base", "bit_chip", "spin_gear", "support_part"]],
   ["hms", "bakuten_shoot", "HMS", ["attack_ring", "running_core", "bit_protector", "weight_disk"]],
   ["metal_system", "metal_fight", "Metal System", ["face_bolt", "energy_ring", "metal_wheel", "track", "performance_tip"]],
@@ -196,18 +197,27 @@ const systemSeeds: Array<[string, GenerationId, string, string[]]> = [
   ["superking", "burst", "Superking", ["sparking_chip", "ring", "chassis", "driver"]],
   ["dynamite_battle", "burst", "Dynamite Battle", ["db_core", "armor", "blade", "disc", "driver"]],
   ["burst_ultimate", "burst", "Burst Ultimate", ["bu_blade", "db_core", "armor", "disc", "driver"]],
-  ["x", "x", "BEYBLADE X", ["blade", "ratchet", "bit"]],
+  // Not a fourth line beside BX/UX/CX: the bucket for X Parts that belong to
+  // no single line. Ratchets and Bits are shared by design; a Blade lands here
+  // only when no source states its line.
+  [
+    "x",
+    "x",
+    "Shared",
+    ["blade", "ratchet", "bit"],
+    "Ratchets and Bits are shared across BX, UX and CX; they are not scoped to one line.",
+  ],
   ["bx", "x", "BX", ["blade", "ratchet", "bit"]],
   ["ux", "x", "UX", ["blade", "ratchet", "bit"]],
   ["cx", "x", "CX", ["main_blade", "assist_blade", "lock_chip", "metal_blade", "over_blade", "ratchet", "bit"]],
 ];
 
-const systems: GenerationSystem[] = systemSeeds.map(([id, generationId, nameEn, partTypes]) => ({
+const systems: GenerationSystem[] = systemSeeds.map(([id, generationId, nameEn, partTypes, rule]) => ({
   id,
   generationId,
   nameEn,
   partTypes,
-  compatibilityRules: [`${partTypes.join(" + ")} is system-scoped; incompatible with other Systems.`],
+  compatibilityRules: [rule ?? `${partTypes.join(" + ")} is system-scoped; incompatible with other Systems.`],
 }));
 
 async function main() {

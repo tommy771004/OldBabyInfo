@@ -118,6 +118,19 @@ describe("sortCatalogPartRecords", () => {
     expect(sorted.map((r) => r.id)).toEqual(["a", "b"]);
   });
 
+  it("sinks Parts nobody has weighed when sorting by weight", () => {
+    const weighed = { ...blade("weighed", 10, null), moldBatches: [
+      { batchCode: "A", note: "observed", sourceUrl: "https://example.com/a", weightGrams: { min: 34, max: 35 } },
+    ] };
+    const records = [record({ id: "unweighed" }), record({ id: "weighed" })];
+    const parts: Record<string, Part> = { weighed, unweighed: blade("unweighed", 90, null) };
+
+    for (const direction of ["asc", "desc"] as const) {
+      expect(sortCatalogPartRecords(records, (id) => parts[id], "weight", direction).map((r) => r.id))
+        .toEqual(["weighed", "unweighed"]);
+    }
+  });
+
   it("does not mutate the input order", () => {
     const input = [...records];
     sortCatalogPartRecords(input, projectionFor, "attack", "desc");

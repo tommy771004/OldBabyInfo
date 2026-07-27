@@ -4,6 +4,7 @@ import type { GenerationCatalogRecord } from "@/lib/generation-catalog/schema.ts
 import type { PartProjectionLookup } from "@/lib/parts/catalog-part-rows.ts";
 import type { SortDirection, SortField } from "@/lib/parts/filter-sort.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
+import { formatWeightRange, weightRangeOf } from "@/lib/parts/part-weight.ts";
 import { slugify } from "@/lib/parts/slug.ts";
 
 const STAT_FIELDS = ["attack", "defense", "stamina", "xDash", "burstResistance"] as const;
@@ -16,6 +17,8 @@ export interface CatalogPartTableLabels {
   stamina: string;
   xDash: string;
   burstResistance: string;
+  weight: string;
+  weightNote: string;
   releaseDate: string;
   empty: string;
 }
@@ -58,6 +61,7 @@ export function CatalogPartTable({
 
   return (
     <table>
+      <caption>{labels.weightNote}</caption>
       <thead>
         <tr>
           <th scope="col">{labels.partTypeColumn}</th>
@@ -76,6 +80,16 @@ export function CatalogPartTable({
           ))}
           <th scope="col">
             <SortLink
+              field="weight"
+              sortField={sortField}
+              sortDirection={sortDirection}
+              sortQueryFor={sortQueryFor}
+            >
+              {labels.weight}
+            </SortLink>
+          </th>
+          <th scope="col">
+            <SortLink
               field="releaseAt"
               sortField={sortField}
               sortDirection={sortDirection}
@@ -90,6 +104,7 @@ export function CatalogPartTable({
         {records.map((record) => {
           const part = projectionFor(record.id);
           const isBit = part?.type === "bit";
+          const weightRange = part ? weightRangeOf(part) : undefined;
 
           return (
             <tr key={record.id}>
@@ -106,6 +121,7 @@ export function CatalogPartTable({
               <td>{part ? part.stats.stamina : "—"}</td>
               <td>{isBit ? part.stats.xDash : "—"}</td>
               <td>{isBit ? part.stats.burstResistance : "—"}</td>
+              <td>{weightRange ? formatWeightRange(weightRange) : "—"}</td>
               <td>{part?.releaseAt ?? "—"}</td>
             </tr>
           );

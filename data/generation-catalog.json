@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-07-27T02:29:02.043Z",
+  "capturedAt": "2026-07-27T03:36:23.675Z",
   "sources": [
     {
       "id": "takaratomy-history",
@@ -345,14 +345,14 @@
     {
       "id": "x",
       "generationId": "x",
-      "nameEn": "BEYBLADE X",
+      "nameEn": "Shared",
       "partTypes": [
         "blade",
         "ratchet",
         "bit"
       ],
       "compatibilityRules": [
-        "blade + ratchet + bit is system-scoped; incompatible with other Systems."
+        "Ratchets and Bits are shared across BX, UX and CX; they are not scoped to one line."
       ]
     },
     {
@@ -13767,7 +13767,7 @@
     {
       "id": "beybrew:blades-aero-pegasus-9208e81bc0",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Aero Pegasus",
@@ -13783,7 +13783,7 @@
     {
       "id": "beybrew:blades-arc-5842668d4c",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Arc",
@@ -13799,7 +13799,7 @@
     {
       "id": "beybrew:blades-bear-scratch-c7787a39d7",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Bear Scratch",
@@ -13815,7 +13815,7 @@
     {
       "id": "beybrew:blades-black-shell-e2700a5583",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Black Shell",
@@ -13831,7 +13831,7 @@
     {
       "id": "beybrew:blades-blast-4d9561198e",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Blast",
@@ -13847,7 +13847,7 @@
     {
       "id": "beybrew:blades-blitz-35480a45ec",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Blitz",
@@ -13863,7 +13863,7 @@
     {
       "id": "beybrew:blades-brave-0355e44319",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Brave",
@@ -13879,7 +13879,7 @@
     {
       "id": "beybrew:blades-brush-da1b96b33b",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Brush",
@@ -13895,7 +13895,7 @@
     {
       "id": "beybrew:blades-bulletgriffon-efd6cdf5aa",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "BulletGriffon",
@@ -13911,7 +13911,7 @@
     {
       "id": "beybrew:blades-clock-mirage-1b486cc3ba",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Clock Mirage",
@@ -13927,7 +13927,7 @@
     {
       "id": "beybrew:blades-cobalt-dragoon-f51ec56ba6",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Cobalt Dragoon",
@@ -13943,7 +13943,7 @@
     {
       "id": "beybrew:blades-cobalt-drake-dd551edc71",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Cobalt Drake",
@@ -13959,7 +13959,7 @@
     {
       "id": "beybrew:blades-crimson-garuda-a8434fae00",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Crimson Garuda",
@@ -13975,7 +13975,7 @@
     {
       "id": "beybrew:blades-croc-crunch-c7686ed6a4",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Croc Crunch",
@@ -13991,7 +13991,7 @@
     {
       "id": "beybrew:blades-dark-d5bebb6e51",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Dark",
@@ -14007,7 +14007,7 @@
     {
       "id": "beybrew:blades-delta-ce9cf523f7",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Delta",
@@ -14023,7 +14023,7 @@
     {
       "id": "beybrew:blades-draciel-shield-cc3935bd4a",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Draciel Shield",
@@ -14039,7 +14039,7 @@
     {
       "id": "beybrew:blades-dragoon-storm-52308d20c6",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Dragoon Storm",
@@ -14055,7 +14055,7 @@
     {
       "id": "beybrew:blades-dran-buster-62f5e94998",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Dran Buster",
@@ -14071,7 +14071,7 @@
     {
       "id": "beybrew:blades-dran-dagger-56620b631d",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Dran Dagger",
@@ -14087,7 +14087,7 @@
     {
       "id": "beybrew:blades-dran-sword-479db1c842",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Dran Sword",
@@ -14103,7 +14103,7 @@
     {
       "id": "beybrew:blades-dranzer-spiral-b6dd41197f",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Dranzer Spiral",
@@ -14119,7 +14119,7 @@
     {
       "id": "beybrew:blades-driger-slash-3fae619d45",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Driger Slash",
@@ -14135,7 +14135,7 @@
     {
       "id": "beybrew:blades-eclipse-2934c5fea2",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Eclipse",
@@ -14151,7 +14151,7 @@
     {
       "id": "beybrew:blades-fang-89e697600c",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Fang",
@@ -14167,7 +14167,7 @@
     {
       "id": "beybrew:blades-flame-38fdad43a8",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Flame",
@@ -14183,7 +14183,7 @@
     {
       "id": "beybrew:blades-flare-c55f7cc9c0",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Flare",
@@ -14199,7 +14199,7 @@
     {
       "id": "beybrew:blades-fortress-fe5e4dff49",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Fortress",
@@ -14215,7 +14215,7 @@
     {
       "id": "beybrew:blades-ghost-circle-4c5a59c280",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Ghost Circle",
@@ -14231,7 +14231,7 @@
     {
       "id": "beybrew:blades-goat-tackle-e020237589",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Goat Tackle",
@@ -14247,7 +14247,7 @@
     {
       "id": "beybrew:blades-golem-rock-d5b05b8506",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Golem Rock",
@@ -14263,7 +14263,7 @@
     {
       "id": "beybrew:blades-hells-chain-2b064a0f2b",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Hells Chain",
@@ -14279,7 +14279,7 @@
     {
       "id": "beybrew:blades-hells-hammer-196df8764c",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Hells Hammer",
@@ -14295,7 +14295,7 @@
     {
       "id": "beybrew:blades-hells-scythe-820d76e402",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Hells Scythe",
@@ -14311,7 +14311,7 @@
     {
       "id": "beybrew:blades-hellshammer-b2c25ea414",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "HellsHammer",
@@ -14327,7 +14327,7 @@
     {
       "id": "beybrew:blades-hunt-257613b0c1",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Hunt",
@@ -14343,7 +14343,7 @@
     {
       "id": "beybrew:blades-impact-drake-9c343e1931",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Impact Drake",
@@ -14359,7 +14359,7 @@
     {
       "id": "beybrew:blades-knight-lance-2a1ac9d345",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Knight Lance",
@@ -14375,7 +14375,7 @@
     {
       "id": "beybrew:blades-knight-mail-96ef700b29",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Knight Mail",
@@ -14391,7 +14391,7 @@
     {
       "id": "beybrew:blades-knight-shield-b2f5c4ad45",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Knight Shield",
@@ -14407,7 +14407,7 @@
     {
       "id": "beybrew:blades-leon-claw-ab22902057",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Leon Claw",
@@ -14423,7 +14423,7 @@
     {
       "id": "beybrew:blades-leon-crest-3408647e06",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Leon Crest",
@@ -14439,7 +14439,7 @@
     {
       "id": "beybrew:blades-lightning-l-drago-74e9eba509",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Lightning L-Drago",
@@ -14455,7 +14455,7 @@
     {
       "id": "beybrew:blades-meteor-dragoon-1b2d5c9e2e",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Meteor Dragoon",
@@ -14471,7 +14471,7 @@
     {
       "id": "beybrew:blades-might-56de3f0349",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Might",
@@ -14487,7 +14487,7 @@
     {
       "id": "beybrew:blades-mummy-curse-b21ba9e7bc",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Mummy Curse",
@@ -14503,7 +14503,7 @@
     {
       "id": "beybrew:blades-orochi-cluster-ac1ecd5585",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Orochi Cluster",
@@ -14519,7 +14519,7 @@
     {
       "id": "beybrew:blades-phoenix-feather-8f03d3a51b",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Phoenix Feather",
@@ -14535,7 +14535,7 @@
     {
       "id": "beybrew:blades-phoenix-rudder-2646b290d8",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Phoenix Rudder",
@@ -14551,7 +14551,7 @@
     {
       "id": "beybrew:blades-phoenix-wing-81ac8cfb65",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Phoenix Wing",
@@ -14567,7 +14567,7 @@
     {
       "id": "beybrew:blades-ptera-swing-8fdff74ac6",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Ptera Swing",
@@ -14583,7 +14583,7 @@
     {
       "id": "beybrew:blades-rage-253e72bf99",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Rage",
@@ -14599,7 +14599,7 @@
     {
       "id": "beybrew:blades-reaper-f5e5b4db8a",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Reaper",
@@ -14615,7 +14615,7 @@
     {
       "id": "beybrew:blades-rhino-horn-75b221d052",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Rhino Horn",
@@ -14631,7 +14631,7 @@
     {
       "id": "beybrew:blades-rock-leone-4fcfab26c9",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Rock Leone",
@@ -14647,7 +14647,7 @@
     {
       "id": "beybrew:blades-samurai-calibur-4d19eb1a6c",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Samurai Calibur",
@@ -14663,7 +14663,7 @@
     {
       "id": "beybrew:blades-samurai-saber-768c065c3a",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Samurai Saber",
@@ -14679,7 +14679,7 @@
     {
       "id": "beybrew:blades-samurai-steel-37f146e2aa",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Samurai Steel",
@@ -14695,7 +14695,7 @@
     {
       "id": "beybrew:blades-scorpio-spear-f2110c8ed2",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Scorpio Spear",
@@ -14711,7 +14711,7 @@
     {
       "id": "beybrew:blades-shark-edge-3261a02c50",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Shark Edge",
@@ -14727,7 +14727,7 @@
     {
       "id": "beybrew:blades-shark-gill-ee90b695f3",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Shark Gill",
@@ -14743,7 +14743,7 @@
     {
       "id": "beybrew:blades-shark-scale-eed2ac7e66",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Shark Scale",
@@ -14759,7 +14759,7 @@
     {
       "id": "beybrew:blades-shelter-drake-1cfc7660c1",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Shelter Drake",
@@ -14775,7 +14775,7 @@
     {
       "id": "beybrew:blades-shinobi-knife-59e1fef63d",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Shinobi Knife",
@@ -14791,7 +14791,7 @@
     {
       "id": "beybrew:blades-shinobi-shadow-18d81073d7",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Shinobi Shadow",
@@ -14807,7 +14807,7 @@
     {
       "id": "beybrew:blades-silver-wolf-e2a668745d",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Silver Wolf",
@@ -14823,7 +14823,7 @@
     {
       "id": "beybrew:blades-sphinx-cowl-7e42a7c252",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Sphinx Cowl",
@@ -14839,7 +14839,7 @@
     {
       "id": "beybrew:blades-storm-pegasis-61600c9b50",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Storm Pegasis",
@@ -14855,7 +14855,7 @@
     {
       "id": "beybrew:blades-storm-spriggan-52b4629f40",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Storm Spriggan",
@@ -14871,7 +14871,7 @@
     {
       "id": "beybrew:blades-tricera-press-0854f2bf53",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Tricera Press",
@@ -14887,7 +14887,7 @@
     {
       "id": "beybrew:blades-tusk-mammoth-3a5f669749",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Tusk Mammoth",
@@ -14903,7 +14903,7 @@
     {
       "id": "beybrew:blades-tyranno-beat-a7f04f4b03",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Tyranno Beat",
@@ -14919,7 +14919,7 @@
     {
       "id": "beybrew:blades-tyranno-roar-f4acce4037",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Tyranno Roar",
@@ -14935,7 +14935,7 @@
     {
       "id": "beybrew:blades-unicorn-sting-8ca061d579",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Unicorn Sting",
@@ -14951,7 +14951,7 @@
     {
       "id": "beybrew:blades-victory-valkyrie-2d47270f4a",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Victory Valkyrie",
@@ -14967,7 +14967,7 @@
     {
       "id": "beybrew:blades-viper-tail-52ac62f7b2",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Viper Tail",
@@ -14983,7 +14983,7 @@
     {
       "id": "beybrew:blades-volt-33d2e26771",
       "generationId": "x",
-      "system": "x",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "Volt",
@@ -14999,7 +14999,7 @@
     {
       "id": "beybrew:blades-weiss-tiger-fc56ff0175",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Weiss Tiger",
@@ -15015,7 +15015,7 @@
     {
       "id": "beybrew:blades-whale-wave-8f2b538c32",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Whale Wave",
@@ -15031,7 +15031,7 @@
     {
       "id": "beybrew:blades-wizard-arrow-fcb1211d4d",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Wizard Arrow",
@@ -15047,7 +15047,7 @@
     {
       "id": "beybrew:blades-wizard-rod-9d88fbb9b5",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Wizard Rod",
@@ -15063,7 +15063,7 @@
     {
       "id": "beybrew:blades-wyvern-gale-e86f2826c0",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Wyvern Gale",
@@ -15079,7 +15079,7 @@
     {
       "id": "beybrew:blades-wyvern-hover-dc0552e7eb",
       "generationId": "x",
-      "system": "x",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "Wyvern Hover",
@@ -15095,7 +15095,7 @@
     {
       "id": "beybrew:blades-xeno-xcalibur-73261b540e",
       "generationId": "x",
-      "system": "x",
+      "system": "bx",
       "kind": "part",
       "partType": "blade",
       "name": "Xeno Xcalibur",
@@ -15431,7 +15431,7 @@
     {
       "id": "beybrew:master-beybladepartsblade-aeropegasus-5d3fcb595a",
       "generationId": "x",
-      "system": "bx",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "AEROPEGASUS Red Ver.",
@@ -15447,10 +15447,10 @@
     {
       "id": "beybrew:master-beybladepartsblade-bahamutblitz-ed69d7dfb4",
       "generationId": "x",
-      "system": "bx",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
-      "name": "BAHAMUTBLITZBK Metallic Coat: Yellow",
+      "name": "BAHAMUTBLITZBK",
       "aliases": [],
       "components": [],
       "sourceId": "beybrew",
@@ -15527,7 +15527,7 @@
     {
       "id": "beybrew:master-beybladepartsblade-dranarc-202d65f7e9",
       "generationId": "x",
-      "system": "bx",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "DRANARCS Metallic Coat: Blue",
@@ -15543,10 +15543,10 @@
     {
       "id": "beybrew:master-beybladepartsblade-dranbrave-76f0f24763",
       "generationId": "x",
-      "system": "bx",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
-      "name": "DRANBRAVES Metallic Coat: Gold",
+      "name": "DRANBRAVES",
       "aliases": [],
       "components": [],
       "sourceId": "beybrew",
@@ -15605,22 +15605,6 @@
       "publicationStatus": "accepted"
     },
     {
-      "id": "beybrew:master-beybladepartsblade-golemrock-ddb01e4a9c",
-      "generationId": "x",
-      "system": "cx",
-      "kind": "part",
-      "partType": "blade",
-      "name": "GOLEMROCK Metallic Coat: Green",
-      "aliases": [],
-      "components": [],
-      "sourceId": "beybrew",
-      "sourceRecordId": "master:BeybladePartsBlade:GOLEMROCK",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
       "id": "beybrew:master-beybladepartsblade-hellsarc-f2fa1f9308",
       "generationId": "x",
       "system": "cx",
@@ -15639,7 +15623,7 @@
     {
       "id": "beybrew:master-beybladepartsblade-hellsbrave-8152f32507",
       "generationId": "x",
-      "system": "ux",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "HELLSBRAVEJ",
@@ -15647,22 +15631,6 @@
       "components": [],
       "sourceId": "beybrew",
       "sourceRecordId": "master:BeybladePartsBlade:HELLSBRAVE",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
-      "id": "beybrew:master-beybladepartsblade-hellshammer-3817057c54",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "part",
-      "partType": "blade",
-      "name": "HELLSHAMMER Metallic Coat: Red FC BARCELONA Ver.",
-      "aliases": [],
-      "components": [],
-      "sourceId": "beybrew",
-      "sourceRecordId": "master:BeybladePartsBlade:HELLSHAMMER",
       "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
       "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
       "verificationStatus": "official_app_derived",
@@ -15717,25 +15685,9 @@
       "publicationStatus": "accepted"
     },
     {
-      "id": "beybrew:master-beybladepartsblade-knightmail-fe19938e91",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "part",
-      "partType": "blade",
-      "name": "KNIGHTMAIL Metallic Coat: Navy",
-      "aliases": [],
-      "components": [],
-      "sourceId": "beybrew",
-      "sourceRecordId": "master:BeybladePartsBlade:KNIGHTMAIL",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
       "id": "beybrew:master-beybladepartsblade-leonfang-dd54dc9d65",
       "generationId": "x",
-      "system": "bx",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "LEONFANGT Red Ver.",
@@ -15799,7 +15751,7 @@
     {
       "id": "beybrew:master-beybladepartsblade-pegasusblast-a11a924717",
       "generationId": "x",
-      "system": "bx",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "PEGASUSBLASTA Metallic Coat: Red",
@@ -15815,7 +15767,7 @@
     {
       "id": "beybrew:master-beybladepartsblade-pegasusbrush-bdca0dfafb",
       "generationId": "x",
-      "system": "ux",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "PEGASUSBRUSHM",
@@ -15877,22 +15829,6 @@
       "publicationStatus": "accepted"
     },
     {
-      "id": "beybrew:master-beybladepartsblade-phoenixrudder-a3be1d5c2e",
-      "generationId": "x",
-      "system": "ux",
-      "kind": "part",
-      "partType": "blade",
-      "name": "PHOENIXRUDDER Metallic Coat:Red",
-      "aliases": [],
-      "components": [],
-      "sourceId": "beybrew",
-      "sourceRecordId": "master:BeybladePartsBlade:PHOENIXRUDDER",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
       "id": "beybrew:master-beybladepartsblade-ragnarage-0e232847c6",
       "generationId": "x",
       "system": "cx",
@@ -15925,22 +15861,6 @@
       "publicationStatus": "accepted"
     },
     {
-      "id": "beybrew:master-beybladepartsblade-scorpiospear-f958e68017",
-      "generationId": "x",
-      "system": "bx",
-      "kind": "part",
-      "partType": "blade",
-      "name": "SCORPIOSPEAR Metallic Coat: Magenta",
-      "aliases": [],
-      "components": [],
-      "sourceId": "beybrew",
-      "sourceRecordId": "master:BeybladePartsBlade:SCORPIOSPEAR",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
       "id": "beybrew:master-beybladepartsblade-shinobiknife-e6f63c37c2",
       "generationId": "x",
       "system": "bx",
@@ -15959,7 +15879,7 @@
     {
       "id": "beybrew:master-beybladepartsblade-solbrave-f62caccd0f",
       "generationId": "x",
-      "system": "ux",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "SOLBRAVEC",
@@ -15989,22 +15909,6 @@
       "publicationStatus": "accepted"
     },
     {
-      "id": "beybrew:master-beybladepartsblade-tyrannobeat-aceda3122e",
-      "generationId": "x",
-      "system": "ux",
-      "kind": "part",
-      "partType": "blade",
-      "name": "TYRANNOBEAT Metallic Coat: Red",
-      "aliases": [],
-      "components": [],
-      "sourceId": "beybrew",
-      "sourceRecordId": "master:BeybladePartsBlade:TYRANNOBEAT",
-      "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/main/MasterData.json",
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "verificationStatus": "official_app_derived",
-      "publicationStatus": "accepted"
-    },
-    {
       "id": "beybrew:master-beybladepartsblade-unicorndelta-fb2c351dd8",
       "generationId": "x",
       "system": "cx",
@@ -16023,7 +15927,7 @@
     {
       "id": "beybrew:master-beybladepartsblade-valkyrievolt-07e61e5834",
       "generationId": "x",
-      "system": "bx",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
       "name": "VALKYRIEVOLTS Metallic Coat: Gold",
@@ -16039,7 +15943,7 @@
     {
       "id": "beybrew:master-beybladepartsblade-warriorsaber-2e8ae49a2a",
       "generationId": "x",
-      "system": "cx",
+      "system": "ux",
       "kind": "part",
       "partType": "blade",
       "name": "WARRIORSABER",
@@ -16071,10 +15975,10 @@
     {
       "id": "beybrew:master-beybladepartsblade-wizardarc-76bedc5c8f",
       "generationId": "x",
-      "system": "bx",
+      "system": "cx",
       "kind": "part",
       "partType": "blade",
-      "name": "WIZARDARCR Metallic Coat: Black",
+      "name": "WIZARDARCR",
       "aliases": [],
       "components": [],
       "sourceId": "beybrew",
@@ -16455,7 +16359,7 @@
     {
       "id": "beybrew:master-beybladepartsratchet-ratchet-integrated-bits-cb8aca2572",
       "generationId": "x",
-      "system": "bx",
+      "system": "cx",
       "kind": "part",
       "partType": "ratchet",
       "name": "RATCHET-integrated BITS",

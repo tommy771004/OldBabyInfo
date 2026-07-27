@@ -337,6 +337,10 @@ interface BeybrewPart {
   name: string;
   altname?: string;
   alias?: string;
+  /** BX / UX / CX — the product line a Blade belongs to. Absent on Ratchets
+   *  and Bits, which are shared across every line rather than belonging to
+   *  one (which is why the source only records it for Blade-family Parts). */
+  line?: string;
 }
 
 export interface BeybrewParts {
@@ -353,6 +357,10 @@ interface MasterDataEntry {
   group_id?: string;
   release_at?: string;
   name?: Record<string, string>;
+  /** Carries the product line ("bx"/"ux"/"cx") plus release-flavour tags
+   *  ("reprint", "convention", "other") — the line tag is the reliable one,
+   *  present on every Part entry. */
+  tags?: string[];
 }
 
 export interface MasterDataPayload {
@@ -380,15 +388,26 @@ function cleanMasterDataName(value: string | undefined): string | null {
   return cleaned;
 }
 
+const X_LINES = ["bx", "ux", "cx"];
+
+/** The line a source states outright, preferred over any guess from a model
+ *  code: a Blade reissued under a different product number still belongs to
+ *  the line it was designed for. */
+function xLineOf(values: string[] | undefined): string | undefined {
+  return values?.map((value) => value.toLowerCase()).find((value) => X_LINES.includes(value));
+}
+
 function xSystemForModel(modelName: string | undefined): string {
   const line = modelName?.match(/^(BX|UX|CX)/i)?.[1];
   return line?.toLowerCase() ?? "x";
 }
 
-function xSystemForPartType(partType: string, modelName?: string): string {
+function xSystemForPartType(partType: string, modelName?: string, line?: string): string {
+  // CX-only Part kinds are CX whatever a model code says; everything else
+  // takes the stated line first and falls back to the model prefix.
   return ["main_blade", "assist_blade", "lock_chip", "metal_blade", "over_blade"].includes(partType)
     ? "cx"
-    : xSystemForModel(modelName);
+    : line ?? xSystemForModel(modelName);
 }
 
 export function buildBeybrewXRecords(
@@ -415,7 +434,7 @@ export function buildBeybrewXRecords(
       records.push({
         id: recordId("beybrew", sourceRecordId),
         generationId: "x",
-        system: xSystemForPartType(partType),
+        system: xLineOf(part.line ? [part.line] : undefined) ?? xSystemForPartType(partType),
         kind: "part",
         partType,
         name: part.name,
@@ -457,7 +476,7 @@ export function buildBeybrewXRecords(
       const name = cleanMasterDataName(entry.name?.["en-US"] ?? entry.name?.["ja-JP"]);
       if (!name) continue;
       const partType = normalizePartType(key.replace(/^BeybladeParts/, ""));
-      const system = xSystemForPartType(partType, entry.model_name);
+      const system = xSystemForPartType(partType, entry.model_name, xLineOf(entry.tags));
       const identity = `${system}:${partType}:${entry.group_id || name}`;
       const priorPart = masterPartsByIdentity.get(identity);
       if (!priorPart || name.length < priorPart.name.length) {
