@@ -7,6 +7,7 @@ import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { getAllParts, getPartBySlug, getPartImage } from "@/lib/parts/repository.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
+import { formatWeightRange, weightRangeOf } from "@/lib/parts/part-weight.ts";
 import { slugify } from "@/lib/parts/slug.ts";
 import { BladeSilhouette } from "@/components/blade-silhouette.tsx";
 import { RatchetSilhouette } from "@/components/ratchet-silhouette.tsx";
@@ -108,6 +109,7 @@ function PartDetailBody({
   listings: Awaited<ReturnType<ReturnType<typeof createNeonStockListingReader>["listByPartId"]>>;
   pagination: ReturnType<typeof parseAssessmentPaginationParams> & { pathname: string };
 }) {
+  const weightRange = weightRangeOf(part);
   const t = useTranslations("PartDetailPage");
   const tp = useTranslations("PartsPage");
   const tw = useTranslations("WhereToBuyPage");
@@ -140,10 +142,31 @@ function PartDetailBody({
           <p className={styles.typeLabel}>{tp(`type_${part.type}`)}</p>
           <h1 id="part-identity-heading">{localizedNameOf(part, locale)}</h1>
           <p className={styles.code}>{part.id}</p>
+
+          {/* The numbers a player came for, in the first screen. They used to
+              start below the fold, under a heading, while the header block
+              above them held nothing but a name and empty space. */}
+          <dl className={styles.headlineSpec}>
+            {statEntries.map(([field, value]) => (
+              <div key={field}>
+                <dt>{tp(`stat_${field}`)}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+            {weightRange ? (
+              <div>
+                <dt>{tp("weight_column")}</dt>
+                <dd>{formatWeightRange(weightRange)}</dd>
+              </div>
+            ) : null}
+          </dl>
         </div>
         <div className={styles.partVisual}>
           {image ? (
-            <Image src={image.url} alt={part.nameEn} width={image.width} height={image.height} />
+            /* This photo is the page's subject and sits above the fold;
+               lazy-loading it meant the first thing a reader looks for was
+               the last thing to arrive. */
+            <Image src={image.url} alt={part.nameEn} width={image.width} height={image.height} priority />
           ) : part.type === "blade" && hasObservedWingCount(part.id) ? (
             <BladeSilhouette wingCount={wingCountFor(part.id)} label={tp("silhouette_label", { count: wingCountFor(part.id) })} />
           ) : part.type === "ratchet" ? (

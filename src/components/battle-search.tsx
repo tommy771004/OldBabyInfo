@@ -202,6 +202,7 @@ function PartImage({ subject, image }: { subject: BattleSubject; image: PartImag
       height={image.height}
       className={styles.partImage}
       sizes="(max-width: 720px) 30vw, 18vw"
+      priority
     />
   );
 }
