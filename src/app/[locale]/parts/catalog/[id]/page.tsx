@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { CatalogRecordDetails } from "@/components/catalog-record-details.tsx";
 import { getGenerationCatalogSnapshot, getLegacyPartForCatalogRecord } from "@/lib/generation-catalog/repository.ts";
+import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import type { GenerationCatalogRecord } from "@/lib/generation-catalog/schema.ts";
 import { type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
@@ -78,7 +79,14 @@ function GenerationCatalogRecordBody({
   const prefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
   // A complete Beyblade's model string is unreadable on its own; the name
   // built from its Parts is what a player would actually say out loud.
-  const composedName = composeBeybladeName(record, buildPartNameIndex(getAllParts()), locale);
+  const partNameIndex = buildPartNameIndex(getAllParts());
+  const composedName = composeBeybladeName(record, partNameIndex, locale);
+  // Related rows read in the same language as the heading above them.
+  const recordNameFor = (related: GenerationCatalogRecord) => {
+    const projected = getLegacyPartForCatalogRecord(related.id);
+    if (projected) return localizedNameOf(projected, locale);
+    return composeBeybladeName(related, partNameIndex, locale) ?? related.name;
+  };
   const productCode = productCodeOf(record);
   const kindLabel = record.kind === "beyblade"
     ? t("catalog_beyblades")
@@ -107,6 +115,7 @@ function GenerationCatalogRecordBody({
         record={record}
         allRecords={siblings}
         recordHref={(id) => `${prefix}/parts/catalog/${encodeURIComponent(id)}`}
+        recordNameFor={recordNameFor}
         legacyPartHref={legacyPart ? `${prefix}/parts/${slugify(legacyPart.nameEn)}` : undefined}
         labels={{
           kind: t("part_type_column"),

@@ -30,12 +30,16 @@ export function CatalogRecordDetails({
   record,
   allRecords,
   recordHref,
+  recordNameFor = (related) => related.name,
   legacyPartHref,
   labels,
 }: {
   record: GenerationCatalogRecord;
   allRecords: GenerationCatalogRecord[];
   recordHref: (recordId: string) => string;
+  /** Reader-facing name for a related record — a Part in the reader's
+   *  language, a complete Beyblade spelled out by its Parts. */
+  recordNameFor?: (related: GenerationCatalogRecord) => string;
   legacyPartHref?: string;
   labels: CatalogRecordDetailsLabels;
 }) {
@@ -84,16 +88,16 @@ export function CatalogRecordDetails({
       ) : null}
 
       {record.kind === "beyblade" ? (
-        <RecordList heading={labels.compositionHeading} records={parts} recordHref={recordHref} empty={labels.emptyComposition} />
+        <RecordList heading={labels.compositionHeading} records={parts} recordHref={recordHref} nameFor={recordNameFor} empty={labels.emptyComposition} />
       ) : null}
       {record.kind === "part" && containingBeyblades.length > 0 ? (
-        <RecordList heading={labels.containedByHeading} records={containingBeyblades} recordHref={recordHref} />
+        <RecordList heading={labels.containedByHeading} records={containingBeyblades} recordHref={recordHref} nameFor={recordNameFor} />
       ) : null}
       {record.kind === "release" ? (
-        <RecordList heading={labels.releaseContentsHeading} records={releaseContents} recordHref={recordHref} />
+        <RecordList heading={labels.releaseContentsHeading} records={releaseContents} recordHref={recordHref} nameFor={recordNameFor} />
       ) : null}
       {releases.length > 0 ? (
-        <RecordList heading={labels.releasesHeading} records={releases} recordHref={recordHref} />
+        <RecordList heading={labels.releasesHeading} records={releases} recordHref={recordHref} nameFor={recordNameFor} />
       ) : null}
     </article>
   );
@@ -127,11 +131,13 @@ function RecordList({
   heading,
   records,
   recordHref,
+  nameFor,
   empty,
 }: {
   heading: string;
   records: GenerationCatalogRecord[];
   recordHref: (recordId: string) => string;
+  nameFor: (related: GenerationCatalogRecord) => string;
   empty?: string;
 }) {
   const headingId = `catalog-list-${heading.replace(/[^a-zA-Z0-9]+/g, "-").toLowerCase()}`;
@@ -143,7 +149,7 @@ function RecordList({
         <ul>
           {records.map((related) => (
             <li key={related.id}>
-              <a href={recordHref(related.id)}>{related.name}</a>
+              <a href={recordHref(related.id)}>{nameFor(related)}</a>
               {related.partType ? <span className={styles.listKind}>{related.partType}</span> : null}
             </li>
           ))}
