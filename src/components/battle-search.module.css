@@ -281,42 +281,101 @@
   white-space: nowrap;
 }
 
+/*
+ * The Stat comparison is the one thing on this page a player actually
+ * argues about, so it is drawn as a contest rather than tabulated: each
+ * Stat is an axis, the two Parts push out from the label in opposite
+ * directions, and the longer rail wins that axis outright.
+ *
+ * The rails are the stadium's Xtreme Line in miniature — the raised
+ * acceleration rail every X-generation Blade rides. A real one is a moulded
+ * ramp, so it is drawn the way a moulded edge actually reads: a lit top
+ * edge, a body, and a shadowed underside, stacked as three gradient stops.
+ * No box-shadow and no glow — the depth is in the edges, which is also what
+ * the anti-slop contract asks for.
+ */
+
 .statRows {
-  max-width: 30rem;
+  max-width: 42rem;
   margin: 0 auto;
 }
 
 .statRow {
   display: grid;
-  grid-template-columns: 1fr max-content 1fr;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--ink-on-dark) 18%, transparent);
+  grid-template-columns: 3.5rem 1fr max-content 1fr 3.5rem;
+  align-items: center;
+  gap: 0 0.9rem;
+  padding: 0.55rem 0;
+}
+
+.statRow + .statRow {
+  border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 12%, transparent);
 }
 
 .statRow dt {
   color: color-mix(in srgb, var(--ink-on-dark) 75%, transparent);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-align: center;
   text-transform: uppercase;
 }
 
 .statRow dd {
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: 2rem;
+  font-size: 1.9rem;
+  font-variant-numeric: tabular-nums;
   line-height: 1;
 }
 
+/* The trailing side stays legible but stops competing for the eye. */
 .leftValue {
-  color: var(--ink-on-dark);
+  color: color-mix(in srgb, var(--ink-on-dark) 55%, transparent);
   text-align: right;
 }
 
 .rightValue {
-  color: var(--accent-on-dark);
+  color: color-mix(in srgb, var(--ink-on-dark) 55%, transparent);
   text-align: left;
+}
+
+.statRow[data-lead="left"] .leftValue,
+.statRow[data-lead="right"] .rightValue {
+  color: var(--ink-on-dark);
+}
+
+.rail {
+  height: 0.5rem;
+  border-radius: 1px;
+  /* lit edge / body / shadowed underside */
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--ink-on-dark) 34%, transparent) 0 1px,
+    color-mix(in srgb, var(--ink-on-dark) 15%, transparent) 1px calc(100% - 1px),
+    color-mix(in srgb, var(--surface-950) 60%, transparent) calc(100% - 1px) 100%
+  );
+  transform-origin: var(--rail-origin, right center);
+  scale: var(--reach, 1) 1;
+}
+
+.railLeft {
+  --rail-origin: right center;
+}
+
+.railRight {
+  --rail-origin: left center;
+}
+
+/* The winning rail is the lit one: same moulding, struck by the accent. */
+.statRow[data-lead="left"] .railLeft,
+.statRow[data-lead="right"] .railRight {
+  height: 0.7rem;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--ink-on-dark) 55%, transparent) 0 1px,
+    var(--accent-on-dark) 1px calc(100% - 2px),
+    color-mix(in srgb, var(--surface-950) 70%, transparent) calc(100% - 2px) 100%
+  );
 }
 
 @keyframes current-run {

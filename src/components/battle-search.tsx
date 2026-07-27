@@ -149,6 +149,11 @@ function SearchLane({
   );
 }
 
+/** The axis every rail is measured against. Official X Stats are published
+ *  on a 0-100 scale, so a fixed 100 keeps a 75 Attack visibly longer than a
+ *  25 — scaling each row to its own pair would flatten that difference away. */
+const STAT_AXIS = 100;
+
 function StatRows({ left, right, labels }: { left: BattleSubject; right: BattleSubject; labels: BattleSearchLabels }) {
   const leftStats = subjectStatsOf(left);
   const rightStats = subjectStatsOf(right);
@@ -160,13 +165,27 @@ function StatRows({ left, right, labels }: { left: BattleSubject; right: BattleS
 
   return (
     <dl className={styles.statRows}>
-      {rows.map(([label, leftValue, rightValue]) => (
-        <div className={styles.statRow} key={label}>
-          <dd className={styles.leftValue}>{leftValue}</dd>
-          <dt>{label}</dt>
-          <dd className={styles.rightValue}>{rightValue}</dd>
-        </div>
-      ))}
+      {rows.map(([label, leftValue, rightValue]) => {
+        // Ties lead on neither side: a drawn axis is real information here.
+        const lead = leftValue === rightValue ? "none" : leftValue > rightValue ? "left" : "right";
+        return (
+          <div className={styles.statRow} key={label} data-lead={lead}>
+            <dd className={styles.leftValue}>{leftValue}</dd>
+            <span
+              className={`${styles.rail} ${styles.railLeft}`}
+              style={{ "--reach": `${Math.min(leftValue, STAT_AXIS) / STAT_AXIS}` } as React.CSSProperties}
+              aria-hidden="true"
+            />
+            <dt>{label}</dt>
+            <span
+              className={`${styles.rail} ${styles.railRight}`}
+              style={{ "--reach": `${Math.min(rightValue, STAT_AXIS) / STAT_AXIS}` } as React.CSSProperties}
+              aria-hidden="true"
+            />
+            <dd className={styles.rightValue}>{rightValue}</dd>
+          </div>
+        );
+      })}
     </dl>
   );
 }
