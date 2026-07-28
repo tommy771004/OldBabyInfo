@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n/routing.ts";
+import { computeComboStats, type ComboStats } from "../parts/combo-stats.ts";
 import { localizedNameOf } from "../parts/localized-name.ts";
 import type { Part } from "../parts/schema.ts";
 import type { GenerationCatalogRecord } from "./schema.ts";
@@ -105,4 +106,62 @@ export function beybladeImagePartOf(
     if (part) return part;
   }
   return undefined;
+}
+
+/** The Part kinds that can stand in for the Blade slot of a Combo. */
+const BLADE_KINDS = ["blade", "main_blade", "metal_blade", "over_blade"];
+
+/**
+ * A complete Beyblade's Stats are its Parts' Stats, by ADR-0007's rule:
+ * Attack/Defense/Stamina sum across Blade, Ratchet and Bit; X-Dash and Burst
+ * Resistance read from the Bit alone because nothing else carries them.
+ *
+ * The Beyblade itself has no Stat block in any source — it is an assembly,
+ * and this is the same computation the Combo builder already does. Without
+ * it the 陀螺 tab listed 228 products with no numbers at all while every
+ * number lived one tab over under their Parts.
+ *
+ * A Beyblade whose components cannot all be resolved gets no Stats rather
+ * than a partial sum: half a Combo's Attack is not a smaller Attack, it is a
+ * wrong one.
+ */
+export function composeBeybladeStats(
+  record: GenerationCatalogRecord,
+  index: PartNameIndex,
+): ComboStats | undefined {
+  if (record.kind !== "beyblade") return undefined;
+
+  const slot = (kinds: string[]) => {
+    for (const partType of kinds) {
+      const component = record.components.find((entry) => entry.partType === partType);
+      const part = component && index.find(partType, component.name);
+      if (part) return part;
+    }
+    return undefined;
+  };
+
+  const blade = slot(BLADE_KINDS);
+  const ratchet = slot(["ratchet"]);
+  const bit = slot(["bit"]);
+  if (!blade || !ratchet || !bit) return undefined;
+
+  return computeComboStats(blade, ratchet, bit);
+}
+
+/** The assembled weight: the same three Parts, added up. Undefined unless
+ *  every one of them has a weight, for the same reason as the Stats. */
+export function composeBeybladeWeight(
+  record: GenerationCatalogRecord,
+  index: PartNameIndex,
+): number | undefined {
+  if (record.kind !== "beyblade") return undefined;
+
+  const parts = ["blade", "main_blade", "metal_blade", "over_blade", "ratchet", "bit"].flatMap((partType) => {
+    const component = record.components.find((entry) => entry.partType === partType);
+    const part = component && index.find(partType, component.name);
+    return part ? [part] : [];
+  });
+  if (parts.length < 3 || parts.some((part) => part.weightGrams === undefined)) return undefined;
+
+  return parts.reduce((total, part) => total + (part.weightGrams ?? 0), 0);
 }

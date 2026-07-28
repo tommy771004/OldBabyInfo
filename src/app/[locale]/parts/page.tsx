@@ -38,8 +38,17 @@ import {
 import type { SortDirection, SortField } from "@/lib/parts/filter-sort.ts";
 import { parseFilterSortParams, type FilterSortState } from "@/lib/parts/parse-filter-sort-params.ts";
 import { slugify } from "@/lib/parts/slug.ts";
+import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { getAllParts, getPartImage } from "@/lib/parts/repository.ts";
-import { beybladeImagePartOf, buildPartNameIndex, composeBeybladeName } from "@/lib/generation-catalog/beyblade-name.ts";
+import {
+  beybladeImagePartOf,
+  buildPartNameIndex,
+  composeBeybladeName,
+  composeBeybladeStats,
+  composeBeybladeWeight,
+} from "@/lib/generation-catalog/beyblade-name.ts";
+import { weightRangeOf } from "@/lib/parts/part-weight.ts";
+import type { CatalogRowFacts } from "./catalog-part-table.tsx";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { CatalogPartTable } from "./catalog-part-table.tsx";
 import styles from "./page.module.css";
@@ -350,10 +359,46 @@ function PartsPageBody({
       ?? getLegacyPartForCatalogRecord(record.id);
     return imagePart ? getPartImage(imagePart.id) : undefined;
   };
-  // Only the X Parts view has Stats to sort by, and only there does a table
-  // beat cards: every other Generation/kind keeps the card grid.
+  /**
+   * One row's facts, whichever tab it is on. A Part answers from its own Stat
+   * block; a complete Beyblade answers from the Combo its Parts make
+   * (ADR-0007) — without this the 陀螺 tab listed 228 products carrying no
+   * numbers while every number sat one tab over under their Parts.
+   */
+  const factsFor = (record: GenerationCatalogRecord): CatalogRowFacts => {
+    const part = getLegacyPartForCatalogRecord(record.id);
+    if (part) {
+      return {
+        name: localizedNameOf(part, locale),
+        href: `/parts/${slugify(part.nameEn)}`,
+        attack: part.stats.attack,
+        defense: part.stats.defense,
+        stamina: part.stats.stamina,
+        xDash: part.type === "bit" ? part.stats.xDash : undefined,
+        burstResistance: part.type === "bit" ? part.stats.burstResistance : undefined,
+        weight: weightRangeOf(part),
+        releaseAt: part.releaseAt,
+      };
+    }
+
+    const combo = composeBeybladeStats(record, partNameIndex);
+    const assembled = composeBeybladeWeight(record, partNameIndex);
+    return {
+      name: recordNameFor(record),
+      href: `/parts/catalog/${encodeURIComponent(record.id)}`,
+      attack: combo?.attack,
+      defense: combo?.defense,
+      stamina: combo?.stamina,
+      xDash: combo?.xDash,
+      burstResistance: combo?.burstResistance,
+      weight: assembled === undefined ? undefined : { min: assembled, max: assembled },
+    };
+  };
+
+  // Both the Parts and the complete Beyblades of a Generation carry numbers
+  // worth lining up in columns; the card grid is for everything else.
   const showStatTable = selectedGeneration === "x" &&
-    selectedKind === "part" &&
+    (selectedKind === "part" || selectedKind === "beyblade") &&
     !searchAcrossGenerations;
   const tabQuery = {
     catalogGeneration: selectedGeneration,
@@ -424,8 +469,8 @@ function PartsPageBody({
           ? (records) => (
             <CatalogPartTable
               records={records}
-              projectionFor={getLegacyPartForCatalogRecord}
-              locale={locale}
+              factsFor={factsFor}
+              kindLabel={t("catalog_beyblades")}
               sortField={state.sort}
               sortDirection={state.direction}
               sortQueryFor={sortQueryFor}

@@ -1,11 +1,8 @@
 import { Link } from "@/i18n/navigation.ts";
-import type { Locale } from "@/i18n/routing.ts";
 import type { GenerationCatalogRecord } from "@/lib/generation-catalog/schema.ts";
-import type { PartProjectionLookup } from "@/lib/parts/catalog-part-rows.ts";
+import type { WeightRange } from "@/lib/parts/part-weight.ts";
 import type { SortDirection, SortField } from "@/lib/parts/filter-sort.ts";
-import { localizedNameOf } from "@/lib/parts/localized-name.ts";
-import { formatWeightRange, weightRangeOf } from "@/lib/parts/part-weight.ts";
-import { slugify } from "@/lib/parts/slug.ts";
+import { formatWeightRange } from "@/lib/parts/part-weight.ts";
 import styles from "./catalog-part-table.module.css";
 
 const STAT_FIELDS = ["attack", "defense", "stamina", "xDash", "burstResistance"] as const;
@@ -25,30 +22,49 @@ export interface CatalogPartTableLabels {
   empty: string;
 }
 
+/** Shown in the kind column for a record that has no Part kind of its own —
+ *  a complete Beyblade is not a Blade or a Bit. */
+
 /**
- * The single `/parts` list: Catalog records as rows, with the X Stats
- * projected onto whichever of them have one. A record with no projection
- * (a CX Lock Chip, a colour variant) is still a real Part and keeps its row —
- * it just reads "—" across the Stat columns instead of being hidden in a
- * second list further down the page.
+ * What one row can say about itself. A Part answers from its own Stat block;
+ * a complete Beyblade answers from its Parts added up (ADR-0007). Anything
+ * that cannot answer a column leaves it undefined and the cell reads "—".
+ */
+export interface CatalogRowFacts {
+  name: string;
+  href: string;
+  attack?: number;
+  defense?: number;
+  stamina?: number;
+  xDash?: number;
+  burstResistance?: number;
+  weight?: WeightRange;
+  releaseAt?: string | null;
+}
+
+/**
+ * The single `/parts` list. Every tab uses it — Parts read their Stats off
+ * their own record, complete Beyblades read theirs off the Combo their Parts
+ * make. A row that cannot answer a column reads "—" rather than being hidden
+ * in a second list somewhere else on the page.
  */
 export function CatalogPartTable({
   records,
-  projectionFor,
-  locale,
+  factsFor,
   sortField,
   sortDirection,
   sortQueryFor,
   partTypeLabelFor,
+  kindLabel,
   labels,
 }: {
   records: GenerationCatalogRecord[];
-  projectionFor: PartProjectionLookup;
-  locale: Locale;
+  factsFor: (record: GenerationCatalogRecord) => CatalogRowFacts;
   sortField: SortField | undefined;
   sortDirection: SortDirection;
   sortQueryFor: (field: SortField, direction: SortDirection) => Record<string, string>;
   partTypeLabelFor: (partType: string) => string;
+  kindLabel: string;
   labels: CatalogPartTableLabels;
 }) {
   if (records.length === 0) return <p>{labels.empty}</p>;
@@ -130,29 +146,23 @@ export function CatalogPartTable({
       </thead>
       <tbody>
         {records.map((record) => {
-          const part = projectionFor(record.id);
-          const isBit = part?.type === "bit";
-          const weightRange = part ? weightRangeOf(part) : undefined;
+          const facts = factsFor(record);
 
           return (
             <tr key={record.id}>
               <td className={styles.kindCell} data-label={labels.partTypeColumn}>
-                {record.partType ? partTypeLabelFor(record.partType) : "—"}
+                {record.partType ? partTypeLabelFor(record.partType) : kindLabel}
               </td>
               <td className={styles.nameCell} data-label={labels.nameColumn}>
-                {part ? (
-                  <Link href={`/parts/${slugify(part.nameEn)}`}>{localizedNameOf(part, locale)}</Link>
-                ) : (
-                  <Link href={`/parts/catalog/${encodeURIComponent(record.id)}`}>{record.name}</Link>
-                )}
+                <Link href={facts.href}>{facts.name}</Link>
               </td>
-              <Cell label={statLabels.attack} value={part?.stats.attack} />
-              <Cell label={statLabels.defense} value={part?.stats.defense} />
-              <Cell label={statLabels.stamina} value={part?.stats.stamina} />
-              <Cell label={statLabels.xDash} value={isBit ? part.stats.xDash : undefined} />
-              <Cell label={statLabels.burstResistance} value={isBit ? part.stats.burstResistance : undefined} />
-              <Cell label={labels.weight} value={weightRange ? formatWeightRange(weightRange) : undefined} />
-              <Cell label={labels.releaseDate} value={part?.releaseAt ?? undefined} />
+              <Cell label={statLabels.attack} value={facts.attack} />
+              <Cell label={statLabels.defense} value={facts.defense} />
+              <Cell label={statLabels.stamina} value={facts.stamina} />
+              <Cell label={statLabels.xDash} value={facts.xDash} />
+              <Cell label={statLabels.burstResistance} value={facts.burstResistance} />
+              <Cell label={labels.weight} value={facts.weight ? formatWeightRange(facts.weight) : undefined} />
+              <Cell label={labels.releaseDate} value={facts.releaseAt ?? undefined} />
             </tr>
           );
         })}

@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import type { GenerationCatalogRecord } from "@/lib/generation-catalog/schema.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 import { CatalogPartTable } from "./catalog-part-table.tsx";
+import { weightRangeOf } from "@/lib/parts/part-weight.ts";
 
 vi.mock("@/i18n/navigation.ts", () => ({
   Link: ({ href, children, ...props }: { href: string | { query?: Record<string, string> }; children: React.ReactNode }) => (
@@ -71,12 +72,29 @@ const records = [
   record({ id: "x:part:lock-chip", partType: "lock_chip", name: "Dran" }),
 ];
 
+/** What the page supplies: a Part answers from its own Stat block, anything
+ *  else answers with what little it has. */
+function factsFor(record: GenerationCatalogRecord) {
+  if (record.id !== "x:part:dran-sword") {
+    return { name: record.name, href: `/parts/catalog/${encodeURIComponent(record.id)}` };
+  }
+  return {
+    name: "蒼龍神劍",
+    href: "/parts/dran-sword",
+    attack: dranSword.stats.attack,
+    defense: dranSword.stats.defense,
+    stamina: dranSword.stats.stamina,
+    weight: weightRangeOf(dranSword),
+    releaseAt: dranSword.releaseAt,
+  };
+}
+
 function renderTable(overrides: Partial<Parameters<typeof CatalogPartTable>[0]> = {}) {
   return render(
     <CatalogPartTable
       records={records}
-      projectionFor={(recordId) => recordId === "x:part:dran-sword" ? dranSword : undefined}
-      locale="zh-TW"
+      factsFor={factsFor}
+      kindLabel="Complete Beyblade"
       sortField={undefined}
       sortDirection="asc"
       sortQueryFor={(field, direction) => ({ sort: field, dir: direction })}
@@ -145,7 +163,7 @@ describe("CatalogPartTable", () => {
         },
       ],
     };
-    renderTable({ projectionFor: () => weighed });
+    renderTable({ factsFor: () => ({ name: "蒼龍神劍", href: "/parts/dran-sword", weight: weightRangeOf(weighed) }) });
 
     // One range across every weighed batch, not one figure per batch.
     expect(screen.getAllByText("34.2–35.1 g").length).toBeGreaterThan(0);
