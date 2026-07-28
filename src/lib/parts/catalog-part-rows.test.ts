@@ -3,6 +3,7 @@ import {
   humanizePartType,
   isPublishableCatalogName,
   projectedRecordsFirst,
+  partSortValues,
   publishableCatalogRecords,
   sortCatalogPartRecords,
   withProjectedSearchAliases,
@@ -95,17 +96,17 @@ describe("sortCatalogPartRecords", () => {
     low: blade("low", 20, "2024-01-01"),
     high: blade("high", 60, null),
   };
-  const projectionFor = (recordId: string) => parts[recordId];
+  const valueFor = partSortValues((recordId: string) => parts[recordId]);
 
   it("sorts by the projected Stat in both directions", () => {
-    expect(sortCatalogPartRecords(records, projectionFor, "attack", "desc").map((r) => r.id))
+    expect(sortCatalogPartRecords(records, valueFor, "attack", "desc").map((r) => r.id))
       .toEqual(["high", "low", "unprojected"]);
-    expect(sortCatalogPartRecords(records, projectionFor, "attack", "asc").map((r) => r.id))
+    expect(sortCatalogPartRecords(records, valueFor, "attack", "asc").map((r) => r.id))
       .toEqual(["low", "high", "unprojected"]);
   });
 
   it("keeps records with no Stats at the bottom rather than treating them as zero", () => {
-    const sorted = sortCatalogPartRecords(records, projectionFor, "attack", "asc");
+    const sorted = sortCatalogPartRecords(records, valueFor, "attack", "asc");
 
     expect(sorted[sorted.length - 1]?.id).toBe("unprojected");
   });
@@ -113,7 +114,7 @@ describe("sortCatalogPartRecords", () => {
   it("orders undated Parts against each other without a NaN comparison", () => {
     const undated = [record({ id: "a" }), record({ id: "b" })];
     const undatedParts: Record<string, Part> = { a: blade("a", 1, null), b: blade("b", 2, null) };
-    const sorted = sortCatalogPartRecords(undated, (id) => undatedParts[id], "releaseAt", "desc");
+    const sorted = sortCatalogPartRecords(undated, partSortValues((id) => undatedParts[id]), "releaseAt", "desc");
 
     expect(sorted.map((r) => r.id)).toEqual(["a", "b"]);
   });
@@ -126,7 +127,7 @@ describe("sortCatalogPartRecords", () => {
     const parts: Record<string, Part> = { weighed, unweighed: blade("unweighed", 90, null) };
 
     for (const direction of ["asc", "desc"] as const) {
-      expect(sortCatalogPartRecords(records, (id) => parts[id], "weight", direction).map((r) => r.id))
+      expect(sortCatalogPartRecords(records, partSortValues((id) => parts[id]), "weight", direction).map((r) => r.id))
         .toEqual(["weighed", "unweighed"]);
     }
   });
@@ -141,14 +142,14 @@ describe("sortCatalogPartRecords", () => {
     };
 
     for (const direction of ["asc", "desc"] as const) {
-      expect(sortCatalogPartRecords(records, (id) => parts[id], "releaseAt", direction).map((r) => r.id))
+      expect(sortCatalogPartRecords(records, partSortValues((id) => parts[id]), "releaseAt", direction).map((r) => r.id))
         .toEqual(["dated", "undated"]);
     }
   });
 
   it("does not mutate the input order", () => {
     const input = [...records];
-    sortCatalogPartRecords(input, projectionFor, "attack", "desc");
+    sortCatalogPartRecords(input, valueFor, "attack", "desc");
 
     expect(input.map((r) => r.id)).toEqual(["low", "unprojected", "high"]);
   });
@@ -163,13 +164,13 @@ describe("projectedRecordsFirst", () => {
   const part = blade("blade", 60, "2022-05-10");
 
   it("opens the list on the Parts that actually carry Stats", () => {
-    const ordered = projectedRecordsFirst(records, (id) => id === "blade" ? part : undefined);
+    const ordered = projectedRecordsFirst(records, (record) => record.id === "blade");
 
     expect(ordered.map((r) => r.id)).toEqual(["blade", "lock", "assist"]);
   });
 
   it("leaves the Catalog order alone when no row has Stats to lead with", () => {
-    const ordered = projectedRecordsFirst(records, () => undefined);
+    const ordered = projectedRecordsFirst(records, () => false);
 
     expect(ordered).toBe(records);
   });

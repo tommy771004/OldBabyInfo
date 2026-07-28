@@ -62,18 +62,32 @@ export function withProjectedSearchAliases(
  */
 export function projectedRecordsFirst(
   records: GenerationCatalogRecord[],
-  projectionFor: PartProjectionLookup,
+  hasFacts: (record: GenerationCatalogRecord) => boolean,
 ): GenerationCatalogRecord[] {
-  const projected = records.filter((record) => projectionFor(record.id));
-  const rest = records.filter((record) => !projectionFor(record.id));
-  return projected.length === 0 || rest.length === 0 ? records : [...projected, ...rest];
+  const answered = records.filter(hasFacts);
+  const rest = records.filter((record) => !hasFacts(record));
+  return answered.length === 0 || rest.length === 0 ? records : [...answered, ...rest];
 }
 
-/** Which columns a Part can simply have no answer for, and how to tell. */
-function unknownFor(field: SortField): ((part: Part) => boolean) | undefined {
-  if (field === "weight") return (part) => weightSortValueOf(part) === undefined;
-  if (field === "releaseAt") return (part) => part.releaseAt === null;
-  return undefined;
+/**
+ * What one record is worth on one column, or nothing when it cannot answer.
+ *
+ * Taking a resolver rather than a Part is what lets complete Beyblades sort:
+ * their Stats are the Combo their Parts make, not a Stat block of their own,
+ * so a Part-shaped lookup returned undefined for all 228 of them and the
+ * column headers on that tab were links that did nothing.
+ */
+export type CatalogSortValue = (record: GenerationCatalogRecord, field: SortField) => number | undefined;
+
+/** The Part-backed resolver every Part tab uses. */
+export function partSortValues(projectionFor: PartProjectionLookup): CatalogSortValue {
+  return (record, field) => {
+    const part = projectionFor(record.id);
+    if (!part) return undefined;
+    if (field === "weight") return weightSortValueOf(part);
+    if (field === "releaseAt") return part.releaseAt === null ? undefined : Date.parse(part.releaseAt);
+    return sortValueOf(part, field);
+  };
 }
 
 /**
@@ -85,37 +99,22 @@ function unknownFor(field: SortField): ((part: Part) => boolean) | undefined {
  */
 export function sortCatalogPartRecords(
   records: GenerationCatalogRecord[],
-  projectionFor: PartProjectionLookup,
+  valueFor: CatalogSortValue,
   field: SortField,
   direction: SortDirection,
 ): GenerationCatalogRecord[] {
   const factor = direction === "asc" ? 1 : -1;
 
   return [...records].sort((left, right) => {
-    const leftPart = projectionFor(left.id);
-    const rightPart = projectionFor(right.id);
-    if (!leftPart && !rightPart) return 0;
-    if (!leftPart) return 1;
-    if (!rightPart) return -1;
+    const leftValue = valueFor(left, field);
+    const rightValue = valueFor(right, field);
 
-    // One rule for every column a Part can fail to answer: an unknown value
-    // sinks in *both* directions, the same way a record with no projection
-    // does. Otherwise an ascending sort opens on a screenful of "—" — which
-    // is exactly what `sort=releaseAt&dir=asc` used to do, because a null
-    // date reads as -Infinity and -Infinity sorts first.
-    const unknown = unknownFor(field);
-    if (unknown) {
-      const leftUnknown = unknown(leftPart);
-      const rightUnknown = unknown(rightPart);
-      if (leftUnknown && rightUnknown) return 0;
-      if (leftUnknown) return 1;
-      if (rightUnknown) return -1;
-    }
-
-    const leftValue = sortValueOf(leftPart, field);
-    const rightValue = sortValueOf(rightPart, field);
-    // Equality first: two undated Parts both read -Infinity, and subtracting
-    // those gives NaN, which sort() would treat as an arbitrary order.
+    // Whatever cannot answer this column sinks in *both* directions rather
+    // than pretending to be a zero or an infinitely old date. An ascending
+    // sort must not open on a screenful of "—".
+    if (leftValue === undefined && rightValue === undefined) return 0;
+    if (leftValue === undefined) return 1;
+    if (rightValue === undefined) return -1;
     if (leftValue === rightValue) return 0;
     return (leftValue - rightValue) * factor;
   });

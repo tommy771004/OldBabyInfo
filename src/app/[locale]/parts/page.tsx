@@ -34,6 +34,7 @@ import {
   publishableCatalogRecords,
   sortCatalogPartRecords,
   withProjectedSearchAliases,
+  type CatalogSortValue,
 } from "@/lib/parts/catalog-part-rows.ts";
 import type { SortDirection, SortField } from "@/lib/parts/filter-sort.ts";
 import { parseFilterSortParams, type FilterSortState } from "@/lib/parts/parse-filter-sort-params.ts";
@@ -46,6 +47,7 @@ import {
   composeBeybladeName,
   composeBeybladeStats,
   composeBeybladeWeight,
+  type PartNameIndex,
 } from "@/lib/generation-catalog/beyblade-name.ts";
 import { weightRangeOf } from "@/lib/parts/part-weight.ts";
 import type { CatalogRowFacts } from "./catalog-part-table.tsx";
@@ -135,6 +137,8 @@ export default async function PartsPage({
       : selectCatalogRecordsForPage(searchableRecords, selectedGeneration, false)
         .filter((record) => !selectedSystem || record.system === selectedSystem),
   );
+  const partNameIndex = buildPartNameIndex(getAllParts());
+  const factsForRecord = makeRowFacts(locale, partNameIndex);
   const facets = parseCatalogFacetParams({
     playstyle: firstParam(catalogParams.playstyle),
     spin: firstParam(catalogParams.spin),
@@ -143,9 +147,18 @@ export default async function PartsPage({
     height: firstParam(catalogParams.height),
   });
   const faceted = filterCatalogRecordsByFacets(publishable, getLegacyPartForCatalogRecord, facets);
+  // Sorting reads the same facts the table prints, so a complete Beyblade
+  // sorts on its Combo's numbers rather than falling to the bottom for having
+  // no Stat block of its own.
+  const sortValueFor: CatalogSortValue = (record, field) => {
+    const facts = factsForRecord(record);
+    if (field === "weight") return facts.weight ? (facts.weight.min + facts.weight.max) / 2 : undefined;
+    if (field === "releaseAt") return facts.releaseAt ? Date.parse(facts.releaseAt) : undefined;
+    return facts[field];
+  };
   const browserRecords = state.sort
-    ? sortCatalogPartRecords(faceted, getLegacyPartForCatalogRecord, state.sort, state.direction)
-    : projectedRecordsFirst(faceted, getLegacyPartForCatalogRecord);
+    ? sortCatalogPartRecords(faceted, sortValueFor, state.sort, state.direction)
+    : projectedRecordsFirst(faceted, (record) => factsForRecord(record).attack !== undefined);
   // Facet chips offer only values present before facet filtering, so picking
   // one never leaves the row showing options that would empty the page.
   const facetValues = availableFacetValues(
@@ -168,12 +181,54 @@ export default async function PartsPage({
       searchAcrossGenerations={searchAcrossGenerations}
       facets={facets}
       facetValues={facetValues}
+      factsForRecord={factsForRecord}
     />
   );
 }
 
 function firstParam(value: string | string[] | undefined): string | undefined {
   return Array.isArray(value) ? value[0] : value;
+}
+
+/**
+ * One row's facts, whichever tab it is on. A Part answers from its own Stat
+ * block; a complete Beyblade answers from the Combo its Parts make
+ * (ADR-0007) — without this the 陀螺 tab listed 228 products carrying no
+ * numbers while every number sat one tab over under their Parts.
+ *
+ * Module scope on purpose: the sort and the table must agree on what a row
+ * is worth, and two copies of this rule would eventually disagree.
+ */
+function makeRowFacts(locale: Locale, partNameIndex: PartNameIndex) {
+  return (record: GenerationCatalogRecord): CatalogRowFacts => {
+    const part = getLegacyPartForCatalogRecord(record.id);
+    if (part) {
+      return {
+        name: localizedNameOf(part, locale),
+        href: `/parts/${slugify(part.nameEn)}`,
+        attack: part.stats.attack,
+        defense: part.stats.defense,
+        stamina: part.stats.stamina,
+        xDash: part.type === "bit" ? part.stats.xDash : undefined,
+        burstResistance: part.type === "bit" ? part.stats.burstResistance : undefined,
+        weight: weightRangeOf(part),
+        releaseAt: part.releaseAt,
+      };
+    }
+
+    const combo = composeBeybladeStats(record, partNameIndex);
+    const assembled = composeBeybladeWeight(record, partNameIndex);
+    return {
+      name: composeBeybladeName(record, partNameIndex, locale) ?? record.name,
+      href: `/parts/catalog/${encodeURIComponent(record.id)}`,
+      attack: combo?.attack,
+      defense: combo?.defense,
+      stamina: combo?.stamina,
+      xDash: combo?.xDash,
+      burstResistance: combo?.burstResistance,
+      weight: assembled === undefined ? undefined : { min: assembled, max: assembled },
+    };
+  };
 }
 
 /**
@@ -328,6 +383,7 @@ function PartsPageBody({
   searchAcrossGenerations,
   facets,
   facetValues,
+  factsForRecord,
 }: {
   locale: Locale;
   state: FilterSortState;
@@ -342,6 +398,7 @@ function PartsPageBody({
   searchAcrossGenerations?: boolean;
   facets: CatalogFacetState;
   facetValues: ReturnType<typeof availableFacetValues>;
+  factsForRecord: (record: GenerationCatalogRecord) => CatalogRowFacts;
 }) {
   const t = useTranslations("PartsPage");
   const localePrefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
@@ -358,41 +415,6 @@ function PartsPageBody({
     const imagePart = beybladeImagePartOf(record, partNameIndex)
       ?? getLegacyPartForCatalogRecord(record.id);
     return imagePart ? getPartImage(imagePart.id) : undefined;
-  };
-  /**
-   * One row's facts, whichever tab it is on. A Part answers from its own Stat
-   * block; a complete Beyblade answers from the Combo its Parts make
-   * (ADR-0007) — without this the 陀螺 tab listed 228 products carrying no
-   * numbers while every number sat one tab over under their Parts.
-   */
-  const factsFor = (record: GenerationCatalogRecord): CatalogRowFacts => {
-    const part = getLegacyPartForCatalogRecord(record.id);
-    if (part) {
-      return {
-        name: localizedNameOf(part, locale),
-        href: `/parts/${slugify(part.nameEn)}`,
-        attack: part.stats.attack,
-        defense: part.stats.defense,
-        stamina: part.stats.stamina,
-        xDash: part.type === "bit" ? part.stats.xDash : undefined,
-        burstResistance: part.type === "bit" ? part.stats.burstResistance : undefined,
-        weight: weightRangeOf(part),
-        releaseAt: part.releaseAt,
-      };
-    }
-
-    const combo = composeBeybladeStats(record, partNameIndex);
-    const assembled = composeBeybladeWeight(record, partNameIndex);
-    return {
-      name: recordNameFor(record),
-      href: `/parts/catalog/${encodeURIComponent(record.id)}`,
-      attack: combo?.attack,
-      defense: combo?.defense,
-      stamina: combo?.stamina,
-      xDash: combo?.xDash,
-      burstResistance: combo?.burstResistance,
-      weight: assembled === undefined ? undefined : { min: assembled, max: assembled },
-    };
   };
 
   // Both the Parts and the complete Beyblades of a Generation carry numbers
@@ -469,7 +491,7 @@ function PartsPageBody({
           ? (records) => (
             <CatalogPartTable
               records={records}
-              factsFor={factsFor}
+              factsFor={factsForRecord}
               kindLabel={t("catalog_beyblades")}
               sortField={state.sort}
               sortDirection={state.direction}
