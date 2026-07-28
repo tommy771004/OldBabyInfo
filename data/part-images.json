@@ -1,1 +1,807 @@
-{}
+{
+  "0-60": {
+    "url": "/parts/0-60.webp",
+    "width": 354,
+    "height": 323
+  },
+  "0-70": {
+    "url": "/parts/0-70.webp",
+    "width": 351,
+    "height": 319
+  },
+  "0-80": {
+    "url": "/parts/0-80.webp",
+    "width": 336,
+    "height": 304
+  },
+  "1-50": {
+    "url": "/parts/1-50.webp",
+    "width": 357,
+    "height": 334
+  },
+  "1-60": {
+    "url": "/parts/1-60.webp",
+    "width": 356,
+    "height": 335
+  },
+  "1-70": {
+    "url": "/parts/1-70.webp",
+    "width": 353,
+    "height": 325
+  },
+  "1-80": {
+    "url": "/parts/1-80.webp",
+    "width": 313,
+    "height": 300
+  },
+  "2-60": {
+    "url": "/parts/2-60.webp",
+    "width": 358,
+    "height": 334
+  },
+  "2-70": {
+    "url": "/parts/2-70.webp",
+    "width": 355,
+    "height": 319
+  },
+  "2-80": {
+    "url": "/parts/2-80.webp",
+    "width": 354,
+    "height": 332
+  },
+  "3-60": {
+    "url": "/parts/3-60.webp",
+    "width": 346,
+    "height": 299
+  },
+  "3-70": {
+    "url": "/parts/3-70.webp",
+    "width": 357,
+    "height": 327
+  },
+  "3-80": {
+    "url": "/parts/3-80.webp",
+    "width": 348,
+    "height": 302
+  },
+  "3-85": {
+    "url": "/parts/3-85.webp",
+    "width": 306,
+    "height": 279
+  },
+  "4-50": {
+    "url": "/parts/4-50.webp",
+    "width": 354,
+    "height": 323
+  },
+  "4-55": {
+    "url": "/parts/4-55.webp",
+    "width": 356,
+    "height": 320
+  },
+  "4-60": {
+    "url": "/parts/4-60.webp",
+    "width": 326,
+    "height": 294
+  },
+  "4-70": {
+    "url": "/parts/4-70.webp",
+    "width": 302,
+    "height": 281
+  },
+  "4-80": {
+    "url": "/parts/4-80.webp",
+    "width": 326,
+    "height": 295
+  },
+  "5-60": {
+    "url": "/parts/5-60.webp",
+    "width": 340,
+    "height": 304
+  },
+  "5-70": {
+    "url": "/parts/5-70.webp",
+    "width": 359,
+    "height": 320
+  },
+  "5-80": {
+    "url": "/parts/5-80.webp",
+    "width": 340,
+    "height": 303
+  },
+  "6-60": {
+    "url": "/parts/6-60.webp",
+    "width": 358,
+    "height": 324
+  },
+  "6-70": {
+    "url": "/parts/6-70.webp",
+    "width": 350,
+    "height": 316
+  },
+  "6-80": {
+    "url": "/parts/6-80.webp",
+    "width": 357,
+    "height": 320
+  },
+  "7-55": {
+    "url": "/parts/7-55.webp",
+    "width": 227,
+    "height": 205
+  },
+  "7-60": {
+    "url": "/parts/7-60.webp",
+    "width": 338,
+    "height": 314
+  },
+  "7-70": {
+    "url": "/parts/7-70.webp",
+    "width": 354,
+    "height": 325
+  },
+  "7-80": {
+    "url": "/parts/7-80.webp",
+    "width": 357,
+    "height": 327
+  },
+  "8-70": {
+    "url": "/parts/8-70.webp",
+    "width": 357,
+    "height": 322
+  },
+  "9-60": {
+    "url": "/parts/9-60.webp",
+    "width": 343,
+    "height": 313
+  },
+  "9-65": {
+    "url": "/parts/9-65.webp",
+    "width": 356,
+    "height": 317
+  },
+  "9-70": {
+    "url": "/parts/9-70.webp",
+    "width": 354,
+    "height": 320
+  },
+  "9-80": {
+    "url": "/parts/9-80.webp",
+    "width": 348,
+    "height": 315
+  },
+  "A": {
+    "url": "/parts/A.webp",
+    "width": 176,
+    "height": 280
+  },
+  "AEROPEGASUS": {
+    "url": "/parts/AEROPEGASUS.webp",
+    "width": 304,
+    "height": 297
+  },
+  "ARC": {
+    "url": "/parts/ARC.webp",
+    "width": 357,
+    "height": 341
+  },
+  "B": {
+    "url": "/parts/B.webp",
+    "width": 166,
+    "height": 270
+  },
+  "BEARSCRATCH": {
+    "url": "/parts/BEARSCRATCH.webp",
+    "width": 360,
+    "height": 334
+  },
+  "BLACKSHELL": {
+    "url": "/parts/BLACKSHELL.webp",
+    "width": 326,
+    "height": 301
+  },
+  "BLAST": {
+    "url": "/parts/BLAST.webp",
+    "width": 350,
+    "height": 348
+  },
+  "BRAVE": {
+    "url": "/parts/BRAVE.webp",
+    "width": 356,
+    "height": 364
+  },
+  "BRUSH": {
+    "url": "/parts/BRUSH.webp",
+    "width": 356,
+    "height": 367
+  },
+  "BS": {
+    "url": "/parts/BS.webp",
+    "width": 186,
+    "height": 293
+  },
+  "BULLETGRIFFON": {
+    "url": "/parts/BULLETGRIFFON.webp",
+    "width": 304,
+    "height": 293
+  },
+  "C": {
+    "url": "/parts/C.webp",
+    "width": 184,
+    "height": 304
+  },
+  "CLOCKMIRAGE": {
+    "url": "/parts/CLOCKMIRAGE.webp",
+    "width": 356,
+    "height": 329
+  },
+  "COBALTDRAGOON": {
+    "url": "/parts/COBALTDRAGOON.webp",
+    "width": 358,
+    "height": 338
+  },
+  "COBALTDRAKE": {
+    "url": "/parts/COBALTDRAKE.webp",
+    "width": 304,
+    "height": 283
+  },
+  "CRIMSONGARUDA": {
+    "url": "/parts/CRIMSONGARUDA.webp",
+    "width": 354,
+    "height": 341
+  },
+  "D": {
+    "url": "/parts/D.webp",
+    "width": 177,
+    "height": 287
+  },
+  "DARK": {
+    "url": "/parts/DARK.webp",
+    "width": 356,
+    "height": 338
+  },
+  "DRACIELSHIELD": {
+    "url": "/parts/DRACIELSHIELD.webp",
+    "width": 358,
+    "height": 346
+  },
+  "DRAGOONSTORM": {
+    "url": "/parts/DRAGOONSTORM.webp",
+    "width": 356,
+    "height": 338
+  },
+  "DRANBUSTER": {
+    "url": "/parts/DRANBUSTER.webp",
+    "width": 354,
+    "height": 342
+  },
+  "DRANDAGGER": {
+    "url": "/parts/DRANDAGGER.webp",
+    "width": 350,
+    "height": 351
+  },
+  "DRANSWORD": {
+    "url": "/parts/DRANSWORD.webp",
+    "width": 347,
+    "height": 342
+  },
+  "DRANZERSPIRAL": {
+    "url": "/parts/DRANZERSPIRAL.webp",
+    "width": 350,
+    "height": 287
+  },
+  "DRIGERSLASH": {
+    "url": "/parts/DRIGERSLASH.webp",
+    "width": 370,
+    "height": 356
+  },
+  "E": {
+    "url": "/parts/E.webp",
+    "width": 265,
+    "height": 297
+  },
+  "ECLIPSE": {
+    "url": "/parts/ECLIPSE.webp",
+    "width": 356,
+    "height": 364
+  },
+  "F": {
+    "url": "/parts/F.webp",
+    "width": 163,
+    "height": 278
+  },
+  "FANG": {
+    "url": "/parts/FANG.webp",
+    "width": 166,
+    "height": 161
+  },
+  "FB": {
+    "url": "/parts/FB.webp",
+    "width": 180,
+    "height": 282
+  },
+  "FLAME": {
+    "url": "/parts/FLAME.webp",
+    "width": 356,
+    "height": 363
+  },
+  "FLARE": {
+    "url": "/parts/FLARE.webp",
+    "width": 358,
+    "height": 356
+  },
+  "G": {
+    "url": "/parts/G.webp",
+    "width": 181,
+    "height": 294
+  },
+  "GB": {
+    "url": "/parts/GB.webp",
+    "width": 173,
+    "height": 288
+  },
+  "GF": {
+    "url": "/parts/GF.webp",
+    "width": 169,
+    "height": 297
+  },
+  "GHOSTCIRCLE": {
+    "url": "/parts/GHOSTCIRCLE.webp",
+    "width": 358,
+    "height": 335
+  },
+  "GN": {
+    "url": "/parts/GN.webp",
+    "width": 187,
+    "height": 303
+  },
+  "GOATTACKLE": {
+    "url": "/parts/GOATTACKLE.webp",
+    "width": 349,
+    "height": 323
+  },
+  "GOLEMROCK": {
+    "url": "/parts/GOLEMROCK.webp",
+    "width": 359,
+    "height": 327
+  },
+  "GP": {
+    "url": "/parts/GP.webp",
+    "width": 158,
+    "height": 281
+  },
+  "GR": {
+    "url": "/parts/GR.webp",
+    "width": 176,
+    "height": 286
+  },
+  "GU": {
+    "url": "/parts/GU.webp",
+    "width": 184,
+    "height": 300
+  },
+  "H": {
+    "url": "/parts/H.webp",
+    "width": 176,
+    "height": 286
+  },
+  "HELLSCHAIN": {
+    "url": "/parts/HELLSCHAIN.webp",
+    "width": 353,
+    "height": 343
+  },
+  "HELLSHAMMER": {
+    "url": "/parts/HELLSHAMMER.webp",
+    "width": 356,
+    "height": 334
+  },
+  "HELLSSCYTHE": {
+    "url": "/parts/HELLSSCYTHE.webp",
+    "width": 349,
+    "height": 331
+  },
+  "HN": {
+    "url": "/parts/HN.webp",
+    "width": 161,
+    "height": 262
+  },
+  "HT": {
+    "url": "/parts/HT.webp",
+    "width": 168,
+    "height": 292
+  },
+  "HUNT": {
+    "url": "/parts/HUNT.webp",
+    "width": 358,
+    "height": 358
+  },
+  "I": {
+    "url": "/parts/I.webp",
+    "width": 183,
+    "height": 285
+  },
+  "IMPACTDRAKE": {
+    "url": "/parts/IMPACTDRAKE.webp",
+    "width": 358,
+    "height": 335
+  },
+  "J": {
+    "url": "/parts/J.webp",
+    "width": 126,
+    "height": 196
+  },
+  "K": {
+    "url": "/parts/K.webp",
+    "width": 184,
+    "height": 301
+  },
+  "KNIGHTLANCE": {
+    "url": "/parts/KNIGHTLANCE.webp",
+    "width": 356,
+    "height": 332
+  },
+  "KNIGHTMAIL": {
+    "url": "/parts/KNIGHTMAIL.webp",
+    "width": 354,
+    "height": 321
+  },
+  "KNIGHTSHIELD": {
+    "url": "/parts/KNIGHTSHIELD.webp",
+    "width": 355,
+    "height": 346
+  },
+  "L": {
+    "url": "/parts/L.webp",
+    "width": 177,
+    "height": 292
+  },
+  "LEONCLAW": {
+    "url": "/parts/LEONCLAW.webp",
+    "width": 361,
+    "height": 350
+  },
+  "LEONCREST": {
+    "url": "/parts/LEONCREST.webp",
+    "width": 347,
+    "height": 342
+  },
+  "LF": {
+    "url": "/parts/LF.webp",
+    "width": 156,
+    "height": 268
+  },
+  "LIGHTNING L-DRAGO": {
+    "url": "/parts/LIGHTNING_L-DRAGO.webp",
+    "width": 357,
+    "height": 337
+  },
+  "LO": {
+    "url": "/parts/LO.webp",
+    "width": 186,
+    "height": 283
+  },
+  "LR": {
+    "url": "/parts/LR.webp",
+    "width": 181,
+    "height": 290
+  },
+  "M": {
+    "url": "/parts/M.webp",
+    "width": 177,
+    "height": 277
+  },
+  "M-85": {
+    "url": "/parts/M-85.webp",
+    "width": 353,
+    "height": 323
+  },
+  "METEORDRAGOON": {
+    "url": "/parts/METEORDRAGOON.webp",
+    "width": 317,
+    "height": 312
+  },
+  "MIGHT": {
+    "url": "/parts/MIGHT.webp",
+    "width": 357,
+    "height": 356
+  },
+  "MN": {
+    "url": "/parts/MN.webp",
+    "width": 176,
+    "height": 292
+  },
+  "MUMMYCURSE": {
+    "url": "/parts/MUMMYCURSE.webp",
+    "width": 341,
+    "height": 331
+  },
+  "N": {
+    "url": "/parts/N.webp",
+    "width": 166,
+    "height": 261
+  },
+  "O": {
+    "url": "/parts/O.webp",
+    "width": 164,
+    "height": 292
+  },
+  "Op": {
+    "url": "/parts/Op.webp",
+    "width": 358,
+    "height": 288
+  },
+  "OROCHICLUSTER": {
+    "url": "/parts/OROCHICLUSTER.webp",
+    "width": 486,
+    "height": 505
+  },
+  "P": {
+    "url": "/parts/P.webp",
+    "width": 163,
+    "height": 288
+  },
+  "PHOENIXFEATHER": {
+    "url": "/parts/PHOENIXFEATHER.webp",
+    "width": 270,
+    "height": 255
+  },
+  "PHOENIXRUDDER": {
+    "url": "/parts/PHOENIXRUDDER.webp",
+    "width": 340,
+    "height": 330
+  },
+  "PHOENIXWING": {
+    "url": "/parts/PHOENIXWING.webp",
+    "width": 322,
+    "height": 305
+  },
+  "PTERASWING": {
+    "url": "/parts/PTERASWING.webp",
+    "width": 351,
+    "height": 325
+  },
+  "Q": {
+    "url": "/parts/Q.webp",
+    "width": 170,
+    "height": 284
+  },
+  "R": {
+    "url": "/parts/R.webp",
+    "width": 173,
+    "height": 294
+  },
+  "RA": {
+    "url": "/parts/RA.webp",
+    "width": 229,
+    "height": 292
+  },
+  "RAGE": {
+    "url": "/parts/RAGE.webp",
+    "width": 353,
+    "height": 328
+  },
+  "REAPER": {
+    "url": "/parts/REAPER.webp",
+    "width": 355,
+    "height": 357
+  },
+  "RHINOHORN": {
+    "url": "/parts/RHINOHORN.webp",
+    "width": 364,
+    "height": 350
+  },
+  "ROCKLEONE": {
+    "url": "/parts/ROCKLEONE.webp",
+    "width": 358,
+    "height": 338
+  },
+  "S": {
+    "url": "/parts/S.webp",
+    "width": 171,
+    "height": 280
+  },
+  "SAMURAICALIBUR": {
+    "url": "/parts/SAMURAICALIBUR.webp",
+    "width": 357,
+    "height": 327
+  },
+  "SAMURAISABER": {
+    "url": "/parts/SAMURAISABER.webp",
+    "width": 350,
+    "height": 337
+  },
+  "SAMURAISTEEL": {
+    "url": "/parts/SAMURAISTEEL.webp",
+    "width": 330,
+    "height": 335
+  },
+  "SCORPIOSPEAR": {
+    "url": "/parts/SCORPIOSPEAR.webp",
+    "width": 359,
+    "height": 340
+  },
+  "SHARKEDGE": {
+    "url": "/parts/SHARKEDGE.webp",
+    "width": 354,
+    "height": 350
+  },
+  "SHARKGILL": {
+    "url": "/parts/SHARKGILL.webp",
+    "width": 358,
+    "height": 361
+  },
+  "SHARKSCALE": {
+    "url": "/parts/SHARKSCALE.webp",
+    "width": 359,
+    "height": 340
+  },
+  "SHELTERDRAKE": {
+    "url": "/parts/SHELTERDRAKE.webp",
+    "width": 371,
+    "height": 375
+  },
+  "SHINOBIKNIFE": {
+    "url": "/parts/SHINOBIKNIFE.webp",
+    "width": 287,
+    "height": 287
+  },
+  "SHINOBISHADOW": {
+    "url": "/parts/SHINOBISHADOW.webp",
+    "width": 357,
+    "height": 357
+  },
+  "SILVERWOLF": {
+    "url": "/parts/SILVERWOLF.webp",
+    "width": 359,
+    "height": 342
+  },
+  "SPHINXCOWL": {
+    "url": "/parts/SPHINXCOWL.webp",
+    "width": 359,
+    "height": 356
+  },
+  "STORMPEGASIS": {
+    "url": "/parts/STORMPEGASIS.webp",
+    "width": 306,
+    "height": 291
+  },
+  "STORMSPRIGGAN": {
+    "url": "/parts/STORMSPRIGGAN.webp",
+    "width": 304,
+    "height": 311
+  },
+  "T": {
+    "url": "/parts/T.webp",
+    "width": 166,
+    "height": 273
+  },
+  "TK": {
+    "url": "/parts/TK.webp",
+    "width": 213,
+    "height": 285
+  },
+  "TP": {
+    "url": "/parts/TP.webp",
+    "width": 205,
+    "height": 276
+  },
+  "Tr": {
+    "url": "/parts/Tr.webp",
+    "width": 355,
+    "height": 297
+  },
+  "TRICERAPRESS": {
+    "url": "/parts/TRICERAPRESS.webp",
+    "width": 356,
+    "height": 332
+  },
+  "TYRANNOBEAT": {
+    "url": "/parts/TYRANNOBEAT.webp",
+    "width": 309,
+    "height": 285
+  },
+  "TYRANNOROAR": {
+    "url": "/parts/TYRANNOROAR.webp",
+    "width": 349,
+    "height": 330
+  },
+  "U": {
+    "url": "/parts/U.webp",
+    "width": 182,
+    "height": 285
+  },
+  "UF": {
+    "url": "/parts/UF.webp",
+    "width": 181,
+    "height": 278
+  },
+  "UN": {
+    "url": "/parts/UN.webp",
+    "width": 187,
+    "height": 271
+  },
+  "UNICORNSTING": {
+    "url": "/parts/UNICORNSTING.webp",
+    "width": 358,
+    "height": 339
+  },
+  "V": {
+    "url": "/parts/V.webp",
+    "width": 174,
+    "height": 288
+  },
+  "VICTORYVALKYRIE": {
+    "url": "/parts/VICTORYVALKYRIE.webp",
+    "width": 358,
+    "height": 346
+  },
+  "VIPERTAIL": {
+    "url": "/parts/VIPERTAIL.webp",
+    "width": 358,
+    "height": 343
+  },
+  "VOLT": {
+    "url": "/parts/VOLT.webp",
+    "width": 800,
+    "height": 800
+  },
+  "W": {
+    "url": "/parts/W.webp",
+    "width": 173,
+    "height": 272
+  },
+  "WB": {
+    "url": "/parts/WB.webp",
+    "width": 183,
+    "height": 300
+  },
+  "WEISSTIGER": {
+    "url": "/parts/WEISSTIGER.webp",
+    "width": 359,
+    "height": 331
+  },
+  "WHALEWAVE": {
+    "url": "/parts/WHALEWAVE.webp",
+    "width": 358,
+    "height": 326
+  },
+  "WIZARDARROW": {
+    "url": "/parts/WIZARDARROW.webp",
+    "width": 356,
+    "height": 327
+  },
+  "WIZARDROD": {
+    "url": "/parts/WIZARDROD.webp",
+    "width": 343,
+    "height": 322
+  },
+  "WW": {
+    "url": "/parts/WW.webp",
+    "width": 173,
+    "height": 280
+  },
+  "WYVERNGALE": {
+    "url": "/parts/WYVERNGALE.webp",
+    "width": 325,
+    "height": 310
+  },
+  "WYVERNHOVER": {
+    "url": "/parts/WYVERNHOVER.webp",
+    "width": 306,
+    "height": 287
+  },
+  "XENOXCALIBUR": {
+    "url": "/parts/XENOXCALIBUR.webp",
+    "width": 357,
+    "height": 375
+  },
+  "Y": {
+    "url": "/parts/Y.webp",
+    "width": 243,
+    "height": 232
+  },
+  "Z": {
+    "url": "/parts/Z.webp",
+    "width": 175,
+    "height": 275
+  }
+}
