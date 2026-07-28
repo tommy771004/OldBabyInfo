@@ -123,6 +123,12 @@ describe("CatalogRecordDetails", () => {
     expect(screen.getByText(labels.emptyComposition)).toBeInTheDocument();
   });
 
+  it("can leave relationship lists to the query result view", () => {
+    renderDetails({ record: mainBlade, showRelated: false });
+
+    expect(screen.queryByRole("region", { name: labels.containedByHeading })).not.toBeInTheDocument();
+  });
+
   it("matches a component written the way the app writes it, not the catalogue name", () => {
     // The composition says "DRANSWORD"; the Part record is "Dran Sword".
     const dranSword = record({ id: "x:part:dran-sword", partType: "blade", name: "Dran Sword", aliases: ["DrSw"] });

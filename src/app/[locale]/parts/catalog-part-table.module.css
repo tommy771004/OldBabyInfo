@@ -11,6 +11,28 @@
   display: none;
 }
 
+.nameCell {
+  vertical-align: top;
+}
+
+.nameCell > a {
+  display: block;
+}
+
+.related {
+  display: block;
+  max-width: 18rem;
+  margin-top: 0.25rem;
+  color: color-mix(in srgb, var(--ink-on-light) 58%, transparent);
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+.relatedLabel {
+  color: color-mix(in srgb, var(--ink-on-light) 46%, transparent);
+  font-weight: 700;
+}
+
 .table {
   width: 100%;
 }

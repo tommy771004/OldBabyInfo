@@ -17,11 +17,14 @@ import {
   beybladeImagePartOf,
   buildPartNameIndex,
   composeBeybladeName,
+  composeBeybladeStats,
+  composeBeybladeWeight,
   productCodeOf,
 } from "@/lib/generation-catalog/beyblade-name.ts";
 import { getPartImage } from "@/lib/parts/repository.ts";
 import Image from "next/image";
 import { pageMetadata } from "@/lib/seo.ts";
+import { CatalogStats } from "@/components/catalog-stats.tsx";
 import styles from "./page.module.css";
 
 export const dynamicParams = false;
@@ -100,6 +103,8 @@ function GenerationCatalogRecordBody({
   // built from its Parts is what a player would actually say out loud.
   const partNameIndex = buildPartNameIndex(getAllParts());
   const composedName = composeBeybladeName(record, partNameIndex, locale);
+  const comboStats = composeBeybladeStats(record, partNameIndex);
+  const comboWeight = composeBeybladeWeight(record, partNameIndex);
   // Related rows read in the same language as the heading above them.
   const recordNameFor = (related: GenerationCatalogRecord) => {
     const projected = getLegacyPartForCatalogRecord(related.id);
@@ -145,12 +150,31 @@ function GenerationCatalogRecordBody({
         </figure>
       ) : null}
 
+      {record.kind === "beyblade" ? (
+        <CatalogStats
+          stats={comboStats}
+          weightGrams={comboWeight}
+          labels={{
+            heading: t("catalog_stats"),
+            attack: t("stat_attack"),
+            defense: t("stat_defense"),
+            stamina: t("stat_stamina"),
+            xDash: t("stat_xDash"),
+            burstResistance: t("stat_burstResistance"),
+            weight: t("weight_column"),
+            note: t("catalog_stats_note"),
+            unavailable: t("catalog_stats_unavailable"),
+          }}
+        />
+      ) : null}
+
       <CatalogRecordDetails
         record={record}
         allRecords={siblings}
         recordHref={(id) => `${prefix}/parts/catalog/${encodeURIComponent(id)}`}
         recordNameFor={recordNameFor}
         legacyPartHref={legacyPart ? `${prefix}/parts/${slugify(legacyPart.nameEn)}` : undefined}
+        showRelated={false}
         labels={{
           kind: t("part_type_column"),
           systemLabel: t("catalog_system"),

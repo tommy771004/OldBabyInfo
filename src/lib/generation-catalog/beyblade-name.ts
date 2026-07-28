@@ -71,6 +71,20 @@ export function composeBeybladeName(
   return names.every((name): name is string => Boolean(name)) ? names.join(" ") : undefined;
 }
 
+/** Reader-facing names for the Parts that make up a complete Beyblade. */
+export function composeBeybladeComponentNames(
+  record: GenerationCatalogRecord,
+  index: PartNameIndex,
+  locale: Locale,
+): Array<string | undefined> {
+  if (record.kind !== "beyblade") return [];
+
+  return record.components.map((component) => {
+    const part = index.find(component.partType, component.name);
+    return part ? localizedNameOf(part, locale) : component.name;
+  });
+}
+
 /**
  * The product code the record came from — `series:BX01_DranSword3-60F` is
  * product BX-01. It is how every player and every shop refers to a complete

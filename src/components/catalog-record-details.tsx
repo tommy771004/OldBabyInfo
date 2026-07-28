@@ -22,9 +22,9 @@ export interface CatalogRecordDetailsLabels {
  * destination, so it gets a destination's layout: what it is, where the
  * claim comes from, and every other record it connects to.
  *
- * A complete Beyblade carries no Stats of its own — those live on its Parts —
- * so its composition list is the substance of the page, and every entry is a
- * link onward to a Part that does have them.
+ * Relationship lists are optional because the full catalog browser is the
+ * better place to compare related results. A focused destination can keep
+ * only its identity, provenance, and computed stats.
  */
 export function CatalogRecordDetails({
   record,
@@ -32,6 +32,7 @@ export function CatalogRecordDetails({
   recordHref,
   recordNameFor = (related) => related.name,
   legacyPartHref,
+  showRelated = true,
   labels,
 }: {
   record: GenerationCatalogRecord;
@@ -41,6 +42,9 @@ export function CatalogRecordDetails({
    *  language, a complete Beyblade spelled out by its Parts. */
   recordNameFor?: (related: GenerationCatalogRecord) => string;
   legacyPartHref?: string;
+  /** The full browser owns cross-record navigation; keep this opt-in for
+   * standalone consumers that still want the relationship lists. */
+  showRelated?: boolean;
   labels: CatalogRecordDetailsLabels;
 }) {
   const parts = record.components.flatMap((component) => {
@@ -87,16 +91,16 @@ export function CatalogRecordDetails({
         </p>
       ) : null}
 
-      {record.kind === "beyblade" ? (
+      {showRelated && record.kind === "beyblade" ? (
         <RecordList heading={labels.compositionHeading} records={parts} recordHref={recordHref} nameFor={recordNameFor} empty={labels.emptyComposition} />
       ) : null}
-      {record.kind === "part" && containingBeyblades.length > 0 ? (
+      {showRelated && record.kind === "part" && containingBeyblades.length > 0 ? (
         <RecordList heading={labels.containedByHeading} records={containingBeyblades} recordHref={recordHref} nameFor={recordNameFor} />
       ) : null}
-      {record.kind === "release" ? (
+      {showRelated && record.kind === "release" ? (
         <RecordList heading={labels.releaseContentsHeading} records={releaseContents} recordHref={recordHref} nameFor={recordNameFor} />
       ) : null}
-      {releases.length > 0 ? (
+      {showRelated && releases.length > 0 ? (
         <RecordList heading={labels.releasesHeading} records={releases} recordHref={recordHref} nameFor={recordNameFor} />
       ) : null}
     </article>

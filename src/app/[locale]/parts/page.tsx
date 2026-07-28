@@ -45,6 +45,7 @@ import { getAllParts, getPartImage } from "@/lib/parts/repository.ts";
 import {
   beybladeImagePartOf,
   buildPartNameIndex,
+  composeBeybladeComponentNames,
   composeBeybladeName,
   composeBeybladeStats,
   composeBeybladeWeight,
@@ -139,7 +140,8 @@ export default async function PartsPage({
         .filter((record) => !selectedSystem || record.system === selectedSystem),
   );
   const partNameIndex = buildPartNameIndex(getAllParts());
-  const factsForRecord = makeRowFacts(locale, partNameIndex);
+  const relatedForRecord = makeRelatedSummary(locale, partNameIndex, searchableRecords);
+  const factsForRecord = makeRowFacts(locale, partNameIndex, relatedForRecord);
   const facets = parseCatalogFacetParams({
     playstyle: firstParam(catalogParams.playstyle),
     spin: firstParam(catalogParams.spin),
@@ -200,7 +202,11 @@ function firstParam(value: string | string[] | undefined): string | undefined {
  * Module scope on purpose: the sort and the table must agree on what a row
  * is worth, and two copies of this rule would eventually disagree.
  */
-function makeRowFacts(locale: Locale, partNameIndex: PartNameIndex) {
+function makeRowFacts(
+  locale: Locale,
+  partNameIndex: PartNameIndex,
+  relatedForRecord: (record: GenerationCatalogRecord) => string | undefined,
+) {
   return (record: GenerationCatalogRecord): CatalogRowFacts => {
     const part = getLegacyPartForCatalogRecord(record.id);
     if (part) {
@@ -214,6 +220,7 @@ function makeRowFacts(locale: Locale, partNameIndex: PartNameIndex) {
         burstResistance: part.type === "bit" ? part.stats.burstResistance : undefined,
         weight: weightRangeOf(part),
         releaseAt: part.releaseAt,
+        related: relatedForRecord(record),
       };
     }
 
@@ -228,7 +235,53 @@ function makeRowFacts(locale: Locale, partNameIndex: PartNameIndex) {
       xDash: combo?.xDash,
       burstResistance: combo?.burstResistance,
       weight: assembled === undefined ? undefined : { min: assembled, max: assembled },
+      related: relatedForRecord(record),
     };
+  };
+}
+
+/** A compact relationship preview belongs in the result list, where it can
+ * help a reader choose a record before opening its focused detail page. */
+function makeRelatedSummary(
+  locale: Locale,
+  partNameIndex: PartNameIndex,
+  records: GenerationCatalogRecord[],
+) {
+  const nameFor = (record: GenerationCatalogRecord) => {
+    const legacy = getLegacyPartForCatalogRecord(record.id);
+    return legacy
+      ? localizedNameOf(legacy, locale)
+      : composeBeybladeName(record, partNameIndex, locale) ?? record.name;
+  };
+  const namesFor = (related: GenerationCatalogRecord[], limit = 3) => {
+    const names = related.slice(0, limit).map(nameFor);
+    return names.length === 0
+      ? undefined
+      : `${names.join(" · ")}${related.length > limit ? ` +${related.length - limit}` : ""}`;
+  };
+
+  return (record: GenerationCatalogRecord): string | undefined => {
+    if (record.kind === "beyblade") {
+      const names = composeBeybladeComponentNames(record, partNameIndex, locale);
+      return names.length > 0 ? names.join(" · ") : undefined;
+    }
+
+    if (record.kind === "part") {
+      return namesFor(records.filter((candidate) => candidate.kind === "beyblade" && candidate.components.some((component) =>
+        component.recordId === record.id ||
+        (component.partType === record.partType && component.name === record.name),
+      )));
+    }
+
+    if (record.kind === "release") {
+      const related = [
+        ...(record.releaseOf ? records.filter((candidate) => candidate.id === record.releaseOf) : []),
+        ...(record.containsRecordIds ?? []).flatMap((id) => records.filter((candidate) => candidate.id === id)),
+      ];
+      return namesFor(related);
+    }
+
+    return undefined;
   };
 }
 
@@ -486,6 +539,7 @@ function PartsPageBody({
         recordCountLabel={(count) => t("catalog_record_count", { count })}
         partTypeLabelFor={partTypeLabelFor}
         recordNameFor={recordNameFor}
+        recordRelatedFor={(record) => factsForRecord(record).related}
         recordImageFor={recordImageFor}
         facetFilters={facetRows}
         renderRecords={showStatTable
@@ -509,6 +563,7 @@ function PartsPageBody({
                 weight: t("weight_column"),
                 weightNote: t("weight_note"),
                 releaseDate: t("release_date"),
+                related: t("catalog_related"),
                 sortLabel: t("sort_label"),
                 empty: t("no_results"),
               }}
@@ -533,6 +588,7 @@ function PartsPageBody({
           searchPlaceholder: t("catalog_search_placeholder"),
           searchSubmitLabel: t("catalog_search_submit"),
           legacyPartLabel: t("catalog_legacy_part"),
+          relatedLabel: t("catalog_related"),
         }}
       />
     </main>

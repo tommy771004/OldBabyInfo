@@ -32,6 +32,7 @@ export interface GenerationCatalogBrowserLabels {
   searchPlaceholder?: string;
   searchSubmitLabel?: string;
   legacyPartLabel?: string;
+  relatedLabel?: string;
 }
 
 interface GenerationCatalogBrowserProps {
@@ -58,6 +59,8 @@ interface GenerationCatalogBrowserProps {
   /** Reader-facing name for a record whose own name is a model string — a
    *  complete Beyblade reads as its Parts. Falls back to `record.name`. */
   recordNameFor?: (record: GenerationCatalogRecord) => string;
+  /** Compact composition/relationship preview shown with each result. */
+  recordRelatedFor?: (record: GenerationCatalogRecord) => string | undefined;
   /** Thumbnail for a record, when one can be resolved. */
   recordImageFor?: (record: GenerationCatalogRecord) => { url: string; width: number; height: number } | undefined;
   /** Filters that only make sense for the selected tab — a Blade's playstyle,
@@ -87,6 +90,7 @@ export function GenerationCatalogBrowser({
   recordCountLabel = (count) => String(count),
   partTypeLabelFor = (partType) => partType,
   recordNameFor = (record) => record.name,
+  recordRelatedFor,
   recordImageFor,
   facetFilters,
   renderRecords,
@@ -242,6 +246,7 @@ export function GenerationCatalogBrowser({
         <ul className={styles.recordGrid} aria-label={labels.heading}>
           {visibleRecords.map((record) => {
             const image = recordImageFor?.(record);
+            const related = recordRelatedFor?.(record);
             return (
               <li className={`${styles.recordCard} current-border`} key={record.id}>
                 {image ? (
@@ -259,6 +264,12 @@ export function GenerationCatalogBrowser({
                   {record.partType ? <span>{partTypeLabelFor(record.partType)}</span> : null}
                 </div>
                 <a className={styles.recordLink} href={recordHref(record.id)}>{recordNameFor(record)}</a>
+                {related ? (
+                  <span className={styles.recordRelated}>
+                    {labels.relatedLabel ? <span className={styles.relatedLabel}>{labels.relatedLabel}: </span> : null}
+                    {related}
+                  </span>
+                ) : null}
               </li>
             );
           })}

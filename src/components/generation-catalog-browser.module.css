@@ -230,6 +230,17 @@
   text-decoration: none;
 }
 
+.recordRelated {
+  color: color-mix(in srgb, var(--ink-on-light) 62%, transparent);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.relatedLabel {
+  color: color-mix(in srgb, var(--ink-on-light) 48%, transparent);
+  font-weight: 700;
+}
+
 .recordLink:hover,
 .recordLink:focus-visible {
   color: var(--accent-on-light);

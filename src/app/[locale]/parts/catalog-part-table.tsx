@@ -18,6 +18,7 @@ export interface CatalogPartTableLabels {
   weight: string;
   weightNote: string;
   releaseDate: string;
+  related?: string;
   sortLabel: string;
   empty: string;
 }
@@ -40,6 +41,7 @@ export interface CatalogRowFacts {
   burstResistance?: number;
   weight?: WeightRange;
   releaseAt?: string | null;
+  related?: string;
 }
 
 /**
@@ -155,6 +157,7 @@ export function CatalogPartTable({
               </td>
               <td className={styles.nameCell} data-label={labels.nameColumn}>
                 <Link href={facts.href}>{facts.name}</Link>
+                {facts.related ? <span className={styles.related}><span className={styles.relatedLabel}>{labels.related ? `${labels.related}: ` : null}</span>{facts.related}</span> : null}
               </td>
               <Cell label={statLabels.attack} value={facts.attack} />
               <Cell label={statLabels.defense} value={facts.defense} />
