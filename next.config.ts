@@ -4,8 +4,8 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
-  // No remote image host is configured while the previously used community
-  // image source has unknown publication rights.
+  // Part photos are served from public/parts, so Next does not need a remote
+  // image host configuration.
 };
 
 export default withNextIntl(nextConfig);

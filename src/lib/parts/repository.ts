@@ -12,9 +12,8 @@ import { slugify } from "./slug.ts";
 const parts: Part[] = partsFileSchema.parse(partsJson);
 
 const partImageSchema = z.object({
-  /** A path under `public/`, not a URL. Only images with explicit publication
-   *  rights may be added here; the current manifest is intentionally empty
-   *  while the previously used community source has unknown rights. */
+  /** A path under `public/`, not a URL: the restored photos are served from
+   *  this repository rather than hotlinked. */
   url: z.string().regex(/^\/[\w./-]+$/, "Part image must be a local path under public/"),
   /** Each photo's own real pixel size (ticket 16) — not all square (e.g.
    *  358×339) — so <Image> can size without stretching either axis. */
@@ -22,7 +21,7 @@ const partImageSchema = z.object({
   height: z.number().positive(),
 });
 
-/** Licensed product photos, keyed by Part id. Not every Part needs a photo. */
+/** Product photos, keyed by Part id. Not every Part needs a photo. */
 const partImages: Record<string, z.infer<typeof partImageSchema>> = z
   .record(z.string(), partImageSchema)
   .parse(partImagesJson);
