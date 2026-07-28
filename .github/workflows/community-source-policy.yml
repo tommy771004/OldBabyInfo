@@ -2,15 +2,20 @@ name: Community source policy gate
 
 on:
   schedule:
-    - cron: "0 18 * * 0" # Sunday 02:00 Asia/Taipei
+    - cron: "0 18 * * 0" # Monday 02:00 Asia/Taipei (Sunday 18:00 UTC)
   workflow_dispatch: {}
 
 permissions:
   contents: read
 
+concurrency:
+  group: community-source-policy
+  cancel-in-progress: false
+
 jobs:
   policy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 

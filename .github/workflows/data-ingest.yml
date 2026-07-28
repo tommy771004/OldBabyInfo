@@ -18,9 +18,14 @@ permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: data-ingest
+  cancel-in-progress: false
+
 jobs:
   ingest-events:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 

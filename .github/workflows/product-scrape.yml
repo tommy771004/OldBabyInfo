@@ -2,8 +2,8 @@ name: Product scrape
 
 on:
   schedule:
-    - cron: "17 2 * * *"
-  workflow_dispatch:
+    - cron: "17 2 * * *" # Daily 10:17 Asia/Taipei (02:17 UTC)
+  workflow_dispatch: {}
 
 permissions:
   contents: read

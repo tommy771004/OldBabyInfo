@@ -16,7 +16,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
@@ -51,6 +51,6 @@ jobs:
           body: |
             `npm run refresh:parts` 與 `npm run refresh:generation-catalog` 產生的 deterministic diff。
 
-            這條管線只匯入 BeyBrew MasterData／beyparts 的結構化 Part 名稱、Stat、Mode、關係與 Stat Edition；不複製程式碼、全文或圖片。請人工審查 `data/parts.json` 後再合併。
+            這條管線只匯入 BeyBrew MasterData／beyparts 的結構化 Part 名稱、Stat、Mode、關係與 Stat Edition，以及 generation catalog 的結構化名稱與關係；不複製程式碼、全文或圖片。請人工審查 `data/parts.json`、`data/generation-catalog.json` 與 Needs Review diff 後再合併。
           branch: auto/official-parts-refresh
           labels: automated-data-ingest
