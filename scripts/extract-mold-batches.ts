@@ -5,7 +5,7 @@
  * model belongs in, unlike ticket 32's structured CSV source.
  *
  * Usage: node scripts/extract-mold-batches.ts <article-url> [--dry-run]
- * Requires OPENROUTER_API_KEY.
+ * Requires OPENROUTER_API_KEY in the shell or in .env.local/.env.
  *
  * Deliberately does NOT write into data/parts.json directly. Two
  * independent models agreeing is a real signal, but a Mold Batch claim is
@@ -93,7 +93,7 @@ async function main() {
 
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) {
-    console.error("OPENROUTER_API_KEY is not set — this script cannot call any model without it.");
+    console.error("OPENROUTER_API_KEY is not set — add it to .env.local or export it in the shell.");
     process.exit(1);
   }
 

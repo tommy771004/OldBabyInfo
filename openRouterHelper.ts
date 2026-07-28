@@ -1,3 +1,7 @@
+import { loadLocalEnv } from "./loadEnv.ts";
+
+loadLocalEnv();
+
 // Social-feed OpenRouter fallback models sourced from https://openrouter.ai/api/v1/models.
 // Last synced 2026-05-21. Ordered by context length descending.
 // EXCLUDED MODELS:
