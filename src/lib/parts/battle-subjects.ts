@@ -60,13 +60,15 @@ function normalize(value: string): string {
 }
 
 function searchTermsOf(subject: BattleSubject): string[] {
+  const playstyleOf = (part: Part) =>
+    part.type === "ratchet" ? undefined : part.playstyle;
   if (subject.kind === "part") {
-    return [subject.nameEn, subject.part.nameJa, subject.part.nameZhTw, ...subject.part.aliases].filter(
+    return [subject.nameEn, subject.part.nameJa, subject.part.nameZhTw, playstyleOf(subject.part), ...subject.part.aliases].filter(
       (value): value is string => Boolean(value),
     );
   }
 
-  return [subject.nameEn, ...subject.parts.flatMap((part) => [part.nameEn, part.nameJa, part.nameZhTw, ...part.aliases])].filter(
+  return [subject.nameEn, ...subject.parts.flatMap((part) => [part.nameEn, part.nameJa, part.nameZhTw, playstyleOf(part), ...part.aliases])].filter(
     (value): value is string => Boolean(value),
   );
 }

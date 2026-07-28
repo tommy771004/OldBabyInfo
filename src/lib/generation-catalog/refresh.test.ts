@@ -145,7 +145,8 @@ describe("refreshGenerationCatalog", () => {
     expect(result.status).toBe("updated");
     if (result.status !== "updated") throw new Error("Expected updated refresh");
     expect(result.accepted.records).toEqual([]);
-    expect(result.needsReview.records).toHaveLength(1);
+    expect(result.needsReview.records).toHaveLength(2);
+    expect(result.needsReview.records.every((item) => item.conflictOf === "x:part:blade")).toBe(true);
     expect(result.diff.needsReview).toEqual(["x:part:blade"]);
   });
 });

@@ -9,14 +9,14 @@ function normalizeOrigin(value: string | undefined): string | undefined {
   return withProtocol.replace(/\/$/, "");
 }
 
-/** Prefer the explicitly configured canonical domain. Vercel fallbacks keep
- * sitemap and canonical URLs valid on deployments where the env var has not
- * been added yet; localhost is intentionally only the local-dev fallback. */
+/** Prefer the explicitly configured canonical domain. Preview deployments must
+ * not become canonical URLs; the documented production host is the safe build
+ * fallback when Vercel has not injected its production-domain variable. */
 export const SITE_URL =
   normalizeOrigin(
     process.env.NEXT_PUBLIC_SITE_URL ??
       process.env.VERCEL_PROJECT_PRODUCTION_URL ??
-      process.env.VERCEL_URL,
+      (process.env.NODE_ENV === "production" ? "https://old-baby-info.vercel.app" : undefined),
   ) ?? "http://localhost:3000";
 const GOOGLE_SITE_VERIFICATION = "6KE8Qp5p0dXMp1etepmmhRmw7fG_SRwVuBampfeCL5M";
 

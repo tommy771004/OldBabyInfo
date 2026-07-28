@@ -39,4 +39,30 @@ describe("createSqlThreadReader", () => {
       },
     ]);
   });
+
+  it("lists all visible Threads for the subject-oriented feed", async () => {
+    const sql: DiscussionSqlClient = {
+      async query(text, params) {
+        expect(text).toContain("ORDER BY t.created_at DESC");
+        expect(params).toBeUndefined();
+        return {
+          rows: [{
+            id: "thread-2",
+            subject_type: "event",
+            subject_id: "event-1",
+            author_id: "user-2",
+            author_name: "Kai",
+            body: "Event note",
+            created_at: "2026-07-26T13:00:00.000Z",
+            hidden_at: null,
+          }],
+        };
+      },
+    };
+
+    await expect(createSqlThreadReader(sql).listVisible()).resolves.toMatchObject([{
+      thread: { id: "thread-2", subjectType: "event", subjectId: "event-1" },
+      authorName: "Kai",
+    }]);
+  });
 });

@@ -4,7 +4,7 @@ import { getAllGuides } from "@/lib/guides/repository.ts";
 import { getAllParts } from "@/lib/parts/repository.ts";
 import { slugify } from "@/lib/parts/slug.ts";
 import { getAllSourceDocuments } from "@/lib/source-documents/repository.ts";
-import { getAllGenerationCatalogRecords } from "@/lib/generation-catalog/repository.ts";
+import { getAllPublishableGenerationCatalogRecords } from "@/lib/generation-catalog/repository.ts";
 import { localizedUrl } from "@/lib/seo.ts";
 
 const sharedPaths = [
@@ -61,7 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entries.push(...localizedEntries(`/sources/${document.id}`));
   }
 
-  for (const record of getAllGenerationCatalogRecords()) {
+  for (const record of getAllPublishableGenerationCatalogRecords()) {
     const pathname = `/parts/catalog/${encodeURIComponent(record.id)}`;
     entries.push(...localizedEntries(pathname));
   }

@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { CatalogRecordDetails } from "@/components/catalog-record-details.tsx";
-import { getGenerationCatalogSnapshot, getLegacyPartForCatalogRecord } from "@/lib/generation-catalog/repository.ts";
+import {
+  getAllPublishableGenerationCatalogRecords,
+  getLegacyPartForCatalogRecord,
+} from "@/lib/generation-catalog/repository.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import type { GenerationCatalogRecord } from "@/lib/generation-catalog/schema.ts";
-import { type Locale } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { slugify } from "@/lib/parts/slug.ts";
@@ -21,7 +24,16 @@ import Image from "next/image";
 import { pageMetadata } from "@/lib/seo.ts";
 import styles from "./page.module.css";
 
-export const dynamic = "force-dynamic";
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return routing.locales.flatMap((locale) =>
+    getAllPublishableGenerationCatalogRecords().map((record) => ({
+      locale,
+      id: record.id,
+    })),
+  );
+}
 
 export async function generateMetadata({
   params,
@@ -35,7 +47,7 @@ export async function generateMetadata({
   } catch {
     return {};
   }
-  const record = getGenerationCatalogSnapshot().records.find((candidate) => candidate.id === recordId);
+  const record = getAllPublishableGenerationCatalogRecords().find((candidate) => candidate.id === recordId);
   if (!record) return {};
   return pageMetadata({
     locale,
@@ -51,14 +63,14 @@ export default async function GenerationCatalogRecordPage({
   params: Promise<{ locale: string; id: string }>;
 }) {
   const { locale, id } = await requireLocale(params);
-  const snapshot = getGenerationCatalogSnapshot();
+  const records = getAllPublishableGenerationCatalogRecords();
   let recordId: string;
   try {
     recordId = decodeURIComponent(id);
   } catch {
     notFound();
   }
-  const record = snapshot.records.find((candidate) => candidate.id === recordId);
+  const record = records.find((candidate) => candidate.id === recordId);
   if (!record) notFound();
 
   return (
@@ -67,7 +79,7 @@ export default async function GenerationCatalogRecordPage({
       record={record}
       // Related records only ever come from the same Generation: a Part is
       // never a component of a Beyblade from another one.
-      siblings={snapshot.records.filter((candidate) => candidate.generationId === record.generationId)}
+      siblings={records.filter((candidate) => candidate.generationId === record.generationId)}
     />
   );
 }

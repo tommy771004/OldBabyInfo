@@ -4,6 +4,7 @@ import type { SubjectType } from "./rules.ts";
 
 export interface ThreadReader {
   listVisibleBySubject(subjectType: SubjectType, subjectId: string): Promise<ThreadWithAuthor[]>;
+  listVisible(): Promise<ThreadWithAuthor[]>;
 }
 
 export function createNeonThreadReader(connectionString: string): ThreadReader {

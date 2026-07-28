@@ -32,6 +32,16 @@ const LIST_VISIBLE_SQL = `
   ORDER BY t.created_at ASC
 `;
 
+const LIST_ALL_VISIBLE_SQL = `
+  SELECT t.id, t.subject_type, t.subject_id, t.author_id, u.display_name AS author_name,
+         t.body, t.created_at, t.hidden_at
+  FROM threads t
+  JOIN app_users u ON u.id = t.author_id
+  WHERE t.hidden_at IS NULL
+    AND t.deleted_at IS NULL
+  ORDER BY t.created_at DESC
+`;
+
 function iso(value: string | Date): string {
   return value instanceof Date ? value.toISOString() : value;
 }
@@ -55,6 +65,10 @@ export function createSqlThreadReader(sql: DiscussionSqlClient) {
   return {
     async listVisibleBySubject(subjectType: SubjectType, subjectId: string): Promise<ThreadWithAuthor[]> {
       const result = await sql.query(LIST_VISIBLE_SQL, [subjectType, subjectId]);
+      return result.rows.map(toThreadWithAuthor);
+    },
+    async listVisible(): Promise<ThreadWithAuthor[]> {
+      const result = await sql.query(LIST_ALL_VISIBLE_SQL);
       return result.rows.map(toThreadWithAuthor);
     },
   };

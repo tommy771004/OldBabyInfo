@@ -24,6 +24,7 @@ import { partsFileSchema, type Part } from "../src/lib/parts/schema.ts";
 import { extractMoldBatchesFromArticle, attachToParts } from "../src/lib/mold-batch/extract.ts";
 import { fetchOpenRouterWithFallback } from "../openRouterHelper.ts";
 import type { CallModel } from "../src/lib/extraction.ts";
+import { moldBatchCandidateListSchema } from "../src/lib/mold-batch/schema.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PARTS_PATH = join(__dirname, "..", "data", "parts.json");
@@ -50,8 +51,21 @@ function buildCallModel(apiKey: string, articleText: string): CallModel {
       (text: string) => text, // pass raw text through; JSON.parse happens below
       model,
     );
-    return { value: JSON.parse(result.text), sourceExcerpt: result.text.slice(0, 500) };
+    const value = JSON.parse(result.text);
+    return { value, sourceExcerpt: sourceExcerptFor(value, articleText) };
   };
+}
+
+function sourceExcerptFor(value: unknown, articleText: string): string {
+  const candidates = moldBatchCandidateListSchema.safeParse(value).success
+    ? moldBatchCandidateListSchema.parse(value)
+    : [];
+  const marker = candidates
+    .flatMap((candidate) => [candidate.partNameRaw, candidate.batchCode, candidate.note])
+    .find((term) => articleText.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
+  if (!marker) return articleText.slice(0, 500);
+  const index = articleText.toLocaleLowerCase().indexOf(marker.toLocaleLowerCase());
+  return articleText.slice(Math.max(0, index - 160), index + 340).trim();
 }
 
 async function fetchArticleText(url: string): Promise<string> {

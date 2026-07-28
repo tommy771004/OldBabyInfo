@@ -97,6 +97,14 @@ function markConflict(record: GenerationCatalogRecord): GenerationCatalogRecord 
   };
 }
 
+function conflictVariant(record: GenerationCatalogRecord, identity: string, index: number) {
+  return markConflict({
+    ...record,
+    id: `${identity}::conflict:${index + 1}`,
+    conflictOf: identity,
+  });
+}
+
 function buildSnapshots(
   previousAccepted: GenerationCatalogSnapshot,
   capturedAt: string,
@@ -155,7 +163,7 @@ export async function refreshGenerationCatalog(
       const candidate = unique[0]!;
       if (unique.length > 1) {
         conflictIds.push(id);
-        review.push(markConflict(candidate));
+        review.push(...unique.map((variant, index) => conflictVariant(variant, id, index)));
       } else if (candidate.publicationStatus === "accepted" && candidate.verificationStatus !== "needs_review") {
         accepted.push(candidate);
       } else {
@@ -166,7 +174,7 @@ export async function refreshGenerationCatalog(
     const skipped = sources.flatMap(({ skippedRecordIds = [] }) => skippedRecordIds);
     const snapshots = buildSnapshots(previousAccepted, capturedAt, sources, accepted, review);
     const diff = diffRecords(previousAccepted.records, snapshots.accepted.records, skipped, [
-      ...review.map((record) => record.id),
+      ...review.map((record) => record.conflictOf ?? record.id),
       ...conflictIds,
     ]);
     return {

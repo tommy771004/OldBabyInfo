@@ -54,13 +54,6 @@ function aliasesOf(record: GoShootRecord): string[] {
   ].filter((value): value is string => Boolean(value?.trim()));
 }
 
-/** The source leaves a field as "" rather than omitting it (Samurai Steel
- *  ships with an empty `chi`), and a blank name is not a name. */
-function presentText(value: string | undefined): string | undefined {
-  const trimmed = value?.trim();
-  return trimmed ? trimmed : undefined;
-}
-
 export function goShootWeightOf(entry: GoShootEntry): number | undefined {
   const raw = entry.stat?.[0];
   if (typeof raw === "number") return raw > 0 ? raw : undefined;
@@ -86,12 +79,10 @@ export function goShootBitShapeOf(entry: GoShootEntry): (typeof BIT_SHAPES)[numb
  * Folds Go-Shoot's structured facts onto Parts already built from the
  * official/app-derived sources, matched on the exact English name.
  *
- * Everything here is additive and never overwrites: a Chinese name or a
- * weight already carried by a Part came from a source higher in the field
- * authority order (ADR-0010), and a community compilation does not get to
- * overrule it. What Go-Shoot uniquely supplies is what nothing else does —
- * the Chinese names for 58 of 63 Blades, per-Part weights, spin direction,
- * and a Bit's ground-contact shape.
+ * Go-Shoot is an unknown-rights community source. ADR-0010 permits its
+ * observations and aliases, but does not permit promoting its names, weights,
+ * spin direction, or shape into authoritative Part fields. Official and
+ * app-derived sources must provide those structural facts.
  */
 export function mergeGoShootFacts(parts: Part[], records: GoShootRecord[]): Part[] {
   const byName = new Map<string, GoShootRecord>();
@@ -106,23 +97,9 @@ export function mergeGoShootFacts(parts: Part[], records: GoShootRecord[]): Part
 
     const aliases = [...new Set([...part.aliases, ...aliasesOf(record)])]
       .filter((alias) => normalizeName(alias) !== normalizeName(part.nameEn));
-    const weightGrams = part.weightGrams ?? goShootWeightOf(record.entry);
-    const nameZhTw = part.nameZhTw ?? presentText(record.entry.names?.chi);
-    const merged: Part = {
+    return {
       ...part,
       aliases,
-      ...(weightGrams === undefined ? {} : { weightGrams }),
-      ...(nameZhTw === undefined ? {} : { nameZhTw }),
     };
-
-    if (merged.type === "blade") {
-      const spinDirection = merged.spinDirection ?? goShootSpinOf(record.entry);
-      return spinDirection === undefined ? merged : { ...merged, spinDirection };
-    }
-    if (merged.type === "bit") {
-      const shape = merged.shape ?? goShootBitShapeOf(record.entry);
-      return shape === undefined ? merged : { ...merged, shape };
-    }
-    return merged;
   });
 }

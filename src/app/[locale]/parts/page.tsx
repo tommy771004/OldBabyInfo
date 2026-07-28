@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { routing, type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import {
+  getAllPublishableGenerationCatalogRecords,
   getGenerationCatalogSnapshot,
   getLegacyPartForCatalogRecord,
 } from "@/lib/generation-catalog/repository.ts";
@@ -113,7 +114,7 @@ export default async function PartsPage({
   // projected names are folded in before the search runs, so a query for
   // 蒼龍神劍 reaches the record that only knows itself as "Dran Sword".
   const searchableRecords = withProjectedSearchAliases(
-    catalog.records,
+    getAllPublishableGenerationCatalogRecords(),
     getLegacyPartForCatalogRecord,
   );
   const foundRecords = hasCatalogSearchParams

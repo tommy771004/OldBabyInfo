@@ -161,8 +161,6 @@ describe("projectedRecordsFirst", () => {
     record({ id: "blade" }),
     record({ id: "assist", partType: "assist_blade" }),
   ];
-  const part = blade("blade", 60, "2022-05-10");
-
   it("opens the list on the Parts that actually carry Stats", () => {
     const ordered = projectedRecordsFirst(records, (record) => record.id === "blade");
 

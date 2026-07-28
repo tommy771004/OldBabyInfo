@@ -89,6 +89,9 @@ export const generationCatalogRecordSchema = z.strictObject({
   colorway: z.string().min(1).optional(),
   reissueOf: z.string().min(1).optional(),
   comboEligible: z.boolean().optional(),
+  /** Every conflicting source variant is retained in Needs Review rather than
+   * silently discarded. This id is only used inside that review snapshot. */
+  conflictOf: z.string().min(1).optional(),
 });
 
 export const generationCatalogSnapshotSchema = z.strictObject({
@@ -170,6 +173,14 @@ export const generationCatalogSnapshotSchema = z.strictObject({
       ctx.issues.push({
         code: "custom",
         message: `Source ${record.sourceId} does not cover generation ${record.generationId}`,
+        input: record,
+      });
+    }
+    const system = ctx.value.systems.find((candidate) => candidate.id === record.system);
+    if (system && system.generationId !== record.generationId) {
+      ctx.issues.push({
+        code: "custom",
+        message: `Record ${record.id} system ${record.system} belongs to ${system.generationId}, not ${record.generationId}`,
         input: record,
       });
     }

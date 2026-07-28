@@ -1,7 +1,6 @@
 import { cleanup, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import { GenerationCatalogBrowser } from "./generation-catalog-browser.tsx";
-import type { GenerationCatalogRecord } from "@/lib/generation-catalog/schema.ts";
 
 const generations = [{
   id: "x" as const,

@@ -12,9 +12,12 @@ import { buildXCatalogCrosswalk, type XCatalogCrosswalk } from "./legacy-x-bridg
 
 const catalog = generationCatalogSnapshotSchema.parse(catalogJson);
 const needsReview = generationCatalogSnapshotSchema.parse(needsReviewJson);
+const publishableCatalogRecords = catalog.records.filter(
+  (record) => record.publicationStatus === "accepted" && record.verificationStatus !== "needs_review",
+);
 const legacyParts = getAllParts();
 const legacyPartById = new Map(legacyParts.map((part) => [part.id, part] as const));
-const xCatalogCrosswalk = buildXCatalogCrosswalk(catalog.records, legacyParts);
+const xCatalogCrosswalk = buildXCatalogCrosswalk(publishableCatalogRecords, legacyParts);
 const legacyPartByCatalogRecordId = new Map(
   xCatalogCrosswalk.matches.map((match) => [
     match.catalogRecordId,
@@ -28,6 +31,11 @@ export function getGenerationCatalogSnapshot(): GenerationCatalogSnapshot {
 
 export function getAllGenerationCatalogRecords(): GenerationCatalogRecord[] {
   return catalog.records;
+}
+
+/** Records safe for public pages, sitemap entries, and search results. */
+export function getAllPublishableGenerationCatalogRecords(): GenerationCatalogRecord[] {
+  return publishableCatalogRecords;
 }
 
 export function getGenerationCatalogRecords(

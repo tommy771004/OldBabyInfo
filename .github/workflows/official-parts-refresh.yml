@@ -30,10 +30,13 @@ jobs:
       - name: Refresh structured official Part facts
         run: npm run refresh:parts
 
+      - name: Refresh generation catalog
+        run: npm run refresh:generation-catalog
+
       - name: Check for deterministic data changes
         id: diff
         run: |
-          if git diff --quiet -- data/parts.json; then
+          if git diff --quiet -- data/parts.json data/generation-catalog.json data/generation-catalog-needs-review.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -46,7 +49,7 @@ jobs:
           commit-message: "資料更新：官方 Part facts"
           title: "官方 Part facts 更新"
           body: |
-            `npm run refresh:parts` 產生的 deterministic diff。
+            `npm run refresh:parts` 與 `npm run refresh:generation-catalog` 產生的 deterministic diff。
 
             這條管線只匯入 BeyBrew MasterData／beyparts 的結構化 Part 名稱、Stat、Mode、關係與 Stat Edition；不複製程式碼、全文或圖片。請人工審查 `data/parts.json` 後再合併。
           branch: auto/official-parts-refresh
