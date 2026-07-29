@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-07-27T03:36:23.675Z",
+  "capturedAt": "2026-07-29T09:22:19.845Z",
   "sources": [
     {
       "id": "takaratomy-history",
@@ -139,11 +139,13 @@
         "weight_disk",
         "blade_base",
         "bit_chip",
+        "core",
+        "engine_gear",
         "spin_gear",
         "support_part"
       ],
       "compatibilityRules": [
-        "attack_ring + weight_disk + blade_base + bit_chip + spin_gear + support_part is system-scoped; incompatible with other Systems."
+        "attack_ring + weight_disk + blade_base + bit_chip + core + engine_gear + spin_gear + support_part is system-scoped; incompatible with other Systems."
       ]
     },
     {
@@ -166,13 +168,12 @@
       "nameEn": "Metal System",
       "partTypes": [
         "face_bolt",
-        "energy_ring",
-        "metal_wheel",
-        "track",
+        "wheel",
+        "spin_track",
         "performance_tip"
       ],
       "compatibilityRules": [
-        "face_bolt + energy_ring + metal_wheel + track + performance_tip is system-scoped; incompatible with other Systems."
+        "face_bolt + wheel + spin_track + performance_tip is system-scoped; incompatible with other Systems."
       ]
     },
     {
@@ -182,12 +183,13 @@
       "partTypes": [
         "face_bolt",
         "energy_ring",
-        "metal_wheel",
-        "track",
+        "fusion_wheel",
+        "light_wheel",
+        "spin_track",
         "performance_tip"
       ],
       "compatibilityRules": [
-        "face_bolt + energy_ring + metal_wheel + track + performance_tip is system-scoped; incompatible with other Systems."
+        "face_bolt + energy_ring + fusion_wheel + light_wheel + spin_track + performance_tip is system-scoped; incompatible with other Systems."
       ]
     },
     {
@@ -196,12 +198,13 @@
       "nameEn": "4D",
       "partTypes": [
         "face_bolt",
-        "metal_wheel",
-        "4d_track",
-        "4d_bottom"
+        "energy_ring",
+        "fusion_wheel",
+        "spin_track",
+        "performance_tip"
       ],
       "compatibilityRules": [
-        "face_bolt + metal_wheel + 4d_track + 4d_bottom is system-scoped; incompatible with other Systems."
+        "face_bolt + energy_ring + fusion_wheel + spin_track + performance_tip is system-scoped; incompatible with other Systems."
       ]
     },
     {
@@ -209,13 +212,14 @@
       "generationId": "metal_fight",
       "nameEn": "Zero-G / Synchrome",
       "partTypes": [
-        "chrome_wheel",
-        "crystal_wheel",
-        "track",
+        "shogun_face_bolt",
+        "warrior_wheel",
+        "element_wheel",
+        "spin_track",
         "performance_tip"
       ],
       "compatibilityRules": [
-        "chrome_wheel + crystal_wheel + track + performance_tip is system-scoped; incompatible with other Systems."
+        "shogun_face_bolt + warrior_wheel + element_wheel + spin_track + performance_tip is system-scoped; incompatible with other Systems."
       ]
     },
     {
@@ -238,10 +242,11 @@
       "partTypes": [
         "layer",
         "disc",
-        "driver"
+        "driver",
+        "frame"
       ],
       "compatibilityRules": [
-        "layer + disc + driver is system-scoped; incompatible with other Systems."
+        "layer + disc + driver + frame is system-scoped; incompatible with other Systems."
       ]
     },
     {
@@ -251,10 +256,11 @@
       "partTypes": [
         "layer",
         "disc",
-        "driver"
+        "driver",
+        "frame"
       ],
       "compatibilityRules": [
-        "layer + disc + driver is system-scoped; incompatible with other Systems."
+        "layer + disc + driver + frame is system-scoped; incompatible with other Systems."
       ]
     },
     {
@@ -264,10 +270,11 @@
       "partTypes": [
         "layer",
         "disc",
-        "driver"
+        "driver",
+        "frame"
       ],
       "compatibilityRules": [
-        "layer + disc + driver is system-scoped; incompatible with other Systems."
+        "layer + disc + driver + frame is system-scoped; incompatible with other Systems."
       ]
     },
     {
@@ -277,10 +284,11 @@
       "partTypes": [
         "layer",
         "disc",
-        "driver"
+        "driver",
+        "frame"
       ],
       "compatibilityRules": [
-        "layer + disc + driver is system-scoped; incompatible with other Systems."
+        "layer + disc + driver + frame is system-scoped; incompatible with other Systems."
       ]
     },
     {
@@ -288,14 +296,16 @@
       "generationId": "burst",
       "nameEn": "Gatinko",
       "partTypes": [
+        "layer",
         "gatinko_chip",
         "weight",
         "base",
         "disc",
-        "driver"
+        "driver",
+        "frame"
       ],
       "compatibilityRules": [
-        "gatinko_chip + weight + base + disc + driver is system-scoped; incompatible with other Systems."
+        "layer + gatinko_chip + weight + base + disc + driver + frame is system-scoped; incompatible with other Systems."
       ]
     },
     {
@@ -306,10 +316,13 @@
         "sparking_chip",
         "ring",
         "chassis",
-        "driver"
+        "weight",
+        "disc",
+        "driver",
+        "frame"
       ],
       "compatibilityRules": [
-        "sparking_chip + ring + chassis + driver is system-scoped; incompatible with other Systems."
+        "sparking_chip + ring + chassis + weight + disc + driver + frame is system-scoped; incompatible with other Systems."
       ]
     },
     {
@@ -386,6 +399,7 @@
       "generationId": "x",
       "nameEn": "CX",
       "partTypes": [
+        "blade",
         "main_blade",
         "assist_blade",
         "lock_chip",
@@ -395,7 +409,7 @@
         "bit"
       ],
       "compatibilityRules": [
-        "main_blade + assist_blade + lock_chip + metal_blade + over_blade + ratchet + bit is system-scoped; incompatible with other Systems."
+        "blade + main_blade + assist_blade + lock_chip + metal_blade + over_blade + ratchet + bit is system-scoped; incompatible with other Systems."
       ]
     }
   ],
@@ -5023,31 +5037,6 @@
       ],
       "sourceId": "beywiki-parts-list",
       "sourceRecordId": "metal_fight:4D SYSTEM:Fang Leone 130W²D",
-      "sourceUrl": "https://www.beywiki.com/index.php?title=Beyblade_Parts_List",
-      "sourceVersion": "revision:12797",
-      "verificationStatus": "needs_review",
-      "publicationStatus": "needs_review"
-    },
-    {
-      "id": "beywiki-parts-list:metal-fight-4d-system-flash-sagittario-230wd-b0c53a9a61",
-      "generationId": "metal_fight",
-      "system": "4D SYSTEM",
-      "kind": "beyblade",
-      "partType": null,
-      "name": "Flash Sagittario 230WD",
-      "aliases": [],
-      "components": [
-        {
-          "partType": "track",
-          "name": "230"
-        },
-        {
-          "partType": "bottom",
-          "name": "Wide Defense"
-        }
-      ],
-      "sourceId": "beywiki-parts-list",
-      "sourceRecordId": "metal_fight:4D SYSTEM:Flash Sagittario 230WD",
       "sourceUrl": "https://www.beywiki.com/index.php?title=Beyblade_Parts_List",
       "sourceVersion": "revision:12797",
       "verificationStatus": "needs_review",

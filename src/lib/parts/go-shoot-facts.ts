@@ -28,6 +28,8 @@ export interface GoShootEntry {
 export interface GoShootRecord {
   abbr: string;
   entry: GoShootEntry;
+  sourceUrl?: string;
+  sourceVersion?: string;
 }
 
 export function parseGoShootFile(file: Record<string, GoShootEntry>): GoShootRecord[] {
@@ -97,9 +99,25 @@ export function mergeGoShootFacts(parts: Part[], records: GoShootRecord[]): Part
 
     const aliases = [...new Set([...part.aliases, ...aliasesOf(record)])]
       .filter((alias) => normalizeName(alias) !== normalizeName(part.nameEn));
+    const addedAliases = aliases.some((alias) => !part.aliases.includes(alias));
+    const provenance =
+      addedAliases && record.sourceUrl && record.sourceVersion
+        ? [
+            ...(part.provenance ?? []),
+            {
+              sourceId: "go-shoot-x",
+              sourceUrl: record.sourceUrl,
+              sourceVersion: record.sourceVersion,
+              authority: "community_source" as const,
+              rightsStatus: "unknown" as const,
+              fields: ["aliases" as const],
+            },
+          ]
+        : part.provenance;
     return {
       ...part,
       aliases,
+      provenance,
     };
   });
 }

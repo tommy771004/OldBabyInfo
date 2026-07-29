@@ -174,7 +174,6 @@ function GenerationCatalogRecordBody({
         recordHref={(id) => `${prefix}/parts/catalog/${encodeURIComponent(id)}`}
         recordNameFor={recordNameFor}
         legacyPartHref={legacyPart ? `${prefix}/parts/${slugify(legacyPart.nameEn)}` : undefined}
-        showRelated={false}
         labels={{
           kind: t("part_type_column"),
           systemLabel: t("catalog_system"),

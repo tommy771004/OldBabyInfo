@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { buildStatEditions, type RawMasterDataEntry } from "./build-stat-editions";
+import {
+  applyOfficialBitDimensions,
+  buildStatEditions,
+  type RawMasterDataEntry,
+} from "./build-stat-editions";
+import { filterXEraEntries } from "./x-release-date";
 
 /** Real MasterData.json defaultStatus shape — rotation/height/weight are
  *  present but irrelevant to stat comparison; dash/burst are the raw names
@@ -24,6 +29,13 @@ function entry(overrides: Partial<RawMasterDataEntry> = {}): RawMasterDataEntry 
 }
 
 describe("buildStatEditions — three-stat parts (blade/ratchet)", () => {
+  it("drops source rows dated before the X generation", () => {
+    expect(filterXEraEntries([
+      entry({ model_name: "Legacy sentinel", release_at: "2022-05-10T00:00:00.000Z" }),
+      entry({ model_name: "Undated", release_at: undefined }),
+      entry({ model_name: "X release", release_at: "2023-07-15T00:00:00.000Z" }),
+    ]).map((candidate) => candidate.model_name)).toEqual(["Undated", "X release"]);
+  });
   it("returns an empty array when every entry shares the canonical stats", () => {
     const entries = [
       entry({ defaultStatus: { attack: 55, defense: 25, stamina: 20 } }),
@@ -88,6 +100,47 @@ describe("buildStatEditions — three-stat parts (blade/ratchet)", () => {
 });
 
 describe("buildStatEditions — five-stat parts (bit)", () => {
+  it("fills Bit-only dimensions from the matching official mode", () => {
+    const entries = [
+      entry({
+        model_name: "CX11_EmperorMightHOp",
+        defaultStatus: { attack: 50, defense: 35, stamina: 10, dash: 35, burst: 30 },
+      }),
+      entry({
+        model_name: "CX11_EmperorMightHOp_Sharp",
+        defaultStatus: { attack: 20, defense: 50, stamina: 50, dash: 10, burst: 30 },
+      }),
+    ];
+
+    expect(applyOfficialBitDimensions(
+      { attack: 50, defense: 35, stamina: 10, xDash: 0, burstResistance: 0 },
+      entries,
+    )).toEqual({
+      attack: 50,
+      defense: 35,
+      stamina: 10,
+      xDash: 35,
+      burstResistance: 30,
+    });
+  });
+
+  it("does not report a declared physical mode as a Stat Edition", () => {
+    const entries = [
+      entry({
+        model_name: "CX11_EmperorMightHOp",
+        defaultStatus: { attack: 50, defense: 35, stamina: 10, dash: 35, burst: 30 },
+      }),
+      entry({
+        model_name: "CX11_EmperorMightHOp_Sharp",
+        defaultStatus: { attack: 20, defense: 50, stamina: 50, dash: 10, burst: 30 },
+      }),
+    ];
+    const attack = { attack: 50, defense: 35, stamina: 10, xDash: 35, burstResistance: 30 };
+    const defense = { attack: 20, defense: 50, stamina: 50, xDash: 10, burstResistance: 30 };
+
+    expect(buildStatEditions(entries, attack, "five", [attack, defense])).toEqual([]);
+  });
+
   it("renames raw dash/burst to xDash/burstResistance", () => {
     const entries = [
       entry({

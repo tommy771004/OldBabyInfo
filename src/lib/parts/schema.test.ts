@@ -8,7 +8,7 @@ function validBlade(overrides: Record<string, unknown> = {}) {
     nameEn: "Dran Sword",
     generation: "X",
     stats: { attack: 60, defense: 30, stamina: 25 },
-    releaseAt: "2022-05-10",
+    releaseAt: "2023-07-15",
     statEditions: [],
     moldBatches: [],
     aliases: [],
@@ -23,7 +23,7 @@ function validBit(overrides: Record<string, unknown> = {}) {
     nameEn: "Flat",
     generation: "X",
     stats: { attack: 40, defense: 15, stamina: 10, xDash: 35, burstResistance: 80 },
-    releaseAt: "2022-05-10",
+    releaseAt: "2023-07-15",
     statEditions: [],
     moldBatches: [],
     aliases: [],
@@ -39,7 +39,7 @@ function validRatchet(overrides: Record<string, unknown> = {}) {
     generation: "X",
     stats: { attack: 15, defense: 9, stamina: 6 },
     height: 60,
-    releaseAt: "2022-05-10",
+    releaseAt: "2023-07-15",
     statEditions: [],
     moldBatches: [],
     aliases: [],
@@ -96,6 +96,17 @@ describe("partSchema", () => {
     expect(result.success).toBe(true);
   });
 
+  it("rejects release dates from before the X generation", () => {
+    expect(partSchema.safeParse(validBlade({ releaseAt: "2022-05-10" })).success).toBe(false);
+    expect(partSchema.safeParse(validBlade({
+      statEditions: [{
+        label: "legacy sentinel",
+        releaseAt: "2022-05-10",
+        stats: { attack: 55, defense: 25, stamina: 20 },
+      }],
+    })).success).toBe(false);
+  });
+
   it("rejects a part with releaseAt omitted entirely — must be explicit, even if null", () => {
     const withoutReleaseAt = {
       id: "DRANSWORD",
@@ -115,7 +126,7 @@ describe("partSchema", () => {
       nameEn: "Dran Sword",
       generation: "X",
       stats: { attack: 60, defense: 30, stamina: 25 },
-      releaseAt: "2022-05-10",
+      releaseAt: "2023-07-15",
     };
     const result = partSchema.safeParse(minimal);
     expect(result.success).toBe(true);
@@ -131,8 +142,8 @@ describe("partSchema", () => {
       validBlade({
         statEditions: [
           {
-            label: "BX-01 (2022 standard release)",
-            releaseAt: "2022-05-10",
+            label: "BX-01 standard release",
+            releaseAt: "2023-07-15",
             stats: { attack: 55, defense: 25, stamina: 20 },
           },
         ],
@@ -222,7 +233,7 @@ describe("partSchema", () => {
       nameEn: "3-60",
       generation: "X",
       stats: { attack: 15, defense: 9, stamina: 6 },
-      releaseAt: "2022-05-10",
+      releaseAt: "2023-07-15",
     };
     const result = partSchema.safeParse(withoutHeight);
     expect(result.success).toBe(false);

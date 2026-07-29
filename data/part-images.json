@@ -2,806 +2,1772 @@
   "0-60": {
     "url": "/parts/0-60.webp",
     "width": 354,
-    "height": 323
+    "height": 323,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/0-60.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "0-70": {
     "url": "/parts/0-70.webp",
     "width": 351,
-    "height": 319
+    "height": 319,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/0-70.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "0-80": {
     "url": "/parts/0-80.webp",
     "width": 336,
-    "height": 304
+    "height": 304,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/0-80.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "1-50": {
     "url": "/parts/1-50.webp",
     "width": 357,
-    "height": 334
+    "height": 334,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/1-50.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "1-60": {
     "url": "/parts/1-60.webp",
     "width": 356,
-    "height": 335
+    "height": 335,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/1-60.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "1-70": {
     "url": "/parts/1-70.webp",
     "width": 353,
-    "height": 325
+    "height": 325,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/1-70.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "1-80": {
     "url": "/parts/1-80.webp",
     "width": 313,
-    "height": 300
+    "height": 300,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/1-80.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "2-60": {
     "url": "/parts/2-60.webp",
     "width": 358,
-    "height": 334
+    "height": 334,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/2-60.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "2-70": {
     "url": "/parts/2-70.webp",
     "width": 355,
-    "height": 319
+    "height": 319,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/2-70.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "2-80": {
     "url": "/parts/2-80.webp",
     "width": 354,
-    "height": 332
+    "height": 332,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/2-80.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "3-60": {
     "url": "/parts/3-60.webp",
     "width": 346,
-    "height": 299
+    "height": 299,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/3-60.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "3-70": {
     "url": "/parts/3-70.webp",
     "width": 357,
-    "height": 327
+    "height": 327,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/3-70.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "3-80": {
     "url": "/parts/3-80.webp",
     "width": 348,
-    "height": 302
+    "height": 302,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/3-80.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "3-85": {
     "url": "/parts/3-85.webp",
     "width": 306,
-    "height": 279
+    "height": 279,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/3-85.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "4-50": {
     "url": "/parts/4-50.webp",
     "width": 354,
-    "height": 323
+    "height": 323,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/4-50.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "4-55": {
     "url": "/parts/4-55.webp",
     "width": 356,
-    "height": 320
+    "height": 320,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/4-55.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "4-60": {
     "url": "/parts/4-60.webp",
     "width": 326,
-    "height": 294
+    "height": 294,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/4-60.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "4-70": {
     "url": "/parts/4-70.webp",
     "width": 302,
-    "height": 281
+    "height": 281,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/4-70.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "4-80": {
     "url": "/parts/4-80.webp",
     "width": 326,
-    "height": 295
+    "height": 295,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/4-80.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "5-60": {
     "url": "/parts/5-60.webp",
     "width": 340,
-    "height": 304
+    "height": 304,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/5-60.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "5-70": {
     "url": "/parts/5-70.webp",
     "width": 359,
-    "height": 320
+    "height": 320,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/5-70.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "5-80": {
     "url": "/parts/5-80.webp",
     "width": 340,
-    "height": 303
+    "height": 303,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/5-80.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "6-60": {
     "url": "/parts/6-60.webp",
     "width": 358,
-    "height": 324
+    "height": 324,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/6-60.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "6-70": {
     "url": "/parts/6-70.webp",
     "width": 350,
-    "height": 316
+    "height": 316,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/6-70.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "6-80": {
     "url": "/parts/6-80.webp",
     "width": 357,
-    "height": 320
+    "height": 320,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/6-80.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "7-55": {
     "url": "/parts/7-55.webp",
     "width": 227,
-    "height": 205
+    "height": 205,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/7-55.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "7-60": {
     "url": "/parts/7-60.webp",
     "width": 338,
-    "height": 314
+    "height": 314,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/7-60.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "7-70": {
     "url": "/parts/7-70.webp",
     "width": 354,
-    "height": 325
+    "height": 325,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/7-70.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "7-80": {
     "url": "/parts/7-80.webp",
     "width": 357,
-    "height": 327
+    "height": 327,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/7-80.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "8-70": {
     "url": "/parts/8-70.webp",
     "width": 357,
-    "height": 322
+    "height": 322,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/8-70.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "9-60": {
     "url": "/parts/9-60.webp",
     "width": 343,
-    "height": 313
+    "height": 313,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/9-60.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "9-65": {
     "url": "/parts/9-65.webp",
     "width": 356,
-    "height": 317
+    "height": 317,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/9-65.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "9-70": {
     "url": "/parts/9-70.webp",
     "width": 354,
-    "height": 320
+    "height": 320,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/9-70.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "9-80": {
     "url": "/parts/9-80.webp",
     "width": 348,
-    "height": 315
+    "height": 315,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/9-80.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "A": {
     "url": "/parts/A.webp",
     "width": 176,
-    "height": 280
+    "height": 280,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/A.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "AEROPEGASUS": {
     "url": "/parts/AEROPEGASUS.webp",
     "width": 304,
-    "height": 297
+    "height": 297,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/ArPg.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "ARC": {
     "url": "/parts/ARC.webp",
     "width": 357,
-    "height": 341
+    "height": 341,
+    "originalUrl": "https://i.postimg.cc/rsQsQG0y/Main-Blade-Arc.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "B": {
     "url": "/parts/B.webp",
     "width": 166,
-    "height": 270
+    "height": 270,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/B.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "BEARSCRATCH": {
     "url": "/parts/BEARSCRATCH.webp",
     "width": 360,
-    "height": 334
+    "height": 334,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/BrSc.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "BLACKSHELL": {
     "url": "/parts/BLACKSHELL.webp",
     "width": 326,
-    "height": 301
+    "height": 301,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/BlSh.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "BLAST": {
     "url": "/parts/BLAST.webp",
     "width": 350,
-    "height": 348
+    "height": 348,
+    "originalUrl": "https://i.postimg.cc/QC0C0g9M/Main-Blade-Blast.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "BRAVE": {
     "url": "/parts/BRAVE.webp",
     "width": 356,
-    "height": 364
+    "height": 364,
+    "originalUrl": "https://i.postimg.cc/XqQqQKGJ/Main-Blade-Brave.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "BRUSH": {
     "url": "/parts/BRUSH.webp",
     "width": 356,
-    "height": 367
+    "height": 367,
+    "originalUrl": "https://i.postimg.cc/7hmhm1Gf/Main-Blade-Brush.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "BS": {
     "url": "/parts/BS.webp",
     "width": 186,
-    "height": 293
+    "height": 293,
+    "originalUrl": "https://i.postimg.cc/Rh9JPVgc/Bit-Bound-Spike.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "BULLETGRIFFON": {
     "url": "/parts/BULLETGRIFFON.webp",
     "width": 304,
-    "height": 293
+    "height": 293,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/BlGr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "C": {
     "url": "/parts/C.webp",
     "width": 184,
-    "height": 304
+    "height": 304,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/C.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "CLOCKMIRAGE": {
     "url": "/parts/CLOCKMIRAGE.webp",
     "width": 356,
-    "height": 329
+    "height": 329,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/ClMr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "COBALTDRAGOON": {
     "url": "/parts/COBALTDRAGOON.webp",
     "width": 358,
-    "height": 338
+    "height": 338,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/CbDg.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "COBALTDRAKE": {
     "url": "/parts/COBALTDRAKE.webp",
     "width": 304,
-    "height": 283
+    "height": 283,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/CbDr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "CRIMSONGARUDA": {
     "url": "/parts/CRIMSONGARUDA.webp",
     "width": 354,
-    "height": 341
+    "height": 341,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/CrGr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "D": {
     "url": "/parts/D.webp",
     "width": 177,
-    "height": 287
+    "height": 287,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/D.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "DARK": {
     "url": "/parts/DARK.webp",
     "width": 356,
-    "height": 338
+    "height": 338,
+    "originalUrl": "https://i.postimg.cc/KjJjJ7kK/Main-Blade-Dark.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "DRACIELSHIELD": {
     "url": "/parts/DRACIELSHIELD.webp",
     "width": 358,
-    "height": 346
+    "height": 346,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/DCS.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade-collab.json",
+    "sourceVersion": "sha256:3ec33c06a0dd1d2fab8de586876d0494de9b097e396873f1c52d4d7454d26aa7",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "DRAGOONSTORM": {
     "url": "/parts/DRAGOONSTORM.webp",
     "width": 356,
-    "height": 338
+    "height": 338,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/DGS.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade-collab.json",
+    "sourceVersion": "sha256:3ec33c06a0dd1d2fab8de586876d0494de9b097e396873f1c52d4d7454d26aa7",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "DRANBUSTER": {
     "url": "/parts/DRANBUSTER.webp",
     "width": 354,
-    "height": 342
+    "height": 342,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/DrBs.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "DRANDAGGER": {
     "url": "/parts/DRANDAGGER.webp",
     "width": 350,
-    "height": 351
+    "height": 351,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/DrDg.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "DRANSWORD": {
     "url": "/parts/DRANSWORD.webp",
     "width": 347,
-    "height": 342
+    "height": 342,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/DrSw.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "DRANZERSPIRAL": {
     "url": "/parts/DRANZERSPIRAL.webp",
     "width": 350,
-    "height": 287
+    "height": 287,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/DZS.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade-collab.json",
+    "sourceVersion": "sha256:3ec33c06a0dd1d2fab8de586876d0494de9b097e396873f1c52d4d7454d26aa7",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "DRIGERSLASH": {
     "url": "/parts/DRIGERSLASH.webp",
     "width": 370,
-    "height": 356
+    "height": 356,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/DRS.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade-collab.json",
+    "sourceVersion": "sha256:3ec33c06a0dd1d2fab8de586876d0494de9b097e396873f1c52d4d7454d26aa7",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "E": {
     "url": "/parts/E.webp",
     "width": 265,
-    "height": 297
+    "height": 297,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/E.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "ECLIPSE": {
     "url": "/parts/ECLIPSE.webp",
     "width": 356,
-    "height": 364
+    "height": 364,
+    "originalUrl": "https://i.postimg.cc/WzXzXmFq/Main-Blade-Eclipse-(Upper-Mode).webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "F": {
     "url": "/parts/F.webp",
     "width": 163,
-    "height": 278
+    "height": 278,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/F.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "FANG": {
     "url": "/parts/FANG.webp",
     "width": 166,
-    "height": 161
+    "height": 161,
+    "originalUrl": "https://i.postimg.cc/MHdHd0Mj/Main-Blade-Fang.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "FB": {
     "url": "/parts/FB.webp",
     "width": 180,
-    "height": 282
+    "height": 282,
+    "originalUrl": "https://i.postimg.cc/zvjb4ZQt/Bit-Free-Ball.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "FLAME": {
     "url": "/parts/FLAME.webp",
     "width": 356,
-    "height": 363
+    "height": 363,
+    "originalUrl": "https://i.postimg.cc/nVkXFxdG/Main-Blade-Flame.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "FLARE": {
     "url": "/parts/FLARE.webp",
     "width": 358,
-    "height": 356
+    "height": 356,
+    "originalUrl": "https://i.postimg.cc/wxV1qzWk/Main-Blade-Flare.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "G": {
     "url": "/parts/G.webp",
     "width": 181,
-    "height": 294
+    "height": 294,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/G.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "GB": {
     "url": "/parts/GB.webp",
     "width": 173,
-    "height": 288
+    "height": 288,
+    "originalUrl": "https://i.postimg.cc/vTzgCFK2/Bit-Gear-Ball.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "GF": {
     "url": "/parts/GF.webp",
     "width": 169,
-    "height": 297
+    "height": 297,
+    "originalUrl": "https://i.postimg.cc/Y03GTKPT/Bit-Gear-Flat.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "GHOSTCIRCLE": {
     "url": "/parts/GHOSTCIRCLE.webp",
     "width": 358,
-    "height": 335
+    "height": 335,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/GhCr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "GN": {
     "url": "/parts/GN.webp",
     "width": 187,
-    "height": 303
+    "height": 303,
+    "originalUrl": "https://i.postimg.cc/J0qDSVF9/Bit-Gear-Needle.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "GOATTACKLE": {
     "url": "/parts/GOATTACKLE.webp",
     "width": 349,
-    "height": 323
+    "height": 323,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/GtTc.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "GOLEMROCK": {
     "url": "/parts/GOLEMROCK.webp",
     "width": 359,
-    "height": 327
+    "height": 327,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/GlRc.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "GP": {
     "url": "/parts/GP.webp",
     "width": 158,
-    "height": 281
+    "height": 281,
+    "originalUrl": "https://i.postimg.cc/yxPg245q/Bit-Gear-Point.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "GR": {
     "url": "/parts/GR.webp",
     "width": 176,
-    "height": 286
+    "height": 286,
+    "originalUrl": "https://i.postimg.cc/zvjb4ZM1/Bit-Gear-Rush.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "GU": {
     "url": "/parts/GU.webp",
     "width": 184,
-    "height": 300
+    "height": 300,
+    "originalUrl": "https://i.postimg.cc/prZh3b72/Bit-Gear-Unite.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "H": {
     "url": "/parts/H.webp",
     "width": 176,
-    "height": 286
+    "height": 286,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/H.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "HELLSCHAIN": {
     "url": "/parts/HELLSCHAIN.webp",
     "width": 353,
-    "height": 343
+    "height": 343,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/HlCh.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "HELLSHAMMER": {
     "url": "/parts/HELLSHAMMER.webp",
     "width": 356,
-    "height": 334
+    "height": 334,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/HlHm.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "HELLSSCYTHE": {
     "url": "/parts/HELLSSCYTHE.webp",
     "width": 349,
-    "height": 331
+    "height": 331,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/HlSc.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "HN": {
     "url": "/parts/HN.webp",
     "width": 161,
-    "height": 262
+    "height": 262,
+    "originalUrl": "https://i.postimg.cc/44b9YV39/Bit-High-Needle.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "HT": {
     "url": "/parts/HT.webp",
     "width": 168,
-    "height": 292
+    "height": 292,
+    "originalUrl": "https://i.postimg.cc/XNcCrdvw/Bit-High-Taper.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "HUNT": {
     "url": "/parts/HUNT.webp",
     "width": 358,
-    "height": 358
+    "height": 358,
+    "originalUrl": "https://i.postimg.cc/XN8rjW2L/Main-Blade-Hunt.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "I": {
     "url": "/parts/I.webp",
     "width": 183,
-    "height": 285
+    "height": 285,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/I.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "IMPACTDRAKE": {
     "url": "/parts/IMPACTDRAKE.webp",
     "width": 358,
-    "height": 335
+    "height": 335,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/ImDr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "J": {
     "url": "/parts/J.webp",
     "width": 126,
-    "height": 196
+    "height": 196,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/J.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "K": {
     "url": "/parts/K.webp",
     "width": 184,
-    "height": 301
+    "height": 301,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/K.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "KNIGHTLANCE": {
     "url": "/parts/KNIGHTLANCE.webp",
     "width": 356,
-    "height": 332
+    "height": 332,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/KnLn.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "KNIGHTMAIL": {
     "url": "/parts/KNIGHTMAIL.webp",
     "width": 354,
-    "height": 321
+    "height": 321,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/KnMl.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "KNIGHTSHIELD": {
     "url": "/parts/KNIGHTSHIELD.webp",
     "width": 355,
-    "height": 346
+    "height": 346,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/KnSh.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "L": {
     "url": "/parts/L.webp",
     "width": 177,
-    "height": 292
+    "height": 292,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/L.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "LEONCLAW": {
     "url": "/parts/LEONCLAW.webp",
     "width": 361,
-    "height": 350
+    "height": 350,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/LnCl.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "LEONCREST": {
     "url": "/parts/LEONCREST.webp",
     "width": 347,
-    "height": 342
+    "height": 342,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/LnCr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "LF": {
     "url": "/parts/LF.webp",
     "width": 156,
-    "height": 268
+    "height": 268,
+    "originalUrl": "https://i.postimg.cc/NG7HKm0J/Bit-Low-Flat.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "LIGHTNING L-DRAGO": {
     "url": "/parts/LIGHTNING_L-DRAGO.webp",
     "width": 357,
-    "height": 337
+    "height": 337,
+    "originalUrl": "https://i.postimg.cc/2SJqsxHb/Blade-Lightning-L-Drago(Upper-Type).webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "LO": {
     "url": "/parts/LO.webp",
     "width": 186,
-    "height": 283
+    "height": 283,
+    "originalUrl": "https://i.postimg.cc/QNkTF1My/Bit-Low-Orb.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "LR": {
     "url": "/parts/LR.webp",
     "width": 181,
-    "height": 290
+    "height": 290,
+    "originalUrl": "https://i.postimg.cc/nVYDXBL5/Bit-Low-Rush.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "M": {
     "url": "/parts/M.webp",
     "width": 177,
-    "height": 277
+    "height": 277,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/M.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "M-85": {
     "url": "/parts/M-85.webp",
     "width": 353,
-    "height": 323
+    "height": 323,
+    "originalUrl": "https://go-shoot.github.io/x/img/ratchet/M-85.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-ratchet.json",
+    "sourceVersion": "sha256:1036fd92b53ba365b99d575fe45e9097905747866f78a62a3f8e8cfd103fca22",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "METEORDRAGOON": {
     "url": "/parts/METEORDRAGOON.webp",
     "width": 317,
-    "height": 312
+    "height": 312,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/MtDg.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "MIGHT": {
     "url": "/parts/MIGHT.webp",
     "width": 357,
-    "height": 356
+    "height": 356,
+    "originalUrl": "https://i.postimg.cc/T29KdxkC/Main-Blade-Might.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "MN": {
     "url": "/parts/MN.webp",
     "width": 176,
-    "height": 292
+    "height": 292,
+    "originalUrl": "https://i.postimg.cc/PrX8YJLF/Bit-Metal-Needle.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "MUMMYCURSE": {
     "url": "/parts/MUMMYCURSE.webp",
     "width": 341,
-    "height": 331
+    "height": 331,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/MmCr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "N": {
     "url": "/parts/N.webp",
     "width": 166,
-    "height": 261
+    "height": 261,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/N.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "O": {
     "url": "/parts/O.webp",
     "width": 164,
-    "height": 292
+    "height": 292,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/O.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "Op": {
     "url": "/parts/Op.webp",
     "width": 358,
-    "height": 288
+    "height": 288,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/Op.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "OROCHICLUSTER": {
     "url": "/parts/OROCHICLUSTER.webp",
     "width": 486,
-    "height": 505
+    "height": 505,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/OrCl.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "P": {
     "url": "/parts/P.webp",
     "width": 163,
-    "height": 288
+    "height": 288,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/P.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "PHOENIXFEATHER": {
     "url": "/parts/PHOENIXFEATHER.webp",
     "width": 270,
-    "height": 255
+    "height": 255,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/PhFt.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "PHOENIXRUDDER": {
     "url": "/parts/PHOENIXRUDDER.webp",
     "width": 340,
-    "height": 330
+    "height": 330,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/PhRd.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "PHOENIXWING": {
     "url": "/parts/PHOENIXWING.webp",
     "width": 322,
-    "height": 305
+    "height": 305,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/PhWn.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "PTERASWING": {
     "url": "/parts/PTERASWING.webp",
     "width": 351,
-    "height": 325
+    "height": 325,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/PtSw.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "Q": {
     "url": "/parts/Q.webp",
     "width": 170,
-    "height": 284
+    "height": 284,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/Q.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "R": {
     "url": "/parts/R.webp",
     "width": 173,
-    "height": 294
+    "height": 294,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/R.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "RA": {
     "url": "/parts/RA.webp",
     "width": 229,
-    "height": 292
+    "height": 292,
+    "originalUrl": "https://i.postimg.cc/8PprMcJT/Bit-Rubber-Accel.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "RAGE": {
     "url": "/parts/RAGE.webp",
     "width": 353,
-    "height": 328
+    "height": 328,
+    "originalUrl": "https://i.postimg.cc/vH0xzyft/Blade-Clock-Mirage.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "REAPER": {
     "url": "/parts/REAPER.webp",
     "width": 355,
-    "height": 357
+    "height": 357,
+    "originalUrl": "https://i.postimg.cc/6608WKHj/Main-Blade-Reaper.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "RHINOHORN": {
     "url": "/parts/RHINOHORN.webp",
     "width": 364,
-    "height": 350
+    "height": 350,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/RhHr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "ROCKLEONE": {
     "url": "/parts/ROCKLEONE.webp",
     "width": 358,
-    "height": 338
+    "height": 338,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/RLn.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade-collab.json",
+    "sourceVersion": "sha256:3ec33c06a0dd1d2fab8de586876d0494de9b097e396873f1c52d4d7454d26aa7",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "S": {
     "url": "/parts/S.webp",
     "width": 171,
-    "height": 280
+    "height": 280,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/S.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SAMURAICALIBUR": {
     "url": "/parts/SAMURAICALIBUR.webp",
     "width": 357,
-    "height": 327
+    "height": 327,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/SmCl.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SAMURAISABER": {
     "url": "/parts/SAMURAISABER.webp",
     "width": 350,
-    "height": 337
+    "height": 337,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/SmSb.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SAMURAISTEEL": {
     "url": "/parts/SAMURAISTEEL.webp",
     "width": 330,
-    "height": 335
+    "height": 335,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/SmSt.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SCORPIOSPEAR": {
     "url": "/parts/SCORPIOSPEAR.webp",
     "width": 359,
-    "height": 340
+    "height": 340,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/ScSp.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SHARKEDGE": {
     "url": "/parts/SHARKEDGE.webp",
     "width": 354,
-    "height": 350
+    "height": 350,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/ShEd.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SHARKGILL": {
     "url": "/parts/SHARKGILL.webp",
     "width": 358,
-    "height": 361
+    "height": 361,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/ShGl.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SHARKSCALE": {
     "url": "/parts/SHARKSCALE.webp",
     "width": 359,
-    "height": 340
+    "height": 340,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/ShSc.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SHELTERDRAKE": {
     "url": "/parts/SHELTERDRAKE.webp",
     "width": 371,
-    "height": 375
+    "height": 375,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/ShDr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SHINOBIKNIFE": {
     "url": "/parts/SHINOBIKNIFE.webp",
     "width": 287,
-    "height": 287
+    "height": 287,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/ShKn.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SHINOBISHADOW": {
     "url": "/parts/SHINOBISHADOW.webp",
     "width": 357,
-    "height": 357
+    "height": 357,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/ShSh.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SILVERWOLF": {
     "url": "/parts/SILVERWOLF.webp",
     "width": 359,
-    "height": 342
+    "height": 342,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/SlWl.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "SPHINXCOWL": {
     "url": "/parts/SPHINXCOWL.webp",
     "width": 359,
-    "height": 356
+    "height": 356,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/SpCw.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "STORMPEGASIS": {
     "url": "/parts/STORMPEGASIS.webp",
     "width": 306,
-    "height": 291
+    "height": 291,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/SPg.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade-collab.json",
+    "sourceVersion": "sha256:3ec33c06a0dd1d2fab8de586876d0494de9b097e396873f1c52d4d7454d26aa7",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "STORMSPRIGGAN": {
     "url": "/parts/STORMSPRIGGAN.webp",
     "width": 304,
-    "height": 311
+    "height": 311,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/S2.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade-collab.json",
+    "sourceVersion": "sha256:3ec33c06a0dd1d2fab8de586876d0494de9b097e396873f1c52d4d7454d26aa7",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "T": {
     "url": "/parts/T.webp",
     "width": 166,
-    "height": 273
+    "height": 273,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/T.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "TK": {
     "url": "/parts/TK.webp",
     "width": 213,
-    "height": 285
+    "height": 285,
+    "originalUrl": "https://i.postimg.cc/hPD7Tvzh/Bit-Trans-Kick.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "TP": {
     "url": "/parts/TP.webp",
     "width": 205,
-    "height": 276
+    "height": 276,
+    "originalUrl": "https://i.postimg.cc/4NfhVy7d/Bit-Trans-Point.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "Tr": {
     "url": "/parts/Tr.webp",
     "width": 355,
-    "height": 297
+    "height": 297,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/Tr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "TRICERAPRESS": {
     "url": "/parts/TRICERAPRESS.webp",
     "width": 356,
-    "height": 332
+    "height": 332,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/TrPr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "TYRANNOBEAT": {
     "url": "/parts/TYRANNOBEAT.webp",
     "width": 309,
-    "height": 285
+    "height": 285,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/TyBt.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "TYRANNOROAR": {
     "url": "/parts/TYRANNOROAR.webp",
     "width": 349,
-    "height": 330
+    "height": 330,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/TyRr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "U": {
     "url": "/parts/U.webp",
     "width": 182,
-    "height": 285
+    "height": 285,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/U.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "UF": {
     "url": "/parts/UF.webp",
     "width": 181,
-    "height": 278
+    "height": 278,
+    "originalUrl": "https://i.postimg.cc/HsY7XncV/Bit-Under-Flat.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "UN": {
     "url": "/parts/UN.webp",
     "width": 187,
-    "height": 271
+    "height": 271,
+    "originalUrl": "https://i.postimg.cc/bNy2krDt/Bit-Under-Needle.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "UNICORNSTING": {
     "url": "/parts/UNICORNSTING.webp",
     "width": 358,
-    "height": 339
+    "height": 339,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/UnSt.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "V": {
     "url": "/parts/V.webp",
     "width": 174,
-    "height": 288
+    "height": 288,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/V.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "VICTORYVALKYRIE": {
     "url": "/parts/VICTORYVALKYRIE.webp",
     "width": 358,
-    "height": 346
+    "height": 346,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/V2.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade-collab.json",
+    "sourceVersion": "sha256:3ec33c06a0dd1d2fab8de586876d0494de9b097e396873f1c52d4d7454d26aa7",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "VIPERTAIL": {
     "url": "/parts/VIPERTAIL.webp",
     "width": 358,
-    "height": 343
+    "height": 343,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/VpTl.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "VOLT": {
     "url": "/parts/VOLT.webp",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "originalUrl": "https://i.postimg.cc/fWKVzs24/Main-Blade-Volt.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "W": {
     "url": "/parts/W.webp",
     "width": 173,
-    "height": 272
+    "height": 272,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/W.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "WB": {
     "url": "/parts/WB.webp",
     "width": 183,
-    "height": 300
+    "height": 300,
+    "originalUrl": "https://i.postimg.cc/FsTkZv3s/Bit-Wall-Ball.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "WEISSTIGER": {
     "url": "/parts/WEISSTIGER.webp",
     "width": 359,
-    "height": 331
+    "height": 331,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/WsTg.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "WHALEWAVE": {
     "url": "/parts/WHALEWAVE.webp",
     "width": 358,
-    "height": 326
+    "height": 326,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/WhWv.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "WIZARDARROW": {
     "url": "/parts/WIZARDARROW.webp",
     "width": 356,
-    "height": 327
+    "height": 327,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/WzAr.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "WIZARDROD": {
     "url": "/parts/WIZARDROD.webp",
     "width": 343,
-    "height": 322
+    "height": 322,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/WzRd.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "WW": {
     "url": "/parts/WW.webp",
     "width": 173,
-    "height": 280
+    "height": 280,
+    "originalUrl": "https://i.postimg.cc/Nfd24tmK/Bit-Wall-Wedge.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "WYVERNGALE": {
     "url": "/parts/WYVERNGALE.webp",
     "width": 325,
-    "height": 310
+    "height": 310,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/WyGl.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "WYVERNHOVER": {
     "url": "/parts/WYVERNHOVER.webp",
     "width": 306,
-    "height": 287
+    "height": 287,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/WyHv.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade.json",
+    "sourceVersion": "sha256:4c38f90fb509d95c2c74d8707d3c21521c01031bd85a383e3f212502345ff546",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "XENOXCALIBUR": {
     "url": "/parts/XENOXCALIBUR.webp",
     "width": 357,
-    "height": 375
+    "height": 375,
+    "originalUrl": "https://go-shoot.github.io/x/img/blade/X2.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-blade-collab.json",
+    "sourceVersion": "sha256:3ec33c06a0dd1d2fab8de586876d0494de9b097e396873f1c52d4d7454d26aa7",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "Y": {
     "url": "/parts/Y.webp",
     "width": 243,
-    "height": 232
+    "height": 232,
+    "originalUrl": "https://i.postimg.cc/sDTGcz7Q/Bit-Yielding.webp",
+    "sourceId": "beybrew-image-index",
+    "sourceUrl": "https://github.com/yujinyuz/beybrew/blob/69b2eeb543b764230de22ba6ef25bccbf671f7a6/src/data/image-urls.json",
+    "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   },
   "Z": {
     "url": "/parts/Z.webp",
     "width": 175,
-    "height": 275
+    "height": 275,
+    "originalUrl": "https://go-shoot.github.io/x/img/bit/Z.png",
+    "sourceId": "go-shoot-x",
+    "sourceUrl": "https://go-shoot.github.io/x/db/part-bit.json",
+    "sourceVersion": "sha256:5a9dc458aba3b3db077c1f73af4d470dcb30eb71627cb37834726ebc3ace279d",
+    "rightsStatus": "unknown",
+    "licenseUrl": null
   }
 }

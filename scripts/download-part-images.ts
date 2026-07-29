@@ -24,10 +24,11 @@
  * Run: node scripts/download-part-images.ts
  */
 import { mkdirSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import sharp from "sharp";
-import { partsFileSchema, type Part } from "../src/lib/parts/schema.ts";
+import { partsFileSchema } from "../src/lib/parts/schema.ts";
 import { readFileSync } from "node:fs";
 import partsJson from "../data/parts.json" with { type: "json" };
 
@@ -50,8 +51,20 @@ interface GoShootEntry {
 
 interface ImageEntry {
   url: string;
+  originalUrl: string;
   width: number;
   height: number;
+  sourceId: "go-shoot-x" | "beybrew-image-index";
+  sourceUrl: string;
+  sourceVersion: string;
+  rightsStatus: "unknown";
+  licenseUrl: null;
+}
+
+interface GoShootImageKey {
+  abbr: string;
+  sourceUrl: string;
+  sourceVersion: string;
 }
 
 function normalize(value: string): string {
@@ -67,16 +80,22 @@ function fileNameOf(partId: string): string {
 
 /** Go-Shoot files are keyed by abbreviation; Ratchets have no `names` at all
  *  because the key ("0-60") is already the Part's real name. */
-async function fetchGoShootAbbrs(): Promise<Map<string, string>> {
-  const byPartName = new Map<string, string>();
+async function fetchGoShootAbbrs(): Promise<Map<string, GoShootImageKey>> {
+  const byPartName = new Map<string, GoShootImageKey>();
 
   for (const [partType, url] of GO_SHOOT_DB) {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
-    const file = await res.json() as Record<string, GoShootEntry>;
+    const body = await res.text();
+    const sourceVersion = `sha256:${createHash("sha256").update(body).digest("hex")}`;
+    const file = JSON.parse(body) as Record<string, GoShootEntry>;
     for (const [abbr, entry] of Object.entries(file)) {
       const name = entry.names?.eng ?? abbr;
-      byPartName.set(`${partType}:${normalize(name)}`, abbr);
+      byPartName.set(`${partType}:${normalize(name)}`, {
+        abbr,
+        sourceUrl: url,
+        sourceVersion,
+      });
     }
   }
 
@@ -115,17 +134,26 @@ async function main() {
   const sourced = { goShoot: 0, existing: 0, missing: [] as string[] };
 
   for (const part of parts) {
-    const abbr = abbrs.get(`${part.type}:${normalize(part.nameEn)}`);
+    const goShoot = abbrs.get(`${part.type}:${normalize(part.nameEn)}`);
     const candidates = [
-      abbr ? `https://go-shoot.github.io/x/img/${part.type}/${abbr}.png` : undefined,
+      goShoot
+        ? {
+            url: `https://go-shoot.github.io/x/img/${part.type}/${goShoot.abbr}.png`,
+            sourceId: "go-shoot-x" as const,
+            sourceUrl: goShoot.sourceUrl,
+            sourceVersion: goShoot.sourceVersion,
+            rightsStatus: "unknown" as const,
+            licenseUrl: null,
+          }
+        : undefined,
       // Already-local entries from a previous run must not be re-fetched as
       // if they were URLs.
-      existing[part.id]?.url.startsWith("http") ? existing[part.id]!.url : undefined,
-    ].filter((url): url is string => Boolean(url));
+      existing[part.id]?.url.startsWith("http") ? existing[part.id] : undefined,
+    ].filter((candidate): candidate is NonNullable<typeof candidate> => Boolean(candidate));
 
     let written = false;
-    for (const [index, url] of candidates.entries()) {
-      const buffer = await download(url);
+    for (const [index, candidate] of candidates.entries()) {
+      const buffer = await download(candidate.url);
       await sleep(120);
       if (!buffer) continue;
 
@@ -142,8 +170,14 @@ async function main() {
       writeFileSync(join(OUTPUT_DIR, fileName), webp);
       manifest[part.id] = {
         url: `${PUBLIC_PREFIX}/${fileName}`,
+        originalUrl: candidate.url,
         width: meta.width,
         height: meta.height,
+        sourceId: candidate.sourceId,
+        sourceUrl: candidate.sourceUrl,
+        sourceVersion: candidate.sourceVersion,
+        rightsStatus: candidate.rightsStatus,
+        licenseUrl: candidate.licenseUrl,
       };
       if (index === 0) sourced.goShoot += 1;
       else sourced.existing += 1;

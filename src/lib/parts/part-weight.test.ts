@@ -48,14 +48,13 @@ describe("weightRangeOf", () => {
     expect(weightSortValueOf(blade([batch("A", { min: 34, max: 36 })]))).toBe(35);
   });
 
-  it("reads the published weight now that the seed carries one", () => {
-    // This assertion used to be `toEqual([])` — no ingested source published
-    // a per-Part weight. Go-Shoot's Part database does, and the seed now
-    // folds it in, so the column carries real figures for most Parts.
+  it("does not promote Go-Shoot observations into published Part weights", () => {
+    // ADR-0010 treats Go-Shoot as a discovery source. Its observations need
+    // a sourced Mold Batch before they can affect a Part's displayed range.
     const weighed = getAllParts().filter((part) => weightRangeOf(part));
 
-    expect(weighed.length).toBeGreaterThan(100);
-    expect(weighed.every((part) => weightRangeOf(part)!.min > 0)).toBe(true);
+    expect(weighed).toEqual([]);
+    expect(getAllParts().every((part) => part.weightGrams === undefined)).toBe(true);
   });
 
   it("prefers a measured batch range over the published figure", () => {

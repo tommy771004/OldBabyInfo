@@ -182,19 +182,19 @@ const generations: GenerationDefinition[] = [
 
 /** `[id, generationId, nameEn, partTypes, compatibilityRule?]` */
 const systemSeeds: Array<[string, GenerationId, string, string[], string?]> = [
-  ["plastic", "bakuten_shoot", "Plastic", ["attack_ring", "weight_disk", "blade_base", "bit_chip", "spin_gear", "support_part"]],
+  ["plastic", "bakuten_shoot", "Plastic", ["attack_ring", "weight_disk", "blade_base", "bit_chip", "core", "engine_gear", "spin_gear", "support_part"]],
   ["hms", "bakuten_shoot", "HMS", ["attack_ring", "running_core", "bit_protector", "weight_disk"]],
-  ["metal_system", "metal_fight", "Metal System", ["face_bolt", "energy_ring", "metal_wheel", "track", "performance_tip"]],
-  ["hybrid_wheel", "metal_fight", "Hybrid Wheel", ["face_bolt", "energy_ring", "metal_wheel", "track", "performance_tip"]],
-  ["4d", "metal_fight", "4D", ["face_bolt", "metal_wheel", "4d_track", "4d_bottom"]],
-  ["zero_g_synchrome", "metal_fight", "Zero-G / Synchrome", ["chrome_wheel", "crystal_wheel", "track", "performance_tip"]],
+  ["metal_system", "metal_fight", "Metal System", ["face_bolt", "wheel", "spin_track", "performance_tip"]],
+  ["hybrid_wheel", "metal_fight", "Hybrid Wheel", ["face_bolt", "energy_ring", "fusion_wheel", "light_wheel", "spin_track", "performance_tip"]],
+  ["4d", "metal_fight", "4D", ["face_bolt", "energy_ring", "fusion_wheel", "spin_track", "performance_tip"]],
+  ["zero_g_synchrome", "metal_fight", "Zero-G / Synchrome", ["shogun_face_bolt", "warrior_wheel", "element_wheel", "spin_track", "performance_tip"]],
   ["burst", "burst", "Burst", ["layer", "disc", "driver"]],
-  ["single_layer", "burst", "Single Layer", ["layer", "disc", "driver"]],
-  ["dual_layer", "burst", "Dual Layer", ["layer", "disc", "driver"]],
-  ["god", "burst", "God Layer", ["layer", "disc", "driver"]],
-  ["cho_z", "burst", "Cho-Z", ["layer", "disc", "driver"]],
-  ["gatinko", "burst", "Gatinko", ["gatinko_chip", "weight", "base", "disc", "driver"]],
-  ["superking", "burst", "Superking", ["sparking_chip", "ring", "chassis", "driver"]],
+  ["single_layer", "burst", "Single Layer", ["layer", "disc", "driver", "frame"]],
+  ["dual_layer", "burst", "Dual Layer", ["layer", "disc", "driver", "frame"]],
+  ["god", "burst", "God Layer", ["layer", "disc", "driver", "frame"]],
+  ["cho_z", "burst", "Cho-Z", ["layer", "disc", "driver", "frame"]],
+  ["gatinko", "burst", "Gatinko", ["layer", "gatinko_chip", "weight", "base", "disc", "driver", "frame"]],
+  ["superking", "burst", "Superking", ["sparking_chip", "ring", "chassis", "weight", "disc", "driver", "frame"]],
   ["dynamite_battle", "burst", "Dynamite Battle", ["db_core", "armor", "blade", "disc", "driver"]],
   ["burst_ultimate", "burst", "Burst Ultimate", ["bu_blade", "db_core", "armor", "disc", "driver"]],
   // Not a fourth line beside BX/UX/CX: the bucket for X Parts that belong to
@@ -209,7 +209,7 @@ const systemSeeds: Array<[string, GenerationId, string, string[], string?]> = [
   ],
   ["bx", "x", "BX", ["blade", "ratchet", "bit"]],
   ["ux", "x", "UX", ["blade", "ratchet", "bit"]],
-  ["cx", "x", "CX", ["main_blade", "assist_blade", "lock_chip", "metal_blade", "over_blade", "ratchet", "bit"]],
+  ["cx", "x", "CX", ["blade", "main_blade", "assist_blade", "lock_chip", "metal_blade", "over_blade", "ratchet", "bit"]],
 ];
 
 const systems: GenerationSystem[] = systemSeeds.map(([id, generationId, nameEn, partTypes, rule]) => ({

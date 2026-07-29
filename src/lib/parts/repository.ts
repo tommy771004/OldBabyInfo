@@ -12,13 +12,19 @@ import { slugify } from "./slug.ts";
 const parts: Part[] = partsFileSchema.parse(partsJson);
 
 const partImageSchema = z.object({
-  /** A path under `public/`, not a URL: the restored photos are served from
-   *  this repository rather than hotlinked. */
-  url: z.string().regex(/^\/[\w./-]+$/, "Part image must be a local path under public/"),
+  /** Local path under public/. Original remote origin remains explicit in
+   *  `originalUrl` and the source metadata below. */
+  url: z.string().regex(/^\/parts\/[\w.-]+\.webp$/),
+  originalUrl: z.url(),
   /** Each photo's own real pixel size (ticket 16) — not all square (e.g.
    *  358×339) — so <Image> can size without stretching either axis. */
   width: z.number().positive(),
   height: z.number().positive(),
+  sourceId: z.enum(["go-shoot-x", "beybrew-image-index"]),
+  sourceUrl: z.url(),
+  sourceVersion: z.string().regex(/^(?:commit:[a-f0-9]{40}|sha256:[a-f0-9]{64})$/),
+  rightsStatus: z.literal("unknown"),
+  licenseUrl: z.url().nullable(),
 });
 
 /** Product photos, keyed by Part id. Not every Part needs a photo. */

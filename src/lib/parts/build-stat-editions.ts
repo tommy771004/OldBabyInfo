@@ -43,6 +43,29 @@ function statsKey(stats: ThreeStat | FiveStat): string {
   return JSON.stringify(stats);
 }
 
+/**
+ * Beyparts supplies cleaned names and the three common dimensions, while
+ * MasterData remains authoritative for the Bit-only dimensions. Match on the
+ * shared values so multi-mode Bits receive the official values as well.
+ */
+export function applyOfficialBitDimensions(
+  stats: FiveStat,
+  entries: RawMasterDataEntry[],
+): FiveStat {
+  const match = entries.find((entry) =>
+    entry.defaultStatus.attack === stats.attack &&
+    entry.defaultStatus.defense === stats.defense &&
+    entry.defaultStatus.stamina === stats.stamina
+  );
+  if (!match) return stats;
+
+  return {
+    ...stats,
+    xDash: match.defaultStatus.dash ?? stats.xDash,
+    burstResistance: match.defaultStatus.burst ?? stats.burstResistance,
+  };
+}
+
 function toDateOnly(iso: string): string {
   return iso.slice(0, 10);
 }
@@ -58,25 +81,29 @@ export function buildStatEditions(
   entries: RawMasterDataEntry[],
   canonicalStats: ThreeStat,
   statKind: "three",
+  modeStats?: ThreeStat[],
 ): StatEdition<ThreeStat>[];
 export function buildStatEditions(
   entries: RawMasterDataEntry[],
   canonicalStats: FiveStat,
   statKind: "five",
+  modeStats?: FiveStat[],
 ): StatEdition<FiveStat>[];
 export function buildStatEditions(
   entries: RawMasterDataEntry[],
   canonicalStats: ThreeStat | FiveStat,
   statKind: StatKind,
+  modeStats: Array<ThreeStat | FiveStat> = [],
 ): StatEdition<ThreeStat | FiveStat>[] {
   const canonicalKey = statsKey(canonicalStats);
+  const modeKeys = new Set(modeStats.map(statsKey));
   const groups = new Map<string, { entry: RawMasterDataEntry; stats: ThreeStat | FiveStat }[]>();
 
   for (const entry of entries) {
     if (isModeChange(entry)) continue;
     const stats = normalizeStats(entry.defaultStatus, statKind);
     const key = statsKey(stats);
-    if (key === canonicalKey) continue;
+    if (key === canonicalKey || modeKeys.has(key)) continue;
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key)!.push({ entry, stats });
   }

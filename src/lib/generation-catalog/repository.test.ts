@@ -51,10 +51,37 @@ describe("generation catalog repository", () => {
     });
   });
 
+  it("keeps every accepted Part kind inside its declared System taxonomy", () => {
+    const snapshot = getGenerationCatalogSnapshot();
+    const systems = new Map(snapshot.systems.map((system) => [system.id, system]));
+
+    expect(snapshot.records
+      .filter((record) => record.kind === "part")
+      .every((part) =>
+        part.partType !== null &&
+        systems.get(part.system)?.partTypes.includes(part.partType),
+      )).toBe(true);
+  });
+
   it("keeps complete Beyblades and component parts as separate record kinds", () => {
     const xRecords = getGenerationCatalogRecords("x");
     expect(xRecords.some((record) => record.kind === "beyblade")).toBe(true);
     expect(xRecords.some((record) => record.kind === "part")).toBe(true);
+  });
+
+  it("links every accepted Beyblade component to a Part in the same generation", () => {
+    const records = getAllGenerationCatalogRecords();
+    const byId = new Map(records.map((record) => [record.id, record]));
+    const beyblades = records.filter((record) => record.kind === "beyblade");
+
+    expect(beyblades.length).toBeGreaterThan(300);
+    expect(beyblades.every((beyblade) =>
+      beyblade.components.every((component) => {
+        const target = component.recordId ? byId.get(component.recordId) : undefined;
+        return target?.kind === "part" &&
+          target.generationId === beyblade.generationId;
+      }),
+    )).toBe(true);
   });
 
   it("keeps X lines and CX subcomponent kinds independently browseable", () => {
@@ -122,7 +149,24 @@ describe("generation catalog repository", () => {
       release.comboEligible === false &&
       release.releaseOf &&
       byId.get(release.releaseOf)?.kind === "beyblade" &&
+      !release.containsRecordIds?.includes(release.releaseOf) &&
       (release.containsRecordIds ?? []).every((id) => byId.has(id)),
+    )).toBe(true);
+  });
+
+  it("keeps X SKUs as Releases instead of duplicate mechanical models", () => {
+    const records = getGenerationCatalogRecords("x");
+    const byId = new Map(records.map((record) => [record.id, record]));
+    const releases = records.filter((record) => record.kind === "release");
+    const compositionKeys = records
+      .filter((record) => record.kind === "beyblade")
+      .map((record) => record.components.map((component) => component.recordId).sort().join("|"));
+
+    expect(releases.length).toBeGreaterThan(150);
+    expect(new Set(compositionKeys).size).toBe(compositionKeys.length);
+    expect(records.some((record) => record.sourceRecordId.includes("_ModeChange"))).toBe(false);
+    expect(releases.every((release) =>
+      Boolean(release.releaseOf && byId.get(release.releaseOf)?.kind === "beyblade"),
     )).toBe(true);
   });
 

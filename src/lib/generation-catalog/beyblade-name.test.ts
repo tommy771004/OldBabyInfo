@@ -121,7 +121,9 @@ describe("against the real seed", () => {
       .filter((entry) => entry.generationId === "x" && entry.kind === "beyblade");
     const named = beyblades.filter((entry) => composeBeybladeName(entry, index, "zh-TW"));
 
-    expect(beyblades.length).toBeGreaterThan(200);
+    // Visual editions and mode rows are Releases/modes now, not duplicate
+    // mechanical Beyblade models.
+    expect(beyblades.length).toBeGreaterThan(150);
     expect(named.length).toBeGreaterThan(100);
   });
 });

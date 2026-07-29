@@ -106,7 +106,9 @@ export const generationCatalogSnapshotSchema = z.strictObject({
   const sourcesById = new Map(ctx.value.sources.map((source) => [source.id, source]));
   const generationIds = new Set(ctx.value.generations.map((generation) => generation.id));
   const systemIds = new Set<string>();
+  const systemsById = new Map<string, z.infer<typeof generationSystemSchema>>();
   const recordIds = new Set<string>();
+  const beybladeCompositions = new Set<string>();
   const recordsById = new Map(ctx.value.records.map((record) => [record.id, record]));
   for (const system of ctx.value.systems) {
     if (systemIds.has(system.id)) {
@@ -117,6 +119,7 @@ export const generationCatalogSnapshotSchema = z.strictObject({
       });
     }
     systemIds.add(system.id);
+    systemsById.set(system.id, system);
     if (!generationIds.has(system.generationId)) {
       ctx.issues.push({
         code: "custom",
@@ -191,6 +194,20 @@ export const generationCatalogSnapshotSchema = z.strictObject({
         input: record,
       });
     }
+    if (
+      record.publicationStatus === "accepted" &&
+      record.kind === "part" &&
+      record.partType !== null
+    ) {
+      const declaredSystem = systemsById.get(record.system);
+      if (declaredSystem && !declaredSystem.partTypes.includes(record.partType)) {
+        ctx.issues.push({
+          code: "custom",
+          message: `Part ${record.id} kind ${record.partType} is not declared by System ${record.system}`,
+          input: record,
+        });
+      }
+    }
     if (record.kind !== "part" && record.partType !== null) {
       ctx.issues.push({
         code: "custom",
@@ -204,6 +221,20 @@ export const generationCatalogSnapshotSchema = z.strictObject({
         message: `${record.kind} record ${record.id} cannot enter a Combo`,
         input: record,
       });
+    }
+    if (record.publicationStatus === "accepted" && record.kind === "beyblade") {
+      const composition = [
+        record.generationId,
+        ...record.components.map((component) => component.recordId ?? component.name).sort(),
+      ].join("|");
+      if (beybladeCompositions.has(composition)) {
+        ctx.issues.push({
+          code: "custom",
+          message: `Duplicate mechanical Beyblade composition: ${record.id}`,
+          input: record,
+        });
+      }
+      beybladeCompositions.add(composition);
     }
     if (record.kind === "release" && record.releaseOf) {
       const target = recordsById.get(record.releaseOf);
@@ -219,9 +250,44 @@ export const generationCatalogSnapshotSchema = z.strictObject({
           message: `Invalid release relationship: ${record.id} must reference a Beyblade`,
           input: record,
         });
+      } else if (target.generationId !== record.generationId) {
+        ctx.issues.push({
+          code: "custom",
+          message: `Cross-generation release relationship: ${record.id} cannot reference ${record.releaseOf}`,
+          input: record,
+        });
+      }
+      if (record.containsRecordIds?.includes(record.releaseOf)) {
+        ctx.issues.push({
+          code: "custom",
+          message: `Release ${record.id} must not repeat releaseOf in containsRecordIds`,
+          input: record,
+        });
       }
     }
+    if (
+      record.containsRecordIds &&
+      new Set(record.containsRecordIds).size !== record.containsRecordIds.length
+    ) {
+      ctx.issues.push({
+        code: "custom",
+        message: `Record ${record.id} contains duplicate relationships`,
+        input: record,
+      });
+    }
     for (const component of record.components) {
+      if (
+        record.publicationStatus === "accepted" &&
+        record.kind === "beyblade" &&
+        !component.recordId
+      ) {
+        ctx.issues.push({
+          code: "custom",
+          message: `Accepted Beyblade ${record.id} component ${component.name} must reference a Part`,
+          input: record,
+        });
+        continue;
+      }
       if (!component.recordId) continue;
       const target = recordsById.get(component.recordId);
       if (!target) {
@@ -234,6 +300,12 @@ export const generationCatalogSnapshotSchema = z.strictObject({
         ctx.issues.push({
           code: "custom",
           message: `Invalid component relationship: ${record.id} must reference a Part`,
+          input: record,
+        });
+      } else if (target.generationId !== record.generationId) {
+        ctx.issues.push({
+          code: "custom",
+          message: `Cross-generation component relationship: ${record.id} cannot reference ${component.recordId}`,
           input: record,
         });
       }

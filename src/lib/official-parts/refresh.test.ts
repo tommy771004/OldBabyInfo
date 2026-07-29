@@ -12,7 +12,7 @@ function blade(overrides: Partial<Part> = {}): Part {
     aliases: [],
     moldBatches: [],
     generation: "X",
-    releaseAt: "2022-05-10",
+    releaseAt: "2023-07-15",
     stats: { attack: 60, defense: 30, stamina: 25 },
     playstyle: "attack",
     modes: [],

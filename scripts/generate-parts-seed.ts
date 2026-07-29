@@ -9,13 +9,19 @@
  * by cross-referencing the same part's raw entries in MasterData.json.
  */
 import { readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { partsFileSchema, type Part } from "../src/lib/parts/schema.ts";
 import {
+  applyOfficialBitDimensions,
   buildStatEditions,
   type RawMasterDataEntry,
 } from "../src/lib/parts/build-stat-editions.ts";
+import {
+  filterXEraEntries,
+  X_GENERATION_START_DATE,
+} from "../src/lib/parts/x-release-date.ts";
 import { cleanLocalizedName } from "../src/lib/parts/clean-localized-name.ts";
 import {
   mergeGoShootFacts,
@@ -39,6 +45,8 @@ const BEYPARTS_URL =
   "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json";
 const MASTERDATA_URL =
   "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json";
+const BEYBREW_COMMIT_URL =
+  "https://api.github.com/repos/yujinyuz/beybrew/commits/main";
 /** The source splits Blades across three files — the main list, the
  *  collaboration Blades (Dranzer, Driger, Pegasis and friends), and the CX
  *  divided Blades. The first two carry Parts this seed knows about; the
@@ -97,8 +105,15 @@ async function fetchJson<T>(url: string): Promise<T> {
 }
 
 async function fetchGoShootFacts(): Promise<GoShootRecord[]> {
-  const files = await Promise.all(GO_SHOOT_PART_URLS.map((url) => fetchJson<GoShootPartRecordFile>(url)));
-  return files.flatMap(parseGoShootFile);
+  const files = await Promise.all(GO_SHOOT_PART_URLS.map(async (sourceUrl) => {
+    const response = await fetch(sourceUrl);
+    if (!response.ok) throw new Error(`Failed to fetch ${sourceUrl}: ${response.status}`);
+    const body = await response.text();
+    const sourceVersion = `sha256:${createHash("sha256").update(body).digest("hex")}`;
+    return parseGoShootFile(JSON.parse(body) as GoShootPartRecordFile)
+      .map((record) => ({ ...record, sourceUrl, sourceVersion }));
+  }));
+  return files.flat();
 }
 
 async function fetchMasterData(): Promise<{
@@ -170,7 +185,7 @@ function localizedNamesOf(entries: RawEntry[]): { ja?: string; zhTw?: string } {
 /** The Part's own release date — when this physical product first went on
  *  sale, as opposed to a Stat Edition's `releaseAt` (a later reissue). */
 function earliestReleaseDateOf(entries: RawEntry[]): string | null {
-  const dated = entries.filter((e) => e.release_at);
+  const dated = filterXEraEntries(entries).filter((e) => e.release_at);
   if (dated.length === 0) return null;
   const earliest = dated.reduce((a, b) =>
     (a.release_at ?? "") < (b.release_at ?? "") ? a : b,
@@ -232,6 +247,8 @@ function isStructuralPlaceholder(e: BeypartsEntry): boolean {
 async function main() {
   console.log("Fetching beyparts.json (canonical names + stats)...");
   const beyparts = await fetchJson<BeypartsFile>(BEYPARTS_URL);
+  const beybrewCommit = await fetchJson<{ sha: string }>(BEYBREW_COMMIT_URL);
+  const beybrewSourceVersion = `commit:${beybrewCommit.sha}`;
 
   console.log("Fetching MasterData.json (for Stat Edition history)...");
   const masterData = await fetchMasterData();
@@ -241,6 +258,38 @@ async function main() {
   const parts: Part[] = [];
   let matched = 0;
   let unmatched = 0;
+  const provenanceFor = (
+    groupMatched: boolean,
+    beypartsFields: Array<
+      "id" | "nameEn" | "aliases" | "stats" | "playstyle" | "modes" | "height"
+    >,
+  ): Part["provenance"] => [
+    {
+      sourceId: "beybrew-beyparts",
+      sourceUrl: BEYPARTS_URL,
+      sourceVersion: beybrewSourceVersion,
+      authority: "community_source",
+      rightsStatus: "structured_facts_only",
+      fields: beypartsFields,
+    },
+    ...(groupMatched
+      ? [{
+          sourceId: "beybrew-masterdata",
+          sourceUrl: MASTERDATA_URL,
+          sourceVersion: beybrewSourceVersion,
+          authority: "official_app_derived" as const,
+          rightsStatus: "structured_facts_only" as const,
+          fields: [
+            "id",
+            "nameJa",
+            "nameZhTw",
+            "releaseAt",
+            "stats",
+            "statEditions",
+          ] as NonNullable<Part["provenance"]>[number]["fields"],
+        }]
+      : []),
+  ];
 
   for (const entry of beyparts.blades) {
     if (isStructuralPlaceholder(entry)) continue;
@@ -263,9 +312,18 @@ async function main() {
       stats,
       playstyle: entry.type,
       modes: (entry.modes ?? []).map((m) => ({ label: m.label, stats: toThreeStat(m) })),
-      statEditions: group ? buildStatEditions(group.entries, stats, "three") : [],
+      statEditions: group
+        ? buildStatEditions(filterXEraEntries(group.entries), stats, "three")
+        : [],
       moldBatches: [],
       aliases: [],
+      provenance: provenanceFor(Boolean(group), [
+        ...(group ? [] : ["id" as const]),
+        "nameEn",
+        "stats",
+        "playstyle",
+        "modes",
+      ]),
     });
   }
 
@@ -288,9 +346,17 @@ async function main() {
       releaseAt: group ? earliestReleaseDateOf(group.entries) : null,
       stats,
       height: parseRatchetHeight(displayName(entry, entry.altname)),
-      statEditions: group ? buildStatEditions(group.entries, stats, "three") : [],
+      statEditions: group
+        ? buildStatEditions(filterXEraEntries(group.entries), stats, "three")
+        : [],
       moldBatches: [],
       aliases: [],
+      provenance: provenanceFor(Boolean(group), [
+        ...(group ? [] : ["id" as const]),
+        "nameEn",
+        "stats",
+        "height",
+      ]),
     });
   }
 
@@ -302,11 +368,23 @@ async function main() {
     ];
     const group = findMasterDataGroup(keys, masterData.bits);
     const primary = primaryStatsOf(entry);
-    const stats = toFiveStat(primary);
+    const sourceStats = toFiveStat(primary);
     if (group) matched++;
     else unmatched++;
     const localizedBit = group ? localizedNamesOf(group.entries) : {};
     const bitAliases = entry.alias && entry.alias !== entry.name ? [entry.alias] : [];
+    const stats = group
+      ? applyOfficialBitDimensions(sourceStats, group.entries)
+      : sourceStats;
+    const modes = (entry.modes ?? []).map((mode) => {
+      const sourceModeStats = toFiveStat(mode);
+      return {
+        label: mode.label,
+        stats: group
+          ? applyOfficialBitDimensions(sourceModeStats, group.entries)
+          : sourceModeStats,
+      };
+    });
 
     parts.push({
       id: group?.groupId ?? normalizeKey(entry.name),
@@ -319,8 +397,23 @@ async function main() {
       stats,
       playstyle: entry.type,
       aliases: bitAliases,
-      modes: (entry.modes ?? []).map((m) => ({ label: m.label, stats: toFiveStat(m) })),
-      statEditions: group ? buildStatEditions(group.entries, stats, "five") : [],
+      provenance: provenanceFor(Boolean(group), [
+        ...(group ? [] : ["id" as const]),
+        "nameEn",
+        ...(bitAliases.length > 0 ? ["aliases" as const] : []),
+        "stats",
+        "playstyle",
+        "modes",
+      ]),
+      modes,
+      statEditions: group
+        ? buildStatEditions(
+            filterXEraEntries(group.entries),
+            stats,
+            "five",
+            modes.map((mode) => mode.stats),
+          )
+        : [],
       moldBatches: [],
     });
   }
@@ -351,9 +444,23 @@ async function main() {
     process.exit(1);
   }
 
-  const previous = partsFileSchema.parse(JSON.parse(readFileSync(OUTPUT_PATH, "utf8")));
+  // The first run after introducing the X launch-date invariant must still
+  // be able to compare against the old seed that contains MasterData's 2022
+  // sentinel. Normalize that legacy input only for diffing; generated output
+  // always goes through the strict schema above.
+  const previousRaw = JSON.parse(readFileSync(OUTPUT_PATH, "utf8")) as Part[];
+  const previous = partsFileSchema.parse(previousRaw.map((part) => ({
+    ...part,
+    releaseAt:
+      part.releaseAt && part.releaseAt < X_GENERATION_START_DATE
+        ? null
+        : part.releaseAt,
+    statEditions: part.statEditions.filter((edition) =>
+      !edition.releaseAt || edition.releaseAt >= X_GENERATION_START_DATE,
+    ),
+  })));
   const refresh = await refreshOfficialParts(previous, async () => ({
-    sourceVersion: process.env.BEYBREW_SOURCE_VERSION ?? "yujinyuz/beybrew@main",
+    sourceVersion: process.env.BEYBREW_SOURCE_VERSION ?? beybrewSourceVersion,
     parts: validation.data,
   }));
   if (refresh.status === "failed") {

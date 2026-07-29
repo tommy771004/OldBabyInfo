@@ -12,14 +12,10 @@
  * generate-parts-seed.ts already trusts for stats) corresponds to which
  * Part id.
  *
- * SUPERSEDED: data/part-images.json is now written by
- * scripts/download-part-images.ts, which fetches the photos into
- * public/parts and points the manifest at local paths. This script is kept
- * for its URL-matching rules, which that one falls back on.
- *
- * It does not download or re-host the images themselves; the
- * detail page hotlinks them directly, with a visible copyright/disclaimer
- * line (see ticket 16's own requirement for one).
+ * This is the discovery stage: it writes remote origins plus provenance into
+ * the manifest without downloading them. Run download-part-images.ts next
+ * to create the local WebP assets used by the detail page while retaining
+ * those original URLs and source versions in the final manifest.
  *
  * Matching a Part id to an image key isn't a single clean rule — the
  * source repo's own key format varies by part type and sometimes reverses
@@ -44,6 +40,8 @@ const OUTPUT_PATH = join(__dirname, "..", "data", "part-images.json");
 
 const IMAGE_URLS_URL =
   "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/image-urls.json";
+const BEYBREW_COMMIT_URL =
+  "https://api.github.com/repos/yujinyuz/beybrew/commits/main";
 
 interface ImageUrlsFile {
   urls: Record<string, string>;
@@ -51,8 +49,14 @@ interface ImageUrlsFile {
 
 interface PartImage {
   url: string;
+  originalUrl: string;
   width: number;
   height: number;
+  sourceId: "beybrew-image-index";
+  sourceUrl: string;
+  sourceVersion: string;
+  rightsStatus: "unknown";
+  licenseUrl: null;
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
@@ -103,7 +107,12 @@ const KEY_PREFIXES: Record<Part["type"], string[]> = {
 
 async function main() {
   console.log("Fetching image-urls.json...");
-  const { urls } = await fetchJson<ImageUrlsFile>(IMAGE_URLS_URL);
+  const [{ urls }, commit] = await Promise.all([
+    fetchJson<ImageUrlsFile>(IMAGE_URLS_URL),
+    fetchJson<{ sha: string }>(BEYBREW_COMMIT_URL),
+  ]);
+  const sourceUrl =
+    `https://github.com/yujinyuz/beybrew/blob/${commit.sha}/src/data/image-urls.json`;
 
   const parts: Part[] = partsFileSchema.parse(
     JSON.parse(await import("node:fs/promises").then((fs) => fs.readFile(PARTS_PATH, "utf-8"))),
@@ -117,7 +126,17 @@ async function main() {
     if (!url) continue;
     try {
       const { width, height } = await fetchImageDimensions(url);
-      result[part.id] = { url, width, height };
+      result[part.id] = {
+        url,
+        originalUrl: url,
+        width,
+        height,
+        sourceId: "beybrew-image-index",
+        sourceUrl,
+        sourceVersion: `commit:${commit.sha}`,
+        rightsStatus: "unknown",
+        licenseUrl: null,
+      };
       matched++;
     } catch (err) {
       console.warn(`Skipping ${part.id}: ${(err as Error).message}`);

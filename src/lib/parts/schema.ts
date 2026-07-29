@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { X_GENERATION_START_DATE } from "./x-release-date.ts";
 
 /**
  * Stat composition verified against official MasterData.json and beybrew's
@@ -32,7 +33,10 @@ export type FiveStat = z.infer<typeof fiveStatSchema>;
 function statEditionSchema<S extends z.ZodType>(statSchema: S) {
   return z.object({
     label: z.string().min(1),
-    releaseAt: z.iso.date().nullable(),
+    releaseAt: z.iso.date().nullable().refine(
+      (date) => date === null || date >= X_GENERATION_START_DATE,
+      `X release date cannot predate ${X_GENERATION_START_DATE}`,
+    ),
     stats: statSchema,
   });
 }
@@ -56,6 +60,27 @@ const moldBatchSchema = z.object({
   }).optional(),
 });
 
+const partProvenanceSchema = z.strictObject({
+  sourceId: z.string().min(1),
+  sourceUrl: z.url(),
+  sourceVersion: z.string().min(1),
+  authority: z.enum(["official_app_derived", "community_source"]),
+  rightsStatus: z.enum(["structured_facts_only", "unknown"]),
+  fields: z.array(z.enum([
+    "id",
+    "nameEn",
+    "nameJa",
+    "nameZhTw",
+    "aliases",
+    "releaseAt",
+    "stats",
+    "playstyle",
+    "modes",
+    "statEditions",
+    "height",
+  ])).min(1),
+});
+
 /**
  * Mode: some Blades and Bits physically transform between forms (e.g. an
  * X-DASH-triggered shape change) with a distinct stat block per form. `stats`
@@ -76,12 +101,16 @@ const basePartFields = {
   nameJa: z.string().min(1).optional(),
   nameZhTw: z.string().min(1).optional(),
   aliases: z.array(z.string().min(1)).default([]),
+  provenance: z.array(partProvenanceSchema).optional(),
   moldBatches: z.array(moldBatchSchema).default([]),
   generation: z.literal("X"),
   /** Earliest official release date for this Part, null when it never
    *  matched an official record. Required (not defaulted) so the seed
    *  generator must always make an explicit call, never a silent omission. */
-  releaseAt: z.iso.date().nullable(),
+  releaseAt: z.iso.date().nullable().refine(
+    (date) => date === null || date >= X_GENERATION_START_DATE,
+    `X release date cannot predate ${X_GENERATION_START_DATE}`,
+  ),
   /**
    * The Part's own weight as a published spec, in grams. Distinct from
    * `moldBatches[].weightGrams`, which is a *range* observed across

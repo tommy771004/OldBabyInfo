@@ -32,7 +32,26 @@ function normalizePartType(value: string): string {
     .toLowerCase()
     .replace(/[^a-z0-9\p{Letter}]+/gu, "_")
     .replace(/^_+|_+$/g, "");
-  return normalized === "support_parts" ? "support_part" : normalized;
+  const stablePartTypes: Record<string, string> = {
+    support_parts: "support_part",
+    ベイブレード_レイヤー: "layer",
+    レイヤー: "layer",
+    ディスク: "disc",
+    ドライバー: "driver",
+    フレーム: "frame",
+    ガチンコチップ: "gatinko_chip",
+    ウエイト: "weight",
+    ベース: "base",
+    スパーキングチップ: "sparking_chip",
+    リング: "ring",
+    シャーシ: "chassis",
+    ダイナマイトバトルコア: "db_core",
+    dbコア: "db_core",
+    アーマー: "armor",
+    ブレード: "blade",
+    buブレード: "bu_blade",
+  };
+  return stablePartTypes[normalized] ?? normalized;
 }
 
 function stableToken(value: string): string {
@@ -247,13 +266,15 @@ export function parseBurstOfficialProducts(
       });
     }
     if (components.length === 0) continue;
-    const system = components.some((component) => /buブレード/i.test(component.partType))
+    const system = components.some((component) => component.partType === "bu_blade")
       ? "burst_ultimate"
-      : components.some((component) => /ダイナマイトバトルコア|dbコア/i.test(component.partType))
+      : components.some((component) => component.partType === "db_core")
         ? "dynamite_battle"
-        : components.some((component) => /スパーキングチップ|リング|シャーシ/i.test(component.partType))
+        : components.some((component) =>
+            ["sparking_chip", "ring", "chassis"].includes(component.partType))
           ? "superking"
-            : components.some((component) => /ガチンコチップ|ウエイト|ベース/i.test(component.partType))
+            : components.some((component) =>
+                ["gatinko_chip", "weight", "base"].includes(component.partType))
               ? "gatinko"
             : burstLayerSystemForProduct(productName);
     const anchorId = box[1]!;
@@ -262,6 +283,10 @@ export function parseBurstOfficialProducts(
     const componentRecordIds = components.map((component) =>
       recordId("takaratomy-burst-products", `part:${component.partType}:${component.name}`),
     );
+    const linkedComponents = components.map((component, index) => ({
+      ...component,
+      recordId: componentRecordIds[index]!,
+    }));
     records.push({
       id: beybladeId,
       generationId: "burst",
@@ -270,7 +295,7 @@ export function parseBurstOfficialProducts(
       partType: null,
       name: productName,
       aliases: [],
-      components,
+      components: linkedComponents,
       sourceId: "takaratomy-burst-products",
       sourceRecordId,
       sourceUrl: `https://beyblade.takaratomy.co.jp/burst/products.html#${anchorId}`,
@@ -294,7 +319,7 @@ export function parseBurstOfficialProducts(
       verificationStatus: "officially_verified",
       publicationStatus: "accepted",
       releaseOf: beybladeId,
-      containsRecordIds: [beybladeId, ...componentRecordIds],
+      containsRecordIds: componentRecordIds,
       sku: productName.match(/\bB-\d+\b/i)?.[0],
       region: "JP",
       comboEligible: false,
@@ -410,6 +435,62 @@ function xSystemForPartType(partType: string, modelName?: string, line?: string)
     : line ?? xSystemForModel(modelName);
 }
 
+function mechanicalPartIdentity(value: string): string {
+  const withoutEdition = value
+    .replace(/\s+Metallic\s+Coat\b.*$/i, "")
+    .replace(/\s+(?:Special|Holo\s+sticker|Red|Blue|Black)\s+Ver\.?.*$/i, "")
+    .replace(/\s+\((?:rapid-hit|upper-attack)\s+type\)\s*$/i, "")
+    .trim();
+  return identityKey(withoutEdition);
+}
+
+function linkXComponents(records: GenerationCatalogRecord[]): GenerationCatalogRecord[] {
+  const parts = records
+    .filter((record) => record.kind === "part")
+    .sort((left, right) => left.id.localeCompare(right.id));
+
+  return records.map((record) => {
+    if (record.kind !== "beyblade") return record;
+    return {
+      ...record,
+      components: record.components.map((component) => {
+        const componentIdentity = identityKey(component.name);
+        const mechanicalIdentity = mechanicalPartIdentity(component.name);
+        const candidates = parts
+          .filter((part) => part.partType === component.partType)
+          .flatMap((part) =>
+            [part.name, ...part.aliases].map((name) => ({
+              part,
+              identity: identityKey(name),
+              mechanicalIdentity: mechanicalPartIdentity(name),
+            })),
+          );
+        const exact = candidates.filter((candidate) => candidate.identity === componentIdentity);
+        const mechanical = candidates.filter((candidate) =>
+          candidate.mechanicalIdentity === mechanicalIdentity ||
+          mechanicalIdentity.endsWith(candidate.mechanicalIdentity),
+        );
+        const prefix = candidates.filter((candidate) =>
+          componentIdentity.startsWith(candidate.identity),
+        );
+        const matches = exact.length > 0
+          ? exact
+          : mechanical.length > 0
+            ? mechanical
+            : prefix;
+        const preferred = [...matches].sort((left, right) => {
+          const leftSystem = left.part.system === record.system ? 0 : 1;
+          const rightSystem = right.part.system === record.system ? 0 : 1;
+          return leftSystem - rightSystem ||
+            right.identity.length - left.identity.length ||
+            left.part.id.localeCompare(right.part.id);
+        })[0];
+        return preferred ? { ...component, recordId: preferred.part.id } : component;
+      }),
+    };
+  });
+}
+
 export function buildBeybrewXRecords(
   beyparts: BeybrewParts,
   masterData: MasterDataPayload,
@@ -450,6 +531,8 @@ export function buildBeybrewXRecords(
       for (const identity of [part.name, ...aliases]) {
         seenParts.add(`${partType}:${identityKey(identity)}`);
         seenParts.add(`x:${partType}:${identityKey(identity)}`);
+        seenParts.add(`${partType}:${mechanicalPartIdentity(identity)}`);
+        seenParts.add(`x:${partType}:${mechanicalPartIdentity(identity)}`);
       }
     }
   }
@@ -498,7 +581,14 @@ export function buildBeybrewXRecords(
   for (const part of masterPartsByIdentity.values()) {
     const key = `${part.system}:${part.partType}:${identityKey(part.name)}`;
     const genericKey = `${part.partType}:${identityKey(part.name)}`;
-    if (seenParts.has(key) || seenParts.has(genericKey)) continue;
+    const mechanicalKey = `${part.system}:${part.partType}:${mechanicalPartIdentity(part.name)}`;
+    const genericMechanicalKey = `${part.partType}:${mechanicalPartIdentity(part.name)}`;
+    if (
+      seenParts.has(key) ||
+      seenParts.has(genericKey) ||
+      seenParts.has(mechanicalKey) ||
+      seenParts.has(genericMechanicalKey)
+    ) continue;
     records.push({
       id: recordId("beybrew", part.sourceRecordId),
       generationId: "x",
@@ -518,12 +608,16 @@ export function buildBeybrewXRecords(
     seenParts.add(key);
   }
 
+  const seriesRecords: GenerationCatalogRecord[] = [];
   for (const series of data.BeybladeSeries ?? []) {
     if (!series.model_name) continue;
+    if (series.model_name.includes("_ModeChange") || /_Sharp$/i.test(series.model_name)) {
+      continue;
+    }
     const name = cleanMasterDataName(series.name?.["en-US"] ?? series.name?.["ja-JP"]);
     const components = entriesByModel.get(series.model_name) ?? [];
     if (!name || components.length === 0) continue;
-    records.push({
+    seriesRecords.push({
       id: recordId("beybrew", `series:${series.model_name}`),
       generationId: "x",
       system: series.model_name.match(/^(BX|UX|CX)/)?.[1]?.toLowerCase() ?? "x",
@@ -540,11 +634,145 @@ export function buildBeybrewXRecords(
       publicationStatus: "accepted",
     });
   }
-  return records;
+
+  const linked = linkXComponents([...records, ...seriesRecords]);
+  const linkedParts = linked.filter((record) => record.kind === "part");
+  const linkedSeries = linked.filter((record) => record.kind === "beyblade");
+  const byComposition = new Map<string, GenerationCatalogRecord[]>();
+  for (const series of linkedSeries) {
+    const compositionKey = series.components
+      .map((component) => `${component.partType}:${component.recordId ?? component.name}`)
+      .sort()
+      .join("|");
+    const group = byComposition.get(compositionKey) ?? [];
+    group.push(series);
+    byComposition.set(compositionKey, group);
+  }
+
+  const beyblades: GenerationCatalogRecord[] = [];
+  const releases: GenerationCatalogRecord[] = [];
+  for (const group of byComposition.values()) {
+    const ranked = [...group].sort((left, right) => {
+      const editionRank = (record: GenerationCatalogRecord) =>
+        /Metallic\s+Coat|Special\s+Ver|Holo\s+sticker|(?:Red|Blue|Black)\s+Ver/i.test(record.name)
+          ? 1
+          : 0;
+      const promotionalRank = (record: GenerationCatalogRecord) =>
+        /^series:(?:BXG|BXH|BXC)/i.test(record.sourceRecordId) ? 1 : 0;
+      return editionRank(left) - editionRank(right) ||
+        promotionalRank(left) - promotionalRank(right) ||
+        left.id.localeCompare(right.id);
+    });
+    const canonical = ranked[0]!;
+    beyblades.push(canonical);
+
+    for (const edition of group) {
+      const modelName = edition.sourceRecordId.replace(/^series:/, "");
+      releases.push({
+        id: recordId("beybrew", `release:${edition.sourceRecordId}`),
+        generationId: "x",
+        system: edition.system,
+        kind: "release",
+        partType: null,
+        name: edition.name,
+        aliases: [],
+        components: [],
+        sourceId: "beybrew",
+        sourceRecordId: `release:${edition.sourceRecordId}`,
+        sourceUrl: edition.sourceUrl,
+        sourceVersion,
+        verificationStatus: "official_app_derived",
+        publicationStatus: "accepted",
+        releaseOf: canonical.id,
+        containsRecordIds: edition.components
+          .flatMap((component) => component.recordId ? [component.recordId] : []),
+        sku: modelName.split("_")[0],
+        region: "JP",
+        comboEligible: false,
+      });
+    }
+  }
+
+  return [...linkedParts, ...beyblades, ...releases];
 }
 
 export function dedupeCatalogRecords(records: GenerationCatalogRecord[]): GenerationCatalogRecord[] {
   const byId = new Map<string, GenerationCatalogRecord>();
   for (const record of records) byId.set(record.id, record);
-  return [...byId.values()].sort((left, right) => left.id.localeCompare(right.id));
+  const sorted = [...byId.values()].sort((left, right) => left.id.localeCompare(right.id));
+  const canonicalParts = new Map<string, GenerationCatalogRecord>();
+  const redirects = new Map<string, string>();
+  const deduped: GenerationCatalogRecord[] = [];
+
+  for (const record of sorted) {
+    if (record.kind !== "part") {
+      deduped.push(record);
+      continue;
+    }
+    const identity = [
+      record.generationId,
+      record.system,
+      record.partType,
+      identityKey(record.name),
+    ].join(":");
+    const canonical = canonicalParts.get(identity);
+    if (!canonical) {
+      canonicalParts.set(identity, record);
+      deduped.push(record);
+      continue;
+    }
+
+    redirects.set(record.id, canonical.id);
+    canonical.aliases = [...new Set([
+      ...canonical.aliases,
+      ...record.aliases,
+      ...(record.name === canonical.name ? [] : [record.name]),
+    ])].sort();
+  }
+
+  const targetOfPart = (id: string) => redirects.get(id) ?? id;
+  const partLinked = deduped.map((record) => ({
+    ...record,
+    components: record.components.map((component) => ({
+      ...component,
+      recordId: component.recordId ? targetOfPart(component.recordId) : undefined,
+    })),
+    releaseOf: record.releaseOf ? targetOfPart(record.releaseOf) : record.releaseOf,
+    reissueOf: record.reissueOf ? targetOfPart(record.reissueOf) : record.reissueOf,
+    containsRecordIds: record.containsRecordIds
+      ? [...new Set(record.containsRecordIds.map(targetOfPart))]
+      : record.containsRecordIds,
+  }));
+
+  const canonicalBeyblades = new Map<string, GenerationCatalogRecord>();
+  const beybladeRedirects = new Map<string, string>();
+  const modelDeduped: GenerationCatalogRecord[] = [];
+  for (const record of partLinked) {
+    if (record.kind !== "beyblade") {
+      modelDeduped.push(record);
+      continue;
+    }
+    const composition = [
+      record.generationId,
+      ...record.components.map((component) => component.recordId ?? component.name).sort(),
+    ].join("|");
+    const canonical = canonicalBeyblades.get(composition);
+    if (!canonical) {
+      canonicalBeyblades.set(composition, record);
+      modelDeduped.push(record);
+      continue;
+    }
+    beybladeRedirects.set(record.id, canonical.id);
+  }
+
+  const targetOf = (id: string) =>
+    beybladeRedirects.get(id) ?? redirects.get(id) ?? id;
+  return modelDeduped.map((record) => ({
+    ...record,
+    releaseOf: record.releaseOf ? targetOf(record.releaseOf) : record.releaseOf,
+    reissueOf: record.reissueOf ? targetOf(record.reissueOf) : record.reissueOf,
+    containsRecordIds: record.containsRecordIds
+      ? [...new Set(record.containsRecordIds.map(targetOf))]
+      : record.containsRecordIds,
+  })).sort((left, right) => left.id.localeCompare(right.id));
 }

@@ -113,7 +113,7 @@ describe("cross-generation catalog contract", () => {
           aliases: [],
           components: [],
           releaseOf: "x:beyblade:01",
-          containsRecordIds: ["x:beyblade:01", "x:equipment:launcher"],
+          containsRecordIds: ["x:part:main-blade", "x:equipment:launcher"],
           sourceId: source.id,
           sourceRecordId: "release:01",
           sourceUrl: source.canonicalUrl,
@@ -150,7 +150,7 @@ describe("cross-generation catalog contract", () => {
       "equipment",
     ]);
     expect(snapshot.records.find((record) => record.kind === "release")?.containsRecordIds).toEqual([
-      "x:beyblade:01",
+      "x:part:main-blade",
       "x:equipment:launcher",
     ]);
   });

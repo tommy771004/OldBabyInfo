@@ -83,22 +83,32 @@ BB: Flat Base<br><br>
       generationId: "burst",
       name: "B-200 スターター ジフォイドエクスカリバー.Xn.Sw’-1",
       components: [
-        { partType: "ダイナマイトバトルコア", name: "エクスカリバー" },
-        { partType: "buブレード", name: "ジフォイド" },
+        {
+          partType: "db_core",
+          name: "エクスカリバー",
+          recordId: expect.stringContaining("takaratomy-burst-products"),
+        },
+        {
+          partType: "bu_blade",
+          name: "ジフォイド",
+          recordId: expect.stringContaining("takaratomy-burst-products"),
+        },
       ],
     });
     expect(records.filter((record) => record.kind === "part").map((record) => [
       record.partType,
       record.name,
     ])).toEqual([
-      ["ダイナマイトバトルコア", "エクスカリバー"],
-      ["buブレード", "ジフォイド"],
+      ["db_core", "エクスカリバー"],
+      ["bu_blade", "ジフォイド"],
     ]);
     expect(records.find((record) => record.kind === "release")).toMatchObject({
       releaseOf: expect.stringContaining("takaratomy-burst-products"),
       region: "JP",
       comboEligible: false,
     });
+    const release = records.find((record) => record.kind === "release")!;
+    expect(release.containsRecordIds).not.toContain(release.releaseOf);
   });
 
   it("classifies early Burst product IDs into their Layer systems", () => {
@@ -131,9 +141,9 @@ BB: Flat Base<br><br>
     expect(records.filter((record) => record.kind === "beyblade")[0]).toMatchObject({
       system: "burst_ultimate",
       components: [
-        { partType: "ダイナマイトバトルコア", name: "エクスカリバー" },
-        { partType: "buブレード", name: "ジフォイド" },
-        { partType: "アーマー", name: "1" },
+        { partType: "db_core", name: "エクスカリバー" },
+        { partType: "bu_blade", name: "ジフォイド" },
+        { partType: "armor", name: "1" },
       ],
     });
     expect(records.filter((record) => record.kind === "part")).toHaveLength(3);
@@ -178,10 +188,89 @@ BB: Flat Base<br><br>
       generationId: "x",
       system: "bx",
       components: [
-        { partType: "blade", name: "DRANSWORD" },
-        { partType: "bit", name: "F" },
+        {
+          partType: "blade",
+          name: "DRANSWORD",
+          recordId: expect.stringContaining("beybrew:blades-dran-sword"),
+        },
+        {
+          partType: "bit",
+          name: "F",
+          recordId: expect.stringContaining("beybrew:bits-flat"),
+        },
       ],
     });
+  });
+
+  it("links X visual editions to their underlying mechanical Part", () => {
+    const records = buildBeybrewXRecords(
+      {
+        blades: [{ name: "Pegasus Blast A", line: "CX" }],
+      },
+      {
+        data: {
+          BeybladeSeries: [{
+            model_name: "CX00_PegasusBlast",
+            name: { "en-US": "PEGASUSBLAST Metallic Coat: Green" },
+          }],
+          BeybladePartsBlade: [{
+            group_id: "PEGASUSBLAST",
+            model_name: "CX00_PegasusBlast",
+            name: { "en-US": "PEGASUSBLASTA Metallic Coat: Green" },
+          }],
+        },
+      },
+      "commit:abc",
+    );
+    const blade = records.find((record) => record.kind === "part")!;
+    const beyblade = records.find((record) => record.kind === "beyblade")!;
+
+    expect(beyblade.components[0]?.recordId).toBe(blade.id);
+  });
+
+  it("keeps one X mechanical model while representing SKUs as Releases", () => {
+    const records = buildBeybrewXRecords(
+      {
+        blades: [{ name: "Dran Sword", line: "BX" }],
+        ratchets: [{ name: "3-60" }],
+        bits: [{ name: "Flat", alias: "F" }],
+      },
+      {
+        data: {
+          BeybladeSeries: [
+            { model_name: "BX01_DranSword3-60F", name: { "en-US": "DRANSWORD3-60F" } },
+            { model_name: "BX07_DranSword3-60F", name: { "en-US": "DRANSWORD3-60F Special Ver." } },
+            { model_name: "BX01_DranSword3-60F_ModeChange", name: { "en-US": "DRANSWORD3-60F" } },
+          ],
+          BeybladePartsBlade: [
+            { group_id: "DRANSWORD", model_name: "BX01_DranSword3-60F", name: { "en-US": "DRANSWORD" } },
+            { group_id: "DRANSWORD", model_name: "BX07_DranSword3-60F", name: { "en-US": "DRANSWORD Special Ver." } },
+            { group_id: "DRANSWORD", model_name: "BX01_DranSword3-60F_ModeChange", name: { "en-US": "DRANSWORD" } },
+          ],
+          BeybladePartsRatchet: [
+            { group_id: "3-60", model_name: "BX01_DranSword3-60F", name: { "en-US": "3-60" } },
+            { group_id: "3-60", model_name: "BX07_DranSword3-60F", name: { "en-US": "3-60" } },
+            { group_id: "3-60", model_name: "BX01_DranSword3-60F_ModeChange", name: { "en-US": "3-60" } },
+          ],
+          BeybladePartsBit: [
+            { group_id: "F", model_name: "BX01_DranSword3-60F", name: { "en-US": "F" } },
+            { group_id: "F", model_name: "BX07_DranSword3-60F", name: { "en-US": "F" } },
+            { group_id: "F", model_name: "BX01_DranSword3-60F_ModeChange", name: { "en-US": "F" } },
+          ],
+        },
+      },
+      "commit:abc",
+    );
+    const beyblades = records.filter((record) => record.kind === "beyblade");
+    const releases = records.filter((record) => record.kind === "release");
+
+    expect(beyblades).toHaveLength(1);
+    expect(beyblades[0]?.name).toBe("DRANSWORD3-60F");
+    expect(releases).toHaveLength(2);
+    expect(releases.every((release) =>
+      release.releaseOf === beyblades[0]?.id &&
+      !release.containsRecordIds?.includes(beyblades[0]!.id),
+    )).toBe(true);
   });
 
   it("takes a Part's product line from what the source states, not from a model code", () => {
