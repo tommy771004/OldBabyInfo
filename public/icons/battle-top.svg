@@ -1,0 +1,18 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  fill="none"
+  role="img"
+  aria-labelledby="title"
+>
+  <title id="title">Coral battle spinning top</title>
+  <g
+    stroke="#FF6F61"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M25 14v-3c0-2 3-3 7-3s7 1 7 3v3c8 2 15 5 19 9 3 3 2 6 0 9-4 5-10 8-17 9-1 5-3 8-6 11-2 2-2 5-3 7-1-2-1-5-3-7-3-3-5-6-6-11-7-1-13-4-17-9-2-3-3-6 0-9 4-4 11-7 19-9Z" />
+    <path d="M7 25c5 6 14 9 25 9s20-3 25-9" />
+  </g>
+</svg>
