@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { diffAgainstExisting, exceedsFailureRate, isPlausibleEventDate } from "./ingest-diff.ts";
+import {
+  diffAgainstExisting,
+  exceedsFailureRate,
+  formatIngestSummary,
+  isPlausibleEventDate,
+  type IngestReport,
+} from "./ingest-diff.ts";
 import type { Event } from "./schema.ts";
 import type { SheetRowResult } from "./csv-source.ts";
 
@@ -111,5 +117,72 @@ describe("diffAgainstExisting", () => {
 
     expect(report.unchanged).toBe(1);
     expect(report.changed).toHaveLength(0);
+  });
+});
+
+describe("formatIngestSummary", () => {
+  /** The shape of the 2026-08-08 scheduled run, which is what broke the PR step. */
+  function realisticReport(): IngestReport {
+    return {
+      added: Array.from({ length: 14 }, (_, i) => ({
+        event: event({ id: `b4-g3-2026-09-0${i % 9}-1500-陳媽媽玩具-竹北店-${700 + i}` }),
+        rawRow: `${700 + i},陳媽媽玩具 竹北店,03-668-3738,新竹縣竹北市莊敬北路276號,2026/9/5,15:00,32,線上,公開 (6歲以上)`,
+      })),
+      changed: Array.from({ length: 691 }, (_, i) => ({
+        before: event({ id: `e${i}` }),
+        after: event({ id: `b4-g3-2026-08-16-1600-陳媽媽玩具-中和店-${i}` }),
+        rawRow: `${i},陳媽媽玩具 中和店,02-2221-7688,新北市中和區建一路251號,2026/8/16,16:00,24,線上,公開 (6歲以上)`,
+      })),
+      unchanged: 74,
+      failed: [
+        {
+          rawRow: "395,創勝玩具批發,04-22991727,台中市北區陜西路35號,2026/726,13:30,16,門市社群,公開 (6歲以上)",
+          reason: "Invalid ISO date",
+        },
+        {
+          rawRow: "634,TTC小車工作室,933928761,台北市士林區承德路四段80巷45號,2026/7/25,15.:00,16,線上,公開 (6歲以上)",
+          reason: 'Unparseable time: "15.:00"',
+        },
+      ],
+    };
+  }
+
+  it("stays small enough to survive being passed as an environment variable", () => {
+    // The bug this exists for: the same report renders as ~134 KB of Chinese
+    // in the old full-diff body, past Linux's 128 KB limit for a single
+    // environment variable, so create-pull-request died with E2BIG before
+    // opening any PR — 12 nights in a row after a successful fetch.
+    const summary = formatIngestSummary(realisticReport());
+    expect(new TextEncoder().encode(summary).byteLength).toBeLessThanOrEqual(8_000);
+  });
+
+  it("leads with the counts so a reviewer sees the shape of the change first", () => {
+    expect(formatIngestSummary(realisticReport()).split("\n")[0]).toBe(
+      "14 added, 691 changed, 74 unchanged, 2 failed.",
+    );
+  });
+
+  it("lists every dropped row in full — that is the part asking for action", () => {
+    const summary = formatIngestSummary(realisticReport());
+    expect(summary).toContain("2026/726");
+    expect(summary).toContain("Invalid ISO date");
+    expect(summary).toContain('Unparseable time: "15.:00"');
+  });
+
+  it("caps long sections and says how many were left out", () => {
+    const summary = formatIngestSummary(realisticReport(), { maxRowsPerSection: 5 });
+    expect(summary).toContain("…另有 686 筆，見 job log。");
+  });
+
+  it("truncates without leaving a half-decoded character", () => {
+    const summary = formatIngestSummary(realisticReport(), { maxBytes: 400 });
+    expect(new TextEncoder().encode(summary).byteLength).toBeLessThanOrEqual(400);
+    expect(summary).not.toContain("\uFFFD");
+    expect(summary).toContain("摘要已截斷");
+  });
+
+  it("still produces a usable line when nothing changed", () => {
+    const summary = formatIngestSummary({ added: [], changed: [], unchanged: 767, failed: [] });
+    expect(summary).toBe("0 added, 0 changed, 767 unchanged, 0 failed.");
   });
 });

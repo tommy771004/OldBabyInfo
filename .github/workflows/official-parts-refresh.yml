@@ -54,3 +54,19 @@ jobs:
             這條管線只匯入 BeyBrew MasterData／beyparts 的結構化 Part 名稱、Stat、Mode、關係與 Stat Edition，以及 generation catalog 的結構化名稱與關係；不複製程式碼、全文或圖片。請人工審查 `data/parts.json`、`data/generation-catalog.json` 與 Needs Review diff 後再合併。
           branch: auto/official-parts-refresh
           labels: automated-data-ingest
+
+      # 2026-08-02 的執行就是卡在這裡：分支推上去了，PR 因為 repo 設定不允許
+      # Actions 建立 PR 而失敗，且失敗原因只留在 log 裡沒有人看到。
+      - name: Explain a failed PR step
+        if: failure() && steps.diff.outputs.changed == 'true'
+        run: |
+          {
+            echo "## 官方 Part facts 的 PR 沒有開成"
+            echo
+            echo "資料已經推到 \`auto/official-parts-refresh\`，只是 PR 沒建立。最常見的原因是 repo 設定："
+            echo "Settings → Actions → General → Workflow permissions →"
+            echo "**Allow GitHub Actions to create and approve pull requests** 沒有勾選。"
+            echo
+            echo "勾選後這條排程下一次執行就會自己補上 PR；不想等的話可以直接手動開："
+            echo "${{ github.server_url }}/${{ github.repository }}/compare/auto/official-parts-refresh?expand=1"
+          } >> "$GITHUB_STEP_SUMMARY"
