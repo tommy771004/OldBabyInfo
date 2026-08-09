@@ -36,13 +36,21 @@ jobs:
 
       - run: npm ci
 
+      # The full per-row diff goes to the job log and stays there. Only the
+      # capped summary reaches an output: this body used to carry all ~700
+      # changed rows, and create-pull-request passes its body through the
+      # environment, so every scheduled run died with "Argument list too
+      # long" after a perfectly successful fetch.
       - name: Run event ingest
         id: ingest
+        env:
+          INGEST_SUMMARY_PATH: ${{ runner.temp }}/ingest-summary.md
         run: |
-          node scripts/ingest-events.ts | tee /tmp/ingest-output.txt
+          node scripts/ingest-events.ts
           {
             echo "summary<<INGEST_SUMMARY_EOF"
-            cat /tmp/ingest-output.txt
+            head -c 8000 "$INGEST_SUMMARY_PATH" 2>/dev/null || echo "No summary was produced by this run."
+            echo
             echo "INGEST_SUMMARY_EOF"
           } >> "$GITHUB_OUTPUT"
 
@@ -61,7 +69,9 @@ jobs:
           if [ -f data/mold-batch-needs-review.json ]; then
             {
               echo "summary<<NEEDS_REVIEW_EOF"
-              cat data/mold-batch-needs-review.json
+              # Capped for the same reason the ingest summary is.
+              head -c 8000 data/mold-batch-needs-review.json
+              echo
               echo "NEEDS_REVIEW_EOF"
             } >> "$GITHUB_OUTPUT"
           else
@@ -85,9 +95,9 @@ jobs:
           body: |
             自動排程執行 `scripts/ingest-events.ts` 產生的真實變動，來源是 Funbox／B4 門市時間表的公開 Google Sheets。
 
-            ```
             ${{ steps.ingest.outputs.summary }}
-            ```
+
+            完整逐筆 diff 見 [job log](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})。
 
             ## Needs Review
 
@@ -100,3 +110,21 @@ jobs:
             合併前請確認：新增／變更的場次資訊（日期、地點、報名方式、人數上限）看起來合理。合併後 Vercel 會依既有的 GitHub 整合自動部署，這個 workflow 不需要另外觸發部署。
           branch: auto/event-ingest
           labels: automated-data-ingest
+
+      # `create-pull-request` pushes the branch before it tries to open the
+      # PR, so a denied PR creation still leaves the data on auto/event-ingest
+      # — recoverable by hand, but only if the reason is visible. This ran red
+      # for two weeks without anyone learning why.
+      - name: Explain a failed PR step
+        if: failure() && steps.diff.outputs.changed == 'true'
+        run: |
+          {
+            echo "## 賽事匯入的 PR 沒有開成"
+            echo
+            echo "資料已經推到 \`auto/event-ingest\`，只是 PR 沒建立。最常見的原因是 repo 設定："
+            echo "Settings → Actions → General → Workflow permissions →"
+            echo "**Allow GitHub Actions to create and approve pull requests** 沒有勾選。"
+            echo
+            echo "勾選後這條排程下一次執行就會自己補上 PR；不想等的話可以直接手動開："
+            echo "${{ github.server_url }}/${{ github.repository }}/compare/auto/event-ingest?expand=1"
+          } >> "$GITHUB_STEP_SUMMARY"

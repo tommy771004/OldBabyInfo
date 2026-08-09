@@ -42,6 +42,64 @@ export interface IngestReport {
   failed: { rawRow: string; reason: string }[];
 }
 
+/**
+ * A bounded, human-readable version of the report, for places that cannot
+ * take the full one.
+ *
+ * The scheduled ingest used to paste its entire stdout into the review PR's
+ * body. On the real sheet that is ~700 rows × 2 lines of Chinese — about
+ * 134 KB, past Linux's 128 KB ceiling for one environment variable — and the
+ * `create-pull-request` action passes its body through the environment. Every
+ * night the runner failed with `Argument list too long` (E2BIG) *after* a
+ * successful fetch, so a working pipeline produced no PR for two weeks.
+ *
+ * What a reviewer actually needs before merging is the shape of the change
+ * and the rows that were dropped; the full per-row diff stays in the job log,
+ * which has no such limit. Failures come first because they are the only part
+ * asking the reviewer to do something.
+ */
+export function formatIngestSummary(
+  report: IngestReport,
+  options: { maxRowsPerSection?: number; maxBytes?: number } = {},
+): string {
+  const maxRows = options.maxRowsPerSection ?? 20;
+  const maxBytes = options.maxBytes ?? 8_000;
+
+  const lines: string[] = [
+    `${report.added.length} added, ${report.changed.length} changed, ` +
+      `${report.unchanged} unchanged, ${report.failed.length} failed.`,
+  ];
+
+  function section(heading: string, rows: string[]): void {
+    if (rows.length === 0) return;
+    lines.push("", `### ${heading} (${rows.length})`);
+    for (const row of rows.slice(0, maxRows)) lines.push(`- ${row}`);
+    if (rows.length > maxRows) {
+      lines.push(`- …另有 ${rows.length - maxRows} 筆，見 job log。`);
+    }
+  }
+
+  section(
+    "解析失敗（來源資料需要修正）",
+    report.failed.map((failure) => `\`${failure.rawRow}\` — ${failure.reason}`),
+  );
+  section("新增", report.added.map(({ event }) => `${event.id}`));
+  section("變更", report.changed.map(({ after }) => `${after.id}`));
+
+  const summary = lines.join("\n");
+  const encoder = new TextEncoder();
+  const encoded = encoder.encode(summary);
+  if (encoded.byteLength <= maxBytes) return summary;
+
+  // Cutting a UTF-8 byte range lands mid-character on Chinese text; decoding
+  // in non-fatal mode turns the partial tail into a replacement character,
+  // which is then dropped.
+  const notice = "\n\n…摘要已截斷，完整內容見 job log。";
+  const budget = maxBytes - encoder.encode(notice).byteLength;
+  const cut = new TextDecoder("utf-8").decode(encoded.subarray(0, budget));
+  return `${cut.replace(/�+$/, "")}${notice}`;
+}
+
 function eventWithSourceExcerpt(row: SheetRowResult): Event | undefined {
   if (!row.event) return undefined;
   return row.rawRow ? { ...row.event, sourceExcerpt: row.rawRow } : row.event;

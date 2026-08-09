@@ -33,6 +33,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Without this the job scrapes retailers for two minutes and only then
+      # throws "DATABASE_URL is not set" from inside the persistence step —
+      # which reads as a scrape failure in the run list, not as the missing
+      # repository secret it actually is. No Stock Listing has ever been
+      # written; the site's 哪裡買 stays empty until this secret exists.
+      - name: Require the Stock Listing database secret
+        if: env.DATABASE_URL == ''
+        run: |
+          {
+            echo "## DATABASE_URL 未設定"
+            echo
+            echo "Stock Listing 無法寫入，本次不進行抓取。"
+            echo "設定位置：Settings → Secrets and variables → Actions → New repository secret，"
+            echo "名稱 \`DATABASE_URL\`，值為 Neon 連線字串。"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "::error::DATABASE_URL secret is not configured; no Stock Listing can be written."
+          exit 1
+
       - name: Check reviewed product targets
         id: targets
         run: |

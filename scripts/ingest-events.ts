@@ -27,7 +27,9 @@ import { fetchSheetCsv, parseSheetCsv, type SheetRowResult } from "../src/lib/ev
 import {
   diffAgainstExisting,
   exceedsFailureRate,
+  formatIngestSummary,
   isPlausibleEventDate,
+  type IngestReport,
 } from "../src/lib/events/ingest-diff.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -41,6 +43,18 @@ const OUTPUT_PATH = join(__dirname, "..", "data", "events.json");
 // app's repository layer.
 function readExistingEvents(): ReturnType<typeof eventsFileSchema.parse> {
   return eventsFileSchema.parse(JSON.parse(readFileSync(OUTPUT_PATH, "utf-8")));
+}
+
+/**
+ * The full per-row diff belongs in the job log, which has no size limit. A
+ * caller that has to put the result somewhere bounded — the review PR's body,
+ * where an oversized value killed every scheduled run with E2BIG — sets
+ * INGEST_SUMMARY_PATH and reads the capped summary from there instead.
+ */
+function writeSummaryIfRequested(report: IngestReport): void {
+  const summaryPath = process.env.INGEST_SUMMARY_PATH?.trim();
+  if (!summaryPath) return;
+  writeFileSync(summaryPath, `${formatIngestSummary(report)}\n`);
 }
 
 const SHEETS: Array<{ id: string; sheetId: string; gid: string; year: number }> = [
@@ -109,6 +123,8 @@ async function main() {
   for (const failure of report.failed) {
     console.log(`  ! failed\n    source: ${failure.rawRow}\n    reason: ${failure.reason}`);
   }
+
+  writeSummaryIfRequested(report);
 
   if (report.added.length === 0 && report.changed.length === 0) {
     console.log("Nothing to update.");
