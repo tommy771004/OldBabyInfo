@@ -1,5 +1,6 @@
 import type { Locale } from "@/i18n/routing.ts";
 import type { MoldBatchGuidance } from "@/lib/mold-batch/guidance.ts";
+import { ExternalLink } from "./external-link.tsx";
 
 export interface MoldBatchSourceGuidanceLabels {
   heading: string;
@@ -29,7 +30,7 @@ export function MoldBatchSourceGuidance({
         <dt>{labels.excerpt}</dt>
         <dd>{guidance.sourceExcerpt}</dd>
         <dt>{labels.discoverySource}</dt>
-        <dd><a href={guidance.discoverySource.url}>{guidance.discoverySource.label}</a></dd>
+        <dd><ExternalLink href={guidance.discoverySource.url}>{guidance.discoverySource.label}</ExternalLink></dd>
         <dt>{labels.attribution}</dt>
         <dd>{labels.unattributed}</dd>
         <dt>{labels.capturedAt}</dt>

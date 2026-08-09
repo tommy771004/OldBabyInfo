@@ -1,6 +1,7 @@
 import type { Assessment, AssessmentKind } from "@/lib/assessments/schema.ts";
 import { ASSESSMENT_PAGE_SIZES, type AssessmentPaginationState } from "@/lib/assessments/pagination.ts";
 import styles from "./assessment-tracer.module.css";
+import { ExternalLink } from "./external-link.tsx";
 
 export interface AssessmentTracerLabels {
   heading: string;
@@ -48,7 +49,7 @@ export function AssessmentTracer({
                   {assessment.evidenceSource ? (
                     <>
                       <span>{assessment.evidenceSource.author}</span>{" · "}
-                      <a href={assessment.evidenceSource.url}>{assessment.evidenceSource.label}</a>
+                      <ExternalLink href={assessment.evidenceSource.url}>{assessment.evidenceSource.label}</ExternalLink>
                     </>
                   ) : (
                     <span>{labels.unattributed}</span>
@@ -56,7 +57,7 @@ export function AssessmentTracer({
                 </dd>
                 <dt>{labels.discoverySource}</dt>
                 <dd>
-                  <a href={assessment.discoverySource.url}>{assessment.discoverySource.label}</a>
+                  <ExternalLink href={assessment.discoverySource.url}>{assessment.discoverySource.label}</ExternalLink>
                 </dd>
               </dl>
             </article>

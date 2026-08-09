@@ -234,9 +234,30 @@ export function siteJsonLd(locale: Locale) {
   };
 }
 
+/**
+ * JSON-LD has to reach the page through `dangerouslySetInnerHTML` — React
+ * would otherwise escape the JSON into something no parser accepts — so the
+ * escaping happens here instead.
+ *
+ * `JSON.stringify` is not enough on its own: it passes `<`, `>` and `&`
+ * through untouched, and a `</script>` sequence inside any string it
+ * serializes closes the tag early and turns whatever follows into markup.
+ * Part names, Aliases and source labels all come from ingested data, so this
+ * is a live path, not a theoretical one. U+2028/U+2029 are escaped too — they
+ * are legal in JSON strings but are line terminators to a script parser.
+ */
+export function serializeJsonLd(data: object): string {
+  return JSON.stringify(data)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
+}
+
 export function JsonLd({ data }: { data: object }) {
   return createElement("script", {
     type: "application/ld+json",
-    dangerouslySetInnerHTML: { __html: JSON.stringify(data) },
+    dangerouslySetInnerHTML: { __html: serializeJsonLd(data) },
   });
 }

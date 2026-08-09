@@ -1,4 +1,5 @@
 import type { StockListing } from "@/lib/stock/repository.ts";
+import { ExternalLink } from "./external-link.tsx";
 
 export interface WhereToBuyLabels {
   price: string;
@@ -52,9 +53,9 @@ export function WhereToBuyList({
                 <time dateTime={listing.capturedAt}>{listing.capturedAt}</time>
               </dd>
             </dl>
-            <a href={listing.productUrl} target="_blank" rel="noreferrer">
+            <ExternalLink href={listing.productUrl} newTab>
               {labels.visitRetailer}
-            </a>
+            </ExternalLink>
           </li>
         );
       })}

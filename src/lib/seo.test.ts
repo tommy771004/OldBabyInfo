@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { SITE_URL, localizedAlternates, localizedPath, pageMetadata } from "./seo.ts";
+import { SITE_URL, localizedAlternates, localizedPath, pageMetadata, serializeJsonLd } from "./seo.ts";
 
 describe("localized SEO URLs", () => {
   it("keeps the default locale unprefixed and prefixes Japanese and English", () => {
@@ -33,5 +33,28 @@ describe("localized SEO URLs", () => {
       title: "首頁",
       description: "OldBabyInfo",
     }).verification?.google).toBe("6KE8Qp5p0dXMp1etepmmhRmw7fG_SRwVuBampfeCL5M");
+  });
+});
+
+describe("serializeJsonLd", () => {
+  it("stays valid JSON for the structured data consumers", () => {
+    const data = { "@type": "WebPage", name: "Dran Sword" };
+    expect(JSON.parse(serializeJsonLd(data))).toEqual(data);
+  });
+
+  it("cannot be broken out of with a closing script tag", () => {
+    // Part names and Aliases are ingested data, so a hostile string reaching
+    // the JSON-LD block is a live path, not a hypothetical one.
+    const payload = serializeJsonLd({ name: "</script><script>alert(1)</script>" });
+    expect(payload).not.toContain("</script>");
+    expect(payload).not.toContain("<");
+    expect(JSON.parse(payload).name).toBe("</script><script>alert(1)</script>");
+  });
+
+  it("escapes the line terminators that are legal in JSON but not in a script", () => {
+    const payload = serializeJsonLd({ name: "a\u2028b\u2029c" });
+    expect(payload).not.toContain("\u2028");
+    expect(payload).not.toContain("\u2029");
+    expect(JSON.parse(payload).name).toBe("a\u2028b\u2029c");
   });
 });
