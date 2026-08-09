@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import type { Part } from "@/lib/parts/schema.ts";
 import { lookupMoldBatches } from "@/lib/mold-batch/lookup.ts";
+import { ExternalLink } from "./external-link.tsx";
 
 export interface MoldBatchLookupLabels {
   searchLabel: string;
@@ -57,9 +58,9 @@ export function MoldBatchLookup({ parts, labels, partNames = {} }: MoldBatchLook
                   <strong>{batch.batchCode}</strong>
                 </p>
                 <p>{batch.note}</p>
-                <a href={batch.sourceUrl} target="_blank" rel="noreferrer">
+                <ExternalLink href={batch.sourceUrl} newTab>
                   {labels.source}
-                </a>
+                </ExternalLink>
               </article>
             ))
           : null}

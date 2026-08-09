@@ -1,4 +1,5 @@
 import type { MoldBatch } from "@/lib/mold-batch/lookup.ts";
+import { ExternalLink } from "./external-link.tsx";
 
 export function MoldBatchVariants({
   batches,
@@ -19,9 +20,9 @@ export function MoldBatchVariants({
             <p>{batch.note}</p>
             {batch.weightGrams ? <p>{batch.weightGrams.min}–{batch.weightGrams.max} g</p> : null}
             {batch.sourceExcerpt ? <p>{batch.sourceExcerpt}</p> : null}
-            <a href={batch.sourceUrl} target="_blank" rel="noreferrer">
+            <ExternalLink href={batch.sourceUrl} newTab>
               {labels.source}
-            </a>
+            </ExternalLink>
           </li>
         ))}
       </ul>

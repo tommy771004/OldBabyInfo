@@ -5,6 +5,7 @@ import { requireLocale } from "@/i18n/require-locale.ts";
 import { JsonLd, localizedSeoCopy, pageMetadata, siteJsonLd } from "@/lib/seo.ts";
 import { accentFont, bodyFont, displayFont } from "../fonts.ts";
 import { SiteHeader } from "@/components/site-header.tsx";
+import { ScrapeTrapLink } from "@/components/scrape-trap-link.tsx";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -42,6 +43,7 @@ export default async function LocaleLayout({
           <SiteHeader />
           {children}
         </NextIntlClientProvider>
+        <ScrapeTrapLink />
       </body>
     </html>
   );
