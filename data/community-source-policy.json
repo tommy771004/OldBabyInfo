@@ -14,5 +14,13 @@
     "rights": "unknown",
     "schedule": "none",
     "enabled": false
+  },
+  {
+    "sourceKey": "phstudy-beyblade-x",
+    "canonicalUrl": "https://beyblade.phstudy.org/",
+    "acquisitionMethod": "manual_import",
+    "rights": "unknown",
+    "schedule": "none",
+    "enabled": false
   }
 ]

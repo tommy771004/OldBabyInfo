@@ -1608,60 +1608,6 @@
     "statEditions": []
   },
   {
-    "id": "A",
-    "nameEn": "Accel",
-    "nameJa": "A（アクセル）",
-    "nameZhTw": "A",
-    "aliases": [
-      "A"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-03-29",
-    "type": "bit",
-    "stats": {
-      "attack": 40,
-      "defense": 10,
-      "stamina": 10,
-      "xDash": 40,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "AEROPEGASUS",
     "nameEn": "Aero Pegasus",
     "nameJa": "エアロペガサス ダブルメタルコート:ブルーｘグリーン",
@@ -1807,60 +1753,6 @@
         }
       }
     ]
-  },
-  {
-    "id": "B",
-    "nameEn": "Ball",
-    "nameJa": "B（ボール）",
-    "nameZhTw": "B",
-    "aliases": [
-      "B"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-03-19",
-    "type": "bit",
-    "stats": {
-      "attack": 15,
-      "defense": 25,
-      "stamina": 50,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "stamina",
-    "modes": [],
-    "statEditions": []
   },
   {
     "id": "BEARSCRATCH",
@@ -2177,60 +2069,6 @@
     "statEditions": []
   },
   {
-    "id": "BS",
-    "nameEn": "Bound Spike",
-    "nameJa": "BS（バウンドスパイク）",
-    "nameZhTw": "BS",
-    "aliases": [
-      "BS"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-11-01",
-    "type": "bit",
-    "stats": {
-      "attack": 5,
-      "defense": 60,
-      "stamina": 30,
-      "xDash": 5,
-      "burstResistance": 30
-    },
-    "playstyle": "defense",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "BULLETGRIFFON",
     "nameEn": "BulletGriffon",
     "nameJa": "バレットグリフォン",
@@ -2289,60 +2127,6 @@
       "stamina": 40
     },
     "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "C",
-    "nameEn": "Cyclone",
-    "nameJa": "C（サイクロン）",
-    "nameZhTw": "C",
-    "aliases": [
-      "C"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-07-12",
-    "type": "bit",
-    "stats": {
-      "attack": 40,
-      "defense": 5,
-      "stamina": 10,
-      "xDash": 45,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -2645,60 +2429,6 @@
     "statEditions": []
   },
   {
-    "id": "D",
-    "nameEn": "Dot",
-    "nameJa": "D（ドット）",
-    "nameZhTw": "D",
-    "aliases": [
-      "D"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-07-12",
-    "type": "bit",
-    "stats": {
-      "attack": 10,
-      "defense": 55,
-      "stamina": 25,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "defense",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "DARK",
     "nameEn": "Dark",
     "nameJa": "ダーク メタルコート:ゴールド",
@@ -2756,60 +2486,6 @@
         }
       }
     ]
-  },
-  {
-    "id": "DB",
-    "nameEn": "Disc Ball",
-    "nameJa": "DB（ディスクボール）",
-    "nameZhTw": "DB",
-    "aliases": [
-      "DB"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-03-29",
-    "type": "bit",
-    "stats": {
-      "attack": 15,
-      "defense": 20,
-      "stamina": 55,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "stamina",
-    "modes": [],
-    "statEditions": []
   },
   {
     "id": "DELTA",
@@ -3302,60 +2978,6 @@
     "statEditions": []
   },
   {
-    "id": "E",
-    "nameEn": "Elevate",
-    "nameJa": "E（エレベート）",
-    "nameZhTw": "E",
-    "aliases": [
-      "E"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-09-13",
-    "type": "bit",
-    "stats": {
-      "attack": 30,
-      "defense": 15,
-      "stamina": 20,
-      "xDash": 35,
-      "burstResistance": 30
-    },
-    "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "ECLIPSE",
     "nameEn": "Eclipse",
     "nameJa": "エクリプス",
@@ -3422,60 +3044,6 @@
     "statEditions": []
   },
   {
-    "id": "F",
-    "nameEn": "Flat",
-    "nameJa": "F（フラット）",
-    "nameZhTw": "F",
-    "aliases": [
-      "F"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-03-19",
-    "type": "bit",
-    "stats": {
-      "attack": 40,
-      "defense": 15,
-      "stamina": 10,
-      "xDash": 35,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "FANG",
     "nameEn": "Fang",
     "nameJa": "ファング レッドVer.",
@@ -3521,60 +3089,6 @@
       "stamina": 15
     },
     "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "FB",
-    "nameEn": "Free Ball",
-    "nameJa": "FB（フリーボール）",
-    "nameZhTw": "FB",
-    "aliases": [
-      "FB"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-10-11",
-    "type": "bit",
-    "stats": {
-      "attack": 10,
-      "defense": 25,
-      "stamina": 60,
-      "xDash": 5,
-      "burstResistance": 30
-    },
-    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -3710,168 +3224,6 @@
     "statEditions": []
   },
   {
-    "id": "G",
-    "nameEn": "Glide",
-    "nameJa": "G（グライド）",
-    "nameZhTw": "G",
-    "aliases": [
-      "G"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-08-09",
-    "type": "bit",
-    "stats": {
-      "attack": 20,
-      "defense": 10,
-      "stamina": 55,
-      "xDash": 15,
-      "burstResistance": 30
-    },
-    "playstyle": "stamina",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "GB",
-    "nameEn": "Gear Ball",
-    "nameJa": "GB（ギヤボール）",
-    "nameZhTw": "GB",
-    "aliases": [
-      "GB"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-12-26",
-    "type": "bit",
-    "stats": {
-      "attack": 10,
-      "defense": 15,
-      "stamina": 45,
-      "xDash": 30,
-      "burstResistance": 30
-    },
-    "playstyle": "stamina",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "GF",
-    "nameEn": "Gear Flat",
-    "nameJa": "GF（ギヤフラット）",
-    "nameZhTw": "GF",
-    "aliases": [
-      "GF"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-12-26",
-    "type": "bit",
-    "stats": {
-      "attack": 50,
-      "defense": 5,
-      "stamina": 5,
-      "xDash": 40,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "GHOSTCIRCLE",
     "nameEn": "Ghost Circle",
     "nameJa": "ゴーストサークル",
@@ -3929,60 +3281,6 @@
       "stamina": 55
     },
     "playstyle": "stamina",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "GN",
-    "nameEn": "Gear Needle",
-    "nameJa": "GN（ギヤニードル）",
-    "nameZhTw": "GN",
-    "aliases": [
-      "GN"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-02-21",
-    "type": "bit",
-    "stats": {
-      "attack": 20,
-      "defense": 40,
-      "stamina": 10,
-      "xDash": 30,
-      "burstResistance": 30
-    },
-    "playstyle": "defense",
     "modes": [],
     "statEditions": []
   },
@@ -4117,222 +3415,6 @@
         }
       }
     ]
-  },
-  {
-    "id": "GP",
-    "nameEn": "Gear Point",
-    "nameJa": "GP（ギヤポイント）",
-    "nameZhTw": "GP",
-    "aliases": [
-      "GP"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-01-26",
-    "type": "bit",
-    "stats": {
-      "attack": 30,
-      "defense": 25,
-      "stamina": 15,
-      "xDash": 30,
-      "burstResistance": 80
-    },
-    "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "GR",
-    "nameEn": "Gear Rush",
-    "nameJa": "GR（ギヤラッシュ）",
-    "nameZhTw": "GR",
-    "aliases": [
-      "GR"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-05-16",
-    "type": "bit",
-    "stats": {
-      "attack": 45,
-      "defense": 10,
-      "stamina": 10,
-      "xDash": 35,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "GU",
-    "nameEn": "Gear Unite",
-    "nameJa": "GU（ギヤユナイト）",
-    "nameZhTw": "GU",
-    "aliases": [
-      "GU"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2026-04-24",
-    "type": "bit",
-    "stats": {
-      "attack": 30,
-      "defense": 20,
-      "stamina": 20,
-      "xDash": 30,
-      "burstResistance": 80
-    },
-    "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "H",
-    "nameEn": "Hexa",
-    "nameJa": "H（ヘキサ）",
-    "nameZhTw": "H",
-    "aliases": [
-      "H"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-03-29",
-    "type": "bit",
-    "stats": {
-      "attack": 30,
-      "defense": 35,
-      "stamina": 20,
-      "xDash": 15,
-      "burstResistance": 80
-    },
-    "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
   },
   {
     "id": "HELLSCHAIN",
@@ -4551,114 +3633,6 @@
     ]
   },
   {
-    "id": "HN",
-    "nameEn": "High Needle",
-    "nameJa": "HN（ハイニードル）",
-    "nameZhTw": "HN",
-    "aliases": [
-      "HN"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-09-10",
-    "type": "bit",
-    "stats": {
-      "attack": 15,
-      "defense": 55,
-      "stamina": 20,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "defense",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "HT",
-    "nameEn": "High Taper",
-    "nameJa": "HT（ハイテーパー）",
-    "nameZhTw": "HT",
-    "aliases": [
-      "HT"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-10-01",
-    "type": "bit",
-    "stats": {
-      "attack": 30,
-      "defense": 25,
-      "stamina": 20,
-      "xDash": 25,
-      "burstResistance": 80
-    },
-    "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "HUNT",
     "nameEn": "Hunt",
     "nameJa": "ハント",
@@ -4704,60 +3678,6 @@
       "stamina": 30
     },
     "playstyle": "stamina",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "I",
-    "nameEn": "Ignition",
-    "nameJa": "I（イグニッション）",
-    "nameZhTw": "I",
-    "aliases": [
-      "I"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2026-03-27",
-    "type": "bit",
-    "stats": {
-      "attack": 50,
-      "defense": 15,
-      "stamina": 5,
-      "xDash": 30,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -4819,114 +3739,6 @@
       "stamina": 10
     },
     "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "J",
-    "nameEn": "Jolt",
-    "nameJa": "J（ジョルト）",
-    "nameZhTw": "J",
-    "aliases": [
-      "J"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-12-26",
-    "type": "bit",
-    "stats": {
-      "attack": 35,
-      "defense": 10,
-      "stamina": 15,
-      "xDash": 40,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "K",
-    "nameEn": "Kick",
-    "nameJa": "K（キック）",
-    "nameZhTw": "K",
-    "aliases": [
-      "K"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-04-25",
-    "type": "bit",
-    "stats": {
-      "attack": 35,
-      "defense": 25,
-      "stamina": 15,
-      "xDash": 25,
-      "burstResistance": 80
-    },
-    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -5125,60 +3937,6 @@
     "statEditions": []
   },
   {
-    "id": "L",
-    "nameEn": "Level",
-    "nameJa": "L（レベル）",
-    "nameZhTw": "L",
-    "aliases": [
-      "L"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-11-01",
-    "type": "bit",
-    "stats": {
-      "attack": 40,
-      "defense": 5,
-      "stamina": 15,
-      "xDash": 40,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "LEONCLAW",
     "nameEn": "Leon Claw",
     "nameJa": "レオンクロー",
@@ -5311,60 +4069,6 @@
     "statEditions": []
   },
   {
-    "id": "LF",
-    "nameEn": "Low Flat",
-    "nameJa": "LF（ローフラット）",
-    "nameZhTw": "LF",
-    "aliases": [
-      "LF"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-10-01",
-    "type": "bit",
-    "stats": {
-      "attack": 45,
-      "defense": 5,
-      "stamina": 10,
-      "xDash": 40,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "LIGHTNING L-DRAGO",
     "nameEn": "Lightning L-Drago",
     "nameJa": "ライトニングエルドラゴ（アッパー型）",
@@ -5439,168 +4143,6 @@
         }
       }
     ]
-  },
-  {
-    "id": "LO",
-    "nameEn": "Low Orb",
-    "nameJa": "LO（ローオーブ）",
-    "nameZhTw": "LO",
-    "aliases": [
-      "LO"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-03-28",
-    "type": "bit",
-    "stats": {
-      "attack": 5,
-      "defense": 25,
-      "stamina": 55,
-      "xDash": 15,
-      "burstResistance": 30
-    },
-    "playstyle": "stamina",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "LR",
-    "nameEn": "Low Rush",
-    "nameJa": "LR（ローラッシュ）",
-    "nameZhTw": "LR",
-    "aliases": [
-      "LR"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-12-26",
-    "type": "bit",
-    "stats": {
-      "attack": 45,
-      "defense": 5,
-      "stamina": 15,
-      "xDash": 35,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "M",
-    "nameEn": "Merge",
-    "nameJa": "M（マージ）",
-    "nameZhTw": "M",
-    "aliases": [
-      "M"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-08-08",
-    "type": "bit",
-    "stats": {
-      "attack": 50,
-      "defense": 20,
-      "stamina": 10,
-      "xDash": 20,
-      "burstResistance": 80
-    },
-    "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
   },
   {
     "id": "M-85",
@@ -5761,60 +4303,6 @@
     "statEditions": []
   },
   {
-    "id": "MN",
-    "nameEn": "Metal Needle",
-    "nameJa": "MN（メタルニードル）",
-    "nameZhTw": "MN",
-    "aliases": [
-      "MN"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-05-17",
-    "type": "bit",
-    "stats": {
-      "attack": 8,
-      "defense": 57,
-      "stamina": 30,
-      "xDash": 5,
-      "burstResistance": 30
-    },
-    "playstyle": "defense",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "MUMMYCURSE",
     "nameEn": "Mummy Curse",
     "nameJa": "マミーカース",
@@ -5873,189 +4361,6 @@
     },
     "playstyle": "defense",
     "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "N",
-    "nameEn": "Needle",
-    "nameJa": "N（ニードル）",
-    "nameZhTw": "N",
-    "aliases": [
-      "N"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-03-19",
-    "type": "bit",
-    "stats": {
-      "attack": 10,
-      "defense": 50,
-      "stamina": 30,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "defense",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "O",
-    "nameEn": "Orb",
-    "nameJa": "O（オーブ）",
-    "nameZhTw": "O",
-    "aliases": [
-      "O"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-09-10",
-    "type": "bit",
-    "stats": {
-      "attack": 10,
-      "defense": 30,
-      "stamina": 50,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "stamina",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "Op",
-    "nameEn": "Operate",
-    "nameJa": "Op（オペレート）",
-    "nameZhTw": "Op",
-    "aliases": [
-      "Op"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-10-31",
-    "type": "bit",
-    "stats": {
-      "attack": 50,
-      "defense": 35,
-      "stamina": 10,
-      "xDash": 35,
-      "burstResistance": 30
-    },
-    "playstyle": "balance",
-    "modes": [
-      {
-        "label": "Attack Mode",
-        "stats": {
-          "attack": 50,
-          "defense": 35,
-          "stamina": 10,
-          "xDash": 35,
-          "burstResistance": 30
-        }
-      },
-      {
-        "label": "Defense Mode",
-        "stats": {
-          "attack": 20,
-          "defense": 50,
-          "stamina": 50,
-          "xDash": 10,
-          "burstResistance": 30
-        }
-      }
-    ],
     "statEditions": []
   },
   {
@@ -6118,60 +4423,6 @@
       "stamina": 20
     },
     "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "P",
-    "nameEn": "Point",
-    "nameJa": "P（ポイント）",
-    "nameZhTw": "P",
-    "aliases": [
-      "P"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-09-10",
-    "type": "bit",
-    "stats": {
-      "attack": 25,
-      "defense": 25,
-      "stamina": 25,
-      "xDash": 25,
-      "burstResistance": 80
-    },
-    "playstyle": "balance",
     "modes": [],
     "statEditions": []
   },
@@ -6485,168 +4736,6 @@
     "statEditions": []
   },
   {
-    "id": "Q",
-    "nameEn": "Quake",
-    "nameJa": "Q（クエイク）",
-    "nameZhTw": "Q",
-    "aliases": [
-      "Q"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-04-26",
-    "type": "bit",
-    "stats": {
-      "attack": 55,
-      "defense": 15,
-      "stamina": 5,
-      "xDash": 25,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "R",
-    "nameEn": "Rush",
-    "nameJa": "R（ラッシュ）",
-    "nameZhTw": "R",
-    "aliases": [
-      "R"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-10-01",
-    "type": "bit",
-    "stats": {
-      "attack": 40,
-      "defense": 10,
-      "stamina": 20,
-      "xDash": 30,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "RA",
-    "nameEn": "Rubber Accel",
-    "nameJa": "RA（ラバーアクセル）",
-    "nameZhTw": "RA",
-    "aliases": [
-      "RA"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-11-01",
-    "type": "bit",
-    "stats": {
-      "attack": 60,
-      "defense": 17,
-      "stamina": 3,
-      "xDash": 20,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "RAGE",
     "nameEn": "Rage",
     "aliases": [],
@@ -6845,60 +4934,6 @@
       "attack": 30,
       "defense": 55,
       "stamina": 15
-    },
-    "playstyle": "defense",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "S",
-    "nameEn": "Spike",
-    "nameJa": "S（スパイク）",
-    "nameZhTw": "S",
-    "aliases": [
-      "S"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-10-01",
-    "type": "bit",
-    "stats": {
-      "attack": 10,
-      "defense": 45,
-      "stamina": 35,
-      "xDash": 10,
-      "burstResistance": 30
     },
     "playstyle": "defense",
     "modes": [],
@@ -7766,234 +5801,6 @@
     "statEditions": []
   },
   {
-    "id": "T",
-    "nameEn": "Taper",
-    "nameJa": "T（テーパー）",
-    "nameZhTw": "T",
-    "aliases": [
-      "T"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2023-03-19",
-    "type": "bit",
-    "stats": {
-      "attack": 35,
-      "defense": 20,
-      "stamina": 20,
-      "xDash": 25,
-      "burstResistance": 80
-    },
-    "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "TK",
-    "nameEn": "Trans Kick",
-    "nameJa": "TK（トランスキック）",
-    "nameZhTw": "TK",
-    "aliases": [
-      "TK"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-09-26",
-    "type": "bit",
-    "stats": {
-      "attack": 35,
-      "defense": 30,
-      "stamina": 20,
-      "xDash": 15,
-      "burstResistance": 80
-    },
-    "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "TP",
-    "nameEn": "Trans Point",
-    "nameJa": "TP（トランスポイント）",
-    "nameZhTw": "TP",
-    "aliases": [
-      "TP"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-11-01",
-    "type": "bit",
-    "stats": {
-      "attack": 35,
-      "defense": 25,
-      "stamina": 25,
-      "xDash": 15,
-      "burstResistance": 80
-    },
-    "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "Tr",
-    "nameEn": "Turbo",
-    "nameJa": "Tr（ターボ）",
-    "nameZhTw": "Tr",
-    "aliases": [
-      "Tr"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-07-18",
-    "type": "bit",
-    "stats": {
-      "attack": 30,
-      "defense": 30,
-      "stamina": 60,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": [
-      {
-        "label": "CX07_PegasusBlastATr",
-        "releaseAt": "2025-07-18",
-        "stats": {
-          "attack": 55,
-          "defense": 20,
-          "stamina": 10,
-          "xDash": 45,
-          "burstResistance": 30
-        }
-      }
-    ]
-  },
-  {
     "id": "TRICERAPRESS",
     "nameEn": "Tricera Press",
     "nameJa": "トリケラプレス",
@@ -8222,168 +6029,6 @@
     "statEditions": []
   },
   {
-    "id": "U",
-    "nameEn": "Unite",
-    "nameJa": "U（ユナイト）",
-    "nameZhTw": "U",
-    "aliases": [
-      "U"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2024-06-14",
-    "type": "bit",
-    "stats": {
-      "attack": 25,
-      "defense": 25,
-      "stamina": 30,
-      "xDash": 20,
-      "burstResistance": 80
-    },
-    "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "UF",
-    "nameEn": "Under Flat",
-    "nameJa": "UF（アンダーフラット）",
-    "nameZhTw": "UF",
-    "aliases": [
-      "UF"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-08-08",
-    "type": "bit",
-    "stats": {
-      "attack": 55,
-      "defense": 5,
-      "stamina": 5,
-      "xDash": 35,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "UN",
-    "nameEn": "Under Needle",
-    "nameJa": "UN（アンダーニードル）",
-    "nameZhTw": "UN",
-    "aliases": [
-      "UN"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-01-24",
-    "type": "bit",
-    "stats": {
-      "attack": 10,
-      "defense": 60,
-      "stamina": 20,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "defense",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "UNICORNSTING",
     "nameEn": "Unicorn Sting",
     "nameJa": "ユニコーンスティング",
@@ -8441,60 +6086,6 @@
       "stamina": 30
     },
     "playstyle": "balance",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "V",
-    "nameEn": "Vortex",
-    "nameJa": "V（ボルテックス）",
-    "nameZhTw": "V",
-    "aliases": [
-      "V"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-03-28",
-    "type": "bit",
-    "stats": {
-      "attack": 45,
-      "defense": 10,
-      "stamina": 5,
-      "xDash": 40,
-      "burstResistance": 80
-    },
-    "playstyle": "attack",
     "modes": [],
     "statEditions": []
   },
@@ -8666,114 +6257,6 @@
       "stamina": 15
     },
     "playstyle": "attack",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "W",
-    "nameEn": "Wedge",
-    "nameJa": "W（ウェッジ）",
-    "nameZhTw": "W",
-    "aliases": [
-      "W"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-03-28",
-    "type": "bit",
-    "stats": {
-      "attack": 5,
-      "defense": 55,
-      "stamina": 30,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "defense",
-    "modes": [],
-    "statEditions": []
-  },
-  {
-    "id": "WB",
-    "nameEn": "Wall Ball",
-    "nameJa": "WB（ウォールボール）",
-    "nameZhTw": "WB",
-    "aliases": [
-      "WB"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2025-07-18",
-    "type": "bit",
-    "stats": {
-      "attack": 15,
-      "defense": 30,
-      "stamina": 45,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "stamina",
     "modes": [],
     "statEditions": []
   },
@@ -9062,60 +6545,6 @@
     ]
   },
   {
-    "id": "WW",
-    "nameEn": "Wall Wedge",
-    "nameJa": "WW（ウォールウェッジ）",
-    "nameZhTw": "WW",
-    "aliases": [
-      "WW"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2026-01-23",
-    "type": "bit",
-    "stats": {
-      "attack": 5,
-      "defense": 60,
-      "stamina": 25,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "defense",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "WYVERNGALE",
     "nameEn": "Wyvern Gale",
     "nameJa": "ワイバーンゲイル",
@@ -9308,60 +6737,6 @@
     "statEditions": []
   },
   {
-    "id": "Y",
-    "nameEn": "Yield",
-    "nameJa": "Y（イールディング）",
-    "nameZhTw": "Y",
-    "aliases": [
-      "Y"
-    ],
-    "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
-      {
-        "sourceId": "beybrew-masterdata",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "official_app_derived",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
-          "statEditions"
-        ]
-      }
-    ],
-    "moldBatches": [],
-    "generation": "X",
-    "releaseAt": "2026-03-27",
-    "type": "bit",
-    "stats": {
-      "attack": 10,
-      "defense": 15,
-      "stamina": 65,
-      "xDash": 10,
-      "burstResistance": 30
-    },
-    "playstyle": "stamina",
-    "modes": [],
-    "statEditions": []
-  },
-  {
     "id": "YELLKONG",
     "nameEn": "Yell Kong",
     "aliases": [],
@@ -9395,12 +6770,14 @@
     "statEditions": []
   },
   {
-    "id": "Z",
-    "nameEn": "Zap",
-    "nameJa": "Z（ザップ）",
-    "nameZhTw": "Z",
+    "id": "A",
+    "nameEn": "Accel",
+    "nameJa": "A（アクセル）",
+    "nameZhTw": "A",
     "aliases": [
-      "Z"
+      "A",
+      "アクセル",
+      "加速"
     ],
     "provenance": [
       {
@@ -9431,11 +6808,3713 @@
           "stats",
           "statEditions"
         ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-03-29",
+    "weightGrams": 2.6,
+    "type": "bit",
+    "stats": {
+      "attack": 40,
+      "defense": 10,
+      "stamina": 10,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "B",
+    "nameEn": "Ball",
+    "nameJa": "B（ボール）",
+    "nameZhTw": "B",
+    "aliases": [
+      "B",
+      "ボール",
+      "球"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-03-19",
+    "weightGrams": 2.1,
+    "type": "bit",
+    "stats": {
+      "attack": 15,
+      "defense": 25,
+      "stamina": 50,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "stamina",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "BS",
+    "nameEn": "Bound Spike",
+    "nameJa": "BS（バウンドスパイク）",
+    "nameZhTw": "BS",
+    "aliases": [
+      "BS",
+      "バウンドスパイク",
+      "彈跳釘刺"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "weightGrams": 2.1,
+    "type": "bit",
+    "stats": {
+      "attack": 5,
+      "defense": 60,
+      "stamina": 30,
+      "xDash": 5,
+      "burstResistance": 30
+    },
+    "playstyle": "defense",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "C",
+    "nameEn": "Cyclone",
+    "nameJa": "C（サイクロン）",
+    "nameZhTw": "C",
+    "aliases": [
+      "C",
+      "サイクロン",
+      "旋風"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-07-12",
+    "weightGrams": 2.2,
+    "type": "bit",
+    "stats": {
+      "attack": 40,
+      "defense": 5,
+      "stamina": 10,
+      "xDash": 45,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "D",
+    "nameEn": "Dot",
+    "nameJa": "D（ドット）",
+    "nameZhTw": "D",
+    "aliases": [
+      "D",
+      "ドット",
+      "點"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-07-12",
+    "weightGrams": 2,
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 55,
+      "stamina": 25,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "defense",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "DB",
+    "nameEn": "Disk Ball",
+    "nameJa": "DB（ディスクボール）",
+    "nameZhTw": "DB",
+    "aliases": [
+      "DB",
+      "Disc Ball",
+      "ディスクボール",
+      "圓盤球"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-03-29",
+    "weightGrams": 3.2,
+    "type": "bit",
+    "stats": {
+      "attack": 15,
+      "defense": 20,
+      "stamina": 55,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "stamina",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "DS",
+    "nameEn": "Disk Spike",
+    "nameJa": "DS（ディスクスパイク）",
+    "nameZhTw": "DS",
+    "aliases": [
+      "DS",
+      "ディスクスパイク",
+      "圓盤釘刺"
+    ],
+    "provenance": [
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "id",
+          "playstyle",
+          "releaseAt"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-05-12",
+    "type": "bit",
+    "stats": {
+      "attack": 5,
+      "defense": 55,
+      "stamina": 40,
+      "xDash": 10,
+      "burstResistance": 20
+    },
+    "playstyle": "defense",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "E",
+    "nameEn": "Elevate",
+    "nameJa": "E（エレベート）",
+    "nameZhTw": "E",
+    "aliases": [
+      "E",
+      "エレベート",
+      "上升"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-09-13",
+    "weightGrams": 3.2,
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 15,
+      "stamina": 20,
+      "xDash": 35,
+      "burstResistance": 30
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "F",
+    "nameEn": "Flat",
+    "nameJa": "F（フラット）",
+    "nameZhTw": "F",
+    "aliases": [
+      "F",
+      "フラット",
+      "平坦"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-03-19",
+    "weightGrams": 2.2,
+    "type": "bit",
+    "stats": {
+      "attack": 40,
+      "defense": 15,
+      "stamina": 10,
+      "xDash": 35,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "FB",
+    "nameEn": "Free Ball",
+    "nameJa": "FB（フリーボール）",
+    "nameZhTw": "FB",
+    "aliases": [
+      "FB",
+      "フリーボール",
+      "自由球"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-10-11",
+    "weightGrams": 1.9,
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 25,
+      "stamina": 60,
+      "xDash": 5,
+      "burstResistance": 30
+    },
+    "playstyle": "stamina",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "FF",
+    "nameEn": "Free Flat",
+    "nameJa": "FF（フリーフラット）",
+    "nameZhTw": "FF",
+    "aliases": [
+      "FF",
+      "フリーフラット",
+      "自由平坦"
+    ],
+    "provenance": [
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "id",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-05-05",
+    "weightGrams": 2.2,
+    "type": "bit",
+    "stats": {
+      "attack": 40,
+      "defense": 15,
+      "stamina": 15,
+      "xDash": 30,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "G",
+    "nameEn": "Glide",
+    "nameJa": "G（グライド）",
+    "nameZhTw": "G",
+    "aliases": [
+      "G",
+      "グライド",
+      "滑翔"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-08-09",
+    "weightGrams": 2.6,
+    "type": "bit",
+    "stats": {
+      "attack": 20,
+      "defense": 10,
+      "stamina": 55,
+      "xDash": 15,
+      "burstResistance": 30
+    },
+    "playstyle": "stamina",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GB",
+    "nameEn": "Gear Ball",
+    "nameJa": "GB（ギアボール）",
+    "nameZhTw": "GB",
+    "aliases": [
+      "GB",
+      "ギアボール",
+      "齒輪球"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-12-26",
+    "weightGrams": 2.1,
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 15,
+      "stamina": 45,
+      "xDash": 30,
+      "burstResistance": 30
+    },
+    "playstyle": "stamina",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GF",
+    "nameEn": "Gear Flat",
+    "nameJa": "GF（ギアフラット）",
+    "nameZhTw": "GF",
+    "aliases": [
+      "GF",
+      "ギアフラット",
+      "齒輪平坦"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-12-26",
+    "weightGrams": 2.3,
+    "type": "bit",
+    "stats": {
+      "attack": 50,
+      "defense": 5,
+      "stamina": 5,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GN",
+    "nameEn": "Gear Needle",
+    "nameJa": "GN（ギアニードル）",
+    "nameZhTw": "GN",
+    "aliases": [
+      "GN",
+      "ギアニードル",
+      "齒輪針"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-02-21",
+    "weightGrams": 2,
+    "type": "bit",
+    "stats": {
+      "attack": 20,
+      "defense": 40,
+      "stamina": 10,
+      "xDash": 30,
+      "burstResistance": 30
+    },
+    "playstyle": "defense",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GP",
+    "nameEn": "Gear Point",
+    "nameJa": "GP（ギアポイント）",
+    "nameZhTw": "GP",
+    "aliases": [
+      "GP",
+      "ギアポイント",
+      "齒輪圓點"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-01-26",
+    "weightGrams": 2.3,
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 25,
+      "stamina": 15,
+      "xDash": 30,
+      "burstResistance": 80
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GR",
+    "nameEn": "Gear Rush",
+    "nameJa": "GR（ギアラッシュ）",
+    "nameZhTw": "GR",
+    "aliases": [
+      "GR",
+      "ギアラッシュ",
+      "齒輪衝刺"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-05-16",
+    "weightGrams": 2.1,
+    "type": "bit",
+    "stats": {
+      "attack": 45,
+      "defense": 10,
+      "stamina": 10,
+      "xDash": 35,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "GU",
+    "nameEn": "Gear Unite",
+    "nameJa": "GU（ギアユナイト）",
+    "nameZhTw": "GU",
+    "aliases": [
+      "GU",
+      "ギアユナイト",
+      "齒輪結合"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-04-24",
+    "weightGrams": 2.3,
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 20,
+      "stamina": 20,
+      "xDash": 30,
+      "burstResistance": 80
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "H",
+    "nameEn": "Hexa",
+    "nameJa": "H（ヘキサ）",
+    "nameZhTw": "H",
+    "aliases": [
+      "H",
+      "ヘキサ",
+      "六角形"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-03-29",
+    "weightGrams": 2.6,
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 35,
+      "stamina": 20,
+      "xDash": 15,
+      "burstResistance": 80
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "HN",
+    "nameEn": "High Needle",
+    "nameJa": "HN（ハイニードル）",
+    "nameZhTw": "HN",
+    "aliases": [
+      "HN",
+      "ハイニードル",
+      "高針"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-09-10",
+    "weightGrams": 2.2,
+    "type": "bit",
+    "stats": {
+      "attack": 15,
+      "defense": 55,
+      "stamina": 20,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "defense",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "HT",
+    "nameEn": "High Taper",
+    "nameJa": "HT（ハイテーパー）",
+    "nameZhTw": "HT",
+    "aliases": [
+      "HT",
+      "ハイテーパー",
+      "高錐形"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-10-01",
+    "weightGrams": 2.3,
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 25,
+      "stamina": 20,
+      "xDash": 25,
+      "burstResistance": 80
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "I",
+    "nameEn": "Ignition",
+    "nameJa": "I（イグニッション）",
+    "nameZhTw": "I",
+    "aliases": [
+      "I",
+      "イグニッション",
+      "點火"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-03-27",
+    "weightGrams": 2.4,
+    "type": "bit",
+    "stats": {
+      "attack": 50,
+      "defense": 15,
+      "stamina": 5,
+      "xDash": 30,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "J",
+    "nameEn": "Jolt",
+    "nameJa": "J（ジョルト）",
+    "nameZhTw": "J",
+    "aliases": [
+      "J",
+      "ジョルト",
+      "急衝"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-12-26",
+    "weightGrams": 2.6,
+    "type": "bit",
+    "stats": {
+      "attack": 35,
+      "defense": 10,
+      "stamina": 15,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "K",
+    "nameEn": "Kick",
+    "nameJa": "K（キック）",
+    "nameZhTw": "K",
+    "aliases": [
+      "K",
+      "キック",
+      "踢"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
       }
     ],
     "moldBatches": [],
     "generation": "X",
     "releaseAt": "2025-04-25",
+    "weightGrams": 2.2,
+    "type": "bit",
+    "stats": {
+      "attack": 35,
+      "defense": 25,
+      "stamina": 15,
+      "xDash": 25,
+      "burstResistance": 80
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "L",
+    "nameEn": "Level",
+    "nameJa": "L（レベル）",
+    "nameZhTw": "L",
+    "aliases": [
+      "L",
+      "レベル",
+      "階層"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "weightGrams": 2.6,
+    "type": "bit",
+    "stats": {
+      "attack": 40,
+      "defense": 5,
+      "stamina": 15,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "LF",
+    "nameEn": "Low Flat",
+    "nameJa": "LF（ローフラット）",
+    "nameZhTw": "LF",
+    "aliases": [
+      "LF",
+      "ローフラット",
+      "低平坦"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-10-01",
+    "weightGrams": 2.2,
+    "type": "bit",
+    "stats": {
+      "attack": 45,
+      "defense": 5,
+      "stamina": 10,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "LO",
+    "nameEn": "Low Orb",
+    "nameJa": "LO（ローオーブ）",
+    "nameZhTw": "LO",
+    "aliases": [
+      "LO",
+      "ローオーブ",
+      "低球體"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "weightGrams": 1.9,
+    "type": "bit",
+    "stats": {
+      "attack": 5,
+      "defense": 25,
+      "stamina": 55,
+      "xDash": 15,
+      "burstResistance": 30
+    },
+    "playstyle": "stamina",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "LR",
+    "nameEn": "Low Rush",
+    "nameJa": "LR（ローラッシュ）",
+    "nameZhTw": "LR",
+    "aliases": [
+      "LR",
+      "ローラッシュ",
+      "低衝刺"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-12-26",
+    "weightGrams": 1.9,
+    "type": "bit",
+    "stats": {
+      "attack": 45,
+      "defense": 5,
+      "stamina": 15,
+      "xDash": 35,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "M",
+    "nameEn": "Merge",
+    "nameJa": "M（マージ）",
+    "nameZhTw": "M",
+    "aliases": [
+      "M",
+      "マージ",
+      "融合"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-08-08",
+    "weightGrams": 3.4,
+    "type": "bit",
+    "stats": {
+      "attack": 50,
+      "defense": 20,
+      "stamina": 10,
+      "xDash": 20,
+      "burstResistance": 80
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "MN",
+    "nameEn": "Metal Needle",
+    "nameJa": "MN（メタルニードル）",
+    "nameZhTw": "MN",
+    "aliases": [
+      "MN",
+      "メタルニードル",
+      "金屬針"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-05-17",
+    "weightGrams": 2.8,
+    "type": "bit",
+    "stats": {
+      "attack": 8,
+      "defense": 57,
+      "stamina": 30,
+      "xDash": 5,
+      "burstResistance": 30
+    },
+    "playstyle": "defense",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "N",
+    "nameEn": "Needle",
+    "nameJa": "N（ニードル）",
+    "nameZhTw": "N",
+    "aliases": [
+      "N",
+      "ニードル",
+      "針"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-03-19",
+    "weightGrams": 2,
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 50,
+      "stamina": 30,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "defense",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "Nr",
+    "nameEn": "Narrow",
+    "nameJa": "Nr（ナロー）",
+    "nameZhTw": "Nr",
+    "aliases": [
+      "Nr",
+      "ナロー",
+      "細長"
+    ],
+    "provenance": [
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "id",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-06-12",
+    "weightGrams": 1.9,
+    "type": "bit",
+    "stats": {
+      "attack": 15,
+      "defense": 20,
+      "stamina": 60,
+      "xDash": 5,
+      "burstResistance": 30
+    },
+    "playstyle": "stamina",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "O",
+    "nameEn": "Orb",
+    "nameJa": "O（オーブ）",
+    "nameZhTw": "O",
+    "aliases": [
+      "O",
+      "オーブ",
+      "球體"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-09-10",
+    "weightGrams": 2,
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 30,
+      "stamina": 50,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "stamina",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "Op",
+    "nameEn": "Operate",
+    "nameJa": "Op（オペレート）",
+    "nameZhTw": "Op",
+    "aliases": [
+      "Op",
+      "オペレート",
+      "操作"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "modes",
+          "releaseAt"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-10-31",
+    "type": "bit",
+    "stats": {
+      "attack": 20,
+      "defense": 50,
+      "stamina": 50,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "balance",
+    "modes": [
+      {
+        "label": "Defense Mode",
+        "stats": {
+          "attack": 20,
+          "defense": 50,
+          "stamina": 50,
+          "xDash": 10,
+          "burstResistance": 30
+        }
+      },
+      {
+        "label": "Attack Mode",
+        "stats": {
+          "attack": 50,
+          "defense": 35,
+          "stamina": 10,
+          "xDash": 35,
+          "burstResistance": 30
+        }
+      }
+    ],
+    "statEditions": []
+  },
+  {
+    "id": "P",
+    "nameEn": "Point",
+    "nameJa": "P（ポイント）",
+    "nameZhTw": "P",
+    "aliases": [
+      "P",
+      "ポイント",
+      "圓點"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-09-10",
+    "weightGrams": 2.2,
+    "type": "bit",
+    "stats": {
+      "attack": 25,
+      "defense": 25,
+      "stamina": 25,
+      "xDash": 25,
+      "burstResistance": 80
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "Q",
+    "nameEn": "Quake",
+    "nameJa": "Q（クエイク）",
+    "nameZhTw": "Q",
+    "aliases": [
+      "Q",
+      "クエイク",
+      "震動"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-04-26",
+    "weightGrams": 2.2,
+    "type": "bit",
+    "stats": {
+      "attack": 55,
+      "defense": 15,
+      "stamina": 5,
+      "xDash": 25,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "R",
+    "nameEn": "Rush",
+    "nameJa": "R（ラッシュ）",
+    "nameZhTw": "R",
+    "aliases": [
+      "R",
+      "ラッシュ",
+      "衝刺"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-10-01",
+    "weightGrams": 2.1,
+    "type": "bit",
+    "stats": {
+      "attack": 40,
+      "defense": 10,
+      "stamina": 20,
+      "xDash": 30,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "RA",
+    "nameEn": "Rubber Accel",
+    "nameJa": "RA（ラバーアクセル）",
+    "nameZhTw": "RA",
+    "aliases": [
+      "RA",
+      "ラバーアクセル",
+      "橡膠加速"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "weightGrams": 3.1,
+    "type": "bit",
+    "stats": {
+      "attack": 60,
+      "defense": 17,
+      "stamina": 3,
+      "xDash": 20,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "S",
+    "nameEn": "Spike",
+    "nameJa": "S（スパイク）",
+    "nameZhTw": "S",
+    "aliases": [
+      "S",
+      "スパイク",
+      "釘刺"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-10-01",
+    "weightGrams": 2,
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 45,
+      "stamina": 35,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "defense",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "T",
+    "nameEn": "Taper",
+    "nameJa": "T（テーパー）",
+    "nameZhTw": "T",
+    "aliases": [
+      "T",
+      "テーパー",
+      "錐形"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2023-03-19",
+    "weightGrams": 2.2,
+    "type": "bit",
+    "stats": {
+      "attack": 35,
+      "defense": 20,
+      "stamina": 20,
+      "xDash": 25,
+      "burstResistance": 80
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "TK",
+    "nameEn": "Trans Kick",
+    "nameJa": "TK（トランスキック）",
+    "nameZhTw": "TK",
+    "aliases": [
+      "TK",
+      "トランスキック",
+      "轉換踢"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-09-26",
+    "weightGrams": 2.3,
+    "type": "bit",
+    "stats": {
+      "attack": 35,
+      "defense": 30,
+      "stamina": 20,
+      "xDash": 15,
+      "burstResistance": 80
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "TP",
+    "nameEn": "Trans Point",
+    "nameJa": "TP（トランスポイント）",
+    "nameZhTw": "TP",
+    "aliases": [
+      "TP",
+      "トランスポイント",
+      "轉換圓點"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-11-01",
+    "weightGrams": 2.2,
+    "type": "bit",
+    "stats": {
+      "attack": 35,
+      "defense": 25,
+      "stamina": 25,
+      "xDash": 15,
+      "burstResistance": 80
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "Tr",
+    "nameEn": "Turbo",
+    "nameJa": "Tr（ターボ）",
+    "nameZhTw": "Tr",
+    "aliases": [
+      "Tr",
+      "ターボ",
+      "渦輪"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "modes",
+          "releaseAt"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-07-18",
+    "type": "bit",
+    "stats": {
+      "attack": 30,
+      "defense": 30,
+      "stamina": 60,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "attack",
+    "modes": [
+      {
+        "label": "Stamina Mode",
+        "stats": {
+          "attack": 30,
+          "defense": 30,
+          "stamina": 60,
+          "xDash": 10,
+          "burstResistance": 30
+        }
+      },
+      {
+        "label": "Attack Mode",
+        "stats": {
+          "attack": 55,
+          "defense": 20,
+          "stamina": 10,
+          "xDash": 45,
+          "burstResistance": 30
+        }
+      }
+    ],
+    "statEditions": [
+      {
+        "label": "CX07_PegasusBlastATr",
+        "releaseAt": "2025-07-18",
+        "stats": {
+          "attack": 55,
+          "defense": 20,
+          "stamina": 10,
+          "xDash": 45,
+          "burstResistance": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "U",
+    "nameEn": "Unite",
+    "nameJa": "U（ユナイト）",
+    "nameZhTw": "U",
+    "aliases": [
+      "U",
+      "ユナイト",
+      "結合"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2024-06-14",
+    "weightGrams": 2.2,
+    "type": "bit",
+    "stats": {
+      "attack": 25,
+      "defense": 25,
+      "stamina": 30,
+      "xDash": 20,
+      "burstResistance": 80
+    },
+    "playstyle": "balance",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "UF",
+    "nameEn": "Under Flat",
+    "nameJa": "UF（アンダーフラット）",
+    "nameZhTw": "UF",
+    "aliases": [
+      "UF",
+      "アンダーフラット",
+      "超低平坦"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-08-08",
+    "weightGrams": 2.1,
+    "type": "bit",
+    "stats": {
+      "attack": 55,
+      "defense": 5,
+      "stamina": 5,
+      "xDash": 35,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "UN",
+    "nameEn": "Under Needle",
+    "nameJa": "UN（アンダーニードル）",
+    "nameZhTw": "UN",
+    "aliases": [
+      "UN",
+      "アンダーニードル",
+      "超低針"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-01-24",
+    "weightGrams": 1.9,
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 60,
+      "stamina": 20,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "defense",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "V",
+    "nameEn": "Vortex",
+    "nameJa": "V（ボルテックス）",
+    "nameZhTw": "V",
+    "aliases": [
+      "V",
+      "ボルテックス",
+      "氣旋"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "weightGrams": 2.1,
+    "type": "bit",
+    "stats": {
+      "attack": 45,
+      "defense": 10,
+      "stamina": 5,
+      "xDash": 40,
+      "burstResistance": 80
+    },
+    "playstyle": "attack",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "W",
+    "nameEn": "Wedge",
+    "nameJa": "W（ウェッジ）",
+    "nameZhTw": "W",
+    "aliases": [
+      "W",
+      "ウェッジ",
+      "楔形"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-03-28",
+    "weightGrams": 1.9,
+    "type": "bit",
+    "stats": {
+      "attack": 5,
+      "defense": 55,
+      "stamina": 30,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "defense",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "WB",
+    "nameEn": "Wall Ball",
+    "nameJa": "WB（ウォールボール）",
+    "nameZhTw": "WB",
+    "aliases": [
+      "WB",
+      "ウォールボール",
+      "障壁球"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-07-18",
+    "weightGrams": 2.4,
+    "type": "bit",
+    "stats": {
+      "attack": 15,
+      "defense": 30,
+      "stamina": 45,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "stamina",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "WW",
+    "nameEn": "Wall Wedge",
+    "nameJa": "WW（ウォールウェッジ）",
+    "nameZhTw": "WW",
+    "aliases": [
+      "WW",
+      "ウォールウェッジ",
+      "障壁楔形"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-01-23",
+    "weightGrams": 2.4,
+    "type": "bit",
+    "stats": {
+      "attack": 5,
+      "defense": 60,
+      "stamina": 25,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "defense",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "Y",
+    "nameEn": "Yielding",
+    "nameJa": "Y（イールディング）",
+    "nameZhTw": "Y",
+    "aliases": [
+      "Y",
+      "Yield",
+      "イールディング",
+      "柔韌"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2026-03-27",
+    "weightGrams": 4.2,
+    "type": "bit",
+    "stats": {
+      "attack": 10,
+      "defense": 15,
+      "stamina": 65,
+      "xDash": 10,
+      "burstResistance": 30
+    },
+    "playstyle": "stamina",
+    "modes": [],
+    "statEditions": []
+  },
+  {
+    "id": "Z",
+    "nameEn": "Zap",
+    "nameJa": "Z（ザップ）",
+    "nameZhTw": "Z",
+    "aliases": [
+      "Z",
+      "ザップ",
+      "電光"
+    ],
+    "provenance": [
+      {
+        "sourceId": "beybrew-beyparts",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "community_source",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "playstyle",
+          "modes"
+        ]
+      },
+      {
+        "sourceId": "beybrew-masterdata",
+        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
+        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
+        "authority": "official_app_derived",
+        "rightsStatus": "structured_facts_only",
+        "fields": [
+          "id",
+          "nameJa",
+          "nameZhTw",
+          "releaseAt",
+          "stats",
+          "statEditions"
+        ]
+      },
+      {
+        "sourceId": "phstudy-beyblade-x",
+        "sourceUrl": "https://beyblade.phstudy.org/?category=Bit",
+        "sourceVersion": "sha256:e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22",
+        "authority": "official_app_derived",
+        "rightsStatus": "unknown",
+        "fields": [
+          "nameEn",
+          "aliases",
+          "stats",
+          "nameJa",
+          "playstyle",
+          "releaseAt",
+          "weightGrams"
+        ]
+      }
+    ],
+    "moldBatches": [],
+    "generation": "X",
+    "releaseAt": "2025-04-25",
+    "weightGrams": 2.5,
     "type": "bit",
     "stats": {
       "attack": 30,

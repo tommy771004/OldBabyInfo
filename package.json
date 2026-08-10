@@ -20,7 +20,9 @@
     "report:generation-catalog": "node scripts/report-generation-catalog.ts",
     "refresh:generation-catalog": "node scripts/scrape-generation-catalog.ts",
     "scrape:generation-catalog": "node scripts/scrape-generation-catalog.ts",
-    "scrape:products": "node scripts/scrape-products.ts"
+    "scrape:products": "node scripts/scrape-products.ts",
+    "scrape:phstudy": "node scripts/scrape-phstudy-parts.ts",
+    "merge:phstudy": "node scripts/merge-phstudy-parts.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",

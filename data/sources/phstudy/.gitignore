@@ -1,0 +1,7 @@
+# Local staging snapshot. Mirrored prose and art have no documented publication
+# rights yet (ADR 0011), and the images alone are ~70 MB. Track README.md and
+# manifest.json only; regenerate the rest with `npm run scrape:phstudy`.
+raw/
+images/
+parts-*.json
+stat-ranges.json

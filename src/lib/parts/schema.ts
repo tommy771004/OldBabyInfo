@@ -78,6 +78,7 @@ const partProvenanceSchema = z.strictObject({
     "modes",
     "statEditions",
     "height",
+    "weightGrams",
   ])).min(1),
 });
 

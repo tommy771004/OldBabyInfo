@@ -1,0 +1,74 @@
+{
+  "sourceId": "phstudy-beyblade-x",
+  "sourceUrl": "https://beyblade.phstudy.org",
+  "fetchedAt": "2026-08-10T08:26:32.152Z",
+  "categories": [
+    "Bit"
+  ],
+  "documents": [
+    {
+      "path": "raw/main.json",
+      "url": "https://beyblade.phstudy.org/data/main.json",
+      "bytes": 3955650,
+      "sha256": "e30f4e51124e3292a7c9df5c21ae86ba6f5b545e33f537579e9240d387f6bf22"
+    },
+    {
+      "path": "raw/hardcoded.json",
+      "url": "https://beyblade.phstudy.org/data/hardcoded.json",
+      "bytes": 335045,
+      "sha256": "3027d31bce952a6785d1c58cc7a330093b96caea2ecc364516163f94b6ee9937"
+    },
+    {
+      "path": "raw/hasbro.json",
+      "url": "https://beyblade.phstudy.org/data/hasbro.json",
+      "bytes": 1525435,
+      "sha256": "ff37a3ed1e7c6c6bdbe0d1d92718e9db31ab3876bbe05caba908d0e6464f4832"
+    },
+    {
+      "path": "raw/hasbro_products.json",
+      "url": "https://beyblade.phstudy.org/data/hasbro_products.json",
+      "bytes": 127668,
+      "sha256": "365c44ace0d61c2ce6332b4d210549e076c2ad2004c5aadc8c4d61f658a6185c"
+    },
+    {
+      "path": "raw/products_multilang.json",
+      "url": "https://beyblade.phstudy.org/data/products_multilang.json",
+      "bytes": 527301,
+      "sha256": "bfd6176f170a550a9a87a836c1cb009bc549a69e2fa13d2ee5df4f257c91bfdd"
+    },
+    {
+      "path": "raw/part_colors.json",
+      "url": "https://beyblade.phstudy.org/data/part_colors.json",
+      "bytes": 80455,
+      "sha256": "073e52b0f63096c34766a2f330f544d10dd16b91e568b2b4a6f706af711d8498"
+    },
+    {
+      "path": "raw/part_weights.json",
+      "url": "https://beyblade.phstudy.org/data/part_weights.json",
+      "bytes": 99378,
+      "sha256": "e6f85ee643188772e4e20e581e51a99ee9a7b647a23c47928cb2b5f8ff2d87e1"
+    },
+    {
+      "path": "raw/part_code_names.json",
+      "url": "https://beyblade.phstudy.org/data/part_code_names.json",
+      "bytes": 11872,
+      "sha256": "9f0e9c094ba660ff84a937d3b63327cd6d941c719f746c04892bc89e47002aa9"
+    }
+  ],
+  "images": {
+    "count": 479,
+    "missing": [
+      "Bit/BT-FRB-CR2312-00",
+      "Bit/BT-FRB-CR2406-00",
+      "Bit/BT-FRB-CR2502-00",
+      "Bit/BT-PRD-096146-01R",
+      "Bit/BT-PRD-096146-01RR",
+      "Bit/BT-PRD-096146-02R",
+      "Bit/BT-PRD-096146-02RR",
+      "Bit/BT-PRD-939542-04",
+      "Bit/BT-PRD-990001-00",
+      "Bit/BT-PRD-990002-00",
+      "Bit/BT-PRD-990003-00"
+    ]
+  }
+}

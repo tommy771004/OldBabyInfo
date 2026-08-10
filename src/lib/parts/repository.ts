@@ -20,7 +20,7 @@ const partImageSchema = z.object({
    *  358×339) — so <Image> can size without stretching either axis. */
   width: z.number().positive(),
   height: z.number().positive(),
-  sourceId: z.enum(["go-shoot-x", "beybrew-image-index"]),
+  sourceId: z.enum(["go-shoot-x", "beybrew-image-index", "phstudy-beyblade-x"]),
   sourceUrl: z.url(),
   sourceVersion: z.string().regex(/^(?:commit:[a-f0-9]{40}|sha256:[a-f0-9]{64})$/),
   rightsStatus: z.literal("unknown"),
