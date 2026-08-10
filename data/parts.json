@@ -6773,7 +6773,7 @@
     "id": "A",
     "nameEn": "Accel",
     "nameJa": "A（アクセル）",
-    "nameZhTw": "A",
+    "nameZhTw": "A 加速",
     "aliases": [
       "A",
       "アクセル",
@@ -6787,10 +6787,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -6802,10 +6798,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -6820,6 +6812,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -6846,7 +6839,7 @@
     "id": "B",
     "nameEn": "Ball",
     "nameJa": "B（ボール）",
-    "nameZhTw": "B",
+    "nameZhTw": "B 球",
     "aliases": [
       "B",
       "ボール",
@@ -6860,10 +6853,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -6875,10 +6864,7 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
           "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -6893,6 +6879,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "weightGrams"
         ]
@@ -6918,7 +6905,7 @@
     "id": "BS",
     "nameEn": "Bound Spike",
     "nameJa": "BS（バウンドスパイク）",
-    "nameZhTw": "BS",
+    "nameZhTw": "BS 彈跳釘刺",
     "aliases": [
       "BS",
       "バウンドスパイク",
@@ -6932,10 +6919,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -6947,10 +6930,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -6965,6 +6944,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -6991,7 +6971,7 @@
     "id": "C",
     "nameEn": "Cyclone",
     "nameJa": "C（サイクロン）",
-    "nameZhTw": "C",
+    "nameZhTw": "C 旋風",
     "aliases": [
       "C",
       "サイクロン",
@@ -7005,10 +6985,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7020,10 +6996,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7038,6 +7010,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7064,7 +7037,7 @@
     "id": "D",
     "nameEn": "Dot",
     "nameJa": "D（ドット）",
-    "nameZhTw": "D",
+    "nameZhTw": "D 點",
     "aliases": [
       "D",
       "ドット",
@@ -7078,10 +7051,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7093,10 +7062,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7111,6 +7076,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7137,10 +7103,9 @@
     "id": "DB",
     "nameEn": "Disk Ball",
     "nameJa": "DB（ディスクボール）",
-    "nameZhTw": "DB",
+    "nameZhTw": "DB 圓盤球",
     "aliases": [
       "DB",
-      "Disc Ball",
       "ディスクボール",
       "圓盤球"
     ],
@@ -7152,10 +7117,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7167,10 +7128,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7185,6 +7142,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7211,7 +7169,7 @@
     "id": "DS",
     "nameEn": "Disk Spike",
     "nameJa": "DS（ディスクスパイク）",
-    "nameZhTw": "DS",
+    "nameZhTw": "DS 圓盤釘刺",
     "aliases": [
       "DS",
       "ディスクスパイク",
@@ -7229,7 +7187,7 @@
           "aliases",
           "stats",
           "nameJa",
-          "id",
+          "nameZhTw",
           "playstyle",
           "releaseAt"
         ]
@@ -7254,7 +7212,7 @@
     "id": "E",
     "nameEn": "Elevate",
     "nameJa": "E（エレベート）",
-    "nameZhTw": "E",
+    "nameZhTw": "E 上升",
     "aliases": [
       "E",
       "エレベート",
@@ -7268,10 +7226,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7283,10 +7237,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7301,6 +7251,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7327,7 +7278,7 @@
     "id": "F",
     "nameEn": "Flat",
     "nameJa": "F（フラット）",
-    "nameZhTw": "F",
+    "nameZhTw": "F 平坦",
     "aliases": [
       "F",
       "フラット",
@@ -7341,10 +7292,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7356,10 +7303,7 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
           "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7374,6 +7318,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "weightGrams"
         ]
@@ -7399,7 +7344,7 @@
     "id": "FB",
     "nameEn": "Free Ball",
     "nameJa": "FB（フリーボール）",
-    "nameZhTw": "FB",
+    "nameZhTw": "FB 自由球",
     "aliases": [
       "FB",
       "フリーボール",
@@ -7413,10 +7358,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7428,10 +7369,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7446,6 +7383,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7472,7 +7410,7 @@
     "id": "FF",
     "nameEn": "Free Flat",
     "nameJa": "FF（フリーフラット）",
-    "nameZhTw": "FF",
+    "nameZhTw": "FF 自由平坦",
     "aliases": [
       "FF",
       "フリーフラット",
@@ -7490,7 +7428,7 @@
           "aliases",
           "stats",
           "nameJa",
-          "id",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7517,7 +7455,7 @@
     "id": "G",
     "nameEn": "Glide",
     "nameJa": "G（グライド）",
-    "nameZhTw": "G",
+    "nameZhTw": "G 滑翔",
     "aliases": [
       "G",
       "グライド",
@@ -7531,10 +7469,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7546,10 +7480,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7564,6 +7494,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7590,7 +7521,7 @@
     "id": "GB",
     "nameEn": "Gear Ball",
     "nameJa": "GB（ギアボール）",
-    "nameZhTw": "GB",
+    "nameZhTw": "GB 齒輪球",
     "aliases": [
       "GB",
       "ギアボール",
@@ -7604,10 +7535,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7619,10 +7546,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7637,6 +7560,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7663,7 +7587,7 @@
     "id": "GF",
     "nameEn": "Gear Flat",
     "nameJa": "GF（ギアフラット）",
-    "nameZhTw": "GF",
+    "nameZhTw": "GF 齒輪平坦",
     "aliases": [
       "GF",
       "ギアフラット",
@@ -7677,10 +7601,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7692,10 +7612,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7710,6 +7626,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7736,7 +7653,7 @@
     "id": "GN",
     "nameEn": "Gear Needle",
     "nameJa": "GN（ギアニードル）",
-    "nameZhTw": "GN",
+    "nameZhTw": "GN 齒輪針",
     "aliases": [
       "GN",
       "ギアニードル",
@@ -7750,10 +7667,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7765,10 +7678,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7783,6 +7692,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7809,7 +7719,7 @@
     "id": "GP",
     "nameEn": "Gear Point",
     "nameJa": "GP（ギアポイント）",
-    "nameZhTw": "GP",
+    "nameZhTw": "GP 齒輪圓點",
     "aliases": [
       "GP",
       "ギアポイント",
@@ -7823,10 +7733,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7838,10 +7744,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7856,6 +7758,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7882,7 +7785,7 @@
     "id": "GR",
     "nameEn": "Gear Rush",
     "nameJa": "GR（ギアラッシュ）",
-    "nameZhTw": "GR",
+    "nameZhTw": "GR 齒輪衝刺",
     "aliases": [
       "GR",
       "ギアラッシュ",
@@ -7896,10 +7799,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7911,10 +7810,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -7929,6 +7824,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -7955,7 +7851,7 @@
     "id": "GU",
     "nameEn": "Gear Unite",
     "nameJa": "GU（ギアユナイト）",
-    "nameZhTw": "GU",
+    "nameZhTw": "GU 齒輪結合",
     "aliases": [
       "GU",
       "ギアユナイト",
@@ -7969,10 +7865,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -7984,10 +7876,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8002,6 +7890,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -8028,7 +7917,7 @@
     "id": "H",
     "nameEn": "Hexa",
     "nameJa": "H（ヘキサ）",
-    "nameZhTw": "H",
+    "nameZhTw": "H 六角形",
     "aliases": [
       "H",
       "ヘキサ",
@@ -8042,10 +7931,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8057,10 +7942,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8075,6 +7956,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -8101,7 +7983,7 @@
     "id": "HN",
     "nameEn": "High Needle",
     "nameJa": "HN（ハイニードル）",
-    "nameZhTw": "HN",
+    "nameZhTw": "HN 高針",
     "aliases": [
       "HN",
       "ハイニードル",
@@ -8115,10 +7997,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8130,10 +8008,7 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
           "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8148,6 +8023,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "weightGrams"
         ]
@@ -8173,7 +8049,7 @@
     "id": "HT",
     "nameEn": "High Taper",
     "nameJa": "HT（ハイテーパー）",
-    "nameZhTw": "HT",
+    "nameZhTw": "HT 高錐形",
     "aliases": [
       "HT",
       "ハイテーパー",
@@ -8187,10 +8063,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8202,10 +8074,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8220,6 +8088,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -8246,7 +8115,7 @@
     "id": "I",
     "nameEn": "Ignition",
     "nameJa": "I（イグニッション）",
-    "nameZhTw": "I",
+    "nameZhTw": "I 點火",
     "aliases": [
       "I",
       "イグニッション",
@@ -8260,10 +8129,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8275,10 +8140,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8293,6 +8154,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -8319,7 +8181,7 @@
     "id": "J",
     "nameEn": "Jolt",
     "nameJa": "J（ジョルト）",
-    "nameZhTw": "J",
+    "nameZhTw": "J 急衝",
     "aliases": [
       "J",
       "ジョルト",
@@ -8333,10 +8195,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8348,10 +8206,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8366,6 +8220,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -8392,7 +8247,7 @@
     "id": "K",
     "nameEn": "Kick",
     "nameJa": "K（キック）",
-    "nameZhTw": "K",
+    "nameZhTw": "K 踢",
     "aliases": [
       "K",
       "キック",
@@ -8406,10 +8261,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8421,10 +8272,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8439,6 +8286,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -8465,7 +8313,7 @@
     "id": "L",
     "nameEn": "Level",
     "nameJa": "L（レベル）",
-    "nameZhTw": "L",
+    "nameZhTw": "L 階層",
     "aliases": [
       "L",
       "レベル",
@@ -8479,10 +8327,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8494,10 +8338,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8512,6 +8352,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -8538,7 +8379,7 @@
     "id": "LF",
     "nameEn": "Low Flat",
     "nameJa": "LF（ローフラット）",
-    "nameZhTw": "LF",
+    "nameZhTw": "LF 低平坦",
     "aliases": [
       "LF",
       "ローフラット",
@@ -8552,10 +8393,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8567,10 +8404,7 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
           "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8585,6 +8419,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "weightGrams"
         ]
@@ -8610,7 +8445,7 @@
     "id": "LO",
     "nameEn": "Low Orb",
     "nameJa": "LO（ローオーブ）",
-    "nameZhTw": "LO",
+    "nameZhTw": "LO 低球體",
     "aliases": [
       "LO",
       "ローオーブ",
@@ -8624,10 +8459,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8639,10 +8470,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8657,6 +8484,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -8683,7 +8511,7 @@
     "id": "LR",
     "nameEn": "Low Rush",
     "nameJa": "LR（ローラッシュ）",
-    "nameZhTw": "LR",
+    "nameZhTw": "LR 低衝刺",
     "aliases": [
       "LR",
       "ローラッシュ",
@@ -8697,10 +8525,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8712,10 +8536,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8730,6 +8550,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -8756,7 +8577,7 @@
     "id": "M",
     "nameEn": "Merge",
     "nameJa": "M（マージ）",
-    "nameZhTw": "M",
+    "nameZhTw": "M 融合",
     "aliases": [
       "M",
       "マージ",
@@ -8770,10 +8591,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8785,10 +8602,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8803,6 +8616,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -8829,7 +8643,7 @@
     "id": "MN",
     "nameEn": "Metal Needle",
     "nameJa": "MN（メタルニードル）",
-    "nameZhTw": "MN",
+    "nameZhTw": "MN 金屬針",
     "aliases": [
       "MN",
       "メタルニードル",
@@ -8843,10 +8657,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8858,10 +8668,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8876,6 +8682,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -8902,7 +8709,7 @@
     "id": "N",
     "nameEn": "Needle",
     "nameJa": "N（ニードル）",
-    "nameZhTw": "N",
+    "nameZhTw": "N 針",
     "aliases": [
       "N",
       "ニードル",
@@ -8916,10 +8723,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -8931,10 +8734,7 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
           "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -8949,6 +8749,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "weightGrams"
         ]
@@ -8974,7 +8775,7 @@
     "id": "Nr",
     "nameEn": "Narrow",
     "nameJa": "Nr（ナロー）",
-    "nameZhTw": "Nr",
+    "nameZhTw": "Nr 細長",
     "aliases": [
       "Nr",
       "ナロー",
@@ -8992,7 +8793,7 @@
           "aliases",
           "stats",
           "nameJa",
-          "id",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -9019,7 +8820,7 @@
     "id": "O",
     "nameEn": "Orb",
     "nameJa": "O（オーブ）",
-    "nameZhTw": "O",
+    "nameZhTw": "O 球體",
     "aliases": [
       "O",
       "オーブ",
@@ -9033,10 +8834,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -9048,10 +8845,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9066,6 +8859,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -9092,27 +8886,13 @@
     "id": "Op",
     "nameEn": "Operate",
     "nameJa": "Op（オペレート）",
-    "nameZhTw": "Op",
+    "nameZhTw": "Op 操作",
     "aliases": [
       "Op",
       "オペレート",
       "操作"
     ],
     "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
       {
         "sourceId": "beybrew-masterdata",
         "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
@@ -9121,10 +8901,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9139,6 +8915,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "modes",
           "releaseAt"
@@ -9185,7 +8962,7 @@
     "id": "P",
     "nameEn": "Point",
     "nameJa": "P（ポイント）",
-    "nameZhTw": "P",
+    "nameZhTw": "P 圓點",
     "aliases": [
       "P",
       "ポイント",
@@ -9199,10 +8976,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -9214,10 +8987,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9232,6 +9001,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -9258,7 +9028,7 @@
     "id": "Q",
     "nameEn": "Quake",
     "nameJa": "Q（クエイク）",
-    "nameZhTw": "Q",
+    "nameZhTw": "Q 震動",
     "aliases": [
       "Q",
       "クエイク",
@@ -9272,10 +9042,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -9287,10 +9053,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9305,6 +9067,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -9331,7 +9094,7 @@
     "id": "R",
     "nameEn": "Rush",
     "nameJa": "R（ラッシュ）",
-    "nameZhTw": "R",
+    "nameZhTw": "R 衝刺",
     "aliases": [
       "R",
       "ラッシュ",
@@ -9345,10 +9108,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -9360,10 +9119,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9378,6 +9133,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -9404,7 +9160,7 @@
     "id": "RA",
     "nameEn": "Rubber Accel",
     "nameJa": "RA（ラバーアクセル）",
-    "nameZhTw": "RA",
+    "nameZhTw": "RA 橡膠加速",
     "aliases": [
       "RA",
       "ラバーアクセル",
@@ -9418,10 +9174,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -9433,10 +9185,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9451,6 +9199,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -9477,7 +9226,7 @@
     "id": "S",
     "nameEn": "Spike",
     "nameJa": "S（スパイク）",
-    "nameZhTw": "S",
+    "nameZhTw": "S 釘刺",
     "aliases": [
       "S",
       "スパイク",
@@ -9491,10 +9240,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -9506,10 +9251,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9524,6 +9265,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -9550,7 +9292,7 @@
     "id": "T",
     "nameEn": "Taper",
     "nameJa": "T（テーパー）",
-    "nameZhTw": "T",
+    "nameZhTw": "T 錐形",
     "aliases": [
       "T",
       "テーパー",
@@ -9564,10 +9306,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -9579,10 +9317,7 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
           "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9597,6 +9332,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "weightGrams"
         ]
@@ -9622,7 +9358,7 @@
     "id": "TK",
     "nameEn": "Trans Kick",
     "nameJa": "TK（トランスキック）",
-    "nameZhTw": "TK",
+    "nameZhTw": "TK 轉換踢",
     "aliases": [
       "TK",
       "トランスキック",
@@ -9636,10 +9372,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -9651,10 +9383,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9669,6 +9397,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -9695,7 +9424,7 @@
     "id": "TP",
     "nameEn": "Trans Point",
     "nameJa": "TP（トランスポイント）",
-    "nameZhTw": "TP",
+    "nameZhTw": "TP 轉換圓點",
     "aliases": [
       "TP",
       "トランスポイント",
@@ -9709,10 +9438,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -9724,10 +9449,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9742,6 +9463,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -9768,27 +9490,13 @@
     "id": "Tr",
     "nameEn": "Turbo",
     "nameJa": "Tr（ターボ）",
-    "nameZhTw": "Tr",
+    "nameZhTw": "Tr 渦輪",
     "aliases": [
       "Tr",
       "ターボ",
       "渦輪"
     ],
     "provenance": [
-      {
-        "sourceId": "beybrew-beyparts",
-        "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/src/data/beyparts.json",
-        "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-        "authority": "community_source",
-        "rightsStatus": "structured_facts_only",
-        "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
-          "modes"
-        ]
-      },
       {
         "sourceId": "beybrew-masterdata",
         "sourceUrl": "https://raw.githubusercontent.com/yujinyuz/beybrew/main/MasterData.json",
@@ -9797,10 +9505,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9815,6 +9519,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "modes",
           "releaseAt"
@@ -9873,7 +9578,7 @@
     "id": "U",
     "nameEn": "Unite",
     "nameJa": "U（ユナイト）",
-    "nameZhTw": "U",
+    "nameZhTw": "U 結合",
     "aliases": [
       "U",
       "ユナイト",
@@ -9887,10 +9592,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -9902,10 +9603,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9920,6 +9617,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -9946,7 +9644,7 @@
     "id": "UF",
     "nameEn": "Under Flat",
     "nameJa": "UF（アンダーフラット）",
-    "nameZhTw": "UF",
+    "nameZhTw": "UF 超低平坦",
     "aliases": [
       "UF",
       "アンダーフラット",
@@ -9960,10 +9658,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -9975,10 +9669,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -9993,6 +9683,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -10019,7 +9710,7 @@
     "id": "UN",
     "nameEn": "Under Needle",
     "nameJa": "UN（アンダーニードル）",
-    "nameZhTw": "UN",
+    "nameZhTw": "UN 超低針",
     "aliases": [
       "UN",
       "アンダーニードル",
@@ -10033,10 +9724,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -10048,10 +9735,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -10066,6 +9749,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -10092,7 +9776,7 @@
     "id": "V",
     "nameEn": "Vortex",
     "nameJa": "V（ボルテックス）",
-    "nameZhTw": "V",
+    "nameZhTw": "V 氣旋",
     "aliases": [
       "V",
       "ボルテックス",
@@ -10106,10 +9790,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -10121,10 +9801,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -10139,6 +9815,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -10165,7 +9842,7 @@
     "id": "W",
     "nameEn": "Wedge",
     "nameJa": "W（ウェッジ）",
-    "nameZhTw": "W",
+    "nameZhTw": "W 楔形",
     "aliases": [
       "W",
       "ウェッジ",
@@ -10179,10 +9856,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -10194,10 +9867,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -10212,6 +9881,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -10238,7 +9908,7 @@
     "id": "WB",
     "nameEn": "Wall Ball",
     "nameJa": "WB（ウォールボール）",
-    "nameZhTw": "WB",
+    "nameZhTw": "WB 障壁球",
     "aliases": [
       "WB",
       "ウォールボール",
@@ -10252,10 +9922,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -10267,10 +9933,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -10285,6 +9947,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -10311,7 +9974,7 @@
     "id": "WW",
     "nameEn": "Wall Wedge",
     "nameJa": "WW（ウォールウェッジ）",
-    "nameZhTw": "WW",
+    "nameZhTw": "WW 障壁楔形",
     "aliases": [
       "WW",
       "ウォールウェッジ",
@@ -10325,10 +9988,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -10340,10 +9999,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -10358,6 +10013,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -10384,10 +10040,9 @@
     "id": "Y",
     "nameEn": "Yielding",
     "nameJa": "Y（イールディング）",
-    "nameZhTw": "Y",
+    "nameZhTw": "Y 柔韌",
     "aliases": [
       "Y",
-      "Yield",
       "イールディング",
       "柔韌"
     ],
@@ -10399,10 +10054,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -10414,10 +10065,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -10432,6 +10079,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"
@@ -10458,7 +10106,7 @@
     "id": "Z",
     "nameEn": "Zap",
     "nameJa": "Z（ザップ）",
-    "nameZhTw": "Z",
+    "nameZhTw": "Z 電光",
     "aliases": [
       "Z",
       "ザップ",
@@ -10472,10 +10120,6 @@
         "authority": "community_source",
         "rightsStatus": "structured_facts_only",
         "fields": [
-          "nameEn",
-          "aliases",
-          "stats",
-          "playstyle",
           "modes"
         ]
       },
@@ -10487,10 +10131,6 @@
         "rightsStatus": "structured_facts_only",
         "fields": [
           "id",
-          "nameJa",
-          "nameZhTw",
-          "releaseAt",
-          "stats",
           "statEditions"
         ]
       },
@@ -10505,6 +10145,7 @@
           "aliases",
           "stats",
           "nameJa",
+          "nameZhTw",
           "playstyle",
           "releaseAt",
           "weightGrams"

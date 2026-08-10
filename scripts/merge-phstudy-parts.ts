@@ -17,12 +17,15 @@
  * Bit fields listed in each part's phstudy provenance entry. ADR-0010 has not
  * been amended; this script is the only place the override lives.
  *
- * Two things deliberately do NOT follow the source:
- *   - `nameZhTw` keeps the Part code, because phstudy's own `name.zh-TW` is
- *     also the code ("CX-11-01 Op"). The Chinese reading lives in `codeName`
- *     and is added to `aliases` instead — the search layer, per ADR-0005.
- *   - A replaced `nameEn` is appended to `aliases`, because the detail-page
- *     URL is `slugify(nameEn)` and old links must keep resolving.
+ * Localized names come from phstudy's `part_code_names.json` and are written as
+ * code + reading, so a combo written "3-60GF" still reads off a list that shows
+ * one name per locale ("GF 齒輪平坦" / "GF（ギアフラット）" / "Gear Flat").
+ * The bare reading also goes to `aliases`, so searching "齒輪平坦" alone still
+ * matches — the search layer, per ADR-0005. Note this is NOT phstudy's own
+ * `name.zh-TW` field, which is the SKU label ("CX-11-01 Op").
+ *
+ * A replaced `nameEn` is appended to `aliases`, because the detail-page URL is
+ * `slugify(nameEn)` and old links must keep resolving.
  */
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -209,17 +212,20 @@ async function main() {
 
     const nameJaReading = codeNames?.["ja-JP"]?.trim();
     const nameZhReading = codeNames?.["zh-TW"]?.trim();
-    const aliases = new Set([...(existing?.aliases ?? []), groupId]);
+    // Derived from the source, not accumulated: phstudy is the naming authority
+    // for Bits, so a superseded name ("Disc Ball" before "Disk Ball") does not
+    // linger. The trade-off is that a hand-added alias on a Bit is dropped on
+    // the next merge — add it upstream or reconsider this line.
+    const aliases = new Set([groupId]);
     if (nameZhReading) aliases.add(nameZhReading);
     if (nameJaReading) aliases.add(nameJaReading);
     if (existing && existing.nameEn !== nameEn) {
-      // The detail-page URL is slugify(nameEn); keep the old one resolvable.
-      aliases.add(existing.nameEn);
       renamed.push({ id: groupId, from: existing.nameEn, to: nameEn });
     }
 
     const fields: string[] = ["nameEn", "aliases", "stats"];
     if (nameJaReading) fields.push("nameJa");
+    if (nameZhReading) fields.push("nameZhTw");
     if (!existing) fields.push("id");
     if (base.partType && playstyles.has(base.partType)) fields.push("playstyle");
     if (modes.length > 0) fields.push("modes");
@@ -231,8 +237,20 @@ async function main() {
     const weightGrams = base.weight?.weight_g ?? undefined;
     if (weightGrams && weightGrams > 0) fields.push("weightGrams");
 
+    // A `fields` list records which source supplied the value now stored. Once
+    // phstudy's value wins a field, the older source no longer supplies it, so
+    // its claim is withdrawn; an entry left claiming nothing is dropped.
+    const claimed = new Set(fields);
+    const priorProvenance = (existing?.provenance ?? [])
+      // Re-running must not stack a second phstudy entry on top of its own
+      // previous output — this script is meant to be run again after every
+      // `generate:parts`, and on an already-merged file too.
+      .filter((entry) => entry.sourceId !== SOURCE_ID)
+      .map((entry) => ({ ...entry, fields: entry.fields.filter((field) => !claimed.has(field)) }))
+      .filter((entry) => entry.fields.length > 0);
+
     const provenance = [
-      ...(existing?.provenance ?? []),
+      ...priorProvenance,
       {
         sourceId: SOURCE_ID,
         sourceUrl: SOURCE_URL,
@@ -249,9 +267,12 @@ async function main() {
       ...(existing ?? {}),
       id: groupId,
       nameEn,
+      // Code + reading, so a combo written "3-60GF" still reads off the list
+      // while zh-TW and ja get their own name. `localizedNameOf` picks one of
+      // these three per locale; the bare reading also lands in `aliases`, so
+      // searching "加速" or "アクセル" alone still matches (ADR-0005).
       ...(nameJaReading ? { nameJa: `${groupId}（${nameJaReading}）` } : {}),
-      // phstudy's own name.zh-TW is the Part code too, so the code stays.
-      nameZhTw: existing?.nameZhTw ?? groupId,
+      nameZhTw: nameZhReading ? `${groupId} ${nameZhReading}` : (existing?.nameZhTw ?? groupId),
       aliases: [...aliases].sort(),
       provenance,
       moldBatches: existing?.moldBatches ?? [],

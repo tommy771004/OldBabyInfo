@@ -83,13 +83,50 @@ MasterData for X Part names, stats, modes and relationships) for the fields
 listed in each Part's phstudy provenance entry. ADR 0010 has not been amended —
 the override lives only in the merge script's header.
 
-Two deliberate exceptions:
+### Localized names
 
-- `nameZhTw` keeps the Part code, because phstudy's own `name.zh-TW` *is* the
-  code (`"CX-11-01 Op"`). The Chinese reading lives in `codeName` and goes to
-  `aliases` — the search layer, per ADR 0005.
-- A replaced `nameEn` is appended to `aliases`, since the detail URL is
-  `slugify(nameEn)`.
+Bits are now localized the way Blades already were — one name per locale via
+`localizedNameOf`, sourced from `part_code_names.json`:
+
+| Field | Value | Shown in |
+| --- | --- | --- |
+| `nameEn` | `Gear Flat` | `/en` |
+| `nameJa` | `GF（ギアフラット）` | `/ja` |
+| `nameZhTw` | `GF 齒輪平坦` | `/` (zh-TW) |
+
+Code + reading, so a combo written `3-60GF` still reads off a list that shows
+only the name. Coverage is 52/52 Bits in both zh-TW and ja.
+
+This is **not** phstudy's `name.zh-TW` field — that one is the SKU label
+(`"CX-11-01 Op"`). The readings come from `part_code_names.json`, and each bare
+reading (`齒輪平坦`, `ギアフラット`) also goes to `aliases` so searching it alone
+matches, per ADR 0005.
+
+Ratchets and Blades are untouched: upstream carries code names for Bit,
+AssistBlade and OverBlade only, and the latter two are CX Part kinds that live
+in the Generation Catalog rather than `parts.json`.
+
+### Superseded values are cleaned, not accumulated
+
+phstudy is the naming authority for Bits, so the merge **derives** rather than
+appends:
+
+- **`aliases` are rebuilt from the source** each run — code + ja reading + zh
+  reading. A superseded name does not linger: `DB` dropped `"Disc Ball"` when it
+  became `Disk Ball`, and `Y` dropped `"Yield"`. Trade-off: a hand-added alias
+  on a Bit is wiped on the next merge.
+- **Older provenance entries withdraw the fields phstudy took over.** A `fields`
+  list records which source supplied the value now stored, so once phstudy's
+  value wins, the earlier claim is removed; an entry left claiming nothing is
+  dropped entirely. beybrew now keeps only what it still supplies — `modes`
+  (except on `Op`/`Tr`, where phstudy supplies those too) and `id` /
+  `statEditions`.
+
+Renaming `nameEn` moves the detail URL, since it is `slugify(nameEn)`:
+`/parts/disc-ball` → `/parts/disk-ball`, `/parts/yield` → `/parts/yielding`.
+Nothing in the repo links to the old paths and no redirects are configured; the
+Catalog↔Part crosswalk matches on the Part code, not the English name, so it is
+unaffected (168 matches before and after).
 
 ## Repo rules this touches
 
