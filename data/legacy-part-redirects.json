@@ -1,0 +1,97 @@
+[
+  {
+    "from": "/parts/arc",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-arc-a5a6390349",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/blast",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-blast-4e0ee889e5",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/blitz",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-bblitz-59c746d83a",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/brave",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-brave-bd75cee44b",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/brush",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-brush-2fd3663481",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/dark",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-dark-9c57175323",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/delta",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-pdelta-e8bfac3455",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/disc-ball",
+    "to": "/parts/disk-ball",
+    "reason": "renamed"
+  },
+  {
+    "from": "/parts/eclipse",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-eclipse-52b8688b75",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/fang",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-fang-37753ed978",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/flame",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-flame-28d3c39d7a",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/flare",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-flare-641da72e51",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/fortress",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-gfortress-b3a1d82d85",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/hunt",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-hunt-fc954ac644",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/might",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-might-c9dfa1a6dc",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/rage",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-frage-b55d52863a",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/reaper",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-reaper-fa75cdc49a",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/volt",
+    "to": "/parts/catalog/beybrew:master-beybladepartsmainblade-volt-974e8207c5",
+    "reason": "moved-to-generation-catalog"
+  },
+  {
+    "from": "/parts/yield",
+    "to": "/parts/yielding",
+    "reason": "renamed"
+  }
+]

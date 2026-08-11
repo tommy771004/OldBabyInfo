@@ -4,9 +4,10 @@ Raw + normalized capture of <https://beyblade.phstudy.org>, produced by
 `scripts/scrape-phstudy-parts.ts` (`npm run scrape:phstudy`).
 
 **This directory is the local snapshot, not the library.** It stays on disk and
-git-ignored (see `.gitignore` here). The Bit data and photos have since been
-merged into `data/parts.json`, `data/part-images.json` and `public/parts/` —
-see [Merged into the Part library](#merged-into-the-part-library) below.
+git-ignored (see `.gitignore` here). Bit and Ratchet data plus photos have since
+been merged into `data/parts.json`, `data/part-images.json` and `public/parts/`
+— see [Merged into the Part library](#merged-into-the-part-library) below.
+Blade is deliberately not merged; see [Blade is on hold](#blade-is-on-hold).
 
 Publishing the photos was an owner decision on 2026-08-10, following the
 existing go-shoot precedent already in `public/parts/`. Rights remain
@@ -28,8 +29,10 @@ project-identifying User-Agent.
 | --- | --- |
 | `raw/*.json` | Byte-verbatim upstream documents, hashed in `manifest.json` |
 | `parts-bit.json` | Normalized Bit records (480) |
+| `parts-ratchet.json` | Normalized Ratchet records (465) |
+| `parts-blade.json` | Normalized Blade records (483) — staged only, not merged |
 | `stat-ranges.json` | Per-category stat maxima used for bar scaling |
-| `images/Bit/*.png\|jpg` | Part art, filename = part `id` |
+| `images/<Category>/*.png\|jpg` | Part art, filename = SKU `id` |
 | `images/icons/*.png` | Badge assets (type / spin / series / limited) |
 | `manifest.json` | Source URLs, `fetchedAt`, per-document sha256, image misses |
 
@@ -70,9 +73,30 @@ still served — 12 of the 16 resolve fine. Those rows are kept and flagged
 
 ## Merged into the Part library
 
-`scripts/merge-phstudy-parts.ts` (`npm run merge:phstudy`) folds the Bit
-snapshot into `data/parts.json`, `data/part-images.json` and `public/parts/`.
-Run it after `npm run scrape:phstudy`.
+`scripts/merge-phstudy-parts.ts` (`npm run merge:phstudy`) folds the Bit,
+Ratchet and Blade snapshots into `data/parts.json`, `data/part-images.json` and
+`public/parts/`. Run it after `npm run scrape:phstudy`. It is idempotent —
+re-running on already-merged data is a no-op.
+
+Junk filtering is per category and schema-aligned: a Bit with no code name has
+no display name or URL slug (upstream ships a blank-id row and a `"■"` row); a
+Ratchet with `height <= 0` is an upstream placeholder (`RATCHET-integrated`,
+`ラチェット一体型ブレード`, and single letters `D`/`O`/`P`/`V`, all with all-zero
+stats), and `ratchetSchema` requires a positive height anyway.
+
+### Stat Editions, not coin flips
+
+A group can carry more than one stat tuple across its SKUs. The `2-60` Ratchet
+ships both `16/8/6` (earliest SKU) and `10/13/7` (10 of its 14 SKUs, and the
+curated value). The merge keeps the curated tuple as canonical **whenever it
+still appears upstream** — 以新的資料為準 decides between *sources*, not between
+SKUs of one Part — and records every other tuple as a `statEdition` labelled by
+`model_name`, matching what `build-stat-editions.ts` produces for beybrew.
+Result: zero stat values changed across the whole library.
+
+A tuple that is a Bit's mode is never also recorded as an edition — different
+mechanics (ADR-0007). That is why `Tr` lost its old beybrew edition: the tuple
+is now its Attack Mode.
 
 > **重跑 `npm run generate:parts` 會從 beybrew 重建 `parts.json`，蓋掉這裡合併進去的
 > 一切。之後必須再跑一次 `npm run merge:phstudy`。**
@@ -147,8 +171,43 @@ unaffected (168 matches before and after).
 - **Absence is not new data.** Where phstudy carries no usable value, the
   curated one stands — `releaseAt` in particular is never erased to null.
 
+## Blade: identity moved to phstudy (ADR 0013)
+
+The two sources disagreed on what a Blade *is*. `parts.json` mixed CX
+`MainBlade` parts into its Blade set and identified them by beybrew short names
+(`ARC`, `BRAVE`); phstudy files those under `BeybladePartsMainBlade` and keeps
+Blade for whole blades (`DRANARC`, `HELLSREAPER`). [ADR 0013](../../../docs/adr/0013-blade-identity-follows-phstudy-classification.md)
+settles it in phstudy's favour.
+
+- **17 CX MainBlades left `parts.json`** — the Generation Catalog already
+  carried all 17 as accepted `main_blade` records, so nothing was lost. Their
+  detail URLs are gone and the x-crosswalk drops 168 → 151 matches, which is the
+  behaviour `repository.test.ts` already asserts for CX parts.
+- **Blade 84 → 103**, total 191 Parts. **No existing Blade URL changed**: the
+  curated `nameEn` is kept, and the URL is `slugify(nameEn)`, not the id.
+- **Every address this work broke now 308s.** The merge emits
+  `data/legacy-part-redirects.json` — 17 evicted MainBlades point at their
+  Catalog record, `/parts/disc-ball` and `/parts/yield` at their new slugs — and
+  `next.config.ts` expands each into unprefixed, `/ja` and `/en` forms. The
+  script throws if a redirect source still resolves to a live Part.
+- **36 new Blades** named by vocabulary segmentation of the `group_id`, since
+  phstudy has no `part_code_names.json` for Blades and ADR 0007 forbids deriving
+  display names from SKU labels. Unsegmentable ids are reported, never guessed.
+- **ja / zh names come straight from phstudy** once the SKU code, colorway and
+  trailing slot letter are stripped — they match the curated values exactly
+  where both exist.
+
+Upstream classification defects are enumerated in
+`scripts/phstudy-blade-vocabulary.ts`, never inferred: two blades split across
+two `group_id`s each (`WARRIORSABER`/`SAMURAISABER`,
+`HELLSHUMMER`/`HELLSHAMMER` — caught because each pair shares one katakana
+name), a mislabelled single-SKU group (`BEYBLADEBURST` = Storm Spriggan), two
+ids with a stray trailing slot letter, a `BIT` group holding Bit sets, and 81
+ungrouped SKUs that are Hasbro licensed collabs rather than part identities.
+
 ## Other categories
 
-Only `Bit` images were downloaded. The raw JSON already covers all nine
-categories; extend with
-`node scripts/scrape-phstudy-parts.ts --category=Blade` or `--all-categories`.
+Bit, Ratchet and Blade are merged. The remaining upstream categories (Series,
+MainBlade, AssistBlade, LockChip, MetalBlade, OverBlade) are CX/product-level
+kinds that belong to the Generation Catalog, not `parts.json`. Their raw JSON is
+already staged — extend with `node scripts/scrape-phstudy-parts.ts --all-categories`.

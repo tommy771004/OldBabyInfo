@@ -32,30 +32,19 @@ const SOURCE_ID = "phstudy-beyblade-x";
 const BASE_URL = "https://beyblade.phstudy.org";
 const userAgent = "OldBabyInfo part-data-bot/1.0 (https://oldbabyinfo.dev/data-policy)";
 
-/** Static documents `viewer.js` loads. Manuals/announcements are not part data. */
+/**
+ * The documents that actually feed a Part. `viewer.js` also loads
+ * `hasbro_products.json` (retail photo catalog), `products_multilang.json`
+ * (product listings), `manuals.json` and `announcements.json` — all site
+ * furniture rather than part data, so none of them are fetched.
+ */
 const RAW_DOCUMENTS = [
   "data/main.json",
   "data/hardcoded.json",
   "data/hasbro.json",
-  "data/hasbro_products.json",
-  "data/products_multilang.json",
   "data/part_colors.json",
   "data/part_weights.json",
   "data/part_code_names.json",
-] as const;
-
-/** Badge assets rendered next to each card (viewer.js `getIconHtml`). */
-const BADGE_ICONS = [
-  "icon_limited.png",
-  "icon_series_bx.png",
-  "icon_series_ux.png",
-  "icon_series_cx.png",
-  "icon_type_attack.png",
-  "icon_type_defense.png",
-  "icon_type_stamina.png",
-  "icon_type_balance.png",
-  "icon_spin_right.png",
-  "icon_spin_left.png",
 ] as const;
 
 const CATEGORIES = [
@@ -114,11 +103,6 @@ const itemSchema = z
   })
   .loose();
 type SourceItem = z.infer<typeof itemSchema>;
-
-const mainSchema = z.object({
-  data: z.record(z.string(), z.record(z.string(), itemSchema)),
-  stat_ranges: z.record(z.string(), z.record(z.string(), z.number())).optional(),
-});
 
 const weightSchema = z.object({ weight_g: z.number().nullish(), size: z.string().nullish() }).loose();
 const codeNameSchema = z.object({ type: z.string().nullish(), name: localizedSchema }).loose();
@@ -306,7 +290,6 @@ async function main() {
   const fetchedAt = new Date().toISOString();
   const { manifest: documents, byPath } = await fetchDocuments();
 
-  const main = mainSchema.parse(byPath.get("main.json"));
   const colors = z.record(z.string(), z.array(z.string())).parse(byPath.get("part_colors.json"));
   const weights = z.record(z.string(), weightSchema).parse(byPath.get("part_weights.json"));
   const codeNames = z
@@ -381,13 +364,6 @@ async function main() {
         collectionOrder: item.collection_order ?? null,
         collectionVisible: item.collection_visible ?? null,
         image: imageRecords.get(imageId) ?? null,
-        badgeIcons: {
-          type: item.type ? `icons/icon_type_${item.type}.png` : null,
-          series: (item.tags ?? [])
-            .filter((tag) => ["bx", "ux", "cx"].includes(tag.toLowerCase()))
-            .map((tag) => `icons/icon_series_${tag.toLowerCase()}.png`),
-          limited: (item.tags ?? []).includes("other") ? "icons/icon_limited.png" : null,
-        },
         provenance: {
           sourceId: SOURCE_ID,
           sourceUrl: `${BASE_URL}/?category=${category}`,
@@ -402,25 +378,6 @@ async function main() {
     writeFileSync(outPath, `${JSON.stringify(normalized, null, 2)}\n`);
     console.log(`${category}: ${normalized.length} items -> ${outPath}`);
   }
-
-  if (!skipImages) {
-    const iconDir = join(IMAGE_DIR, "icons");
-    mkdirSync(iconDir, { recursive: true });
-    for (const icon of BADGE_ICONS) {
-      const url = `${BASE_URL}/images/icons/${icon}`;
-      const { status, buffer } = await fetchBuffer(url);
-      if (status !== 200) {
-        missingImages.push(`icons/${icon}`);
-        continue;
-      }
-      writeFileSync(join(iconDir, icon), buffer);
-      imageCount += 1;
-      await sleep(150);
-    }
-  }
-
-  const statRangesPath = join(OUT_DIR, "stat-ranges.json");
-  writeFileSync(statRangesPath, `${JSON.stringify(main.stat_ranges ?? {}, null, 2)}\n`);
 
   const manifest: Manifest = {
     sourceId: SOURCE_ID,

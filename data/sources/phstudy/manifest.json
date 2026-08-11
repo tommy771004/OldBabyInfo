@@ -1,9 +1,11 @@
 {
   "sourceId": "phstudy-beyblade-x",
   "sourceUrl": "https://beyblade.phstudy.org",
-  "fetchedAt": "2026-08-10T08:26:32.152Z",
+  "fetchedAt": "2026-08-11T02:45:02.887Z",
   "categories": [
-    "Bit"
+    "Bit",
+    "Ratchet",
+    "Blade"
   ],
   "documents": [
     {
@@ -25,18 +27,6 @@
       "sha256": "ff37a3ed1e7c6c6bdbe0d1d92718e9db31ab3876bbe05caba908d0e6464f4832"
     },
     {
-      "path": "raw/hasbro_products.json",
-      "url": "https://beyblade.phstudy.org/data/hasbro_products.json",
-      "bytes": 127668,
-      "sha256": "365c44ace0d61c2ce6332b4d210549e076c2ad2004c5aadc8c4d61f658a6185c"
-    },
-    {
-      "path": "raw/products_multilang.json",
-      "url": "https://beyblade.phstudy.org/data/products_multilang.json",
-      "bytes": 527301,
-      "sha256": "bfd6176f170a550a9a87a836c1cb009bc549a69e2fa13d2ee5df4f257c91bfdd"
-    },
-    {
       "path": "raw/part_colors.json",
       "url": "https://beyblade.phstudy.org/data/part_colors.json",
       "bytes": 80455,
@@ -56,7 +46,7 @@
     }
   ],
   "images": {
-    "count": 479,
+    "count": 1390,
     "missing": [
       "Bit/BT-FRB-CR2312-00",
       "Bit/BT-FRB-CR2406-00",
@@ -68,7 +58,34 @@
       "Bit/BT-PRD-939542-04",
       "Bit/BT-PRD-990001-00",
       "Bit/BT-PRD-990002-00",
-      "Bit/BT-PRD-990003-00"
+      "Bit/BT-PRD-990003-00",
+      "Ratchet/RC-FRB-CR2312-00",
+      "Ratchet/RC-FRB-CR2406-00",
+      "Ratchet/RC-FRB-CR2502-00",
+      "Ratchet/RC-PRD-092698-00",
+      "Ratchet/RC-PRD-092858-01",
+      "Ratchet/RC-PRD-092858-02",
+      "Ratchet/RC-PRD-092858-03",
+      "Ratchet/RC-PRD-096146-01R",
+      "Ratchet/RC-PRD-096146-01RR",
+      "Ratchet/RC-PRD-096146-02R",
+      "Ratchet/RC-PRD-096146-02RR",
+      "Ratchet/RC-PRD-939672-00",
+      "Ratchet/RC-PRD-990001-00",
+      "Ratchet/RC-PRD-990002-00",
+      "Ratchet/RC-PRD-990003-00",
+      "Blade/BL-PRD-089193-01",
+      "Blade/BL-PRD-089193-02",
+      "Blade/BL-PRD-089193-03",
+      "Blade/BL-PRD-089193-04",
+      "Blade/BL-PRD-092698-00",
+      "Blade/BL-PRD-092858-01",
+      "Blade/BL-PRD-092858-02",
+      "Blade/BL-PRD-092858-03",
+      "Blade/BL-PRD-949862-01",
+      "Blade/BL-PRD-949862-02",
+      "Blade/BL-PRD-949862-03",
+      "Blade/BL-PRD-949862-04"
     ]
   }
 }
