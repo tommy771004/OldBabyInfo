@@ -37,6 +37,12 @@ import { partsFileSchema, type Part } from "../src/lib/parts/schema.ts";
 import { slugify } from "../src/lib/parts/slug.ts";
 import { X_GENERATION_START_DATE } from "../src/lib/parts/x-release-date.ts";
 import {
+  comparePhstudyRows,
+  phstudyOriginDocumentSchema,
+  pickPhstudyRepresentative,
+  projectPhstudyBitIdentity,
+} from "../src/lib/official-parts/phstudy-bit-identity.ts";
+import {
   BLADE_GROUP_ALIASES,
   BLADE_GROUP_SKIPS,
   BLADE_ID_RENAMES,
@@ -56,14 +62,6 @@ const PUBLIC_PARTS_DIR = join(ROOT, "public", "parts");
 
 const SOURCE_ID = "phstudy-beyblade-x";
 const SOURCE_URL = "https://beyblade.phstudy.org/?category=Bit";
-
-/** First writer wins upstream (viewer.js:1132); the same order picks a group's
- *  representative row here, so a Takara Tomy row always beats a Hasbro one. */
-const ORIGIN_RANK: Record<string, number> = {
-  "main.json": 0,
-  "hardcoded.json": 1,
-  "hasbro.json": 2,
-};
 
 const stagedStatsSchema = z.object({
   attack: z.number(),
@@ -85,7 +83,7 @@ const stagedImageSchema = z.object({
 const stagedRowSchema = z.object({
   id: z.string().min(1),
   groupId: z.string().nullable(),
-  originDocument: z.string().min(1),
+  originDocument: phstudyOriginDocumentSchema,
   brandSource: z.enum(["TT", "Hasbro"]),
   hiddenUpstream: z.boolean(),
   codeName: z.object({ name: z.record(z.string(), z.string().nullish()).nullish() }).nullish(),
@@ -135,18 +133,6 @@ function toFiveStat(stats: z.infer<typeof stagedStatsSchema>): FiveStat {
 
 const sameStats = (a: FiveStat, b: FiveStat) =>
   JSON.stringify(Object.entries(a).sort()) === JSON.stringify(Object.entries(b).sort());
-
-function rank(row: StagedRow): [number, number, string] {
-  return [ORIGIN_RANK[row.originDocument] ?? 9, row.collectionOrder ?? Number.MAX_SAFE_INTEGER, row.id];
-}
-
-function pickRepresentative(rows: StagedRow[]): StagedRow | undefined {
-  return [...rows].sort((a, b) => {
-    const [ao, ac, ai] = rank(a);
-    const [bo, bc, bi] = rank(b);
-    return ao - bo || ac - bc || ai.localeCompare(bi);
-  })[0];
-}
 
 /**
  * Mode labels are not a phstudy field, so they are recovered rather than
@@ -257,8 +243,12 @@ async function main() {
     );
 
   for (const [groupId, rows] of [...groups].sort(([a], [b]) => a.localeCompare(b))) {
-    const base = pickRepresentative(rows.filter((row) => !row.hiddenUpstream)) ?? pickRepresentative(rows);
-    const codeNames = rows.find((row) => row.codeName?.name)?.codeName?.name;
+    const bitIdentity = plan.partType === "bit"
+      ? projectPhstudyBitIdentity(groupId, rows)
+      : undefined;
+    const base = bitIdentity?.representative ??
+      pickPhstudyRepresentative(rows.filter((row) => !row.hiddenUpstream)) ??
+      pickPhstudyRepresentative(rows);
     // Bits are named by `part_code_names.json`; Ratchets have no entry there and
     // are named by their own spec ("3-60"), which is already the group id.
     // Blades: keep the curated English name (phstudy only has run-together
@@ -268,7 +258,7 @@ async function main() {
         ? groupId
         : plan.partType === "blade"
           ? (existingOfType.get(groupId)?.nameEn ?? segmentBladeName(groupId, bladeVocabulary) ?? undefined)
-          : codeNames?.["en-US"]?.trim();
+          : bitIdentity?.nameEn;
     // Junk filter, per category. A Bit without a code name has no display name
     // and no URL slug (upstream carries a blank-id row and a "■" row). A Ratchet
     // without a height is an upstream placeholder — "RATCHET-integrated" and
@@ -302,13 +292,15 @@ async function main() {
             JSON.stringify(project(toFiveStat(row.stats!))) === JSON.stringify(existing.stats),
         )
       : [];
-    const canonicalRow = pickRepresentative(stillCurrent.length > 0 ? stillCurrent : visible) ?? base;
+    const canonicalRow = pickPhstudyRepresentative(stillCurrent.length > 0 ? stillCurrent : visible) ?? base;
     const stats = toFiveStat(canonicalRow.stats ?? base.stats);
     const existingModes: Mode[] = existing?.type === "bit" ? existing.modes : [];
 
     // `ratchetSchema` has no `modes`; only Bits physically transform.
     const alternate =
-      plan.partType === "bit" ? pickRepresentative(rows.filter((row) => row.hiddenUpstream)) : undefined;
+      plan.partType === "bit"
+        ? pickPhstudyRepresentative(rows.filter((row) => row.hiddenUpstream))
+        : undefined;
     const alternateStats = alternate?.stats ? toFiveStat(alternate.stats) : null;
     const modes: Mode[] =
       alternateStats && !sameStats(alternateStats, stats)
@@ -325,10 +317,12 @@ async function main() {
       : undefined;
     const nameJaReading = plan.partType === "blade"
       ? stripSkuLabel(localized?.["ja-JP"])
-      : codeNames?.["ja-JP"]?.trim();
+      : bitIdentity?.nameJaReading;
     const nameZhReading = plan.partType === "blade"
       ? stripSkuLabel(localized?.["zh-TW"])
-      : codeNames?.["zh-TW"]?.trim();
+      : bitIdentity?.nameZhTwReading;
+    const nameJa = plan.partType === "bit" ? bitIdentity?.nameJa : nameJaReading;
+    const nameZhTw = plan.partType === "bit" ? bitIdentity?.nameZhTw : nameZhReading;
     // Derived from the source, not accumulated: phstudy is the naming authority
     // for Bits, so a superseded name ("Disc Ball" before "Disk Ball") does not
     // linger. The trade-off is that a hand-added alias on a Bit is dropped on
@@ -337,7 +331,11 @@ async function main() {
     // Blade aliases are beybrew's abbreviations ("ArPg", "S2") that phstudy has
     // no equivalent for — absence is not new data, so the curated set stands.
     const aliases = new Set(
-      plan.partType === "bit" ? [groupId] : plan.partType === "blade" ? (existing?.aliases ?? []) : [],
+      plan.partType === "bit"
+        ? bitIdentity?.aliases
+        : plan.partType === "blade"
+          ? (existing?.aliases ?? [])
+          : [],
     );
     if (nameZhReading) aliases.add(nameZhReading);
     if (nameJaReading) aliases.add(nameJaReading);
@@ -390,11 +388,7 @@ async function main() {
     const weightGrams =
       base.weight?.weight_g ??
       [...rows]
-        .sort((a, b) => {
-          const [ao, ac, ai] = rank(a);
-          const [bo, bc, bi] = rank(b);
-          return ao - bo || ac - bc || ai.localeCompare(bi);
-        })
+        .sort(comparePhstudyRows)
         .find((row) => (row.weight?.weight_g ?? 0) > 0)?.weight?.weight_g ??
       undefined;
     if (weightGrams && weightGrams > 0) fields.push("weightGrams");
@@ -433,12 +427,8 @@ async function main() {
       // while zh-TW and ja get their own name. `localizedNameOf` picks one of
       // these three per locale; the bare reading also lands in `aliases`, so
       // searching "加速" or "アクセル" alone still matches (ADR-0005).
-      ...(nameJaReading
-        ? { nameJa: plan.partType === "blade" ? nameJaReading : `${groupId}（${nameJaReading}）` }
-        : {}),
-      nameZhTw: nameZhReading
-        ? (plan.partType === "blade" ? nameZhReading : `${groupId} ${nameZhReading}`)
-        : (existing?.nameZhTw ?? groupId),
+      ...(nameJa ? { nameJa } : {}),
+      nameZhTw: nameZhTw ?? existing?.nameZhTw ?? groupId,
       aliases: [...aliases].sort(),
       provenance,
       moldBatches: existing?.moldBatches ?? [],
@@ -509,7 +499,7 @@ async function main() {
   let converted = 0;
   let withoutImage = 0;
   for (const { id: groupId, rows } of imageSources) {
-    const base = pickRepresentative(rows.filter((row) => !row.hiddenUpstream && row.image));
+    const base = pickPhstudyRepresentative(rows.filter((row) => !row.hiddenUpstream && row.image));
     if (!base?.image) {
       withoutImage += 1;
       continue;

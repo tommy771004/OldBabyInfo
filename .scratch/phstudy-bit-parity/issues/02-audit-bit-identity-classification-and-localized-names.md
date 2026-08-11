@@ -6,9 +6,9 @@
 
 **Status:** ready-for-agent
 
-- [ ] The audit exposes one public source-to-library report seam and never mutates source or curated data.
-- [ ] Rows from all source origins collapse deterministically by usable Bit identity and the documented representative-selection rule.
-- [ ] Empty and code-name-less placeholders are reported without becoming Parts or missing-Part failures.
-- [ ] The usable upstream identity set exactly matches published `bit` Parts.
-- [ ] English, Japanese, Traditional Chinese names and searchable Aliases are verified.
-- [ ] Human-readable and machine-readable reports identify mismatching Part ids and fields, and parity errors exit non-zero.
+- [x] The audit exposes one public source-to-library report seam and never mutates source or curated data.
+- [x] Rows from all source origins collapse deterministically by usable Bit identity and the documented representative-selection rule.
+- [x] Empty and code-name-less placeholders are reported without becoming Parts or missing-Part failures.
+- [x] The usable upstream identity set exactly matches published `bit` Parts.
+- [x] English, Japanese, Traditional Chinese names and searchable Aliases are verified.
+- [x] Human-readable and machine-readable reports identify mismatching Part ids and fields, and parity errors exit non-zero.

@@ -17,3 +17,16 @@
 - Funbox is the Field Authority for its own Stock Listing price, availability, URL, and capture time. A retailer row may attach to a Release only after a unique source-backed match.
 - BeybladeHub, HackMD, Go-Shoot, and similar pages are Discovery Sources for aliases, observations, and leads. They do not decide official structure, SKU, or Stats.
 - Wikipedia and other general references are cross-checks for Generation-level facts only, never Part or SKU authorities.
+
+## phstudy migration exceptions
+
+The owner-approved phstudy migration is a scoped exception to the X Part rule
+above. For a merged Bit, phstudy is the Field Authority for the fields named by
+that Part's `phstudy-beyblade-x` provenance entry, including `nameEn`, `nameJa`,
+`nameZhTw`, and `aliases`. Those names and aliases are projected from the stable
+`groupId` and `part_code_names.json`; SKU display labels are not Part names.
+Absence remains non-authoritative and cannot erase a curated value.
+
+ADR-0013 grants the corresponding classification and per-provenance exception
+for Blade and Ratchet. The staged-source policy and exact merge behavior are
+documented in `data/sources/phstudy/README.md`.
