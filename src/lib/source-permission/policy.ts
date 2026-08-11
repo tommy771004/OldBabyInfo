@@ -15,6 +15,15 @@ export const communitySourcePoliciesSchema = z.array(communitySourcePolicySchema
 
 export type CommunitySourcePolicy = z.infer<typeof communitySourcePolicySchema>;
 
+export function isAutomatedCommunityRefreshEligible(
+  source: CommunitySourcePolicy | undefined,
+): boolean {
+  return source?.enabled === true &&
+    source.rights === "documented" &&
+    source.acquisitionMethod === "automated_mass_fetch" &&
+    source.schedule === "weekly";
+}
+
 type PolicyReason = { sourceKey: string; reason: string };
 
 export type CommunityRefreshPolicyDecision =

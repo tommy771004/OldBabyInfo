@@ -15,7 +15,7 @@ concurrency:
 jobs:
   policy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
@@ -31,9 +31,13 @@ jobs:
         run: npm run check:community-sources
 
       - name: Explain disabled acquisition
-        if: steps.policy.outputs.eligible != 'true'
-        run: echo "No rights-compliant community source is enabled; no fetch or dataset write will run."
+        if: steps.policy.outputs.phstudy_automation_eligible != 'true'
+        run: echo "phstudy refresh remains disabled; no phstudy fetch or dataset write will run."
 
-      # This gate intentionally has no fetch step. A source must first be
-      # reviewed in data/community-source-policy.json, with compatible rights,
-      # before a future acquisition command can be enabled here.
+      # This remains skipped while phstudy is rights: unknown / enabled: false.
+      # If an explicit publication-rights decision later makes it eligible, the
+      # same operator command must scrape first and pass complete Bit parity;
+      # any audit drift stops the job before a merge or publication step exists.
+      - name: Refresh and audit phstudy Bit snapshot
+        if: steps.policy.outputs.phstudy_automation_eligible == 'true'
+        run: npm run refresh:phstudy-bit

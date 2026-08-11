@@ -713,5 +713,12 @@ describe("auditPhstudyBitIdentityParity", () => {
       exitCode: 1,
       output: JSON.stringify(report, null, 2),
     });
+
+    const summary = formatPhstudyBitIdentityParityReport({
+      ...report,
+      mismatches: [...report.mismatches, ...report.mismatches, ...report.mismatches],
+    }, { maxMismatches: 2 });
+    expect(summary).toContain("Mismatches (3)");
+    expect(summary).toContain("1 more; run without `--summary` for the full report.");
   });
 });

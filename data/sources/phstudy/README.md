@@ -23,6 +23,40 @@ documents directly. No headless browser, no HTML parsing. `robots.txt` is
 `Allow: /`; requests run at concurrency 4 with ~150 ms spacing under a
 project-identifying User-Agent.
 
+## Operator refresh and parity gate
+
+Run the complete manual review entry point from the repository root:
+
+```sh
+npm run refresh:phstudy-bit
+```
+
+It runs `npm run scrape:phstudy` first, refreshing the three staged categories
+consumed by the merge (Bit, Ratchet, and Blade), then runs the
+read-only Bit parity audit with a concise mismatch summary. A failed or incomplete scrape prevents the audit;
+an audit mismatch exits nonzero and stops before any merge. The success report
+prints the row, group, usable-identity, published-Bit, and placeholder counts
+observed in that snapshot; those counts are diagnostic output, not hard-coded
+acceptance constants.
+
+The scraper writes staged files incrementally. If it is interrupted or a fetch
+fails, treat the snapshot as incomplete and rerun `npm run refresh:phstudy-bit`
+from the beginning; do not merge the partially refreshed directory.
+
+To inspect an already-staged snapshot without network access, run
+`npm run audit:phstudy-bit` (add `-- --json` for structured output). A fresh
+clone normally has no ignored `parts-bit.json`; in that case the command fails
+with `Missing phstudy Bit snapshot` and tells the operator to scrape first.
+After reviewing intentional drift, run `npm run merge:phstudy` and then rerun
+the audit. The refresh command itself never merges or publishes data.
+
+Automated acquisition remains off while `data/community-source-policy.json`
+keeps phstudy at `rights: unknown`, `enabled: false`, and `schedule: none`.
+The scheduled policy workflow only invokes the same scrape-then-audit command
+if a later explicit rights decision makes that exact source eligible; parity
+failure stops that job as well. Pull-request CI runs fixture-backed tests only
+and never accesses phstudy.
+
 ## Layout
 
 | Path | Contents |
@@ -108,7 +142,9 @@ listed in each Part's phstudy provenance entry. ADR 0010 has not been amended â€
 the override lives only in the merge script's header.
 
 Each normalized `parts-*.json` artifact is hashed in `manifest.json` after it
-is written. Part provenance that covers the mixed Bit projection points to the
+is written. Capture time lives only on the manifest, not in every normalized
+row, so identical upstream bytes produce an identical normalized hash on
+consecutive refreshes. Part provenance that covers the mixed Bit projection points to the
 `parts-bit.json` hash and uses `community_source`: the normalized row combines
 official-App rows with phstudy's code-name and weight tables, so claiming the
 whole projection as `official_app_derived` would overstate the weight and name

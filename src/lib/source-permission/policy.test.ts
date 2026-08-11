@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   evaluateCommunityRefreshPolicy,
+  isAutomatedCommunityRefreshEligible,
   type CommunitySourcePolicy,
 } from "./policy.ts";
 
@@ -73,5 +74,25 @@ describe("community source refresh policy", () => {
       eligibleSources: ["hackmd-important-record"],
       reasons: [],
     });
+    expect(isAutomatedCommunityRefreshEligible(source)).toBe(false);
+  });
+
+  it("requires an explicit automated method, weekly schedule, and documented rights", () => {
+    const automated: CommunitySourcePolicy = {
+      ...hackmd,
+      sourceKey: "phstudy-beyblade-x",
+      acquisitionMethod: "automated_mass_fetch",
+      rights: "documented",
+      schedule: "weekly",
+      enabled: true,
+    };
+
+    expect(isAutomatedCommunityRefreshEligible(automated)).toBe(true);
+    expect(isAutomatedCommunityRefreshEligible({
+      ...automated,
+      acquisitionMethod: "manual_import",
+      rights: "unknown",
+      schedule: "manual",
+    })).toBe(false);
   });
 });

@@ -12,7 +12,8 @@
  * community-source gate stays honest until rights are cleared.
  *
  * Usage:
- *   node scripts/scrape-phstudy-parts.ts                  # Bit, with images
+ *   node scripts/scrape-phstudy-parts.ts                  # merged Part categories, with images
+ *   node scripts/scrape-phstudy-parts.ts --category=Bit   # explicit Bit-only staging
  *   node scripts/scrape-phstudy-parts.ts --category=Blade
  *   node scripts/scrape-phstudy-parts.ts --all-categories
  *   node scripts/scrape-phstudy-parts.ts --skip-images
@@ -22,6 +23,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { z } from "zod";
+import { requirePhstudyRefreshCategory } from "../src/lib/official-parts/phstudy-bit-refresh.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = join(__dirname, "..", "data", "sources", "phstudy");
@@ -59,6 +61,7 @@ const CATEGORIES = [
   "OverBlade",
 ] as const;
 type Category = (typeof CATEGORIES)[number];
+const DEFAULT_CATEGORIES: Category[] = ["Bit", "Ratchet", "Blade"];
 
 /** Mirrors `folderMap` / `siteFolderMap` in viewer.js. */
 const APP_FOLDER: Record<Category, string> = {
@@ -140,7 +143,7 @@ function parseArgs() {
       ? [...CATEGORIES]
       : requested.length > 0
         ? (requested as Category[])
-        : (["Bit"] as Category[]),
+        : DEFAULT_CATEGORIES,
     skipImages: args.includes("--skip-images"),
   };
 }
@@ -303,11 +306,7 @@ async function main() {
 
   for (const category of categories) {
     const dataKey = category === "Series" ? "BeybladeSeries" : `BeybladeParts${category}`;
-    const entries = mergeCategory(byPath, dataKey);
-    if (entries.length === 0) {
-      console.warn(`skip ${category}: no "${dataKey}" bucket in any source document`);
-      continue;
-    }
+    const entries = requirePhstudyRefreshCategory(category, mergeCategory(byPath, dataKey));
 
     const categoryImageDir = join(IMAGE_DIR, category);
     if (!skipImages) mkdirSync(categoryImageDir, { recursive: true });
@@ -369,7 +368,6 @@ async function main() {
         provenance: {
           sourceId: SOURCE_ID,
           sourceUrl: `${BASE_URL}/?category=${category}`,
-          fetchedAt,
           rightsStatus: "unknown",
         },
       };

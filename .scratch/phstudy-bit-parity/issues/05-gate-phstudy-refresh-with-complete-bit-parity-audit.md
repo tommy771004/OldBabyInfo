@@ -6,9 +6,9 @@
 
 **Status:** ready-for-agent
 
-- [ ] The manual operator flow runs the existing scrape before the audit and stops on parity failures with a concise review summary.
-- [ ] Automated phstudy refresh remains disabled until source policy explicitly permits it.
-- [ ] If source policy later permits automated refresh, the workflow must run scrape then audit and stop on parity failures.
-- [ ] Ordinary pull-request tests remain deterministic and do not require phstudy network access.
-- [ ] Operator documentation explains the local scrape-then-audit command sequence and missing-snapshot failure.
-- [ ] A successful current audit reports the observed upstream row and usable Bit identity counts without making them permanent hard-coded invariants.
+- [x] The manual operator flow runs the existing scrape before the audit and stops on parity failures with a concise review summary.
+- [x] Automated phstudy refresh remains disabled until source policy explicitly permits it.
+- [x] If source policy later permits automated refresh, the workflow must run scrape then audit and stop on parity failures.
+- [x] Ordinary pull-request tests remain deterministic and do not require phstudy network access.
+- [x] Operator documentation explains the local scrape-then-audit command sequence and missing-snapshot failure.
+- [x] A successful current audit reports the observed upstream row and usable Bit identity counts without making them permanent hard-coded invariants.

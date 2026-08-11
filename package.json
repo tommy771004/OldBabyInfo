@@ -22,6 +22,7 @@
     "scrape:generation-catalog": "node scripts/scrape-generation-catalog.ts",
     "scrape:products": "node scripts/scrape-products.ts",
     "scrape:phstudy": "node scripts/scrape-phstudy-parts.ts",
+    "refresh:phstudy-bit": "node scripts/refresh-phstudy-bit.ts",
     "merge:phstudy": "node scripts/merge-phstudy-parts.ts",
     "audit:phstudy-bit": "node scripts/audit-phstudy-bit-identity-parity.ts"
   },

@@ -40,14 +40,23 @@ function containedPath(rootPath: string, relativePath: string): string {
   return target;
 }
 
-function outputFormat(args: string[]): "human" | "json" {
-  const unknown = args.filter((arg) => arg !== "--json");
+function outputOptions(args: string[]): {
+  format: "human" | "json";
+  maxMismatches?: number;
+} {
+  const unknown = args.filter((arg) => arg !== "--json" && arg !== "--summary");
   if (unknown.length > 0) throw new Error(`Unknown argument: ${unknown.join(", ")}`);
-  return args.includes("--json") ? "json" : "human";
+  if (args.includes("--json") && args.includes("--summary")) {
+    throw new Error("--summary is only available with human output");
+  }
+  return {
+    format: args.includes("--json") ? "json" : "human",
+    ...(args.includes("--summary") ? { maxMismatches: 20 } : {}),
+  };
 }
 
 async function main(): Promise<void> {
-  const format = outputFormat(process.argv.slice(2));
+  const { format, maxMismatches } = outputOptions(process.argv.slice(2));
   if (!existsSync(stagedRowsPath)) {
     throw new Error("Missing phstudy Bit snapshot. Run `npm run scrape:phstudy` first.");
   }
@@ -117,7 +126,7 @@ async function main(): Promise<void> {
     sourceImages,
     publishedImages,
   });
-  const presentation = presentPhstudyBitIdentityParity(report, format);
+  const presentation = presentPhstudyBitIdentityParity(report, format, { maxMismatches });
   console.log(presentation.output);
   process.exitCode = presentation.exitCode;
 }

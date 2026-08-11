@@ -453,6 +453,7 @@ function displayValue(value: PhstudyBitIdentityValue): string {
 
 export function formatPhstudyBitIdentityParityReport(
   report: PhstudyBitIdentityParityReport,
+  options: { maxMismatches?: number } = {},
 ): string {
   const lines = [
     `Bit parity: ${report.ok ? "PASS" : "FAIL"}`,
@@ -482,12 +483,17 @@ export function formatPhstudyBitIdentityParityReport(
 
   if (report.mismatches.length > 0) {
     lines.push("", `Mismatches (${report.mismatches.length})`);
-    for (const issue of report.mismatches) {
+    const visible = options.maxMismatches === undefined
+      ? report.mismatches
+      : report.mismatches.slice(0, options.maxMismatches);
+    for (const issue of visible) {
       lines.push(
         `- \`${issue.partId}\` \`${issue.field}\`: expected ${displayValue(issue.expected)}; ` +
           `actual ${displayValue(issue.actual)}.`,
       );
     }
+    const omitted = report.mismatches.length - visible.length;
+    if (omitted > 0) lines.push(`- … ${omitted} more; run without \`--summary\` for the full report.`);
   }
 
   return lines.join("\n");
@@ -496,11 +502,12 @@ export function formatPhstudyBitIdentityParityReport(
 export function presentPhstudyBitIdentityParity(
   report: PhstudyBitIdentityParityReport,
   format: "human" | "json",
+  options: { maxMismatches?: number } = {},
 ): { output: string; exitCode: 0 | 1 } {
   return {
     output: format === "json"
       ? JSON.stringify(report, null, 2)
-      : formatPhstudyBitIdentityParityReport(report),
+      : formatPhstudyBitIdentityParityReport(report, options),
     exitCode: report.ok ? 0 : 1,
   };
 }

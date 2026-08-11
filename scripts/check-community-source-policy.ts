@@ -1,12 +1,19 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { communitySourcePoliciesSchema, evaluateCommunityRefreshPolicy } from "../src/lib/source-permission/policy.ts";
+import {
+  communitySourcePoliciesSchema,
+  evaluateCommunityRefreshPolicy,
+  isAutomatedCommunityRefreshEligible,
+} from "../src/lib/source-permission/policy.ts";
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const policyPath = join(scriptDirectory, "..", "data", "community-source-policy.json");
 const policies = communitySourcePoliciesSchema.parse(JSON.parse(readFileSync(policyPath, "utf8")));
 const decision = evaluateCommunityRefreshPolicy(policies);
+const phstudyAutomationEligible = isAutomatedCommunityRefreshEligible(
+  policies.find((source) => source.sourceKey === "phstudy-beyblade-x"),
+);
 
 for (const reason of decision.reasons) {
   console.error(`${reason.sourceKey}: ${reason.reason}`);
@@ -19,7 +26,11 @@ console.log(
 );
 
 if (process.env.GITHUB_OUTPUT) {
-  const output = `eligible=${decision.eligibleSources.length > 0 ? "true" : "false"}\n`;
+  const output = [
+    `eligible=${decision.eligibleSources.length > 0 ? "true" : "false"}`,
+    `phstudy_automation_eligible=${phstudyAutomationEligible ? "true" : "false"}`,
+    "",
+  ].join("\n");
   const { appendFileSync } = await import("node:fs");
   appendFileSync(process.env.GITHUB_OUTPUT, output);
 }

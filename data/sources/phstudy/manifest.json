@@ -1,7 +1,7 @@
 {
   "sourceId": "phstudy-beyblade-x",
   "sourceUrl": "https://beyblade.phstudy.org",
-  "fetchedAt": "2026-08-11T02:45:02.887Z",
+  "fetchedAt": "2026-08-11T04:54:32.643Z",
   "categories": [
     "Bit",
     "Ratchet",
@@ -48,8 +48,18 @@
   "normalized": [
     {
       "path": "parts-bit.json",
-      "bytes": 1467583,
-      "sha256": "839915a1529a94481b5f1a27b524a40d86c7d12b81dee3d00647633005bf88a1"
+      "bytes": 1445023,
+      "sha256": "e102992e19e770aaf1a86806ff39685c42ed68218e43156c7253cdb770ae4d20"
+    },
+    {
+      "path": "parts-ratchet.json",
+      "bytes": 1332198,
+      "sha256": "dac9126fd0f5501a7323caa0e865045d6ac2a65dabb15c478cea93afca8b478e"
+    },
+    {
+      "path": "parts-blade.json",
+      "bytes": 1448885,
+      "sha256": "a54b3883c643a2324e39a36d3e04ba3621c898d42d004f6eb667f5f5ee0e7edc"
     }
   ],
   "images": {
