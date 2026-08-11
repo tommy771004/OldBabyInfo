@@ -6,8 +6,8 @@
 
 **Status:** ready-for-agent
 
-- [ ] Playstyle and all five Bit Stat dimensions are checked against visible upstream facts.
-- [ ] An existing canonical Stat tuple remains valid while it still appears upstream.
-- [ ] Hidden alternate-form rows are verified as Modes rather than Stat Editions.
-- [ ] Every distinct visible non-canonical, non-Mode tuple is verified as a Stat Edition with deterministic label and date.
-- [ ] Report and exit behavior identify battle-fact mismatches without exposing full upstream records.
+- [x] Playstyle and all five Bit Stat dimensions are checked against visible upstream facts.
+- [x] An existing canonical Stat tuple remains valid while it still appears upstream.
+- [x] Hidden alternate-form rows are verified as Modes rather than Stat Editions.
+- [x] Every distinct visible non-canonical, non-Mode tuple is verified as a Stat Edition with deterministic label and date.
+- [x] Report and exit behavior identify battle-fact mismatches without exposing full upstream records.

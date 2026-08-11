@@ -37,6 +37,10 @@ import { partsFileSchema, type Part } from "../src/lib/parts/schema.ts";
 import { slugify } from "../src/lib/parts/slug.ts";
 import { X_GENERATION_START_DATE } from "../src/lib/parts/x-release-date.ts";
 import {
+  phstudyBitBattleRowSchema,
+  projectPhstudyBitBattleFacts,
+} from "../src/lib/official-parts/phstudy-bit-battle.ts";
+import {
   comparePhstudyRows,
   phstudyOriginDocumentSchema,
   pickPhstudyRepresentative,
@@ -116,7 +120,6 @@ const imageEntrySchema = z.object({
 type ImageEntry = z.infer<typeof imageEntrySchema>;
 
 type FiveStat = { attack: number; defense: number; stamina: number; xDash: number; burstResistance: number };
-type Mode = { label: string; stats: FiveStat };
 
 const playstyles = new Set(["attack", "defense", "stamina", "balance"]);
 
@@ -129,27 +132,6 @@ function toFiveStat(stats: z.infer<typeof stagedStatsSchema>): FiveStat {
     xDash: stats.dash,
     burstResistance: stats.burst,
   };
-}
-
-const sameStats = (a: FiveStat, b: FiveStat) =>
-  JSON.stringify(Object.entries(a).sort()) === JSON.stringify(Object.entries(b).sort());
-
-/**
- * Mode labels are not a phstudy field, so they are recovered rather than
- * invented: first by matching an existing curated mode's stats, then by the
- * mode's own strictly-dominant dimension. A tie falls back to position.
- */
-function labelFor(stats: FiveStat, existing: Mode[], position: number): string {
-  const carried = existing.find((mode) => sameStats(mode.stats, stats));
-  if (carried) return carried.label;
-  const ranked = (["attack", "defense", "stamina"] as const)
-    .map((key) => ({ key, value: stats[key] }))
-    .sort((a, b) => b.value - a.value);
-  const [first, second] = ranked;
-  if (first && second && first.value > second.value) {
-    return `${first.key[0]!.toUpperCase()}${first.key.slice(1)} Mode`;
-  }
-  return `Mode ${position + 1}`;
 }
 
 function normalizeReleaseDate(rows: StagedRow[]): string | null {
@@ -224,7 +206,9 @@ async function main() {
   }
 
   for (const plan of PLANS satisfies readonly Plan[]) {
-    const staged = z.array(stagedRowSchema).parse(readJson(join(STAGE_DIR, plan.stagedFile)));
+    const stagedInput = readJson(join(STAGE_DIR, plan.stagedFile));
+    if (plan.partType === "bit") z.array(phstudyBitBattleRowSchema).parse(stagedInput);
+    const staged = z.array(stagedRowSchema).parse(stagedInput);
     const groups = new Map<string, StagedRow[]>();
     for (const row of staged) {
       const raw = row.groupId?.trim();
@@ -272,6 +256,9 @@ async function main() {
     }
 
     const existing = existingOfType.get(groupId);
+    const bitBattle = plan.partType === "bit"
+      ? projectPhstudyBitBattleFacts(groupId, rows, existing?.type === "bit" ? existing : undefined)
+      : undefined;
     // Only Bit carries five dimensions; Blade and Ratchet are three (ADR-0007).
     const project = (value: FiveStat) =>
       plan.partType === "bit"
@@ -286,29 +273,17 @@ async function main() {
      * Editions rather than being discarded. See ADR-0007.
      */
     const visible = rows.filter((row) => !row.hiddenUpstream && row.stats);
-    const stillCurrent = existing
+    const stillCurrent = existing && !bitBattle
       ? visible.filter(
           (row) =>
             JSON.stringify(project(toFiveStat(row.stats!))) === JSON.stringify(existing.stats),
         )
       : [];
-    const canonicalRow = pickPhstudyRepresentative(stillCurrent.length > 0 ? stillCurrent : visible) ?? base;
-    const stats = toFiveStat(canonicalRow.stats ?? base.stats);
-    const existingModes: Mode[] = existing?.type === "bit" ? existing.modes : [];
-
-    // `ratchetSchema` has no `modes`; only Bits physically transform.
-    const alternate =
-      plan.partType === "bit"
-        ? pickPhstudyRepresentative(rows.filter((row) => row.hiddenUpstream))
-        : undefined;
-    const alternateStats = alternate?.stats ? toFiveStat(alternate.stats) : null;
-    const modes: Mode[] =
-      alternateStats && !sameStats(alternateStats, stats)
-        ? [
-            { label: labelFor(stats, existingModes, 0), stats },
-            { label: labelFor(alternateStats, existingModes, 1), stats: alternateStats },
-          ]
-        : [];
+    const canonicalRow = bitBattle?.canonicalRow ??
+      pickPhstudyRepresentative(stillCurrent.length > 0 ? stillCurrent : visible) ??
+      base;
+    const stats = bitBattle?.stats ?? toFiveStat(canonicalRow.stats ?? base.stats);
+    const modes = bitBattle?.modes ?? [];
 
     // Blades carry real localized names upstream (ドランソード / 蒼龍神劍) once the
     // SKU code and colorway suffix are stripped; Bits only have code readings.
@@ -347,22 +322,25 @@ async function main() {
     // SKU — the same shape `build-stat-editions.ts` produces for beybrew.
     const canonicalKey = JSON.stringify(project(stats));
     const modeKeys = new Set(modes.map((mode) => JSON.stringify(project(mode.stats))));
-    const editionRows = new Map<string, StagedRow>();
-    for (const row of visible) {
-      const key = JSON.stringify(project(toFiveStat(row.stats!)));
-      if (key === canonicalKey || modeKeys.has(key)) continue;
-      const held = editionRows.get(key);
-      if (!held || (row.releaseAt ?? "9999") < (held.releaseAt ?? "9999")) editionRows.set(key, row);
-    }
-    const statEditions = [...editionRows.values()]
-      .map((row) => ({
-        label: row.modelName || row.id,
-        // Same pre-X clamp the Part's own releaseAt uses; the schema refuses a
-        // date before the generation started on editions too.
-        releaseAt: normalizeReleaseDate([row]),
-        stats: project(toFiveStat(row.stats!)),
-      }))
-      .sort((a, b) => (a.releaseAt ?? "").localeCompare(b.releaseAt ?? "") || a.label.localeCompare(b.label));
+    const statEditions = bitBattle?.statEditions ?? (() => {
+      const editionRows = new Map<string, StagedRow>();
+      for (const row of visible) {
+        const key = JSON.stringify(project(toFiveStat(row.stats!)));
+        if (key === canonicalKey || modeKeys.has(key)) continue;
+        const held = editionRows.get(key);
+        if (!held || (row.releaseAt ?? "9999") < (held.releaseAt ?? "9999")) editionRows.set(key, row);
+      }
+      return [...editionRows.values()]
+        .map((row) => ({
+          label: row.modelName || row.id,
+          // Same pre-X clamp the Part's own releaseAt uses; the schema refuses a
+          // date before the generation started on editions too.
+          releaseAt: normalizeReleaseDate([row]),
+          stats: project(toFiveStat(row.stats!)),
+        }))
+        .sort((a, b) =>
+          (a.releaseAt ?? "").localeCompare(b.releaseAt ?? "") || a.label.localeCompare(b.label));
+    })();
 
     const fields: string[] = ["nameEn", "stats"];
     if (statEditions.length > 0) fields.push("statEditions");
@@ -375,7 +353,9 @@ async function main() {
       (entry) => entry.sourceId !== SOURCE_ID && entry.fields.includes("id"),
     );
     if (!priorOwnsId) fields.push("id");
-    if (base.partType && playstyles.has(base.partType)) fields.push("playstyle");
+    const playstyle = bitBattle?.playstyle ??
+      (base.partType && playstyles.has(base.partType) ? base.partType : undefined);
+    if (playstyle) fields.push("playstyle");
     if (modes.length > 0) fields.push("modes");
     if (plan.partType === "ratchet") fields.push("height");
 
@@ -442,9 +422,7 @@ async function main() {
         // Only Bits have R-rows to read a second form off; a Blade's curated
         // modes have no phstudy equivalent, so they are carried over untouched.
         : { modes: plan.partType === "blade" ? (existing?.type === "blade" ? existing.modes : []) : modes }),
-      ...(base.partType && playstyles.has(base.partType)
-        ? { playstyle: base.partType as "attack" | "defense" | "stamina" | "balance" }
-        : {}),
+      ...(playstyle ? { playstyle } : {}),
       // Computed, not merged: phstudy covers the whole SKU space for these
       // categories, so a curated edition it does not reproduce is stale. This
       // is what drops "Tr"'s old edition, whose tuple is now its Attack Mode —

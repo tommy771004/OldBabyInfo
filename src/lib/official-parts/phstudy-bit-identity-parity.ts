@@ -1,6 +1,12 @@
 import { z } from "zod";
 import type { Part } from "../parts/schema.ts";
 import {
+  formatPhstudyBitModes,
+  formatPhstudyBitStatEditions,
+  phstudyBitBattleRowFields,
+  projectPhstudyBitBattleFacts,
+} from "./phstudy-bit-battle.ts";
+import {
   phstudyOriginDocumentSchema,
   projectPhstudyBitIdentity,
 } from "./phstudy-bit-identity.ts";
@@ -13,8 +19,8 @@ const phstudyBitIdentityRowSchema = z.object({
   codeName: z.object({
     name: z.record(z.string(), z.string().nullish()),
   }).nullable(),
-  stats: z.record(z.string(), z.unknown()).nullable(),
   collectionOrder: z.number().nullable(),
+  ...phstudyBitBattleRowFields,
 });
 
 export const phstudyBitIdentityRowsSchema = z.array(phstudyBitIdentityRowSchema);
@@ -39,13 +45,23 @@ export type PhstudyBitIdentityField =
   | "nameZhTw"
   | "aliases"
   | "source.nameJa"
-  | "source.nameZhTw";
+  | "source.nameZhTw"
+  | "playstyle"
+  | "stats.attack"
+  | "stats.defense"
+  | "stats.stamina"
+  | "stats.xDash"
+  | "stats.burstResistance"
+  | "modes"
+  | "statEditions";
+
+type PhstudyBitIdentityValue = string | number | string[] | null;
 
 export interface PhstudyBitIdentityMismatch {
   partId: string;
   field: PhstudyBitIdentityField;
-  expected: string | string[] | null;
-  actual: string | string[] | null;
+  expected: PhstudyBitIdentityValue;
+  actual: PhstudyBitIdentityValue;
 }
 
 export interface PhstudyBitIdentityParityReport {
@@ -73,8 +89,8 @@ function normalizedAliases(values: Array<string | null | undefined>): string[] {
 function mismatch(
   partId: string,
   field: PhstudyBitIdentityField,
-  expected: string | string[] | null,
-  actual: string | string[] | null,
+  expected: PhstudyBitIdentityValue,
+  actual: PhstudyBitIdentityValue,
 ): PhstudyBitIdentityMismatch {
   return { partId, field, expected, actual };
 }
@@ -163,6 +179,40 @@ export function auditPhstudyBitIdentityParity(
     if (JSON.stringify(actualAliases) !== JSON.stringify(expectedAliases)) {
       mismatches.push(mismatch(partId, "aliases", expectedAliases, actualAliases));
     }
+
+    const battle = projectPhstudyBitBattleFacts(partId, groupRows, part);
+    if (battle.playstyle && part.playstyle !== battle.playstyle) {
+      mismatches.push(mismatch(partId, "playstyle", battle.playstyle, part.playstyle ?? null));
+    }
+    if (battle.stats) {
+      const statFields = [
+        "attack",
+        "defense",
+        "stamina",
+        "xDash",
+        "burstResistance",
+      ] as const;
+      for (const field of statFields) {
+        if (part.stats[field] !== battle.stats[field]) {
+          mismatches.push(mismatch(
+            partId,
+            `stats.${field}`,
+            battle.stats[field],
+            part.stats[field],
+          ));
+        }
+      }
+    }
+    const expectedModes = formatPhstudyBitModes(battle.modes);
+    const actualModes = formatPhstudyBitModes(part.modes);
+    if (JSON.stringify(actualModes) !== JSON.stringify(expectedModes)) {
+      mismatches.push(mismatch(partId, "modes", expectedModes, actualModes));
+    }
+    const expectedEditions = formatPhstudyBitStatEditions(battle.statEditions);
+    const actualEditions = formatPhstudyBitStatEditions(part.statEditions);
+    if (JSON.stringify(actualEditions) !== JSON.stringify(expectedEditions)) {
+      mismatches.push(mismatch(partId, "statEditions", expectedEditions, actualEditions));
+    }
   }
 
   for (const part of publishedBits) {
@@ -191,7 +241,7 @@ function countLabel(count: number, singular: string, plural = `${singular}s`): s
   return `${count} ${count === 1 ? singular : plural}`;
 }
 
-function displayValue(value: string | string[] | null): string {
+function displayValue(value: PhstudyBitIdentityValue): string {
   return JSON.stringify(value);
 }
 
@@ -199,7 +249,7 @@ export function formatPhstudyBitIdentityParityReport(
   report: PhstudyBitIdentityParityReport,
 ): string {
   const lines = [
-    `Bit identity parity: ${report.ok ? "PASS" : "FAIL"}`,
+    `Bit parity: ${report.ok ? "PASS" : "FAIL"}`,
     [
       countLabel(report.counts.rows, "source row"),
       countLabel(report.counts.nonEmptyGroups, "non-empty group"),
@@ -207,6 +257,7 @@ export function formatPhstudyBitIdentityParityReport(
       countLabel(report.counts.publishedBits, "published Bit"),
       countLabel(report.counts.placeholders, "placeholder"),
     ].join(", ") + ".",
+    "Battle facts: Playstyle, five Stats, Modes, and Stat Editions checked.",
   ];
 
   if (report.placeholders.length > 0) {
