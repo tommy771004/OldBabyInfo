@@ -34,7 +34,7 @@ project-identifying User-Agent.
 | `stat-ranges.json` | Per-category stat maxima used for bar scaling |
 | `images/<Category>/*.png\|jpg` | Part art, filename = SKU `id` |
 | `images/icons/*.png` | Badge assets (type / spin / series / limited) |
-| `manifest.json` | Source URLs, `fetchedAt`, per-document sha256, image misses |
+| `manifest.json` | Source URLs, `fetchedAt`, raw and normalized artifact sha256, image misses |
 
 ## The catalog is three documents, not one
 
@@ -107,6 +107,16 @@ MasterData for X Part names, stats, modes and relationships) for the fields
 listed in each Part's phstudy provenance entry. ADR 0010 has not been amended —
 the override lives only in the merge script's header.
 
+Each normalized `parts-*.json` artifact is hashed in `manifest.json` after it
+is written. Part provenance that covers the mixed Bit projection points to the
+`parts-bit.json` hash and uses `community_source`: the normalized row combines
+official-App rows with phstudy's code-name and weight tables, so claiming the
+whole projection as `official_app_derived` would overstate the weight and name
+authority. Before changing the library, the merge recomputes the Bit snapshot's
+byte count and SHA-256 and rejects a stale or duplicate manifest claim. The
+read-only audit independently recomputes every raw and normalized file hash
+before trusting that provenance link.
+
 ### Localized names
 
 Bits are now localized the way Blades already were — one name per locale via
@@ -170,6 +180,9 @@ unaffected (168 matches before and after).
   a representative SKU (Takara Tomy rows before Hasbro, lowest collection order).
 - **Absence is not new data.** Where phstudy carries no usable value, the
   curated one stands — `releaseAt` in particular is never erased to null.
+  `data/phstudy-bit-curated-baseline.json` records the pre-phstudy release dates
+  so the audit can detect an accidental erasure independently of the current
+  `parts.json` value.
 
 ## Blade: identity moved to phstudy (ADR 0013)
 

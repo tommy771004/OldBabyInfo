@@ -113,6 +113,7 @@ type Manifest = {
   fetchedAt: string;
   categories: Category[];
   documents: { path: string; url: string; bytes: number; sha256: string }[];
+  normalized: { path: string; bytes: number; sha256: string }[];
   images: { count: number; missing: string[] };
 };
 
@@ -297,6 +298,7 @@ async function main() {
     .parse(byPath.get("part_code_names.json"));
 
   const missingImages: string[] = [];
+  const normalizedArtifacts: Manifest["normalized"] = [];
   let imageCount = 0;
 
   for (const category of categories) {
@@ -375,7 +377,13 @@ async function main() {
 
     normalized.sort((a, b) => a.id.localeCompare(b.id));
     const outPath = join(OUT_DIR, `parts-${category.toLowerCase()}.json`);
-    writeFileSync(outPath, `${JSON.stringify(normalized, null, 2)}\n`);
+    const normalizedBytes = Buffer.from(`${JSON.stringify(normalized, null, 2)}\n`);
+    writeFileSync(outPath, normalizedBytes);
+    normalizedArtifacts.push({
+      path: `parts-${category.toLowerCase()}.json`,
+      bytes: normalizedBytes.byteLength,
+      sha256: sha256(normalizedBytes),
+    });
     console.log(`${category}: ${normalized.length} items -> ${outPath}`);
   }
 
@@ -385,6 +393,7 @@ async function main() {
     fetchedAt,
     categories,
     documents,
+    normalized: normalizedArtifacts,
     images: { count: imageCount, missing: missingImages },
   };
   writeFileSync(join(OUT_DIR, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);

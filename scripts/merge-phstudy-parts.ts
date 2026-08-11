@@ -41,6 +41,14 @@ import {
   projectPhstudyBitBattleFacts,
 } from "../src/lib/official-parts/phstudy-bit-battle.ts";
 import {
+  assertPhstudyManifestArtifact,
+  phstudyBitCuratedBaselineSchema,
+  phstudyBitMetadataRowFields,
+  phstudyManifestSchema,
+  projectPhstudyBitMetadata,
+  projectPhstudyBitProvenanceFields,
+} from "../src/lib/official-parts/phstudy-bit-metadata.ts";
+import {
   comparePhstudyRows,
   phstudyOriginDocumentSchema,
   pickPhstudyRepresentative,
@@ -63,6 +71,7 @@ const IMAGES_MANIFEST_PATH = join(ROOT, "data", "part-images.json");
 const CATALOG_PATH = join(ROOT, "data", "generation-catalog.json");
 const REDIRECTS_PATH = join(ROOT, "data", "legacy-part-redirects.json");
 const PUBLIC_PARTS_DIR = join(ROOT, "public", "parts");
+const BIT_BASELINE_PATH = join(ROOT, "data", "phstudy-bit-curated-baseline.json");
 
 const SOURCE_ID = "phstudy-beyblade-x";
 const SOURCE_URL = "https://beyblade.phstudy.org/?category=Bit";
@@ -100,11 +109,8 @@ const stagedRowSchema = z.object({
   modelName: z.string().nullable(),
   image: stagedImageSchema.nullable(),
 });
+const stagedBitMetadataRowSchema = z.object(phstudyBitMetadataRowFields).passthrough();
 type StagedRow = z.infer<typeof stagedRowSchema>;
-
-const manifestSchema = z.object({
-  documents: z.array(z.object({ path: z.string(), sha256: z.string() })),
-});
 
 const imageEntrySchema = z.object({
   url: z.string(),
@@ -182,20 +188,26 @@ function canonicalBladeId(groupId: string): string {
 }
 
 async function main() {
-  const manifest = manifestSchema.parse(readJson(join(STAGE_DIR, "manifest.json")));
+  const manifest = phstudyManifestSchema.parse(readJson(join(STAGE_DIR, "manifest.json")));
+  const bitSnapshotBytes = readFileSync(join(STAGE_DIR, "parts-bit.json"));
+  const bitSnapshotHash = assertPhstudyManifestArtifact(manifest, "parts-bit.json", {
+    bytes: bitSnapshotBytes.byteLength,
+    sha256: createHash("sha256").update(bitSnapshotBytes).digest("hex"),
+  });
+  const bitSnapshotInput = JSON.parse(bitSnapshotBytes.toString("utf8")) as unknown;
+  const bitBaseline = phstudyBitCuratedBaselineSchema.parse(readJson(BIT_BASELINE_PATH));
   const parts = partsFileSchema.parse(readJson(PARTS_PATH));
   const images = z.record(z.string(), imageEntrySchema).parse(readJson(IMAGES_MANIFEST_PATH));
 
   const mainHash = manifest.documents.find((doc) => doc.path === "raw/main.json")?.sha256;
   if (!mainHash) throw new Error("manifest.json is missing raw/main.json — re-run scrape:phstudy");
-  const sourceVersion = `sha256:${mainHash}`;
 
   const merged: Part[] = [];
   const added: string[] = [];
   const updated: string[] = [];
   const renamed: { id: string; from: string; to: string }[] = [];
   const skipped: string[] = [];
-  const imageSources: { id: string; rows: StagedRow[] }[] = [];
+  const imageSources: { id: string; rows: StagedRow[]; partType: Plan["partType"] }[] = [];
 
   // Harvested from what is already curated, so the hand-written token list only
   // has to cover what the existing Parts do not already teach.
@@ -206,8 +218,13 @@ async function main() {
   }
 
   for (const plan of PLANS satisfies readonly Plan[]) {
-    const stagedInput = readJson(join(STAGE_DIR, plan.stagedFile));
-    if (plan.partType === "bit") z.array(phstudyBitBattleRowSchema).parse(stagedInput);
+    const stagedInput = plan.partType === "bit"
+      ? bitSnapshotInput
+      : readJson(join(STAGE_DIR, plan.stagedFile));
+    if (plan.partType === "bit") {
+      z.array(phstudyBitBattleRowSchema).parse(stagedInput);
+      z.array(stagedBitMetadataRowSchema).parse(stagedInput);
+    }
     const staged = z.array(stagedRowSchema).parse(stagedInput);
     const groups = new Map<string, StagedRow[]>();
     for (const row of staged) {
@@ -258,6 +275,13 @@ async function main() {
     const existing = existingOfType.get(groupId);
     const bitBattle = plan.partType === "bit"
       ? projectPhstudyBitBattleFacts(groupId, rows, existing?.type === "bit" ? existing : undefined)
+      : undefined;
+    const bitMetadata = plan.partType === "bit"
+      ? projectPhstudyBitMetadata(groupId, rows, {
+          releaseAt: bitBaseline[groupId]?.releaseAt ??
+            (existing?.type === "bit" ? existing.releaseAt : null),
+          weightGrams: existing?.type === "bit" ? existing.weightGrams : undefined,
+        })
       : undefined;
     // Only Bit carries five dimensions; Blade and Ratchet are three (ADR-0007).
     const project = (value: FiveStat) =>
@@ -342,36 +366,46 @@ async function main() {
           (a.releaseAt ?? "").localeCompare(b.releaseAt ?? "") || a.label.localeCompare(b.label));
     })();
 
-    const fields: string[] = ["nameEn", "stats"];
-    if (statEditions.length > 0) fields.push("statEditions");
-    if (aliases.size > 0) fields.push("aliases");
-    if (nameJaReading) fields.push("nameJa");
-    if (nameZhReading) fields.push("nameZhTw");
+    const genericFields: string[] = ["nameEn", "stats"];
+    if (statEditions.length > 0) genericFields.push("statEditions");
+    if (aliases.size > 0) genericFields.push("aliases");
+    if (nameJaReading) genericFields.push("nameJa");
+    if (nameZhReading) genericFields.push("nameZhTw");
     // phstudy owns the id of a Part it introduced, and keeps owning it on the
     // next run — "is this Part new to the file?" would flip the claim off.
     const priorOwnsId = (existing?.provenance ?? []).some(
       (entry) => entry.sourceId !== SOURCE_ID && entry.fields.includes("id"),
     );
-    if (!priorOwnsId) fields.push("id");
+    if (!priorOwnsId) genericFields.push("id");
     const playstyle = bitBattle?.playstyle ??
       (base.partType && playstyles.has(base.partType) ? base.partType : undefined);
-    if (playstyle) fields.push("playstyle");
-    if (modes.length > 0) fields.push("modes");
-    if (plan.partType === "ratchet") fields.push("height");
+    if (playstyle) genericFields.push("playstyle");
+    if (modes.length > 0) genericFields.push("modes");
+    if (plan.partType === "ratchet") genericFields.push("height");
 
     // "phstudy wins" applies to values, not to absence: when phstudy carries no
     // usable date the curated one stands, rather than being erased.
-    const releaseAt = normalizeReleaseDate(rows) ?? existing?.releaseAt ?? null;
-    if (normalizeReleaseDate(rows)) fields.push("releaseAt");
+    const releaseAt = bitMetadata?.releaseAt ?? normalizeReleaseDate(rows) ?? existing?.releaseAt ?? null;
+    if (bitMetadata?.sourceReleaseAt ?? normalizeReleaseDate(rows)) genericFields.push("releaseAt");
     // Weight sits on whichever SKU was actually put on a scale, not necessarily
     // the representative one, so fall back through the group in rank order.
-    const weightGrams =
+    const weightGrams = bitMetadata?.weightGrams ??
       base.weight?.weight_g ??
       [...rows]
         .sort(comparePhstudyRows)
         .find((row) => (row.weight?.weight_g ?? 0) > 0)?.weight?.weight_g ??
       undefined;
-    if (weightGrams && weightGrams > 0) fields.push("weightGrams");
+    if (bitMetadata?.sourceWeightGrams ?? (weightGrams && weightGrams > 0)) {
+      genericFields.push("weightGrams");
+    }
+    const fields = bitIdentity && bitBattle && bitMetadata
+      ? projectPhstudyBitProvenanceFields(
+          existing?.type === "bit" ? existing : undefined,
+          bitIdentity,
+          bitBattle,
+          bitMetadata,
+        )
+      : genericFields;
 
     // A `fields` list records which source supplied the value now stored. Once
     // phstudy's value wins a field, the older source no longer supplies it, so
@@ -390,10 +424,14 @@ async function main() {
       {
         sourceId: SOURCE_ID,
         sourceUrl: SOURCE_URL,
-        sourceVersion,
+        sourceVersion: `sha256:${plan.partType === "bit" ? bitSnapshotHash : mainHash}`,
         // main.json is an official app MasterData dump; the two overlays are
         // the site author's own hand-authored rows.
-        authority: base.originDocument === "main.json" ? "official_app_derived" : "community_source",
+        authority: plan.partType === "bit"
+          ? "community_source"
+          : base.originDocument === "main.json"
+            ? "official_app_derived"
+            : "community_source",
         rightsStatus: "unknown",
         fields,
       },
@@ -430,7 +468,7 @@ async function main() {
       statEditions,
     } as Part);
 
-    imageSources.push({ id: groupId, rows });
+    imageSources.push({ id: groupId, rows, partType: plan.partType });
     (existing ? updated : added).push(groupId);
   }
   }
@@ -476,8 +514,10 @@ async function main() {
   const nextImages: Record<string, ImageEntry> = { ...images };
   let converted = 0;
   let withoutImage = 0;
-  for (const { id: groupId, rows } of imageSources) {
-    const base = pickPhstudyRepresentative(rows.filter((row) => !row.hiddenUpstream && row.image));
+  for (const { id: groupId, rows, partType } of imageSources) {
+    const base = partType === "bit"
+      ? projectPhstudyBitMetadata(groupId, rows).imageRow
+      : pickPhstudyRepresentative(rows.filter((row) => !row.hiddenUpstream && row.image));
     if (!base?.image) {
       withoutImage += 1;
       continue;

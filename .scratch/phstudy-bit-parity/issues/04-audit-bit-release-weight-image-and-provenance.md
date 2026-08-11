@@ -6,8 +6,8 @@
 
 **Status:** ready-for-agent
 
-- [ ] Release dates follow the X-era lower bound and absence-does-not-erase rule.
-- [ ] Weight follows representative-row-first and ranked-positive-fallback selection.
-- [ ] Image metadata matches the deterministically selected upstream image row.
-- [ ] All required upstream document hashes and phstudy provenance claims are verified.
-- [ ] Report categories distinguish document drift, metadata drift, image drift, and provenance drift.
+- [x] Release dates follow the X-era lower bound and absence-does-not-erase rule.
+- [x] Weight follows representative-row-first and ranked-positive-fallback selection.
+- [x] Image metadata matches the deterministically selected upstream image row.
+- [x] All required upstream document hashes and phstudy provenance claims are verified.
+- [x] Report categories distinguish document drift, metadata drift, image drift, and provenance drift.
