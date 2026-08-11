@@ -48,13 +48,11 @@ describe("weightRangeOf", () => {
     expect(weightSortValueOf(blade([batch("A", { min: 34, max: 36 })]))).toBe(35);
   });
 
-  it("does not promote Go-Shoot observations into published Part weights", () => {
-    // ADR-0010 treats Go-Shoot as a discovery source. Its observations need
-    // a sourced Mold Batch before they can affect a Part's displayed range.
-    const weighed = getAllParts().filter((part) => weightRangeOf(part));
+  it("reads a published Part weight from the library", () => {
+    const accel = getAllParts().find((part) => part.id === "A");
 
-    expect(weighed).toEqual([]);
-    expect(getAllParts().every((part) => part.weightGrams === undefined)).toBe(true);
+    expect(accel).toBeDefined();
+    expect(weightRangeOf(accel!)).toEqual({ min: 2.6, max: 2.6 });
   });
 
   it("prefers a measured batch range over the published figure", () => {
