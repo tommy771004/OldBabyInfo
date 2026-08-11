@@ -7,6 +7,7 @@ import {
   presentPhstudyBitIdentityParity,
 } from "./phstudy-bit-identity-parity.ts";
 import type { PhstudyBitIdentityRow } from "./phstudy-bit-identity-parity.ts";
+import { assertPhstudyManifestArtifact } from "./phstudy-bit-metadata.ts";
 
 function bit(overrides: Partial<Part> = {}): Part {
   return {
@@ -49,6 +50,27 @@ const accelSourceStats = {
 };
 
 describe("auditPhstudyBitIdentityParity", () => {
+  it("rejects a normalized artifact whose bytes do not match its unique manifest claim", () => {
+    const sha256 = "a".repeat(64);
+    const manifest = {
+      documents: [],
+      normalized: [{ path: "parts-bit.json", bytes: 10, sha256 }],
+    };
+
+    expect(assertPhstudyManifestArtifact(manifest, "parts-bit.json", {
+      bytes: 10,
+      sha256,
+    })).toBe(sha256);
+    expect(() => assertPhstudyManifestArtifact(manifest, "parts-bit.json", {
+      bytes: 11,
+      sha256,
+    })).toThrow("does not match manifest.json");
+    expect(() => assertPhstudyManifestArtifact({
+      ...manifest,
+      normalized: [...manifest.normalized, ...manifest.normalized],
+    }, "parts-bit.json", { bytes: 10, sha256 })).toThrow("exactly one");
+  });
+
   it("rejects rows from an origin outside the documented three-file catalog", () => {
     expect(() => phstudyBitIdentityRowsSchema.parse([
       {
@@ -85,6 +107,16 @@ describe("auditPhstudyBitIdentityParity", () => {
     ])).toThrow();
     expect(() => phstudyBitIdentityRowsSchema.parse([
       { ...row, releaseAt: "not-a-date" },
+    ])).toThrow();
+    expect(() => phstudyBitIdentityRowsSchema.parse([
+      {
+        ...row,
+        image: {
+          url: "/sources/phstudy/../../../../etc/passwd",
+          originalUrl: "https://beyblade.phstudy.org/etc/passwd",
+          sha256: "a".repeat(64),
+        },
+      },
     ])).toThrow();
   });
 
@@ -142,6 +174,7 @@ describe("auditPhstudyBitIdentityParity", () => {
 
     expect(report).toEqual({
       ok: true,
+      artifactsChecked: false,
       counts: {
         rows: 5,
         nonEmptyGroups: 2,
@@ -446,6 +479,192 @@ describe("auditPhstudyBitIdentityParity", () => {
     expect(formatPhstudyBitIdentityParityReport(report)).toContain("`A` `modes`");
     expect(formatPhstudyBitIdentityParityReport(report)).not.toContain("BT-MODE");
     expect(presentPhstudyBitIdentityParity(report, "human").exitCode).toBe(1);
+  });
+
+  it("distinguishes document, metadata, image, and provenance drift", () => {
+    const mainHash = "a".repeat(64);
+    const rows = phstudyBitIdentityRowsSchema.parse([
+      {
+        id: "BT-A",
+        groupId: "A",
+        originDocument: "main.json",
+        hiddenUpstream: false,
+        codeName: accelCodeName,
+        partType: "attack",
+        stats: accelSourceStats,
+        collectionOrder: 1,
+        modelName: "Attack A",
+        releaseAt: "2024-02-01T15:00:00.000Z",
+        weight: { weight_g: 2.2 },
+        image: {
+          url: "/sources/phstudy/images/Bit/BT-A.png",
+          originalUrl: "https://beyblade.phstudy.org/images/site/Bit/BT-A.png",
+          sha256: "b".repeat(64),
+        },
+      },
+    ]);
+    const report = auditPhstudyBitIdentityParity(
+      rows,
+      [bit({
+        playstyle: "attack",
+        releaseAt: "2024-03-01",
+        weightGrams: 1.1,
+        provenance: [{
+          sourceId: "phstudy-beyblade-x",
+          sourceUrl: "https://wrong.example/",
+          sourceVersion: `sha256:${"f".repeat(64)}`,
+          authority: "community_source",
+          rightsStatus: "unknown",
+          fields: ["nameEn"],
+        }],
+      })],
+      {
+        manifest: {
+          documents: [
+            { path: "raw/main.json", url: "https://beyblade.phstudy.org/data/main.json", bytes: 1, sha256: mainHash },
+            { path: "raw/hardcoded.json", url: "https://beyblade.phstudy.org/data/hardcoded.json", bytes: 1, sha256: "c".repeat(64) },
+            { path: "raw/hasbro.json", url: "https://beyblade.phstudy.org/data/hasbro.json", bytes: 1, sha256: "d".repeat(64) },
+            { path: "raw/part_colors.json", url: "https://beyblade.phstudy.org/data/part_colors.json", bytes: 1, sha256: "e".repeat(64) },
+            { path: "raw/part_code_names.json", url: "https://beyblade.phstudy.org/data/part_code_names.json", bytes: 1, sha256: "1".repeat(64) },
+          ],
+          normalized: [{ path: "parts-bit.json", bytes: 1, sha256: "2".repeat(64) }],
+        },
+        images: {
+          A: {
+            url: "/parts/A.webp",
+            originalUrl: "https://wrong.example/A.png",
+            width: 1,
+            height: 1,
+            sourceId: "phstudy-beyblade-x",
+            sourceUrl: "https://beyblade.phstudy.org/?category=Bit",
+            sourceVersion: `sha256:${"9".repeat(64)}`,
+            rightsStatus: "unknown",
+            licenseUrl: null,
+          },
+        },
+        curatedBaseline: {},
+        sourceDocuments: {},
+        sourceImages: {},
+        publishedImages: {
+          A: { sha256: "2".repeat(64), width: 512, height: 512 },
+        },
+      },
+    );
+
+    expect(new Set(report.mismatches.map((issue) => issue.field.split(".")[0]))).toEqual(
+      new Set(["document", "metadata", "image", "provenance"]),
+    );
+    expect(report.mismatches).toContainEqual({
+      partId: "A",
+      field: "metadata.releaseAt",
+      expected: "2024-02-01",
+      actual: "2024-03-01",
+    });
+    expect(report.mismatches).toContainEqual({
+      partId: "A",
+      field: "metadata.weightGrams",
+      expected: 2.2,
+      actual: 1.1,
+    });
+  });
+
+  it("preserves release absence and uses ranked positive weight fallback", () => {
+    const rows = phstudyBitIdentityRowsSchema.parse([
+      {
+        id: "BT-MAIN",
+        groupId: "A",
+        originDocument: "main.json",
+        hiddenUpstream: false,
+        codeName: accelCodeName,
+        partType: "attack",
+        stats: accelSourceStats,
+        collectionOrder: 1,
+        modelName: "Attack A",
+        releaseAt: "2022-01-01T15:00:00.000Z",
+        weight: { weight_g: null },
+        image: null,
+      },
+      {
+        id: "BT-HASBRO",
+        groupId: "A",
+        originDocument: "hasbro.json",
+        hiddenUpstream: false,
+        codeName: accelCodeName,
+        partType: "attack",
+        stats: accelSourceStats,
+        collectionOrder: 2,
+        modelName: "Attack A 2",
+        releaseAt: null,
+        weight: { weight_g: 2.4 },
+        image: null,
+      },
+    ]);
+    const hash = "a".repeat(64);
+    const documents = [
+      "raw/main.json",
+      "raw/hardcoded.json",
+      "raw/hasbro.json",
+      "raw/part_colors.json",
+      "raw/part_weights.json",
+      "raw/part_code_names.json",
+    ].map((path) => ({
+      path,
+      url: `https://beyblade.phstudy.org/data/${path.slice(4)}`,
+      bytes: 1,
+      sha256: hash,
+    }));
+    const report = auditPhstudyBitIdentityParity(
+      rows,
+      [bit({ playstyle: "attack", releaseAt: "2024-01-01", weightGrams: 1.5 })],
+      {
+        manifest: {
+          documents,
+          normalized: [{ path: "parts-bit.json", bytes: 1, sha256: hash }],
+        },
+        images: {},
+        curatedBaseline: { A: { releaseAt: "2024-01-01" } },
+        sourceDocuments: Object.fromEntries(
+          [...documents, { path: "parts-bit.json", sha256: hash }]
+            .map(({ path, sha256 }) => [path, { bytes: 1, sha256 }]),
+        ),
+        sourceImages: {},
+        publishedImages: {},
+      },
+    );
+
+    expect(report.mismatches.filter((issue) => issue.field.startsWith("metadata."))).toEqual([
+      {
+        partId: "A",
+        field: "metadata.weightGrams",
+        expected: 2.4,
+        actual: 1.5,
+      },
+    ]);
+
+    const erased = auditPhstudyBitIdentityParity(
+      rows,
+      [bit({ playstyle: "attack", releaseAt: null, weightGrams: 2.4 })],
+      {
+        manifest: {
+          documents,
+          normalized: [{ path: "parts-bit.json", bytes: 1, sha256: hash }],
+        },
+        images: {},
+        curatedBaseline: { A: { releaseAt: "2024-01-01" } },
+        sourceDocuments: Object.fromEntries(
+          [...documents, { path: "parts-bit.json", bytes: 1, sha256: hash }]
+            .map(({ path, bytes, sha256 }) => [path, { bytes, sha256 }]),
+        ),
+        sourceImages: {},
+        publishedImages: {},
+      },
+    );
+    expect(erased.mismatches).toContainEqual({
+      partId: "A",
+      field: "metadata.releaseAt",
+      expected: "2024-01-01",
+      actual: null,
+    });
   });
 
   it("formats an actionable human summary from the structured report", () => {

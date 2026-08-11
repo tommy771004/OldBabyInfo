@@ -45,6 +45,13 @@
       "sha256": "9f0e9c094ba660ff84a937d3b63327cd6d941c719f746c04892bc89e47002aa9"
     }
   ],
+  "normalized": [
+    {
+      "path": "parts-bit.json",
+      "bytes": 1467583,
+      "sha256": "839915a1529a94481b5f1a27b524a40d86c7d12b81dee3d00647633005bf88a1"
+    }
+  ],
   "images": {
     "count": 1390,
     "missing": [
