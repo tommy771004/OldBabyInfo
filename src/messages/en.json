@@ -30,7 +30,7 @@
     "tool_taiwanrail_desc": "Live timetable lookup for Taiwan Railway and High Speed Rail, both systems in one interface.",
     "tool_roamjelly_desc": "AI trip planning with real-time co-editing, plus flight price comparison, expense splitting and packing lists in one app.",
     "tool_transitrail_desc": "Cross-border transit search that only answers with departures backed by a verified official timetable.",
-    "footer_promos_label": "Promotions",
+    "promos_label": "Promotions",
     "promo_badge_sponsored": "Sponsored",
     "promo_badge_partner": "Partner",
     "battle_search_label": "Part / Combo battle analysis",
@@ -296,7 +296,7 @@
     "purchaseHeading": "Purchases and retailers",
     "purchaseBody": "OldBabyInfo does not handle transactions, collect payment, or guarantee price, availability, quality, or delivery. After you leave for a retailer, the purchase is between you and that retailer.",
     "disclosureHeading": "Promotion disclosure",
-    "disclosureBody": "The Promotions row in the footer contains sponsored and partner links, and OldBabyInfo may earn a commission from them. A slot marked Sponsored is paid placement; one marked Partner is a working relationship. Both are promotional, and neither changes how part data or event records are compiled. Views and clicks on that row are counted to measure how each slot performs; only the slot identifier, the partner and the placement name are recorded, never anything that identifies a person.",
+    "disclosureBody": "The Promotions row on the home page contains sponsored and partner links, and OldBabyInfo may earn a commission from them. A slot marked Sponsored is paid placement; one marked Partner is a working relationship. Both are promotional, and neither changes how part data or event records are compiled. Views and clicks on that row are counted to measure how each slot performs; only the slot identifier, the partner and the placement name are recorded, never anything that identifies a person.",
     "reportHeading": "Report a problem",
     "reportBody": "Report errors, infringement, or harmful content through the project maintenance channel. We will review reports according to the available evidence."
   },

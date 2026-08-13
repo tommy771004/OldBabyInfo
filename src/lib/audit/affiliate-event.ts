@@ -16,8 +16,16 @@ export const AFFILIATE_ACTIONS = ["affiliate_impression", "affiliate_click"] as 
 export type AffiliateAction = (typeof AFFILIATE_ACTIONS)[number];
 
 /** Where the slot was rendered. One value today; kept as data because §7.1
- * requires clicks to be separable by placement once there is more than one. */
-export const HOME_FOOTER_PLACEMENT = "home-footer";
+ * requires clicks to be separable by placement once there is more than one.
+ *
+ * Was `home-footer` until 2026-08-13, when the slot moved up the homepage to
+ * sit above the events section. The value changed with it rather than being
+ * kept for continuity: a row above the fold and a row in the footer earn
+ * their impressions on completely different terms, and averaging the two
+ * across the move would produce a CTR that describes neither. Rows logged
+ * before that date still read `home-footer` and should be read as a separate
+ * placement, which is exactly what §7.1 asks this field to make possible. */
+export const HOME_PROMOS_PLACEMENT = "home-promos";
 
 export const affiliateEventSchema = z.object({
   action: z.enum(AFFILIATE_ACTIONS),

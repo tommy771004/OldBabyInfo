@@ -60,8 +60,9 @@
 }
 
 /* Parts section — walks surface-900 (matching the hero's own bottom edge)
-   down to surface-700 (matching the events section's top edge), staying
-   inside surface-800 for the whole text-bearing middle. */
+   down to surface-700 (matching the promotions band's flat value, which the
+   events section then leaves from), staying inside surface-800 for the whole
+   text-bearing middle. */
 
 .partsSection {
   background-image: var(--grain), linear-gradient(
@@ -118,8 +119,179 @@
   font-size: 1.05rem;
 }
 
-/* Events section — picks up at surface-700 (matching the parts section's
-   bottom edge) and settles into surface-600, the last dark-ink-safe step
+/* Promotions — paid and partner slots, sitting between the parts section and
+   the events section rather than in the footer. Held flat at surface-700, the
+   exact value the parts section arrives at and the events section leaves
+   from, so the ramp is still one unbroken walk with no seam at either edge.
+   Well inside the dark-ink-safe band (ADR-0008).
+ *
+ * Ink is --ink-on-dark (10.6:1 here). Deliberately not --accent-on-dark,
+ * which lands at 4.47:1 on surface-700 — under AA, and this row is small
+ * text. The accent stays on the darker steps where it is verified.
+ *
+ * Still a quiet row of names, not cards. It has moved above the fold, so the
+ * restraint matters more than it did in the footer, not less: it never
+ * outweighs the events card below it. The disclosure badge is part of the
+ * layout rather than an afterthought — with the sibling tools no longer
+ * directly above, the badge is the only thing separating a paid name from
+ * the site's own content.
+ *
+ * The row moves — see the marquee block below for what that costs and what
+ * holds it in check. */
+
+.promosBand {
+  background-image: var(--grain), linear-gradient(
+    to bottom,
+    var(--surface-700) 0%,
+    var(--surface-700) 100%
+  );
+  background-repeat: repeat, no-repeat;
+  color: var(--ink-on-dark);
+  /* `clip`, not `hidden`: an overflow-hidden ancestor is still a scroll
+     container, so focusing an off-screen link inside it scrolls the box and
+     leaves the track sitting at an offset the animation never returns from.
+     Same reason .hero uses it. */
+  overflow: clip;
+  padding: 1.75rem 0;
+  /* No rule above or below. A hairline would read as a hard edge between
+     sections, which ADR-0006 counts as a defect outright, and the band does
+     not need one: the label and the per-offer badge are what mark this row
+     as commercial, and those are the marks the disclosure page promises. */
+}
+
+.promosLabel {
+  max-width: 72rem;
+  margin: 0 auto 1rem;
+  padding: 0 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--ink-on-dark) 62%, transparent);
+}
+
+/* Full-bleed on purpose — the heading above stays in the 72rem column, but
+   the moving row runs edge to edge, which is what makes it read as passing
+   through rather than as a box with things jiggling inside it.
+ *
+ * `auto` is the no-animation default and it has to be: a static row wider
+ * than the screen would otherwise put offers behind an edge with no way to
+ * reach them. The marquee block below swaps it for `clip`, since by then the
+ * row brings every offer past the reader on its own. */
+.promosViewport {
+  overflow-x: auto;
+}
+
+.promoTrack {
+  list-style: none;
+  margin: 0;
+  /* Inline padding only while the row is static: a row that is not moving is
+     an ordinary page-column element and lines up under its own heading, which
+     is the same 72rem column the sections above and below use. The marquee
+     drops it entirely — translateX(-33.3333%) is a share of the track's
+     border box and padding sits inside that box, so leaving it on lands the
+     loop a gutter's width off. */
+  padding-inline: max(1.5rem, calc((100% - 72rem) / 2 + 1.5rem));
+  display: flex;
+  /* Content-width, not container-width: the track has to be as wide as its
+     three copies for the -33.333% shift to land on an identical frame. */
+  width: max-content;
+  /* No `gap` here. Spacing lives on the items (margin-inline-end) because a
+     flex gap sits *between* copies too, which offsets the loop point by half
+     a gap and produces a visible stutter once per cycle. */
+}
+
+.promoItem {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-inline-end: 2.5rem;
+  white-space: nowrap;
+}
+
+.promoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--ink-on-dark);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+a.promoLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.promoBadge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 32%, transparent);
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--ink-on-dark) 68%, transparent);
+  white-space: nowrap;
+}
+
+/* The repeats exist only to hide the loop's seam. With no animation running
+   there is no seam, so they are not rendered at all — otherwise a
+   reduced-motion reader gets the same three names listed three times. */
+.promoItem[data-repeat] {
+  display: none;
+}
+
+/* ── Marquee ───────────────────────────────────────────────────────────────
+ *
+ * ADR-0006 rules out autoplay decorative animation; this is the second
+ * exception on record after the 2026-07-27 card-border current, and it is
+ * owner-decided (2026-08-13). What that ADR is actually protecting is kept
+ * intact: the motion is a single steady translation along the row's own
+ * axis — no glow, no blur, no lift, nothing scaling or fading — it never
+ * covers text, and it stops dead the moment a reader reaches for it.
+ *
+ * Everything about the movement lives inside `no-preference`, including the
+ * repeats it needs. A reader who asks for less motion is not handed a
+ * paused marquee: they get a plain row of names that scrolls if it has to,
+ * with every offer reachable. That is the whole slot, working, with no
+ * animation involved — which is the test globals.css's blanket
+ * `animation-duration: 0.001ms` override cannot pass on its own, since
+ * zeroing a marquee's duration parks it at its end frame.
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+  .promoItem[data-repeat] {
+    display: inline-flex;
+  }
+
+  .promosViewport {
+    overflow: clip;
+  }
+
+  .promoTrack {
+    padding-inline: 0;
+    animation: promoMarquee 32s linear infinite;
+  }
+
+  /* Both are load-bearing, not polish: a link the reader is trying to click
+     or has tabbed to must hold still long enough to be hit. */
+  .promosBand:hover .promoTrack,
+  .promosBand:focus-within .promoTrack {
+    animation-play-state: paused;
+  }
+
+  /* One third, because the row is rendered three times (MARQUEE_COPIES in
+     affiliate-slot.tsx). At -33.333% the second copy sits exactly where the
+     first began, so the reset is invisible. Changing one without the other
+     puts a jump in the loop. */
+  @keyframes promoMarquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-33.3333%);
+    }
+  }
+}
+
+/* Events section — picks up at surface-700 (matching the promotions band it
+   leaves) and settles into surface-600, the last dark-ink-safe step
    before the ramp's dead zone (ADR-0008), for its whole text-bearing body. */
 
 .eventsSection {
@@ -327,64 +499,6 @@
   color: var(--accent-on-light);
 }
 
-/* Paid and partner slots. Deliberately a quiet row of names rather than
-   cards: the commercial content sits below the site's own navigation and
-   below the sibling tools, and never outweighs either. The disclosure badge
-   is part of the layout, not an afterthought — it is what separates this
-   row from the sibling tools above it. */
-
-.footerPromos {
-  max-width: 72rem;
-  margin: 2.5rem auto 0;
-  padding: 0 1.5rem;
-  text-align: center;
-}
-
-.footerPromosLabel {
-  font-size: 0.85rem;
-  font-weight: 500;
-  margin: 0 0 1.5rem;
-  color: color-mix(in srgb, var(--ink-on-light) 55%, transparent);
-}
-
-.footerPromoList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem 2rem;
-}
-
-.footerPromoItem {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.5rem;
-}
-
-.footerPromoLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  color: var(--ink-on-light);
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-
-a.footerPromoLink:hover {
-  color: var(--accent-on-light);
-}
-
-.footerPromoBadge {
-  font-size: 0.7rem;
-  padding: 0.15rem 0.45rem;
-  border: 1px solid color-mix(in srgb, var(--ink-on-light) 30%, transparent);
-  border-radius: 999px;
-  color: color-mix(in srgb, var(--ink-on-light) 60%, transparent);
-  white-space: nowrap;
-}
-
 .footerSources {
   max-width: 44rem;
   margin: 1.75rem auto 0;
@@ -431,14 +545,6 @@ a.footerPromoLink:hover {
 
   .toolsGrid {
     grid-template-columns: 1fr;
-  }
-
-  .footerPromos {
-    text-align: left;
-  }
-
-  .footerPromoList {
-    justify-content: flex-start;
   }
 }
 
@@ -505,6 +611,16 @@ a.footerPromoLink:hover {
       animation-range: entry 5% cover 40%;
     }
 
+    /* The promotions label only. Never the track under it: that element is
+       already carrying the marquee's own transform, and a second animation
+       on the same property would simply win and cancel the loop. */
+    .promosLabel {
+      --rise-from: 1.5rem;
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 30%;
+    }
+
     /* Sideline end: less travel, resolving sooner. */
     .eventsSection h2,
     .eventsSection .sectionLede,
@@ -528,7 +644,6 @@ a.footerPromoLink:hover {
     }
 
     .footerTop,
-    .footerPromos,
     .footerSources,
     .footerColophon {
       animation: settle linear both;

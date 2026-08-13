@@ -9,7 +9,7 @@ const event: AffiliateEvent = {
     project_name: "old-baby-info",
     sponsored: false,
     partner: "Funbox",
-    placement: "home-footer",
+    placement: "home-promos",
   },
 };
 

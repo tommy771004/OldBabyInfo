@@ -8,7 +8,7 @@ const valid = {
     project_name: "old-baby-info",
     sponsored: true,
     partner: "Funbox",
-    placement: "home-footer",
+    placement: "home-promos",
   },
 };
 

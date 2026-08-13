@@ -193,6 +193,24 @@ function HomeContent({
         </div>
       </section>
 
+      <AffiliateSlot
+        offers={offers}
+        labels={{
+          heading: t("promos_label"),
+          sponsored: t("promo_badge_sponsored"),
+          partner: t("promo_badge_partner"),
+        }}
+        classNames={{
+          section: styles.promosBand,
+          heading: styles.promosLabel,
+          viewport: styles.promosViewport,
+          list: styles.promoTrack,
+          item: styles.promoItem,
+          link: styles.promoLink,
+          badge: styles.promoBadge,
+        }}
+      />
+
       <section className={styles.eventsSection}>
         <div className={styles.sectionInner}>
           <h2>{t("section_events_heading")}</h2>
@@ -272,23 +290,6 @@ function HomeContent({
           </nav>
           <LocaleSwitcher />
         </div>
-
-        <AffiliateSlot
-          offers={offers}
-          labels={{
-            heading: t("footer_promos_label"),
-            sponsored: t("promo_badge_sponsored"),
-            partner: t("promo_badge_partner"),
-          }}
-          classNames={{
-            section: styles.footerPromos,
-            heading: styles.footerPromosLabel,
-            list: styles.footerPromoList,
-            item: styles.footerPromoItem,
-            link: styles.footerPromoLink,
-            badge: styles.footerPromoBadge,
-          }}
-        />
 
         <p className={styles.footerSources}>
           {t("footer_sources_label")}
