@@ -42,6 +42,13 @@ export default async function TermsPage({
         <h2>{t("purchaseHeading")}</h2>
         <p>{t("purchaseBody")}</p>
       </section>
+      {/* Anchored: the promotion slot's disclosure has to be linkable from
+          anywhere the slot appears. This site has no /privacy, so the
+          spec's /privacy#disclosure lands here. */}
+      <section id="disclosure">
+        <h2>{t("disclosureHeading")}</h2>
+        <p>{t("disclosureBody")}</p>
+      </section>
       <section>
         <h2>{t("reportHeading")}</h2>
         <p>{t("reportBody")}</p>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { routing, type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
@@ -12,6 +13,10 @@ import { filterByType, sortParts } from "@/lib/parts/filter-sort.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { getAllEvents } from "@/lib/events/repository.ts";
 import { splitByDate } from "@/lib/events/split-by-date.ts";
+import { affiliateProjectName, createNeonOfferReader } from "@/lib/affiliates/neon-repository.ts";
+import { offerLabel, type AffiliateOffer } from "@/lib/affiliates/schema.ts";
+import { optionalRead } from "@/lib/db/optional-read.ts";
+import { safeExternalUrl } from "@/lib/security/external-url.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 import type { Event } from "@/lib/events/schema.ts";
 import styles from "./page.module.css";
@@ -27,14 +32,35 @@ const DATA_SOURCES = [
   { label: "Funbox", href: "https://shop.funbox.com.tw/categories/XI/KB" },
 ];
 
-/* Sibling tools by the same author. The name is the product's own, so it
-   stays out of the message files; only the one-line description is
-   translated. */
+/* Sibling tools by the same author. The name and the mark are the product's
+   own, so they stay out of the message files; only the one-line description
+   is translated. Each `icon` is that project's real app icon, copied from
+   its repo into public/tools. */
 const OTHER_TOOLS = [
-  { key: "taiwanrail", label: "Taiwanrail", href: "https://taiwanrail.vercel.app/" },
-  { key: "roamjelly", label: "RoamJelly", href: "https://roam-jelly-web.vercel.app/" },
-  { key: "transitrail", label: "TransitRail", href: "https://rail-national.vercel.app/" },
+  {
+    key: "taiwanrail",
+    label: "Taiwanrail",
+    href: "https://taiwanrail.vercel.app/",
+    icon: "/tools/taiwanrail.svg",
+  },
+  {
+    key: "roamjelly",
+    label: "RoamJelly",
+    href: "https://roam-jelly-web.vercel.app/",
+    icon: "/tools/roamjelly.svg",
+  },
+  {
+    key: "transitrail",
+    label: "TransitRail",
+    href: "https://rail-national.vercel.app/",
+    icon: "/tools/transitrail.svg",
+  },
 ] as const;
+
+/* The promotion slot is read per request from a database this repo does not
+   own, so the page can no longer be built once and served forever. Same
+   trade the discussion feed and the Part pages already make. */
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -59,9 +85,21 @@ export default async function HomePage({
   const { upcoming } = splitByDate(getAllEvents(), todayIsoDate());
   const nextEvent = upcoming[0];
 
+  // Never `DATABASE_URL` as a fallback: that is this site's own Neon, which
+  // has no `affiliates` table. Unset means no slot, not a query error.
+  const affiliateConnection = process.env.SUP_DATABASE_URL;
+  const offers = affiliateConnection
+    ? await optionalRead<AffiliateOffer[]>(
+        "affiliates",
+        () => createNeonOfferReader(affiliateConnection).listEnabled(affiliateProjectName()),
+        [],
+      )
+    : [];
+
   return (
     <HomeContent
       locale={locale}
+      offers={offers}
       allParts={parts}
       combos={defaultBattleCombos(parts)}
       partImages={Object.fromEntries(
@@ -79,6 +117,7 @@ export default async function HomePage({
 
 function HomeContent({
   locale,
+  offers,
   allParts,
   combos,
   partImages,
@@ -87,6 +126,7 @@ function HomeContent({
   nextEvent,
 }: {
   locale: Locale;
+  offers: AffiliateOffer[];
   allParts: Part[];
   combos: ReturnType<typeof defaultBattleCombos>;
   partImages: Record<string, { url: string; width: number; height: number }>;
@@ -187,6 +227,38 @@ function HomeContent({
         </div>
       </section>
 
+      <section className={styles.toolsSection}>
+        <div className={styles.sectionInner}>
+          <h2>{t("section_tools_heading")}</h2>
+          <p className={styles.sectionLede}>{t("section_tools_lede")}</p>
+
+          <ul className={styles.toolsGrid}>
+            {OTHER_TOOLS.map((tool) => (
+              <li key={tool.href} className={styles.toolCardItem}>
+                <a
+                  href={tool.href}
+                  className={`${styles.toolCard} current-border current-border-dark`}
+                >
+                  <Image
+                    src={tool.icon}
+                    alt=""
+                    width={44}
+                    height={44}
+                    className={styles.toolIcon}
+                    unoptimized
+                  />
+                  <span className={styles.toolName}>
+                    {tool.label}
+                    <DiagonalArrow />
+                  </span>
+                  <span className={styles.toolDesc}>{t(`tool_${tool.key}_desc`)}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <div className={styles.transitionBand} aria-hidden="true" />
 
       <footer className={styles.footer}>
@@ -201,22 +273,22 @@ function HomeContent({
           <LocaleSwitcher />
         </div>
 
-        <section className={styles.footerTools} aria-labelledby="footer-tools-label">
-          <h2 id="footer-tools-label" className={styles.footerToolsLabel}>
-            {t("footer_tools_label")}
-          </h2>
-          <ul className={styles.footerToolsList}>
-            {OTHER_TOOLS.map((tool) => (
-              <li key={tool.href}>
-                <a href={tool.href} className={styles.footerToolName}>
-                  {tool.label}
-                  <DiagonalArrow />
-                </a>
-                <p className={styles.footerToolDesc}>{t(`tool_${tool.key}_desc`)}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
+        {offers.length > 0 ? (
+          <section className={styles.footerPromos} aria-labelledby="footer-promos-label">
+            <h2 id="footer-promos-label" className={styles.footerPromosLabel}>
+              {t("footer_promos_label")}
+            </h2>
+            <ul className={styles.footerPromoList}>
+              {offers.map((offer) => (
+                <PromoLink
+                  key={`${offer.projectName}:${offer.id}`}
+                  offer={offer}
+                  badge={offer.sponsored ? t("promo_badge_sponsored") : t("promo_badge_partner")}
+                />
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
         <p className={styles.footerSources}>
           {t("footer_sources_label")}
@@ -236,6 +308,40 @@ function HomeContent({
         </p>
       </footer>
     </main>
+  );
+}
+
+/**
+ * One promotion slot. The disclosure badge is not decoration — a paid slot
+ * that does not say so is the one thing the spec's content checks forbid
+ * outright (§8), so it renders next to the name whether or not the row is
+ * sponsored.
+ *
+ * `safeExternalUrl` runs again here even though the schema already refused
+ * unsafe protocols on read: this is the last point before the value becomes
+ * an attribute, and an unlinkable row stays visible as text rather than
+ * disappearing silently.
+ */
+function PromoLink({ offer, badge }: { offer: AffiliateOffer; badge: string }) {
+  const href = safeExternalUrl(offer.url);
+  const label = offerLabel(offer);
+
+  return (
+    <li className={styles.footerPromoItem}>
+      {href ? (
+        <a
+          href={href}
+          className={styles.footerPromoLink}
+          rel="sponsored nofollow noopener noreferrer"
+        >
+          {label}
+          <DiagonalArrow />
+        </a>
+      ) : (
+        <span className={styles.footerPromoLink}>{label}</span>
+      )}
+      <span className={styles.footerPromoBadge}>{badge}</span>
+    </li>
   );
 }
 

@@ -174,6 +174,102 @@
   margin: 0;
 }
 
+/* Sibling tools — flat surface-600, holding the exact value the events
+   section arrives at and the transition band leaves from, so the ramp is
+   still one unbroken walk. Still inside the dark-ink-safe band (ADR-0008),
+   at its last step, which is where the events section already puts its whole
+   text-bearing body.
+ *
+ * Deviation on record: three full-colour partner marks enter a system that
+ * is otherwise one warm ramp with no second palette. The justification is
+ * ADR-0008's own rule for a Part's real colour — a real entity's mark is
+ * allowed to be itself, locally, as long as it does not spread into the page
+ * theme. So the marks keep their own colours at 44px and nothing else in
+ * this section borrows from them: card, border, ink and current all come
+ * from the ramp exactly as the events cards above do.
+ */
+
+.toolsSection {
+  background-image: var(--grain), linear-gradient(
+    to bottom,
+    var(--surface-600) 0%,
+    var(--surface-600) 100%
+  );
+  background-repeat: repeat, no-repeat;
+  color: var(--ink-on-dark);
+}
+
+.toolsSection .sectionLede {
+  color: color-mix(in srgb, var(--ink-on-dark) 82%, transparent);
+}
+
+.toolsGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* The charge stagger in current-border.css keys off nth-child, so the card
+   has to be the list item's own child, not the item itself. */
+.toolCardItem {
+  display: flex;
+}
+
+.toolCard {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "icon name"
+    "desc desc";
+  align-items: center;
+  gap: 0.4rem 1rem;
+  width: 100%;
+  padding: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 22%, transparent);
+  border-radius: 10px;
+  color: var(--ink-on-dark);
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+/* Hover brightens the edge and nothing else. No lift, no glow — the
+   anti-slop contract reserves both, and the card already has a travelling
+   charge on its perimeter to say it is live. */
+.toolCard:hover {
+  border-color: color-mix(in srgb, var(--ink-on-dark) 42%, transparent);
+}
+
+.toolIcon {
+  grid-area: icon;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  /* The three marks are drawn on their own tiles at the same corner ratio;
+     clipping to a shared radius keeps them a set rather than three
+     app icons that happen to sit in a row. */
+  overflow: hidden;
+}
+
+.toolName {
+  grid-area: name;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.toolDesc {
+  grid-area: desc;
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--ink-on-dark) 72%, transparent);
+}
+
 /* The one span that has to cross the ramp's 50-60% dead zone (ADR-0008) —
    real distance (not a seam line), grained against banding, and — the
    part that makes crossing it legal — deliberately empty. No heading, no
@@ -231,53 +327,62 @@
   color: var(--accent-on-light);
 }
 
-/* Sibling tools by the same author — a step outward, so it sits after the
-   in-site nav and before the attributions, and stays quieter than the nav
-   above it. Lives entirely inside the footer's surface-100, so it never
-   goes near the ramp's dead zone (ADR-0008). */
+/* Paid and partner slots. Deliberately a quiet row of names rather than
+   cards: the commercial content sits below the site's own navigation and
+   below the sibling tools, and never outweighs either. The disclosure badge
+   is part of the layout, not an afterthought — it is what separates this
+   row from the sibling tools above it. */
 
-.footerTools {
+.footerPromos {
   max-width: 72rem;
-  margin: 3rem auto 0;
+  margin: 2.5rem auto 0;
   padding: 0 1.5rem;
   text-align: center;
 }
 
-.footerToolsLabel {
+.footerPromosLabel {
   font-size: 0.85rem;
   font-weight: 500;
   margin: 0 0 1.5rem;
   color: color-mix(in srgb, var(--ink-on-light) 55%, transparent);
 }
 
-.footerToolsList {
+.footerPromoList {
   list-style: none;
-  max-width: 60rem;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 2rem;
 }
 
-.footerToolName {
+.footerPromoItem {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.footerPromoLink {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
   color: var(--ink-on-light);
   text-decoration: none;
-  font-weight: 500;
+  font-size: 0.95rem;
 }
 
-.footerToolName:hover {
+a.footerPromoLink:hover {
   color: var(--accent-on-light);
 }
 
-.footerToolDesc {
-  margin: 0.5rem 0 0;
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: color-mix(in srgb, var(--ink-on-light) 65%, transparent);
+.footerPromoBadge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--ink-on-light) 30%, transparent);
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--ink-on-light) 60%, transparent);
+  white-space: nowrap;
 }
 
 .footerSources {
@@ -324,13 +429,16 @@
     text-align: left;
   }
 
-  .footerTools {
+  .toolsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .footerPromos {
     text-align: left;
   }
 
-  .footerToolsList {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
+  .footerPromoList {
+    justify-content: flex-start;
   }
 }
 
@@ -408,8 +516,19 @@
       animation-range: entry 8% cover 30%;
     }
 
+    /* Same short travel as the sideline end above it — by here the page is
+       resolving, not still announcing itself. */
+    .toolsSection h2,
+    .toolsSection .sectionLede,
+    .toolCardItem {
+      --rise-from: 1.5rem;
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 30%;
+    }
+
     .footerTop,
-    .footerTools,
+    .footerPromos,
     .footerSources,
     .footerColophon {
       animation: settle linear both;
