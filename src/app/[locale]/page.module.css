@@ -231,6 +231,55 @@
   color: var(--accent-on-light);
 }
 
+/* Sibling tools by the same author — a step outward, so it sits after the
+   in-site nav and before the attributions, and stays quieter than the nav
+   above it. Lives entirely inside the footer's surface-100, so it never
+   goes near the ramp's dead zone (ADR-0008). */
+
+.footerTools {
+  max-width: 72rem;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.footerToolsLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
+  color: color-mix(in srgb, var(--ink-on-light) 55%, transparent);
+}
+
+.footerToolsList {
+  list-style: none;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.footerToolName {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--ink-on-light);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footerToolName:hover {
+  color: var(--accent-on-light);
+}
+
+.footerToolDesc {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--ink-on-light) 65%, transparent);
+}
+
 .footerSources {
   max-width: 44rem;
   margin: 1.75rem auto 0;
@@ -273,6 +322,15 @@
   .footerTop {
     justify-content: flex-start;
     text-align: left;
+  }
+
+  .footerTools {
+    text-align: left;
+  }
+
+  .footerToolsList {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
   }
 }
 
@@ -351,6 +409,7 @@
     }
 
     .footerTop,
+    .footerTools,
     .footerSources,
     .footerColophon {
       animation: settle linear both;

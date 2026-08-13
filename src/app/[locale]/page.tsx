@@ -27,6 +27,15 @@ const DATA_SOURCES = [
   { label: "Funbox", href: "https://shop.funbox.com.tw/categories/XI/KB" },
 ];
 
+/* Sibling tools by the same author. The name is the product's own, so it
+   stays out of the message files; only the one-line description is
+   translated. */
+const OTHER_TOOLS = [
+  { key: "taiwanrail", label: "Taiwanrail", href: "https://taiwanrail.vercel.app/" },
+  { key: "roamjelly", label: "RoamJelly", href: "https://roam-jelly-web.vercel.app/" },
+  { key: "transitrail", label: "TransitRail", href: "https://rail-national.vercel.app/" },
+] as const;
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -191,6 +200,23 @@ function HomeContent({
           </nav>
           <LocaleSwitcher />
         </div>
+
+        <section className={styles.footerTools} aria-labelledby="footer-tools-label">
+          <h2 id="footer-tools-label" className={styles.footerToolsLabel}>
+            {t("footer_tools_label")}
+          </h2>
+          <ul className={styles.footerToolsList}>
+            {OTHER_TOOLS.map((tool) => (
+              <li key={tool.href}>
+                <a href={tool.href} className={styles.footerToolName}>
+                  {tool.label}
+                  <DiagonalArrow />
+                </a>
+                <p className={styles.footerToolDesc}>{t(`tool_${tool.key}_desc`)}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <p className={styles.footerSources}>
           {t("footer_sources_label")}
