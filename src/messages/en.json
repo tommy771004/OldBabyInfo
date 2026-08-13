@@ -296,7 +296,7 @@
     "purchaseHeading": "Purchases and retailers",
     "purchaseBody": "OldBabyInfo does not handle transactions, collect payment, or guarantee price, availability, quality, or delivery. After you leave for a retailer, the purchase is between you and that retailer.",
     "disclosureHeading": "Promotion disclosure",
-    "disclosureBody": "The Promotions row in the footer contains sponsored and partner links, and OldBabyInfo may earn a commission from them. A slot marked Sponsored is paid placement; one marked Partner is a working relationship. Both are promotional, and neither changes how part data or event records are compiled.",
+    "disclosureBody": "The Promotions row in the footer contains sponsored and partner links, and OldBabyInfo may earn a commission from them. A slot marked Sponsored is paid placement; one marked Partner is a working relationship. Both are promotional, and neither changes how part data or event records are compiled. Views and clicks on that row are counted to measure how each slot performs; only the slot identifier, the partner and the placement name are recorded, never anything that identifies a person.",
     "reportHeading": "Report a problem",
     "reportBody": "Report errors, infringement, or harmful content through the project maintenance channel. We will review reports according to the available evidence."
   },

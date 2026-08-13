@@ -13,10 +13,10 @@ import { filterByType, sortParts } from "@/lib/parts/filter-sort.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { getAllEvents } from "@/lib/events/repository.ts";
 import { splitByDate } from "@/lib/events/split-by-date.ts";
+import { AffiliateSlot } from "@/components/affiliate-slot.tsx";
 import { affiliateProjectName, createNeonOfferReader } from "@/lib/affiliates/neon-repository.ts";
-import { offerLabel, type AffiliateOffer } from "@/lib/affiliates/schema.ts";
+import type { AffiliateOffer } from "@/lib/affiliates/schema.ts";
 import { optionalRead } from "@/lib/db/optional-read.ts";
-import { safeExternalUrl } from "@/lib/security/external-url.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 import type { Event } from "@/lib/events/schema.ts";
 import styles from "./page.module.css";
@@ -273,22 +273,22 @@ function HomeContent({
           <LocaleSwitcher />
         </div>
 
-        {offers.length > 0 ? (
-          <section className={styles.footerPromos} aria-labelledby="footer-promos-label">
-            <h2 id="footer-promos-label" className={styles.footerPromosLabel}>
-              {t("footer_promos_label")}
-            </h2>
-            <ul className={styles.footerPromoList}>
-              {offers.map((offer) => (
-                <PromoLink
-                  key={`${offer.projectName}:${offer.id}`}
-                  offer={offer}
-                  badge={offer.sponsored ? t("promo_badge_sponsored") : t("promo_badge_partner")}
-                />
-              ))}
-            </ul>
-          </section>
-        ) : null}
+        <AffiliateSlot
+          offers={offers}
+          labels={{
+            heading: t("footer_promos_label"),
+            sponsored: t("promo_badge_sponsored"),
+            partner: t("promo_badge_partner"),
+          }}
+          classNames={{
+            section: styles.footerPromos,
+            heading: styles.footerPromosLabel,
+            list: styles.footerPromoList,
+            item: styles.footerPromoItem,
+            link: styles.footerPromoLink,
+            badge: styles.footerPromoBadge,
+          }}
+        />
 
         <p className={styles.footerSources}>
           {t("footer_sources_label")}
@@ -308,40 +308,6 @@ function HomeContent({
         </p>
       </footer>
     </main>
-  );
-}
-
-/**
- * One promotion slot. The disclosure badge is not decoration — a paid slot
- * that does not say so is the one thing the spec's content checks forbid
- * outright (§8), so it renders next to the name whether or not the row is
- * sponsored.
- *
- * `safeExternalUrl` runs again here even though the schema already refused
- * unsafe protocols on read: this is the last point before the value becomes
- * an attribute, and an unlinkable row stays visible as text rather than
- * disappearing silently.
- */
-function PromoLink({ offer, badge }: { offer: AffiliateOffer; badge: string }) {
-  const href = safeExternalUrl(offer.url);
-  const label = offerLabel(offer);
-
-  return (
-    <li className={styles.footerPromoItem}>
-      {href ? (
-        <a
-          href={href}
-          className={styles.footerPromoLink}
-          rel="sponsored nofollow noopener noreferrer"
-        >
-          {label}
-          <DiagonalArrow />
-        </a>
-      ) : (
-        <span className={styles.footerPromoLink}>{label}</span>
-      )}
-      <span className={styles.footerPromoBadge}>{badge}</span>
-    </li>
   );
 }
 
