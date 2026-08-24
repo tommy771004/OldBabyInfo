@@ -157,9 +157,9 @@ const seoCopy = {
     en: { title: "Compare Beyblade X Parts", description: "Compare Beyblade X part types, stats, weights, and official data side by side." },
   },
   meta: {
-    "zh-TW": { title: "Beyblade X Combo 勝率榜", description: "根據實際賽事結果查看 Beyblade X Combo 使用率、前八強佔比與奪冠次數。" },
-    ja: { title: "ベイブレードX コンボ使用率ランキング", description: "実際の大会結果からベイブレードXコンボの使用率、ベスト8率、優勝回数を確認できます。" },
-    en: { title: "Beyblade X Combo Event Standings", description: "Explore Beyblade X combo usage, top-eight rates, and championship counts from recorded event results." },
+    "zh-TW": { title: "Beyblade X Combo 勝率榜", description: "以實際賽事結果統計 Beyblade X Combo 的使用率、前八強佔比與奪冠次數。賽事使用資料尚未匯入，上線前此頁顯示空狀態。" },
+    ja: { title: "ベイブレードX コンボ使用率ランキング", description: "実際の大会結果からベイブレードXコンボの使用率、ベスト8率、優勝回数を集計。大会データ未投入のため、現在このページは空の状態です。" },
+    en: { title: "Beyblade X Combo Event Standings", description: "Combo usage, top-eight rates, and championship counts computed from recorded event results. Appearance data has not been ingested yet; the page shows an empty state until then." },
   },
   moldBatches: {
     "zh-TW": { title: "Beyblade X 模具批號查詢", description: "查詢 Beyblade X 零件的模具批次觀察與社群實測資料，並查看每筆資料的來源。" },
@@ -172,9 +172,9 @@ const seoCopy = {
     en: { title: "Terms and Disclaimer", description: "OldBabyInfo terms covering sources, community content, retailer links, and its unofficial status." },
   },
   login: {
-    "zh-TW": { title: "登入 OldBabyInfo", description: "登入 OldBabyInfo 以參與附著在資料上的社群討論。" },
-    ja: { title: "OldBabyInfoにログイン", description: "OldBabyInfoにログインして、データに紐づくコミュニティディスカッションに参加します。" },
-    en: { title: "Sign in to OldBabyInfo", description: "Sign in to OldBabyInfo to join discussions attached to reference data." },
+    "zh-TW": { title: "登入 OldBabyInfo", description: "OldBabyInfo 的帳號登入。附著在資料上的討論目前僅供瀏覽，發表功能尚未開放。" },
+    ja: { title: "OldBabyInfoにログイン", description: "OldBabyInfoのアカウントログイン。データに紐づくディスカッションは現在閲覧のみで、投稿は未公開です。" },
+    en: { title: "Sign in to OldBabyInfo", description: "Account sign-in for OldBabyInfo. Data-attached discussions are read-only for now; posting is not open yet." },
   },
 } as const;
 

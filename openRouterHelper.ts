@@ -50,6 +50,10 @@ const FALLBACK_MODELS = process.env.ALLOW_PAID_FALLBACK === 'true'
   ? [...FREE_MODELS, ...PAID_FALLBACK_MODELS]
   : FREE_MODELS;
 
+/** Single authorization gate for paid spend. Read per call so a caller cannot
+ *  reach a paid model through any routing policy without this being true. */
+const allowPaidFallback = () => process.env.ALLOW_PAID_FALLBACK === 'true';
+
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 const looksLikeStructuredOutput = (text: string) => /[\[{]/.test(text);
 
@@ -148,14 +152,15 @@ export async function fetchOpenRouterWithFallback(
   if (routingPolicy === 'haiku') {
     targetFallbackModels = FREE_MODELS;
   } else if (routingPolicy === 'sonnet') {
-    targetFallbackModels = PAID_FALLBACK_MODELS;
+    // The env flag is the single gate for paid spend — 'sonnet' names a
+    // quality *preference*, not an authorization. Without the flag it
+    // degrades to free-only instead of silently billing.
+    targetFallbackModels = allowPaidFallback() ? PAID_FALLBACK_MODELS : FREE_MODELS;
   } else if (routingPolicy === 'auto') {
     const isComplex = prompt.length >= 10000;
-    if (isComplex) {
-      targetFallbackModels = [...PAID_FALLBACK_MODELS, ...FREE_MODELS];
-    } else {
-      targetFallbackModels = [...FREE_MODELS, ...PAID_FALLBACK_MODELS];
-    }
+    targetFallbackModels = isComplex
+      ? [...(allowPaidFallback() ? PAID_FALLBACK_MODELS : []), ...FREE_MODELS]
+      : [...FREE_MODELS, ...(allowPaidFallback() ? PAID_FALLBACK_MODELS : [])];
   }
 
   const modelsToTry = requestedModel ? [requestedModel, ...targetFallbackModels] : targetFallbackModels;
@@ -268,11 +273,23 @@ export async function fetchOpenRouterWithFallback(
           }));
 
           let templateStr = customBodyTemplate;
-          templateStr = templateStr.replace(/\$\{model\}/g, JSON.stringify(model));
-          templateStr = templateStr.replace(/\$\{prompt\}/g, JSON.stringify(prompt));
-          templateStr = templateStr.replace(/\$\{userPrompt\}/g, JSON.stringify(userPrompt));
-          templateStr = templateStr.replace(/\$\{systemPrompt\}/g, JSON.stringify(systemPrompt));
-          templateStr = templateStr.replace(/\$\{messages\}/g, JSON.stringify(messages));
+          // Substitute in one pass, longest-name first, with a function
+          // replacement so the *values* are never rescanned: an article body
+          // that itself contains "${systemPrompt}" used to get rewritten when
+          // a later placeholder pass ran over it, corrupting the request.
+          templateStr = templateStr.replace(
+            /\$\{(messages|systemPrompt|userPrompt|prompt|model)\}/g,
+            (_match, name: string) => {
+              switch (name) {
+                case 'model': return JSON.stringify(model);
+                case 'prompt': return JSON.stringify(prompt);
+                case 'userPrompt': return JSON.stringify(userPrompt);
+                case 'systemPrompt': return JSON.stringify(systemPrompt);
+                case 'messages': return JSON.stringify(messages);
+              }
+              return _match;
+            },
+          );
 
           try {
             bodyPayload = JSON.parse(templateStr);
@@ -304,7 +321,9 @@ export async function fetchOpenRouterWithFallback(
           }
 
           bodyPayload = {
-            system_instruction: { parts: { text: systemPrompt } },
+            // The API's documented shape is { parts: [{ text }] } — a bare
+            // { parts: { text } } object is rejected with a 400.
+            system_instruction: { parts: [{ text: systemPrompt }] },
             contents: [{ role: "user", parts: [{ text: userPrompt }] }],
             generationConfig: { maxOutputTokens: 4000 }
           };
@@ -314,7 +333,7 @@ export async function fetchOpenRouterWithFallback(
             headers['Authorization'] = `Bearer ${apiKey}`;
           }
           if (!isCustomEndpoint) {
-            headers['HTTP-Referer'] = process.env.OPENROUTER_APP_URL || 'https://oldbabyinfo.vercel.app';
+            headers['HTTP-Referer'] = process.env.OPENROUTER_APP_URL || 'https://old-baby-info.vercel.app';
             headers['X-Title'] = 'OldBabyInfo';
           }
 

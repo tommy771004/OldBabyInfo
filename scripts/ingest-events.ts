@@ -112,7 +112,7 @@ async function main() {
 
   console.log(
     `\n${report.added.length} added, ${report.changed.length} changed, ` +
-      `${report.unchanged} unchanged, ${report.failed.length} failed.`,
+      `${report.removed.length} removed, ${report.unchanged} unchanged, ${report.failed.length} failed.`,
   );
   for (const { event, rawRow } of report.added) {
     console.log(`  + ${event.id}\n    source: ${rawRow}`);
@@ -120,13 +120,19 @@ async function main() {
   for (const { after, rawRow } of report.changed) {
     console.log(`  ~ ${after.id}\n    source: ${rawRow}`);
   }
+  for (const { event } of report.removed) {
+    console.log(`  - ${event.id}\n    (${event.venueName} · ${event.date} ${event.time}) — gone from the source sheet`);
+  }
   for (const failure of report.failed) {
     console.log(`  ! failed\n    source: ${failure.rawRow}\n    reason: ${failure.reason}`);
   }
 
   writeSummaryIfRequested(report);
 
-  if (report.added.length === 0 && report.changed.length === 0) {
+  // Nothing to update covers removals too: a sheet that lost rows still
+  // produces a real diff, so "added === 0 && changed === 0" alone would
+  // wrongly skip writing a cancellation.
+  if (report.added.length === 0 && report.changed.length === 0 && report.removed.length === 0) {
     console.log("Nothing to update.");
     return;
   }
@@ -140,8 +146,10 @@ async function main() {
   const byId = new Map(merged.map((e, i) => [e.id, i]));
   for (const { event } of report.added) merged.push(event);
   for (const { after } of report.changed) merged[byId.get(after.id)!] = after;
+  const removedIds = new Set(report.removed.map(({ event }) => event.id));
+  const kept = merged.filter((event) => !removedIds.has(event.id));
 
-  const validated = eventsFileSchema.parse(merged); // throws (and aborts, unwritten) if structurally invalid
+  const validated = eventsFileSchema.parse(kept); // throws (and aborts, unwritten) if structurally invalid
   writeFileSync(OUTPUT_PATH, JSON.stringify(validated, null, 2) + "\n");
   console.log(`Wrote ${validated.length} events to ${OUTPUT_PATH}.`);
 }

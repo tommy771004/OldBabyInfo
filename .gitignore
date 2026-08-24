@@ -5,6 +5,8 @@ node_modules/
 .next/
 out/
 next-env.d.ts
+# tsc --incremental build artifact (typecheck script); churns on every build
+tsconfig.tsbuildinfo
 
 # testing
 coverage/

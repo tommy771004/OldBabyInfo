@@ -118,6 +118,25 @@ describe("diffAgainstExisting", () => {
     expect(report.unchanged).toBe(1);
     expect(report.changed).toHaveLength(0);
   });
+
+  it("classifies an existing id missing from the sheet as removed", () => {
+    const existing = [event({ id: "kept", sourceExcerpt: "raw" }), event({ id: "cancelled" })];
+    const report = diffAgainstExisting([parsedRow(event({ id: "kept" }))], existing);
+
+    expect(report.removed.map(({ event }) => event.id)).toEqual(["cancelled"]);
+    expect(report.added).toHaveLength(0);
+    expect(report.changed).toHaveLength(0);
+  });
+
+  it("reports no removals when every sheet row failed to parse — that is a fetch problem, not a cancellation", () => {
+    const rows: SheetRowResult[] = [
+      { status: "failed", rawRow: "bad row", reason: "nope" },
+      { status: "skipped_header" },
+    ];
+    const report = diffAgainstExisting(rows, [event({ id: "e1" }), event({ id: "e2" })]);
+
+    expect(report.removed).toHaveLength(0);
+  });
 });
 
 describe("formatIngestSummary", () => {
@@ -133,6 +152,12 @@ describe("formatIngestSummary", () => {
         after: event({ id: `b4-g3-2026-08-16-1600-陳媽媽玩具-中和店-${i}` }),
         rawRow: `${i},陳媽媽玩具 中和店,02-2221-7688,新北市中和區建一路251號,2026/8/16,16:00,24,線上,公開 (6歲以上)`,
       })),
+      removed: [
+        {
+          event: event({ id: "funbox-g3-2026-09-12-1400-創勝玩具-北屯店-402" }),
+          reason: "missing from source sheet",
+        },
+      ],
       unchanged: 74,
       failed: [
         {
@@ -158,7 +183,7 @@ describe("formatIngestSummary", () => {
 
   it("leads with the counts so a reviewer sees the shape of the change first", () => {
     expect(formatIngestSummary(realisticReport()).split("\n")[0]).toBe(
-      "14 added, 691 changed, 74 unchanged, 2 failed.",
+      "14 added, 691 changed, 1 removed, 74 unchanged, 2 failed.",
     );
   });
 
@@ -167,6 +192,13 @@ describe("formatIngestSummary", () => {
     expect(summary).toContain("2026/726");
     expect(summary).toContain("Invalid ISO date");
     expect(summary).toContain('Unparseable time: "15.:00"');
+  });
+
+  it("names each removed event so a reviewer can confirm the cancellation is real", () => {
+    const summary = formatIngestSummary(realisticReport());
+    expect(summary).toContain("移除");
+    expect(summary).toContain("funbox-g3-2026-09-12-1400-創勝玩具-北屯店-402");
+    expect(summary).toContain("missing from source sheet");
   });
 
   it("caps long sections and says how many were left out", () => {
@@ -182,7 +214,7 @@ describe("formatIngestSummary", () => {
   });
 
   it("still produces a usable line when nothing changed", () => {
-    const summary = formatIngestSummary({ added: [], changed: [], unchanged: 767, failed: [] });
-    expect(summary).toBe("0 added, 0 changed, 767 unchanged, 0 failed.");
+    const summary = formatIngestSummary({ added: [], changed: [], removed: [], unchanged: 767, failed: [] });
+    expect(summary).toBe("0 added, 0 changed, 0 removed, 767 unchanged, 0 failed.");
   });
 });

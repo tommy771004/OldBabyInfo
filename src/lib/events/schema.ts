@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { isSafeExternalUrl } from "../security/external-url.ts";
 
 /** GP/G1/G2/G3 — regional/competitive weight, unrelated to Combo strength.
  *  See CONTEXT.md's Event Tier definition. */
@@ -24,7 +25,11 @@ export const eventSchema = z.object({
   capacity: z.int().positive(),
   registrationMethod: z.enum(["onsite", "online", "phone", "either", "store_community"]),
   ageCategory: z.string().min(1),
-  sourceUrl: z.url(),
+  /** The announcement this row came from. `z.url()` accepts every
+   *  well-formed URL including `javascript:`/`data:`, and this value is
+   *  rendered straight into an `href` on the calendar and home pages — the
+   *  same render-path rule external-url.ts documents, enforced at ingest. */
+  sourceUrl: z.url().refine(isSafeExternalUrl),
   /** The original CSV row, retained as the public Event Source Excerpt. */
   sourceExcerpt: z.string().min(1).optional(),
   /** Null for almost every event — see ticket 03's spike: the community

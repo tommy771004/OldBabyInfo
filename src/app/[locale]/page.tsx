@@ -17,6 +17,8 @@ import { AffiliateSlot } from "@/components/affiliate-slot.tsx";
 import { affiliateProjectName, createNeonOfferReader } from "@/lib/affiliates/neon-repository.ts";
 import type { AffiliateOffer } from "@/lib/affiliates/schema.ts";
 import { optionalRead } from "@/lib/db/optional-read.ts";
+import { safeExternalUrl } from "@/lib/security/external-url.ts";
+import { taipeiTodayIso } from "@/lib/events/today.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 import type { Event } from "@/lib/events/schema.ts";
 import styles from "./page.module.css";
@@ -67,7 +69,7 @@ export function generateStaticParams() {
 }
 
 function todayIsoDate(): string {
-  return new Date().toISOString().slice(0, 10);
+  return taipeiTodayIso();
 }
 
 export default async function HomePage({
@@ -230,7 +232,13 @@ function HomeContent({
                 <dd>{te(`registration_${nextEvent.registrationMethod}`)}</dd>
                 <dt>{te("source")}</dt>
                 <dd>
-                  <a href={nextEvent.sourceUrl}>{new URL(nextEvent.sourceUrl).hostname}</a>
+                  {/* Render-path guard, same rule as the calendar page. */}
+                  {(() => {
+                    const sourceHref = safeExternalUrl(nextEvent.sourceUrl);
+                    return sourceHref
+                      ? <a href={sourceHref}>{new URL(sourceHref).hostname}</a>
+                      : new URL(nextEvent.sourceUrl).hostname;
+                  })()}
                 </dd>
               </dl>
             </div>

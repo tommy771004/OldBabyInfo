@@ -16,6 +16,8 @@ import {
   type VenueGroup,
 } from "@/lib/events/calendar.ts";
 import { buildCalendarQuery, parseCalendarParams } from "@/lib/events/parse-calendar-params.ts";
+import { safeExternalUrl } from "@/lib/security/external-url.ts";
+import { taipeiTodayIso } from "@/lib/events/today.ts";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { CalendarFilters as FilterForm } from "./calendar-filters.tsx";
 import styles from "./page.module.css";
@@ -34,7 +36,7 @@ export async function generateMetadata({
 }
 
 function todayIsoDate(): string {
-  return new Date().toISOString().slice(0, 10);
+  return taipeiTodayIso();
 }
 
 export default async function EventsPage({
@@ -226,12 +228,18 @@ function VenueRow({ venue }: { venue: VenueGroup }) {
         <div className={styles.venueDetailsBody}>
           <p className={styles.address}>{venue.venueAddress}</p>
           <ul className={styles.sessionFacts}>
-            {venue.sessions.map((session) => (
-              <li key={session.id}>
-                {session.time} · {t("capacity")} {session.capacity} ·{" "}
-                <a href={session.sourceUrl}>{t("source")}</a>
-              </li>
-            ))}
+            {venue.sessions.map((session) => {
+              // Last point before the value becomes an attribute — the schema
+              // refine rejects unsafe protocols at ingest, but rows already in
+              // data/events.json never pass through it again at render time.
+              const sourceHref = safeExternalUrl(session.sourceUrl);
+              return (
+                <li key={session.id}>
+                  {session.time} · {t("capacity")} {session.capacity} ·{" "}
+                  {sourceHref ? <a href={sourceHref}>{t("source")}</a> : t("source")}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </details>

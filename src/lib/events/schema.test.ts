@@ -70,6 +70,16 @@ describe("eventSchema", () => {
     );
     expect(result.success).toBe(true);
   });
+
+  it("rejects a javascript: sourceUrl — z.url() alone accepts it, and this URL reaches an href", () => {
+    const result = eventSchema.safeParse(validEvent({ sourceUrl: "javascript:alert(document.cookie)" }));
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a data: sourceUrl for the same render-path reason", () => {
+    const result = eventSchema.safeParse(validEvent({ sourceUrl: "data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==" }));
+    expect(result.success).toBe(false);
+  });
 });
 
 describe("eventsFileSchema", () => {

@@ -38,6 +38,13 @@ export function isPlausibleEventDate(iso: string, now: Date = new Date()): boole
 export interface IngestReport {
   added: { event: Event; rawRow: string }[];
   changed: { before: Event; after: Event; rawRow: string }[];
+  /**
+   * Events present in the existing dataset but missing from the parsed sheet —
+   * a cancelled or rescheduled session. Removals are only computed when the
+   * sheet actually yielded rows (see `diffAgainstExisting`): an empty or
+   * fully-failed fetch must not read as "everything was cancelled".
+   */
+  removed: { event: Event; reason: string }[];
   unchanged: number;
   failed: { rawRow: string; reason: string }[];
 }
@@ -67,7 +74,7 @@ export function formatIngestSummary(
 
   const lines: string[] = [
     `${report.added.length} added, ${report.changed.length} changed, ` +
-      `${report.unchanged} unchanged, ${report.failed.length} failed.`,
+      `${report.removed.length} removed, ${report.unchanged} unchanged, ${report.failed.length} failed.`,
   ];
 
   function section(heading: string, rows: string[]): void {
@@ -85,6 +92,13 @@ export function formatIngestSummary(
   );
   section("新增", report.added.map(({ event }) => `${event.id}`));
   section("變更", report.changed.map(({ after }) => `${after.id}`));
+  // Removals sit between 變更 and nothing: a cancelled session is the one
+  // change that takes real information away from readers, so it is named
+  // even when everything else is routine.
+  section(
+    "移除（來源表已無此場次）",
+    report.removed.map(({ event, reason }) => `${event.id} — ${reason}`),
+  );
 
   const summary = lines.join("\n");
   const encoder = new TextEncoder();
@@ -113,7 +127,7 @@ function eventWithSourceExcerpt(row: SheetRowResult): Event | undefined {
  */
 export function diffAgainstExisting(parsed: SheetRowResult[], existing: Event[]): IngestReport {
   const existingById = new Map(existing.map((e) => [e.id, e]));
-  const report: IngestReport = { added: [], changed: [], unchanged: 0, failed: [] };
+  const report: IngestReport = { added: [], changed: [], removed: [], unchanged: 0, failed: [] };
 
   for (const row of parsed) {
     if (row.status === "failed") {
@@ -130,6 +144,24 @@ export function diffAgainstExisting(parsed: SheetRowResult[], existing: Event[])
       report.changed.push({ before: prior, after: event, rawRow: row.rawRow ?? "" });
     } else {
       report.unchanged++;
+    }
+  }
+
+  // Removals only count against a sheet that actually produced rows. A
+  // truncated fetch, a renamed tab, or a total parse failure all look the
+  // same as "every session was cancelled" here — and silently emptying the
+  // calendar would be far worse than keeping a stale event for one more run.
+  const sheetYieldedRows = [...report.added, ...report.changed].length + report.unchanged > 0;
+  if (sheetYieldedRows) {
+    const seenIds = new Set<string>();
+    for (const row of parsed) {
+      if (row.status !== "parsed" || !row.event) continue;
+      seenIds.add(row.event.id);
+    }
+    for (const event of existing) {
+      if (!seenIds.has(event.id)) {
+        report.removed.push({ event, reason: "missing from source sheet" });
+      }
     }
   }
 

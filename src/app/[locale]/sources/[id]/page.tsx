@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { getAllSourceDocuments, getSourceDocumentById } from "@/lib/source-documents/repository.ts";
+import { safeExternalUrl } from "@/lib/security/external-url.ts";
 import { pageMetadata } from "@/lib/seo.ts";
 
 export function generateStaticParams() {
@@ -43,6 +44,11 @@ export default async function SourceDocumentPage({
 
 function SourceDocumentBody({ document }: { document: NonNullable<ReturnType<typeof getSourceDocumentById>> }) {
   const t = useTranslations("SourceDocumentPage");
+  // Ingested URLs at the last point before they become attributes — same
+  // render-path rule as the events calendar. An unsafe value degrades to
+  // plain text so the provenance stays visible.
+  const licenseHref = safeExternalUrl(document.licenseUrl);
+  const canonicalHref = safeExternalUrl(document.canonicalUrl);
   return (
     <main>
       <p><Link href="/parts">{t("back_to_parts")}</Link></p>
@@ -54,9 +60,9 @@ function SourceDocumentBody({ document }: { document: NonNullable<ReturnType<typ
         <dt>{t("captured_at")}</dt>
         <dd>{document.capturedAt}</dd>
         <dt>{t("license")}</dt>
-        <dd>{document.licenseUrl ? <a href={document.licenseUrl}>{document.licenseName}</a> : document.licenseName}</dd>
+        <dd>{licenseHref ? <a href={licenseHref}>{document.licenseName}</a> : document.licenseName}</dd>
       </dl>
-      <p><a href={document.canonicalUrl}>{t("original_source")}</a></p>
+      <p>{canonicalHref ? <a href={canonicalHref}>{t("original_source")}</a> : document.canonicalUrl}</p>
       <article>{document.content}</article>
     </main>
   );
