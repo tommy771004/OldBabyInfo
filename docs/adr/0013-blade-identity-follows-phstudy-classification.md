@@ -32,5 +32,5 @@ phstudy 沒有 Blade 的 `part_code_names.json`，其 `name` 欄位是 SKU 標�
 - 17 顆 CX MainBlade 從 `parts.json` 移除，Generation Catalog 早已有這 17 筆 accepted 記錄，資料不減；`getLegacyPartForCatalogRecord` 對它們回傳 undefined，正是 `repository.test.ts` 既有斷言的行為。X 世代的 crosswalk 比對數因此由 168 降為 151。
 - 這 17 個詳情頁網址改以 308 永久轉址指向各自的 Catalog 記錄頁。轉址表由合併腳本產出至 `data/legacy-part-redirects.json`（弄壞網址的人負責留下路標），`next.config.ts` 讀取後展開成無前綴與 `/ja`、`/en` 三種形式。腳本會拒絕輸出仍對應到現存零件的來源路徑。
 - Blade 由 84 顆變為 103 顆，`parts.json` 總數 191。既有 Blade 的網址全部不變。
-- 重跑 `npm run generate:parts` 會依 beybrew 重建並抹除以上全部，必須接著重跑 `npm run merge:phstudy`。合併是冪等的。
+- BeyBrew 全量重建會抹除以上遷移。2026-09-05 起，`generate:parts`／`refresh:parts` 發現已發布的 phstudy provenance 時會在抓取與寫入前拒絕執行；不可先抹除策展值再期待合併還原。已審查的完整 phstudy 快照應直接合併到現有資料，再執行 parity audit。自動取得的授權與排程恢復關卡見 [`data-refresh-recovery.md`](../agents/data-refresh-recovery.md)。
 - 上游若新增無法切分的 Blade 名稱，合併會回報而非猜測，需要人工補一個詞彙條目。這是刻意的人工關卡，不是缺陷。

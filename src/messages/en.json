@@ -1,5 +1,9 @@
 {
   "HomePage": {
+    "mobile_parts": "Catalog",
+    "mobile_combo": "Combo",
+    "mobile_events": "Events",
+    "mobile_guides": "Guides",
     "title": "OldBabyInfo",
     "description": "Taiwan's Beyblade X reference site",
     "nav_label": "Main navigation",
@@ -137,6 +141,11 @@
     "back_to_guides": "← Back to guides"
   },
   "MetaStandingPage": {
+    "explore_combo": "Build your own Combo",
+    "explore_events": "Browse the event calendar",
+    "sources_heading": "Appearance records and sources",
+    "captured_at": "Captured at",
+    "sample_scope_note": "Rates describe reviewed appearance records, not all events or players. Missing placement evidence must not be treated as a finish outside the top eight.",
     "title": "Meta standings",
     "intro": "This site doesn't publish subjective tier rankings — these standings come entirely from real event result statistics.",
     "no_tier_list_note": "No S/A/B-style tier labels — every number carries its own sample size and statistical period so you can judge its reliability yourself.",
@@ -301,6 +310,9 @@
     "reportBody": "Report errors, infringement, or harmful content through the project maintenance channel. We will review reports according to the available evidence."
   },
   "EventsPage": {
+    "coverage_note": "This calendar only covers recorded events, not the complete schedule. Check each original announcement for time and registration details before travelling.",
+    "no_recorded_events": "No events are recorded for this period. This does not mean no events are taking place.",
+    "browse_past": "Browse recorded past events",
     "title": "Event Calendar",
     "intro": "Official sessions come from the original Event sheets, with a source link retained for every entry.",
     "upcoming": "Upcoming",

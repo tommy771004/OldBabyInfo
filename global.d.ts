@@ -14,6 +14,8 @@ declare module "next-auth" {
   interface Session {
     user: {
       id: string;
+      /** Set only by a post-migration, adapter-backed login. Roles stay in DB. */
+      persisted?: boolean;
     } & DefaultSession["user"];
   }
 }

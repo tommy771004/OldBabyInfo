@@ -16,6 +16,10 @@ vi.mock("@/i18n/navigation.ts", () => ({
 const messages = {
   HomePage: {
     nav_label: "Main navigation",
+    mobile_parts: "Catalog",
+    mobile_combo: "Combo",
+    mobile_events: "Events",
+    mobile_guides: "Guides",
     nav_home: "Home",
     nav_parts: "Parts",
     nav_events: "Events",
@@ -45,12 +49,11 @@ describe("SiteHeader", () => {
     const navs = screen.getAllByRole("navigation", { name: "Main navigation" });
     expect(navs).toHaveLength(2);
 
-    for (const label of ["Parts", "Events", "Discussion", "Terms"]) {
-      // Once as text in the wide row, once as an icon in the phone bar.
+    for (const label of ["Catalog", "Combo", "Guides", "Events", "Discussion", "Terms"]) {
+      // Wide navigation and its mobile counterpart retain reachable links.
       expect(screen.getAllByRole("link", { name: label })).toHaveLength(2);
     }
-    // Home is phone-only (the wordmark is the way back on a wide screen),
-    // and sign-in moved out of the bar into the header corner.
+    // The wordmark now links home at every viewport.
     expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
     expect(screen.getAllByRole("link", { name: "Sign in" })).toHaveLength(2);
 

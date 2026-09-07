@@ -23,10 +23,11 @@
     transform: translateX(-50%);
     display: flex;
     gap: 0.15rem;
+    width: min(24rem, calc(100% - 1.5rem));
     padding: 0.35rem;
     border: 1px solid color-mix(in srgb, var(--ink-on-dark) 20%, transparent);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--surface-900) 52%, transparent);
+    background: var(--surface-900);
     box-shadow:
       /* lift */
       0 10px 34px color-mix(in srgb, var(--surface-950) 55%, transparent),
@@ -50,12 +51,26 @@
 .item {
   display: grid;
   place-items: center;
-  width: 3rem;
-  height: 3rem;
+  flex: 1;
+  min-width: 0;
+  min-height: 3.5rem;
+  padding: 0.25rem;
+  gap: 0.15rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
   border-radius: 999px;
-  color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent);
+  color: var(--ink-on-dark);
   text-decoration: none;
   transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--ink-on-dark);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item { transition: none; }
 }
 
 .item:active {

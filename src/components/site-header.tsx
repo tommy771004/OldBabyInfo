@@ -9,8 +9,8 @@ import styles from "./site-header.module.css";
  * Shared public shell navigation. It is deliberately a contained, self-
  * bordered strip rather than a flush row of links pinned to the edges.
  *
- * Below 640px the text row hands over to `MobileNav`, a floating icon-only
- * glass pill within thumb reach. The two never show at once — the header row
+ * Below 640px the text row hands over to `MobileNav`, a labelled
+ * task bar within thumb reach. The two never show at once — the header row
  * is `display: none` at that width, which takes it out of the accessibility
  * tree too, so a screen reader is not offered the same links twice.
  *
@@ -23,12 +23,14 @@ export function SiteHeader() {
 
   return (
     <header className={styles.header}>
-      <span className={styles.wordmark}>
+      <Link href="/" className={styles.wordmark} aria-label={t("nav_home")}>
         Old<span className={styles.wordmarkAccent}>Baby</span>Info
-      </span>
+      </Link>
 
       <nav className={styles.nav} aria-label={t("nav_label")}>
-        <Link href="/parts">{t("nav_parts")}</Link>
+        <Link href="/parts">{t("mobile_parts")}</Link>
+        <Link href="/combo">{t("mobile_combo")}</Link>
+        <Link href="/guides">{t("mobile_guides")}</Link>
         <Link href="/events">{t("nav_events")}</Link>
         <Link href="/discussion">{t("nav_discussion")}</Link>
         <Link href="/login">{t("nav_login")}</Link>
@@ -42,6 +44,10 @@ export function SiteHeader() {
         </Link>
       </div>
 
+      <div className={styles.mobileSecondary}>
+        <Link href="/discussion">{t("nav_discussion")}</Link>
+        <Link href="/terms">{t("nav_terms")}</Link>
+      </div>
       <MobileNav />
     </header>
   );

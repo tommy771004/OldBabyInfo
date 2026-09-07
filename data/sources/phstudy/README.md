@@ -1,5 +1,13 @@
 # phstudy Beyblade X — staged source snapshot
 
+> Current maintenance rule (2026-09-05): BeyBrew-only `generate:parts` /
+> `refresh:parts` now refuse to overwrite phstudy-migrated Parts before fetching
+> or writing. Merge a reviewed complete snapshot directly into the curated
+> library; never rebuild it first. See [refresh recovery](../../../docs/agents/data-refresh-recovery.md)
+> and [ADR-0013](../../../docs/adr/0013-blade-identity-follows-phstudy-classification.md).
+> Historical counts and Blade-on-hold notes below describe earlier captures,
+> not the current migration status. Automated acquisition remains disabled.
+
 Raw + normalized capture of <https://beyblade.phstudy.org>, produced by
 `scripts/scrape-phstudy-parts.ts` (`npm run scrape:phstudy`).
 
@@ -132,8 +140,8 @@ A tuple that is a Bit's mode is never also recorded as an edition — different
 mechanics (ADR-0007). That is why `Tr` lost its old beybrew edition: the tuple
 is now its Attack Mode.
 
-> **重跑 `npm run generate:parts` 會從 beybrew 重建 `parts.json`，蓋掉這裡合併進去的
-> 一切。之後必須再跑一次 `npm run merge:phstudy`。**
+> **舊版 BeyBrew 重建流程會覆寫遷移資料；目前已加入 fail-closed 保護。
+> 請直接將已審查的完整快照合併到現有策展資料，不要先重建。**
 
 Conflict rule is owner-decided: **on any field both sources carry, phstudy
 wins.** That overrides ADR 0010's field authority (which names BeyBrew

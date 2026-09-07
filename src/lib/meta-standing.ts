@@ -7,10 +7,9 @@
  * is a flat list of strings with no per-entrant Combo attribution, and
  * the actual real usage data found in the source review (1,215 real loadout
  * records, HackMD's "陀螺賽場統計2025" sheet) has never been ingested
- * into this repo's schema — that ingestion is a separate, not-yet-written
- * step. This function is ready for whenever that data lands; it isn't
- * wired to a real source yet, and its test suite uses hand-built fixtures
- * for exactly that reason, not because real data was skipped.
+ * into the accepted dataset yet. The offline review importer now supplies
+ * validated records through combo-appearances-repository.ts; real observations
+ * still require source review. Unknown placement never means a loss.
  */
 
 /** Combo identity (ticket 33: "同一性判準") — the exact (Blade, Ratchet,
@@ -23,14 +22,15 @@ export function comboKeyOf(bladeId: string, ratchetId: string, bitId: string): s
 }
 
 export function parseComboKey(key: string): { bladeId: string; ratchetId: string; bitId: string } {
-  const [bladeId, ratchetId, bitId] = key.split("|");
-  if (!bladeId || !ratchetId || !bitId) {
+  const [bladeId, ratchetId, bitId, ...extra] = key.split("|");
+  if (!bladeId || !ratchetId || !bitId || extra.length > 0) {
     throw new Error(`Malformed Combo key: ${key}`);
   }
   return { bladeId, ratchetId, bitId };
 }
 
-export type Placement = "champion" | "top8" | "entrant";
+// `entrant` means a known finish outside the top eight; absent results are unknown.
+export type Placement = "champion" | "top8" | "entrant" | "unknown";
 
 export interface ComboAppearance {
   comboKey: string;
@@ -92,7 +92,7 @@ export function computeMetaStandings(
     const sampleSize = group.length;
     const championCount = group.filter((a) => a.placement === "champion").length;
     const top8Count = group.filter((a) => a.placement === "champion" || a.placement === "top8").length;
-    const enoughSample = sampleSize >= minSampleSize;
+    const enoughSample = sampleSize >= minSampleSize && group.every((row) => row.placement !== "unknown");
 
     return {
       comboKey,

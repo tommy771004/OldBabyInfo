@@ -87,6 +87,7 @@ jobs:
       # workflow has to implement — the explicit changed-check above is
       # kept anyway so a no-op run is visibly a no-op in the job log.
       - name: Open or update PR
+        id: pr
         if: steps.diff.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
@@ -116,15 +117,16 @@ jobs:
       # — recoverable by hand, but only if the reason is visible. This ran red
       # for two weeks without anyone learning why.
       - name: Explain a failed PR step
-        if: failure() && steps.diff.outputs.changed == 'true'
+        if: failure() && steps.pr.outcome == 'failure'
         run: |
           {
             echo "## 賽事匯入的 PR 沒有開成"
             echo
-            echo "資料已經推到 \`auto/event-ingest\`，只是 PR 沒建立。最常見的原因是 repo 設定："
+            echo "建立或更新 PR 的步驟失敗；不能由此判定分支已推送成功。請先查看該步驟 log。"
+            echo "若錯誤是 Actions 不允許建立 PR，請檢查 repo 設定："
             echo "Settings → Actions → General → Workflow permissions →"
             echo "**Allow GitHub Actions to create and approve pull requests** 沒有勾選。"
             echo
-            echo "勾選後這條排程下一次執行就會自己補上 PR；不想等的話可以直接手動開："
+            echo "排除 log 中的錯誤後再重跑。若確認分支存在且資料完整，可人工比對："
             echo "${{ github.server_url }}/${{ github.repository }}/compare/auto/event-ingest?expand=1"
           } >> "$GITHUB_STEP_SUMMARY"

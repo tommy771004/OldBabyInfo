@@ -1,4 +1,6 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import { readFileSync } from "node:fs";
+import { partsFileSchema } from "@/lib/parts/schema.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 import { refreshOfficialParts } from "./refresh.ts";
 
@@ -22,6 +24,41 @@ function blade(overrides: Partial<Part> = {}): Part {
 }
 
 describe("refreshOfficialParts", () => {
+  it("refuses replacement before loading when phstudy owns published fields", async () => {
+    const previous = [blade({
+      provenance: [{
+        sourceId: "phstudy-beyblade-x",
+        sourceUrl: "https://beyblade.phstudy.org/?category=Blade",
+        sourceVersion: "sha256:fixture",
+        authority: "community_source",
+        rightsStatus: "unknown",
+        fields: ["nameEn", "stats"],
+      }],
+    })];
+    const load = vi.fn().mockResolvedValue({ sourceVersion: "beybrew@new", parts: [] });
+    const before = JSON.stringify(previous);
+
+    const result = await refreshOfficialParts(previous, load);
+
+    expect(result.status).toBe("failed");
+    if (result.status !== "failed") throw new Error("Expected a blocked refresh");
+    expect(result.error).toContain("BeyBrew-only refresh blocked");
+    expect(result.parts).toBe(previous);
+    expect(JSON.stringify(previous)).toBe(before);
+    expect(load).not.toHaveBeenCalled();
+  });
+
+  it("protects the committed migration without requiring ignored phstudy files", async () => {
+    const previous = partsFileSchema.parse(JSON.parse(readFileSync("data/parts.json", "utf8")));
+    const load = vi.fn();
+
+    const result = await refreshOfficialParts(previous, load);
+
+    expect(result.status).toBe("failed");
+    expect(result.parts).toBe(previous);
+    expect(load).not.toHaveBeenCalled();
+  });
+
   it("reports deterministic added, changed, and removed official Parts", async () => {
     const previous = [blade(), blade({ id: "OLDPART", nameEn: "Old Part" })];
     const incoming = [

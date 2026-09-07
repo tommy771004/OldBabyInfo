@@ -56,17 +56,19 @@ export default async function EventsPage({
     filters.page,
   );
 
-  return <EventsPageBody filters={filters} options={options} paged={paged} />;
+  return <EventsPageBody filters={filters} options={options} paged={paged} scopeEmpty={scoped.length === 0} />;
 }
 
 function EventsPageBody({
   filters,
   options,
   paged,
+  scopeEmpty,
 }: {
   filters: CalendarFilters;
   options: ReturnType<typeof filterOptions>;
   paged: Paged;
+  scopeEmpty: boolean;
 }) {
   const t = useTranslations("EventsPage");
 
@@ -83,6 +85,8 @@ function EventsPageBody({
   return (
     <main className={styles.page}>
       <h1>{t("title")}</h1>
+      <p>{t("intro")}</p>
+      <p>{t("coverage_note")}</p>
 
       <nav className={styles.scopeTabs} aria-label={t("title")}>
         {(["upcoming", "past"] as const).map((scope) => (
@@ -130,7 +134,14 @@ function EventsPageBody({
       </p>
 
       {paged.groups.length === 0 ? (
-        <p className={styles.empty}>{t("no_results")}</p>
+        <div className={styles.empty}>
+          <p>{t(scopeEmpty ? "no_recorded_events" : "no_results")}</p>
+          {scopeEmpty && filters.scope === "upcoming" ? (
+            <Link href={{ pathname: "/events", query: buildCalendarQuery({ scope: "past" }) }}>
+              {t("browse_past")}
+            </Link>
+          ) : null}
+        </div>
       ) : (
         <>
           <div className={styles.dateGroups}>

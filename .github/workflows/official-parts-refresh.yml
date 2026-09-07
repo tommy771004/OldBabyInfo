@@ -14,6 +14,42 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  part-refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # The generator fails before fetching when published Parts carry phstudy
+      # authority. Do not bypass that guard with an automated phstudy scrape:
+      # its acquisition policy is separate and staged files are git-ignored.
+      - name: Refresh structured official Part facts
+        id: parts
+        run: npm run refresh:parts
+
+      - name: Explain a blocked or failed Part refresh
+        if: failure() && steps.parts.outcome == 'failure'
+        run: |
+          {
+            echo "## Part refresh did not complete; no review PR was attempted"
+            echo
+            echo "Check the Part refresh log for the exact error."
+            echo "A BeyBrew-only replacement is blocked when published Parts carry phstudy field authority (ADR-0013)."
+            echo "Do not enable phstudy acquisition or remove provenance to bypass this guard."
+            echo "Recovery procedure: docs/agents/data-refresh-recovery.md"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # Independent job: Part authority review must not stall the separate Catalog.
+  # No `needs: part-refresh`; this checkout never runs the Part generator.
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -27,46 +63,50 @@ jobs:
 
       - run: npm ci
 
-      - name: Refresh structured official Part facts
-        run: npm run refresh:parts
-
       - name: Refresh generation catalog
         run: npm run refresh:generation-catalog
 
       - name: Check for deterministic data changes
         id: diff
         run: |
-          if git diff --quiet -- data/parts.json data/generation-catalog.json data/generation-catalog-needs-review.json; then
+          if git diff --quiet -- data/generation-catalog.json data/generation-catalog-needs-review.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Open or update review PR
+        id: pr
         if: steps.diff.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
-          commit-message: "資料更新：官方 Part facts"
-          title: "官方 Part facts 更新"
+          commit-message: "資料更新：Generation Catalog"
+          title: "Generation Catalog 更新"
           body: |
-            `npm run refresh:parts` 與 `npm run refresh:generation-catalog` 產生的 deterministic diff。
+            `npm run refresh:generation-catalog` 產生的 deterministic diff。
 
-            這條管線只匯入 BeyBrew MasterData／beyparts 的結構化 Part 名稱、Stat、Mode、關係與 Stat Edition，以及 generation catalog 的結構化名稱與關係；不複製程式碼、全文或圖片。請人工審查 `data/parts.json`、`data/generation-catalog.json` 與 Needs Review diff 後再合併。
-          branch: auto/official-parts-refresh
+            本 PR 只更新 Catalog 的結構化名稱、關係與 Needs Review；不重建 `data/parts.json`，不取得 phstudy 快照，不複製程式碼、全文或圖片。
+            Part 自動刷新由獨立 job 報告 Field Authority 阻擋；本 PR 不代表 Part 更新已恢復。
+            請人工審查 Catalog 與 Needs Review diff 後再合併。
+          add-paths: |
+            data/generation-catalog.json
+            data/generation-catalog-needs-review.json
+          branch: auto/generation-catalog-refresh
           labels: automated-data-ingest
 
       # 2026-08-02 的執行就是卡在這裡：分支推上去了，PR 因為 repo 設定不允許
       # Actions 建立 PR 而失敗，且失敗原因只留在 log 裡沒有人看到。
       - name: Explain a failed PR step
-        if: failure() && steps.diff.outputs.changed == 'true'
+        if: failure() && steps.pr.outcome == 'failure'
         run: |
           {
-            echo "## 官方 Part facts 的 PR 沒有開成"
+            echo "## Generation Catalog 的 PR 沒有開成"
             echo
-            echo "資料已經推到 \`auto/official-parts-refresh\`，只是 PR 沒建立。最常見的原因是 repo 設定："
+            echo "建立或更新 PR 的步驟失敗；不能由此判定分支已推送成功。請先查看該步驟 log。"
+            echo "若錯誤是 Actions 不允許建立 PR，請檢查 repo 設定："
             echo "Settings → Actions → General → Workflow permissions →"
             echo "**Allow GitHub Actions to create and approve pull requests** 沒有勾選。"
             echo
-            echo "勾選後這條排程下一次執行就會自己補上 PR；不想等的話可以直接手動開："
-            echo "${{ github.server_url }}/${{ github.repository }}/compare/auto/official-parts-refresh?expand=1"
+            echo "排除 log 中的錯誤後再重跑。若確認分支存在且資料完整，可人工比對："
+            echo "${{ github.server_url }}/${{ github.repository }}/compare/auto/generation-catalog-refresh?expand=1"
           } >> "$GITHUB_STEP_SUMMARY"

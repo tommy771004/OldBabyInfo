@@ -1,4 +1,5 @@
 import { partsFileSchema, type Part } from "../parts/schema.ts";
+import { assertBeybrewRefreshAllowed } from "./refresh-policy.ts";
 
 export interface OfficialSnapshot {
   sourceVersion: string;
@@ -73,6 +74,7 @@ export async function refreshOfficialParts(
   load: OfficialSnapshotLoader,
 ): Promise<OfficialRefreshResult> {
   try {
+    assertBeybrewRefreshAllowed(previous);
     const snapshot = await load();
     const incoming = sortParts(partsFileSchema.parse(snapshot.parts));
     const prior = sortParts(partsFileSchema.parse(previous));

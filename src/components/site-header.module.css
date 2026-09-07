@@ -17,6 +17,7 @@
   letter-spacing: 0.02em;
   color: var(--ink-on-dark);
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .wordmarkAccent {
@@ -57,9 +58,24 @@
   display: none;
 }
 
+.mobileSecondary { display: none; }
+
 @media (max-width: 640px) {
+  .mobileSecondary {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .mobileSecondary a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ink-on-dark);
+    font-size: 0.875rem;
+  }
   .header {
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 30;
     justify-content: space-between;

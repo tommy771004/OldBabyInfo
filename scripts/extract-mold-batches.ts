@@ -15,7 +15,8 @@
  * run against a real article end-to-end (no OPENROUTER_API_KEY was
  * available while writing it). Output goes to two review files instead;
  * folding a reviewed batch of these into a specific Part's `moldBatches`
- * array is a separate, small, human-supervised step.
+ * array is a separate human-supervised step via merge:mold-batches. New review
+ * rows are always pending, even when the two models agree.
  */
 import { writeFileSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -25,6 +26,7 @@ import { extractMoldBatchesFromArticle, attachToParts } from "../src/lib/mold-ba
 import { fetchOpenRouterWithFallback } from "../openRouterHelper.ts";
 import type { CallModel } from "../src/lib/extraction.ts";
 import { moldBatchCandidateListSchema } from "../src/lib/mold-batch/schema.ts";
+import { createMoldBatchReviews } from "../src/lib/mold-batch/review.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PARTS_PATH = join(__dirname, "..", "data", "parts.json");
@@ -99,6 +101,7 @@ async function main() {
 
   console.log(`Fetching article: ${url}`);
   const articleText = await fetchArticleText(url);
+  const capturedAt = new Date().toISOString();
 
   console.log(`Extracting with consensus (${MODELS.join(" vs ")})...`);
   const outcome = await extractMoldBatchesFromArticle(url, MODELS, buildCallModel(apiKey, articleText));
@@ -135,13 +138,7 @@ async function main() {
   writeFileSync(
     MATCHED_PATH,
     JSON.stringify(
-      matched.map(({ part, candidate }) => ({
-        partId: part.id,
-        batchCode: candidate.batchCode,
-        note: candidate.note,
-        sourceUrl: url,
-        sourceExcerpt: outcome.sourceExcerpt,
-      })),
+      createMoldBatchReviews(matched, { url, excerpt: outcome.sourceExcerpt, capturedAt }),
       null,
       2,
     ) + "\n",

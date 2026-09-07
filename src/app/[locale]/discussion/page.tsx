@@ -9,6 +9,7 @@ import { getAllParts } from "@/lib/parts/repository.ts";
 import { slugify } from "@/lib/parts/slug.ts";
 import { getAllEvents } from "@/lib/events/repository.ts";
 import { latestThreadsBySubject, type SubjectDescriptor } from "@/lib/discussion/feed.ts";
+import { comboSubjectsForThreads } from "@/lib/discussion/combo-subjects.ts";
 import { createNeonThreadReader } from "@/lib/discussion/neon-repository.ts";
 import { optionalRead } from "@/lib/db/optional-read.ts";
 import { localizedPath, localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
@@ -34,13 +35,17 @@ export default async function DiscussionPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await requireLocale(params);
-  const subjects = subjectDescriptors(locale);
   const connectionString = process.env.DATABASE_URL;
   const reader = connectionString ? createNeonThreadReader(connectionString) : undefined;
   const rows = reader
     ? await optionalRead("discussion feed", () => reader.listVisible(), [])
     : [];
-  const items = latestThreadsBySubject(rows.map(({ thread }) => thread), subjects);
+  const threads = rows.map(({ thread }) => thread);
+  const subjects = [
+    ...subjectDescriptors(locale),
+    ...comboSubjectsForThreads(threads, getAllParts(), locale),
+  ];
+  const items = latestThreadsBySubject(threads, subjects);
   return <DiscussionPageContent items={items} />;
 }
 

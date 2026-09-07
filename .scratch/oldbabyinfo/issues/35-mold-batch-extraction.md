@@ -4,7 +4,7 @@
 
 **Blocked by:** 20, 24
 
-**Status:** ready-for-agent — pipeline built and unit-tested; the real model call itself was never executed, see Comments
+**Status:** ready-for-human
 
 - [x] 從文章來源抽取批號辨識規則與其對應的生產期間
 - [x] 每筆資料附 Source Excerpt 與來源連結
@@ -13,6 +13,21 @@
 - [x] 資料不完整時如實標示涵蓋範圍，不假裝完整（見 Comments 的誠實範圍說明）
 
 ## Comments
+
+### 2026-09-05：人工審核後的離線合併
+
+已新增 `src/lib/mold-batch/review.ts` 與 `scripts/merge-mold-batches.ts`，入口為
+`npm run merge:mold-batches`。抽取器產出的 matched 列現在帶有實際 capture time、
+來源片段與選用重量範圍，且一律為 `pending`／`unattributed`，不將模型共識冒充人工核准。
+
+合併器預設 dry-run；只有明確 approved 且帶審核者／審核時間的列可用 `--write` 加入
+Mold Batch。未知 Part ID、缺來源、無效格式或同來源同批號衝突會拒絕整批；不覆寫 Stat、
+Alias 或其他 Part 欄位。不同來源的判斷並存，重跑同一核准檔不重複寫入。
+
+使用程序與驗證邊界見 [`mold-batch-review.md`](../../../docs/agents/mold-batch-review.md)。
+新增測試僅使用合成資料與測試自建暫存目錄；真實文章取得、模型呼叫、人工逐筆核對及 PR
+核准仍未執行，不能因本機流程已接上就宣稱真實資料已驗證或填入網站。
+
 
 **這張票跟 32 號票不一樣：這裡真的需要語言模型，沒有結構化資料的路可以繞。** 32 號票
 （Event 自動抓取）意外發現真實來源是結構化 CSV，不需要模型；這張票不是——CONTEXT.md 對

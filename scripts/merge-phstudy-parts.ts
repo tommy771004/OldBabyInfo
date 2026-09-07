@@ -9,9 +9,10 @@
  *   1. node scripts/scrape-phstudy-parts.ts   (refresh data/sources/phstudy/)
  *   2. node scripts/merge-phstudy-parts.ts    (this script)
  *
- * !! Re-running `generate-parts-seed.ts` rebuilds data/parts.json from beybrew
- * !! alone and will erase everything merged here. Run this script again after
- * !! any `npm run generate:parts`. Merging is idempotent.
+ * BeyBrew-only generation now refuses to replace a phstudy-migrated library.
+ * Merge a reviewed complete snapshot directly into the existing curated file;
+ * do not erase it first. See docs/agents/data-refresh-recovery.md. Merging is
+ * idempotent; automated acquisition remains behind the source-policy gate.
  *
  * Conflict rule: on a field both sources carry, phstudy wins — an owner
  * decision that overrides ADR-0010's field authority (which names BeyBrew

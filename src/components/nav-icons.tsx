@@ -1,5 +1,5 @@
 /**
- * Navigation glyphs for the icon-only mobile bar. Same family as the
+ * Navigation glyphs for the labelled mobile bar. Same family as the
  * playstyle symbols (type-symbols.tsx) and the diagonal arrow: one 24×24
  * grid, one stroke weight, rounded caps, no fill and no container — the
  * container is the nav button itself.
@@ -8,7 +8,7 @@
  * rings, read here as a Blade from above) rather than a generic cog, so the
  * bar stays inside the one visual language ADR-0006 asks for.
  */
-export type NavIconName = "home" | "parts" | "events" | "discussion" | "login" | "terms";
+export type NavIconName = "home" | "parts" | "combo" | "events" | "discussion" | "login" | "terms";
 
 const PATHS: Record<NavIconName, React.ReactNode> = {
   home: (
@@ -21,6 +21,12 @@ const PATHS: Record<NavIconName, React.ReactNode> = {
     <>
       <path d="M12 3.4 L19.6 8 V16 L12 20.6 L4.4 16 V8 Z" />
       <circle cx="12" cy="12" r="3.1" />
+    </>
+  ),
+  combo: (
+    <>
+      <path d="M12 3 L21 7.5 L12 12 L3 7.5 Z" />
+      <path d="M3 12 L12 16.5 L21 12 M3 16.5 L12 21 L21 16.5" />
     </>
   ),
   events: (

@@ -1,16 +1,11 @@
-import type { ComboAppearance } from "./meta-standing.ts";
+import appearancesJson from "../../data/combo-appearances.json" with { type: "json" };
+import { validateComboAppearances, type ComboAppearanceRecord } from "./combo-appearances.ts";
+import { getAllParts } from "./parts/repository.ts";
 
-/**
- * Real Combo appearance data (ticket 33/34) has nowhere to come from yet.
- * A prior source review found real usage records — 1,215 of them, from
- * HackMD's "陀螺賽場統計2025" sheet — but that sheet has never been
- * ingested into this repo; no ticket has done that step yet. This
- * function is the single place that will change once one does (a real
- * `data/combo-appearances.json` + schema, parsed the same way
- * getAllParts()/getAllEvents() are) — until then it honestly returns no
- * data, and every consumer (the Meta Standing page) is built to handle
- * that as a real, expected state, not a loading placeholder.
- */
-export function getComboAppearances(): ComboAppearance[] {
-  return [];
+/** Static, reviewed records, validated at build time. Empty means no accepted
+ * evidence yet; never substitute Event calendar rows or synthetic statistics. */
+const appearances = validateComboAppearances(appearancesJson, getAllParts());
+
+export function getComboAppearances(): ComboAppearanceRecord[] {
+  return appearances;
 }

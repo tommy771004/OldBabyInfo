@@ -30,6 +30,7 @@ import {
   type GoShootRecord,
 } from "../src/lib/parts/go-shoot-facts.ts";
 import { refreshOfficialParts } from "../src/lib/official-parts/refresh.ts";
+import { assertBeybrewRefreshAllowed } from "../src/lib/official-parts/refresh-policy.ts";
 
 /** The richer raw shape actually present in MasterData.json — a superset of
  *  RawMasterDataEntry (which only declares what stat-edition extraction
@@ -245,6 +246,22 @@ function isStructuralPlaceholder(e: BeypartsEntry): boolean {
 }
 
 async function main() {
+  // Reject before any network access. The domain refresh repeats the guard so
+  // alternate callers cannot bypass it. Never rebuild a migrated library from
+  // BeyBrew and hope a later, unavailable-on-CI staged merge restores it.
+  // Retain the pre-existing legacy date normalization for unmigrated seeds.
+  const previousRaw = JSON.parse(readFileSync(OUTPUT_PATH, "utf8")) as Part[];
+  const previous = partsFileSchema.parse(previousRaw.map((part) => ({
+    ...part,
+    releaseAt:
+      part.releaseAt && part.releaseAt < X_GENERATION_START_DATE
+        ? null
+        : part.releaseAt,
+    statEditions: part.statEditions.filter((edition) =>
+      !edition.releaseAt || edition.releaseAt >= X_GENERATION_START_DATE,
+    ),
+  })));
+  assertBeybrewRefreshAllowed(previous);
   console.log("Fetching beyparts.json (canonical names + stats)...");
   const beyparts = await fetchJson<BeypartsFile>(BEYPARTS_URL);
   const beybrewCommit = await fetchJson<{ sha: string }>(BEYBREW_COMMIT_URL);
@@ -444,21 +461,6 @@ async function main() {
     process.exit(1);
   }
 
-  // The first run after introducing the X launch-date invariant must still
-  // be able to compare against the old seed that contains MasterData's 2022
-  // sentinel. Normalize that legacy input only for diffing; generated output
-  // always goes through the strict schema above.
-  const previousRaw = JSON.parse(readFileSync(OUTPUT_PATH, "utf8")) as Part[];
-  const previous = partsFileSchema.parse(previousRaw.map((part) => ({
-    ...part,
-    releaseAt:
-      part.releaseAt && part.releaseAt < X_GENERATION_START_DATE
-        ? null
-        : part.releaseAt,
-    statEditions: part.statEditions.filter((edition) =>
-      !edition.releaseAt || edition.releaseAt >= X_GENERATION_START_DATE,
-    ),
-  })));
   const refresh = await refreshOfficialParts(previous, async () => ({
     sourceVersion: process.env.BEYBREW_SOURCE_VERSION ?? beybrewSourceVersion,
     parts: validation.data,

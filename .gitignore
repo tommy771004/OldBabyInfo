@@ -25,3 +25,5 @@ npm-debug.log*
 
 # scratchpad tickets are tracked (part of the local issue tracker), not ignored
 .font-candidates/
+.pi/*
+.subagents/*
