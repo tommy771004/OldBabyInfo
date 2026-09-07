@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-07-29T09:22:19.845Z",
+  "capturedAt": "2026-09-07T13:14:54.279Z",
   "sources": [
     {
       "id": "takaratomy-history",
@@ -19,8 +19,8 @@
         "burst",
         "x"
       ],
-      "sourceVersion": "sha256:3608eaf935d820438059f5026ded7413a7677bb18b30c18004063f2193d2098e",
-      "contentHash": "sha256:3608eaf935d820438059f5026ded7413a7677bb18b30c18004063f2193d2098e"
+      "sourceVersion": "sha256:49aac3b9ddd52245966880516bfa8cd3c3230e0c18762e7caaa6871ce061f38a",
+      "contentHash": "sha256:49aac3b9ddd52245966880516bfa8cd3c3230e0c18762e7caaa6871ce061f38a"
     },
     {
       "id": "takaratomy-burst-products",
@@ -36,8 +36,8 @@
       "generationIds": [
         "burst"
       ],
-      "sourceVersion": "sha256:48729db6604168500f8611573cdbc8993a53618863653cc5b948ae1c9ee459cd",
-      "contentHash": "sha256:48729db6604168500f8611573cdbc8993a53618863653cc5b948ae1c9ee459cd"
+      "sourceVersion": "sha256:b010317a842130a2371fd8731d1db9c6394e7be4fc293431c59813d0c82397fb",
+      "contentHash": "sha256:b010317a842130a2371fd8731d1db9c6394e7be4fc293431c59813d0c82397fb"
     },
     {
       "id": "beyblade-fandom",
@@ -56,8 +56,8 @@
         "burst",
         "x"
       ],
-      "sourceVersion": "sha256:f75a1aedb04db9f5490614bc9559afb96c7bddcc1955926f661ee44c4b539f0b",
-      "contentHash": "sha256:f75a1aedb04db9f5490614bc9559afb96c7bddcc1955926f661ee44c4b539f0b"
+      "sourceVersion": "sha256:50f84883037668cc25bff6f5143ef835d7adaeac2eca78aa548185958476e0b8",
+      "contentHash": "sha256:50f84883037668cc25bff6f5143ef835d7adaeac2eca78aa548185958476e0b8"
     },
     {
       "id": "beywiki-parts-list",
@@ -91,8 +91,8 @@
       "generationIds": [
         "x"
       ],
-      "sourceVersion": "commit:69b2eeb543b764230de22ba6ef25bccbf671f7a6",
-      "contentHash": "sha256:f5e18fad42ddf464e63b7d5821d740e87451cbc94f9d21389de94753f7726b97"
+      "sourceVersion": "commit:e2cd6e0d618a57d1997af3e3f0ac2a49b5df2769",
+      "contentHash": "sha256:95073a93304da7088014e4e44f1406e1c687036283af99c71db4c39de70a7b3d"
     }
   ],
   "generations": [
