@@ -8,8 +8,11 @@ One `.mdx` file per article, under `content/guides/<locale>/<slug>.mdx` — drop
 ---
 title: 文章標題
 description: 一句話摘要，會顯示在文章列表。
+order: 3            # 選填
 ---
 ```
+
+`order` 是給新手的閱讀順序，數字小的排前面。**選填** —— 省略的文章照樣會發布，只是排在有順序的那批之後（依 slug）。這保住了「丟一個檔案進來就發布、不用改程式」的約定。目前 zh-TW 的六篇排成一條路徑：買什麼 → 三個零件 → 怎麼算贏 → 發射器 → 場地 → 參加賽事。
 
 ## Conventions
 

@@ -77,7 +77,7 @@ function GuideDetailBody({
 
   return (
     <main className={styles.page}>
-      <p>
+      <p className={styles.backLink}>
         <Link href="/guides">{t("back_to_guides")}</Link>
       </p>
 

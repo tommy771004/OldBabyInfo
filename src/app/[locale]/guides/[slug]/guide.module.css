@@ -10,9 +10,32 @@
   padding: 3rem 1.5rem 6rem;
 }
 
+/*
+ * The article header. Tailwind's Preflight resets every heading to
+ * `font-size: inherit`, so an h1 with no rule of its own renders at body
+ * size — which is exactly what this title was doing, sitting the same size as
+ * the paragraph under it. Sized here to match the section index it comes
+ * from, one step down because this is an article title, not the section's.
+ */
+.backLink { margin: 0 0 2.5rem; font-size: .95rem; }
+
+.page h1 {
+  margin: 0;
+  font-size: clamp(1.85rem, 4vw, 2.6rem);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+/* 70% ink on --surface-100 measures 5.98:1 with the real WCAG formula — the
+   same lead tone the guides index uses, so the two pages read as one
+   section. */
 .description {
+  margin: 1rem 0 0;
+  max-width: 34rem;
   font-size: 1.1rem;
-  color: color-mix(in srgb, var(--ink-on-light) 75%, transparent);
+  line-height: 1.8;
+  text-wrap: pretty;
+  color: color-mix(in srgb, var(--ink-on-light) 70%, transparent);
 }
 
 /* Table of contents */

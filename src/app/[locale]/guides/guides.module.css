@@ -1,0 +1,160 @@
+/*
+ * The guides index. Lives at ADR-0006's "場邊" end — it inherits the
+ * site-wide light surface (ticket 41), so no local colour override.
+ *
+ * Composition: one masthead carrying the section's own drawn object, then a
+ * single lead entry followed by the rest of the path as rows. Deliberately
+ * not six identical cards in a grid — the six articles are a sequence a
+ * newcomer walks, and only one of them answers "where do I start".
+ */
+
+/* A reading column, sized like the article pages it leads into (46rem) rather
+   than like the wide Events table. Wider than this and the entry card
+   stretches far past its own text. */
+.page { width: min(100% - 2rem, 52rem); margin: 0 auto; padding: 3rem 0 6rem; }
+
+/* Masthead ------------------------------------------------------------- */
+
+/*
+ * No `overflow: hidden` anywhere here, and the drawing is sized to sit fully
+ * inside the column: a container edge must never be able to shave a line off
+ * it. An earlier pass cropped it and the result read as a broken fragment,
+ * not a composition.
+ */
+.masthead {
+  position: relative;
+  display: grid;
+  align-content: center;
+  min-height: 18.5rem;
+  padding: 1.5rem 0 2.5rem;
+}
+.mastheadText { position: relative; z-index: 1; max-width: 27rem; }
+
+.title { margin: 0; font-size: clamp(2.1rem, 6vw, 3.2rem); line-height: 1.15; }
+/* Measured with the real WCAG formula, not eyeballed (ADR-0008): 70% ink
+   composited on --surface-100 is 5.98:1, well over the 4.5 AA floor while
+   staying clearly quieter than the 13.9:1 title. */
+.lead {
+  margin: 1rem 0 0;
+  max-width: 24rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  text-wrap: pretty;
+  color: color-mix(in srgb, var(--ink-on-light) 70%, transparent);
+}
+
+/*
+ * Decorative, so it takes a tonal ink rather than the accent: a drawn
+ * structure, not a coloured graphic competing with the title. It sits clear
+ * of the text column, so no line of copy ever crosses it.
+ */
+.ridge {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 0 -50%;
+  width: 17.5rem;
+  height: 17.5rem;
+  color: color-mix(in srgb, var(--ink-on-light) 48%, transparent);
+  pointer-events: none;
+}
+
+/* The reading path ----------------------------------------------------- */
+
+.path { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+
+/*
+ * The entry point takes the site's own card language (current-border, the
+ * light variant already used by the Catalog browser). ADR-0008 gives the
+ * strike colour exactly this job — "這是你選的那個" — so the running charge
+ * marks the door rather than decorating all six rows.
+ */
+.entry {
+  padding: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--ink-on-light) 13%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface-50) 76%, transparent);
+  margin-bottom: 2.5rem;
+}
+
+.startHere {
+  margin: 0 0 .5rem;
+  font-size: .95rem;
+  color: var(--accent-on-light);
+}
+
+.entry .itemTitle { font-size: 1.6rem; }
+
+/* Rows for the rest of the path. Hairline separators, matching the Events
+   calendar's venue rows — no card grid, no hover lift. */
+.item { padding: 1.6rem .25rem; border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 14%, transparent); }
+.item:first-of-type { border-top: none; }
+.item:hover, .item:focus-within { background-color: color-mix(in srgb, var(--ink-on-light) 4%, transparent); }
+
+.itemTitle { margin: 0; font-size: 1.3rem; line-height: 1.4; text-wrap: balance; }
+.itemTitle a { text-decoration: none; }
+.itemTitle a:hover { text-decoration: underline; }
+.itemTitle a:focus-visible { outline: 2px solid var(--accent-on-light); outline-offset: 3px; border-radius: 2px; }
+
+.description {
+  margin: .6rem 0 0;
+  max-width: 40rem;
+  line-height: 1.8;
+  text-wrap: pretty;
+  color: color-mix(in srgb, var(--ink-on-light) 72%, transparent);
+}
+
+/*
+ * What is actually inside the article, taken from its own `##` headings.
+ * Quiet by design: it rewards scanning without competing with the
+ * description. Measured: 62% ink came out at 4.66:1 on --surface-100 —
+ * over the AA floor, but too little headroom for text this small, so this
+ * sits at 68% (5.62:1 on the page, 5.96:1 inside the entry panel).
+ *
+ * Separated by space alone. A drawn separator between siblings lands at the
+ * start of a new line as soon as the list wraps, which on a phone it always
+ * does.
+ */
+.sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1.75rem;
+  margin: .85rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: .875rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--ink-on-light) 68%, transparent);
+}
+
+/* Empty state ---------------------------------------------------------- */
+
+/*
+ * ja and en have no guides yet, and that is an honest editorial state, not a
+ * failure — so it gets a composed panel, not a bare sentence stranded under
+ * the title.
+ */
+.empty {
+  max-width: 34rem;
+  padding: 2rem;
+  border: 1px solid color-mix(in srgb, var(--ink-on-light) 13%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface-50) 76%, transparent);
+}
+.emptyHeadline { margin: 0; font-size: 1.15rem; font-weight: 700; }
+.emptyBody { margin: .75rem 0 0; line-height: 1.8; text-wrap: pretty; color: color-mix(in srgb, var(--ink-on-light) 72%, transparent); }
+
+@media (max-width: 720px) {
+  .page { padding-top: 2rem; }
+  /*
+   * Beside the title there is no room for the drawing on a phone, so it takes
+   * its own band above the copy at a size where the ridge, the notch and the
+   * pocket all still read. Reduced, never cropped.
+   */
+  .masthead { min-height: 0; padding-top: 0; }
+  .ridge { position: static; translate: none; width: 11rem; height: 11rem; margin: 0 0 1rem; }
+  .mastheadText { max-width: 100%; }
+  .entry { padding: 1.25rem; }
+  .item { padding: 1.35rem .25rem; }
+  .sections { gap: .3rem 1.25rem; }
+}

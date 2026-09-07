@@ -134,7 +134,11 @@
   },
   "GuidesPage": {
     "title": "Getting started",
-    "empty": "No guide articles yet."
+    "lead": "From a first Beyblade to a first tournament: {count} guides. Read them in order, or take the one you need now.",
+    "start_here": "Start here",
+    "sections_label": "What this covers",
+    "empty": "No guide articles yet.",
+    "empty_body": "Guides for this language are still being translated. Long-form translation is editorial work done article by article; each one appears here as it is finished."
   },
   "GuideDetailPage": {
     "toc_heading": "Contents",

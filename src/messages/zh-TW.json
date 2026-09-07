@@ -134,7 +134,11 @@
   },
   "GuidesPage": {
     "title": "新手指南",
-    "empty": "目前尚無指南文章。"
+    "lead": "從第一顆陀螺到第一場比賽，共 {count} 篇。照順序讀，或挑你現在需要的那一篇。",
+    "start_here": "從這裡開始",
+    "sections_label": "這篇談什麼",
+    "empty": "目前尚無指南文章。",
+    "empty_body": "這個語言的指南還在翻譯中。長文翻譯是逐篇進行的編輯工作，完成一篇就會出現在這裡。"
   },
   "GuideDetailPage": {
     "toc_heading": "目錄",
