@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  REGISTRATION_METHOD,
   parseSheetCapacity,
   parseSheetDate,
   parseSheetRow,
@@ -114,4 +115,17 @@ describe("parseSheetRow", () => {
     expect(result.status).toBe("failed");
     expect(result.reason).toContain("Unparseable date");
   });
+
+describe("registration methods added by the 2026-9、10月 sheet", () => {
+  it("maps the two channels that first appeared there", () => {
+    // Unmapped, these took every row of 漢謚玩具社 and 雄大書局-鼎山店 with
+    // them — the whole of two Kaohsiung venues, invisible on the calendar.
+    expect(REGISTRATION_METHOD["FB報名"]).toBe("store_community");
+    expect(REGISTRATION_METHOD["線上(抽選)"]).toBe("online");
+  });
+
+  it("still refuses a channel it has never seen", () => {
+    expect(REGISTRATION_METHOD["臨櫃抽籤"]).toBeUndefined();
+  });
+});
 });

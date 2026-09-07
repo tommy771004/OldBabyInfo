@@ -29,6 +29,15 @@ export const eventSourceSchema = z.object({
    *  only where it has actually been confirmed — a guessed provenance URL is
    *  worse than an absent one. */
   publisherUrl: z.url().optional(),
+  /**
+   * A community-maintained index that lists every period's two spreadsheets.
+   * This is a lead for finding the next period, not a data source: its rights
+   * are unknown and it is disabled in data/community-source-policy.json. It is
+   * recorded because the failure it prevents is expensive — the pipeline spent
+   * weeks pointed at spent sheets with nothing in the repo saying where the
+   * live ones are announced.
+   */
+  periodIndexUrl: z.url().optional(),
 });
 
 export const eventSourcesFileSchema = z.array(eventSourceSchema).min(1);

@@ -6,7 +6,8 @@
     "gid": "0",
     "year": 2026,
     "coversFrom": "2026-07-01",
-    "coversUntil": "2026-08-31"
+    "coversUntil": "2026-08-31",
+    "periodIndexUrl": "https://hackmd.io/@liangyutw/beyblade-important-record"
   },
   {
     "id": "b4-g3",
@@ -16,6 +17,28 @@
     "year": 2026,
     "coversFrom": "2026-07-01",
     "coversUntil": "2026-08-31",
-    "publisherUrl": "https://www.facebook.com/Beyblade2016"
+    "publisherUrl": "https://www.facebook.com/Beyblade2016",
+    "periodIndexUrl": "https://hackmd.io/@liangyutw/beyblade-important-record"
+  },
+  {
+    "id": "funbox-g3-2026-09",
+    "label": "戰鬥陀螺X 門市G3比賽 2026 9~10月時間表",
+    "sheetId": "16J7KBQ-B_aCf-0Hc9fhHBkT7e6XfhA2bFJehqGnmkwY",
+    "gid": "0",
+    "year": 2026,
+    "coversFrom": "2026-09-01",
+    "coversUntil": "2026-10-31",
+    "periodIndexUrl": "https://hackmd.io/@liangyutw/beyblade-important-record"
+  },
+  {
+    "id": "b4-g3-2026-09",
+    "label": "戰鬥陀螺X_B4_G3時間表_26年9-10月",
+    "sheetId": "1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
+    "gid": "0",
+    "year": 2026,
+    "coversFrom": "2026-09-01",
+    "coversUntil": "2026-10-31",
+    "publisherUrl": "https://www.facebook.com/Beyblade2016",
+    "periodIndexUrl": "https://hackmd.io/@liangyutw/beyblade-important-record"
   }
 ]

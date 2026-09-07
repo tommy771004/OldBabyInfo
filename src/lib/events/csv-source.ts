@@ -15,6 +15,15 @@ export const REGISTRATION_METHOD: Record<string, Event["registrationMethod"]> = 
   電話: "phone",
   皆可: "either",
   門市社群: "store_community",
+  // Both appeared in the 2026-9、10月 B4 sheet. Unmapped, they took every row
+  // of 漢謚玩具社 and 雄大書局-鼎山店 with them — two Kaohsiung venues that
+  // would simply not exist on the calendar. The field records the channel a
+  // player registers through, so each maps to the channel it actually is:
+  // registering on the store's Facebook is the store's own community page,
+  // and an online draw is still registered online — "(抽選)" describes who
+  // gets a place, not how the sign-up happens.
+  FB報名: "store_community",
+  "線上(抽選)": "online",
 };
 
 export async function fetchSheetCsv(sheetId: string, gid: string): Promise<string> {

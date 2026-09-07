@@ -53,8 +53,14 @@ Part job 綠燈**只代表保護正常運作**，不代表 Part 資料已更新�
 額外標一行「這次執行只能重新確認過去的場次」。過期不會讓 job 失敗——那些過期的表仍然
 握有真實的過去場次，拿掉它們會被 diff 讀成「這些賽事被取消了」。
 
-B4 每期的公告在 <https://www.facebook.com/Beyblade2016>。Funbox 那份的公告出處尚未確認，
-所以 `publisherUrl` 留空——猜一個出處比沒有出處更糟。
+B4 每期的公告在 <https://www.facebook.com/Beyblade2016>（需登入）。實務上更快的入口是
+社群維護的 <https://hackmd.io/@liangyutw/beyblade-important-record>，它用一張表列出每一期
+的兩份試算表，`periodIndexUrl` 記的就是它。**那只是找下一期的線索，不是資料來源**——它的
+授權未知，在 `community-source-policy.json` 裡是關閉的。
+
+**換期時要做的事**：到上面的索引取當期兩份試算表的 id，在 `data/event-sources.json`
+新增兩筆（不要刪舊的：過期的表仍握有真實的過去場次，拿掉會被 diff 讀成「這些賽事被取消了」），
+然後讓排程開 PR。2026-09-07 就是這樣把 9~10 月接上的：767 → 1538 筆，未來場次 0 → 685。
 
 ### Event：確認 PR 閉環，不替上游猜日期
 
