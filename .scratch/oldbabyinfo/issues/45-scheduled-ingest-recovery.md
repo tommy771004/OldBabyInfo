@@ -37,9 +37,34 @@
       在 bash 是命令替換 —— 寫成 `` `npm run merge:phstudy` `` 會真的在 runner 上執行它、
       改動資料與轉址。已改單引號，並加測試掃描所有 workflow，以重新植入 bug 的方式驗證過。
 
+- [x] **每次執行都把 767 筆全報成「變更」**。`diffAgainstExisting` 用 `JSON.stringify` 比對，
+      而它保留鍵順序：從 `data/events.json` 讀回來的紀錄是 `sourceExcerpt` 在 `results` 之前，
+      新解析出來的則由 `eventWithSourceExcerpt` 把它接在最後。內容相同、順序不同，於是每晚的
+      審核 PR 都是整檔重寫，真正的一筆修正淹沒在裡面——正好廢掉 ADR-0004 要的那道人工關卡。
+      改為與鍵順序無關的比對後，對現行試算表的執行由「0 added, 767 changed」變成「767 unchanged」。
+      回歸測試以還原舊比對法驗證過會失敗。（`befa826`）
+- [x] **來源清單寫死且沒有出處**。主辦方每期開新試算表而非延長舊的，所以 9/7 時管線還在抓兩份
+      標題自己寫著「7~8月」的文件（都已確認只有單一分頁，沒有更晚的分頁可找）。清單移到
+      `data/event-sources.json`，記下各表自己的標題與涵蓋期間；過期時在 job log 與 PR 內文
+      最上方寫明，全部過期時再標一行。過期不讓 job 失敗——過期的表仍握有真實的過去場次，
+      拿掉會被 diff 讀成「這些賽事被取消了」。只記錄已確認的出處：B4 是 Facebook 公告頁，
+      Funbox 那份出處未知就留空，猜一個比沒有更糟。（`befa826`）
+
+## 仍未解決：沒有未來場次
+
+合併 PR #5 之後 `data/events.json` 是 767 筆、最晚 2026-08-30、**未來場次 0 筆**。
+管線本身已經完全暢通，問題純粹在上游：兩份來源都是七八月專用表，已經結束。
+下一步需要人去 B4 的公告拿到當期試算表網址，填進 `data/event-sources.json`。
+
+[BeybladeHub](https://beybladehub.app/events) 目前涵蓋到 9–10 月，但它是做同一件事的
+競品聚合站，沒有使用條款、沒有授權說明、也不標示自己的來源——依 ADR-0011 與
+`community-source-policy.json` 的關卡，當線索可以，當資料來源不行。
+
 ## 需要人工操作（agent 無權限）
 
-- [ ] Settings → Actions → General → Workflow permissions → 勾選 **Allow GitHub Actions to create and approve pull requests**。沒有這個，Official Part refresh 的 PR 開不了（8/2 的失敗原因），Data ingest 修好 body 之後也會撞同一道牆。
+- [x] Settings → Actions → General → Workflow permissions → 勾選 **Allow GitHub Actions to create and approve pull requests**。
+      2026-09-07 站方開啟（同時把 default_workflow_permissions 調成 write）。開啟後 Data ingest #45
+      與 Official Part refresh #10 雙雙成功——兩者的第一次成功——並開出 PR #4／#5／#6，已合併。
 - [x] Settings → Secrets and variables → Actions → 新增 `DATABASE_URL`（Neon 連線字串）。沒有這個，Stock Listing 永遠是空的，「哪裡買」全站沒有資料。
       2026-09-07 確認已設定：run 31351426119（08-10）的 log 中 `DATABASE_URL: ***`，guard 步驟未觸發。
 - [ ] 選用：`PRODUCT_EXPECTED_COUNT` variable。未設時退回 `targets.length`，目前 `data/product-targets.json` 是空的。
