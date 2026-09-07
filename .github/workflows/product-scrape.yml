@@ -15,7 +15,9 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # Ten category sources, each retried up to three times with backoff when
+    # Funbox refuses the runner. Twenty minutes no longer covers a bad day.
+    timeout-minutes: 30
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       PRODUCT_EXPECTED_COUNT: ${{ vars.PRODUCT_EXPECTED_COUNT }}

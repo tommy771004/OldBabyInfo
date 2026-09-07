@@ -24,7 +24,7 @@ import {
 import type { RawProductSnapshot } from "../src/lib/stock/parse-listing.ts";
 import { evaluateScrapeHealth } from "../src/lib/stock/scrape-health.ts";
 import { shouldSkipProductScrape } from "../src/lib/stock/scrape-runner.ts";
-import { discoverFunboxListings, type FunboxCategorySource } from "../src/lib/stock/funbox-discovery.ts";
+import { discoverFunboxListings, FunboxFetchError, type FunboxCategorySource } from "../src/lib/stock/funbox-discovery.ts";
 import { partsFileSchema, type Part } from "../src/lib/parts/schema.ts";
 import { getAllGenerationCatalogRecords } from "../src/lib/generation-catalog/repository.ts";
 
@@ -73,10 +73,13 @@ function readParts(): Part[] {
 }
 
 async function fetchFunboxCategory(endpoint: string): Promise<unknown> {
+  // Bound every attempt. Without this a request that hangs rather than refuses
+  // can eat the whole job budget, and the retry ladder below multiplies it.
   const response = await fetch(endpoint, {
     headers: { "user-agent": userAgent, accept: "application/json" },
+    signal: AbortSignal.timeout(20_000),
   });
-  if (!response.ok) throw new Error(`Funbox category returned ${response.status}`);
+  if (!response.ok) throw new FunboxFetchError(`Funbox category returned ${response.status}`, response.status);
   return response.json();
 }
 

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import type { Part } from "../parts/schema.ts";
-import { discoverFunboxListings, type FunboxCategorySource } from "./funbox-discovery.ts";
+import { discoverFunboxListings, FunboxFetchError, type FunboxCategorySource } from "./funbox-discovery.ts";
 import { buildReleaseRecords } from "../generation-catalog/releases.ts";
 
 const part: Part = {
@@ -73,7 +73,14 @@ describe("discoverFunboxListings", () => {
       .mockRejectedValueOnce(new Error("category timeout"));
 
     await expect(
-      discoverFunboxListings(sources, [part], { fetcher, minIntervalMs: 0, sleep: vi.fn() }),
+      // One attempt per source keeps this case about the three categories,
+      // not about the retry ladder, which has its own tests below.
+      discoverFunboxListings(sources, [part], {
+        fetcher,
+        minIntervalMs: 0,
+        sleep: vi.fn(),
+        retry: { attempts: 1 },
+      }),
     ).resolves.toEqual({
       listings: [
         {
@@ -123,5 +130,98 @@ describe("discoverFunboxListings", () => {
 
     expect(result.listings).toHaveLength(1);
     expect(fetcher).toHaveBeenNthCalledWith(2, "https://example.com/category.json?limit=1&page=2");
+  });
+
+  it("retries a transport failure and keeps the listing it recovers", async () => {
+    // The scheduled runner sees bare `fetch failed` when Funbox refuses the
+    // datacenter address. That is exactly the case a second attempt can win.
+    const fetcher = vi.fn()
+      .mockRejectedValueOnce(new TypeError("fetch failed"))
+      .mockResolvedValueOnce([
+        { id: 50, url: "/products/dran-sword", title: "Dran Sword", price: 1299, variants: [] },
+      ])
+      .mockResolvedValueOnce([]);
+    const sleep = vi.fn().mockResolvedValue(undefined);
+
+    const result = await discoverFunboxListings([sources[0]!], [part], {
+      fetcher,
+      minIntervalMs: 0,
+      sleep,
+      retry: { attempts: 3, baseDelayMs: 1_000, maxDelayMs: 8_000 },
+    });
+
+    expect(result.failedSources).toEqual([]);
+    expect(result.listings).toHaveLength(1);
+    expect(sleep).toHaveBeenCalledWith(1_000);
+  });
+
+  it("backs off exponentially up to the cap before giving up", async () => {
+    const fetcher = vi.fn().mockRejectedValue(new TypeError("fetch failed"));
+    const sleep = vi.fn().mockResolvedValue(undefined);
+
+    const result = await discoverFunboxListings([sources[0]!], [part], {
+      fetcher,
+      minIntervalMs: 0,
+      sleep,
+      retry: { attempts: 4, baseDelayMs: 1_000, maxDelayMs: 3_000 },
+    });
+
+    expect(fetcher).toHaveBeenCalledTimes(4);
+    expect(sleep.mock.calls.map(([delay]) => delay)).toEqual([1_000, 2_000, 3_000]);
+    expect(result.failedSources).toEqual([{ id: "bxa", error: "fetch failed" }]);
+  });
+
+  it("does not retry a status Funbox has already settled", async () => {
+    const fetcher = vi.fn().mockRejectedValue(new FunboxFetchError("Funbox category returned 404", 404));
+    const sleep = vi.fn().mockResolvedValue(undefined);
+
+    const result = await discoverFunboxListings([sources[0]!], [part], {
+      fetcher,
+      minIntervalMs: 0,
+      sleep,
+      retry: { attempts: 3, baseDelayMs: 1_000 },
+    });
+
+    expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(sleep).not.toHaveBeenCalled();
+    expect(result.failedSources).toEqual([{ id: "bxa", error: "Funbox category returned 404" }]);
+  });
+
+  it("retries a throttled or unhealthy status", async () => {
+    const fetcher = vi.fn()
+      .mockRejectedValueOnce(new FunboxFetchError("Funbox category returned 429", 429))
+      .mockRejectedValueOnce(new FunboxFetchError("Funbox category returned 503", 503))
+      .mockResolvedValueOnce([]);
+    const sleep = vi.fn().mockResolvedValue(undefined);
+
+    const result = await discoverFunboxListings([sources[0]!], [part], {
+      fetcher,
+      minIntervalMs: 0,
+      sleep,
+      retry: { attempts: 3, baseDelayMs: 500 },
+    });
+
+    expect(fetcher).toHaveBeenCalledTimes(3);
+    expect(result.failedSources).toEqual([]);
+  });
+
+  it("treats a malformed payload as a skipped row, not a retryable failure", async () => {
+    // The retry ladder wraps the fetch alone. A body that arrived but does not
+    // describe products is a data problem, so the source is neither retried nor
+    // reported as failed.
+    const fetcher = vi.fn().mockResolvedValue({ not: "an array of products" });
+    const sleep = vi.fn().mockResolvedValue(undefined);
+
+    const result = await discoverFunboxListings([sources[0]!], [part], {
+      fetcher,
+      minIntervalMs: 0,
+      sleep,
+      retry: { attempts: 3, baseDelayMs: 1_000 },
+    });
+
+    expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(sleep).not.toHaveBeenCalled();
+    expect(result.failedSources).toEqual([]);
+    expect(result.skippedRows).toBe(1);
   });
 });

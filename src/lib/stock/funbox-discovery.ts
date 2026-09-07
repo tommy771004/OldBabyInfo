@@ -7,6 +7,45 @@ import {
   type FunboxCategoryListing,
 } from "./funbox-category.ts";
 
+/**
+ * A Funbox request that failed at the transport or HTTP layer. `status` is
+ * absent when the request never got a response at all — which is exactly the
+ * shape of the `fetch failed` storm the scheduled runner hits when Funbox
+ * refuses the GitHub runner's datacenter address.
+ */
+export class FunboxFetchError extends Error {
+  readonly status?: number;
+
+  constructor(message: string, status?: number) {
+    super(message);
+    this.name = "FunboxFetchError";
+    if (status !== undefined) this.status = status;
+  }
+}
+
+export interface FunboxRetryOptions {
+  attempts?: number;
+  baseDelayMs?: number;
+  maxDelayMs?: number;
+}
+
+const DEFAULT_RETRY: Required<FunboxRetryOptions> = {
+  attempts: 3,
+  baseDelayMs: 1_000,
+  maxDelayMs: 8_000,
+};
+
+/**
+ * Retry transport failures and the statuses Funbox returns when it is
+ * throttling or briefly unhealthy. A 404 or a 403 is a settled answer: asking
+ * again only burns the runner's clock.
+ */
+export function isRetryableFunboxError(error: unknown): boolean {
+  if (!(error instanceof FunboxFetchError)) return true;
+  if (error.status === undefined) return true;
+  return error.status === 408 || error.status === 429 || error.status >= 500;
+}
+
 export interface FunboxCategorySource {
   id: string;
   endpoint: string;
@@ -29,6 +68,7 @@ export interface FunboxDiscoveryOptions {
   releases?: GenerationCatalogRecord[];
   minIntervalMs?: number;
   sleep?: (durationMs: number) => Promise<void>;
+  retry?: FunboxRetryOptions;
 }
 
 function messageOf(error: unknown): string {
@@ -57,6 +97,28 @@ export async function discoverFunboxListings(
 ): Promise<FunboxDiscoveryReport> {
   const minIntervalMs = Math.max(0, options.minIntervalMs ?? 1000);
   const sleep = options.sleep ?? ((durationMs: number) => new Promise<void>((resolve) => setTimeout(resolve, durationMs)));
+  const retry = { ...DEFAULT_RETRY, ...options.retry };
+  const attempts = Math.max(1, retry.attempts);
+
+  /**
+   * One page request, retried with exponential backoff. Only the fetch is
+   * wrapped: a payload that parses badly is a data problem and repeating the
+   * request cannot change it.
+   */
+  async function fetchWithRetry(endpoint: string): Promise<unknown> {
+    let lastError: unknown;
+    for (let attempt = 1; attempt <= attempts; attempt += 1) {
+      try {
+        return await options.fetcher(endpoint);
+      } catch (error) {
+        lastError = error;
+        if (attempt === attempts || !isRetryableFunboxError(error)) break;
+        await sleep(Math.min(retry.baseDelayMs * 2 ** (attempt - 1), retry.maxDelayMs));
+      }
+    }
+    throw lastError;
+  }
+
   const byId = new Map<string, FunboxDiscoveredListing>();
   const failedSources: Array<{ id: string; error: string }> = [];
   let skippedRows = 0;
@@ -70,7 +132,7 @@ export async function discoverFunboxListings(
       requestCount += 1;
 
       try {
-        const payload = await options.fetcher(endpointForPage(source.endpoint, page));
+        const payload = await fetchWithRetry(endpointForPage(source.endpoint, page));
         const report = parseFunboxCategoryProducts(payload);
         skippedRows += report.skippedRows;
         for (const listing of report.listings) {
