@@ -56,9 +56,9 @@ export function CalendarFilters({
           through `filters` instead. */}
       <input type="hidden" name="scope" value={filters.scope} />
 
-      <label className={styles.filterField}>
-        <span>{labels.city}</span>
+      <label className={`${styles.filterField} m3-field m3-field--select`}>
         <select
+          className="m3-field__input"
           name="city"
           value={filters.city ?? ""}
           onChange={(e) => navigate({ city: e.target.value || null })}
@@ -70,11 +70,12 @@ export function CalendarFilters({
             </option>
           ))}
         </select>
+        <span className="m3-field__label">{labels.city}</span>
       </label>
 
-      <label className={styles.filterField}>
-        <span>{labels.registration}</span>
+      <label className={`${styles.filterField} m3-field m3-field--select`}>
         <select
+          className="m3-field__input"
           name="reg"
           value={filters.registration ?? ""}
           onChange={(e) =>
@@ -88,11 +89,12 @@ export function CalendarFilters({
             </option>
           ))}
         </select>
+        <span className="m3-field__label">{labels.registration}</span>
       </label>
 
-      <label className={styles.filterField}>
-        <span>{labels.age}</span>
+      <label className={`${styles.filterField} m3-field m3-field--select`}>
         <select
+          className="m3-field__input"
           name="age"
           value={filters.age ?? ""}
           onChange={(e) => navigate({ age: e.target.value || null })}
@@ -104,12 +106,13 @@ export function CalendarFilters({
             </option>
           ))}
         </select>
+        <span className="m3-field__label">{labels.age}</span>
       </label>
 
       {/* Only reachable without JS; the change handlers navigate before
           this would ever be needed. */}
       <noscript>
-        <button type="submit" className={styles.filterApply}>
+        <button type="submit" className={`${styles.filterApply} m3-button m3-button--outlined m3-state`}>
           {labels.apply}
         </button>
       </noscript>

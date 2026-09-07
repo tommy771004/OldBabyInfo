@@ -1,3 +1,16 @@
+/*
+ * The homepage arena, in Material 3 where M3 has an answer and in this
+ * site's own language where it does not.
+ *
+ * M3 supplies the two search bars and the result list under each. The arena
+ * itself — the stadium geometry, the two silhouettes, the collision, the
+ * trajectory rails — is the ADR-0006 signature and is not a Material
+ * component; M3 has no opinion about it and it keeps its own.
+ *
+ * The whole section runs on the field lighting (`m3-dark` in the markup),
+ * so every role below resolves to the ramp's deep end.
+ */
+
 .battleSection {
   position: relative;
   min-height: calc(100svh - 5rem);
@@ -6,7 +19,7 @@
   background:
     var(--grain),
     linear-gradient(135deg, var(--surface-950) 0%, var(--surface-900) 100%);
-  color: var(--ink-on-dark);
+  color: var(--md-sys-color-on-surface);
 }
 
 .searchHeader,
@@ -17,11 +30,13 @@
   margin: 0 auto;
 }
 
-.searchHeader > h1,
 .analysisEyebrow {
   margin: 0 0 0.7rem;
-  color: var(--accent-on-dark);
-  font-family: var(--font-display), serif;
+  color: var(--md-sys-color-primary);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
 }
 
 .searchHeader > h1 {
@@ -30,9 +45,12 @@
      was breaking 「零件 / 組合對戰分析」 with 「析」 stranded alone on
      line 2. The container's own 54rem bounds the measure; `balance`
      splits the remainder evenly instead of orphaning one glyph. */
-  color: var(--ink-on-dark);
-  font-size: clamp(2.4rem, 6vw, 5.6rem);
-  line-height: 0.96;
+  margin: 0 0 1.25rem;
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-display-large-font);
+  font-size: clamp(2.4rem, 6vw, 5.2rem);
+  font-weight: var(--md-sys-typescale-display-large-weight);
+  line-height: 0.98;
   letter-spacing: 0.01em;
   text-wrap: balance;
 }
@@ -47,87 +65,85 @@
   position: relative;
 }
 
+/* The M3 search bar itself is in `m3-components.css`; this only says which
+   surface it sits on, because a search bar over the arena needs to stay
+   legible against the gradient behind it rather than sample it. */
 .searchLabel {
-  display: grid;
-  gap: 0.45rem;
-  color: color-mix(in srgb, var(--ink-on-dark) 72%, transparent);
-  font-size: 0.85rem;
-}
-
-.searchLabel input {
-  min-height: 3rem;
-  width: 100%;
-  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 42%, transparent);
-  border-radius: 2px;
-  background: color-mix(in srgb, var(--surface-950) 72%, transparent);
-  color: var(--ink-on-dark);
-  padding: 0.7rem 0.85rem;
-  font: inherit;
-}
-
-.searchLabel input::placeholder {
-  color: color-mix(in srgb, var(--ink-on-dark) 48%, transparent);
-}
-
-.searchLabel input:focus-visible,
-.result:focus-visible {
-  outline: 2px solid var(--accent-on-dark);
-  outline-offset: 3px;
+  background-color: var(--md-sys-color-surface-container-high);
 }
 
 .selectedSubject {
   display: flex;
   justify-content: space-between;
   gap: 0.8rem;
-  margin: 0.8rem 0 0;
-  color: var(--ink-on-dark);
-  font-size: 0.95rem;
+  margin: 0.7rem 0.25rem 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
 }
 
 .selectedCode {
-  font-family: var(--font-display), serif;
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-numeral-font);
 }
 
+/*
+ * The result list is M3's menu surface: `surface-container-high`, extra-small
+ * corner, tonal rather than shadowed. It sits over the arena, so it is
+ * opaque — a translucent list over a moving silhouette is unreadable.
+ */
 .results {
   position: absolute;
   z-index: 4;
   top: calc(100% + 0.5rem);
   right: 0;
   left: 0;
-  background: var(--surface-900);
+  overflow: hidden;
+  padding: 0.5rem 0;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background-color: var(--md-sys-color-surface-container-high);
 }
 
+/* M3 menu item: 48dp, 12dp inset, its own state layer. */
 .result {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
   width: 100%;
+  min-height: 3rem;
+  padding: 0.5rem 0.75rem;
   border: 0;
   background: transparent;
-  color: var(--ink-on-dark);
-  cursor: pointer;
-  padding: 0.7rem 0.85rem;
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
   text-align: left;
-}
-
-.result:hover {
-  background: color-mix(in srgb, var(--accent-on-dark) 12%, transparent);
+  cursor: pointer;
 }
 
 .result[data-active="true"] {
-  background: color-mix(in srgb, var(--accent-on-dark) 18%, transparent);
-  color: var(--ink-on-dark);
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
 }
 
 .result span:last-child {
-  color: color-mix(in srgb, var(--ink-on-dark) 68%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.result:focus-visible {
+  outline: 3px solid var(--md-sys-color-secondary);
+  outline-offset: -3px;
 }
 
 .emptyResult,
 .missingSubject {
   margin: 0;
-  padding: 0.8rem;
-  color: color-mix(in srgb, var(--ink-on-dark) 75%, transparent);
+  padding: 0.75rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
 }
 
 .analysis {
@@ -162,7 +178,7 @@
   justify-items: center;
   gap: 0.45rem;
   color: var(--ink-on-dark);
-  font-family: var(--font-display), serif;
+  font-family: var(--md-sys-typescale-numeral-font);
   font-size: clamp(1rem, 1.5vw, 1.25rem);
 }
 
@@ -300,8 +316,10 @@
 .analysisCopy h2 {
   max-width: 48rem;
   margin: 0 auto 1.5rem;
-  color: var(--ink-on-dark);
-  font-size: clamp(2rem, 5vw, 4.5rem);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-display-large-font);
+  font-size: clamp(2rem, 5vw, 4.2rem);
+  font-weight: var(--md-sys-typescale-display-large-weight);
   line-height: 0.98;
   /* Two real part names either side of 對戰 routinely exceed one line;
      without balancing this stranded 「士」 on its own line. */
@@ -310,7 +328,7 @@
 
 .analysisCopy h2 span {
   margin: 0 0.25em;
-  color: var(--accent-on-dark);
+  color: var(--md-sys-color-primary);
   font-size: 0.55em;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -347,12 +365,14 @@
 }
 
 .statRow + .statRow {
-  border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 12%, transparent);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .statRow dt {
-  color: color-mix(in srgb, var(--ink-on-dark) 75%, transparent);
-  font-size: 0.78rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
   letter-spacing: 0.14em;
   text-align: center;
   text-transform: uppercase;
@@ -360,7 +380,7 @@
 
 .statRow dd {
   margin: 0;
-  font-family: var(--font-display), serif;
+  font-family: var(--md-sys-typescale-numeral-font);
   font-size: 1.9rem;
   font-variant-numeric: tabular-nums;
   line-height: 1;
@@ -368,18 +388,18 @@
 
 /* The trailing side stays legible but stops competing for the eye. */
 .leftValue {
-  color: color-mix(in srgb, var(--ink-on-dark) 55%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
   text-align: right;
 }
 
 .rightValue {
-  color: color-mix(in srgb, var(--ink-on-dark) 55%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
   text-align: left;
 }
 
 .statRow[data-lead="left"] .leftValue,
 .statRow[data-lead="right"] .rightValue {
-  color: var(--ink-on-dark);
+  color: var(--md-sys-color-on-surface);
 }
 
 .rail {

@@ -22,9 +22,25 @@
   overflow: clip;
   background-image: var(--grain), linear-gradient(to bottom, var(--surface-950) 0%, var(--surface-950) 72%, var(--surface-900) 100%);
   background-repeat: repeat, no-repeat;
-  color: var(--ink-on-dark);
+  color: var(--md-sys-color-on-surface);
   display: flex;
   flex-direction: column;
+}
+
+/*
+ * Cards on this page are M3 OUTLINED cards with their fill removed.
+ *
+ * An outlined card is normally `surface`, and on every other route that is
+ * right. Here it is not: each section of this page is a step of the ADR-0008
+ * gradient rather than a flat `surface`, so a card painting the token colour
+ * lands as a near-black rectangle on a brown ramp — the hard colour edge
+ * ADR-0006 counts as a defect outright. Letting the gradient show through and
+ * keeping only the outline is what an outlined card is actually for.
+ */
+.partCard,
+.eventCard,
+.toolCard {
+  background-color: transparent;
 }
 
 /* Shared section rhythm */
@@ -36,27 +52,43 @@
 }
 
 .sectionInner h2 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
   margin: 0 0 0.75rem;
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
 }
 
 .sectionLede {
   max-width: 50ch;
   margin: 0 0 3rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
 }
 
+/* "Keep going in this direction", not a call to action — so it is a link
+   with the site's own diagonal arrow, not an M3 button. The arrow moves on
+   hover; the link does not lift and nothing underlines itself into place. */
 .textLink {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  color: var(--md-sys-color-primary);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
   text-decoration: underline;
   text-underline-offset: 0.2em;
-  font-weight: 500;
-  transition: opacity 0.15s ease;
 }
 
-.textLink:hover {
-  opacity: 0.72;
+.textLink svg {
+  transition: translate var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-emphasized);
+}
+
+.textLink:hover svg {
+  translate: 0.15rem -0.15rem;
 }
 
 /* Parts section — walks surface-900 (matching the hero's own bottom edge)
@@ -73,15 +105,7 @@
     var(--surface-700) 100%
   );
   background-repeat: repeat, no-repeat;
-  color: var(--ink-on-dark);
-}
-
-.partsSection .sectionLede {
-  color: color-mix(in srgb, var(--ink-on-dark) 78%, transparent);
-}
-
-.partsSection .textLink {
-  color: var(--accent-on-dark);
+  color: var(--md-sys-color-on-surface);
 }
 
 .partsGrid {
@@ -91,32 +115,37 @@
   margin-bottom: 3rem;
 }
 
+/* M3 outlined card (the variant classes are in the markup); this is the
+   content layout inside it. */
 .partCard {
   display: grid;
   grid-template-rows: auto auto auto;
   row-gap: 0.75rem;
   align-content: start;
   padding: 1.5rem;
-  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 18%, transparent);
-  border-radius: 10px;
 }
 
 .partCardLabel {
-  font-size: 0.85rem;
-  color: color-mix(in srgb, var(--ink-on-dark) 65%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
 }
 
 .partCardValue {
-  font-family: var(--font-display), serif;
-  font-size: 3rem;
-  line-height: 1;
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  font-family: var(--md-sys-typescale-numeral-font);
+  font-size: 3rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
 
 .partCardName {
-  font-size: 1.05rem;
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
 }
 
 /* Promotions — paid and partner slots, sitting between the parts section and
@@ -146,7 +175,7 @@
     var(--surface-700) 100%
   );
   background-repeat: repeat, no-repeat;
-  color: var(--ink-on-dark);
+  color: var(--md-sys-color-on-surface);
   /* `clip`, not `hidden`: an overflow-hidden ancestor is still a scroll
      container, so focusing an off-screen link inside it scrolls the box and
      leaves the track sitting at an offset the animation never returns from.
@@ -163,9 +192,10 @@
   max-width: 72rem;
   margin: 0 auto 1rem;
   padding: 0 1.5rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: color-mix(in srgb, var(--ink-on-dark) 62%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
 }
 
 /* Full-bleed on purpose — the heading above stays in the 72rem column, but
@@ -211,9 +241,10 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  color: var(--ink-on-dark);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
   text-decoration: none;
-  font-size: 0.95rem;
 }
 
 a.promoLink:hover {
@@ -221,12 +252,17 @@ a.promoLink:hover {
   text-underline-offset: 0.2em;
 }
 
+/* Deliberately not an M3 chip: a chip is something you press, and this is a
+   disclosure the reader is owed. An outline, label-small, no state layer,
+   nothing to click. */
 .promoBadge {
-  font-size: 0.7rem;
-  padding: 0.15rem 0.45rem;
-  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 32%, transparent);
-  border-radius: 999px;
-  color: color-mix(in srgb, var(--ink-on-dark) 68%, transparent);
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-small-font);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-weight: var(--md-sys-typescale-label-small-weight);
   white-space: nowrap;
 }
 
@@ -302,31 +338,24 @@ a.promoLink:hover {
     var(--surface-600) 100%
   );
   background-repeat: repeat, no-repeat;
-  color: var(--ink-on-dark);
-}
-
-.eventsSection .sectionLede {
-  color: color-mix(in srgb, var(--ink-on-dark) 82%, transparent);
-}
-
-.eventsSection .textLink {
-  color: var(--ink-on-dark);
+  color: var(--md-sys-color-on-surface);
 }
 
 .eventCard {
   max-width: 32rem;
   margin: 0 0 2.5rem;
   padding: 1.75rem;
-  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 22%, transparent);
-  border-radius: 10px;
 }
 
+/* The Event Tier is a real classification (GP / G1 / G2 / G3), so it is the
+   card's overline — above the headline, not a tinted pill on the corner. */
 .eventTier {
   display: block;
-  font-family: var(--font-display), serif;
-  font-size: 1.1rem;
-  color: var(--accent-on-dark);
   margin-bottom: 0.75rem;
+  color: var(--md-sys-color-primary);
+  font-family: var(--md-sys-typescale-numeral-font);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
 }
 
 .eventDetails {
@@ -338,8 +367,10 @@ a.promoLink:hover {
 }
 
 .eventDetails dt {
-  color: color-mix(in srgb, var(--ink-on-dark) 65%, transparent);
-  font-size: 0.85rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
 }
 
 .eventDetails dd {
@@ -368,11 +399,7 @@ a.promoLink:hover {
     var(--surface-600) 100%
   );
   background-repeat: repeat, no-repeat;
-  color: var(--ink-on-dark);
-}
-
-.toolsSection .sectionLede {
-  color: color-mix(in srgb, var(--ink-on-dark) 82%, transparent);
+  color: var(--md-sys-color-on-surface);
 }
 
 .toolsGrid {
@@ -390,6 +417,10 @@ a.promoLink:hover {
   display: flex;
 }
 
+/* An M3 outlined card with a state layer (both classes are in the markup).
+   Hover brightens the edge and raises the state layer, and nothing else —
+   no lift, no glow. The card already has a travelling charge on its
+   perimeter to say it is live. */
 .toolCard {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -400,25 +431,14 @@ a.promoLink:hover {
   gap: 0.4rem 1rem;
   width: 100%;
   padding: 1.5rem;
-  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 22%, transparent);
-  border-radius: 10px;
-  color: var(--ink-on-dark);
-  text-decoration: none;
-  transition: border-color 0.15s ease;
-}
-
-/* Hover brightens the edge and nothing else. No lift, no glow — the
-   anti-slop contract reserves both, and the card already has a travelling
-   charge on its perimeter to say it is live. */
-.toolCard:hover {
-  border-color: color-mix(in srgb, var(--ink-on-dark) 42%, transparent);
+  color: var(--md-sys-color-on-surface);
 }
 
 .toolIcon {
   grid-area: icon;
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: var(--md-sys-shape-corner-medium);
   /* The three marks are drawn on their own tiles at the same corner ratio;
      clipping to a shared radius keeps them a set rather than three
      app icons that happen to sit in a row. */
@@ -430,16 +450,18 @@ a.promoLink:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 1.15rem;
-  font-weight: 500;
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
 }
 
 .toolDesc {
   grid-area: desc;
   margin-top: 0.9rem;
-  font-size: 0.9rem;
-  line-height: 1.65;
-  color: color-mix(in srgb, var(--ink-on-dark) 72%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
 }
 
 /* The one span that has to cross the ramp's 50-60% dead zone (ADR-0008) —
@@ -468,8 +490,8 @@ a.promoLink:hover {
    not two clusters flung to opposite edges. */
 
 .footer {
-  background-color: var(--surface-100);
-  color: var(--ink-on-light);
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
   padding-top: 4rem;
 }
 
@@ -491,20 +513,24 @@ a.promoLink:hover {
 }
 
 .footerLinks a {
-  color: var(--ink-on-light);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
   text-decoration: none;
 }
 
 .footerLinks a:hover {
-  color: var(--accent-on-light);
+  color: var(--md-sys-color-primary);
 }
 
 .footerSources {
   max-width: 44rem;
   margin: 1.75rem auto 0;
   padding: 0 1.5rem;
-  font-size: 0.85rem;
-  color: color-mix(in srgb, var(--ink-on-light) 65%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
   text-align: center;
 }
 
@@ -516,17 +542,18 @@ a.promoLink:hover {
   max-width: 72rem;
   margin: 1.25rem auto 0;
   padding: 0 1.5rem;
-  font-size: 0.8rem;
-  color: color-mix(in srgb, var(--ink-on-light) 55%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
   text-align: center;
 }
 
 .footerWordmark {
-  font-family: var(--font-display), serif;
+  font-family: var(--md-sys-typescale-numeral-font);
   font-size: clamp(2.25rem, 13vw, 10rem);
   line-height: 1.1;
   letter-spacing: -0.01em;
-  color: color-mix(in srgb, var(--ink-on-light) 92%, transparent);
+  color: color-mix(in srgb, var(--md-sys-color-on-surface) 92%, transparent);
   text-align: center;
   margin: 2.5rem 0 0;
   padding: 0 1rem 0.22em;
@@ -573,24 +600,33 @@ a.promoLink:hover {
 
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
+    /*
+     * Both of these animated `opacity: 0 -> 1` and both were measured doing
+     * real damage: every section below the arena computed to `opacity: 0`
+     * until it had been scrolled into view, so a full-page capture of the
+     * home page was the hero followed by a column of empty gradient. That
+     * is the invisible-content trap, and `@supports` plus reduced-motion do
+     * not protect against it — the browsers that DO support scroll-driven
+     * animation are exactly the ones that hide the content.
+     *
+     * Movement only, then. The section travels and settles; it is opaque the
+     * whole way, and a reader who never sees the animation gets a page that
+     * is merely 2rem out of position rather than a page that is blank.
+     */
     @keyframes rise {
       from {
-        opacity: 0;
         transform: translateY(var(--rise-from, 2rem));
       }
       to {
-        opacity: 1;
         transform: translateY(0);
       }
     }
 
     @keyframes settle {
       from {
-        opacity: 0;
         transform: scale(0.985);
       }
       to {
-        opacity: 1;
         transform: scale(1);
       }
     }

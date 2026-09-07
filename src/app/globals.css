@@ -1,7 +1,80 @@
 @import "tailwindcss";
 @import "../styles/colors.css";
+@import "../styles/m3.css";
 @import "../styles/fonts.css";
+@import "../styles/m3-components.css";
 @import "../styles/current-border.css";
+
+/**
+ * Base element styles, expressed as Material 3 roles.
+ *
+ * These used to live in `colors.css` and name palette tokens directly. They
+ * name roles now, which is what lets a `.m3-dark` subtree flip an entire
+ * region — background, ink, links, outlines — by redefining tokens rather
+ * than by every component carrying a dark variant of itself.
+ *
+ * The site-wide default is still the sideline end (場邊 — ADR-0006/0008):
+ * most pages are the "read for twenty minutes" kind, and the homepage is the
+ * one deliberate exception that opens at the field end and walks back down
+ * to this temperature by its footer.
+ */
+
+body {
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+}
+
+a {
+  color: var(--md-sys-color-primary);
+}
+
+/**
+ * Tailwind's Preflight resets h1–h6 to `font-size: inherit`, so a heading
+ * with no rule of its own renders at body size. Giving the M3 headline roles
+ * to the bare elements is what stops every route module from having to
+ * remember that.
+ */
+h1 {
+  font-family: var(--md-sys-typescale-headline-large-font);
+  font-size: var(--md-sys-typescale-headline-large-size);
+  font-weight: var(--md-sys-typescale-headline-large-weight);
+  line-height: var(--md-sys-typescale-headline-large-line-height);
+}
+
+h2 {
+  font-family: var(--md-sys-typescale-headline-medium-font);
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  font-weight: var(--md-sys-typescale-headline-medium-weight);
+  line-height: var(--md-sys-typescale-headline-medium-line-height);
+}
+
+h3 {
+  font-family: var(--md-sys-typescale-headline-small-font);
+  font-size: var(--md-sys-typescale-headline-small-size);
+  font-weight: var(--md-sys-typescale-headline-small-weight);
+  line-height: var(--md-sys-typescale-headline-small-line-height);
+}
+
+h4,
+h5,
+h6 {
+  font-family: var(--md-sys-typescale-title-large-font);
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+}
+
+/**
+ * A region on the other lighting. The class carries the token overrides
+ * (m3.css); this is what makes it paint them.
+ */
+.m3-dark {
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+}
 
 /* Keyboard focus is part of the surface, not a browser-default afterthought. */
 :focus-visible {
@@ -26,8 +99,10 @@ select {
   }
 }
 
-/* Room for the floating mobile navigation (mobile-nav.module.css), which is
-   fixed over the page rather than in flow. */
+/* Room for the floating navigation pill (mobile-nav.module.css), which is
+   fixed over the page rather than in flow — its own height, the gap it
+   floats in, and a gutter so the last line of a page does not stop dead
+   against its top edge. */
 @media (max-width: 640px) {
   html {
     scroll-padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
@@ -35,5 +110,129 @@ select {
 
   body {
     padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Room under the sticky top app bar, so an in-page jump (the guide pages'
+   heading links) lands below the glass instead of behind it. */
+html {
+  scroll-padding-top: 5rem;
+}
+
+@media (max-width: 640px) {
+  html {
+    /* The bar plus the secondary link row it grows at this width. */
+    scroll-padding-top: 8rem;
+  }
+}
+
+/*
+ * Page flow: sections resolve as they arrive and let go as they leave.
+ *
+ * Driven by scroll position itself, never by a script and never by a timer.
+ * Two gates, and content is fully visible unless BOTH are open:
+ *
+ * 1. `@supports` — a browser without scroll-driven animations gets no
+ *    animation, so it gets the base styles, which are opaque.
+ * 2. `prefers-reduced-motion` — a reader who asked for less motion gets the
+ *    same. Collapsing the duration is not enough here; the declaration
+ *    itself must not exist, or a `both`-filled animation would hold the
+ *    element at its `from` keyframe forever.
+ *
+ * And a third rule those two gates cannot supply, which is the important
+ * one: nothing ARRIVES from invisible. Content that has not been scrolled to
+ * yet is fully opaque and merely offset — see `pageFlowIn`. The only fade
+ * here is on the way OUT, on the sliver of a section already leaving the top
+ * of the screen, which is content the reader has passed rather than content
+ * they have not reached.
+ *
+ * WHY `entry 40%` AND NOT A LONGER RANGE. The dangerous page is not the one
+ * that cannot scroll — a scroll timeline with no scroll range is inactive
+ * and applies nothing, so the page renders opaque. It is the page that
+ * scrolls by eighty pixels. Its last element enters the range and can never
+ * advance far enough to reach the `to` keyframe, so a long range would strand
+ * it part-faded with no way for the reader to finish it. A fraction this
+ * short completes almost immediately, and an element already fully in view
+ * sits at entry 100% — past the end of the range, therefore opaque — which
+ * is what makes the first screen of every page correct on load.
+ *
+ * The exit is deliberately late. Fading a section the moment it starts
+ * leaving would dim text somebody is still reading at the top of the screen;
+ * starting at 72% means only the last sliver on its way off the top is
+ * fading. `forwards`, not `both`, so the fade-out contributes nothing while
+ * the element is still arriving — with `both` its `from` would apply during
+ * the entry phase too and cancel the fade-in outright.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /*
+     * Arriving content MOVES; it does not fade up from nothing.
+     *
+     * This animated `opacity: 0 -> 1` and it was measured doing real damage:
+     * every section below the first screen computed to `opacity: 0` until it
+     * had been scrolled into view. That is correct in a browser somebody is
+     * scrolling and wrong everywhere else — a print, a PDF, a screenshot
+     * pass, a thumbnail, any capture that never scrolls gets a page with one
+     * visible section and a column of blank space under it.
+     *
+     * Translating an element that is already opaque has none of that
+     * exposure: the worst case for a reader who never sees the animation is
+     * a section sitting 20px lower than its final position, which nobody can
+     * detect. The motion reads the same.
+     */
+    @keyframes pageFlowIn {
+      from {
+        transform: translateY(1.25rem);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pageFlowOut {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(-0.75rem);
+      }
+    }
+
+    /*
+     * Every public page except the home page, whose sections already carry
+     * their own authored `rise`/`settle` timing (page.module.css). Stacking
+     * a second opacity animation on those would simply win and cancel the
+     * one that was tuned for the arena.
+     */
+    /*
+     * WHICH ELEMENTS, and why not simply `main > *`. On several pages a
+     * single direct child IS the page — the parts table is one 25,000px
+     * section — and a `view()` entry range is proportional to the subject's
+     * own height, so a block that tall never visibly resolves at all. The
+     * second selector reaches one level in to the repeated blocks that
+     * actually carry a reading rhythm: guide cards, event day groups, batch
+     * sections.
+     *
+     * It stops at `li`/`section`/`article` on purpose. It does NOT descend
+     * into a table: fading 295 rows of part data one at a time would be
+     * hostile on a page whose whole job is to be looked up, and a transform
+     * on a table would also become the containing block for anything sticky
+     * inside it. Form controls and the ridge SVG are left alone for the same
+     * reason — this is a reading rhythm, not an ambient house effect.
+     *
+     * The `:has()` on the first selector is what keeps the two from
+     * stacking: a container that hands the animation to its children does
+     * not also run it itself, so opacities are never multiplied together.
+     */
+    main:not([data-authored-motion]) > *:not(:has(> :is(li, section, article))),
+    main:not([data-authored-motion]) > * > :is(li, section, article) {
+      animation:
+        pageFlowIn linear both,
+        pageFlowOut linear forwards;
+      animation-timeline: view(), view();
+      animation-range: entry 0% entry 40%, exit 72% exit 100%;
+    }
   }
 }

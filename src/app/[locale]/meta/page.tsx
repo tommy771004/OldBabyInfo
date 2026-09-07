@@ -65,8 +65,8 @@ function MetaStandingBody({
           <h2>{t("empty_state_heading")}</h2>
           <p>{t("empty_state_body", { count: appearances.length })}</p>
           <ul>
-            <li><Link href="/combo">{t("explore_combo")}</Link></li>
-            <li><Link href="/events">{t("explore_events")}</Link></li>
+            <li><Link className="m3-button m3-button--tonal m3-state" href="/combo">{t("explore_combo")}</Link></li>
+            <li><Link className="m3-button m3-button--text m3-state" href="/events">{t("explore_events")}</Link></li>
           </ul>
         </section>
       ) : (

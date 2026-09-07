@@ -15,6 +15,7 @@ import {
 import { StadiumSignature } from "./stadium-signature.tsx";
 import { SpinWind } from "./spin-wind.tsx";
 import { windDurationSeconds } from "@/lib/parts/wind-speed.ts";
+import { SearchIcon } from "./ui-icons.tsx";
 import styles from "./battle-search.module.css";
 
 type PartImage = { url: string; width: number; height: number };
@@ -90,8 +91,12 @@ function SearchLane({
 
   return (
     <div className={styles.searchLane}>
-      <label className={styles.searchLabel}>
-        <span>{label}</span>
+      {/* M3 search bar: 56dp, fully rounded, on `surface-container-high`,
+          with the search glyph in the leading slot. Not a text field — this
+          is a search that returns results into a list below it, which is the
+          component M3 has for exactly that. */}
+      <div className={`${styles.searchLabel} m3-search-bar`}>
+        <SearchIcon />
         <input
           aria-label={label}
           type="search"
@@ -110,7 +115,7 @@ function SearchLane({
           aria-haspopup="listbox"
           aria-activedescendant={activeIndex >= 0 ? `${resultsId}-option-${activeIndex}` : undefined}
         />
-      </label>
+      </div>
 
       {selected ? (
         <p className={styles.selectedSubject}>
@@ -132,7 +137,7 @@ function SearchLane({
                   role="option"
                   aria-selected={activeIndex === index}
                   data-active={activeIndex === index ? "true" : undefined}
-                  className={styles.result}
+                  className={`${styles.result} m3-state`}
                   onClick={() => selectSubject(subject)}
                 >
                   <span>{subject.nameEn}</span>
@@ -299,7 +304,7 @@ export function BattleSearch({
   const [rightQuery, setRightQuery] = useState("");
 
   return (
-    <section className={styles.battleSection} aria-label={labels.searchLabel}>
+    <section className={`${styles.battleSection} m3-dark`} aria-label={labels.searchLabel}>
       <div className={styles.searchHeader}>
         <h1>{labels.searchLabel}</h1>
         <div className={styles.searchLanes}>

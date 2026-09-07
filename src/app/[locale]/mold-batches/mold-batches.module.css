@@ -23,52 +23,28 @@
 
 .page :global(section[aria-label]) {
   padding-top: 2rem;
-  border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 22%, transparent);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .page :global(form) {
   display: grid;
   grid-template-columns: 1fr auto;
-  align-items: end;
-  gap: 0.75rem 1rem;
+  align-items: start;
+  gap: 0.75rem 0.75rem;
 }
 
-.page :global(label) {
-  grid-column: 1 / -1;
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-
-.page :global(input) {
+.page :global(form .m3-field) {
   min-width: 0;
-  min-height: 3rem;
-  padding: 0.7rem 0.85rem;
-  border: 1px solid color-mix(in srgb, var(--ink-on-light) 34%, transparent);
-  border-radius: 4px;
-  background: color-mix(in srgb, var(--surface-50) 72%, transparent);
-  color: var(--ink-on-light);
-  font: inherit;
 }
 
-.page :global(button) {
-  min-height: 3rem;
-  padding: 0.7rem 1.1rem;
-  border: 1px solid var(--surface-950);
-  border-radius: 4px;
-  background: var(--surface-950);
-  color: var(--surface-50);
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.page :global(button:hover) {
-  background: var(--surface-700);
+.page :global(form button) {
+  min-height: 3.5rem;
+  padding: 0 1.75rem;
 }
 
 .page :global(section[aria-label] > p) {
   margin: 1.25rem 0 0;
-  color: color-mix(in srgb, var(--ink-on-light) 72%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 .page :global([aria-live]) {
@@ -77,12 +53,12 @@
 
 .page :global([aria-live] > p) {
   margin: 0;
-  color: color-mix(in srgb, var(--ink-on-light) 74%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 .page :global(article) {
   padding: 1.5rem 0;
-  border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 18%, transparent);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .page :global(article h3) {
@@ -95,7 +71,7 @@
 }
 
 .page :global(article strong) {
-  font-family: var(--font-display), serif;
+  font-family: var(--md-sys-typescale-numeral-font);
   font-size: 1.35rem;
   letter-spacing: 0.05em;
 }
@@ -110,7 +86,7 @@
   max-width: 44ch;
   margin-top: 5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 18%, transparent);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .instructions h2 {

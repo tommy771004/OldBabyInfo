@@ -1,89 +1,394 @@
-.page { width: min(100% - 2rem, 72rem); margin: 0 auto; padding: 3rem 0 6rem; }
-.intro { max-width: 55ch; margin-bottom: 2rem; }
+/*
+ * The Event calendar, in Material 3.
+ *
+ * The page is a long list read by date, so the two M3 pieces that matter
+ * most are the tab bar (which half of the calendar you are in) and the list
+ * itself. Everything else is type roles and tonal steps.
+ */
 
-/* Scope switch — the two halves of the calendar, not a decorative tab bar.
-   The active one carries weight and a solid underline; the inactive one is
-   a plain link. No sliding indicator, no pill. */
-.scopeTabs { display: flex; gap: 1.5rem; border-bottom: 1px solid color-mix(in srgb, var(--ink-on-light) 18%, transparent); }
-.scopeTab { padding: 0 0 .6rem; text-decoration: none; color: color-mix(in srgb, var(--ink-on-light) 62%, transparent); border-bottom: 2px solid transparent; margin-bottom: -1px; }
-.scopeTab:hover { color: var(--ink-on-light); }
-.scopeTab[aria-current="page"] { color: var(--ink-on-light); font-weight: 700; border-bottom-color: var(--accent-on-light); }
-
-/* Filters */
-.filters { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: flex-end; margin: 1.5rem 0 1rem; }
-.filterField { display: grid; gap: .35rem; font-size: .9rem; }
-.filterField > span { color: color-mix(in srgb, var(--ink-on-light) 62%, transparent); }
-.filterField select {
-  font: inherit; padding: .45rem .6rem; min-width: 11rem;
-  color: var(--ink-on-light); background-color: var(--surface-50);
-  border: 1px solid color-mix(in srgb, var(--ink-on-light) 28%, transparent); border-radius: 6px;
+.page {
+  width: min(100% - 2rem, 72rem);
+  margin: 0 auto;
+  padding: 2.5rem 0 6rem;
 }
-.filterField select:focus-visible { outline: 2px solid var(--accent-on-light); outline-offset: 1px; }
-.filterApply { font: inherit; padding: .5rem 1rem; border: 1px solid var(--accent-on-light); border-radius: 6px; background: transparent; color: var(--accent-on-light); cursor: pointer; }
 
-.resultSummary { margin: 0 0 2.5rem; font-size: .9rem; color: color-mix(in srgb, var(--ink-on-light) 62%, transparent); }
-.empty { margin: 3rem 0; }
+.page h1 {
+  margin: 0 0 0.75rem;
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+}
 
-/* Date → city → venue */
-.dateGroups { display: grid; gap: 3rem; }
-.dateGroup { display: grid; gap: 1.25rem; }
+.intro {
+  max-width: 55ch;
+  margin: 0 0 2rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+}
+
+/* Scope switch — the two halves of the calendar. M3 primary tabs: the
+   rounded 3px indicator under the active label, a full-width
+   `outline-variant` divider under the row. */
+.scopeTabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.scopeTab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0 1rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-title-small-font);
+  font-size: var(--md-sys-typescale-title-small-size);
+  font-weight: var(--md-sys-typescale-title-small-weight);
+  text-decoration: none;
+  transition: color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.scopeTab::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0.75rem;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background-color: transparent;
+  transition: background-color var(--md-sys-motion-duration-medium1) var(--md-sys-motion-easing-emphasized);
+}
+
+.scopeTab:hover {
+  color: var(--md-sys-color-on-surface);
+}
+
+.scopeTab[aria-current="page"] {
+  color: var(--md-sys-color-primary);
+}
+
+.scopeTab[aria-current="page"]::after {
+  background-color: var(--md-sys-color-primary);
+}
+
+/* ── Filters ─────────────────────────────────────────────────────────────
+ *
+ * Three M3 outlined selects on the container step, so the filter row reads
+ * as one control group rather than three loose dropdowns.
+ */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 1.5rem 0 1rem;
+  padding: 1rem;
+  border-radius: var(--md-sys-shape-corner-large);
+  background-color: var(--md-sys-color-surface-container-low);
+}
+
+.filterField {
+  --m3-field-bg: var(--md-sys-color-surface-container-low);
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.filterApply {
+  align-self: center;
+}
+
+.resultSummary {
+  margin: 0 0 2.5rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+}
+
+.empty {
+  margin: 3rem 0;
+}
+
+/* ── Date → city → venue ─────────────────────────────────────────────── */
+
+.dateGroups {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.dateGroup {
+  display: grid;
+  gap: 1rem;
+}
+
 .dateHeading {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: .75rem;
-  margin: 0; padding-bottom: .6rem; font-size: 1.5rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--ink-on-light) 22%, transparent);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--md-sys-color-outline);
+  font-family: var(--md-sys-typescale-numeral-font);
+  font-size: var(--md-sys-typescale-headline-small-size);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--md-sys-typescale-headline-small-line-height);
 }
-.weekday { font-family: var(--font-body), system-ui, sans-serif; font-size: 1rem; font-weight: 400; color: color-mix(in srgb, var(--ink-on-light) 68%, transparent); }
+
+.weekday {
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  font-weight: 400;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
 /* 62%, not 55%: measured 4.42:1 at 55%, just under the 4.5 AA floor for
-   text this size. */
-.dayCount { margin-left: auto; font-family: var(--font-body), system-ui, sans-serif; font-size: .85rem; font-weight: 400; color: color-mix(in srgb, var(--ink-on-light) 62%, transparent); }
+   text this size. `on-surface-variant` is that 68% role. */
+.dayCount {
+  margin-left: auto;
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: 400;
+  color: var(--md-sys-color-on-surface-variant);
+}
 
-.cityGroup { display: grid; gap: .4rem; }
-.cityHeading { margin: .5rem 0 0; font-family: var(--font-body), system-ui, sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .04em; color: color-mix(in srgb, var(--ink-on-light) 60%, transparent); }
+.cityGroup {
+  display: grid;
+  gap: 0.25rem;
+}
 
-.venueList { display: grid; gap: 0; padding: 0; margin: 0; list-style: none; }
-.venue { padding: .55rem 0; border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 12%, transparent); }
-.venue:first-child { border-top: none; }
+.cityHeading {
+  margin: 0.5rem 0 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: 0.04em;
+}
+
+.venueList {
+  display: grid;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.venue {
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.venue:first-child {
+  border-top: none;
+}
 
 /* The whole row is the <summary>; the browser's default marker is removed
-   in favour of the chevron on the right, which is part of the row grid. */
+   in favour of the chevron on the right, which is part of the row grid.
+   An M3 list item: 56dp minimum, 16dp inset, a state layer under the
+   pointer, and a 12px corner on that state layer so it reads as a row you
+   can press rather than a full-bleed highlight. */
 .venueMain {
-  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr) max-content 1rem;
-  gap: .35rem 1.5rem; align-items: baseline;
-  list-style: none; cursor: pointer; padding: .15rem .25rem; margin: -.15rem -.25rem; border-radius: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr) max-content 1.5rem;
+  gap: 0.35rem 1.5rem;
+  align-items: center;
+  min-height: 3.5rem;
+  padding: 0.6rem 0.75rem;
+  margin: 0 -0.75rem;
+  border-radius: var(--md-sys-shape-corner-medium);
+  list-style: none;
+  cursor: pointer;
+  transition: background-color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
 }
-.venueMain::-webkit-details-marker { display: none; }
-.venueMain:hover { background-color: color-mix(in srgb, var(--ink-on-light) 5%, transparent); }
-.venueMain:focus-visible { outline: 2px solid var(--accent-on-light); outline-offset: 1px; }
-.chevron { justify-self: end; align-self: center; color: color-mix(in srgb, var(--ink-on-light) 45%, transparent); transition: rotate .15s ease; }
-.venueDetails[open] .chevron { rotate: 180deg; }
-.venueName { font-size: 1.05rem; }
-.sessions { display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
-.session { display: inline-flex; gap: .45rem; align-items: baseline; }
-.session time { font-variant-numeric: tabular-nums; }
-.age { font-size: .85rem; color: color-mix(in srgb, var(--ink-on-light) 62%, transparent); }
-.registration { font-size: .9rem; color: color-mix(in srgb, var(--ink-on-light) 72%, transparent); white-space: nowrap; }
 
-.venueDetailsBody { padding: .5rem 0 .25rem 0; font-size: .875rem; }
-.address { margin: 0 0 .4rem; color: color-mix(in srgb, var(--ink-on-light) 70%, transparent); }
-.sessionFacts { display: grid; gap: .25rem; margin: 0; padding: 0; list-style: none; color: color-mix(in srgb, var(--ink-on-light) 70%, transparent); }
+.venueMain::-webkit-details-marker {
+  display: none;
+}
 
-/* Pagination */
-.pagination { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem 1rem; margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 18%, transparent); }
-.pageNumbers { display: flex; flex-wrap: wrap; gap: .25rem; }
-.pageNumbers a, .pageCurrent { display: grid; place-items: center; min-width: 2.25rem; height: 2.25rem; padding: 0 .5rem; border-radius: 6px; text-decoration: none; }
-.pageNumbers a { color: var(--ink-on-light); border: 1px solid color-mix(in srgb, var(--ink-on-light) 20%, transparent); }
-.pageNumbers a:hover { border-color: var(--accent-on-light); color: var(--accent-on-light); }
-.pageCurrent { font-weight: 700; color: var(--surface-50); background-color: var(--accent-on-light); }
+.venueMain:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+}
+
+.venueMain:focus-visible {
+  outline: 3px solid var(--md-sys-color-secondary);
+  outline-offset: -3px;
+}
+
+.chevron {
+  justify-self: end;
+  align-self: center;
+  color: var(--md-sys-color-on-surface-variant);
+  transition: rotate var(--md-sys-motion-duration-medium1) var(--md-sys-motion-easing-emphasized);
+}
+
+.venueDetails[open] .chevron {
+  rotate: 180deg;
+}
+
+.venueName {
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: 1.5;
+}
+
+.sessions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+}
+
+.session {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: baseline;
+}
+
+.session time {
+  font-variant-numeric: tabular-nums;
+}
+
+.age,
+.registration {
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+}
+
+.registration {
+  white-space: nowrap;
+}
+
+.venueDetailsBody {
+  padding: 0.25rem 0.75rem 0.75rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+}
+
+.address {
+  margin: 0 0 0.4rem;
+}
+
+.sessionFacts {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ── Pagination ──────────────────────────────────────────────────────────
+ *
+ * M3 has no pagination component; these follow its icon-button geometry —
+ * a 40dp round target with a state layer, and the current page as a filled
+ * `primary` disc.
+ */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+
+/* Prev/next are M3 text buttons: 40dp tall, so they are a real target on a
+   phone rather than a 28px line of text. */
+.pagination > a,
+.paginationDisabled {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 0.75rem;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  text-decoration: none;
+}
+
+.pageNumbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.pageNumbers a,
+.pageCurrent {
+  display: grid;
+  place-items: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 0.6rem;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+
+.pageNumbers a {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.pageNumbers a:hover {
+  color: var(--md-sys-color-primary);
+}
+
+.pageCurrent {
+  font-weight: 700;
+  color: var(--md-sys-color-on-primary);
+  background-color: var(--md-sys-color-primary);
+}
+
 /* "Unavailable" still has to be readable — it's telling you you're on the
-   first/last page. 38% measured 2.58:1, well under AA. At 62% it clears
-   the floor while staying obviously quieter than the live links (13.9:1). */
-.paginationDisabled { color: color-mix(in srgb, var(--ink-on-light) 62%, transparent); }
+   first/last page. 38% measured 2.58:1, well under AA; `on-surface-variant`
+   is the 68% role that clears it while staying obviously quieter than the
+   live links. */
+.paginationDisabled {
+  color: var(--md-sys-color-on-surface-variant);
+}
 
 @media (max-width: 720px) {
-  .venueMain { grid-template-columns: 1fr 1rem; gap: .2rem .75rem; }
-  .venueName, .sessions, .registration { grid-column: 1; }
-  .chevron { grid-column: 2; grid-row: 1; }
-  .registration { white-space: normal; }
-  .dayCount { margin-left: 0; }
-  .filterField, .filterField select { width: 100%; }
+  .venueMain {
+    grid-template-columns: 1fr 1.5rem;
+    gap: 0.2rem 0.75rem;
+  }
+
+  .venueName,
+  .sessions,
+  .registration {
+    grid-column: 1;
+  }
+
+  .chevron {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .registration {
+    white-space: normal;
+  }
+
+  .dayCount {
+    margin-left: 0;
+  }
+
+  .filterField {
+    flex: 1 1 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scopeTab,
+  .scopeTab::after,
+  .venueMain,
+  .chevron {
+    transition: none;
+  }
 }

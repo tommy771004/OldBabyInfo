@@ -1,7 +1,115 @@
-.page { width: min(100% - 2rem, 72rem); margin: 0 auto; padding: 3rem 0 6rem; }
-.page :global(table) { width: 100%; min-width: 42rem; border-collapse: collapse; table-layout: fixed; }
-.page :global(th), .page :global(td) { width: 9rem; min-width: 9rem; padding: .85rem .75rem; text-align: left; vertical-align: middle; border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 16%, transparent); }
-.page :global(th:first-child) { width: 10rem; min-width: 10rem; }
-.page :global(tbody th) { color: color-mix(in srgb, var(--ink-on-light) 64%, transparent); font-size: .85rem; }
-.page :global(td svg) { display: block; width: 3.5rem; height: 3.5rem; }
-.scroll { overflow-x: auto; }
+/*
+ * Part comparison, in Material 3.
+ *
+ * A fixed-layout table so every Part column is the same width whatever is in
+ * it — a comparison whose columns move as the content changes is not a
+ * comparison. M3's data-table guidance for the rest: a label-medium row
+ * header in `on-surface-variant`, a 1px `outline-variant` between rows, and
+ * nothing drawn around the table.
+ */
+
+.page {
+  width: min(100% - 2rem, 72rem);
+  margin: 0 auto;
+  padding: 2.5rem 0 6rem;
+}
+
+.page h1 {
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+}
+
+.scroll {
+  overflow-x: auto;
+}
+
+.page :global(table) {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.page :global(th),
+.page :global(td) {
+  width: 9rem;
+  min-width: 9rem;
+  padding: 0.85rem 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  font-variant-numeric: tabular-nums;
+}
+
+.page :global(th:first-child) {
+  width: 10rem;
+  min-width: 10rem;
+}
+
+.page :global(tbody th) {
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  letter-spacing: var(--md-sys-typescale-label-medium-tracking);
+}
+
+.page :global(thead th) {
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
+}
+
+.page :global(td svg) {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+/* ── Add a Part ──────────────────────────────────────────────────────────
+ *
+ * The control that fills the comparison. It sat unstyled — a bare label
+ * running straight into a bare input, which on a phone read as one broken
+ * sentence ("加入零件比較輸入零件名稱"). An M3 outlined field and a plain
+ * list of matches under it: picking one navigates, so a menu surface would
+ * promise a dropdown this is not.
+ */
+.addSlot {
+  max-width: 26rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.empty {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.noMatches {
+  margin: 0.75rem 0 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+}
+
+.candidates {
+  display: grid;
+  gap: 0;
+  margin: 0.5rem -0.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* M3 list item: 48dp, its own state layer, no rule between rows. */
+.candidate {
+  display: flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--md-sys-shape-corner-small);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  text-decoration: none;
+}

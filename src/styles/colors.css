@@ -58,21 +58,15 @@
 }
 
 /**
- * Site-wide default (ticket 41): the sideline end ("場邊"), not the field.
- * Most pages (Parts, Events, and every internal QA page) are the "read for
- * twenty minutes" kind ADR-0006 describes, not the hero — they belong at
- * the warm/light end. The homepage is the one deliberate exception: its
- * hero section (see page.module.css's .hero) explicitly overrides back to
- * the field end for its own first screen, then walks down to this same
- * light default by its footer — so a link out of that footer into Parts or
- * Events lands on a page that's already the same temperature, not a jump
- * back to black.
+ * This file is the palette and nothing else. The Material 3 colour ROLES
+ * built on top of it live in `m3.css`, and the base element styles that
+ * apply those roles (body background, ink, link colour) live in
+ * `globals.css`.
+ *
+ * The site-wide default is still the sideline end ("場邊"), not the field:
+ * most pages are the "read for twenty minutes" kind ADR-0006 describes. The
+ * homepage is the one deliberate exception — it opens at the field end and
+ * walks back down to this temperature by its footer, so a link out of that
+ * footer into Parts or Events lands on a page that is already the same
+ * temperature rather than a jump back to black.
  */
-body {
-  background-color: var(--surface-100);
-  color: var(--ink-on-light);
-}
-
-a {
-  color: var(--accent-on-light);
-}

@@ -85,8 +85,8 @@ function EventsPageBody({
   return (
     <main className={styles.page}>
       <h1>{t("title")}</h1>
-      <p>{t("intro")}</p>
-      <p>{t("coverage_note")}</p>
+      <p className={styles.intro}>{t("intro")}</p>
+      <p className={styles.intro}>{t("coverage_note")}</p>
 
       <nav className={styles.scopeTabs} aria-label={t("title")}>
         {(["upcoming", "past"] as const).map((scope) => (
@@ -98,7 +98,7 @@ function EventsPageBody({
               // two scopes have different page counts.
               query: buildCalendarQuery({ ...filters, scope, page: 1 }),
             }}
-            className={styles.scopeTab}
+            className={`${styles.scopeTab} m3-state`}
             aria-current={filters.scope === scope ? "page" : undefined}
           >
             {t(`scope_${scope}`)}

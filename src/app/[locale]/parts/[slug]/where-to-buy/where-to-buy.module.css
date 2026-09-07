@@ -19,7 +19,7 @@
 .notice,
 .disclaimer {
   max-width: 52ch;
-  color: color-mix(in srgb, var(--ink-on-light) 68%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 .page :global(ul) {
@@ -32,7 +32,7 @@
 
 .page :global(li) {
   padding: 1.5rem 0;
-  border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 20%, transparent);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .page :global(li h2) {
@@ -52,7 +52,7 @@
 }
 
 .page :global(dt) {
-  color: color-mix(in srgb, var(--ink-on-light) 68%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 .page :global(dd) {

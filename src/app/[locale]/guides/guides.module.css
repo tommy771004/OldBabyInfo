@@ -30,7 +30,13 @@
 }
 .mastheadText { position: relative; z-index: 1; max-width: 27rem; }
 
-.title { margin: 0; font-size: clamp(2.1rem, 6vw, 3.2rem); line-height: 1.15; }
+.title {
+  margin: 0;
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+}
 /* Measured with the real WCAG formula, not eyeballed (ADR-0008): 70% ink
    composited on --surface-100 is 5.98:1, well over the 4.5 AA floor while
    staying clearly quieter than the 13.9:1 title. */
@@ -40,7 +46,7 @@
   font-size: 1.05rem;
   line-height: 1.8;
   text-wrap: pretty;
-  color: color-mix(in srgb, var(--ink-on-light) 70%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 /*
@@ -55,7 +61,7 @@
   translate: 0 -50%;
   width: 17.5rem;
   height: 17.5rem;
-  color: color-mix(in srgb, var(--ink-on-light) 48%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
   pointer-events: none;
 }
 
@@ -71,37 +77,37 @@
  */
 .entry {
   padding: 1.5rem;
-  border: 1px solid color-mix(in srgb, var(--ink-on-light) 13%, transparent);
-  border-radius: 10px;
-  background: color-mix(in srgb, var(--surface-50) 76%, transparent);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface-container-lowest);
   margin-bottom: 2.5rem;
 }
 
 .startHere {
   margin: 0 0 .5rem;
   font-size: .95rem;
-  color: var(--accent-on-light);
+  color: var(--md-sys-color-primary);
 }
 
 .entry .itemTitle { font-size: 1.6rem; }
 
 /* Rows for the rest of the path. Hairline separators, matching the Events
    calendar's venue rows — no card grid, no hover lift. */
-.item { padding: 1.6rem .25rem; border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 14%, transparent); }
+.item { padding: 1.6rem .25rem; border-top: 1px solid var(--md-sys-color-outline-variant); }
 .item:first-of-type { border-top: none; }
-.item:hover, .item:focus-within { background-color: color-mix(in srgb, var(--ink-on-light) 4%, transparent); }
+.item:hover, .item:focus-within { background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 4%, transparent); }
 
 .itemTitle { margin: 0; font-size: 1.3rem; line-height: 1.4; text-wrap: balance; }
 .itemTitle a { text-decoration: none; }
 .itemTitle a:hover { text-decoration: underline; }
-.itemTitle a:focus-visible { outline: 2px solid var(--accent-on-light); outline-offset: 3px; border-radius: 2px; }
+.itemTitle a:focus-visible { outline: 2px solid var(--md-sys-color-primary); outline-offset: 3px; border-radius: 2px; }
 
 .description {
   margin: .6rem 0 0;
   max-width: 40rem;
   line-height: 1.8;
   text-wrap: pretty;
-  color: color-mix(in srgb, var(--ink-on-light) 72%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 /*
@@ -124,7 +130,7 @@
   list-style: none;
   font-size: .875rem;
   line-height: 1.6;
-  color: color-mix(in srgb, var(--ink-on-light) 68%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 /* Empty state ---------------------------------------------------------- */
@@ -137,12 +143,12 @@
 .empty {
   max-width: 34rem;
   padding: 2rem;
-  border: 1px solid color-mix(in srgb, var(--ink-on-light) 13%, transparent);
-  border-radius: 10px;
-  background: color-mix(in srgb, var(--surface-50) 76%, transparent);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface-container-lowest);
 }
 .emptyHeadline { margin: 0; font-size: 1.15rem; font-weight: 700; }
-.emptyBody { margin: .75rem 0 0; line-height: 1.8; text-wrap: pretty; color: color-mix(in srgb, var(--ink-on-light) 72%, transparent); }
+.emptyBody { margin: .75rem 0 0; line-height: 1.8; text-wrap: pretty; color: var(--md-sys-color-on-surface-variant); }
 
 @media (max-width: 720px) {
   .page { padding-top: 2rem; }

@@ -10,7 +10,7 @@
 }
 
 .breadcrumb a {
-  color: var(--accent-on-light);
+  color: var(--md-sys-color-primary);
 }
 
 .header {
@@ -19,7 +19,7 @@
 
 .kicker {
   margin: 0 0 0.4rem;
-  color: color-mix(in srgb, var(--ink-on-light) 58%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -36,9 +36,9 @@
    Beyblade, so it leads the header rather than hiding in the URL. */
 .code {
   padding: 0.15rem 0.5rem;
-  border: 1px solid color-mix(in srgb, var(--accent-on-light) 45%, transparent);
-  border-radius: 2px;
-  color: var(--accent-on-light);
+  border: 1px solid color-mix(in srgb, var(--md-sys-color-primary) 45%, transparent);
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  color: var(--md-sys-color-primary);
   letter-spacing: 0.06em;
 }
 
@@ -46,7 +46,7 @@
    it is what the box and the spreadsheets say. */
 .modelName {
   margin: 0.5rem 0 0;
-  color: color-mix(in srgb, var(--ink-on-light) 55%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
   font-size: 0.9rem;
   letter-spacing: 0.04em;
   overflow-wrap: anywhere;
@@ -66,13 +66,13 @@
    Part is pictured rather than letting the image imply more than it is. */
 .figure figcaption {
   margin-top: 0.5rem;
-  color: color-mix(in srgb, var(--ink-on-light) 58%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
   font-size: 0.78rem;
 }
 
 .header h1 {
   margin: 0;
-  font-family: var(--font-display), serif;
+  font-family: var(--md-sys-typescale-numeral-font);
   font-size: clamp(1.9rem, 5vw, 3.2rem);
   line-height: 1.05;
   letter-spacing: -0.01em;

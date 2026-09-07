@@ -18,13 +18,22 @@ const ITEMS: Array<{
   { href: "/guides", icon: "terms", labelKey: "mobile_guides" },
 ];
 
-/** Visible labels support recognition without requiring icon memorization. */
+/**
+ * The floating navigation pill, running Material 3's navigation-bar
+ * behaviour (owner-decided shape — see the stylesheet).
+ *
+ * Labels follow M3's "selected" label visibility: the destination you are on
+ * names itself, the rest are their glyph alone, and pressing or tabbing to
+ * one shows its label before the page has changed. The label is CSS-hidden,
+ * never removed — every item carries an `aria-label`, so the accessible name
+ * is there whether or not the text is painted.
+ */
 export function MobileNav() {
   const t = useTranslations("HomePage");
   const pathname = usePathname();
 
   return (
-    <nav className={styles.bar} aria-label={t("nav_label")}>
+    <nav className={`${styles.bar} m3-dark`} aria-label={t("nav_label")}>
       {ITEMS.map((item) => {
         const current = pathname === item.href || pathname.startsWith(`${item.href}/`)
           || (item.href === "/events" && pathname === "/meta");
@@ -36,8 +45,10 @@ export function MobileNav() {
             aria-label={t(item.labelKey)}
             aria-current={current ? "page" : undefined}
           >
-            <NavIcon name={item.icon} />
-            <span>{t(item.labelKey)}</span>
+            <span className={styles.indicator}>
+              <NavIcon name={item.icon} />
+            </span>
+            <span className={styles.label}>{t(item.labelKey)}</span>
           </Link>
         );
       })}

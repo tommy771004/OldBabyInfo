@@ -11,16 +11,31 @@
   gap: 1.5rem;
 }
 
+/*
+ * An M3 outlined card per Assessment.
+ *
+ * It used to be a full-bleed dark band with no horizontal padding and light
+ * ink on it — a second lighting inside a light page, for a block of prose
+ * whose whole point is that it is somebody else's opinion with a source
+ * attached (ADR-0009). One outlined card per Assessment says "these are
+ * separate claims from separate people" far better than one dark slab does,
+ * and it stops the section from fighting the official data above it.
+ */
 .assessment {
   max-width: 48rem;
-  padding: 1.25rem 0;
-  background: color-mix(in srgb, var(--surface-700) 72%, transparent);
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  background-color: var(--md-sys-color-surface-container-lowest);
 }
 
 .kind {
   margin: 0 0 0.5rem;
-  color: var(--accent-on-dark);
-  font-family: var(--font-display), serif;
+  color: var(--md-sys-color-primary);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: 0.04em;
 }
 
 .assessment h3,
@@ -33,11 +48,12 @@
   grid-template-columns: minmax(7rem, auto) 1fr;
   gap: 0.55rem 1rem;
   margin: 1rem 0 0;
-  font-size: 0.9rem;
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
 }
 
 .details dt {
-  color: color-mix(in srgb, var(--ink-on-dark) 68%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 .details dd {
@@ -45,17 +61,23 @@
 }
 
 .excerpt {
-  color: var(--accent-on-dark);
+  color: var(--md-sys-color-primary);
 }
 
 .details a {
   color: inherit;
 }
 
+/*
+ * Real pagination, so it gets real controls: the page-size options are M3
+ * filter chips (they are a choice you can see the state of) and the
+ * prev/next pair are text buttons. Both classes are in the markup; this only
+ * lays them out.
+ */
 .pagination {
   display: grid;
-  gap: 0.8rem;
-  margin-top: 1.4rem;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
 }
 
 .pageSizes,
@@ -63,23 +85,23 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.5rem;
 }
 
-.pageSizes a,
-.pageControls a,
-.pageControls span {
-  color: inherit;
-  padding: 0.25rem 0;
+.pageSizesLabel {
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  letter-spacing: var(--md-sys-typescale-label-medium-tracking);
 }
 
-.pageSizes a[aria-current="true"] {
-  color: var(--accent-on-dark);
-  font-weight: 700;
-}
-
-.pageControls span[aria-disabled="true"] {
-  color: color-mix(in srgb, var(--ink-on-dark) 42%, transparent);
+.pageStatus {
+  padding: 0 0.5rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-variant-numeric: tabular-nums;
 }
 
 @media (max-width: 560px) {

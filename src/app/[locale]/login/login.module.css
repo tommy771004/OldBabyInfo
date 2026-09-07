@@ -1,31 +1,38 @@
+/*
+ * Sign-in, in Material 3.
+ *
+ * Two providers, so the emphasis order matters: Google is the filled button
+ * (the one action the screen exists for) and LINE the tonal one below it.
+ * Deliberately NOT a filled button beside an outlined one — that pairing is
+ * a preset, and here the two are the same kind of action anyway, so they
+ * stack rather than sit side by side.
+ */
+
 .page {
   max-width: 34rem;
   margin: 0 auto;
-  padding: 6rem 1.5rem;
+  padding: 5rem 1.5rem;
 }
 
 .page h1 {
   margin: 0 0 1rem;
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
-  line-height: 1;
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
 }
 
 .page p {
   max-width: 40ch;
   margin: 0 0 2rem;
+  color: var(--md-sys-color-on-surface-variant);
 }
 
-.page button {
-  min-height: 3rem;
-  padding: 0.7rem 1rem;
-  border: 1px solid var(--surface-950);
-  border-radius: 4px;
-  background: var(--surface-950);
-  color: var(--surface-50);
-  font-weight: 700;
-  cursor: pointer;
+.page form {
+  display: block;
+  margin-bottom: 0.75rem;
 }
 
-.page button:hover {
-  background: var(--surface-700);
+.page form button {
+  width: 100%;
 }

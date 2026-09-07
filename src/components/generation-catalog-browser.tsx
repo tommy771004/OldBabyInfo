@@ -7,6 +7,7 @@ import type {
 import Image from "next/image";
 import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
 import { catalogTabsOf, isTabSelected } from "@/lib/generation-catalog/tabs.ts";
+import { CheckIcon } from "./ui-icons.tsx";
 import styles from "./generation-catalog-browser.module.css";
 
 export interface CatalogFacetRow {
@@ -141,20 +142,28 @@ export function GenerationCatalogBrowser({
           titles saying the same thing was the first thing on the page. */}
       <p className={styles.lede}>{visibleKindLabel} · {recordCountLabel(visibleRecords.length)}</p>
 
+      {/* M3 outlined text field and selects. The label follows the control in
+          the DOM because the floating label is driven by `:placeholder-shown`
+          on its own sibling — no script, and the resting position is the
+          readable one, so a browser that supports nothing still shows a
+          labelled field. */}
       <form className={styles.searchForm} method="get" action={`${prefix}/parts`} role="search">
-        <div className={styles.field}>
-          <label htmlFor={`catalog-query-${formIdSuffix}`}>{labels.searchLabel ?? "Search catalog"}</label>
+        <div className={`${styles.field} m3-field`}>
           <input
+            className="m3-field__input"
             id={`catalog-query-${formIdSuffix}`}
             name="catalogQuery"
             type="search"
             placeholder={labels.searchPlaceholder ?? "Search by name or alias"}
             defaultValue={searchQuery}
           />
+          <label className="m3-field__label" htmlFor={`catalog-query-${formIdSuffix}`}>
+            {labels.searchLabel ?? "Search catalog"}
+          </label>
         </div>
-        <div className={styles.field}>
-          <label htmlFor={`catalog-generation-filter-${formIdSuffix}`}>{labels.generationLabel}</label>
+        <div className={`${styles.field} m3-field m3-field--select`}>
           <select
+            className="m3-field__input"
             id={`catalog-generation-filter-${formIdSuffix}`}
             name="catalogGeneration"
             defaultValue={searchAcrossGenerations ? "" : selectedGeneration}
@@ -162,26 +171,40 @@ export function GenerationCatalogBrowser({
             <option value="">{labels.allLabel}</option>
             {generations.map((generation) => <option key={generation.id} value={generation.id}>{generation.nameEn}</option>)}
           </select>
+          <label className="m3-field__label" htmlFor={`catalog-generation-filter-${formIdSuffix}`}>
+            {labels.generationLabel}
+          </label>
         </div>
-        <div className={styles.field}>
-          <label htmlFor={`catalog-system-filter-${formIdSuffix}`}>{labels.systemLabel}</label>
-          <select id={`catalog-system-filter-${formIdSuffix}`} name="catalogSystem" defaultValue={selectedSystem ?? ""}>
+        <div className={`${styles.field} m3-field m3-field--select`}>
+          <select
+            className="m3-field__input"
+            id={`catalog-system-filter-${formIdSuffix}`}
+            name="catalogSystem"
+            defaultValue={selectedSystem ?? ""}
+          >
             <option value="">{labels.allLabel}</option>
             {systems.map((system) => <option key={system.id} value={system.id}>{system.nameEn}</option>)}
           </select>
+          <label className="m3-field__label" htmlFor={`catalog-system-filter-${formIdSuffix}`}>
+            {labels.systemLabel}
+          </label>
         </div>
         <input type="hidden" name="catalogKind" value={selectedKind ?? "part"} />
         {selectedPartType ? <input type="hidden" name="catalogPartType" value={selectedPartType} /> : null}
-        <button type="submit">{labels.searchSubmitLabel ?? "Search"}</button>
+        <button type="submit" className={`${styles.searchSubmit} m3-button m3-button--filled m3-state`}>
+          {labels.searchSubmitLabel ?? "Search"}
+        </button>
       </form>
 
       <nav className={styles.navGroup} aria-label={labels.generationLabel}>
         {generations.map((generation) => (
           <a
             key={generation.id}
+            className="m3-chip m3-state"
             href={hrefFor({ catalogGeneration: generation.id })}
             aria-current={generation.id === selectedGeneration ? "page" : undefined}
           >
+            {generation.id === selectedGeneration ? <CheckIcon /> : null}
             {generation.nameEn}
           </a>
         ))}
@@ -189,15 +212,22 @@ export function GenerationCatalogBrowser({
 
       {generationSystems.length > 0 ? (
         <nav className={styles.navGroup} aria-label={labels.systemLabel}>
-          <a href={hrefFor({ catalogGeneration: selectedGeneration })} aria-current={!selectedSystem ? "page" : undefined}>
+          <a
+            className="m3-chip m3-state"
+            href={hrefFor({ catalogGeneration: selectedGeneration })}
+            aria-current={!selectedSystem ? "page" : undefined}
+          >
+            {selectedSystem ? null : <CheckIcon />}
             {labels.allLabel}
           </a>
           {generationSystems.map((system) => (
             <a
               key={system.id}
+              className="m3-chip m3-state"
               href={hrefFor({ catalogGeneration: selectedGeneration, catalogSystem: system.id })}
               aria-current={system.id === selectedSystem ? "page" : undefined}
             >
+              {system.id === selectedSystem ? <CheckIcon /> : null}
               {system.nameEn}
             </a>
           ))}
@@ -207,10 +237,11 @@ export function GenerationCatalogBrowser({
         <p data-catalog-compatibility>{selectedSystemDefinition.compatibilityRules.join(" ")}</p>
       ) : null}
 
-      <nav className={styles.tabs} aria-label={labels.kindLabel}>
+      <nav className="m3-tabs" aria-label={labels.kindLabel}>
         {tabs.map((tab) => (
           <a
             key={`${tab.kind}:${tab.partType ?? ""}`}
+            className="m3-tab m3-state"
             href={hrefFor({
               catalogGeneration: selectedGeneration,
               catalogSystem: selectedSystem,
@@ -220,7 +251,7 @@ export function GenerationCatalogBrowser({
             aria-current={isTabSelected(tab, selectedKind, selectedPartType) ? "page" : undefined}
           >
             {tab.partType ? partTypeLabelFor(tab.partType) : kindLabel(tab.kind, labels)}
-            <span className={styles.tabCount}>{tab.count}</span>
+            <span className="m3-tab__count">{tab.count}</span>
           </a>
         ))}
       </nav>
@@ -232,7 +263,13 @@ export function GenerationCatalogBrowser({
               <span className={styles.facetLabel}>{row.label}</span>
               <span className={styles.navGroup}>
                 {row.options.map((option) => (
-                  <a key={option.key} href={option.href} aria-current={option.selected ? "page" : undefined}>
+                  <a
+                    key={option.key}
+                    className="m3-chip m3-state"
+                    href={option.href}
+                    aria-current={option.selected ? "page" : undefined}
+                  >
+                    {option.selected ? <CheckIcon /> : null}
                     {option.label}
                   </a>
                 ))}

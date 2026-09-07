@@ -12,13 +12,13 @@
   grid-template-columns: max-content 1fr;
   gap: 0 1.5rem;
   margin: 0;
-  border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 18%, transparent);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .spec dt {
   padding: 0.65rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--ink-on-light) 12%, transparent);
-  color: color-mix(in srgb, var(--ink-on-light) 60%, transparent);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  color: var(--md-sys-color-on-surface-variant);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -28,7 +28,7 @@
 .spec dd {
   margin: 0;
   padding: 0.65rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--ink-on-light) 12%, transparent);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
   font-variant-numeric: tabular-nums;
 }
 
@@ -38,7 +38,7 @@
 
 .list h2 {
   margin: 0 0 0.75rem;
-  font-family: var(--font-display), serif;
+  font-family: var(--md-sys-typescale-numeral-font);
   font-size: 1.35rem;
 }
 
@@ -56,15 +56,15 @@
   align-items: baseline;
   justify-content: space-between;
   padding: 0.6rem 0;
-  border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 12%, transparent);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .list a {
-  color: var(--accent-on-light);
+  color: var(--md-sys-color-primary);
 }
 
 .listKind {
-  color: color-mix(in srgb, var(--ink-on-light) 55%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;

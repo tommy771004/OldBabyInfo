@@ -97,6 +97,7 @@ export function CatalogPartTable({
           <SortLink
             key={field}
             field={field}
+            className="m3-chip m3-state"
             sortField={sortField}
             sortDirection={sortDirection}
             sortQueryFor={sortQueryFor}
@@ -195,12 +196,16 @@ function SortLink({
   sortField,
   sortDirection,
   sortQueryFor,
+  className,
   children,
 }: {
   field: SortField;
   sortField: SortField | undefined;
   sortDirection: SortDirection;
   sortQueryFor: (field: SortField, direction: SortDirection) => Record<string, string>;
+  /** The phone-width sort strip renders these as M3 filter chips; inside a
+   *  column header they stay plain links. Same component either way. */
+  className?: string;
   children: React.ReactNode;
 }) {
   const isActive = sortField === field;
@@ -208,6 +213,7 @@ function SortLink({
 
   return (
     <Link
+      className={className}
       href={{ pathname: "/parts", query: sortQueryFor(field, nextDirection) }}
       aria-current={isActive ? "true" : undefined}
     >

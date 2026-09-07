@@ -33,16 +33,24 @@ export function MoldBatchLookup({ parts, labels, partNames = {} }: MoldBatchLook
   return (
     <section aria-label={labels.searchLabel}>
       <form onSubmit={submit}>
-        <label htmlFor="mold-batch-code">{labels.searchLabel}</label>
-        <input
-          id="mold-batch-code"
-          name="batchCode"
-          type="search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          autoComplete="off"
-        />
-        <button type="submit">{labels.searchButton}</button>
+        {/* M3 outlined text field — label after the input, because the
+            floating label is driven by `:placeholder-shown` on its sibling. */}
+        <div className="m3-field">
+          <input
+            className="m3-field__input"
+            id="mold-batch-code"
+            name="batchCode"
+            type="search"
+            placeholder=" "
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            autoComplete="off"
+          />
+          <label className="m3-field__label" htmlFor="mold-batch-code">{labels.searchLabel}</label>
+        </div>
+        <button type="submit" className="m3-button m3-button--filled m3-state">
+          {labels.searchButton}
+        </button>
       </form>
 
       <p>{labels.coverage}</p>

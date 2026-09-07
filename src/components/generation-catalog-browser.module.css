@@ -1,177 +1,106 @@
-/* No card around the controls: a rounded box holding the whole page is the
-   default answer, and here it only narrowed the content and added an edge
-   that means nothing. The filters sit on the page. */
+/*
+ * The catalog browser, in Material 3.
+ *
+ * This is the densest control surface on the site, so it is where the M3
+ * component vocabulary has to do the most work. Four things it now uses
+ * instead of hand-rolled equivalents:
+ *
+ * - The query row is an M3 outlined text field and two outlined selects,
+ *   with real floating labels (`m3-components.css`). The label used to sit
+ *   above the control as a 12px caption; it now belongs to the field.
+ * - Generation, System and the facet rows are M3 FILTER CHIPS — 32dp, 8px
+ *   corner, outline at rest, `secondary-container` when selected. A chip is
+ *   the component M3 has for exactly this job, and it is deliberately not a
+ *   pill: the shape is what separates a filter from a button.
+ * - The kind bar is M3 primary TABS, with the rounded 3px indicator under
+ *   the active label. The old version was a tinted rounded tab plus a
+ *   bottom rule, which read as two components stacked.
+ * - Results are M3 outlined cards.
+ *
+ * `current-border` (the travelling charge on a card's perimeter) stays. It
+ * is the one flourish that belongs to this site rather than to M3, and
+ * ADR-0006 keeps it on record; M3 has no opinion about it and it does not
+ * fight anything here.
+ */
+
 .browser {
   display: grid;
   gap: 1.25rem;
 }
 
-.header {
-  display: grid;
-  gap: .35rem;
-}
-
-.kicker {
-  margin: 0;
-  color: var(--accent-on-light);
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .12em;
-}
-
-.header h2 {
-  margin: 0;
-  font-family: var(--font-display), serif;
-  font-size: clamp(1.55rem, 2.8vw, 2.35rem);
-  letter-spacing: -.02em;
-}
-
 .lede {
-  margin: -0.35rem 0 0;
-  color: color-mix(in srgb, var(--ink-on-light) 62%, transparent);
-  font-size: .9rem;
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
 }
 
+/*
+ * The query row sits on `surface-container-low` — one tonal step off the
+ * page, which is what marks it as a distinct region. No shadow, no
+ * hairline box: the tone is the boundary.
+ */
 .searchForm {
   display: grid;
-  grid-template-columns: minmax(14rem, 2fr) repeat(2, minmax(9rem, 1fr)) auto;
-  gap: .75rem;
-  align-items: end;
+  grid-template-columns: minmax(14rem, 2fr) repeat(2, minmax(10rem, 1fr)) auto;
+  gap: 0.75rem;
+  align-items: start;
   padding: 1rem;
-  border-radius: 12px;
-  background: var(--surface-100);
+  border-radius: var(--md-sys-shape-corner-large);
+  background-color: var(--md-sys-color-surface-container-low);
 }
 
-.field {
-  display: grid;
-  gap: .35rem;
+/* Fields inside the row need the row's own colour behind their floating
+   labels, or the label reads as sitting on the page instead of on the
+   outline it interrupts. */
+.searchForm .field {
+  --m3-field-bg: var(--md-sys-color-surface-container-low);
   min-width: 0;
 }
 
-.field label {
-  color: color-mix(in srgb, var(--ink-on-light) 72%, transparent);
-  font-size: .75rem;
-  font-weight: 700;
+.searchSubmit {
+  align-self: center;
+  min-height: 3.5rem;
+  padding: 0 1.75rem;
 }
 
-.searchForm input,
-.searchForm select,
-.searchForm button {
-  min-height: 2.55rem;
-  border: 1px solid color-mix(in srgb, var(--ink-on-light) 20%, transparent);
-  border-radius: 7px;
-  background: var(--surface-50);
-  color: var(--ink-on-light);
-}
-
-.searchForm input,
-.searchForm select {
-  min-width: 0;
-  padding: .4rem .55rem;
-}
-
-.searchForm button {
-  padding: .4rem .85rem;
-  border-color: var(--accent-on-light);
-  background: var(--accent-on-light);
-  color: var(--surface-50);
-  cursor: pointer;
-  font-weight: 800;
-}
+/* ── Filter chips ─────────────────────────────────────────────────────── */
 
 .navGroup {
   display: flex;
   flex-wrap: wrap;
-  gap: .45rem;
+  gap: 0.5rem;
   align-items: center;
-}
-
-.navGroup a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2rem;
-  padding: .3rem .7rem;
-  border: 1px solid color-mix(in srgb, var(--ink-on-light) 15%, transparent);
-  border-radius: 999px;
-  color: var(--ink-on-light);
-  font-size: .82rem;
-  text-decoration: none;
-}
-
-/* The selected filter is the one thing on this page that is a decision, so
-   it takes the strike colour. #faf1e9 on #b03426 measures 5.59 (colors.css). */
-.navGroup a[aria-current="page"] {
-  border-color: var(--strike-on-light);
-  background: var(--strike-on-light);
-  color: var(--surface-50);
-}
-
-.tabs {
-  display: flex;
-  gap: .3rem;
-  overflow-x: auto;
-  padding-bottom: .35rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--ink-on-light) 14%, transparent);
-  scrollbar-width: thin;
-}
-
-.tabs a {
-  display: inline-flex;
-  flex: 0 0 auto;
-  gap: .4rem;
-  align-items: center;
-  padding: .5rem .85rem;
-  border-bottom: 2px solid transparent;
-  border-radius: 8px 8px 0 0;
-  color: color-mix(in srgb, var(--ink-on-light) 72%, transparent);
-  font-size: .88rem;
-  font-weight: 600;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.tabs a[aria-current="page"] {
-  border-bottom-color: var(--strike-on-light);
-  background: color-mix(in srgb, var(--strike-on-light) 8%, transparent);
-  color: var(--strike-on-light);
-}
-
-.tabCount {
-  padding: .05rem .4rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--ink-on-light) 10%, transparent);
-  font-size: .72rem;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-}
-
-.tabs a[aria-current="page"] .tabCount {
-  background: color-mix(in srgb, var(--strike-on-light) 18%, transparent);
 }
 
 .facets {
   display: grid;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .facetRow {
   display: flex;
   flex-wrap: wrap;
-  gap: .4rem;
-  align-items: baseline;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .facetLabel {
   min-width: 4.5rem;
-  color: color-mix(in srgb, var(--ink-on-light) 62%, transparent);
-  font-size: .75rem;
-  font-weight: 700;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  letter-spacing: var(--md-sys-typescale-label-medium-tracking);
 }
+
+/* ── Result cards ─────────────────────────────────────────────────────── */
 
 /* The photo is the Blade, which is what a player recognises a Beyblade by.
    Decorative here: the card's link already names the record, so an alt
-   would only repeat it. */
-/* An explicit height, not `auto`: a `width: 100%` image inside a grid whose
+   would only repeat it.
+
+   An explicit height, not `auto`: a `width: 100%` image inside a grid whose
    column width depends on the row makes the browser resolve the row from the
    card's min-height instead of the content, and every card overflows its own
    box. A known height breaks that circular dependency. */
@@ -181,10 +110,15 @@
   object-fit: contain;
 }
 
+/* No `min-height`: the grid scrolls (`max-height` + `overflow: auto`), and a
+   constrained grid container sizes its rows from each item's *minimum*
+   contribution — so a min-height became the row height and every card's
+   content spilled over the next one. Padding already keeps a short card from
+   collapsing. */
 .recordGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  gap: .65rem;
+  gap: 0.75rem;
   max-height: 42rem;
   margin: 0;
   padding: 0;
@@ -192,81 +126,55 @@
   list-style: none;
 }
 
-/* No `min-height`: the grid above scrolls (`max-height` + `overflow: auto`),
-   and a constrained grid container sizes its rows from each item's *minimum*
-   contribution — so a min-height became the row height and every card's
-   content spilled over the next one. Padding already keeps a short card from
-   collapsing. */
 .recordCard {
   display: grid;
-  gap: .55rem;
-  padding: .85rem;
-  border: 1px solid color-mix(in srgb, var(--ink-on-light) 13%, transparent);
-  border-radius: 10px;
-  background: color-mix(in srgb, var(--surface-50) 76%, transparent);
+  gap: 0.5rem;
+  align-content: start;
+  padding: 0.85rem;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  background-color: var(--md-sys-color-surface-container-lowest);
 }
 
+/* M3 puts a card's overline above its headline in label-small. Not a row of
+   tinted pill chips: the metadata is a rank of type, not a set of badges. */
 .recordMeta {
   display: flex;
   flex-wrap: wrap;
-  gap: .35rem;
-  color: color-mix(in srgb, var(--ink-on-light) 56%, transparent);
-  font-size: .68rem;
-  letter-spacing: .04em;
+  gap: 0.5rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-small-font);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-weight: var(--md-sys-typescale-label-small-weight);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-.recordMeta span {
-  padding: .15rem .35rem;
-  border-radius: 4px;
-  background: var(--surface-200);
-}
-
 .recordLink {
-  color: var(--ink-on-light);
-  font-family: var(--font-display), serif;
-  font-size: 1.08rem;
-  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
+  line-height: var(--md-sys-typescale-title-medium-line-height);
   text-decoration: none;
-}
-
-.recordRelated {
-  color: color-mix(in srgb, var(--ink-on-light) 62%, transparent);
-  font-size: 0.78rem;
-  line-height: 1.45;
-}
-
-.relatedLabel {
-  color: color-mix(in srgb, var(--ink-on-light) 48%, transparent);
-  font-weight: 700;
 }
 
 .recordLink:hover,
 .recordLink:focus-visible {
-  color: var(--accent-on-light);
+  color: var(--md-sys-color-primary);
   text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
-.details {
-  display: grid;
-  gap: .8rem;
-  padding: 1rem;
-  border-left: 3px solid var(--accent-on-light);
-  background: var(--surface-100);
+.recordRelated {
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
+  line-height: var(--md-sys-typescale-body-small-line-height);
 }
 
-.details h3,
-.details h4 {
-  margin: 0;
-}
-
-.details p {
-  margin: 0;
-}
-
-.details ul {
-  margin: 0;
-  padding-left: 1.2rem;
+.relatedLabel {
+  font-weight: 700;
 }
 
 @media (max-width: 900px) {
@@ -274,36 +182,8 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .field:first-child {
+  .searchForm .field:first-child {
     grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 560px) {
-  .searchForm {
-    grid-template-columns: 1fr;
-  }
-
-  .field:first-child {
-    grid-column: auto;
-  }
-
-  /* The photo is the Blade, which is what a player recognises a Beyblade by.
-   Decorative here: the card's link already names the record, so an alt
-   would only repeat it. */
-/* An explicit height, not `auto`: a `width: 100%` image inside a grid whose
-   column width depends on the row makes the browser resolve the row from the
-   card's min-height instead of the content, and every card overflows its own
-   box. A known height breaks that circular dependency. */
-.recordImage {
-  width: 100%;
-  height: 6rem;
-  object-fit: contain;
-}
-
-.recordGrid {
-    grid-template-columns: 1fr;
-    max-height: 32rem;
   }
 }
 
@@ -320,16 +200,15 @@
 
   .searchForm {
     grid-template-columns: 1fr;
-    gap: 0.6rem;
+    gap: 0.75rem;
     padding: 0.85rem;
   }
 
-  .searchForm button {
+  .searchSubmit {
     width: 100%;
   }
 
-  /* Swipeable strips: no wrapping, no visible scrollbar, and a padded end
-     so the last chip never sits flush against the edge. */
+  /* Swipeable strips: no wrapping, no visible scrollbar. */
   .navGroup,
   .facetRow {
     flex-wrap: nowrap;
@@ -339,8 +218,7 @@
   }
 
   .navGroup::-webkit-scrollbar,
-  .facetRow::-webkit-scrollbar,
-  .tabs::-webkit-scrollbar {
+  .facetRow::-webkit-scrollbar {
     display: none;
   }
 
@@ -349,44 +227,18 @@
     flex: 0 0 auto;
   }
 
-  .facetRow {
-    align-items: center;
-    gap: 0.6rem;
-  }
-
+  /* The row label rides along the left edge as the chips pass under it, so
+     you can still tell what you are filtering halfway through a swipe. */
   .facetLabel {
     position: sticky;
     left: 0;
     z-index: 1;
     min-width: 0;
-    padding-right: 0.15rem;
-    background: color-mix(in srgb, var(--surface-50) 72%, transparent);
+    padding-right: 0.35rem;
+    background-color: var(--md-sys-color-surface);
   }
 
-  .tabs {
-    gap: 0.2rem;
-    scrollbar-width: none;
-  }
-
-  .tabs a {
-    padding: 0.45rem 0.7rem;
-    font-size: 0.84rem;
-  }
-
-  /* The photo is the Blade, which is what a player recognises a Beyblade by.
-   Decorative here: the card's link already names the record, so an alt
-   would only repeat it. */
-/* An explicit height, not `auto`: a `width: 100%` image inside a grid whose
-   column width depends on the row makes the browser resolve the row from the
-   card's min-height instead of the content, and every card overflows its own
-   box. A known height breaks that circular dependency. */
-.recordImage {
-  width: 100%;
-  height: 6rem;
-  object-fit: contain;
-}
-
-.recordGrid {
+  .recordGrid {
     grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
     max-height: none;
   }

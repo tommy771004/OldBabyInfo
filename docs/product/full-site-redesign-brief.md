@@ -81,4 +81,4 @@ Assessment 使用真正分頁，選項為 5／10／15／20，預設 10。狀態�
 4. 320、390、768、1024、1440 寬度下無溢出、裁字或錯位。
 5. `prefers-reduced-motion` 下資訊完整。
 6. 真實產品圖維持原始比例；缺圖時用既有 Part 剪影，不做假資產。
-7. 逐條執行 AGENTS.md anti-slop re-check，修正後才能結案。
+7. 逐條執行全域 anti-slop 設計法（`~/.claude/CLAUDE.md`，每個 session 自動載入；不在本 repo 內）的 re-check，並讓 `src/lib/design/anti-slop-contract.test.ts` 全綠，修正後才能結案。

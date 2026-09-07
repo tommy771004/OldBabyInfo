@@ -76,7 +76,7 @@ function SlotPicker({
           <span className={styles.selectedName}>{localizedNameOf(selected, locale)}</span>
         </div>
         <Link
-          className={styles.clear}
+          className={`${styles.clear} m3-button m3-button--text m3-state`}
           href={{
             pathname: "/combo",
             query: buildComboQuery({ ...slots, [slotType]: undefined }),
@@ -90,15 +90,17 @@ function SlotPicker({
 
   return (
     <div className={styles.slot}>
-      <label className={styles.slotLabel}>
-        <span>{label}</span>
+      {/* M3 outlined text field: the slot's own name is the field label, so
+          an empty slot says what goes in it without a caption above it. */}
+      <label className={`${styles.slotField} m3-field`}>
         <input
-          className={styles.search}
+          className="m3-field__input"
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={t("search_placeholder")}
         />
+        <span className="m3-field__label">{label}</span>
       </label>
 
       {/* Candidates are on screen before a single keystroke: three empty
@@ -113,7 +115,7 @@ function SlotPicker({
           {candidates.map((part) => (
             <li key={part.id}>
               <Link
-                className={styles.candidate}
+                className={`${styles.candidate} m3-state`}
                 href={{
                   pathname: "/combo",
                   query: buildComboQuery({ ...slots, [slotType]: slugify(part.nameEn) }),

@@ -1,12 +1,31 @@
+/*
+ * The Part detail page, in Material 3.
+ *
+ * The page is a stack of stages rather than a stack of cards, and that does
+ * not change: a Part reads as one continuous record, not as six boxes. What
+ * M3 supplies here is the ROLE for each part of it — display type for the
+ * name, label-medium for the spec labels, the numeral face for the figures,
+ * and tonal container steps to separate one stage from the next instead of
+ * borders around each.
+ *
+ * Every stage stays on the same lighting. "Where to buy" used to be a
+ * full-bleed dark band, which made the one section that expires the loudest
+ * thing on a page of settled reference data; it is an inset stage like the
+ * rest now.
+ */
+
 .page {
   width: min(100% - 2rem, 72rem);
   margin: 0 auto;
-  padding: 2rem 0 6rem;
-  color: var(--ink-on-light);
+  padding: 1.5rem 0 6rem;
+  color: var(--md-sys-color-on-surface);
 }
 
 .backLink {
-  margin: 0 0 2rem;
+  margin: 0 0 1.5rem;
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
 }
 
 .identityStage,
@@ -29,34 +48,41 @@
   padding-top: 0;
 }
 
+/* The Part's name is the largest thing on the site, and it should be — M3
+   display-large is the role for a screen with exactly one subject. */
 .identityCopy h1 {
   max-width: 12ch;
   margin: 0.5rem 0;
-  font-size: clamp(2.8rem, 8vw, 6.5rem);
-  line-height: 0.95;
+  font-family: var(--md-sys-typescale-display-large-font);
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: var(--md-sys-typescale-display-large-weight);
+  line-height: 0.98;
 }
 
 .typeLabel,
 .code {
   margin: 0;
-  color: var(--accent-on-light);
+  color: var(--md-sys-color-primary);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
 }
 
 .code {
-  font-family: var(--font-display), serif;
+  font-family: var(--md-sys-typescale-numeral-font);
   letter-spacing: 0.06em;
 }
 
 /* A spec plate, read the way the back of a real product box reads: a rail of
-   labels with the figure under each, hairlines between, nothing boxing it in.
-   Tabular numerals so the columns line up across Parts. */
+   labels with the figure under each, nothing boxing it in. Tabular numerals
+   so the columns line up across Parts. */
 .headlineSpec {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 2.25rem;
+  gap: 0.5rem 2.25rem;
   margin: 2rem 0 0;
   padding-top: 1.25rem;
-  border-top: 2px solid color-mix(in srgb, var(--ink-on-light) 22%, transparent);
+  border-top: 1px solid var(--md-sys-color-outline);
 }
 
 .headlineSpec > div {
@@ -65,19 +91,20 @@
 }
 
 .headlineSpec dt {
-  color: color-mix(in srgb, var(--ink-on-light) 58%, transparent);
-  font-size: 0.72rem;
-  font-weight: 700;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .headlineSpec dd {
   margin: 0;
-  font-family: var(--font-display), serif;
+  font-family: var(--md-sys-typescale-numeral-font);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   font-variant-numeric: tabular-nums;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .partVisual {
@@ -98,14 +125,21 @@
   object-fit: contain;
 }
 
+/* Attribution, not commentary: it earns a line, not a paragraph block. */
 .partVisual p {
-  max-width: 30ch;
-  margin: 0.75rem auto 0;
-  font-size: 0.85rem;
+  max-width: 22rem;
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
+  line-height: var(--md-sys-typescale-body-small-line-height);
 }
 
+/* Official data sits one tonal step up from the page, with M3's extra-large
+   corner. That step is the whole separation — no border, no shadow. */
 .officialStage {
-  background: color-mix(in srgb, var(--surface-200) 55%, var(--surface-100));
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background-color: var(--md-sys-color-surface-container);
   padding-inline: clamp(1rem, 4vw, 3rem);
 }
 
@@ -119,7 +153,10 @@
 
 .names dt,
 .stats dt {
-  color: color-mix(in srgb, var(--ink-on-light) 62%, transparent);
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
 }
 
 .names dd,
@@ -127,20 +164,28 @@
   margin: 0;
 }
 
+/*
+ * The five Stats, as M3 filled cards on the container's own lowest step —
+ * one figure per card, which is what makes a Stat readable as a value rather
+ * than as a cell in a spec sheet.
+ */
 .stats {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .stats div {
-  padding: 0.9rem 0;
-  border-top: 2px solid color-mix(in srgb, var(--accent-on-light) 26%, transparent);
+  padding: 1rem 1.1rem;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background-color: var(--md-sys-color-surface-container-lowest);
 }
 
 .stats dd {
-  margin-top: 0.25rem;
-  font-family: var(--font-display), serif;
-  font-size: clamp(1.7rem, 4vw, 3rem);
+  margin-top: 0.35rem;
+  font-family: var(--md-sys-typescale-numeral-font);
+  font-size: clamp(1.7rem, 4vw, 2.75rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
 }
 
 .modeList {
@@ -151,14 +196,13 @@
   list-style: none;
 }
 
+/* The buying snapshot stays on the same lighting as the rest of the page.
+   It was a full-bleed dark band before, which made the one section that
+   expires the loudest thing on a page of settled reference data. It is
+   inset to match the official-data panel above it instead, so the page
+   reads as one column of stages rather than a stack of themes. */
 .stockStage {
-  background: var(--surface-950);
-  color: var(--ink-on-dark);
   padding-inline: clamp(1rem, 4vw, 3rem);
-}
-
-.stockStage a {
-  color: var(--accent-on-dark);
 }
 
 .discussionStage {
@@ -178,13 +222,4 @@
   .stats {
     grid-template-columns: 1fr;
   }
-}
-
-/* Attribution, not commentary: it earns a line, not a paragraph block. */
-.partVisual p {
-  max-width: 22rem;
-  margin: 0;
-  color: color-mix(in srgb, var(--ink-on-light) 55%, transparent);
-  font-size: 0.72rem;
-  line-height: 1.5;
 }

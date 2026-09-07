@@ -4,14 +4,20 @@
  * src/app/fonts.ts) — each already resolves to the real font plus an
  * automatic metrics-matched fallback, so they're used directly here, never
  * redeclared (redeclaring one under its own name would self-reference).
+ *
+ * Which face carries which piece of text is now decided by the Material 3
+ * type scale in `m3.css` and applied by `globals.css` — a role, not a rule
+ * per element. The one thing that stays here is the correction that scale
+ * depends on: every display and headline role names `--font-display`
+ * FOLLOWED BY `--font-body`, because Combat is Latin-only. Before that,
+ * headings fell through to a bare `serif`, so every Chinese headline on the
+ * site rendered in whatever Ming face the reader's OS happened to ship —
+ * not the Taipei Sans TC Bold ADR-0006 specifies.
  */
-body {
-  font-family: var(--font-body), system-ui, sans-serif;
-}
 
-h1,
-h2,
-h3,
+/* Latin numerals carrying real data — Stat values, weights, sample counts.
+   Combat with tabular figures so a column of numbers lines up. */
 .stat-value {
-  font-family: var(--font-display), serif;
+  font-family: var(--md-sys-typescale-numeral-font);
+  font-variant-numeric: tabular-nums;
 }

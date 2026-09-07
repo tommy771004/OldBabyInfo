@@ -1,0 +1,327 @@
+/**
+ * Material 3 system tokens, expressed entirely in this site's own palette.
+ *
+ * Two things are true at once here and neither gives way:
+ *
+ * 1. The design language is Material 3 — its colour ROLES, type scale, shape
+ *    scale, tonal elevation, state layers and motion easing.
+ * 2. The palette does not change. ADR-0008's single warm ramp (場上 → 場邊)
+ *    is still the only colour on this site. Every role below resolves to a
+ *    `var()` or a `color-mix()` of the tokens in `colors.css`. There is not
+ *    one new hex value in this file, and no M3 baseline purple, teal or red
+ *    anywhere.
+ *
+ * Which is the point M3 actually makes: a scheme is a set of ROLES applied
+ * over a tonal palette, and this site already had the tonal palette. The
+ * roles are what was missing.
+ *
+ * Two schemes, because ADR-0006 has two lightings, not because M3 ships a
+ * light and a dark theme:
+ *   `:root`     → 場邊 (sideline). The reading end. The site default.
+ *   `.m3-dark`  → 場上 (field). The header, the arena, the homepage's upper
+ *                 sections. Applied to a subtree, not to the document.
+ *
+ * Every foreground/background pairing below was computed with the real WCAG
+ * relative-luminance formula (ADR-0008 — never eyeballed), and the ones that
+ * carry text are asserted in `src/lib/design/anti-slop-contract.test.ts` so
+ * they stay true. The mix percentages are not round numbers by accident:
+ * `outline` is 55% and not 50% because 50% measured 3.10:1 against the
+ * lightest container and M3 wants a non-text outline to clear 3:1 with room
+ * to spare.
+ */
+
+:root {
+  /* ── Colour roles: 場邊 (sideline / light) ─────────────────────────── */
+
+  /* Surfaces. M3's light scheme spreads its containers AROUND the page
+     surface: `lowest` is lighter than the page, and `low` → `highest` step
+     progressively darker, so a raised thing reads as more of the ramp
+     rather than as a box with a shadow. Held between --surface-50 and
+     --surface-200: ADR-0008 puts the ramp's 50–60% midtone off limits for
+     anything text sits on, and --surface-300 is already on the way there. */
+  --md-sys-color-surface: var(--surface-100);
+  --md-sys-color-surface-dim: var(--surface-200);
+  --md-sys-color-surface-bright: var(--surface-50);
+  --md-sys-color-surface-container-lowest: var(--surface-50);
+  --md-sys-color-surface-container-low: color-mix(in srgb, var(--surface-200) 16%, var(--surface-100));
+  --md-sys-color-surface-container: color-mix(in srgb, var(--surface-200) 32%, var(--surface-100));
+  --md-sys-color-surface-container-high: color-mix(in srgb, var(--surface-200) 50%, var(--surface-100));
+  --md-sys-color-surface-container-highest: color-mix(in srgb, var(--surface-200) 68%, var(--surface-100));
+
+  /* Ink. `on-surface-variant` at 68% measures 5.20:1 against the darkest
+     container in that ramp — the quiet role still clears AA everywhere it
+     is allowed to land. */
+  --md-sys-color-on-surface: var(--ink-on-light);
+  --md-sys-color-on-surface-variant: color-mix(in srgb, var(--ink-on-light) 68%, transparent);
+  --md-sys-color-outline: color-mix(in srgb, var(--ink-on-light) 55%, transparent);
+  --md-sys-color-outline-variant: color-mix(in srgb, var(--ink-on-light) 18%, transparent);
+
+  /* Primary = the accent role ADR-0008 already defines for this end of the
+     ramp. `on-primary` is the ramp's own light extreme: 6.88:1 on the fill. */
+  --md-sys-color-primary: var(--accent-on-light);
+  --md-sys-color-on-primary: var(--surface-50);
+  --md-sys-color-primary-container: color-mix(in srgb, var(--accent-on-light) 18%, var(--surface-50));
+  --md-sys-color-on-primary-container: var(--accent-on-light);
+
+  /* Secondary is the ramp's deep end used as ink — the quieter of the two
+     emphases, for tonal buttons and selected chips. Not a second hue. */
+  --md-sys-color-secondary: var(--surface-700);
+  --md-sys-color-on-secondary: var(--surface-50);
+  /* 26%, not the 14% this started at: at 14% the selected chip measured
+     1.07:1 against the page and simply did not read as selected. At 26% the
+     step is 1.34:1 — quiet, which is what M3 intends, and the leading check
+     mark on a selected chip carries the rest. `on-secondary-container`
+     measures 6.62:1 on it. */
+  --md-sys-color-secondary-container: color-mix(in srgb, var(--surface-700) 26%, var(--surface-50));
+  --md-sys-color-on-secondary-container: var(--surface-700);
+
+  /* Tertiary is `strike` — ADR-0008's "this is the one you picked" role.
+     M3 gives tertiary exactly that job: the accent that marks a choice. */
+  --md-sys-color-tertiary: var(--strike-on-light);
+  --md-sys-color-on-tertiary: var(--surface-50);
+  --md-sys-color-tertiary-container: color-mix(in srgb, var(--strike-on-light) 22%, var(--surface-50));
+  --md-sys-color-on-tertiary-container: var(--surface-700);
+
+  /* Error is the same strike value, unmodified, because this palette has
+     exactly one red and ADR-0008 fixes it. It measures 4.69:1 on the page
+     surface and 5.59:1 on --surface-50, so error TEXT belongs on `surface`
+     and `container-lowest/low` only — it drops to 3.98:1 on
+     `container-highest`. On a fill it is the background, not the text, and
+     --surface-50 over it is 5.59:1. */
+  --md-sys-color-error: var(--strike-on-light);
+  --md-sys-color-on-error: var(--surface-50);
+  --md-sys-color-error-container: color-mix(in srgb, var(--strike-on-light) 16%, var(--surface-50));
+  --md-sys-color-on-error-container: var(--surface-700);
+
+  /* Inverse pair — snackbars and the "this is the other lighting" moments.
+     It is literally the field end, because that is what the other end is. */
+  --md-sys-color-inverse-surface: var(--surface-900);
+  --md-sys-color-inverse-on-surface: var(--surface-50);
+  --md-sys-color-inverse-primary: var(--accent-on-dark);
+
+  --md-sys-color-scrim: var(--surface-950);
+  --md-sys-color-shadow: var(--surface-950);
+  --md-sys-color-surface-tint: var(--accent-on-light);
+}
+
+/**
+ * 場上 (field). A subtree class, never the document: the homepage walks
+ * continuously from the field end to the sideline end down one page
+ * (ADR-0008), so both schemes have to be able to exist on the same screen.
+ */
+.m3-dark {
+  --md-sys-color-surface: var(--surface-950);
+  --md-sys-color-surface-dim: var(--surface-950);
+  --md-sys-color-surface-bright: var(--surface-700);
+  --md-sys-color-surface-container-lowest: var(--surface-950);
+  --md-sys-color-surface-container-low: color-mix(in srgb, var(--surface-900) 60%, var(--surface-950));
+  --md-sys-color-surface-container: var(--surface-900);
+  --md-sys-color-surface-container-high: color-mix(in srgb, var(--surface-800) 55%, var(--surface-900));
+  --md-sys-color-surface-container-highest: var(--surface-800);
+
+  --md-sys-color-on-surface: var(--ink-on-dark);
+  --md-sys-color-on-surface-variant: color-mix(in srgb, var(--ink-on-dark) 78%, transparent);
+  --md-sys-color-outline: color-mix(in srgb, var(--ink-on-dark) 48%, transparent);
+  --md-sys-color-outline-variant: color-mix(in srgb, var(--ink-on-dark) 18%, transparent);
+
+  --md-sys-color-primary: var(--accent-on-dark);
+  --md-sys-color-on-primary: var(--surface-950);
+  --md-sys-color-primary-container: color-mix(in srgb, var(--accent-on-dark) 22%, var(--surface-800));
+  /* Not --accent-on-dark itself: the accent on its own 22% container is
+     3.86:1, under AA. Lifted 60% toward the ramp's light end it is 5.52:1
+     and still unmistakably the accent. */
+  --md-sys-color-on-primary-container: color-mix(in srgb, var(--accent-on-dark) 60%, var(--ink-on-dark));
+
+  --md-sys-color-secondary: var(--surface-300);
+  --md-sys-color-on-secondary: var(--surface-950);
+  --md-sys-color-secondary-container: color-mix(in srgb, var(--surface-300) 18%, var(--surface-800));
+  --md-sys-color-on-secondary-container: var(--surface-200);
+
+  --md-sys-color-tertiary: var(--strike-on-dark);
+  --md-sys-color-on-tertiary: var(--surface-950);
+  --md-sys-color-tertiary-container: color-mix(in srgb, var(--strike-on-dark) 22%, var(--surface-800));
+  --md-sys-color-on-tertiary-container: var(--surface-200);
+
+  --md-sys-color-error: var(--strike-on-dark);
+  --md-sys-color-on-error: var(--surface-950);
+  --md-sys-color-error-container: color-mix(in srgb, var(--strike-on-dark) 22%, var(--surface-800));
+  --md-sys-color-on-error-container: var(--surface-200);
+
+  --md-sys-color-inverse-surface: var(--surface-100);
+  --md-sys-color-inverse-on-surface: var(--ink-on-light);
+  --md-sys-color-inverse-primary: var(--accent-on-light);
+
+  --md-sys-color-surface-tint: var(--accent-on-dark);
+}
+
+:root {
+  /* ── Type scale ────────────────────────────────────────────────────────
+   *
+   * M3's roles and its size/weight ramp, carried by the three faces
+   * ADR-0006 already fixed — the scale is the borrowed part, not the
+   * typefaces.
+   *
+   * `--font-display` (Combat) covers Latin only, so every display and
+   * headline role names `--font-body` (Taipei Sans TC) immediately after
+   * it. Latin words and numerals get Combat; Chinese characters in the same
+   * line fall through to Taipei Sans TC Bold, which is what ADR-0006 asks
+   * for and what the bare `serif` fallback was silently NOT doing — that
+   * fallback rendered every Chinese headline in whatever Ming face the
+   * reader's OS happened to ship.
+   *
+   * Tracking departs from the M3 numbers on purpose. M3's letter-spacing is
+   * tuned for Roboto; positive tracking on Han characters pulls a line
+   * apart rather than opening it up. Latin-heavy label roles keep a little;
+   * body roles keep none. Line heights run taller than M3's for the same
+   * reason — Chinese body text needs the leading. */
+
+  --md-sys-typescale-display-large-font: var(--font-display), var(--font-body), serif;
+  --md-sys-typescale-display-large-size: clamp(2.75rem, 6vw, 3.5625rem);
+  --md-sys-typescale-display-large-line-height: 1.14;
+  --md-sys-typescale-display-large-weight: 700;
+
+  --md-sys-typescale-display-medium-font: var(--font-display), var(--font-body), serif;
+  --md-sys-typescale-display-medium-size: clamp(2.25rem, 5vw, 2.8125rem);
+  --md-sys-typescale-display-medium-line-height: 1.16;
+  --md-sys-typescale-display-medium-weight: 700;
+
+  --md-sys-typescale-display-small-font: var(--font-display), var(--font-body), serif;
+  --md-sys-typescale-display-small-size: clamp(1.875rem, 4vw, 2.25rem);
+  --md-sys-typescale-display-small-line-height: 1.22;
+  --md-sys-typescale-display-small-weight: 700;
+
+  --md-sys-typescale-headline-large-font: var(--font-display), var(--font-body), serif;
+  --md-sys-typescale-headline-large-size: clamp(1.625rem, 3.2vw, 2rem);
+  --md-sys-typescale-headline-large-line-height: 1.25;
+  --md-sys-typescale-headline-large-weight: 700;
+
+  --md-sys-typescale-headline-medium-font: var(--font-display), var(--font-body), serif;
+  --md-sys-typescale-headline-medium-size: clamp(1.4375rem, 2.6vw, 1.75rem);
+  --md-sys-typescale-headline-medium-line-height: 1.29;
+  --md-sys-typescale-headline-medium-weight: 700;
+
+  --md-sys-typescale-headline-small-font: var(--font-display), var(--font-body), serif;
+  --md-sys-typescale-headline-small-size: 1.5rem;
+  --md-sys-typescale-headline-small-line-height: 1.33;
+  --md-sys-typescale-headline-small-weight: 700;
+
+  --md-sys-typescale-title-large-font: var(--font-body), system-ui, sans-serif;
+  --md-sys-typescale-title-large-size: 1.375rem;
+  --md-sys-typescale-title-large-line-height: 1.45;
+  --md-sys-typescale-title-large-weight: 700;
+
+  --md-sys-typescale-title-medium-font: var(--font-body), system-ui, sans-serif;
+  --md-sys-typescale-title-medium-size: 1rem;
+  --md-sys-typescale-title-medium-line-height: 1.5;
+  --md-sys-typescale-title-medium-weight: 700;
+  --md-sys-typescale-title-medium-tracking: 0.01em;
+
+  --md-sys-typescale-title-small-font: var(--font-body), system-ui, sans-serif;
+  --md-sys-typescale-title-small-size: 0.875rem;
+  --md-sys-typescale-title-small-line-height: 1.6;
+  --md-sys-typescale-title-small-weight: 700;
+  --md-sys-typescale-title-small-tracking: 0.01em;
+
+  --md-sys-typescale-body-large-font: var(--font-body), system-ui, sans-serif;
+  --md-sys-typescale-body-large-size: 1rem;
+  --md-sys-typescale-body-large-line-height: 1.75;
+  --md-sys-typescale-body-large-weight: 400;
+
+  --md-sys-typescale-body-medium-font: var(--font-body), system-ui, sans-serif;
+  --md-sys-typescale-body-medium-size: 0.9375rem;
+  --md-sys-typescale-body-medium-line-height: 1.7;
+  --md-sys-typescale-body-medium-weight: 400;
+
+  --md-sys-typescale-body-small-font: var(--font-body), system-ui, sans-serif;
+  --md-sys-typescale-body-small-size: 0.8125rem;
+  --md-sys-typescale-body-small-line-height: 1.6;
+  --md-sys-typescale-body-small-weight: 400;
+
+  --md-sys-typescale-label-large-font: var(--font-body), system-ui, sans-serif;
+  --md-sys-typescale-label-large-size: 0.875rem;
+  --md-sys-typescale-label-large-line-height: 1.4;
+  --md-sys-typescale-label-large-weight: 700;
+  --md-sys-typescale-label-large-tracking: 0.01em;
+
+  --md-sys-typescale-label-medium-font: var(--font-body), system-ui, sans-serif;
+  --md-sys-typescale-label-medium-size: 0.75rem;
+  --md-sys-typescale-label-medium-line-height: 1.35;
+  --md-sys-typescale-label-medium-weight: 700;
+  --md-sys-typescale-label-medium-tracking: 0.03em;
+
+  --md-sys-typescale-label-small-font: var(--font-body), system-ui, sans-serif;
+  --md-sys-typescale-label-small-size: 0.6875rem;
+  --md-sys-typescale-label-small-line-height: 1.35;
+  --md-sys-typescale-label-small-weight: 700;
+  --md-sys-typescale-label-small-tracking: 0.04em;
+
+  /* Numerals — Stat values, weights, sample sizes. Not an M3 role; this
+     site has more big numbers than M3 assumes, and they are Latin, so they
+     are Combat with tabular figures and enough tracking that a
+     three-figure Stat does not crush together. */
+  --md-sys-typescale-numeral-font: var(--font-display), var(--font-body), serif;
+
+  /* ── Shape scale ──────────────────────────────────────────────────── */
+  --md-sys-shape-corner-none: 0;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full: 9999px;
+
+  /* ── State layers ─────────────────────────────────────────────────────
+   *
+   * M3's opacities exactly. Drawn as a `currentColor` overlay on a
+   * pseudo-element, so a control's own ink tints its own hover — which is
+   * how the state layer stays inside the one palette without a token per
+   * component. */
+  --md-sys-state-hover-opacity: 0.08;
+  --md-sys-state-focus-opacity: 0.1;
+  --md-sys-state-pressed-opacity: 0.1;
+  --md-sys-state-dragged-opacity: 0.16;
+
+  /* ── Motion ───────────────────────────────────────────────────────────
+   *
+   * M3's easing set. `emphasized` is the one with character: it leaves
+   * slowly and arrives fast, which is why an M3 control feels like it has
+   * mass. Everything that uses these also has to survive
+   * `prefers-reduced-motion`, which globals.css collapses site-wide. */
+  --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --md-sys-motion-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+
+  --md-sys-motion-duration-short1: 50ms;
+  --md-sys-motion-duration-short2: 100ms;
+  --md-sys-motion-duration-short3: 150ms;
+  --md-sys-motion-duration-short4: 200ms;
+  --md-sys-motion-duration-medium1: 250ms;
+  --md-sys-motion-duration-medium2: 300ms;
+  --md-sys-motion-duration-medium3: 350ms;
+  --md-sys-motion-duration-medium4: 400ms;
+  --md-sys-motion-duration-long1: 450ms;
+  --md-sys-motion-duration-long2: 500ms;
+
+  /* ── Elevation ────────────────────────────────────────────────────────
+   *
+   * TONAL, not cast. M3 replaced the old opacity overlay with the
+   * `surface-container-*` roles precisely so a raised surface is a surface
+   * colour rather than a shadow, and that is the only elevation this site
+   * uses — which is also what keeps the anti-slop contract's ban on ambient
+   * `box-shadow` intact (see `anti-slop-contract.test.ts`).
+   *
+   * The one exception is the phone navigation bar, which floats over live
+   * scrolling content and has to say so physically. Its M3 level-2 shadow
+   * is defined here so there is exactly one place it comes from, and the
+   * contract test names that file explicitly. */
+  --md-sys-elevation-level0: none;
+  --md-sys-elevation-level2:
+    0 1px 2px color-mix(in srgb, var(--md-sys-color-shadow) 30%, transparent),
+    0 2px 6px 2px color-mix(in srgb, var(--md-sys-color-shadow) 15%, transparent);
+  --md-sys-elevation-level3:
+    0 1px 3px color-mix(in srgb, var(--md-sys-color-shadow) 30%, transparent),
+    0 4px 8px 3px color-mix(in srgb, var(--md-sys-color-shadow) 15%, transparent);
+}

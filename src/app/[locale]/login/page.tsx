@@ -53,7 +53,7 @@ export default async function LoginPage({
         <h1>{t("signedInTitle")}</h1>
         <p>{t("signedInAs", { name: session.user.name ?? t("player") })}</p>
         <form action={signOutAction}>
-          <button type="submit">{t("signOut")}</button>
+          <button type="submit" className="m3-button m3-button--outlined m3-state">{t("signOut")}</button>
         </form>
       </main>
     );
@@ -75,12 +75,12 @@ export default async function LoginPage({
       <p>{t("privacy")}</p>
       {googleConfigured ? (
         <form action={signInAction}>
-          <button type="submit">{t("continueWithGoogle")}</button>
+          <button type="submit" className="m3-button m3-button--filled m3-state">{t("continueWithGoogle")}</button>
         </form>
       ) : null}
       {lineConfigured ? (
         <form action={signInWithLineAction}>
-          <button type="submit">{t("continueWithLine")}</button>
+          <button type="submit" className="m3-button m3-button--tonal m3-state">{t("continueWithLine")}</button>
         </form>
       ) : null}
     </main>

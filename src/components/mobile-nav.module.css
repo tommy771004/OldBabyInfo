@@ -1,13 +1,24 @@
 /*
- * Liquid glass, built the honest way: a translucent fill that actually
- * samples what is behind it (backdrop-filter), a bright specular top edge
- * and a dark lower edge (inset shadows) so the pill reads as a thick piece
- * of glass rather than a flat translucent rectangle, and a wide soft drop
- * shadow to lift it off the page.
+ * The floating navigation pill, with Material 3's navigation-bar behaviour
+ * inside it.
  *
- * The tint is drawn from the ramp's field end (ADR-0008), not from a neutral
- * grey — a grey pane over this warm palette reads as dirty. No glow, no
- * neon: the depth comes from the edges, not from light bleed.
+ * Shape is the site's own (owner-decided): a contained pill floating above
+ * the page rather than M3's full-width docked bar. Because it genuinely
+ * floats over live scrolling content it says so physically — a translucent
+ * fill that samples what is behind it, a bright specular top edge and a dark
+ * lower edge so the pill reads as a thick piece of glass, and M3's
+ * elevation level 2 to lift it off the page. That is the one depth exception
+ * `anti-slop-contract.test.ts` names, and it is still the only one.
+ *
+ * The tint comes from the ramp's field end (ADR-0008) by way of the M3 dark
+ * scheme the nav declares on itself — a neutral grey pane over this warm
+ * palette reads as dirty. No glow, no neon: the depth is in the edges.
+ *
+ * What is M3 here: the active indicator (a 64×32 pill that grows out from
+ * the centre of the slot), the state layer opacities, and M3's
+ * "label-visibility: selected" behaviour — only the destination you are on
+ * names itself, the rest are their glyph alone. Every item still carries an
+ * `aria-label`, so the accessible name never depends on the visible one.
  */
 
 .bar {
@@ -22,62 +33,140 @@
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    align-items: center;
     gap: 0.15rem;
-    width: min(24rem, calc(100% - 1.5rem));
-    padding: 0.35rem;
-    border: 1px solid color-mix(in srgb, var(--ink-on-dark) 20%, transparent);
-    border-radius: 999px;
-    background: var(--surface-900);
+    width: max-content;
+    max-width: calc(100% - 1.5rem);
+    padding: 0.4rem;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-full);
+    background-color: color-mix(in srgb, var(--surface-900) 80%, transparent);
     box-shadow:
-      /* lift */
-      0 10px 34px color-mix(in srgb, var(--surface-950) 55%, transparent),
+      var(--md-sys-elevation-level2),
       /* specular top edge */
-      inset 0 1px 0 color-mix(in srgb, var(--ink-on-dark) 30%, transparent),
+      inset 0 1px 0 color-mix(in srgb, var(--md-sys-color-on-surface) 30%, transparent),
       /* the glass's own thickness, catching the page below */
-      inset 0 -1px 0 color-mix(in srgb, var(--surface-950) 45%, transparent);
+      inset 0 -1px 0 color-mix(in srgb, var(--md-sys-color-shadow) 45%, transparent);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
 
   /* Without backdrop sampling the pill would be a see-through smear over
-     live text — fall back to an opaque pane instead. */
+     live text — fall back to an opaque pane instead. This used to declare
+     the same opaque colour the rule above already set, which made the
+     fallback a no-op AND meant the blur never showed: an opaque fill was
+     painted over every pixel it sampled. The fill is translucent now, so
+     this branch is the one that actually differs. */
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .bar {
-      background: color-mix(in srgb, var(--surface-900) 94%, transparent);
+      background-color: var(--md-sys-color-surface-container);
     }
   }
 }
 
 .item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 3rem;
+  padding: 0 0.85rem;
+  border-radius: var(--md-sys-shape-corner-full);
+  color: var(--md-sys-color-on-surface-variant);
+  text-decoration: none;
+  transition: color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+/*
+ * M3's active indicator. It is drawn behind an icon that is already on
+ * screen and it grows from the centre of the slot, so nothing's visibility
+ * depends on the animation completing.
+ */
+.item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background-color: var(--md-sys-color-secondary-container);
+  /* A CLIP that opens from the centre, not `scaleX`. Scaling a fully rounded
+     pill squashes its own end caps: they start as flattened ellipses and
+     round out as the animation finishes, which is the giveaway of a fill
+     animated the lazy way. Clipping leaves the geometry alone — the caps are
+     the right radius in every frame, the indicator just gets wider. */
+  clip-path: inset(0 50% round var(--md-sys-shape-corner-full));
+  transition: clip-path var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized-decelerate);
+}
+
+.indicator {
+  position: relative;
+  z-index: 1;
   display: grid;
   place-items: center;
-  flex: 1;
-  min-width: 0;
-  min-height: 3.5rem;
-  padding: 0.25rem;
-  gap: 0.15rem;
-  font-size: 0.75rem;
-  line-height: 1.2;
-  border-radius: 999px;
-  color: var(--ink-on-dark);
-  text-decoration: none;
-  transition: color 0.18s ease, background-color 0.18s ease;
 }
 
-.item:focus-visible {
-  outline: 2px solid var(--ink-on-dark);
-  outline-offset: 2px;
+.indicator svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .item { transition: none; }
-}
-
-.item:active {
-  background: color-mix(in srgb, var(--ink-on-dark) 12%, transparent);
+/*
+ * Label visibility follows the destination, not the pointer: the item you
+ * are on names itself and the others are their glyph alone. `display: none`
+ * rather than a collapsed width, so an unselected item is exactly its icon
+ * and the pill stays the width of four thumbs.
+ */
+.label {
+  position: relative;
+  z-index: 1;
+  display: none;
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  line-height: var(--md-sys-typescale-label-large-line-height);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  white-space: nowrap;
 }
 
 .item[aria-current="page"] {
-  color: var(--accent-on-dark);
-  background: color-mix(in srgb, var(--accent-on-dark) 16%, transparent);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.item[aria-current="page"]::before {
+  clip-path: inset(0 round var(--md-sys-shape-corner-full));
+}
+
+.item[aria-current="page"] .label {
+  display: block;
+}
+
+/* Pressing or tabbing to a destination that is not current yet still names
+   itself and still answers — the state layer is the item's own ink at M3's
+   pressed opacity, so the press reads before the page has changed. */
+.item:active .label,
+.item:focus-visible .label {
+  display: block;
+}
+
+.item:active::before,
+.item:focus-visible::before {
+  clip-path: inset(0 round var(--md-sys-shape-corner-full));
+  background-color: color-mix(in srgb, currentColor calc(var(--md-sys-state-pressed-opacity) * 100%), transparent);
+}
+
+.item[aria-current="page"]:active::before,
+.item[aria-current="page"]:focus-visible::before {
+  background-color: var(--md-sys-color-secondary-container);
+}
+
+.item:focus-visible {
+  outline: 3px solid var(--md-sys-color-secondary);
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .item::before {
+    transition: none;
+  }
 }

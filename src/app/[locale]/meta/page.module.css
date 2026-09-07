@@ -1,12 +1,147 @@
-.page { width: min(100% - 2rem, 72rem); margin: 0 auto; padding: 3rem 0 6rem; }
-.intro { max-width: 58ch; }
-.note { max-width: 58ch; padding: 1rem 1.25rem; background: color-mix(in srgb, var(--surface-200) 62%, var(--surface-100)); }
-.standingList { display: grid; gap: 2.5rem; padding: 0; list-style: none; margin-top: 3rem; }
-.standing { padding-top: 1.25rem; border-top: 2px solid color-mix(in srgb, var(--accent-on-light) 34%, transparent); }
-.comboName { margin: 0 0 1rem; font-family: var(--font-display), serif; font-size: clamp(1.4rem, 4vw, 2.2rem); }
-.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; margin: 0; }
-.stats dt { color: color-mix(in srgb, var(--ink-on-light) 60%, transparent); font-size: .85rem; }
-.stats dd { margin: .25rem 0 0; font-family: var(--font-display), serif; font-size: 1.5rem; }
-.parts { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin-top: 1.25rem; padding-left: 1.1rem; }
-.empty { margin-top: 3rem; }
-@media (max-width: 760px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/*
+ * Meta Standing, in Material 3.
+ *
+ * Each Combo is an outlined card holding five figures. A Meta Standing is
+ * only ever a computed result with a sample size attached (CONTEXT.md), so
+ * nothing here is emphasised the way a recommendation would be — the numbers
+ * are the content, the card is just what holds one Combo's worth of them.
+ */
+
+.page {
+  width: min(100% - 2rem, 72rem);
+  margin: 0 auto;
+  padding: 2.5rem 0 6rem;
+}
+
+.page h1 {
+  margin: 0 0 0.75rem;
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+}
+
+.intro {
+  max-width: 58ch;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/*
+ * The two "how to read this page" caveats. They matter — CONTEXT.md is
+ * explicit that a Meta Standing without its sample size is not a ranking —
+ * but two saturated slabs stacked at the top of a page shout, and the page
+ * they are introducing is quiet. So: one tonal step up, `on-surface-variant`
+ * ink, and they read as the supporting text they are.
+ */
+.note {
+  max-width: 58ch;
+  margin: 1rem 0 0;
+  padding: 0.9rem 1.15rem;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+}
+
+.standingList {
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  margin-top: 3rem;
+  list-style: none;
+}
+
+.standing {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  background-color: var(--md-sys-color-surface-container-lowest);
+}
+
+.comboName {
+  margin: 0 0 1rem;
+  font-family: var(--md-sys-typescale-headline-small-font);
+  font-size: var(--md-sys-typescale-headline-small-size);
+  font-weight: var(--md-sys-typescale-headline-small-weight);
+  line-height: var(--md-sys-typescale-headline-small-line-height);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+}
+
+.stats dt {
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+}
+
+.stats dd {
+  margin: 0.25rem 0 0;
+  font-family: var(--md-sys-typescale-numeral-font);
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+
+.parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 1.25rem;
+  padding-left: 1.1rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+}
+
+/*
+ * The empty state is the page most visitors see today, so it is not an
+ * apology in small grey text — it says what is missing, why, and where to
+ * go instead. The two exits are M3 buttons rather than a bullet list of
+ * links — a tonal one for building a Combo (the thing you can actually do
+ * with no results recorded yet) and a text one for the calendar. Not a
+ * filled button beside an outlined one: that pairing is a preset, and these
+ * two are not a primary/secondary call to action, they are two doors.
+ */
+.empty {
+  max-width: 58ch;
+  margin-top: 3rem;
+  padding: 1.75rem;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background-color: var(--md-sys-color-surface-container);
+}
+
+.empty h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--md-sys-typescale-headline-small-font);
+  font-size: var(--md-sys-typescale-headline-small-size);
+  font-weight: var(--md-sys-typescale-headline-small-weight);
+}
+
+.empty p {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+}
+
+.empty ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 760px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -139,9 +139,12 @@ function HomeContent({
   const t = useTranslations("HomePage");
   const te = useTranslations("EventsPage");
 
+  // The arena sections carry their own authored rise/settle timing in
+  // page.module.css; `data-authored-motion` opts them out of the site-wide
+  // page flow in globals.css so the two do not stack and cancel each other.
   return (
-    <main>
-      <section className={styles.hero}>
+    <main data-authored-motion>
+      <section className={`${styles.hero} m3-dark`}>
         <BattleSearch
           allParts={allParts}
           combos={combos}
@@ -164,7 +167,7 @@ function HomeContent({
         />
       </section>
 
-      <section className={styles.partsSection}>
+      <section className={`${styles.partsSection} m3-dark`}>
         <div className={styles.sectionInner}>
           <h2>{t("section_parts_heading")}</h2>
           <p className={styles.sectionLede}>{t("section_parts_lede")}</p>
@@ -203,7 +206,7 @@ function HomeContent({
           partner: t("promo_badge_partner"),
         }}
         classNames={{
-          section: styles.promosBand,
+          section: `${styles.promosBand} m3-dark`,
           heading: styles.promosLabel,
           viewport: styles.promosViewport,
           list: styles.promoTrack,
@@ -213,13 +216,13 @@ function HomeContent({
         }}
       />
 
-      <section className={styles.eventsSection}>
+      <section className={`${styles.eventsSection} m3-dark`}>
         <div className={styles.sectionInner}>
           <h2>{t("section_events_heading")}</h2>
           <p className={styles.sectionLede}>{t("section_events_lede")}</p>
 
           {nextEvent ? (
-            <div className={`${styles.eventCard} current-border current-border-dark`}>
+            <div className={`${styles.eventCard} m3-card m3-card--outlined current-border current-border-dark`}>
               <span className={styles.eventTier}>{nextEvent.tier}</span>
               <dl className={styles.eventDetails}>
                 <dt>{t("event_next_label")}</dt>
@@ -253,7 +256,7 @@ function HomeContent({
         </div>
       </section>
 
-      <section className={styles.toolsSection}>
+      <section className={`${styles.toolsSection} m3-dark`}>
         <div className={styles.sectionInner}>
           <h2>{t("section_tools_heading")}</h2>
           <p className={styles.sectionLede}>{t("section_tools_lede")}</p>
@@ -263,7 +266,7 @@ function HomeContent({
               <li key={tool.href} className={styles.toolCardItem}>
                 <a
                   href={tool.href}
-                  className={`${styles.toolCard} current-border current-border-dark`}
+                  className={`${styles.toolCard} m3-card m3-card--outlined m3-state current-border current-border-dark`}
                 >
                   <Image
                     src={tool.icon}
@@ -332,7 +335,7 @@ function PartHighlight({
   locale: Locale;
 }) {
   return (
-    <div className={`${styles.partCard} current-border current-border-dark`}>
+    <div className={`${styles.partCard} m3-card m3-card--outlined current-border current-border-dark`}>
       <span className={styles.partCardLabel}>{label}</span>
       <span className={styles.partCardValue}>
         {(part.type === "blade" || part.type === "bit") && part.playstyle ? (

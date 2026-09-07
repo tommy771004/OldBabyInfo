@@ -81,10 +81,14 @@ function AssessmentPagination({
 
   return (
     <nav className={styles.pagination} aria-label={labels.heading}>
+      {/* Page size is a choice with a visible state, so it is a set of M3
+          filter chips; the page controls are text buttons. */}
       <div className={styles.pageSizes} aria-label={labels.pageSize}>
+        <span className={styles.pageSizesLabel}>{labels.pageSize}</span>
         {ASSESSMENT_PAGE_SIZES.map((pageSize) => (
           <a
             key={pageSize}
+            className="m3-chip m3-state"
             href={queryHref(1, pageSize)}
             aria-current={pagination.pageSize === pageSize ? "true" : undefined}
           >
@@ -94,15 +98,21 @@ function AssessmentPagination({
       </div>
       <div className={styles.pageControls}>
         {pagination.page > 1 ? (
-          <a href={queryHref(pagination.page - 1, pagination.pageSize)}>{labels.previousPage}</a>
+          <a className="m3-button m3-button--text m3-state" href={queryHref(pagination.page - 1, pagination.pageSize)}>
+            {labels.previousPage}
+          </a>
         ) : (
-          <span aria-disabled="true">{labels.previousPage}</span>
+          <span className="m3-button m3-button--text" aria-disabled="true">{labels.previousPage}</span>
         )}
-        <span aria-live="polite">{labels.pageStatus(pagination.page, pagination.totalPages)}</span>
+        <span className={styles.pageStatus} aria-live="polite">
+          {labels.pageStatus(pagination.page, pagination.totalPages)}
+        </span>
         {pagination.page < pagination.totalPages ? (
-          <a href={queryHref(pagination.page + 1, pagination.pageSize)}>{labels.nextPage}</a>
+          <a className="m3-button m3-button--text m3-state" href={queryHref(pagination.page + 1, pagination.pageSize)}>
+            {labels.nextPage}
+          </a>
         ) : (
-          <span aria-disabled="true">{labels.nextPage}</span>
+          <span className="m3-button m3-button--text" aria-disabled="true">{labels.nextPage}</span>
         )}
       </div>
     </nav>

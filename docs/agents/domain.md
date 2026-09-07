@@ -4,26 +4,24 @@ How the engineering skills should consume this repo's domain documentation when 
 
 This repo is **single-context**: one `CONTEXT.md` at the root, with all ADRs in `docs/adr/`.
 
-## Before exploring, read these
+## Load on demand, not up front
 
-- **`CONTEXT.md`** at the repo root
-- **`docs/adr/`** — read ADRs that touch the area you're about to work in
+Don't read `CONTEXT.md` and every ADR at the start of a session. The root
+`CLAUDE.md` carries a routing table mapping what you're about to touch to the
+specific files that constrain it — read those, and nothing else.
 
-If any of these files don't exist, **proceed silently**. Don't flag their absence; don't suggest creating them upfront. The `/domain-modeling` skill (reached via `/grill-with-docs` and `/improve-codebase-architecture`) creates them lazily when terms or decisions actually get resolved.
+If any of these files don't exist, **proceed silently**. Don't flag their
+absence; don't suggest creating them upfront. The `/domain-modeling` skill
+(reached via `/grill-with-docs` and `/improve-codebase-architecture`) creates
+them lazily when terms or decisions actually get resolved.
 
 ## File structure
 
 ```
 /
-├── CONTEXT.md
-├── docs/adr/
-│   ├── 0001-part-data-is-static-not-in-the-database.md
-│   ├── 0002-discussion-is-anchored-to-data-not-a-forum.md
-│   ├── 0009-source-labeled-subjective-information.md
-│   ├── 0004-llm-is-a-format-converter-not-a-source-of-truth.md
-│   ├── 0005-english-name-as-key-aliases-as-the-search-layer.md
-│   └── 0006-one-world-two-lightings.md
-└── src/
+├── CLAUDE.md      — the router: always-true rules + what to read for what
+├── CONTEXT.md     — the glossary
+└── docs/adr/      — one file per irreversible decision
 ```
 
 ## Use the glossary's vocabulary

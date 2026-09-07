@@ -22,9 +22,11 @@ export function DiscussionFeed({ items, labels }: { items: DiscussionFeedItem[];
   return (
     <section aria-labelledby="latest-discussion-heading">
       <h2 id="latest-discussion-heading">{labels.heading}</h2>
-      <label htmlFor="discussion-subject-filter">
-        {labels.filterLabel}
+      {/* M3 outlined select. The label sits after the control because the
+          floating label is driven off its own sibling. */}
+      <label className="m3-field m3-field--select" htmlFor="discussion-subject-filter">
         <select
+          className="m3-field__input"
           id="discussion-subject-filter"
           value={filter}
           onChange={(event) => setFilter(event.target.value as SubjectType | "all")}
@@ -34,6 +36,7 @@ export function DiscussionFeed({ items, labels }: { items: DiscussionFeedItem[];
           <option value="combo">{labels.combo}</option>
           <option value="event">{labels.event}</option>
         </select>
+        <span className="m3-field__label">{labels.filterLabel}</span>
       </label>
 
       {visible.length === 0 ? (

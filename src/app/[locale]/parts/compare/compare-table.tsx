@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
+import styles from "./page.module.css";
 import { Link } from "@/i18n/navigation.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { slugify } from "@/lib/parts/slug.ts";
@@ -41,24 +42,28 @@ function AddPartSearch({
   }, [allParts, query, slugs]);
 
   return (
-    <div>
-      <label>
-        <span>{t("add_label")}</span>
+    <div className={styles.addSlot}>
+      {/* M3 outlined text field; matches remain a plain list of links under
+          it rather than a menu, because picking one navigates the page. */}
+      <label className="m3-field">
         <input
+          className="m3-field__input"
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t("add_placeholder")}
         />
+        <span className="m3-field__label">{t("add_label")}</span>
       </label>
       {query.trim().length > 0 ? (
         candidates.length === 0 ? (
-          <p>{t("no_matches")}</p>
+          <p className={styles.noMatches}>{t("no_matches")}</p>
         ) : (
-          <ul>
+          <ul className={styles.candidates}>
             {candidates.map((part) => (
               <li key={part.id}>
                 <Link
+                  className={`${styles.candidate} m3-state`}
                   href={{
                     pathname: "/parts/compare",
                     query: buildCompareQuery([...slugs, slugify(part.nameEn)]),
@@ -92,7 +97,7 @@ export function CompareTable({
   if (parts.length === 0) {
     return (
       <>
-        <p>{t("empty")}</p>
+        <p className={styles.empty}>{t("empty")}</p>
         <AddPartSearch slugs={slugs} allParts={allParts} locale={locale} />
       </>
     );

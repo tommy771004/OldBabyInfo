@@ -138,7 +138,7 @@ OldBabyInfo 將提供一套 source-backed battle intelligence 體驗：
 - Visual QA covers 320, 390, 768, 1024 and 1440 widths, with particular attention to clipped text, edge gutters, parallel-column alignment, real image aspect ratio and hard color seams.
 - Accessibility QA covers semantic headings, labels, link purpose, focus visibility, keyboard order, contrast and `prefers-reduced-motion`.
 - Every interactive control is exercised with a real click or keyboard action before completion.
-- Final QA repeats the full AGENTS.md anti-slop checklist and fixes every detected violation before the effort is considered complete.
+- Final QA repeats the full anti-slop design law (`~/.claude/CLAUDE.md`, loaded into every session; not in this repo) and fixes every detected violation before the effort is considered complete. `src/lib/design/anti-slop-contract.test.ts` enforces the machine-checkable subset and must stay green.
 
 ## Out of Scope
 

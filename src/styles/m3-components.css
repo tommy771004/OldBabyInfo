@@ -1,0 +1,866 @@
+/**
+ * Material 3 components, built on the tokens in `m3.css`.
+ *
+ * Global classes rather than a CSS module, for the same reason
+ * `current-border.css` is global: these are the site's shared vocabulary,
+ * used from a dozen route-level modules, and a module would mean re-exporting
+ * every class through every page.
+ *
+ * Written by hand, not pulled from `@material/web`. That package ships Lit
+ * web components, which would mean a client boundary around every button on
+ * a site that is almost entirely server-rendered. The spec is the part worth
+ * having; the runtime is not.
+ *
+ * Three rules hold across everything below:
+ *
+ * 1. Elevation is tonal. A raised surface is a `surface-container-*` role,
+ *    never a cast shadow — which is M3's own current guidance, and also what
+ *    keeps the anti-slop contract's ban on ambient shadow intact. The one
+ *    surface that genuinely floats (the phone nav bar) is the one exception,
+ *    and it is named in that test.
+ * 2. State layers are `currentColor`. A control's own ink tints its own
+ *    hover, at M3's exact 8% / 10% / 10%, so no component needs a token of
+ *    its own and nothing can drift out of the palette.
+ * 3. Nothing here is hidden by default. No component's visibility depends on
+ *    a transition, a script or a scroll position.
+ */
+
+/* ── State layer ─────────────────────────────────────────────────────────
+ *
+ * The shared mechanism. `isolation: isolate` makes the control its own
+ * stacking context so the `z-index: -1` layer paints above the control's
+ * background and below its label, which is where M3 puts it — over the
+ * container, under the content.
+ */
+
+.m3-state {
+  position: relative;
+  isolation: isolate;
+}
+
+/*
+ * The layer is drawn as a transparent FILL that gains colour, not as an
+ * opaque fill at `opacity: 0`. Same result, and it keeps `opacity: 0` out of
+ * the stylesheet entirely — the anti-slop contract scans for that pattern
+ * because the usual reason it appears is content hidden behind an animation,
+ * and a rule is worth more when it has no exceptions to remember.
+ */
+.m3-state::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+}
+
+.m3-state:hover::before {
+  background-color: color-mix(in srgb, currentColor calc(var(--md-sys-state-hover-opacity) * 100%), transparent);
+}
+
+.m3-state:focus-visible::before {
+  background-color: color-mix(in srgb, currentColor calc(var(--md-sys-state-focus-opacity) * 100%), transparent);
+}
+
+.m3-state:active::before {
+  background-color: color-mix(in srgb, currentColor calc(var(--md-sys-state-pressed-opacity) * 100%), transparent);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────
+ *
+ * M3's five variants, in its own emphasis order: filled is the one action a
+ * screen is about, tonal the second, then outlined, then text.
+ *
+ * Note what is deliberately NOT here: a default pairing of one filled button
+ * beside one outlined button. M3 offers the variants; using them as a stock
+ * primary/secondary duo is the thing ADR-0006 rules out, and no page below
+ * does it.
+ */
+
+.m3-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0 1.5rem;
+  border: none;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: transparent;
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  line-height: var(--md-sys-typescale-label-large-line-height);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.m3-button svg {
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+/* M3's disabled state is 38% ink; the 12% fill belongs only to the variants
+   that HAVE a fill. A text button that grows a grey pill when it is disabled
+   is a different component, not a disabled one. */
+.m3-button:disabled,
+.m3-button[aria-disabled="true"] {
+  cursor: default;
+  color: color-mix(in srgb, var(--md-sys-color-on-surface) 38%, transparent);
+}
+
+.m3-button--filled:disabled,
+.m3-button--tonal:disabled,
+.m3-button--elevated:disabled,
+.m3-button--filled[aria-disabled="true"],
+.m3-button--tonal[aria-disabled="true"],
+.m3-button--elevated[aria-disabled="true"] {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent);
+}
+
+.m3-button--outlined:disabled,
+.m3-button--outlined[aria-disabled="true"] {
+  border-color: color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent);
+}
+
+.m3-button--filled {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.m3-button--tonal {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/* M3's "elevated" button, done tonally: the lift is a lighter container
+   step, not a shadow. */
+.m3-button--elevated {
+  background-color: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-primary);
+}
+
+.m3-button--outlined {
+  border: 1px solid var(--md-sys-color-outline);
+  color: var(--md-sys-color-primary);
+}
+
+.m3-button--text {
+  padding: 0 0.75rem;
+  color: var(--md-sys-color-primary);
+}
+
+/* Icon-only. 40px box around a 24px mark, so the touch target is honest
+   even though the glyph is small. */
+.m3-icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.m3-icon-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.m3-icon-button--filled {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.m3-icon-button--tonal {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.m3-icon-button--outlined {
+  border: 1px solid var(--md-sys-color-outline);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* ── Chips ───────────────────────────────────────────────────────────────
+ *
+ * 32px tall, 8px corner — M3's chip is one of the few things in the system
+ * that is deliberately not a pill, which is what separates it from a button.
+ * A selected filter chip drops its outline and takes the secondary
+ * container, and the check mark appears in the leading slot: the width
+ * change on selection is part of the component, not a glitch.
+ */
+
+.m3-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2rem;
+  padding: 0 1rem;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.m3-chip svg {
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-left: -0.25rem;
+}
+
+.m3-chip[aria-current="true"],
+.m3-chip[aria-current="page"],
+.m3-chip[aria-selected="true"],
+.m3-chip--selected {
+  border-color: transparent;
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/* The one chip that marks a choice rather than a filter takes `tertiary` —
+   ADR-0008's strike role, which exists for exactly that. */
+.m3-chip--marked {
+  border-color: transparent;
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+}
+
+/* A chip that carries a count. Not a pill inside a pill: the number is a
+   quieter weight in the same line. */
+.m3-chip__count {
+  color: color-mix(in srgb, currentColor 65%, transparent);
+  font-family: var(--md-sys-typescale-numeral-font);
+  font-variant-numeric: tabular-nums;
+}
+
+/* A horizontally scrolling chip row, which is what M3 does when a filter set
+   is wider than the screen — the set does not wrap into a block of pills. */
+.m3-chip-set {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.m3-chip-set--scroll {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+}
+
+.m3-chip-set--scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.m3-chip-set--scroll > * {
+  flex: none;
+}
+
+/* ── Cards ───────────────────────────────────────────────────────────────
+ *
+ * Three variants, one corner. `elevated` is tonal here, as everywhere else.
+ */
+
+.m3-card {
+  display: block;
+  padding: 1rem;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background-color: var(--md-sys-color-surface-container-highest);
+  color: var(--md-sys-color-on-surface);
+}
+
+.m3-card--outlined {
+  border: 1px solid var(--md-sys-color-outline-variant);
+  background-color: var(--md-sys-color-surface);
+}
+
+.m3-card--elevated {
+  background-color: var(--md-sys-color-surface-container-low);
+}
+
+/* An interactive card gets the state layer and an edge that answers on
+   hover. It never lifts and it never glows. */
+a.m3-card,
+button.m3-card {
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+a.m3-card--outlined:hover,
+button.m3-card--outlined:hover {
+  border-color: var(--md-sys-color-outline);
+}
+
+/* ── Text fields ─────────────────────────────────────────────────────────
+ *
+ * M3 outlined and filled fields, with the real floating label — the label
+ * starts inside the field and rises into the outline once the field has
+ * focus or content. `:placeholder-shown` is what makes that possible with no
+ * JavaScript, which is why every input using this needs `placeholder=" "`.
+ *
+ * The floated label sits ON the outline, so it needs the field's own
+ * background behind it. `--m3-field-bg` is that colour; it defaults to the
+ * page surface and is overridden wherever a field sits on a container.
+ */
+
+.m3-field {
+  --m3-field-bg: var(--md-sys-color-surface);
+  position: relative;
+  display: block;
+}
+
+.m3-field__input {
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 1.5rem 1rem 0.5rem;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: 1.5;
+  transition: border-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+/* The placeholder is M3's second line of help, not a stand-in for the
+   label: it stays hidden while the label is resting over the field, and
+   appears once the label has floated out of the way. */
+.m3-field__input::placeholder {
+  color: transparent;
+}
+
+.m3-field__input:focus::placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.m3-field__input:hover {
+  border-color: var(--md-sys-color-on-surface);
+}
+
+.m3-field__input:focus,
+.m3-field__input:focus-visible {
+  outline: none;
+  border-color: var(--md-sys-color-primary);
+  /* The focused outline is 2px in M3. Drawing it with an inset ring rather
+     than a width change keeps the input from shifting by a pixel. */
+  border-width: 2px;
+  padding: calc(1.5rem - 1px) calc(1rem - 1px) calc(0.5rem - 1px);
+}
+
+.m3-field__label {
+  position: absolute;
+  top: 1rem;
+  left: 0.75rem;
+  padding: 0 0.25rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: 1.5;
+  pointer-events: none;
+  transform-origin: left top;
+  transition: transform var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-emphasized-decelerate);
+}
+
+/* Resting (empty, unfocused) is the LOWER position, so the label is fully
+   readable with no script running and no transition ever firing — the
+   floated position is the state change, not the default. */
+.m3-field__input:not(:placeholder-shown) + .m3-field__label,
+.m3-field__input:focus + .m3-field__label {
+  transform: translateY(-1.35rem) scale(0.75);
+  background-color: var(--m3-field-bg);
+}
+
+.m3-field__input:focus + .m3-field__label {
+  color: var(--md-sys-color-primary);
+}
+
+.m3-field__support {
+  display: block;
+  margin: 0.25rem 0 0;
+  padding: 0 1rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
+  line-height: var(--md-sys-typescale-body-small-line-height);
+}
+
+/* A select is the same shell with the native control inside it and M3's own
+   trailing chevron drawn on the wrapper, because a native arrow cannot be
+   restyled and this one has to match the icon set. */
+.m3-field--select .m3-field__input {
+  appearance: none;
+  padding-right: 2.75rem;
+}
+
+.m3-field--select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  margin-top: -0.4rem;
+  border-right: 2px solid var(--md-sys-color-on-surface-variant);
+  border-bottom: 2px solid var(--md-sys-color-on-surface-variant);
+  border-radius: 0 0 2px 0;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+/* A select always has a value, so its label is always floated — it never
+   sits over the value the way an empty text input's does. */
+.m3-field--select .m3-field__label {
+  transform: translateY(-1.35rem) scale(0.75);
+  background-color: var(--m3-field-bg);
+}
+
+/* ── Search bar ──────────────────────────────────────────────────────────
+ *
+ * M3's search bar is its own component, not a text field: 56px, fully
+ * rounded, on `surface-container-high`, with no outline at rest.
+ */
+
+.m3-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0 1.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  transition: border-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.m3-search-bar:focus-within {
+  border-color: var(--md-sys-color-primary);
+}
+
+.m3-search-bar svg {
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.m3-search-bar input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+}
+
+.m3-search-bar input:focus,
+.m3-search-bar input:focus-visible {
+  outline: none;
+}
+
+.m3-search-bar input::placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────────────
+ *
+ * Primary tabs: 48px, a rounded 3px indicator under the active label, and a
+ * divider across the whole row that the indicator sits on top of. The
+ * indicator's corners are rounded at both ends — a square-capped rule under
+ * a tab is the cheap version of this component.
+ */
+
+.m3-tabs {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.m3-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.m3-tab {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0 1rem;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-title-small-font);
+  font-size: var(--md-sys-typescale-title-small-size);
+  font-weight: var(--md-sys-typescale-title-small-weight);
+  letter-spacing: var(--md-sys-typescale-title-small-tracking);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.m3-tab::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0.75rem;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background-color: transparent;
+  transition: background-color var(--md-sys-motion-duration-medium1) var(--md-sys-motion-easing-emphasized);
+}
+
+.m3-tab:hover {
+  color: var(--md-sys-color-on-surface);
+}
+
+.m3-tab[aria-current="page"],
+.m3-tab[aria-current="true"],
+.m3-tab[aria-selected="true"] {
+  color: var(--md-sys-color-primary);
+}
+
+.m3-tab[aria-current="page"]::after,
+.m3-tab[aria-current="true"]::after,
+.m3-tab[aria-selected="true"]::after {
+  background-color: var(--md-sys-color-primary);
+}
+
+.m3-tab__count {
+  color: color-mix(in srgb, currentColor 62%, transparent);
+  font-family: var(--md-sys-typescale-numeral-font);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Lists ───────────────────────────────────────────────────────────── */
+
+.m3-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.m3-list-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0 1rem;
+  min-height: 3.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--md-sys-shape-corner-medium);
+  color: var(--md-sys-color-on-surface);
+  text-decoration: none;
+}
+
+.m3-list-item__leading {
+  display: flex;
+  grid-row: span 2;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.m3-list-item__headline {
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: 1.5;
+}
+
+.m3-list-item__supporting {
+  grid-column: 2;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: 1.45;
+}
+
+.m3-list-item__trailing {
+  grid-column: 3;
+  grid-row: 1 / -1;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-small-font);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Divider ─────────────────────────────────────────────────────────── */
+
+.m3-divider {
+  height: 1px;
+  margin: 0;
+  border: none;
+  background-color: var(--md-sys-color-outline-variant);
+}
+
+.m3-divider--inset {
+  margin-inline-start: 1rem;
+}
+
+/* ── Badge ───────────────────────────────────────────────────────────── */
+
+.m3-badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.25rem;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-on-tertiary);
+  font-family: var(--md-sys-typescale-label-small-font);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Top app bar ─────────────────────────────────────────────────────────
+ *
+ * M3's small top app bar: 64px, the headline in title-large beside a leading
+ * slot, trailing icon buttons at the end.
+ */
+
+.m3-top-app-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 4rem;
+  padding: 0 1rem;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+}
+
+.m3-top-app-bar__headline {
+  margin: 0;
+  font-family: var(--md-sys-typescale-title-large-font);
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+}
+
+.m3-top-app-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-inline-start: auto;
+}
+
+/* ── Type-scale utilities ────────────────────────────────────────────────
+ *
+ * For the places where a role is applied to one element and inventing a
+ * module class for it would be noise.
+ */
+
+.m3-display-large {
+  font-family: var(--md-sys-typescale-display-large-font);
+  font-size: var(--md-sys-typescale-display-large-size);
+  font-weight: var(--md-sys-typescale-display-large-weight);
+  line-height: var(--md-sys-typescale-display-large-line-height);
+}
+
+.m3-display-small {
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+}
+
+.m3-headline-large {
+  font-family: var(--md-sys-typescale-headline-large-font);
+  font-size: var(--md-sys-typescale-headline-large-size);
+  font-weight: var(--md-sys-typescale-headline-large-weight);
+  line-height: var(--md-sys-typescale-headline-large-line-height);
+}
+
+.m3-headline-medium {
+  font-family: var(--md-sys-typescale-headline-medium-font);
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  font-weight: var(--md-sys-typescale-headline-medium-weight);
+  line-height: var(--md-sys-typescale-headline-medium-line-height);
+}
+
+.m3-headline-small {
+  font-family: var(--md-sys-typescale-headline-small-font);
+  font-size: var(--md-sys-typescale-headline-small-size);
+  font-weight: var(--md-sys-typescale-headline-small-weight);
+  line-height: var(--md-sys-typescale-headline-small-line-height);
+}
+
+.m3-title-large {
+  font-family: var(--md-sys-typescale-title-large-font);
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+}
+
+.m3-title-medium {
+  font-family: var(--md-sys-typescale-title-medium-font);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
+  line-height: var(--md-sys-typescale-title-medium-line-height);
+  letter-spacing: var(--md-sys-typescale-title-medium-tracking);
+}
+
+.m3-body-large {
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+}
+
+.m3-body-medium {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+}
+
+.m3-body-small {
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
+  line-height: var(--md-sys-typescale-body-small-line-height);
+}
+
+.m3-label-large {
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  line-height: var(--md-sys-typescale-label-large-line-height);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+}
+
+.m3-label-medium {
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  line-height: var(--md-sys-typescale-label-medium-line-height);
+  letter-spacing: var(--md-sys-typescale-label-medium-tracking);
+}
+
+.m3-on-surface-variant {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* ── Focus ───────────────────────────────────────────────────────────────
+ *
+ * M3 draws keyboard focus as a 3px ring in the secondary colour with a 2px
+ * gap. globals.css already sets a `currentColor` ring site-wide; on these
+ * components the ring takes the scheme's own focus colour so it reads the
+ * same on both lightings.
+ */
+
+.m3-state:focus-visible,
+.m3-field__input:focus-visible,
+.m3-tab:focus-visible {
+  outline: 3px solid var(--md-sys-color-secondary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3-state::before,
+  .m3-button,
+  .m3-chip,
+  .m3-tab::after,
+  .m3-field__label,
+  .m3-field__input,
+  .m3-icon-button,
+  .m3-search-bar {
+    transition: none;
+  }
+}
+
+/* ── Compact select ──────────────────────────────────────────────────────
+ *
+ * The locale control, and any other one-line choice that belongs in a bar
+ * rather than in a form. M3's own menu button shape: fully rounded, an
+ * outline, and the chevron drawn on the wrapper because a native select's
+ * arrow cannot be restyled to match the icon set.
+ */
+
+.m3-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.m3-select select {
+  appearance: none;
+  min-height: 2.25rem;
+  padding: 0 2.25rem 0 0.875rem;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  cursor: pointer;
+}
+
+/* Native option lists are painted by the OS, which does not inherit the
+   scheme — so they get an explicit pairing rather than an unreadable
+   light-on-light list on the dark bar. */
+.m3-select option {
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+}
+
+.m3-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0.875rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: -0.35rem;
+  border-right: 2px solid var(--md-sys-color-on-surface-variant);
+  border-bottom: 2px solid var(--md-sys-color-on-surface-variant);
+  border-radius: 0 0 2px 0;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+/* ── Utility ─────────────────────────────────────────────────────────── */
+
+.m3-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

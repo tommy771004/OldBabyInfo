@@ -1,105 +1,205 @@
+/*
+ * Material 3 top app bar, on the field lighting.
+ *
+ * Every colour here is a role (`m3.css`), never a palette token: the
+ * `m3-dark` class on the header is what makes the whole bar resolve to the
+ * ramp's deep end, and the same markup would read correctly on the light end
+ * if it ever moved there.
+ *
+ * Pinned, and GLASS. M3 shows a top app bar two ways once the page scrolls
+ * under it — a tonal `surface-container` fill, or a translucent one over the
+ * content. This is the translucent one (owner-decided): the bar is scrolled
+ * under, so there is live content moving behind it to sample, which is the
+ * only condition that earns translucency. Glass over a flat fill would be
+ * decoration, and that is the case the contract test exists to stop.
+ *
+ * Depth is still in the edges, never a cast shadow. A full-width bar with a
+ * drop shadow under it is the "bloom under everything" tell; what reads as
+ * thickness here is the specular lip along the top where light catches, plus
+ * the 1px `outline-variant` line where the glass meets the page.
+ *
+ * WHY 80% AND NOT MORE TRANSPARENT — computed with the real WCAG relative
+ * luminance formula (ADR-0008), never eyeballed. The tint composites over
+ * whatever scrolls beneath, so both ends of the ramp were checked:
+ *
+ *   backdrop           composited bar   on-surface   on-surface-variant (78%)
+ *   #faf1e9 (reading)     #4f453e          8.36:1           5.85:1
+ *   #1a120d (field)       #221812         15.55:1           9.82:1
+ *
+ * The worst case on the whole site is the quietest nav label passing over the
+ * lightest reading surface, and it still clears AA with room. At 72% that
+ * same case measures 4.64:1 — it passes, but with no margin, and a label
+ * that is only just readable at one scroll position is not a bar you can
+ * trust. 20% show-through is plenty of glass once it is blurred.
+ *
+ * The table above is arithmetic on the tint alone, which is NOT the whole
+ * story: `saturate(135%)` re-chromas the sampled backdrop before the tint
+ * composites over it, and no amount of hand-computation captures that. So
+ * the shipped bar was also measured off its own rendered pixels, scrolled
+ * over the reading surface: bar `#4e4134`, label ink `#d3c9c1`, **6.05:1**.
+ * That sample takes the ink at the 98th percentile of the label's box, so it
+ * is antialiased edge rather than glyph core — the real figure is higher.
+ * Re-measure with `scripts/_contrast.mjs` if the tint or the filter changes.
+ */
+
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background-color: color-mix(in srgb, var(--surface-900) 80%, transparent);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  /* The specular top lip. This is the whole depth cue — no drop shadow. */
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink-on-dark) 20%, transparent);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+/*
+ * Without backdrop sampling the tint would be a see-through smear over live
+ * text, so fall back to the opaque container colour. This has to be a
+ * DIFFERENT value from the translucent one above or the fallback is a no-op
+ * — which is exactly the bug the floating pill had until this change.
+ */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .header {
+    background-color: var(--md-sys-color-surface-container);
+  }
+}
+
+/* M3's small top app bar is 64dp. The horizontal padding resolves to the
+   same content column the pages below use, so the wordmark lines up with a
+   page heading rather than floating in its own margin. */
+.bar {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem 2rem;
-  width: 100%;
-  max-width: none;
-  margin: 0 auto;
-  padding: 1.25rem max(1rem, calc((100vw - 72rem) / 2 + 1.5rem));
-  background: var(--surface-950);
-  border-bottom: 1px solid color-mix(in srgb, var(--ink-on-dark) 16%, transparent);
+  gap: 0.5rem 1.5rem;
+  min-height: 4rem;
+  padding: 0 max(1rem, calc((100vw - 72rem) / 2 + 1.5rem));
 }
 
 .wordmark {
-  font-family: var(--font-display), serif;
-  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  margin-left: -0.75rem;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-family: var(--md-sys-typescale-title-large-font);
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
   letter-spacing: 0.02em;
-  color: var(--ink-on-dark);
+  color: var(--md-sys-color-on-surface);
   white-space: nowrap;
   text-decoration: none;
 }
 
 .wordmarkAccent {
-  color: var(--accent-on-dark);
+  color: var(--md-sys-color-primary);
 }
 
 .nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 0.25rem;
   margin-right: auto;
 }
 
-.nav a {
-  color: var(--ink-on-dark);
-  text-decoration: none;
-  font-size: 0.95rem;
+/*
+ * M3's navigation item: a pill that holds its own state layer, and a filled
+ * `secondary-container` when it is the current destination. Not an
+ * underline that grows in on hover, and not a dot underneath.
+ */
+.navItem {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0 0.875rem;
+  border-radius: var(--md-sys-shape-corner-full);
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
   white-space: nowrap;
-  transition: color 0.15s ease;
+  text-decoration: none;
+  transition: color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
 }
 
-.nav a:hover {
-  color: var(--accent-on-dark);
+.navItem:hover {
+  color: var(--md-sys-color-on-surface);
 }
 
-/* Phone width: the floating glass pill (mobile-nav.module.css) is the
-   navigation, so the text row steps aside entirely rather than wrapping to a
-   second cramped line. */
-.corner {
+.navItem[aria-current="page"] {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
-/* Sign-in is already a text link in the wide nav; the icon button is the
-   phone-only stand-in for it. */
+/* Sign-in is already a navigation item in the wide bar; the icon button is
+   the phone-only stand-in for it, so it only appears once the row is gone. */
 .cornerLogin {
   display: none;
 }
 
-.mobileSecondary { display: none; }
+.mobileSecondary {
+  display: none;
+}
 
 @media (max-width: 640px) {
-  .mobileSecondary {
-    display: flex;
-    width: 100%;
-    gap: 1rem;
-  }
-
-  .mobileSecondary a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    color: var(--ink-on-dark);
-    font-size: 0.875rem;
-  }
-  .header {
-    position: relative;
-    top: 0;
-    z-index: 30;
-    justify-content: space-between;
-    gap: 0.75rem;
-    padding: 0.85rem 1.1rem;
+  .bar {
+    gap: 0.5rem;
+    padding: 0 0.5rem 0 1rem;
   }
 
   .nav {
     display: none;
   }
 
+  .wordmark {
+    margin-left: 0;
+    padding: 0 0.5rem;
+    margin-right: auto;
+    font-size: 1.15rem;
+  }
+
   .cornerLogin {
-    display: grid;
-    place-items: center;
-    width: 2.4rem;
-    height: 2.4rem;
-    border: 1px solid color-mix(in srgb, var(--ink-on-dark) 22%, transparent);
-    border-radius: 999px;
-    color: var(--ink-on-dark);
-    text-decoration: none;
+    display: inline-grid;
+    color: var(--md-sys-color-on-surface-variant);
   }
 
   .cornerLogin[aria-current="page"] {
-    border-color: var(--accent-on-dark);
-    color: var(--accent-on-dark);
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+  }
+
+  /*
+   * The two destinations the navigation bar has no room for. A quiet row of
+   * M3 text buttons under the bar, not a second navigation landmark — a
+   * screen reader is already offered both of these from the bottom bar's
+   * sibling links in the footer, and announcing a third "navigation" here
+   * would be noise.
+   */
+  .mobileSecondary {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0 0.5rem 0.5rem;
+  }
+
+  .mobileSecondaryItem {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    padding: 0 0.75rem;
+    border-radius: var(--md-sys-shape-corner-full);
+    color: var(--md-sys-color-on-surface-variant);
+    font-family: var(--md-sys-typescale-label-large-font);
+    font-size: var(--md-sys-typescale-label-large-size);
+    font-weight: var(--md-sys-typescale-label-large-weight);
+    text-decoration: none;
   }
 }

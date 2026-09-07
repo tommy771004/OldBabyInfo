@@ -36,10 +36,21 @@ SOURCE_FILES = [
     "src/messages/zh-TW.json",
     "src/messages/ja.json",
     "src/messages/en.json",
+    # Prose the guides render verbatim. Missing from this list until now,
+    # which is how ~18 common characters (官, 值, 使, 用, 系, 統, 種, 類, 量,
+    # 討, 論 …) ended up outside the subset even though they appear in the UI
+    # strings too — the file was last regenerated before those strings were
+    # added, and nothing re-checked it. A character outside the subset falls
+    # through to whatever face the reader's OS supplies, so a heading renders
+    # half in Taipei Sans TC Bold and half in a system Ming.
+    "data/mold-batch-guidance.json",
+    "data/assessments.json",
 ]
+CONTENT_GLOBS = ["content/guides/**/*.mdx"]
 DATA_FILES = {
     "data/parts.json": ["nameZhTw", "nameJa", "nameEn"],
     "data/events.json": ["venueName", "venueAddress", "ageCategory"],
+    "data/generation-catalog.json": ["name", "nameZhTw", "nameJa", "notes"],
 }
 
 
@@ -60,10 +71,20 @@ def collect_characters() -> set[str]:
     for rel, keys in DATA_FILES.items():
         with open(ROOT / rel) as f:
             records = json.load(f)
+        if isinstance(records, dict):
+            records = next((v for v in records.values() if isinstance(v, list)), [])
         for record in records:
+            if not isinstance(record, dict):
+                continue
             for key in keys:
-                if record.get(key):
-                    chars.update(record[key])
+                value = record.get(key)
+                if isinstance(value, str):
+                    chars.update(value)
+
+    # Long-form content is prose, not fields: take the whole file.
+    for pattern in CONTENT_GLOBS:
+        for path in sorted(ROOT.glob(pattern)):
+            chars.update(path.read_text())
 
     # Non-ASCII only — Basic Latin is covered separately via --unicodes.
     return {c for c in chars if ord(c) > 0x2E7F or c in "、。「」『』（）：；！？—…／"}

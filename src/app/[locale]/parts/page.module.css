@@ -1,33 +1,129 @@
-.page { width: min(100% - 2rem, 88rem); margin: 0 auto; padding: 3rem 0 6rem; }
-.pageHeader {
-  margin-bottom: 1.25rem;
+/*
+ * The Parts catalog page, in Material 3.
+ *
+ * Almost everything visible on this page is now an M3 component supplied by
+ * `m3-components.css` — the fields, the filter chips, the tab bar, the
+ * result cards. What is left here is the page frame and the Stat table,
+ * which M3 has no component for.
+ *
+ * The `:global(input)` block that used to live here is gone on purpose: it
+ * set a 2.6rem height and its own border on every input on the page, which
+ * silently overrode the M3 field's 56dp box wherever the two met. A page
+ * frame styles the page, not the controls inside it.
+ */
+
+.page {
+  width: min(100% - 2rem, 88rem);
+  margin: 0 auto;
+  padding: 2.5rem 0 6rem;
 }
 
+.pageHeader {
+  margin-bottom: 1.5rem;
+}
+
+/* Where you are in the catalog, not a decorative eyebrow: it names the
+   Generation the whole page below is scoped to. M3 label-medium. */
 .kicker {
   margin: 0 0 0.35rem;
-  color: var(--accent-on-light);
-  font-family: var(--font-display), serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  color: var(--md-sys-color-primary);
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  letter-spacing: 0.12em;
 }
 
-.pageHeader h1 { margin: 0; font-family: var(--font-display), serif; font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.03em; }
-.page :global(label) { display: grid; gap: .45rem; }
-.page :global(input) { min-height: 2.6rem; padding: .45rem .65rem; border: 1px solid color-mix(in srgb, var(--ink-on-light) 30%, transparent); background: var(--surface-50); color: var(--ink-on-light); }
-.page :global(table) { width: 100%; border-collapse: collapse; font-size: .92rem; }
-.page :global(th), .page :global(td) { padding: .75rem .6rem; text-align: left; vertical-align: middle; border-top: 1px solid color-mix(in srgb, var(--ink-on-light) 16%, transparent); }
-.page :global(th) { color: color-mix(in srgb, var(--ink-on-light) 64%, transparent); font-size: .8rem; font-weight: 600; }
-.page :global(tbody tr:hover) { background: color-mix(in srgb, var(--surface-200) 45%, transparent); }
-.page :global(td:nth-child(n+5)) { font-variant-numeric: tabular-nums; }
-.page :global(td svg) { display: block; width: 3.5rem; height: 3.5rem; }
+.pageHeader h1 {
+  margin: 0;
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+}
+
+/* ── The Stat table ──────────────────────────────────────────────────────
+ *
+ * M3 has no data-table component, so this follows its data-table GUIDANCE:
+ * a 56dp row, a label-medium column header in `on-surface-variant`, a
+ * 1px `outline-variant` between rows and nothing around the table, and a
+ * state layer on the row under the pointer. No zebra striping, no box.
+ */
+.page :global(table) {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.page :global(th),
+.page :global(td) {
+  padding: 0.75rem 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.page :global(th) {
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  letter-spacing: var(--md-sys-typescale-label-medium-tracking);
+}
+
+.page :global(td) {
+  font-family: var(--md-sys-typescale-body-medium-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+}
+
+.page :global(tbody tr) {
+  transition: background-color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+}
+
+.page :global(tbody tr:hover) {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+}
+
+/* Columns 3-7 are the five Stats — the site's headline numbers — so they
+   take the numeral face. Weight and release date are measurements rather
+   than Stats and keep the UI face; all of them get tabular figures, which
+   is the part that actually makes a column comparable. */
+.page :global(td:nth-child(n+3)) {
+  font-variant-numeric: tabular-nums;
+}
+
+.page :global(td:nth-child(n+3):nth-child(-n+7)) {
+  font-family: var(--md-sys-typescale-numeral-font);
+  font-size: 1rem;
+}
+
+.page :global(td svg) {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
 /* Between phone and desktop the table still needs to scroll sideways; at
    phone width catalog-part-table.module.css turns it into cards instead. */
 @media (min-width: 641px) and (max-width: 760px) {
-  .page { overflow-x: hidden; }
-  .page :global(table) { display: block; min-width: 58rem; overflow-x: auto; }
+  .page {
+    overflow-x: hidden;
+  }
+
+  .page :global(table) {
+    display: block;
+    min-width: 58rem;
+    overflow-x: auto;
+  }
 }
 
 @media (max-width: 640px) {
-  .page { width: min(100% - 1.5rem, 88rem); padding: 2rem 0 4rem; }
+  .page {
+    width: min(100% - 1.5rem, 88rem);
+    padding: 1.75rem 0 4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page :global(tbody tr) {
+    transition: none;
+  }
 }

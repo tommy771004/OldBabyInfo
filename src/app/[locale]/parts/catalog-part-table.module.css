@@ -5,6 +5,10 @@
  * becomes a labelled line — and any cell with nothing in it drops out
  * entirely (`[data-empty]`), which is why a Lock Chip card is three lines
  * while a Bit card is eight.
+ *
+ * In Material 3 terms the phone shape is a list of outlined cards and the
+ * sort control above it is a scrolling chip set. The chips are supplied by
+ * `m3-components.css`; what is here is the layout that holds them.
  */
 
 .sortRow {
@@ -23,13 +27,13 @@
   display: block;
   max-width: 18rem;
   margin-top: 0.25rem;
-  color: color-mix(in srgb, var(--ink-on-light) 58%, transparent);
-  font-size: 0.76rem;
-  line-height: 1.4;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
+  line-height: 1.45;
 }
 
 .relatedLabel {
-  color: color-mix(in srgb, var(--ink-on-light) 46%, transparent);
   font-weight: 700;
 }
 
@@ -38,24 +42,26 @@
 }
 
 /* Left-aligned and quiet: a centred full-width sentence above the table read
-   as an announcement, when it is a note about where one column comes from. */
+   as an announcement, when it is a note about where one column comes from.
+   M3 body-small, which is the role for exactly this. */
 .table caption {
   margin-bottom: 0.75rem;
-  color: color-mix(in srgb, var(--ink-on-light) 58%, transparent);
-  font-size: 0.78rem;
-  line-height: 1.5;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-small-font);
+  font-size: var(--md-sys-typescale-body-small-size);
+  line-height: var(--md-sys-typescale-body-small-line-height);
   text-align: left;
 }
 
 @media (max-width: 640px) {
   /* Sort lives in the header row on desktop; the card layout has no header
-     row, so it gets its own scrollable strip. */
+     row, so it gets its own scrollable chip set. */
   .sortRow {
     display: flex;
-    gap: 0.4rem;
+    gap: 0.5rem;
     align-items: center;
-    margin-bottom: 0.9rem;
-    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.35rem;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
@@ -67,26 +73,15 @@
 
   .sortRowLabel {
     flex: 0 0 auto;
-    color: color-mix(in srgb, var(--ink-on-light) 62%, transparent);
-    font-size: 0.75rem;
-    font-weight: 700;
+    color: var(--md-sys-color-on-surface-variant);
+    font-family: var(--md-sys-typescale-label-medium-font);
+    font-size: var(--md-sys-typescale-label-medium-size);
+    font-weight: var(--md-sys-typescale-label-medium-weight);
+    letter-spacing: var(--md-sys-typescale-label-medium-tracking);
   }
 
   .sortRow a {
     flex: 0 0 auto;
-    padding: 0.35rem 0.75rem;
-    border: 1px solid color-mix(in srgb, var(--ink-on-light) 15%, transparent);
-    border-radius: 999px;
-    color: var(--ink-on-light);
-    font-size: 0.82rem;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .sortRow a[aria-current="true"] {
-    border-color: var(--accent-on-light);
-    background: var(--accent-on-light);
-    color: var(--surface-50);
   }
 
   .table,
@@ -119,22 +114,22 @@
     display: block;
     width: 100%;
     margin-bottom: 0.75rem;
-    font-size: 0.78rem;
-    line-height: 1.5;
     text-align: left;
   }
 
   /* Two value columns, not one field per line: a Bit's eight fields fit in
-     four rows, and the card stops being a column of near-empty lines. */
+     four rows, and the card stops being a column of near-empty lines.
+     An M3 outlined card — `outline-variant` edge, 12px corner, on the
+     lightest container step. */
   .table tbody tr {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.2rem 0.9rem;
-    margin-bottom: 0.55rem;
-    padding: 0.7rem 0.85rem;
-    border: 1px solid color-mix(in srgb, var(--ink-on-light) 14%, transparent);
-    border-radius: 14px;
-    background: color-mix(in srgb, var(--surface-50) 55%, transparent);
+    gap: 0.25rem 0.9rem;
+    margin-bottom: 0.6rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-medium);
+    background-color: var(--md-sys-color-surface-container-lowest);
   }
 
   .table tbody td {
@@ -145,7 +140,8 @@
     min-width: 0;
     padding: 0;
     border: 0;
-    font-size: 0.88rem;
+    font-family: var(--md-sys-typescale-body-medium-font);
+    font-size: var(--md-sys-typescale-body-medium-size);
     font-variant-numeric: tabular-nums;
     text-align: right;
   }
@@ -154,9 +150,10 @@
     content: attr(data-label);
     flex: 0 1 auto;
     overflow: hidden;
-    color: color-mix(in srgb, var(--ink-on-light) 60%, transparent);
-    font-size: 0.75rem;
-    font-weight: 600;
+    color: var(--md-sys-color-on-surface-variant);
+    font-family: var(--md-sys-typescale-label-medium-font);
+    font-size: var(--md-sys-typescale-label-medium-size);
+    font-weight: var(--md-sys-typescale-label-medium-weight);
     text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -168,15 +165,30 @@
   }
 
   /* The header spans both columns; the kind rides above the name as an
-     eyebrow, so neither repeats its column label. */
+     overline, so neither repeats its column label. M3's card headline and
+     overline, in the order M3 stacks them. */
   .table tbody td.nameCell {
     order: -1;
     display: block;
     grid-column: 1 / -1;
     padding: 0 0 0.35rem;
-    font-size: 1.02rem;
-    font-weight: 600;
+    font-family: var(--md-sys-typescale-title-medium-font);
+    font-size: var(--md-sys-typescale-title-medium-size);
+    font-weight: var(--md-sys-typescale-title-medium-weight);
     text-align: left;
+  }
+
+  /* The card's headline is also its only link, so it has to be a real
+     target: 28px of text is not something a thumb can reliably hit. 44px,
+     pulled back by its own padding so it still sits flush with the card's
+     left edge. */
+  .table tbody td.nameCell > a {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    margin: -0.25rem -0.5rem 0;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--md-sys-shape-corner-small);
   }
 
   .table tbody td.kindCell {
@@ -184,9 +196,10 @@
     display: block;
     grid-column: 1 / -1;
     padding: 0;
-    color: color-mix(in srgb, var(--ink-on-light) 58%, transparent);
-    font-size: 0.7rem;
-    font-weight: 700;
+    color: var(--md-sys-color-on-surface-variant);
+    font-family: var(--md-sys-typescale-label-small-font);
+    font-size: var(--md-sys-typescale-label-small-size);
+    font-weight: var(--md-sys-typescale-label-small-weight);
     letter-spacing: 0.06em;
     text-align: left;
     text-transform: uppercase;
