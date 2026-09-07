@@ -70,7 +70,10 @@ function ComboPageBody({
 
   return (
     <main className={styles.page}>
-      <h1>{t("title")}</h1>
+      <header className={styles.masthead}>
+        <h1 className={styles.title}>{t("title")}</h1>
+        <p className={styles.intro}>{t("intro")}</p>
+      </header>
       <ComboBuilder blade={blade} ratchet={ratchet} bit={bit} allParts={allParts} locale={locale} />
     </main>
   );

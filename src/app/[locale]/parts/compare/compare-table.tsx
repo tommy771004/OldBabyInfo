@@ -8,10 +8,7 @@ import { slugify } from "@/lib/parts/slug.ts";
 import { searchParts } from "@/lib/parts/search-parts.ts";
 import { buildCompareQuery, canAddMore } from "@/lib/parts/compare-query.ts";
 import { highestIndices } from "@/lib/parts/compare-highlight.ts";
-import { BladeSilhouette, BladeSilhouettePlaceholder } from "@/components/blade-silhouette.tsx";
-import { RatchetSilhouette } from "@/components/ratchet-silhouette.tsx";
-import { BitSilhouette } from "@/components/bit-silhouette.tsx";
-import { wingCountFor, hasObservedWingCount } from "@/lib/parts/blade-wing-count.ts";
+import { PartSilhouette } from "@/components/part-silhouette.tsx";
 import type { Locale } from "@/i18n/routing.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 
@@ -22,38 +19,6 @@ function statValue(part: Part, field: (typeof STAT_ROWS)[number]): number | unde
     return part.stats[field];
   }
   return part.type === "bit" ? part.stats[field] : undefined;
-}
-
-function SilhouetteCell({
-  part,
-  tp,
-}: {
-  part: Part;
-  tp: ReturnType<typeof useTranslations>;
-}) {
-  if (part.type === "blade") {
-    return hasObservedWingCount(part.id) ? (
-      <BladeSilhouette
-        wingCount={wingCountFor(part.id)}
-        label={tp("silhouette_label", { count: wingCountFor(part.id) })}
-      />
-    ) : (
-      <BladeSilhouettePlaceholder label={tp("silhouette_unknown_label")} />
-    );
-  }
-  if (part.type === "ratchet") {
-    return (
-      <RatchetSilhouette
-        height={part.height}
-        label={tp("silhouette_ratchet_label", { height: part.height })}
-      />
-    );
-  }
-  return part.playstyle ? (
-    <BitSilhouette playstyle={part.playstyle} label={tp(`silhouette_bit_${part.playstyle}`)} />
-  ) : (
-    <BladeSilhouettePlaceholder label={tp("silhouette_unknown_label")} />
-  );
 }
 
 function AddPartSearch({
@@ -177,7 +142,7 @@ export function CompareTable({
             <th scope="row">{tp("silhouette_column")}</th>
             {parts.map((part) => (
               <td key={part.id}>
-                <SilhouetteCell part={part} tp={tp} />
+                <PartSilhouette part={part} />
               </td>
             ))}
             {showAddSlot ? <td /> : null}

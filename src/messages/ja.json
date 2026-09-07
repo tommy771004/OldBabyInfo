@@ -166,14 +166,18 @@
   },
   "ComboBuilderPage": {
     "title": "コンボビルダー",
+    "intro": "3つのパーツを選ぶと、合成後のステータスがすぐに出ます。当サイトは「最強コンボ」を格付けしません。実データだけを示し、判断はあなたに委ねます。",
     "blade_slot": "Blade",
     "ratchet_slot": "Ratchet",
     "bit_slot": "Bit",
     "search_placeholder": "パーツ名を入力",
+    "recent_heading": "新着",
+    "matches_heading": "検索結果",
     "no_matches": "一致するパーツが見つかりません",
     "clear": "クリア",
     "incomplete_notice": "まだ3つのパーツが揃っていません。以下は現在選択中のパーツの合計で、完全なコンボの数値ではありません。",
     "stats_heading": "合成ステータス",
+    "empty_stats_hint": "まだパーツが選ばれていません。上の3つの枠からひとつずつ選ぶと、ここに合成ステータスが出ます。",
     "weight_note": "",
     "bit_only_note": "Bitを選択すると表示されます"
   },

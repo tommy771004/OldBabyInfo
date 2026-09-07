@@ -166,14 +166,18 @@
   },
   "ComboBuilderPage": {
     "title": "Combo builder",
+    "intro": "Pick three parts and see what they add up to. This site publishes no “strongest combo” ranking; it gives you the real part data and leaves the judgement to you.",
     "blade_slot": "Blade",
     "ratchet_slot": "Ratchet",
     "bit_slot": "Bit",
     "search_placeholder": "Search for a part",
+    "recent_heading": "Newest",
+    "matches_heading": "Matches",
     "no_matches": "No matching parts",
     "clear": "Clear",
     "incomplete_notice": "Not all three parts are selected yet — the totals below are just the parts you've picked so far, not a complete Combo.",
     "stats_heading": "Combined stats",
+    "empty_stats_hint": "Nothing picked yet. Choose one part in each of the three slots above and the combined stats appear here.",
     "weight_note": "",
     "bit_only_note": "Shown once a Bit is selected"
   },

@@ -166,14 +166,18 @@
   },
   "ComboBuilderPage": {
     "title": "組合建構器",
+    "intro": "挑三個部位，立刻看到合起來的數值。本站不排「最強組合」，只給你真實零件資料，讓你自己判斷。",
     "blade_slot": "Blade",
     "ratchet_slot": "Ratchet",
     "bit_slot": "Bit",
     "search_placeholder": "輸入零件名稱",
+    "recent_heading": "最新登場",
+    "matches_heading": "搜尋結果",
     "no_matches": "找不到符合的零件",
     "clear": "清除",
     "incomplete_notice": "尚未選滿三個部位，以下是目前已選零件的合計，不是完整 Combo 的數值。",
     "stats_heading": "合成數值",
+    "empty_stats_hint": "還沒選任何零件。從上面三個部位各挑一個，這裡就會算出合成後的數值。",
     "weight_note": "",
     "bit_only_note": "選擇 Bit 後才會顯示"
   },
