@@ -85,6 +85,26 @@ describe("diffAgainstExisting", () => {
     expect(report.changed).toHaveLength(0);
   });
 
+  it("does not call a record changed just because its keys are in another order", () => {
+    // The regression this guards: records read back from data/events.json
+    // carry `sourceExcerpt` before `results`, while a freshly parsed row gets
+    // it appended last. Comparing raw JSON.stringify output therefore marked
+    // all 767 events as changed on every run, turning each review PR into a
+    // full-file rewrite in which a real correction could not be seen.
+    // Same content on both sides, including the sourceExcerpt the parsed row
+    // will carry — only the key order differs.
+    const base = event({ id: "e1", capacity: 32, sourceExcerpt: "raw" });
+    const reordered = JSON.parse(
+      JSON.stringify(base, [...Object.keys(base)].reverse()),
+    ) as Event;
+
+    expect(Object.keys(reordered)).not.toEqual(Object.keys(base));
+
+    const report = diffAgainstExisting([parsedRow(reordered)], [base]);
+    expect(report.changed).toHaveLength(0);
+    expect(report.unchanged).toBe(1);
+  });
+
   it("classifies a same-id record with different content as changed", () => {
     const existing = event({ id: "e1", capacity: 32 });
     const updated = event({ id: "e1", capacity: 48 });
@@ -217,4 +237,30 @@ describe("formatIngestSummary", () => {
     const summary = formatIngestSummary({ added: [], changed: [], removed: [], unchanged: 767, failed: [] });
     expect(summary).toBe("0 added, 0 changed, 0 removed, 767 unchanged, 0 failed.");
   });
+
+describe("formatIngestSummary notices", () => {
+  const emptyReport: IngestReport = { added: [], changed: [], removed: [], unchanged: 0, failed: [] };
+
+  it("puts notices above the counts, where a reviewer meets them first", () => {
+    const summary = formatIngestSummary(emptyReport, { notices: ["來源已過期"] });
+    expect(summary.indexOf("來源已過期")).toBeLessThan(summary.indexOf("0 added"));
+  });
+
+  it("says nothing extra when there is nothing to notice", () => {
+    expect(formatIngestSummary(emptyReport)).not.toContain("注意");
+  });
+
+  it("keeps notices even when the body has to be truncated", () => {
+    const report: IngestReport = {
+      ...emptyReport,
+      changed: Array.from({ length: 800 }, (_, i) => ({
+        before: event({ id: `e${i}` }),
+        after: event({ id: `e${i}`, capacity: 48 }),
+        rawRow: "x".repeat(200),
+      })),
+    };
+    const summary = formatIngestSummary(report, { notices: ["所有來源都已過期"], maxBytes: 400 });
+    expect(summary).toContain("所有來源都已過期");
+  });
+});
 });

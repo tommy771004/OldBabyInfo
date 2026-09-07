@@ -23,6 +23,12 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { eventsFileSchema } from "../src/lib/events/schema.ts";
+import {
+  eventSourcesFileSchema,
+  everySourceExpired,
+  expiredSources,
+  type EventSource,
+} from "../src/lib/events/sources.ts";
 import { fetchSheetCsv, parseSheetCsv, type SheetRowResult } from "../src/lib/events/csv-source.ts";
 import {
   diffAgainstExisting,
@@ -34,6 +40,7 @@ import {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_PATH = join(__dirname, "..", "data", "events.json");
+const SOURCES_PATH = join(__dirname, "..", "data", "event-sources.json");
 
 // Reads the JSON file directly rather than importing src/lib/events/repository.ts:
 // that module's `import ... from "*.json"` needs an import-attribute Next.js's
@@ -51,22 +58,62 @@ function readExistingEvents(): ReturnType<typeof eventsFileSchema.parse> {
  * where an oversized value killed every scheduled run with E2BIG — sets
  * INGEST_SUMMARY_PATH and reads the capped summary from there instead.
  */
-function writeSummaryIfRequested(report: IngestReport): void {
+function writeSummaryIfRequested(report: IngestReport, notices: string[]): void {
   const summaryPath = process.env.INGEST_SUMMARY_PATH?.trim();
   if (!summaryPath) return;
-  writeFileSync(summaryPath, `${formatIngestSummary(report)}\n`);
+  writeFileSync(summaryPath, `${formatIngestSummary(report, { notices })}\n`);
 }
 
-const SHEETS: Array<{ id: string; sheetId: string; gid: string; year: number }> = [
-  { id: "funbox-g3", sheetId: "1BgyEeGOvVy7G4FQgwFoEjtjpuP0VW58wpQJlzOHUjvQ", gid: "0", year: 2026 },
-  { id: "b4-g3", sheetId: "1myWxo3cQbsFryJi6Pv8w5nFGXCgBwrhYe8C5iUvVfN0", gid: "0", year: 2026 },
-];
+function readSources(): EventSource[] {
+  return eventSourcesFileSchema.parse(JSON.parse(readFileSync(SOURCES_PATH, "utf-8")));
+}
+
+/**
+ * The organisers publish a new spreadsheet per period instead of extending the
+ * old one, so a configured source silently stops being able to return anything
+ * new the day its period ends. Say so loudly: this exact situation ran for
+ * weeks looking like a healthy pipeline that simply found no new sessions.
+ */
+function reportExpiredSources(sources: EventSource[], today: string): string[] {
+  const expired = expiredSources(sources, today);
+  if (expired.length === 0) return [];
+
+  const notices: string[] = [];
+  for (const source of expired) {
+    notices.push(
+      `來源 \`${source.id}\`（${source.label}）涵蓋到 ${source.coversUntil} 為止，已經過期。` +
+        (source.publisherUrl ? `主辦方每期公告於 ${source.publisherUrl}。` : ""),
+    );
+    console.warn(
+      `Source ${source.id} ("${source.label}") covers up to ${source.coversUntil}, ` +
+        `which has passed — it can no longer contain an upcoming session.` +
+        (source.publisherUrl ? ` The publisher announces each period at ${source.publisherUrl}.` : ""),
+    );
+  }
+
+  if (everySourceExpired(sources, today)) {
+    notices.push(
+      "**所有設定中的來源都已過期。** 這次執行只能重新確認過去的場次；" +
+        "在 `data/event-sources.json` 指向當期試算表之前，不會出現任何未來場次。",
+    );
+    console.warn(
+      `EVERY configured source has expired. This run can only re-confirm past ` +
+        `events; no upcoming session can appear until data/event-sources.json ` +
+        `points at the current period's spreadsheet.`,
+    );
+  }
+
+  return notices;
+}
 
 async function main() {
   const dryRun = process.argv.includes("--dry-run");
   const parsedRows: SheetRowResult[] = [];
+  const sheets = readSources();
 
-  for (const sheet of SHEETS) {
+  const notices = reportExpiredSources(sheets, new Date().toISOString().slice(0, 10));
+
+  for (const sheet of sheets) {
     console.log(`Fetching ${sheet.id}...`);
     const csv = await fetchSheetCsv(sheet.sheetId, sheet.gid);
     const results = parseSheetCsv(csv, sheet.id, sheet.sheetId, sheet.year);
@@ -127,7 +174,7 @@ async function main() {
     console.log(`  ! failed\n    source: ${failure.rawRow}\n    reason: ${failure.reason}`);
   }
 
-  writeSummaryIfRequested(report);
+  writeSummaryIfRequested(report, notices);
 
   // Nothing to update covers removals too: a sheet that lost rows still
   // produces a real diff, so "added === 0 && changed === 0" alone would

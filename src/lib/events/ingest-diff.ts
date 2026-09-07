@@ -67,15 +67,25 @@ export interface IngestReport {
  */
 export function formatIngestSummary(
   report: IngestReport,
-  options: { maxRowsPerSection?: number; maxBytes?: number } = {},
+  options: { maxRowsPerSection?: number; maxBytes?: number; notices?: string[] } = {},
 ): string {
   const maxRows = options.maxRowsPerSection ?? 20;
   const maxBytes = options.maxBytes ?? 8_000;
+  const notices = options.notices ?? [];
 
-  const lines: string[] = [
+  // Notices go above the counts, and therefore survive the byte cap: a run
+  // whose sources have all expired looks like a perfectly healthy diff from
+  // the numbers alone, so the reviewer has to meet that fact first.
+  const lines: string[] = [];
+  if (notices.length > 0) {
+    lines.push("> **注意**");
+    for (const notice of notices) lines.push(`> ${notice}`);
+    lines.push("");
+  }
+  lines.push(
     `${report.added.length} added, ${report.changed.length} changed, ` +
       `${report.removed.length} removed, ${report.unchanged} unchanged, ${report.failed.length} failed.`,
-  ];
+  );
 
   function section(heading: string, rows: string[]): void {
     if (rows.length === 0) return;
@@ -114,6 +124,21 @@ export function formatIngestSummary(
   return `${cut.replace(/�+$/, "")}${notice}`;
 }
 
+/**
+ * Key-order-independent content comparison.
+ *
+ * `JSON.stringify` preserves insertion order, and the two sides reach this
+ * point built differently: rows read back from data/events.json carry
+ * `sourceExcerpt` before `results`, while a freshly parsed row gets it
+ * appended last by `eventWithSourceExcerpt`. Comparing the raw strings
+ * therefore marked all 767 events as changed on every single run — the
+ * review PR became a full-file rewrite in which a real correction was
+ * invisible, which is the one thing ADR-0004's human gate exists to prevent.
+ */
+function canonical(event: Event): string {
+  return JSON.stringify(event, Object.keys(event).sort());
+}
+
 function eventWithSourceExcerpt(row: SheetRowResult): Event | undefined {
   if (!row.event) return undefined;
   return row.rawRow ? { ...row.event, sourceExcerpt: row.rawRow } : row.event;
@@ -140,7 +165,7 @@ export function diffAgainstExisting(parsed: SheetRowResult[], existing: Event[])
     const prior = existingById.get(event.id);
     if (!prior) {
       report.added.push({ event, rawRow: row.rawRow ?? "" });
-    } else if (JSON.stringify(prior) !== JSON.stringify(event)) {
+    } else if (canonical(prior) !== canonical(event)) {
       report.changed.push({ before: prior, after: event, rawRow: row.rawRow ?? "" });
     } else {
       report.unchanged++;
