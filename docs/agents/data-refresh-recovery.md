@@ -8,7 +8,20 @@
 
 `npm run generate:parts` 與 `npm run refresh:parts` 都指向 BeyBrew 全量重建器。已發布零件具有 `phstudy-beyblade-x` provenance 時，這兩個入口現在會在任何抓取或寫入前非零退出；domain refresh 也有同一道保護。這是拒絕不安全覆寫，不是刷新完成。
 
-工作流程已分成兩個互不依賴的 job：Part job 明確失敗並報告阻擋；Catalog job 仍可更新，僅以 `auto/generation-catalog-refresh` 分支提出兩個 Catalog JSON 的 PR。整個 workflow 仍會因 Part 阻擋呈現失敗，不得把 Catalog PR 當作 Part 更新已恢復。舊 `auto/official-parts-refresh` 分支／PR 不會被自動合併或刪除，維護者應審查是否含舊版覆寫結果。
+工作流程已分成兩個互不依賴的 job：Part job 報告阻擋；Catalog job 仍可更新，僅以 `auto/generation-catalog-refresh` 分支提出兩個 Catalog JSON 的 PR。
+
+**2026-09-07 起，紅燈的語義改了。** 生成器遇到這道保護時以專屬 exit code 75
+（`BEYBREW_REFRESH_BLOCKED_EXIT_CODE`）結束，Part job 認得這個碼，寫出「如設計所擋」的
+job summary 與 `::notice::` 之後**正常結束**；其他任何非零結束碼一律讓 job 失敗。
+在此之前兩者共用 exit 1，workflow 每週固定紅一次，結果是 8/11 開始的 `npm ci` 全面失效
+躺了將近一個月沒被發現——紅燈長期為真就等於沒有紅燈。
+
+Part job 綠燈**只代表保護正常運作**，不代表 Part 資料已更新，也不得把 Catalog PR
+當作 Part 更新已恢復；job summary 會明寫這件事。真正恢復仍需下方的人工路徑。
+
+舊 `auto/official-parts-refresh` 分支已於 2026-09-07 刪除：它停在 8/9，而 main 之後
+接上了 ADR-0013 的遷移，屆時合併會抹掉 190 筆 phstudy field authority 並刪除 36 個已
+發布的 Part 身分。還原用 SHA `f488d202efa8ccfc7ff0c21d6073a11eac028775`（見 issue 45）。
 
 不能只在 CI 接上 `merge:phstudy`：
 

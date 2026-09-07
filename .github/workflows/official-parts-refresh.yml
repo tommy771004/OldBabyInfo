@@ -32,9 +32,40 @@ jobs:
       # The generator fails before fetching when published Parts carry phstudy
       # authority. Do not bypass that guard with an automated phstudy scrape:
       # its acquisition policy is separate and staged files are git-ignored.
+      #
+      # Exit code 75 is that guard alone (BEYBREW_REFRESH_BLOCKED_EXIT_CODE).
+      # It is the protection working, so it is reported and the job stays green;
+      # every other non-zero exit is a real break and fails the job. Sharing one
+      # exit code for both is what let a month of `npm ci` breakage hide behind
+      # a workflow that was already red every week.
       - name: Refresh structured official Part facts
         id: parts
-        run: npm run refresh:parts
+        run: |
+          set +e
+          npm run refresh:parts
+          code=$?
+          set -e
+          if [ "$code" -eq 75 ]; then
+            echo "blocked=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          exit "$code"
+
+      - name: Report the expected Field Authority block
+        if: steps.parts.outputs.blocked == 'true'
+        run: |
+          {
+            echo "## Part refresh 如設計所擋（ADR-0013）"
+            echo
+            echo "已發布零件帶有 phstudy field authority，BeyBrew 全量重建在任何抓取與寫入之前被拒絕。"
+            echo "**這不是故障，也不代表 Part 資料已更新。** 沒有載入任何來源，沒有取代任何 Part。"
+            echo "此 job 綠燈只表示「保護正常運作」；Part 自動刷新仍未恢復。"
+            echo
+            echo '要真正恢復需人工路徑：`npm run merge:phstudy` → `npm run audit:phstudy-bit` → 人工核准。'
+            echo "不得以移除 provenance、停用保護或捏造來源的方式讓它通過。"
+            echo "程序：docs/agents/data-refresh-recovery.md"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "::notice::Part refresh blocked by the ADR-0013 Field Authority guard, as designed. No source was loaded and no Parts were replaced."
 
       - name: Explain a blocked or failed Part refresh
         if: failure() && steps.parts.outcome == 'failure'
@@ -42,9 +73,9 @@ jobs:
           {
             echo "## Part refresh did not complete; no review PR was attempted"
             echo
+            echo "This is **not** the expected ADR-0013 block, which exits 75 and is reported separately."
             echo "Check the Part refresh log for the exact error."
-            echo "A BeyBrew-only replacement is blocked when published Parts carry phstudy field authority (ADR-0013)."
-            echo "Do not enable phstudy acquisition or remove provenance to bypass this guard."
+            echo "Do not enable phstudy acquisition or remove provenance to bypass the Field Authority guard."
             echo "Recovery procedure: docs/agents/data-refresh-recovery.md"
           } >> "$GITHUB_STEP_SUMMARY"
 

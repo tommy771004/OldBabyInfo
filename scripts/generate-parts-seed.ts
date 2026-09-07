@@ -30,7 +30,11 @@ import {
   type GoShootRecord,
 } from "../src/lib/parts/go-shoot-facts.ts";
 import { refreshOfficialParts } from "../src/lib/official-parts/refresh.ts";
-import { assertBeybrewRefreshAllowed } from "../src/lib/official-parts/refresh-policy.ts";
+import {
+  assertBeybrewRefreshAllowed,
+  BeybrewRefreshBlockedError,
+  BEYBREW_REFRESH_BLOCKED_EXIT_CODE,
+} from "../src/lib/official-parts/refresh-policy.ts";
 
 /** The richer raw shape actually present in MasterData.json — a superset of
  *  RawMasterDataEntry (which only declares what stat-edition extraction
@@ -484,5 +488,8 @@ async function main() {
 
 main().catch((err) => {
   console.error(err);
-  process.exit(1);
+  // The ADR-0013 guard is a designed stop, so it gets its own exit code and the
+  // scheduled workflow can report it as such. Everything else stays exit 1: a
+  // real break must not be able to hide inside the expected block.
+  process.exit(err instanceof BeybrewRefreshBlockedError ? BEYBREW_REFRESH_BLOCKED_EXIT_CODE : 1);
 });

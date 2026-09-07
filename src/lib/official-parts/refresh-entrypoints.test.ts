@@ -1,6 +1,12 @@
 import { spawnSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import {
+  assertBeybrewRefreshAllowed,
+  BeybrewRefreshBlockedError,
+  BEYBREW_REFRESH_BLOCKED_EXIT_CODE,
+} from "./refresh-policy.ts";
+import type { Part } from "../parts/schema.ts";
 
 /** Offline checks: never fetch sources, run migrations or publish anything. */
 describe("Part refresh entry points", () => {
@@ -14,7 +20,9 @@ describe("Part refresh entry points", () => {
     ], { encoding: "utf8", timeout: 15_000 });
 
     expect(result.error).toBeUndefined();
-    expect(result.status).toBe(1);
+    // The guard has its own exit code so the workflow can tell a designed stop
+    // from a real break. Exit 1 here would make the two indistinguishable.
+    expect(result.status).toBe(BEYBREW_REFRESH_BLOCKED_EXIT_CODE);
     expect(result.stderr).toContain("BeyBrew-only refresh blocked");
     expect(result.stderr).not.toContain("NETWORK_MUST_NOT_RUN");
     expect(result.stdout).not.toContain("Fetching");
@@ -29,7 +37,7 @@ describe("Part refresh entry points", () => {
 
   it("reports Part failure without trying to bypass the acquisition gate", () => {
     const workflow = readFileSync(".github/workflows/official-parts-refresh.yml", "utf8");
-    expect(workflow).toContain("id: parts\n        run: npm run refresh:parts");
+    expect(workflow).toContain("npm run refresh:parts");
     expect(workflow).toContain("if: failure() && steps.parts.outcome == 'failure'");
     expect(workflow).not.toMatch(/run:.*(?:scrape:phstudy|merge:phstudy|refresh:phstudy-bit)/);
     expect(workflow).not.toContain("continue-on-error: true");
@@ -57,4 +65,50 @@ describe("Part refresh entry points", () => {
       expect(workflow).toContain("不能由此判定分支已推送成功");
     },
   );
+
+  it("throws a recognisable error carrying the blocked Part count", () => {
+    const blocked = [{
+      id: "DRANSWORD",
+      provenance: [{ sourceId: "phstudy-beyblade-x" }],
+    }] as unknown as Part[];
+
+    expect(() => assertBeybrewRefreshAllowed(blocked)).toThrow(BeybrewRefreshBlockedError);
+    try {
+      assertBeybrewRefreshAllowed(blocked);
+    } catch (error) {
+      expect(error).toBeInstanceOf(BeybrewRefreshBlockedError);
+      expect((error as BeybrewRefreshBlockedError).blockedPartCount).toBe(1);
+    }
+    expect(() => assertBeybrewRefreshAllowed([])).not.toThrow();
+  });
+
+  it("reports the designed block without letting a real break hide inside it", () => {
+    const workflow = readFileSync(".github/workflows/official-parts-refresh.yml", "utf8");
+    // Only exit 75 is swallowed; the step re-raises every other code.
+    expect(workflow).toContain('if [ "$code" -eq 75 ]');
+    expect(workflow).toContain('exit "$code"');
+    expect(workflow).toContain("blocked=true");
+    expect(workflow).toContain("if: steps.parts.outputs.blocked == 'true'");
+    // A green Part job must never read as "Part data was refreshed".
+    expect(workflow).toContain("Part 自動刷新仍未恢復");
+    expect(workflow).not.toContain("continue-on-error: true");
+  });
+
+  it("never leaves a backtick unescaped inside a double-quoted workflow echo", () => {
+    // A backtick inside double quotes is command substitution, so a summary
+    // line naming `npm run merge:phstudy` would RUN it on the runner and
+    // rewrite published data. Every such mention must be single-quoted or
+    // backslash-escaped.
+    const offenders: string[] = [];
+    for (const file of readdirSync(".github/workflows")) {
+      const lines = readFileSync(`.github/workflows/${file}`, "utf8").split("\n");
+      lines.forEach((line, index) => {
+        const echoed = /echo\s+"(.*)"\s*$/.exec(line.trim());
+        if (echoed && /(^|[^\\])`/.test(echoed[1]!)) {
+          offenders.push(`${file}:${index + 1}: ${line.trim()}`);
+        }
+      });
+    }
+    expect(offenders).toEqual([]);
+  });
 });
