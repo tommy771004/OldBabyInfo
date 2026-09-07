@@ -25,6 +25,17 @@
       `FunboxFetchError` 帶 status 讓 408/429/5xx 重試、404/403 照單全收；
       每次嘗試加 20s `AbortSignal.timeout`；workflow timeout 20→30 分。
       **尚未實地驗證** —— 觀察到的失敗是「天」為單位，退避只有在失敗屬單次請求層級才會贏。（`10ffe9d`）
+- [x] **紅燈長期為真，等於沒有紅燈**。Official Part refresh 從未綠過（#1–#8，8 次 0 成功），
+      三種不同原因共用同一個紅：#1–#3 是 PR 權限、#4–#7 是 lockfile、#8 是 ADR-0013 的
+      Field Authority guard。8/11 的 `npm ci` 全面失效躺了一個月沒被發現就是這樣來的。
+      **guard 本身完全沒動** —— 仍在任何抓取與寫入之前拒絕，`parts.json` 永不重建；
+      改的只是回報方式：`BeybrewRefreshBlockedError` → exit 75，workflow 只吞這個碼、
+      其餘原樣 re-raise，並以 job summary 與 `::notice::` 寫明「綠燈只代表保護正常運作，
+      Part 自動刷新仍未恢復」。`data-refresh-recovery.md` 同步改寫。
+      實測 run 34126277224：`part-refresh` 綠、`refresh` 只剩 PR 那步紅。（`67a5971`）
+- [x] 順帶修掉一個自己製造的險：workflow 的 `echo "…"` 裡若出現未跳脫的反引號，
+      在 bash 是命令替換 —— 寫成 `` `npm run merge:phstudy` `` 會真的在 runner 上執行它、
+      改動資料與轉址。已改單引號，並加測試掃描所有 workflow，以重新植入 bug 的方式驗證過。
 
 ## 需要人工操作（agent 無權限）
 
