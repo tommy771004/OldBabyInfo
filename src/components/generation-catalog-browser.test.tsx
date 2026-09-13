@@ -300,6 +300,34 @@ describe("GenerationCatalogBrowser pagination", () => {
     expect(screen.getByRole("link", { name: "50" })).toHaveAttribute("href", hrefFor(1, 50));
   });
 
+  it("seats the page-size chips with the filters, above the list, and leaves only prev/next below it", () => {
+    render(
+      <GenerationCatalogBrowser
+        locale="en"
+        generations={generations}
+        systems={systems}
+        records={manyParts}
+        selectedGeneration="x"
+        selectedKind="part"
+        pagination={{ page: 1, pageSize: 10 }}
+        paginationHrefFor={hrefFor}
+        paginationLabels={paginationLabels}
+        labels={labels}
+      />,
+    );
+
+    const sizeRow = screen.getByRole("navigation", { name: "Records per page" });
+    const grid = screen.getByRole("list", { name: "Parts Catalog" });
+    const pager = screen.getByRole("navigation", { name: "Parts Catalog" });
+    // The size row comes before the records; the prev/next pair comes after.
+    expect(sizeRow.compareDocumentPosition(grid) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(grid.compareDocumentPosition(pager) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    // One set of size chips on the page, and it is the one up top.
+    expect(within(sizeRow).getAllByRole("link").map((link) => link.textContent)).toEqual(["10", "20", "50"]);
+    expect(within(pager).queryByRole("link", { name: "20" })).not.toBeInTheDocument();
+    expect(within(pager).getByRole("link", { name: "Next page" })).toHaveAttribute("href", hrefFor(2, 10));
+  });
+
   it("clamps a page past the end and keeps the chosen size in filter links", () => {
     render(
       <GenerationCatalogBrowser

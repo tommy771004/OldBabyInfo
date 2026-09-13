@@ -16,7 +16,7 @@ import {
   type CatalogPageSize,
 } from "@/lib/generation-catalog/pagination.ts";
 import styles from "./generation-catalog-browser.module.css";
-import { PaginationControls, type PaginationControlsLabels } from "./pagination-controls.tsx";
+import { PageSizeChips, PaginationControls, type PaginationControlsLabels } from "./pagination-controls.tsx";
 
 export interface CatalogFacetRow {
   label: string;
@@ -302,9 +302,12 @@ export function GenerationCatalogBrowser({
         ))}
       </nav>
 
-      {facetFilters && facetFilters.length > 0 ? (
+      {/* Page size sits as the last row of the filter block, not down by the
+          prev/next pair: it decides what the list below looks like, the same
+          way the facet rows do, and a reader picks it before scrolling. */}
+      {(facetFilters && facetFilters.length > 0) || showPaging ? (
         <div className={styles.facets}>
-          {facetFilters.map((row) => (
+          {facetFilters?.map((row) => (
             <nav className={styles.facetRow} key={row.label} aria-label={row.label}>
               <span className={styles.facetLabel}>{row.label}</span>
               <span className={styles.navGroup}>
@@ -322,6 +325,17 @@ export function GenerationCatalogBrowser({
               </span>
             </nav>
           ))}
+          {showPaging && pageState && paginationHrefFor && paginationLabels ? (
+            <PageSizeChips
+              pageSize={pageState.pageSize}
+              sizes={CATALOG_PAGE_SIZES}
+              hrefFor={paginationHrefFor}
+              label={paginationLabels.pageSize}
+              className={styles.facetRow}
+              labelClassName={styles.facetLabel}
+              chipsClassName={styles.navGroup}
+            />
+          ) : null}
         </div>
       ) : null}
 
@@ -368,6 +382,7 @@ export function GenerationCatalogBrowser({
           hrefFor={paginationHrefFor}
           labels={paginationLabels}
           ariaLabel={labels.heading}
+          pageSizesElsewhere
         />
       ) : null}
     </section>

@@ -228,12 +228,16 @@
   }
 
   /* The row label rides along the left edge as the chips pass under it, so
-     you can still tell what you are filtering halfway through a swipe. */
+     you can still tell what you are filtering halfway through a swipe. It
+     must not shrink: in a nowrap strip a flexible label gets squeezed to one
+     character per line. One shared width keeps every row's chips on the same
+     column, page size included. */
   .facetLabel {
     position: sticky;
     left: 0;
     z-index: 1;
-    min-width: 0;
+    flex: 0 0 auto;
+    min-width: 3.5rem;
     padding-right: 0.35rem;
     background-color: var(--md-sys-color-surface);
   }
