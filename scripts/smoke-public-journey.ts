@@ -46,7 +46,7 @@ for (const locale of locales) {
     }
   }
 
-  const url = `${baseUrl}/${locale}/parts/dran-sword?assessmentPage=1&assessmentSize=5`;
+  const url = `${baseUrl}/${locale}/parts/dran-sword`;
   const response = await fetch(url);
   if (!response.ok) throw new Error(`Public Part journey returned ${response.status} for ${locale}`);
 

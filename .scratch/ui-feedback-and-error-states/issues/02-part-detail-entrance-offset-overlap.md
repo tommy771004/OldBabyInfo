@@ -26,3 +26,4 @@ Priority: P1
 ## Comments
 
 （無）
+- 2026-09-13（catalog-detail-dialog）：Part 詳情的內容抽成 `[slug]/part-detail-body.tsx`（`PartDetailCore`），「查詢其他批號」的 `<p><Link>` 現在在該檔的 `physicalStage` 裡；「查看完整通路快照」仍在 `page.tsx` 的 `stockStage`。重疊未修，仍待此票。彈窗（`@modal`）不在 `main` 內，所以不受 `pageFlowIn` 影響、沒有這個重疊。

@@ -10,10 +10,6 @@ const validHtml = `
   <section aria-labelledby="part-identity-heading"><h1 id="part-identity-heading">Dran Sword</h1></section>
   <section aria-labelledby="official-facts-heading"><h2 id="official-facts-heading">Official</h2></section>
   <section aria-labelledby="part-assessment-heading"><h2 id="part-assessment-heading">Assessment</h2>
-    <a href="/zh-TW/parts/dran-sword?assessmentPage=1&amp;assessmentSize=5">5</a>
-    <a href="/zh-TW/parts/dran-sword?assessmentPage=1&amp;assessmentSize=10">10</a>
-    <a href="/zh-TW/parts/dran-sword?assessmentPage=1&amp;assessmentSize=15">15</a>
-    <a href="/zh-TW/parts/dran-sword?assessmentPage=1&amp;assessmentSize=20">20</a>
     <a href="https://hackmd.io/@liangyutw/beyblade-important-record">Discovery</a>
   </section>
   <section aria-labelledby="part-physical-heading"><h2 id="part-physical-heading">Mold Batch</h2><p>Dran Sword V2: +3g</p><a href="https://go-shoot.github.io/x/db/-update.json">Go-Shoot</a></section>
@@ -22,20 +18,17 @@ const validHtml = `
 `;
 
 describe("server-rendered Part public journey contract", () => {
-  it("accepts the five-stage order, pagination choices, source link and empty states", () => {
+  it("accepts the five-stage order, source link and empty states", () => {
     expect(evaluatePartDetailHtml(validHtml)).toEqual({ status: "ok", failures: [] });
   });
 
-  it("rejects a page with a missing stage or a broken pagination choice", () => {
-    const broken = validHtml
-      .replace('id="part-physical-heading"', 'id="part-physical-missing"')
-      .replaceAll("assessmentSize=20", "assessmentSize=25");
+  it("rejects a page with a missing stage", () => {
+    const broken = validHtml.replace('id="part-physical-heading"', 'id="part-physical-missing"');
 
     expect(evaluatePartDetailHtml(broken)).toEqual({
       status: "invalid",
       failures: [
         "missing Part stage: part-physical-heading",
-        "missing assessment page size: 20",
       ],
     });
   });

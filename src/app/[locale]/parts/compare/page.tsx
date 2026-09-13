@@ -6,6 +6,8 @@ import { getAllParts, getPartBySlug } from "@/lib/parts/repository.ts";
 import { parseCompareSlugs } from "@/lib/parts/compare-query.ts";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { CompareTable } from "./compare-table.tsx";
+import { CompareDuel } from "./compare-duel.tsx";
+import type { Part } from "@/lib/parts/schema.ts";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -48,11 +50,15 @@ function ComparePageBody({
   locale: Locale;
 }) {
   const t = useTranslations("ComparePage");
-
+  const duelParts = parts.length === 2 ? [parts[0]!, parts[1]!] as [Part, Part] : undefined;
   return (
     <main className={styles.page}>
       <h1>{t("title")}</h1>
-      <CompareTable parts={parts} allParts={allParts} locale={locale} />
+      {duelParts ? (
+        <CompareDuel parts={duelParts} allParts={allParts} locale={locale} />
+      ) : (
+        <CompareTable parts={parts} allParts={allParts} locale={locale} />
+      )}
     </main>
   );
 }

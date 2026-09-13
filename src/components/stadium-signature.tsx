@@ -18,6 +18,15 @@ const R_BOWL = bowlRadius * SCALE;
 const R_RIDGE = tornadoRidgeRadius * SCALE;
 const R_POCKET = staminaPocketRadius * SCALE;
 
+// SVG attributes must serialize identically on the server and in the browser.
+// Rounding the trigonometric points also keeps them consistent with arcPath's
+// existing two-decimal serialization instead of leaking platform-level float
+// noise into hydration.
+function stablePoint(r: number, angle: number) {
+  const point = polarPoint(CENTER, CENTER, r, angle);
+  return { x: point.x.toFixed(2), y: point.y.toFixed(2) };
+}
+
 // The exit notch's three openings, each [start, end] in degrees.
 const XTREME_ZONE: [number, number] = [90 - xtremeZoneHalfAngle, 90 + xtremeZoneHalfAngle];
 const OVER_ZONE_LEFT: [number, number] = [
@@ -68,20 +77,20 @@ export function StadiumSignature({ className }: { className?: string }) {
         {/* Exit chutes: short channels through the housing at each notch. */}
         {[XTREME_ZONE, OVER_ZONE_LEFT, OVER_ZONE_RIGHT].map(([start, end], i) => {
           const mid = (start + end) / 2;
-          const a = polarPoint(CENTER, CENTER, R_BOWL, start);
-          const b = polarPoint(CENTER, CENTER, R_BOWL, end);
-          const aOut = polarPoint(CENTER, CENTER, SCALE, start);
-          const bOut = polarPoint(CENTER, CENTER, SCALE, end);
+          const a = stablePoint(R_BOWL, start);
+          const b = stablePoint(R_BOWL, end);
+          const aOut = stablePoint(SCALE, start);
+          const bOut = stablePoint(SCALE, end);
           return (
             <g key={`chute-${i}`}>
               <line x1={a.x} y1={a.y} x2={aOut.x} y2={aOut.y} strokeWidth={4} />
               <line x1={b.x} y1={b.y} x2={bOut.x} y2={bOut.y} strokeWidth={4} />
               {/* One radial tick marking the exit's center line. */}
               <line
-                x1={polarPoint(CENTER, CENTER, R_BOWL * 0.97, mid).x}
-                y1={polarPoint(CENTER, CENTER, R_BOWL * 0.97, mid).y}
-                x2={polarPoint(CENTER, CENTER, SCALE * 0.94, mid).x}
-                y2={polarPoint(CENTER, CENTER, SCALE * 0.94, mid).y}
+                x1={stablePoint(R_BOWL * 0.97, mid).x}
+                y1={stablePoint(R_BOWL * 0.97, mid).y}
+                x2={stablePoint(SCALE * 0.94, mid).x}
+                y2={stablePoint(SCALE * 0.94, mid).y}
                 strokeWidth={2}
                 opacity={0.5}
               />
@@ -104,8 +113,8 @@ export function StadiumSignature({ className }: { className?: string }) {
 
         {/* Launch positions — tick marks at the rim, clear of the exit. */}
         {launchPositionAngles.map((angle) => {
-          const inner = polarPoint(CENTER, CENTER, R_BOWL - 18, angle);
-          const outer = polarPoint(CENTER, CENTER, R_BOWL + 18, angle);
+          const inner = stablePoint(R_BOWL - 18, angle);
+          const outer = stablePoint(R_BOWL + 18, angle);
           return (
             <line
               key={`launch-${angle}`}

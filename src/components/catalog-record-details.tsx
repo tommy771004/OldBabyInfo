@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { GenerationCatalogRecord } from "@/lib/generation-catalog/schema.ts";
 import styles from "./catalog-record-details.module.css";
 
@@ -87,7 +88,7 @@ export function CatalogRecordDetails({
 
       {legacyPartHref ? (
         <p className={styles.legacyLink}>
-          <a href={legacyPartHref}>{labels.legacyPartLabel}</a>
+          <Link href={legacyPartHref}>{labels.legacyPartLabel}</Link>
         </p>
       ) : null}
 
@@ -153,7 +154,7 @@ function RecordList({
         <ul>
           {records.map((related) => (
             <li key={related.id}>
-              <a href={recordHref(related.id)}>{nameFor(related)}</a>
+              <Link href={recordHref(related.id)}>{nameFor(related)}</Link>
               {related.partType ? <span className={styles.listKind}>{related.partType}</span> : null}
             </li>
           ))}

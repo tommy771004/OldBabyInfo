@@ -1,0 +1,16 @@
+import { chromium } from "playwright";
+const base = "http://localhost:3210";
+const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36";
+const browser = await chromium.launch();
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 1000 }, locale: "zh-TW", userAgent: UA });
+const p = await ctx.newPage();
+p.on("console", m => console.log("console:", m.type(), m.text().slice(0, 300)));
+p.on("pageerror", e => console.log("pageerror:", e.message.slice(0, 300)));
+await p.goto(`${base}/parts`, { waitUntil: "networkidle", timeout: 120000 });
+await p.getByRole("link", { name: "A 加速" }).first().click();
+await p.waitForTimeout(8000);
+console.log("url", p.url());
+console.log("dialogs", await p.locator("dialog").count(), "open", await p.locator("dialog[open]").count());
+console.log("h1", await p.locator("h1").allTextContents());
+await p.screenshot({ path: process.env.OUT + "/dbg.png" });
+await browser.close();

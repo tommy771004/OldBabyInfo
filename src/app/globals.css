@@ -119,6 +119,21 @@ html {
   scroll-padding-top: 5rem;
 }
 
+/* While a modal dialog is up (detail-dialog.tsx) the page behind it holds
+   still; the card scrolls, the list does not. Here rather than in the
+   dialog's module because CSS Modules refuse a selector with no local
+   class in it. */
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* Reserve the scrollbar's column whether or not it is showing, so the list
+   does not jump sideways when the dialog takes the page's scroll away
+   (classic scrollbars on Windows and Linux; overlay ones are unaffected). */
+html {
+  scrollbar-gutter: stable;
+}
+
 @media (max-width: 640px) {
   html {
     /* The bar plus the secondary link row it grows at this width. */

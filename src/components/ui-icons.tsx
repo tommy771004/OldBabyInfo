@@ -61,3 +61,13 @@ export function ChevronIcon({ size = 20 }: { size?: number }) {
     </Glyph>
   );
 }
+
+/** The dialog's close mark: two strokes on the same grid, no circle behind it. */
+export function CloseIcon({ size = 24 }: { size?: number }) {
+  return (
+    <Glyph size={size}>
+      <path d="M6.6 6.6 L17.4 17.4" />
+      <path d="M17.4 6.6 L6.6 17.4" />
+    </Glyph>
+  );
+}

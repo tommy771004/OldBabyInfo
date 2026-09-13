@@ -1,0 +1,111 @@
+/*
+ * The catalog's detail dialog.
+ *
+ * A card, not a window: the same 場邊 reading surface as the list behind
+ * it, one tonal step up, with the site's travelling current on its edge —
+ * ADR-0008 reserves the strike role for "the one you picked", and a dialog
+ * is exactly that state. No shadow, no blur, no fade (the anti-slop
+ * contract forbids all three); the scrim is the M3 scrim role at the
+ * opacity Material specifies, and the card's edge and tone do the rest.
+ */
+
+.dialog {
+  width: min(100% - 2rem, 64rem);
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+  overflow: visible;
+}
+
+/* Heavier than M3's 32%: at that opacity the sideline surface behind the
+   card lands in the ramp's mid-brown band (ADR-0008's no-text zone) and
+   reads as a muddy wash. At 74% it resolves to the field end of the same
+   ramp — the list steps back to 場上 while the card stays 場邊. */
+.dialog::backdrop {
+  background-color: color-mix(in srgb, var(--md-sys-color-scrim) 74%, transparent);
+}
+
+/* Two rows: the close mark's band, then a body track that may shrink. A
+   grid row is `auto` by default and a row's minimum is its content, so
+   without `minmax(0, 1fr)` the body would grow to its full height and the
+   card would clip it instead of scroll. */
+.card {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  max-height: min(88vh, 100dvh - 2rem);
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background-color: var(--md-sys-color-surface-container-low);
+  overflow: hidden;
+}
+
+/* The bare close mark, right-aligned in a band of the card's own colour.
+   Not floated over the body: a mark pinned over a scrolling column ends up
+   sitting on whatever scrolls under it. */
+.bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.75rem 0.75rem 0;
+}
+
+/* Bare-metal shell for the route's loading state: the card, the bar, and
+   nothing in the body yet. It holds the height a short record would take,
+   so the dialog does not visibly grow when the content lands. */
+.pending {
+  min-height: 12rem;
+}
+
+.body {
+  min-height: 0;
+  padding: 0.5rem clamp(1.25rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* One row of text buttons — the ways out of the dialog, none louder than
+   another. */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+
+/* Phone: the card becomes the screen. Full height, square top corners, and
+   the close mark sits in the same corner it did at desktop — the top of the
+   sheet is where a thumb reaches for "back". */
+@media (max-width: 719px) {
+  .dialog {
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+  }
+
+  .card {
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  /* The sheet runs under the status bar and the home indicator on a real
+     phone; the mark and the last row of actions stay clear of both. */
+  .bar {
+    padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+  }
+
+  .body {
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* No current on a card that has become the screen: a charge running
+     the viewport's edge reads as a rendering fault, not as an edge. */
+  .dialog .card::after {
+    content: none;
+  }
+}

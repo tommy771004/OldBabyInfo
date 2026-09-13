@@ -50,7 +50,7 @@
 
 /* The Part's name is the largest thing on the site, and it should be — M3
    display-large is the role for a screen with exactly one subject. */
-.identityCopy h1 {
+.identityCopy .identityName {
   max-width: 12ch;
   margin: 0.5rem 0;
   font-family: var(--md-sys-typescale-display-large-font);
@@ -209,14 +209,54 @@
   padding-bottom: 0;
 }
 
+/*
+ * The same record inside the catalog dialog (detail-dialog.tsx). One scale
+ * down — display-large belongs to a screen with one subject, and a dialog
+ * shares its screen with the list behind it — and the stages sit closer,
+ * because the card, not the page, is now the unit of reading.
+ */
+.dialogVariant .identityStage,
+.dialogVariant .officialStage,
+.dialogVariant .assessmentStage,
+.dialogVariant .physicalStage {
+  padding-block: 2rem;
+}
+
+.dialogVariant .identityStage {
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 18rem);
+  gap: 2rem;
+  padding-top: 0;
+}
+
+.dialogVariant .identityCopy .identityName {
+  max-width: 14ch;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+}
+
+.dialogVariant .headlineSpec {
+  margin-top: 1.5rem;
+}
+
+.dialogVariant .partVisual img {
+  max-height: 16rem;
+}
+
+.dialogVariant .physicalStage {
+  padding-bottom: 0;
+}
+
 @media (max-width: 700px) {
   .identityStage {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  .identityCopy h1 {
+  .identityCopy .identityName {
     max-width: 100%;
+  }
+
+  .dialogVariant .identityStage {
+    grid-template-columns: 1fr;
   }
 
   .stats {

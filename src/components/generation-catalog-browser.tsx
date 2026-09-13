@@ -5,6 +5,7 @@ import type {
   GenerationSystem,
 } from "@/lib/generation-catalog/schema.ts";
 import Image from "next/image";
+import Link from "next/link";
 import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
 import { catalogTabsOf, isTabSelected } from "@/lib/generation-catalog/tabs.ts";
 import { CheckIcon } from "./ui-icons.tsx";
@@ -360,7 +361,7 @@ export function GenerationCatalogBrowser({
                   <span>{kindLabel(record.kind, labels)}</span>
                   {record.partType ? <span>{partTypeLabelFor(record.partType)}</span> : null}
                 </div>
-                <a className={styles.recordLink} href={recordHref(record.id)}>{recordNameFor(record)}</a>
+                <Link className={styles.recordLink} href={recordHref(record.id)}>{recordNameFor(record)}</Link>
                 {related ? (
                   <span className={styles.recordRelated}>
                     {labels.relatedLabel ? <span className={styles.relatedLabel}>{labels.relatedLabel}: </span> : null}

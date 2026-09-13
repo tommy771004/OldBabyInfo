@@ -102,12 +102,6 @@ export function evaluatePartDetailHtml(html: string): PartDetailHtmlContract {
     failures.push("missing Discussion stage");
   }
 
-  for (const pageSize of [5, 10, 15, 20]) {
-    if (!html.includes(`assessmentSize=${pageSize}`)) {
-      failures.push(`missing assessment page size: ${pageSize}`);
-    }
-  }
-
   if (!html.includes("https://hackmd.io/@liangyutw/beyblade-important-record")) {
     failures.push("missing Discovery Source link");
   }

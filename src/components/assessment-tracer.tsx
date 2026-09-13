@@ -1,8 +1,6 @@
 import type { Assessment, AssessmentKind } from "@/lib/assessments/schema.ts";
-import { ASSESSMENT_PAGE_SIZES, type AssessmentPaginationState } from "@/lib/assessments/pagination.ts";
 import styles from "./assessment-tracer.module.css";
 import { ExternalLink } from "./external-link.tsx";
-import { PaginationControls } from "./pagination-controls.tsx";
 
 export interface AssessmentTracerLabels {
   heading: string;
@@ -12,21 +10,15 @@ export interface AssessmentTracerLabels {
   discoverySource: string;
   evidenceSource: string;
   capturedAt: string;
-  pageSize: string;
-  pageStatus: (page: number, totalPages: number) => string;
-  previousPage: string;
-  nextPage: string;
 }
 
 export function AssessmentTracer({
   assessments,
   labels,
-  pagination,
   headingId = "assessment-tracer-heading",
 }: {
   assessments: Assessment[];
   labels: AssessmentTracerLabels;
-  pagination?: AssessmentPaginationState & { pathname: string };
   headingId?: string;
 }) {
   return (
@@ -65,27 +57,6 @@ export function AssessmentTracer({
           ))}
         </div>
       ) : null}
-      {pagination ? <AssessmentPagination pagination={pagination} labels={labels} /> : null}
     </section>
-  );
-}
-
-function AssessmentPagination({
-  pagination,
-  labels,
-}: {
-  pagination: AssessmentPaginationState & { pathname: string };
-  labels: AssessmentTracerLabels;
-}) {
-  return (
-    <PaginationControls
-      page={pagination.page}
-      pageSize={pagination.pageSize}
-      totalPages={pagination.totalPages}
-      sizes={ASSESSMENT_PAGE_SIZES}
-      hrefFor={(page, pageSize) => `${pagination.pathname}?assessmentPage=${page}&assessmentSize=${pageSize}`}
-      labels={labels}
-      ariaLabel={labels.heading}
-    />
   );
 }

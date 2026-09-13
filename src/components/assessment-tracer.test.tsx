@@ -47,10 +47,6 @@ describe("AssessmentTracer", () => {
           discoverySource: "發現來源",
           evidenceSource: "原始來源",
           capturedAt: "抓取時間",
-          pageSize: "每頁筆數",
-          pageStatus: (page, totalPages) => `${page}/${totalPages}`,
-          previousPage: "上一頁",
-          nextPage: "下一頁",
         }}
       />,
     );
@@ -78,10 +74,6 @@ describe("AssessmentTracer", () => {
           discoverySource: "Discovery Source",
           evidenceSource: "Evidence Source",
           capturedAt: "Captured",
-          pageSize: "Entries per page",
-          pageStatus: (page, totalPages) => `${page}/${totalPages}`,
-          previousPage: "Previous page",
-          nextPage: "Next page",
         }}
       />,
     );
@@ -93,34 +85,4 @@ describe("AssessmentTracer", () => {
     );
   });
 
-  it("exposes keyboard-friendly page-size and next-page links with shareable query state", () => {
-    render(
-      <AssessmentTracer
-        assessments={[assessment]}
-        pagination={{ page: 1, pageSize: 5, totalPages: 3, start: 0, end: 5, pathname: "/zh-TW/parts/dransword" }}
-        labels={{
-          heading: "來源判斷",
-          kindLabel: () => "打法",
-          unattributed: "未附原始來源",
-          excerpt: "來源片段",
-          discoverySource: "發現來源",
-          evidenceSource: "原始來源",
-          capturedAt: "抓取時間",
-          pageSize: "每頁筆數",
-          pageStatus: (page, totalPages) => `第 ${page} / ${totalPages} 頁`,
-          previousPage: "上一頁",
-          nextPage: "下一頁",
-        }}
-      />,
-    );
-
-    expect(screen.getByRole("link", { name: "15" })).toHaveAttribute(
-      "href",
-      "/zh-TW/parts/dransword?assessmentPage=1&assessmentSize=15",
-    );
-    expect(screen.getByRole("link", { name: "下一頁" })).toHaveAttribute(
-      "href",
-      "/zh-TW/parts/dransword?assessmentPage=2&assessmentSize=5",
-    );
-  });
 });
