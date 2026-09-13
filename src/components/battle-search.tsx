@@ -91,6 +91,7 @@ function SearchLane({
 
   return (
     <div className={styles.searchLane}>
+      <label className={styles.laneLabel} htmlFor={`${resultsId}-query`}>{label}</label>
       {/* M3 search bar: 56dp, fully rounded, on `surface-container-high`,
           with the search glyph in the leading slot. Not a text field — this
           is a search that returns results into a list below it, which is the
@@ -98,7 +99,7 @@ function SearchLane({
       <div className={`${styles.searchLabel} m3-search-bar`}>
         <SearchIcon />
         <input
-          aria-label={label}
+          id={`${resultsId}-query`}
           type="search"
           role="combobox"
           value={query}

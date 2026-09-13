@@ -7,7 +7,7 @@ const PART_STAGES = [
 ] as const;
 
 const DISCUSSION_HEADINGS = ["discussion-heading", "discussion-empty-heading"] as const;
-const PUBLIC_NAVIGATION_PATHS = ["parts", "events", "discussion", "login", "terms"] as const;
+const PUBLIC_NAVIGATION_PATHS = ["parts", "events", "discussion", "login"] as const;
 
 export type PartDetailHtmlContract =
   | { status: "ok"; failures: [] }

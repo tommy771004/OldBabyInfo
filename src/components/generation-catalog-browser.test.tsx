@@ -104,6 +104,29 @@ describe("GenerationCatalogBrowser", () => {
   // scoping its own markup.
   afterEach(cleanup);
 
+  it.each([
+    ["x", false, ["", "cx"]],
+    ["burst", false, ["", "burst"]],
+    ["x", true, ["", "cx", "burst"]],
+  ] as const)("limits System options for %s (across generations: %s)", (generation, across, expected) => {
+    render(<GenerationCatalogBrowser
+      locale="en"
+      generations={generations}
+      systems={[...systems, { id: "burst", generationId: "burst", nameEn: "Burst", partTypes: ["layer"], compatibilityRules: [] }]}
+      records={records}
+      selectedGeneration={generation}
+      searchAcrossGenerations={across}
+      labels={labels}
+    />);
+
+    const form = screen.getByRole("search");
+    expect(form).toHaveAttribute("method", "get");
+    expect(form).toHaveAttribute("action", "/en/parts");
+    expect(screen.getByRole("combobox", { name: "Generation" })).toHaveValue(across ? "" : generation);
+    const system = screen.getByRole("combobox", { name: "System" });
+    expect(within(system).getAllByRole("option").map((option) => (option as HTMLOptionElement).value)).toEqual(expected);
+  });
+
   it("distinguishes complete Beyblades from Parts and navigates their composition", () => {
     render(
       <GenerationCatalogBrowser

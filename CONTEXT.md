@@ -63,7 +63,7 @@ _Avoid_: 版本、revision、Mold Batch（物理公差，只能靠社群歸納�
 ## 組裝
 
 **Combo**：
-一組 Blade + Ratchet + Bit 的完整搭配。是勝率統計與討論的主要對象。
+一組 Blade + Ratchet + Bit 的完整搭配。是 Meta Standing（使用率、前八強佔比、奪冠次數）與討論的主要對象。
 _Avoid_: 配招、配置、build、setup
 
 **Deck**：

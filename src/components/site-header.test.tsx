@@ -25,7 +25,6 @@ const messages = {
     nav_events: "Events",
     nav_discussion: "Discussion",
     nav_login: "Sign in",
-    nav_terms: "Terms",
   },
   LocaleSwitcher: {
     label: "Language",
@@ -49,7 +48,7 @@ describe("SiteHeader", () => {
     const navs = screen.getAllByRole("navigation", { name: "Main navigation" });
     expect(navs).toHaveLength(2);
 
-    for (const label of ["Catalog", "Combo", "Guides", "Events", "Discussion", "Terms"]) {
+    for (const label of ["Catalog", "Combo", "Guides", "Events", "Discussion"]) {
       // Wide navigation and its mobile counterpart retain reachable links.
       expect(screen.getAllByRole("link", { name: label })).toHaveLength(2);
     }

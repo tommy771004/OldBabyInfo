@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="zh-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>零件庫搜尋回饋原型</title>
+<link rel="stylesheet" href="../../../src/styles/colors.css">
+<link rel="stylesheet" href="../../../src/styles/m3.css">
+<link rel="stylesheet" href="../../../src/styles/m3-components.css">
+<style>
+  /* 字型：與正式站相同的三支自架字型（正式站由 next/font 注入 --font-body /
+     --font-display；原型在這裡自己宣告）。Taipei Sans 子集只涵蓋站上用過的字，
+     原型文案裡沒被子集收錄的字會逐字退回系統字型。 */
+  @font-face { font-family: "Taipei Sans TC"; src: url("../../../src/fonts/taipei-sans-tc-regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "Taipei Sans TC"; src: url("../../../src/fonts/taipei-sans-tc-bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+  @font-face { font-family: "Combat"; src: url("../../../src/fonts/combat.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+  :root { --font-body: "Taipei Sans TC"; --font-display: "Combat"; color-scheme: light; }
+
+  html { background: var(--md-sys-color-surface); }
+  body {
+    margin: 0;
+    padding-block: 0 4rem;
+    padding-inline: clamp(1rem, 4vw, 3rem);
+    background: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    font-family: var(--md-sys-typescale-body-medium-font);
+    font-size: var(--md-sys-typescale-body-medium-size);
+    line-height: var(--md-sys-typescale-body-medium-line-height);
+  }
+  * { box-sizing: border-box; }
+  .page { max-width: 68rem; margin-inline: auto; }
+
+  /* 原型工作列：不是產品的一部分，用 surface-container-highest 與產品區隔 */
+  .bench {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem;
+    margin: 1rem 0 2.5rem; padding: 0.75rem 1rem;
+    border-radius: var(--md-sys-shape-corner-medium);
+    background: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--md-sys-typescale-label-medium-size);
+    line-height: var(--md-sys-typescale-label-medium-line-height);
+  }
+  .bench strong { color: var(--md-sys-color-on-surface); font-family: var(--md-sys-typescale-label-large-font); font-size: var(--md-sys-typescale-label-large-size); }
+  .bench .m3-chip-set { margin: 0; }
+  .bench .m3-chip { cursor: pointer; }
+
+  h1 {
+    margin: 0 0 0.25rem;
+    font-family: var(--md-sys-typescale-headline-large-font);
+    font-size: var(--md-sys-typescale-headline-large-size);
+    line-height: var(--md-sys-typescale-headline-large-line-height);
+    font-weight: var(--md-sys-typescale-headline-large-weight);
+  }
+  .count { margin: 0 0 1.25rem; color: var(--md-sys-color-on-surface-variant); }
+  .count output { font-family: var(--md-sys-typescale-numeral-font); font-variant-numeric: tabular-nums; color: var(--md-sys-color-on-surface); }
+
+  /* 搜尋列：沿用正式站 /parts 的排版（欄位＋世代＋搜尋鈕） */
+  form.search {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 18rem) auto;
+    gap: 0.75rem; align-items: start;
+    padding: 0.75rem; border-radius: var(--md-sys-shape-corner-large);
+    background: var(--md-sys-color-surface-container-low);
+  }
+  form.search .m3-button { min-height: 3.5rem; align-self: start; }
+  form.search .m3-field { --m3-field-bg: var(--md-sys-color-surface-container-low); }
+  /* 原生 search 的取消鈕是瀏覽器藍色，不在色階上；正式站也該關掉 */
+  input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+
+  /* 提案 H1：邊打邊回報「符合幾筆」，清單本身仍等送出 */
+  .m3-field__support[data-tone="none"] { color: var(--md-sys-color-on-surface-variant); }
+  .m3-field__support[data-tone="hit"] { color: var(--md-sys-color-on-surface); }
+  .m3-field__support[data-tone="miss"] { color: var(--md-sys-color-error); }
+  .m3-field__support .n { font-family: var(--md-sys-typescale-numeral-font); font-variant-numeric: tabular-nums; }
+
+  .tabs { margin: 1.5rem 0 1rem; }
+
+  /* 結果表：只放正式站已有的欄位 */
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 0.75rem 0.5rem; text-align: left; border-bottom: 1px solid var(--md-sys-color-outline-variant); vertical-align: top; }
+  th { color: var(--md-sys-color-on-surface-variant); font-family: var(--md-sys-typescale-label-large-font); font-size: var(--md-sys-typescale-label-large-size); font-weight: var(--md-sys-typescale-label-large-weight); }
+  th.num, td.num { text-align: right; }
+  td.num { font-family: var(--md-sys-typescale-numeral-font); font-size: 1.125rem; font-variant-numeric: tabular-nums; }
+  td .name { color: var(--md-sys-color-primary); font-weight: 700; }
+  td .sub { display: block; color: var(--md-sys-color-on-surface-variant); font-size: var(--md-sys-typescale-body-small-size); }
+  .gen { color: var(--md-sys-color-on-surface-variant); font-size: var(--md-sys-typescale-label-medium-size); }
+  .table-wrap { overflow-x: auto; }
+
+  /* 提案 H2：無結果不是一行字，是一個能回頭的地方 */
+  .empty {
+    max-width: 40rem; margin: 1.5rem 0; padding: 1.5rem;
+    border-radius: var(--md-sys-shape-corner-large);
+    background: var(--md-sys-color-surface-container);
+  }
+  .empty h2 { margin: 0 0 0.5rem; font-family: var(--md-sys-typescale-title-medium-font); font-size: 1.125rem; line-height: 1.4; }
+  .empty h2 q { quotes: "「" "」"; }
+  .empty p { margin: 0 0 1rem; color: var(--md-sys-color-on-surface-variant); }
+  .empty .actions { display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; }
+  .empty .actions .n { font-family: var(--md-sys-typescale-numeral-font); font-variant-numeric: tabular-nums; margin-inline-start: 0.35em; }
+
+  /* 現況：正式站今天的樣子，留著讓受測者能對照 */
+  .empty--current { background: transparent; padding: 0.5rem 0; }
+  .empty--current p { color: var(--md-sys-color-on-surface); }
+
+  .m3-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .colophon { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--md-sys-color-outline-variant); color: var(--md-sys-color-on-surface-variant); font-size: var(--md-sys-typescale-body-small-size); line-height: 1.6; }
+  .colophon p { margin: 0 0 0.5rem; }
+
+  @media (max-width: 720px) {
+    form.search { grid-template-columns: 1fr; }
+    form.search .m3-button { width: 100%; }
+    th.hide-m, td.hide-m { display: none; }
+  }
+</style>
+
+<div class="page">
+  <div class="bench" role="group" aria-label="原型設定">
+    <strong>原型</strong>
+    <span>切換兩種版本給同一位受測者看。資料是正式站 2026-09-07 的目錄快照。</span>
+    <div class="m3-chip-set" id="variant">
+      <button type="button" class="m3-chip m3-chip--selected m3-state" data-variant="proposal" aria-pressed="true">提案</button>
+      <button type="button" class="m3-chip m3-state" data-variant="current" aria-pressed="false">現況</button>
+    </div>
+  </div>
+
+  <h1>零件庫</h1>
+  <p class="count">零件 · <output id="count" for="q">0</output> 筆</p>
+
+  <form class="search" id="search" role="search">
+    <label class="m3-field">
+      <input class="m3-field__input" id="q" name="q" type="search" placeholder="輸入英文、日文、中文或玩家俗稱" autocomplete="off">
+      <span class="m3-field__label">搜尋零件庫</span>
+      <span class="m3-field__support" id="support" data-tone="none" aria-live="polite"></span>
+    </label>
+    <label class="m3-field m3-field--select">
+      <select class="m3-field__input" id="gen" name="gen">
+        <option value="x">BEYBLADE X</option>
+        <option value="burst">Beyblade Burst</option>
+        <option value="metal_fight">Metal Fight Beyblade</option>
+        <option value="bakuten_shoot">Original Generation</option>
+        <option value="all">全部世代</option>
+      </select>
+      <span class="m3-field__label">世代</span>
+    </label>
+    <button type="submit" class="m3-button m3-button--filled m3-state">搜尋</button>
+  </form>
+
+  <nav class="m3-tabs tabs" id="tabs" aria-label="種類"></nav>
+
+  <div id="results" aria-live="polite"></div>
+
+  <div class="colophon">
+    <p>這是可用性測試用的原型，不是正式頁面。零件名稱與數值取自 <code>data/parts.json</code> 與 <code>data/generation-catalog.json</code>；非 X 世代的零件目錄裡沒有 Stat，所以這裡也不顯示。</p>
+    <p>兩個假設：H1 邊打字邊顯示「符合幾筆」但清單仍等送出；H2 無結果時給出「清除」與「改搜全部世代」兩條回頭的路，且種類分頁不消失。測試計畫在 <code>.scratch/ui-feedback-and-error-states/spec.md</code>。</p>
+  </div>
+</div>
+
+<script type="application/json" id="seed">{"x":[{"en":"Accel","zh":"A 加速","ja":"A（アクセル）","type":"bit","gen":"x","aliases":["A","アクセル","加速"],"stats":{"attack":40,"defense":10,"stamina":10,"xDash":40,"burstResistance":80}},{"en":"Ball","zh":"B 球","ja":"B（ボール）","type":"bit","gen":"x","aliases":["B","ボール","球"],"stats":{"attack":15,"defense":25,"stamina":50,"xDash":10,"burstResistance":30}},{"en":"Bound Spike","zh":"BS 彈跳釘刺","ja":"BS（バウンドスパイク）","type":"bit","gen":"x","aliases":["BS","バウンドスパイク","彈跳釘刺"],"stats":{"attack":5,"defense":60,"stamina":30,"xDash":5,"burstResistance":30}},{"en":"Cyclone","zh":"C 旋風","ja":"C（サイクロン）","type":"bit","gen":"x","aliases":["C","サイクロン","旋風"],"stats":{"attack":40,"defense":5,"stamina":10,"xDash":45,"burstResistance":80}},{"en":"Dot","zh":"D 點","ja":"D（ドット）","type":"bit","gen":"x","aliases":["D","ドット","點"],"stats":{"attack":10,"defense":55,"stamina":25,"xDash":10,"burstResistance":30}},{"en":"Disk Ball","zh":"DB 圓盤球","ja":"DB（ディスクボール）","type":"bit","gen":"x","aliases":["DB","ディスクボール","圓盤球"],"stats":{"attack":15,"defense":20,"stamina":55,"xDash":10,"burstResistance":30}},{"en":"Disk Spike","zh":"DS 圓盤釘刺","ja":"DS（ディスクスパイク）","type":"bit","gen":"x","aliases":["DS","ディスクスパイク","圓盤釘刺"],"stats":{"attack":5,"defense":55,"stamina":40,"xDash":10,"burstResistance":20}},{"en":"Elevate","zh":"E 上升","ja":"E（エレベート）","type":"bit","gen":"x","aliases":["E","エレベート","上升"],"stats":{"attack":30,"defense":15,"stamina":20,"xDash":35,"burstResistance":30}},{"en":"Flat","zh":"F 平坦","ja":"F（フラット）","type":"bit","gen":"x","aliases":["F","フラット","平坦"],"stats":{"attack":40,"defense":15,"stamina":10,"xDash":35,"burstResistance":80}},{"en":"Free Ball","zh":"FB 自由球","ja":"FB（フリーボール）","type":"bit","gen":"x","aliases":["FB","フリーボール","自由球"],"stats":{"attack":10,"defense":25,"stamina":60,"xDash":5,"burstResistance":30}},{"en":"Free Flat","zh":"FF 自由平坦","ja":"FF（フリーフラット）","type":"bit","gen":"x","aliases":["FF","フリーフラット","自由平坦"],"stats":{"attack":40,"defense":15,"stamina":15,"xDash":30,"burstResistance":80}},{"en":"Glide","zh":"G 滑翔","ja":"G（グライド）","type":"bit","gen":"x","aliases":["G","グライド","滑翔"],"stats":{"attack":20,"defense":10,"stamina":55,"xDash":15,"burstResistance":30}},{"en":"Gear Ball","zh":"GB 齒輪球","ja":"GB（ギアボール）","type":"bit","gen":"x","aliases":["GB","ギアボール","齒輪球"],"stats":{"attack":10,"defense":15,"stamina":45,"xDash":30,"burstResistance":30}},{"en":"Gear Flat","zh":"GF 齒輪平坦","ja":"GF（ギアフラット）","type":"bit","gen":"x","aliases":["GF","ギアフラット","齒輪平坦"],"stats":{"attack":50,"defense":5,"stamina":5,"xDash":40,"burstResistance":80}},{"en":"Gear Needle","zh":"GN 齒輪針","ja":"GN（ギアニードル）","type":"bit","gen":"x","aliases":["GN","ギアニードル","齒輪針"],"stats":{"attack":20,"defense":40,"stamina":10,"xDash":30,"burstResistance":30}},{"en":"Gear Point","zh":"GP 齒輪圓點","ja":"GP（ギアポイント）","type":"bit","gen":"x","aliases":["GP","ギアポイント","齒輪圓點"],"stats":{"attack":30,"defense":25,"stamina":15,"xDash":30,"burstResistance":80}},{"en":"Gear Rush","zh":"GR 齒輪衝刺","ja":"GR（ギアラッシュ）","type":"bit","gen":"x","aliases":["GR","ギアラッシュ","齒輪衝刺"],"stats":{"attack":45,"defense":10,"stamina":10,"xDash":35,"burstResistance":80}},{"en":"Gear Unite","zh":"GU 齒輪結合","ja":"GU（ギアユナイト）","type":"bit","gen":"x","aliases":["GU","ギアユナイト","齒輪結合"],"stats":{"attack":30,"defense":20,"stamina":20,"xDash":30,"burstResistance":80}},{"en":"Hexa","zh":"H 六角形","ja":"H（ヘキサ）","type":"bit","gen":"x","aliases":["H","ヘキサ","六角形"],"stats":{"attack":30,"defense":35,"stamina":20,"xDash":15,"burstResistance":80}},{"en":"High Needle","zh":"HN 高針","ja":"HN（ハイニードル）","type":"bit","gen":"x","aliases":["HN","ハイニードル","高針"],"stats":{"attack":15,"defense":55,"stamina":20,"xDash":10,"burstResistance":30}},{"en":"High Taper","zh":"HT 高錐形","ja":"HT（ハイテーパー）","type":"bit","gen":"x","aliases":["HT","ハイテーパー","高錐形"],"stats":{"attack":30,"defense":25,"stamina":20,"xDash":25,"burstResistance":80}},{"en":"Ignition","zh":"I 點火","ja":"I（イグニッション）","type":"bit","gen":"x","aliases":["I","イグニッション","點火"],"stats":{"attack":50,"defense":15,"stamina":5,"xDash":30,"burstResistance":80}},{"en":"Jolt","zh":"J 急衝","ja":"J（ジョルト）","type":"bit","gen":"x","aliases":["J","ジョルト","急衝"],"stats":{"attack":35,"defense":10,"stamina":15,"xDash":40,"burstResistance":80}},{"en":"Kick","zh":"K 踢","ja":"K（キック）","type":"bit","gen":"x","aliases":["K","キック","踢"],"stats":{"attack":35,"defense":25,"stamina":15,"xDash":25,"burstResistance":80}},{"en":"Level","zh":"L 階層","ja":"L（レベル）","type":"bit","gen":"x","aliases":["L","レベル","階層"],"stats":{"attack":40,"defense":5,"stamina":15,"xDash":40,"burstResistance":80}},{"en":"Low Flat","zh":"LF 低平坦","ja":"LF（ローフラット）","type":"bit","gen":"x","aliases":["LF","ローフラット","低平坦"],"stats":{"attack":45,"defense":5,"stamina":10,"xDash":40,"burstResistance":80}},{"en":"Low Orb","zh":"LO 低球體","ja":"LO（ローオーブ）","type":"bit","gen":"x","aliases":["LO","ローオーブ","低球體"],"stats":{"attack":5,"defense":25,"stamina":55,"xDash":15,"burstResistance":30}},{"en":"Low Rush","zh":"LR 低衝刺","ja":"LR（ローラッシュ）","type":"bit","gen":"x","aliases":["LR","ローラッシュ","低衝刺"],"stats":{"attack":45,"defense":5,"stamina":15,"xDash":35,"burstResistance":80}},{"en":"Merge","zh":"M 融合","ja":"M（マージ）","type":"bit","gen":"x","aliases":["M","マージ","融合"],"stats":{"attack":50,"defense":20,"stamina":10,"xDash":20,"burstResistance":80}},{"en":"Metal Needle","zh":"MN 金屬針","ja":"MN（メタルニードル）","type":"bit","gen":"x","aliases":["MN","メタルニードル","金屬針"],"stats":{"attack":8,"defense":57,"stamina":30,"xDash":5,"burstResistance":30}},{"en":"Needle","zh":"N 針","ja":"N（ニードル）","type":"bit","gen":"x","aliases":["N","ニードル","針"],"stats":{"attack":10,"defense":50,"stamina":30,"xDash":10,"burstResistance":30}},{"en":"Narrow","zh":"Nr 細長","ja":"Nr（ナロー）","type":"bit","gen":"x","aliases":["Nr","ナロー","細長"],"stats":{"attack":15,"defense":20,"stamina":60,"xDash":5,"burstResistance":30}},{"en":"Orb","zh":"O 球體","ja":"O（オーブ）","type":"bit","gen":"x","aliases":["O","オーブ","球體"],"stats":{"attack":10,"defense":30,"stamina":50,"xDash":10,"burstResistance":30}},{"en":"Operate","zh":"Op 操作","ja":"Op（オペレート）","type":"bit","gen":"x","aliases":["Op","オペレート","操作"],"stats":{"attack":20,"defense":50,"stamina":50,"xDash":10,"burstResistance":30}},{"en":"Point","zh":"P 圓點","ja":"P（ポイント）","type":"bit","gen":"x","aliases":["P","ポイント","圓點"],"stats":{"attack":25,"defense":25,"stamina":25,"xDash":25,"burstResistance":80}},{"en":"Quake","zh":"Q 震動","ja":"Q（クエイク）","type":"bit","gen":"x","aliases":["Q","クエイク","震動"],"stats":{"attack":55,"defense":15,"stamina":5,"xDash":25,"burstResistance":80}},{"en":"Rush","zh":"R 衝刺","ja":"R（ラッシュ）","type":"bit","gen":"x","aliases":["R","ラッシュ","衝刺"],"stats":{"attack":40,"defense":10,"stamina":20,"xDash":30,"burstResistance":80}},{"en":"Rubber Accel","zh":"RA 橡膠加速","ja":"RA（ラバーアクセル）","type":"bit","gen":"x","aliases":["RA","ラバーアクセル","橡膠加速"],"stats":{"attack":60,"defense":17,"stamina":3,"xDash":20,"burstResistance":80}},{"en":"Spike","zh":"S 釘刺","ja":"S（スパイク）","type":"bit","gen":"x","aliases":["S","スパイク","釘刺"],"stats":{"attack":10,"defense":45,"stamina":35,"xDash":10,"burstResistance":30}},{"en":"Taper","zh":"T 錐形","ja":"T（テーパー）","type":"bit","gen":"x","aliases":["T","テーパー","錐形"],"stats":{"attack":35,"defense":20,"stamina":20,"xDash":25,"burstResistance":80}},{"en":"Trans Kick","zh":"TK 轉換踢","ja":"TK（トランスキック）","type":"bit","gen":"x","aliases":["TK","トランスキック","轉換踢"],"stats":{"attack":35,"defense":30,"stamina":20,"xDash":15,"burstResistance":80}},{"en":"Trans Point","zh":"TP 轉換圓點","ja":"TP（トランスポイント）","type":"bit","gen":"x","aliases":["TP","トランスポイント","轉換圓點"],"stats":{"attack":35,"defense":25,"stamina":25,"xDash":15,"burstResistance":80}},{"en":"Turbo","zh":"Tr 渦輪","ja":"Tr（ターボ）","type":"bit","gen":"x","aliases":["Tr","ターボ","渦輪"],"stats":{"attack":30,"defense":30,"stamina":60,"xDash":10,"burstResistance":30}},{"en":"Unite","zh":"U 結合","ja":"U（ユナイト）","type":"bit","gen":"x","aliases":["U","ユナイト","結合"],"stats":{"attack":25,"defense":25,"stamina":30,"xDash":20,"burstResistance":80}},{"en":"Under Flat","zh":"UF 超低平坦","ja":"UF（アンダーフラット）","type":"bit","gen":"x","aliases":["UF","アンダーフラット","超低平坦"],"stats":{"attack":55,"defense":5,"stamina":5,"xDash":35,"burstResistance":80}},{"en":"Under Needle","zh":"UN 超低針","ja":"UN（アンダーニードル）","type":"bit","gen":"x","aliases":["UN","アンダーニードル","超低針"],"stats":{"attack":10,"defense":60,"stamina":20,"xDash":10,"burstResistance":30}},{"en":"Vortex","zh":"V 氣旋","ja":"V（ボルテックス）","type":"bit","gen":"x","aliases":["V","ボルテックス","氣旋"],"stats":{"attack":45,"defense":10,"stamina":5,"xDash":40,"burstResistance":80}},{"en":"Wedge","zh":"W 楔形","ja":"W（ウェッジ）","type":"bit","gen":"x","aliases":["W","ウェッジ","楔形"],"stats":{"attack":5,"defense":55,"stamina":30,"xDash":10,"burstResistance":30}},{"en":"Wall Ball","zh":"WB 障壁球","ja":"WB（ウォールボール）","type":"bit","gen":"x","aliases":["WB","ウォールボール","障壁球"],"stats":{"attack":15,"defense":30,"stamina":45,"xDash":10,"burstResistance":30}},{"en":"Wall Wedge","zh":"WW 障壁楔形","ja":"WW（ウォールウェッジ）","type":"bit","gen":"x","aliases":["WW","ウォールウェッジ","障壁楔形"],"stats":{"attack":5,"defense":60,"stamina":25,"xDash":10,"burstResistance":30}},{"en":"Yielding","zh":"Y 柔韌","ja":"Y（イールディング）","type":"bit","gen":"x","aliases":["Y","イールディング","柔韌"],"stats":{"attack":10,"defense":15,"stamina":65,"xDash":10,"burstResistance":30}},{"en":"Zap","zh":"Z 電光","ja":"Z（ザップ）","type":"bit","gen":"x","aliases":["Z","ザップ","電光"],"stats":{"attack":30,"defense":20,"stamina":15,"xDash":35,"burstResistance":80}},{"en":"0-60","zh":"0-60","ja":"0-60（ゼロシクスティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":3,"defense":14,"stamina":13}},{"en":"0-70","zh":"0-70","ja":"0-70（ゼロセブンティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":3,"defense":13,"stamina":14}},{"en":"0-80","zh":"0-80","ja":"0-80（ゼロエイティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":3,"defense":12,"stamina":15}},{"en":"1-50","zh":"1-50","ja":"1-50（ワンフィフティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":18,"defense":9,"stamina":3}},{"en":"1-60","zh":"1-60","ja":"1-60（ワンシクスティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":17,"defense":9,"stamina":4}},{"en":"1-70","zh":"1-70","ja":"1-70（ワンセブンティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":17,"defense":6,"stamina":7}},{"en":"1-80","zh":"1-80","ja":"1-80（ワンエイティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":17,"defense":4,"stamina":9}},{"en":"2-60","zh":"2-60","ja":"2-60（ツーシクスティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":10,"defense":13,"stamina":7}},{"en":"2-70","zh":"2-70","ja":"2-70（ツーセブンティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":10,"defense":12,"stamina":8}},{"en":"2-80","zh":"2-80","ja":"2-80（ツーエイティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":10,"defense":11,"stamina":9}},{"en":"3-60","zh":"3-60","ja":"3-60（スリーシクスティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":15,"defense":9,"stamina":6}},{"en":"3-70","zh":"3-70","ja":"3-70（スリーセブンティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":15,"defense":8,"stamina":7}},{"en":"3-80","zh":"3-80","ja":"3-80（スリーエイティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":15,"defense":7,"stamina":8}},{"en":"3-85","zh":"3-85","ja":"3-85（スリーエイティーファイブ）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":5,"defense":15,"stamina":10}},{"en":"4-50","zh":"4-50","ja":"4-50（フォーフィフティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":12,"defense":13,"stamina":5}},{"en":"4-55","zh":"4-55","ja":"4-55（フォーフィフティーファイブ）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":7,"defense":11,"stamina":12}},{"en":"4-60","zh":"4-60","ja":"4-60（フォーシクスティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":11,"defense":13,"stamina":6}},{"en":"4-70","zh":"4-70","ja":"4-70（フォーセブンティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":11,"defense":12,"stamina":7}},{"en":"4-80","zh":"4-80","ja":"4-80（フォーエイティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":11,"defense":11,"stamina":8}},{"en":"5-60","zh":"5-60","ja":"5-60（ファイブシクスティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":12,"defense":9,"stamina":9}},{"en":"5-70","zh":"5-70","ja":"5-70（ファイブセブンティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":12,"defense":8.5,"stamina":9.5}},{"en":"5-80","zh":"5-80","ja":"5-80（ファイブエイティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":12,"defense":8,"stamina":10}},{"en":"6-60","zh":"6-60","ja":"6-60（シックスシクスティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":14,"defense":8,"stamina":8}},{"en":"6-70","zh":"6-70","ja":"6-70（シックスセブンティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":14,"defense":7,"stamina":9}},{"en":"6-80","zh":"6-80","ja":"6-80（シックスエイティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":14,"defense":6,"stamina":10}},{"en":"7-55","zh":"7-55","ja":"7-55（セブンフィフティーファイブ）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":6,"defense":14,"stamina":10}},{"en":"7-60","zh":"7-60","ja":"7-60（セブンシクスティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":8,"defense":14,"stamina":8}},{"en":"7-70","zh":"7-70","ja":"7-70（セブンセブンティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":8,"defense":12,"stamina":10}},{"en":"7-80","zh":"7-80","ja":"7-80（セブンエイティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":7,"defense":14,"stamina":9}},{"en":"8-70","zh":"8-70","ja":"8-70（エイトセブンティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":8,"defense":10,"stamina":12}},{"en":"8-80","zh":"8-80","ja":"","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":8,"defense":9,"stamina":13}},{"en":"9-60","zh":"9-60","ja":"9-60（ナインシクスティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":13,"defense":10,"stamina":7}},{"en":"9-65","zh":"9-65","ja":"9-65（ナインシクスティーファイブ）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":13,"defense":10,"stamina":7}},{"en":"9-70","zh":"9-70","ja":"9-70（ナインセブンティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":13,"defense":10,"stamina":7}},{"en":"9-80","zh":"9-80","ja":"9-80（ナインエイティー）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":13,"defense":10,"stamina":7}},{"en":"M-85","zh":"M-85","ja":"M-85（エムエイティーファイブ）","type":"ratchet","gen":"x","aliases":[],"stats":{"attack":8,"defense":19,"stamina":13}},{"en":"Aero Pegasus","zh":"空力天馬 火紅版","ja":"エアロペガサス レッドVer.","type":"blade","gen":"x","aliases":["ArPg","エアロペガサス レッドVer.","空力天馬 火紅版"],"stats":{"attack":70,"defense":30,"stamina":35}},{"en":"Bahamut Blitz","zh":"龍王閃擊","ja":"バハムートブリッツ","type":"blade","gen":"x","aliases":["バハムートブリッツ","龍王閃擊"],"stats":{"attack":65,"defense":20,"stamina":15}},{"en":"Bear Scratch","zh":"悍熊猛爪","ja":"ベアスクラッチ","type":"blade","gen":"x","aliases":["BrSc","Savage Bear","ベアスクラッチ","悍熊猛爪"],"stats":{"attack":25,"defense":45,"stamina":30}},{"en":"Black Shell","zh":"玄冥戰甲","ja":"ブラックシェル","type":"blade","gen":"x","aliases":["BlSh","Obsidian Shell","ブラックシェル","玄冥戰甲"],"stats":{"attack":10,"defense":65,"stamina":25}},{"en":"Brachio Whip","zh":"腕龍鞭打","ja":"ブラキオウィップ","type":"blade","gen":"x","aliases":["ブラキオウィップ","腕龍鞭打"],"stats":{"attack":13,"defense":35,"stamina":52}},{"en":"Bucks Antlers","zh":"雄鹿戰角","ja":"バックスアントラーズ","type":"blade","gen":"x","aliases":["バックスアントラーズ","雄鹿戰角"],"stats":{"attack":23,"defense":40,"stamina":52}},{"en":"BulletGriffon","zh":"彈丸獅鷲","ja":"バレットグリフォン","type":"blade","gen":"x","aliases":["BlGr","Rocket Griffon","バレットグリフォン","彈丸獅鷲"],"stats":{"attack":45,"defense":45,"stamina":40}},{"en":"Cerberus Dark","zh":"魔犬幽冥","ja":"ケルベロスダーク","type":"blade","gen":"x","aliases":["ケルベロスダーク","魔犬幽冥"],"stats":{"attack":15,"defense":55,"stamina":30}},{"en":"Cerberus Flame","zh":"魔犬烈焰","ja":"ケルベロスフレイム","type":"blade","gen":"x","aliases":["ケルベロスフレイム","魔犬烈焰"],"stats":{"attack":10,"defense":30,"stamina":60}},{"en":"Cerberus Reaper","zh":"魔犬獵魂","ja":"ケルベロスリーパー","type":"blade","gen":"x","aliases":["ケルベロスリーパー","魔犬獵魂"],"stats":{"attack":35,"defense":30,"stamina":35}},{"en":"Clock Mirage","zh":"時鐘幻象","ja":"クロックミラージュ","type":"blade","gen":"x","aliases":["ClMr","クロックミラージュ","時鐘幻象"],"stats":{"attack":10,"defense":10,"stamina":80}},{"en":"Cobalt Dragoon","zh":"蒼穹龍騎士","ja":"コバルトドラグーン","type":"blade","gen":"x","aliases":["CbDg","コバルトドラグーン","蒼穹龍騎士"],"stats":{"attack":65,"defense":20,"stamina":30}},{"en":"Cobalt Drake","zh":"蒼穹龍神","ja":"コバルトドレイク","type":"blade","gen":"x","aliases":["CbDr","コバルトドレイク","蒼穹龍神"],"stats":{"attack":70,"defense":35,"stamina":25}},{"en":"Crimson Garuda","zh":"赫燃天鳳","ja":"クリムゾンガルーダ","type":"blade","gen":"x","aliases":["CrGr","Scarlet Garuda","クリムゾンガルーダ","赫燃天鳳"],"stats":{"attack":45,"defense":25,"stamina":30}},{"en":"Croc Crunch","zh":"鱷魚粉碎","ja":"クロコクランチ","type":"blade","gen":"x","aliases":["クロコクランチ","鱷魚粉碎"],"stats":{"attack":65,"defense":27,"stamina":23}},{"en":"Draciel Shield","zh":"堅甲戰龜","ja":"ドラシエルシールド","type":"blade","gen":"x","aliases":["DCS","ドラシエルシールド","堅甲戰龜"],"stats":{"attack":30,"defense":50,"stamina":20}},{"en":"Dragoon Storm","zh":"龍騎士","ja":"ドラグーンストーム","type":"blade","gen":"x","aliases":["DGS","ドラグーンストーム","龍騎士"],"stats":{"attack":55,"defense":30,"stamina":15}},{"en":"Drake Brave","zh":"龍神勇氣","ja":"ドレイクブレイブ","type":"blade","gen":"x","aliases":["ドレイクブレイブ","龍神勇氣"],"stats":{"attack":82,"defense":24,"stamina":19}},{"en":"Dran Arc","zh":"蒼龍至尊","ja":"ドランアーク","type":"blade","gen":"x","aliases":["ドランアーク","蒼龍至尊"],"stats":{"attack":35,"defense":25,"stamina":55}},{"en":"Dran Brave","zh":"蒼龍勇氣","ja":"ドランブレイブ","type":"blade","gen":"x","aliases":["ドランブレイブ","蒼龍勇氣"],"stats":{"attack":60,"defense":20,"stamina":20}},{"en":"Dran Buster","zh":"蒼龍爆刃","ja":"ドランバスター","type":"blade","gen":"x","aliases":["DrBs","ドランバスター","蒼龍爆刃"],"stats":{"attack":75,"defense":25,"stamina":15}},{"en":"Dran Dagger","zh":"蒼龍利刃","ja":"ドランダガー","type":"blade","gen":"x","aliases":["DrDg","ドランダガー","蒼龍利刃"],"stats":{"attack":50,"defense":25,"stamina":25}},{"en":"Dran Strike","zh":"蒼龍突擊","ja":"ドランストライク","type":"blade","gen":"x","aliases":["ドランストライク","蒼龍突擊"],"stats":{"attack":58,"defense":25,"stamina":17}},{"en":"Dran Sword","zh":"蒼龍神劍","ja":"ドランソード","type":"blade","gen":"x","aliases":["DrSw","ドランソード","蒼龍神劍"],"stats":{"attack":60,"defense":30,"stamina":25}},{"en":"Dranzer Spiral","zh":"烈焰飛鳳","ja":"ドランザースパイラル","type":"blade","gen":"x","aliases":["DZS","ドランザースパイラル","烈焰飛鳳"],"stats":{"attack":35,"defense":30,"stamina":35}},{"en":"Driger Slash","zh":"銀牙烈虎","ja":"ドライガースラッシュ","type":"blade","gen":"x","aliases":["DRS","ドライガースラッシュ","銀牙烈虎"],"stats":{"attack":40,"defense":35,"stamina":25}},{"en":"Emperor Might","zh":"帝王威能","ja":"エンペラーマイト","type":"blade","gen":"x","aliases":["エンペラーマイト","帝王威能"],"stats":{"attack":44,"defense":44,"stamina":37}},{"en":"Fox Brush","zh":"極狐九尾","ja":"フォックスブラッシュ","type":"blade","gen":"x","aliases":["フォックスブラッシュ","極狐九尾"],"stats":{"attack":60,"defense":30,"stamina":10}},{"en":"Ghost Circle","zh":"幽靈元魂","ja":"ゴーストサークル","type":"blade","gen":"x","aliases":["GhCr","ゴーストサークル","幽靈元魂"],"stats":{"attack":5,"defense":40,"stamina":55}},{"en":"Glory Valkyrie","zh":"榮耀戰神","ja":"グローリーワルキューレ","type":"blade","gen":"x","aliases":["グローリーワルキューレ","榮耀戰神"],"stats":{"attack":85,"defense":35,"stamina":25}},{"en":"Goat Tackle","zh":"戰羊阻截","ja":"ゴートタックル","type":"blade","gen":"x","aliases":["GtTc","ゴートタックル","戰羊阻截"],"stats":{"attack":13,"defense":65,"stamina":22}},{"en":"Golem Rock","zh":"魔像奇岩","ja":"ゴーレムロック","type":"blade","gen":"x","aliases":["GlRc","ゴーレムロック","魔像奇岩"],"stats":{"attack":35,"defense":65,"stamina":15}},{"en":"Heavens Ring","zh":"天國日輪","ja":"ヘブンズリング","type":"blade","gen":"x","aliases":["ヘブンズリング","天國日輪"],"stats":{"attack":10,"defense":60,"stamina":30}},{"en":"Hells Arc","zh":"惡魔至尊","ja":"ヘルズアーク","type":"blade","gen":"x","aliases":["ヘルズアーク","惡魔至尊"],"stats":{"attack":25,"defense":20,"stamina":55}},{"en":"Hells Brave","zh":"惡魔勇氣","ja":"ヘルズブレイブ","type":"blade","gen":"x","aliases":["ヘルズブレイブ","惡魔勇氣"],"stats":{"attack":60,"defense":25,"stamina":15}},{"en":"Hells Chain","zh":"惡魔鎖鏈","ja":"ヘルズチェイン","type":"blade","gen":"x","aliases":["Chain Incendio","HlCh","ヘルズチェイン","惡魔鎖鏈"],"stats":{"attack":40,"defense":45,"stamina":30}},{"en":"HellsHammer","zh":"惡魔重錘","ja":"ヘルズハンマー","type":"blade","gen":"x","aliases":["Hammer Incendio","HlHm","ヘルズハンマー","惡魔重錘"],"stats":{"attack":50,"defense":25,"stamina":25}},{"en":"Hells Nether","zh":"惡魔冥界","ja":"ヘルズネザー","type":"blade","gen":"x","aliases":["ヘルズネザー","惡魔冥界"],"stats":{"attack":50,"defense":50,"stamina":30}},{"en":"Hells Reaper","zh":"惡魔獵魂","ja":"ヘルズリーパー","type":"blade","gen":"x","aliases":["ヘルズリーパー","惡魔獵魂"],"stats":{"attack":40,"defense":20,"stamina":40}},{"en":"Hells Scythe","zh":"惡魔紅鐮","ja":"ヘルズサイズ","type":"blade","gen":"x","aliases":["HlSc","Scythe Incendio","ヘルズサイズ","惡魔紅鐮"],"stats":{"attack":35,"defense":40,"stamina":40}},{"en":"Hornet Fort","zh":"黃蜂要塞","ja":"ホーネットフォート","type":"blade","gen":"x","aliases":["ホーネットフォート","黃蜂要塞"],"stats":{"attack":39,"defense":27,"stamina":49}},{"en":"Impact Drake","zh":"衝擊龍神","ja":"インパクトドレイク","type":"blade","gen":"x","aliases":["ImDr","インパクトドレイク","衝擊龍神"],"stats":{"attack":75,"defense":25,"stamina":10}},{"en":"Knight Fortress","zh":"騎士堡壘","ja":"ナイトフォートレス","type":"blade","gen":"x","aliases":["ナイトフォートレス","騎士堡壘"],"stats":{"attack":25,"defense":55,"stamina":20}},{"en":"Knight Lance","zh":"騎士長槍","ja":"ナイトランス","type":"blade","gen":"x","aliases":["KnLn","ナイトランス","騎士長槍"],"stats":{"attack":25,"defense":60,"stamina":15}},{"en":"Knight Mail","zh":"騎士圓甲","ja":"ナイトメイル","type":"blade","gen":"x","aliases":["KnMl","ナイトメイル","騎士圓甲"],"stats":{"attack":15,"defense":70,"stamina":40}},{"en":"Knight Shield","zh":"騎士重盾","ja":"ナイトシールド","type":"blade","gen":"x","aliases":["Helm Knight","KnSh","ナイトシールド","騎士重盾"],"stats":{"attack":20,"defense":55,"stamina":25}},{"en":"Kraken Wriggle","zh":"海怪扭擺","ja":"クラーケンリグル","type":"blade","gen":"x","aliases":["クラーケンリグル","海怪扭擺"],"stats":{"attack":33,"defense":27,"stamina":55}},{"en":"Leon Claw","zh":"雄獅獵爪","ja":"レオンクロー","type":"blade","gen":"x","aliases":["LnCl","レオンクロー","雄獅獵爪"],"stats":{"attack":40,"defense":40,"stamina":20}},{"en":"Leon Crest","zh":"雄獅巔峰","ja":"レオンクレスト","type":"blade","gen":"x","aliases":["LnCr","レオンクレスト","雄獅巔峰"],"stats":{"attack":15,"defense":70,"stamina":15}},{"en":"Leon Fang","zh":"雄獅獠牙T 火紅版","ja":"レオンファングT レッドVer.","type":"blade","gen":"x","aliases":["レオンファングT レッドVer.","雄獅獠牙T 火紅版"],"stats":{"attack":50,"defense":20,"stamina":30}},{"en":"Lightning L-Drago","zh":"雷霆天龍 (上升攻擊型)","ja":"ライトニングエルドラゴ","type":"blade","gen":"x","aliases":["ライトニングエルドラゴ","雷霆天龍 (上升攻擊型)"],"stats":{"attack":55,"defense":25,"stamina":20}},{"en":"Tusk Mammoth","zh":"猛瑪長牙","ja":"マンモスタスク","type":"blade","gen":"x","aliases":["マンモスタスク","猛瑪長牙"],"stats":{"attack":38,"defense":40,"stamina":37}},{"en":"Meteor Dragoon","zh":"隕星龍騎士","ja":"メテオドラグーン","type":"blade","gen":"x","aliases":["Meteroid Dragoon","MtDg","メテオドラグーン","隕星龍騎士"],"stats":{"attack":75,"defense":15,"stamina":35}},{"en":"Mummy Curse","zh":"古屍詛咒","ja":"マミーカース","type":"blade","gen":"x","aliases":["MmCr","マミーカース","古屍詛咒"],"stats":{"attack":30,"defense":60,"stamina":20}},{"en":"Orochi Cluster","zh":"大蛇簇擁","ja":"オロチクラスタ","type":"blade","gen":"x","aliases":["Coil Orochi","OrCl","オロチクラスタ","大蛇","大蛇簇擁"],"stats":{"attack":65,"defense":15,"stamina":20}},{"en":"Pegasus Blast","zh":"天馬爆擊","ja":"ペガサスブラスト","type":"blade","gen":"x","aliases":["ペガサスブラスト","天馬爆擊"],"stats":{"attack":75,"defense":20,"stamina":20}},{"en":"Pegasus Brush","zh":"天馬九尾","ja":"ペガサスブラッシュ","type":"blade","gen":"x","aliases":["ペガサスブラッシュ","天馬九尾"],"stats":{"attack":55,"defense":30,"stamina":15}},{"en":"Perseus Dark","zh":"英仙幽冥","ja":"ペルセウスダーク","type":"blade","gen":"x","aliases":["ペルセウスダーク","英仙幽冥"],"stats":{"attack":20,"defense":60,"stamina":20}},{"en":"Phoenix Feather","zh":"鳳凰翔羽 鋼鐵戰刃","ja":"フェニックスフェザー ブレード","type":"blade","gen":"x","aliases":["PhFt","フェニックスフェザー ブレード","鳳凰翔羽 鋼鐵戰刃"],"stats":{"attack":55,"defense":25,"stamina":35}},{"en":"Phoenix Flare","zh":"鳳凰閃焰","ja":"フェニックスフレア","type":"blade","gen":"x","aliases":["フェニックスフレア","鳳凰閃焰"],"stats":{"attack":47,"defense":55,"stamina":13}},{"en":"Phoenix Rudder","zh":"鳳凰尾翼","ja":"フェニックスラダー","type":"blade","gen":"x","aliases":["PhRd","フェニックスラダー","鳳凰尾翼"],"stats":{"attack":10,"defense":35,"stamina":55}},{"en":"Phoenix Wing","zh":"鳳凰飛翼","ja":"フェニックスウイング","type":"blade","gen":"x","aliases":["PhWn","Soar Phoenix","フェニックスウイング","鳳凰飛翼"],"stats":{"attack":65,"defense":30,"stamina":20}},{"en":"Ptera Swing","zh":"翼龍神翼","ja":"プテラスイング","type":"blade","gen":"x","aliases":["PtSw","Talon Ptera","プテラスイング","翼龍神翼"],"stats":{"attack":27,"defense":23,"stamina":50}},{"en":"Ragna Rage","zh":"邪神狂怒","ja":"ラグナレイジ","type":"blade","gen":"x","aliases":["ラグナレイジ","邪神狂怒"],"stats":{"attack":25,"defense":20,"stamina":55}},{"en":"Rhino Horn","zh":"戰犀重角","ja":"ライノホーン","type":"blade","gen":"x","aliases":["RhHr","ライノホーン","戰犀重角"],"stats":{"attack":20,"defense":50,"stamina":30}},{"en":"Rhino Reaper","zh":"戰犀獵魂","ja":"ライノリーパー","type":"blade","gen":"x","aliases":["ライノリーパー","戰犀獵魂"],"stats":{"attack":40,"defense":30,"stamina":30}},{"en":"Rock Leone","zh":"巨岩雄獅","ja":"ロックレオーネ","type":"blade","gen":"x","aliases":["RLn","ロックレオーネ","巨岩雄獅"],"stats":{"attack":30,"defense":55,"stamina":15}},{"en":"Samurai Calibur","zh":"武士魂斬","ja":"サムライカリバー","type":"blade","gen":"x","aliases":["SmCl","サムライカリバー","武士魂斬"],"stats":{"attack":40,"defense":30,"stamina":30}},{"en":"Samurai Saber","zh":"武士星劍","ja":"サムライセイバー","type":"blade","gen":"x","aliases":["SmSb","サムライセイバー","武士星劍"],"stats":{"attack":65,"defense":20,"stamina":25}},{"en":"Samurai Steel","zh":"武士鋼鐵","ja":"サムライスチール","type":"blade","gen":"x","aliases":["SmSt","サムライスチール","武士鋼鐵"],"stats":{"attack":45,"defense":42,"stamina":28}},{"en":"Scorpio Spear","zh":"天蠍長矛","ja":"スコーピオスピア","type":"blade","gen":"x","aliases":["ScSp","スコーピオスピア","天蠍長矛"],"stats":{"attack":25,"defense":55,"stamina":30}},{"en":"Shark Edge","zh":"鮫鯊鋒鰭","ja":"シャークエッジ","type":"blade","gen":"x","aliases":["Keel Shark","ShEd","シャークエッジ","鮫鯊鋒鰭"],"stats":{"attack":65,"defense":30,"stamina":20}},{"en":"Shark Gill","zh":"鮫鯊撕裂","ja":"シャークギル","type":"blade","gen":"x","aliases":["ShGl","シャークギル","鮫鯊撕裂"],"stats":{"attack":20,"defense":25,"stamina":55}},{"en":"Shark Scale","zh":"鮫鯊狂鱗","ja":"シャークスケイル","type":"blade","gen":"x","aliases":["ShSc","シャークスケイル","鮫鯊狂鱗"],"stats":{"attack":70,"defense":15,"stamina":15}},{"en":"Shelter Drake","zh":"護城龍神","ja":"シェルタードレイク","type":"blade","gen":"x","aliases":["ShDr","シェルタードレイク","護城龍神"],"stats":{"attack":25,"defense":40,"stamina":35}},{"en":"Shinobi Knife","zh":"忍者刺刀","ja":"シノビナイフ","type":"blade","gen":"x","aliases":["ShKn","シノビナイフ","忍者刺刀"],"stats":{"attack":28,"defense":55,"stamina":32}},{"en":"Shinobi Shadow","zh":"忍者闇影","ja":"シノビシャドウ","type":"blade","gen":"x","aliases":["ShSh","シノビシャドウ","忍者闇影"],"stats":{"attack":10,"defense":70,"stamina":20}},{"en":"Silver Wolf","zh":"霜輝銀狼","ja":"シルバーウルフ","type":"blade","gen":"x","aliases":["SlWl","Sterling Wolf","シルバーウルフ","霜輝銀狼"],"stats":{"attack":15,"defense":30,"stamina":65}},{"en":"Sol Brave","zh":"焰神勇氣","ja":"ソルブレイブ","type":"blade","gen":"x","aliases":["ソルブレイブ","焰神勇氣"],"stats":{"attack":55,"defense":30,"stamina":15}},{"en":"Sol Eclipse","zh":"焰神滅世","ja":"ソルエクリプス","type":"blade","gen":"x","aliases":["ソルエクリプス","焰神滅世"],"stats":{"attack":47,"defense":33,"stamina":20}},{"en":"Sphinx Cowl","zh":"魔獸護甲","ja":"スフィンクスカウル","type":"blade","gen":"x","aliases":["SpCw","スフィンクスカウル","魔獸護甲"],"stats":{"attack":35,"defense":55,"stamina":10}},{"en":"Storm Pegasis","zh":"暴風天馬","ja":"ストームペガシス","type":"blade","gen":"x","aliases":["SPg","ストームペガシス","暴風天馬"],"stats":{"attack":55,"defense":15,"stamina":30}},{"en":"Storm Spriggan","zh":"暴風巨神","ja":"ストームスプリガン","type":"blade","gen":"x","aliases":["S2","ストームスプリガン","暴風巨神"],"stats":{"attack":30,"defense":40,"stamina":30}},{"en":"Tricera Press","zh":"三角強襲","ja":"トリケラプレス","type":"blade","gen":"x","aliases":["Brace Triceratops","TrPr","トリケラプレス","三角強襲"],"stats":{"attack":20,"defense":65,"stamina":15}},{"en":"Tyranno Beat","zh":"暴龍霸擊","ja":"ティラノビート","type":"blade","gen":"x","aliases":["TyBt","ティラノビート","暴龍霸擊"],"stats":{"attack":65,"defense":30,"stamina":5}},{"en":"Tyranno Roar","zh":"暴龍咆哮","ja":"ティラノロア","type":"blade","gen":"x","aliases":["TyRr","ティラノロア","暴龍咆哮","棘龍"],"stats":{"attack":60,"defense":28,"stamina":12}},{"en":"Unicorn Delta","zh":"獨角極變","ja":"ユニコーンデルタ","type":"blade","gen":"x","aliases":["ユニコーンデルタ","獨角極變"],"stats":{"attack":40,"defense":32,"stamina":28}},{"en":"Unicorn Sting","zh":"幻獸刺心","ja":"ユニコーンスティング","type":"blade","gen":"x","aliases":["UnSt","ユニコーンスティング","幻獸刺心"],"stats":{"attack":35,"defense":35,"stamina":30}},{"en":"Valkyrie Volt","zh":"戰神伏特","ja":"ワルキューレボルト","type":"blade","gen":"x","aliases":["ワルキューレボルト","戰神伏特"],"stats":{"attack":69,"defense":29,"stamina":27}},{"en":"Victory Valkyrie","zh":"天翼戰神","ja":"ビクトリーヴァルキリー","type":"blade","gen":"x","aliases":["V2","ビクトリーヴァルキリー","天翼戰神"],"stats":{"attack":55,"defense":20,"stamina":25}},{"en":"Viper Tail","zh":"王蛇鞭尾","ja":"ヴァイパーテイル","type":"blade","gen":"x","aliases":["VpTl","ヴァイパーテイル","王蛇鞭尾"],"stats":{"attack":30,"defense":20,"stamina":50}},{"en":"Weiss Tiger","zh":"皓戰猛虎","ja":"ヴァイスタイガー","type":"blade","gen":"x","aliases":["Pearl Tiger","WsTg","ヴァイスタイガー","皓戰猛虎"],"stats":{"attack":45,"defense":30,"stamina":25}},{"en":"Whale Flame","zh":"巨鯨烈焰","ja":"ホエールフレイム","type":"blade","gen":"x","aliases":["ホエールフレイム","巨鯨烈焰"],"stats":{"attack":20,"defense":30,"stamina":50}},{"en":"Whale Wave","zh":"巨鯨怒濤","ja":"ホエールウェーブ","type":"blade","gen":"x","aliases":["Tide Whale","WhWv","ホエールウェーブ","巨鯨怒濤"],"stats":{"attack":50,"defense":40,"stamina":25}},{"en":"Wizard Arc","zh":"魔導至尊","ja":"ウィザードアーク","type":"blade","gen":"x","aliases":["ウィザードアーク","魔導至尊"],"stats":{"attack":20,"defense":20,"stamina":60}},{"en":"Wizard Arrow","zh":"魔導幻箭","ja":"ウィザードアロー","type":"blade","gen":"x","aliases":["WzAr","ウィザードアロー","魔導幻箭"],"stats":{"attack":15,"defense":30,"stamina":55}},{"en":"Wizard Rod","zh":"魔導神杖","ja":"ウィザードロッド","type":"blade","gen":"x","aliases":["Wand Wizard","WzRd","ウィザードロッド","魔導神杖"],"stats":{"attack":15,"defense":25,"stamina":60}},{"en":"Wolf Flame","zh":"銀狼烈焰","ja":"ウルフフレイム","type":"blade","gen":"x","aliases":["ウルフフレイム","銀狼烈焰"],"stats":{"attack":22,"defense":28,"stamina":50}},{"en":"Wolf Hunt","zh":"銀狼狩獵","ja":"ウルフハント","type":"blade","gen":"x","aliases":["ウルフハント","銀狼狩獵"],"stats":{"attack":25,"defense":30,"stamina":55}},{"en":"Wyvern Gale","zh":"飛龍旋翼","ja":"ワイバーンゲイル","type":"blade","gen":"x","aliases":["WyGl","ワイバーンゲイル","飛龍旋翼"],"stats":{"attack":10,"defense":40,"stamina":50}},{"en":"Wyvern Hover","zh":"飛龍凌空","ja":"ワイバーンホバー","type":"blade","gen":"x","aliases":["WyHv","ワイバーンホバー","飛龍凌空"],"stats":{"attack":13,"defense":60,"stamina":27}},{"en":"Xeno Xcalibur","zh":"神力聖劍","ja":"ゼノエクスカリバー","type":"blade","gen":"x","aliases":["X2","ゼノエクスカリバー","神力聖劍"],"stats":{"attack":65,"defense":25,"stamina":10}}],"others":[{"en":"Draciel Emblem","zh":"","ja":"","type":"bit_protector","gen":"bakuten_shoot","aliases":[]},{"en":"Dragoon Emblem","zh":"","ja":"","type":"bit_protector","gen":"bakuten_shoot","aliases":[]},{"en":"Dranzer Emblem","zh":"","ja":"","type":"bit_protector","gen":"bakuten_shoot","aliases":[]},{"en":"Strata Dragoon","zh":"","ja":"","type":"bit_protector","gen":"bakuten_shoot","aliases":[]},{"en":"Strata Dragoon Emblem","zh":"","ja":"","type":"bit_protector","gen":"bakuten_shoot","aliases":[]},{"en":"Pegasus III","zh":"","ja":"","type":"energy_ring","gen":"metal_fight","aliases":[]},{"en":"L-Drago III","zh":"","ja":"","type":"face_bolt","gen":"metal_fight","aliases":[]},{"en":"Pegasus III","zh":"","ja":"","type":"face_bolt","gen":"metal_fight","aliases":[]},{"en":"L-Drago Destructor","zh":"","ja":"","type":"fusion_wheel","gen":"metal_fight","aliases":[]},{"en":"L-Drago Guardian","zh":"","ja":"","type":"fusion_wheel","gen":"metal_fight","aliases":[]},{"en":"Draciel Fortress","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Draciel Shield","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Draciel V2","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Draciel Viper","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Dragoon Fantom","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Dragoon Fighter","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Dragoon Storm","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Dragoon V2","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Dragoon Victory","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Dranzer Flame","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Dranzer Spiral","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Dranzer V2","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Dranzer Volcano","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Gaia Dragoon","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Gaia Dragoon Vurst","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Lightning L-Drago","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Lost Longinus","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Meteo L-Drago","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Spriggan","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Storm Spriggan","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Valkyrie","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"Victory Valkyrie","zh":"","ja":"","type":"layer","gen":"burst","aliases":[]},{"en":"L-Drago Assault","zh":"","ja":"","type":"energy_ring","gen":"metal_fight","aliases":[]},{"en":"L-Drago I","zh":"","ja":"","type":"energy_ring","gen":"metal_fight","aliases":[]},{"en":"L-Drago II","zh":"","ja":"","type":"energy_ring","gen":"metal_fight","aliases":[]},{"en":"L-Drago Rush","zh":"","ja":"","type":"energy_ring","gen":"metal_fight","aliases":[]},{"en":"Pegasus I","zh":"","ja":"","type":"energy_ring","gen":"metal_fight","aliases":[]},{"en":"Pegasus II","zh":"","ja":"","type":"energy_ring","gen":"metal_fight","aliases":[]},{"en":"Cyber Pegasus","zh":"","ja":"","type":"face_bolt","gen":"metal_fight","aliases":[]},{"en":"L-Drago I","zh":"","ja":"","type":"face_bolt","gen":"metal_fight","aliases":[]}],"capturedAt":"2026-09-07T14:15:28.599Z"}</script>
+<script>
+(() => {
+  const seed = JSON.parse(document.getElementById("seed").textContent);
+  const rows = [...seed.x, ...seed.others];
+  const GEN = { x: "BEYBLADE X", burst: "Beyblade Burst", metal_fight: "Metal Fight Beyblade", bakuten_shoot: "Original Generation", all: "全部世代" };
+  const TYPE = { blade: "Blade", ratchet: "Ratchet", bit: "Bit" };
+  const norm = (s) => (s || "").toString().toLowerCase().replace(/\s+/g, "");
+  const matches = (row, q) => {
+    if (!q) return true;
+    const n = norm(q);
+    return [row.en, row.zh, row.ja, ...(row.aliases || [])].some((v) => norm(v).includes(n));
+  };
+  const search = (q, gen) => rows.filter((r) => (gen === "all" || r.gen === gen) && matches(r, q));
+
+  const $ = (id) => document.getElementById(id);
+  const q = $("q"), gen = $("gen"), support = $("support"), results = $("results"), tabs = $("tabs"), count = $("count");
+  let variant = "proposal";
+  let submitted = { q: "", gen: "x", type: "all" };
+
+  // ── H1：打字時的即時計數（提案限定），清單不動 ─────────────────────────
+  function liveHint() {
+    if (variant !== "proposal") { support.textContent = ""; support.dataset.tone = "none"; return; }
+    const value = q.value.trim();
+    if (!value) { support.textContent = ""; support.dataset.tone = "none"; return; }
+    const here = search(value, gen.value).length;
+    if (here > 0) {
+      support.dataset.tone = "hit";
+      support.innerHTML = `符合 <span class="n">${here}</span> 筆，按 Enter 或「搜尋」查看`;
+      return;
+    }
+    const everywhere = gen.value === "all" ? 0 : search(value, "all").length;
+    support.dataset.tone = "miss";
+    support.innerHTML = everywhere > 0
+      ? `${GEN[gen.value]} 沒有符合的零件，其他世代有 <span class="n">${everywhere}</span> 筆`
+      : `找不到符合的零件`;
+  }
+
+  // ── 種類分頁：提案版在 0 筆時也留著，計數歸零而不是整列消失 ───────────
+  function renderTabs(list) {
+    const byType = { all: list.length };
+    for (const r of list) byType[r.type] = (byType[r.type] || 0) + 1;
+    const order = ["all", "blade", "ratchet", "bit", ...Object.keys(byType).filter((t) => !["all", "blade", "ratchet", "bit"].includes(t))];
+    if (variant === "current" && list.length === 0) { tabs.innerHTML = ""; tabs.hidden = true; return; }
+    tabs.hidden = false;
+    tabs.innerHTML = order.filter((t) => t === "all" || byType[t] !== undefined || ["blade", "ratchet", "bit"].includes(t)).map((t) => {
+      const label = t === "all" ? "全部" : (TYPE[t] || t.replace(/_/g, " "));
+      const n = byType[t] || 0;
+      const current = submitted.type === t ? ' aria-current="page"' : "";
+      return `<button type="button" class="m3-tab m3-state" data-type="${t}"${current}>${label}<span class="m3-tab__count">${n}</span></button>`;
+    }).join("");
+  }
+
+  function renderEmpty() {
+    const { q: value, gen: g } = submitted;
+    if (variant === "current") {
+      return `<div class="empty empty--current"><p>找不到符合條件的零件</p></div>`;
+    }
+    const everywhere = g === "all" ? 0 : search(value, "all").length;
+    const where = g === "all" ? "所有世代" : GEN[g];
+    const actions = [
+      `<button type="button" class="m3-button m3-button--text m3-state" data-action="clear">清除搜尋</button>`,
+      everywhere > 0 ? `<button type="button" class="m3-button m3-button--tonal m3-state" data-action="all">改搜全部世代<span class="n">${everywhere}</span></button>` : "",
+    ].join("");
+    const scope = value ? `在 ${where} 找不到<q>${escapeHtml(value)}</q>` : `${where}目前沒有符合這個種類的零件`;
+    return `<section class="empty" aria-labelledby="empty-h">
+      <h2 id="empty-h">${scope}</h2>
+      <p>已比對英文、日文、中文與玩家俗稱。${g !== "all" && everywhere === 0 ? "其他世代也沒有。" : ""}輸入的若是俗稱或簡寫，可能還沒被收進 Alias，歡迎在該零件頁的討論裡留下。</p>
+      <div class="actions">${actions}</div>
+    </section>`;
+  }
+
+  function renderTable(list) {
+    const hasStats = list.some((r) => r.stats);
+    const head = `<tr><th>種類</th><th>名稱</th>${hasStats ? `<th class="num">Attack</th><th class="num">Defense</th><th class="num">Stamina</th>` : `<th class="hide-m">世代</th>`}</tr>`;
+    const body = list.map((r) => {
+      const type = TYPE[r.type] || r.type.replace(/_/g, " ");
+      const name = r.zh ? `<span class="name">${escapeHtml(r.zh)}</span><span class="sub">${escapeHtml(r.en)}${r.ja ? " · " + escapeHtml(r.ja) : ""}</span>` : `<span class="name">${escapeHtml(r.en)}</span>`;
+      const cells = hasStats
+        ? (r.stats ? `<td class="num">${r.stats.attack}</td><td class="num">${r.stats.defense}</td><td class="num">${r.stats.stamina}</td>` : `<td class="num">—</td><td class="num">—</td><td class="num">—</td>`)
+        : `<td class="hide-m gen">${GEN[r.gen]}</td>`;
+      return `<tr><td>${type}</td><td>${name}</td>${cells}</tr>`;
+    }).join("");
+    return `<div class="table-wrap"><table><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
+  }
+
+  function render() {
+    const pool = search(submitted.q, submitted.gen);
+    renderTabs(pool);
+    const list = submitted.type === "all" ? pool : pool.filter((r) => r.type === submitted.type);
+    count.value = String(list.length);
+    results.innerHTML = list.length ? renderTable(list) : renderEmpty();
+  }
+
+  function escapeHtml(s) { return s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+  $("search").addEventListener("submit", (e) => {
+    e.preventDefault();
+    submitted = { q: q.value.trim(), gen: gen.value, type: "all" };
+    render();
+  });
+  q.addEventListener("input", liveHint);
+  gen.addEventListener("change", liveHint);
+  tabs.addEventListener("click", (e) => {
+    const t = e.target.closest("[data-type]"); if (!t) return;
+    submitted.type = t.dataset.type; render();
+  });
+  results.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-action]"); if (!b) return;
+    if (b.dataset.action === "clear") { q.value = ""; submitted = { q: "", gen: submitted.gen, type: "all" }; liveHint(); render(); q.focus(); }
+    if (b.dataset.action === "all") { gen.value = "all"; submitted = { q: submitted.q, gen: "all", type: "all" }; liveHint(); render(); }
+  });
+  $("variant").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-variant]"); if (!b) return;
+    variant = b.dataset.variant;
+    for (const c of $("variant").querySelectorAll("[data-variant]")) {
+      const on = c === b; c.classList.toggle("m3-chip--selected", on); c.setAttribute("aria-pressed", String(on));
+    }
+    liveHint(); render();
+  });
+
+  render();
+})();
+</script>
+
+</html>

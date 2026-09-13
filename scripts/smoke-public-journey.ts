@@ -23,7 +23,6 @@ for (const locale of locales) {
     "mold-batches",
     "discussion",
     "login",
-    "terms",
   ];
   for (const route of publicRoutes) {
     const routeUrl = `${baseUrl}/${locale}${route ? `/${route}` : "/"}`;

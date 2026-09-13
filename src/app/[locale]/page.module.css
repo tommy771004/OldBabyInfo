@@ -484,6 +484,77 @@ a.promoLink:hover {
   background-repeat: repeat, no-repeat;
 }
 
+/* Terms — the sideline end proper. Same surface-100 the footer stands on,
+   so the band above lands on one light floor and nothing seams between the
+   copy and the colophon. Not a stack of hairlines: the clauses are ranked by
+   type and space alone, and the intro sits beside them rather than above,
+   so the block reads as one spread instead of five identical rows. */
+
+.termsSection {
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+}
+
+.termsInner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.termsIntro {
+  position: sticky;
+  top: 5.5rem;
+}
+
+.termsIntro h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+}
+
+.termsLede {
+  max-width: 34ch;
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+}
+
+.termsClauses {
+  display: grid;
+  row-gap: 2.5rem;
+  /* Display-small has a taller first line than title-large; nudge the first
+     clause so its heading shares a baseline with the intro's. */
+  padding-top: 0.35rem;
+}
+
+.termsClause {
+  max-width: 58ch;
+}
+
+.termsClause h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--md-sys-typescale-title-large-font);
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+}
+
+.termsClause p {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+}
+
 /* Footer — surface-100, light-ink-safe (also the site-wide default now —
    see colors.css — so a link out of here into Parts or Events lands on
    the same temperature, not a jump back to black). One composed island,
@@ -563,6 +634,20 @@ a.promoLink:hover {
   .partsGrid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+
+  .termsInner {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+    padding-top: 4rem;
+  }
+
+  .termsIntro {
+    position: static;
+  }
+
+  .termsClauses {
+    padding-top: 0;
   }
 
   .footerTop {
@@ -679,6 +764,8 @@ a.promoLink:hover {
       animation-range: entry 8% cover 30%;
     }
 
+    /* Reading matter settles like the footer does; it does not rise. */
+    .termsClause,
     .footerTop,
     .footerSources,
     .footerColophon {

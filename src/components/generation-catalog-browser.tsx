@@ -99,6 +99,7 @@ export function GenerationCatalogBrowser({
 }: GenerationCatalogBrowserProps) {
   const generationRecords = records.filter((record) => record.generationId === selectedGeneration);
   const generationSystems = systems.filter((system) => system.generationId === selectedGeneration);
+  const systemOptions = searchAcrossGenerations ? systems : generationSystems;
   const selectedSystemDefinition = generationSystems.find((system) => system.id === selectedSystem);
   const visibleRecords = searchAcrossGenerations || searchQuery !== undefined
     ? searchGenerationCatalog(records, searchQuery ?? "", {
@@ -183,7 +184,7 @@ export function GenerationCatalogBrowser({
             defaultValue={selectedSystem ?? ""}
           >
             <option value="">{labels.allLabel}</option>
-            {systems.map((system) => <option key={system.id} value={system.id}>{system.nameEn}</option>)}
+            {systemOptions.map((system) => <option key={system.id} value={system.id}>{system.nameEn}</option>)}
           </select>
           <label className="m3-field__label" htmlFor={`catalog-system-filter-${formIdSuffix}`}>
             {labels.systemLabel}

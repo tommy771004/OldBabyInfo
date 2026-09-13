@@ -1,0 +1,23 @@
+import { chromium } from "playwright";
+const base = `http://localhost:${process.env.PORT ?? "3000"}`;
+const out = "./shots";
+const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36";
+const browser = await chromium.launch();
+const c = await browser.newContext({ viewport: { width: 1440, height: 1000 }, locale: "zh-TW", userAgent: UA });
+const p = await c.newPage();
+await p.goto(base + "/parts", { waitUntil: "load" }); await p.waitForTimeout(500);
+const sb = p.locator("[role=searchbox], input[type=search]").first();
+await sb.fill("zzzzqq"); await sb.press("Enter"); await p.waitForTimeout(1500);
+console.log("after submit url:", p.url());
+console.log("rows:", await p.locator("table tbody tr").count());
+console.log("text:", (await p.locator("main").innerText()).slice(0, 700).replace(/\n+/g, " | "));
+await p.screenshot({ path: `${out}/d_parts_submit_noresult.png` });
+await sb.fill("蒼龍"); await sb.press("Enter"); await p.waitForTimeout(1500);
+console.log("after hit url:", p.url(), "rows:", await p.locator("table tbody tr").count());
+await p.screenshot({ path: `${out}/d_parts_submit_hit.png` });
+// keyboard focus ring on a chip and a row link
+await p.goto(base + "/parts", { waitUntil: "load" }); await p.waitForTimeout(500);
+for (let i = 0; i < 12; i++) await p.keyboard.press("Tab");
+await p.screenshot({ path: `${out}/d_parts_focus.png` });
+console.log("focused:", await p.evaluate(() => { const a = document.activeElement; return a.tagName + " " + (a.textContent || "").trim().slice(0, 30) + " outline=" + getComputedStyle(a).outline; }));
+await browser.close();

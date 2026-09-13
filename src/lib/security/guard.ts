@@ -108,6 +108,6 @@ export function denialMessage(decision: Extract<GuardDecision, { action: "deny" 
     case "rate-limited":
       return "Too many requests. OldBabyInfo is a hobby site — please slow down.";
     default:
-      return "Automated access to this site is not available. See /terms.";
+      return "Automated access to this site is not available. See /#terms.";
   }
 }

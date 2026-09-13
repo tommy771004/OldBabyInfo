@@ -157,19 +157,14 @@ const seoCopy = {
     en: { title: "Compare Beyblade X Parts", description: "Compare Beyblade X part types, stats, weights, and official data side by side." },
   },
   meta: {
-    "zh-TW": { title: "Beyblade X Combo 勝率榜", description: "以實際賽事結果統計 Beyblade X Combo 的使用率、前八強佔比與奪冠次數。賽事使用資料尚未匯入，上線前此頁顯示空狀態。" },
-    ja: { title: "ベイブレードX コンボ使用率ランキング", description: "実際の大会結果からベイブレードXコンボの使用率、ベスト8率、優勝回数を集計。大会データ未投入のため、現在このページは空の状態です。" },
-    en: { title: "Beyblade X Combo Event Standings", description: "Combo usage, top-eight rates, and championship counts computed from recorded event results. Appearance data has not been ingested yet; the page shows an empty state until then." },
+    "zh-TW": { title: "Beyblade X Combo Meta Standing", description: "以實際賽事結果統計 Beyblade X Combo 的使用率、前八強佔比與奪冠次數。賽事使用資料尚未匯入，上線前此頁顯示空狀態。" },
+    ja: { title: "ベイブレードX Combo Meta Standing", description: "実際の大会結果からベイブレードXコンボの使用率、ベスト8率、優勝回数を集計。大会データ未投入のため、現在このページは空の状態です。" },
+    en: { title: "Beyblade X Combo Meta Standing", description: "Combo usage, top-eight rates, and championship counts computed from recorded event results. Appearance data has not been ingested yet; the page shows an empty state until then." },
   },
   moldBatches: {
     "zh-TW": { title: "Beyblade X 模具批號查詢", description: "查詢 Beyblade X 零件的模具批次觀察與社群實測資料，並查看每筆資料的來源。" },
     ja: { title: "ベイブレードX 金型ロット検索", description: "ベイブレードXパーツの金型ロット観察とコミュニティ実測データを出典付きで確認できます。" },
     en: { title: "Beyblade X Mold Batch Lookup", description: "Look up Beyblade X mold batch observations and community measurements with source attribution." },
-  },
-  terms: {
-    "zh-TW": { title: "使用條款與免責聲明", description: "OldBabyInfo 的資料來源、社群內容、購物連結與非官方網站免責說明。" },
-    ja: { title: "利用規約と免責事項", description: "OldBabyInfoの出典、コミュニティ投稿、購入リンク、非公式サイトに関する免責事項。" },
-    en: { title: "Terms and Disclaimer", description: "OldBabyInfo terms covering sources, community content, retailer links, and its unofficial status." },
   },
   login: {
     "zh-TW": { title: "登入 OldBabyInfo", description: "OldBabyInfo 的帳號登入。附著在資料上的討論目前僅供瀏覽，發表功能尚未開放。" },

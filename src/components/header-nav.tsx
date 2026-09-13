@@ -23,7 +23,6 @@ const ITEMS = [
   { href: "/events", key: "nav_events" },
   { href: "/discussion", key: "nav_discussion" },
   { href: "/login", key: "nav_login" },
-  { href: "/terms", key: "nav_terms" },
 ] as const;
 
 /** `/meta` is the Meta Standing half of the calendar, so Events owns it. */

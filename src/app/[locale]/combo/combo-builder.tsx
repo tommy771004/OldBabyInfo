@@ -37,6 +37,7 @@ function SlotPicker({
   slotType,
   label,
   selected,
+  showCandidates,
   slots,
   allParts,
   locale,
@@ -44,6 +45,7 @@ function SlotPicker({
   slotType: PartType;
   label: string;
   selected: Part | undefined;
+  showCandidates: boolean;
   slots: ComboSlugs;
   allParts: Part[];
   locale: Locale;
@@ -103,33 +105,37 @@ function SlotPicker({
         <span className="m3-field__label">{label}</span>
       </label>
 
-      {/* Candidates are on screen before a single keystroke: three empty
-          search boxes tell a newcomer nothing about what can go in them. */}
-      <p className={styles.candidatesLabel}>
-        {searching ? t("matches_heading") : t("recent_heading")}
-      </p>
-      {searching && candidates.length === 0 ? (
-        <p className={styles.noMatches}>{t("no_matches")}</p>
-      ) : (
-        <ul className={styles.candidates}>
-          {candidates.map((part) => (
-            <li key={part.id}>
-              <Link
-                className={`${styles.candidate} m3-state`}
-                href={{
-                  pathname: "/combo",
-                  query: buildComboQuery({ ...slots, [slotType]: slugify(part.nameEn) }),
-                }}
-              >
-                <span className={styles.candidateMark} aria-hidden="true">
-                  <PartSilhouette part={part} showPlaceholder={false} />
-                </span>
-                <span>{localizedNameOf(part, locale)}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* Only the first empty slot expands; the other inputs keep their
+          queries until URL state advances the assembly to that slot. */}
+      {showCandidates ? (
+        <>
+          <p className={styles.candidatesLabel}>
+            {searching ? t("matches_heading") : t("recent_heading")}
+          </p>
+          {searching && candidates.length === 0 ? (
+            <p className={styles.noMatches}>{t("no_matches")}</p>
+          ) : (
+            <ul className={styles.candidates}>
+              {candidates.map((part) => (
+                <li key={part.id}>
+                  <Link
+                    className={`${styles.candidate} m3-state`}
+                    href={{
+                      pathname: "/combo",
+                      query: buildComboQuery({ ...slots, [slotType]: slugify(part.nameEn) }),
+                    }}
+                  >
+                    <span className={styles.candidateMark} aria-hidden="true">
+                      <PartSilhouette part={part} showPlaceholder={false} />
+                    </span>
+                    <span>{localizedNameOf(part, locale)}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
+      ) : null}
     </div>
   );
 }
@@ -168,6 +174,7 @@ export function ComboBuilder({
   const tp = useTranslations("PartsPage");
   const slugs = currentSlugs(blade, ratchet, bit);
   const selectedCount = [blade, ratchet, bit].filter(Boolean).length;
+  const firstEmptySlot = !blade ? "blade" : !ratchet ? "ratchet" : !bit ? "bit" : undefined;
   const stats = computeComboStats(blade, ratchet, bit);
   const weightNote = t("weight_note");
 
@@ -184,6 +191,7 @@ export function ComboBuilder({
           slotType="blade"
           label={t("blade_slot")}
           selected={blade}
+          showCandidates={firstEmptySlot === "blade"}
           slots={slugs}
           allParts={allParts}
           locale={locale}
@@ -192,6 +200,7 @@ export function ComboBuilder({
           slotType="ratchet"
           label={t("ratchet_slot")}
           selected={ratchet}
+          showCandidates={firstEmptySlot === "ratchet"}
           slots={slugs}
           allParts={allParts}
           locale={locale}
@@ -200,6 +209,7 @@ export function ComboBuilder({
           slotType="bit"
           label={t("bit_slot")}
           selected={bit}
+          showCandidates={firstEmptySlot === "bit"}
           slots={slugs}
           allParts={allParts}
           locale={locale}

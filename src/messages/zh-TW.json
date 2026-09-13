@@ -1,4 +1,9 @@
 {
+  "NotFoundPage": {
+    "title": "找不到這個頁面",
+    "description": "此連結沒有對應的公開資料，請回首頁搜尋 Part 或 Combo。",
+    "home": "回首頁"
+  },
   "HomePage": {
     "mobile_parts": "圖鑑",
     "mobile_combo": "組裝",
@@ -19,7 +24,7 @@
     "stat_parts_label": "個零件",
     "stat_events_label": "場真實賽事",
     "section_parts_heading": "每一顆數字，都有出處",
-    "section_parts_lede": "每一筆數據都來自真實對戰紀錄與官方資料，不是佔位內容。",
+    "section_parts_lede": "這裡呈現 Part 的官方 Stat：Attack、Defense、Stamina。",
     "part_highlight_attack_label": "目前最高攻擊",
     "part_highlight_stamina_label": "目前最高持久",
     "view_all_parts": "查看全部零件",
@@ -41,7 +46,7 @@
     "battle_search_placeholder": "輸入中文、日文、英文或玩家俗稱",
     "battle_left_label": "左側對手",
     "battle_right_label": "右側對手",
-    "battle_empty": "找不到符合的零件",
+    "battle_empty": "找不到符合的 Part 或 Combo",
     "battle_analysis_label": "競技場分析",
     "battle_versus": "對戰",
     "battle_stat_attack": "攻擊",
@@ -150,7 +155,7 @@
     "sources_heading": "查看出場紀錄與來源",
     "captured_at": "資料擷取時間",
     "sample_scope_note": "比例以已核准的出場紀錄為分母，不代表所有賽事或玩家；缺少名次資料不得推定為未進前八強。",
-    "title": "勝率榜",
+    "title": "Meta Standing",
     "intro": "本站不發布主觀強度分級，這裡的排行完全來自真實賽事結果統計。",
     "no_tier_list_note": "沒有 S／A／B 之類的等級標記——每一筆數據都附上樣本數與統計期間，由你自己判斷可信度。",
     "empty_state_heading": "目前尚無已記錄的賽事結果資料",

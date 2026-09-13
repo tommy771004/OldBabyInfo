@@ -59,6 +59,20 @@ const OTHER_TOOLS = [
   },
 ] as const;
 
+/* The five clauses of the terms copy, in reading order. `disclosure` keeps
+   its anchor: the promotion slot's disclosure link lands on it, and this
+   site has no /privacy for it to land on instead. */
+const TERMS_CLAUSES: ReadonlyArray<{
+  key: "community" | "data" | "purchase" | "disclosure" | "report";
+  id?: string;
+}> = [
+  { key: "community" },
+  { key: "data" },
+  { key: "purchase" },
+  { key: "disclosure", id: "disclosure" },
+  { key: "report" },
+];
+
 /* The promotion slot is read per request from a database this repo does not
    own, so the page can no longer be built once and served forever. Same
    trade the discussion feed and the Part pages already make. */
@@ -138,6 +152,7 @@ function HomeContent({
 }) {
   const t = useTranslations("HomePage");
   const te = useTranslations("EventsPage");
+  const tt = useTranslations("TermsPage");
 
   // The arena sections carry their own authored rise/settle timing in
   // page.module.css; `data-authored-motion` opts them out of the site-wide
@@ -290,6 +305,34 @@ function HomeContent({
 
       <div className={styles.transitionBand} aria-hidden="true" />
 
+      {/* Terms lives here rather than on its own route: it is the sideline
+          end of the same page, on the light surface the footer already
+          stands on. `#terms` is what the footer link, /terms and llms.txt
+          all point at; `#disclosure` is the promotion slot's disclosure
+          target and has to survive wherever this copy goes. */}
+      <section id="terms" className={styles.termsSection} aria-labelledby="terms-heading">
+        <div className={styles.termsInner}>
+          <div className={styles.termsIntro}>
+            <h2 id="terms-heading">{tt("title")}</h2>
+            <p className={styles.termsLede}>{tt("lede")}</p>
+          </div>
+
+          <div className={styles.termsClauses}>
+            {TERMS_CLAUSES.map((clause) => (
+              <section
+                key={clause.key}
+                id={clause.id}
+                className={styles.termsClause}
+                aria-labelledby={`terms-${clause.key}`}
+              >
+                <h3 id={`terms-${clause.key}`}>{tt(`${clause.key}Heading`)}</h3>
+                <p>{tt(`${clause.key}Body`)}</p>
+              </section>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <footer className={styles.footer}>
         <div className={styles.footerTop}>
           <nav className={styles.footerLinks} aria-label={t("nav_label")}>
@@ -297,7 +340,7 @@ function HomeContent({
             <Link href="/events">{t("nav_events")}</Link>
             <Link href="/discussion">{t("nav_discussion")}</Link>
             <Link href="/login">{t("nav_login")}</Link>
-            <Link href="/terms">{t("nav_terms")}</Link>
+            <a href="#terms">{t("nav_terms")}</a>
           </nav>
           <LocaleSwitcher />
         </div>

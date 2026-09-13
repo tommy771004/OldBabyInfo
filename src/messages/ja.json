@@ -1,4 +1,9 @@
 {
+  "NotFoundPage": {
+    "title": "ページが見つかりません",
+    "description": "このリンクに対応する公開データはありません。ホームで Part または Combo を検索してください。",
+    "home": "ホームに戻る"
+  },
   "HomePage": {
     "mobile_parts": "図鑑",
     "mobile_combo": "組立",
@@ -19,7 +24,7 @@
     "stat_parts_label": "パーツ収録",
     "stat_events_label": "大会実績",
     "section_parts_heading": "すべての数字に、出典がある",
-    "section_parts_lede": "すべてのデータは実際の対戦記録と公式資料に基づいており、仮のデータではありません。",
+    "section_parts_lede": "Part の公式 Stat（Attack・Defense・Stamina）を掲載しています。",
     "part_highlight_attack_label": "現在最高攻撃力",
     "part_highlight_stamina_label": "現在最高スタミナ",
     "view_all_parts": "パーツ一覧をすべて見る",
@@ -41,7 +46,7 @@
     "battle_search_placeholder": "中国語・日本語・英語・通称で検索",
     "battle_left_label": "左側の対戦相手",
     "battle_right_label": "右側の対戦相手",
-    "battle_empty": "一致するパーツが見つかりません",
+    "battle_empty": "一致する Part または Combo が見つかりません",
     "battle_analysis_label": "スタジアム分析",
     "battle_versus": "対戦",
     "battle_stat_attack": "攻撃",
@@ -150,7 +155,7 @@
     "sources_heading": "使用記録と出典を見る",
     "captured_at": "取得日時",
     "sample_scope_note": "割合の分母は確認済みの使用記録であり、全大会・全選手ではありません。順位不明をベスト8圏外と見なすことはできません。",
-    "title": "使用率ランキング",
+    "title": "Meta Standing",
     "intro": "本サイトは主観的なランク付けを行いません。ここでの順位は実際の大会結果の統計のみに基づきます。",
     "no_tier_list_note": "S／A／Bのようなランク表記は使用しません——すべてのデータにサンプル数と集計期間が付き、信頼度はご自身で判断できます。",
     "empty_state_heading": "現時点で記録された大会結果データはありません",

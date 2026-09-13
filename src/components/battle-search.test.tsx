@@ -3,6 +3,9 @@ import { afterEach, describe, expect, it } from "vitest";
 import type { Part } from "@/lib/parts/schema.ts";
 import { makeComboSubject } from "@/lib/parts/battle-subjects.ts";
 import { BattleSearch } from "./battle-search.tsx";
+import zh from "@/messages/zh-TW.json";
+import en from "@/messages/en.json";
+import ja from "@/messages/ja.json";
 
 function part(overrides: Partial<Part> = {}): Part {
   return {
@@ -50,6 +53,28 @@ const labels = {
 
 describe("BattleSearch", () => {
   afterEach(cleanup);
+
+  it.each([zh, en, ja])("visibly labels both search lanes and names Parts and Combos in empty results", (messages) => {
+    const copy = messages.HomePage;
+    render(<BattleSearch
+      allParts={[dranSword, cobaltDragoon]}
+      initialLeft={dranSword}
+      initialRight={cobaltDragoon}
+      locale="en"
+      labels={{ ...labels, leftLabel: copy.battle_left_label, rightLabel: copy.battle_right_label, empty: copy.battle_empty }}
+    />);
+
+    for (const name of [copy.battle_left_label, copy.battle_right_label]) {
+      const input = screen.getByRole("combobox", { name });
+      const label = screen.getByText(name, { selector: "label" });
+      expect(label).toBeVisible();
+      expect(label).toHaveAttribute("for", input.id);
+      expect(input).not.toHaveAttribute("aria-label");
+      fireEvent.change(input, { target: { value: "no-such-part-or-combo" } });
+    }
+    expect(copy.battle_empty).toMatch(/Part.*Combo/);
+    expect(screen.getAllByText(copy.battle_empty)).toHaveLength(2);
+  });
 
   it("finds a Part through a source-backed combo abbreviation", () => {
     render(

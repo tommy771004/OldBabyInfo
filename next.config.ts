@@ -25,10 +25,23 @@ function partRedirects() {
   });
 }
 
+/**
+ * Terms used to be its own route. The copy now sits at the foot of the home
+ * page, so the old address forwards to that anchor. Temporary on purpose: a
+ * 308 would be cached by browsers, and this is a layout decision, not a
+ * renamed record.
+ */
+function termsRedirects() {
+  return [
+    { source: "/terms", destination: "/#terms", permanent: false },
+    { source: "/:locale(ja|en)/terms", destination: "/:locale#terms", permanent: false },
+  ];
+}
+
 const nextConfig: NextConfig = {
   // Part photos are served from public/parts, so Next does not need a remote
   // image host configuration.
-  redirects: async () => partRedirects(),
+  redirects: async () => [...termsRedirects(), ...partRedirects()],
 };
 
 export default withNextIntl(nextConfig);

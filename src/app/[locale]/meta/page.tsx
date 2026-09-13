@@ -57,6 +57,7 @@ function MetaStandingBody({
   return (
     <main className={styles.page}>
       <h1>{t("title")}</h1>
+      <p className={styles.intro}>{t("intro")}</p>
       <p className={styles.note}>{t("no_tier_list_note")}</p>
       <p className={styles.note}>{t("sample_scope_note")}</p>
 

@@ -1,0 +1,10 @@
+.page {
+  width: min(100% - 2rem, 72rem);
+  margin: 0 auto;
+  padding: 2.5rem 0 6rem;
+}
+
+.page h1,
+.page p {
+  margin: 0 0 1rem;
+}

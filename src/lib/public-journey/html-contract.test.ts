@@ -64,7 +64,6 @@ describe("public navigation HTML contract", () => {
           <a href="/en/events">Events</a>
           <a href="/en/discussion">Discussion</a>
           <a href="/en/login">Login</a>
-          <a href="/en/terms">Terms</a>
         </nav>
       </header>
     `);

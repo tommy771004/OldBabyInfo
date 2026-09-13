@@ -30,7 +30,9 @@ import styles from "./site-header.module.css";
  * row is `display: none` at that width, which takes it out of the
  * accessibility tree too, so a screen reader is not offered the same links
  * twice. Sign-in stays in the bar's trailing slot as an icon button, and the
- * two links the navigation bar has no room for get their own quiet row.
+ * one link the navigation bar has no room for gets its own quiet row.
+ * Terms is not a destination any more: it reads at the foot of the home
+ * page, reachable from the footer, so it left the bar altogether.
  */
 export function SiteHeader() {
   const t = useTranslations("HomePage");
@@ -60,9 +62,6 @@ export function SiteHeader() {
         <div className={styles.mobileSecondary}>
           <Link className={`${styles.mobileSecondaryItem} m3-state`} href="/discussion">
             {t("nav_discussion")}
-          </Link>
-          <Link className={`${styles.mobileSecondaryItem} m3-state`} href="/terms">
-            {t("nav_terms")}
           </Link>
         </div>
       </header>

@@ -23,7 +23,6 @@ const sharedPaths = [
   "/meta",
   "/mold-batches",
   "/parts/compare",
-  "/terms",
 ] as const;
 
 const generationGroups: Record<string, GenerationId> = {

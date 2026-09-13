@@ -17,7 +17,7 @@ OldBabyInfo is a player-maintained, non-official Beyblade X reference site from 
 - Event calendar: ${SITE_URL}/events
 - Beginner guides: ${SITE_URL}/guides
 - Combo builder: ${SITE_URL}/combo
-- Terms and disclaimer: ${SITE_URL}/terms
+- Terms and disclaimer: ${SITE_URL}/#terms
 
 ## Data policy
 
