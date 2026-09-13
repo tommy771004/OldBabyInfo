@@ -8,7 +8,15 @@ import Image from "next/image";
 import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
 import { catalogTabsOf, isTabSelected } from "@/lib/generation-catalog/tabs.ts";
 import { CheckIcon } from "./ui-icons.tsx";
+import {
+  CATALOG_DEFAULT_PAGE_SIZE,
+  CATALOG_PAGE_SIZES,
+  CATALOG_SIZE_PARAM,
+  parseCatalogPaginationParams,
+  type CatalogPageSize,
+} from "@/lib/generation-catalog/pagination.ts";
 import styles from "./generation-catalog-browser.module.css";
+import { PaginationControls, type PaginationControlsLabels } from "./pagination-controls.tsx";
 
 export interface CatalogFacetRow {
   label: string;
@@ -73,6 +81,19 @@ interface GenerationCatalogBrowserProps {
    * shows two lists of the same Parts (see catalog-part-table.tsx).
    */
   renderRecords?: (records: GenerationCatalogRecord[]) => React.ReactNode;
+  /**
+   * The page the URL asks for. The list is sliced here, after the search and
+   * kind filters, because only this component knows how many records they
+   * admit — the lede and the tab counts keep describing the whole list.
+   * Omitted, every record renders (the compare and detail pages want that).
+   */
+  pagination?: { page: number; pageSize: CatalogPageSize };
+  /** Builds a page link carrying every live filter, facet and sort; the page
+   *  owns those parameters, so the page builds the link. */
+  paginationHrefFor?: (page: number, pageSize: CatalogPageSize) => string;
+  paginationLabels?: PaginationControlsLabels;
+  /** "showing 11–20", printed beside the total when the list is paged. */
+  pageRangeLabel?: (start: number, end: number) => string;
   labels: GenerationCatalogBrowserLabels;
 }
 
@@ -95,6 +116,10 @@ export function GenerationCatalogBrowser({
   recordImageFor,
   facetFilters,
   renderRecords,
+  pagination,
+  paginationHrefFor,
+  paginationLabels,
+  pageRangeLabel,
   labels,
 }: GenerationCatalogBrowserProps) {
   const generationRecords = records.filter((record) => record.generationId === selectedGeneration);
@@ -113,6 +138,18 @@ export function GenerationCatalogBrowser({
       (selectedKind === "all" || !selectedKind || record.kind === selectedKind) &&
       (!selectedPartType || record.partType === selectedPartType),
     );
+  // Paging happens on the final visible list; a page past its end lands on
+  // the last page rather than an empty one.
+  const pageState = pagination
+    ? parseCatalogPaginationParams(
+      { catalogPage: String(pagination.page), [CATALOG_SIZE_PARAM]: String(pagination.pageSize) },
+      visibleRecords.length,
+    )
+    : undefined;
+  const pageRecords = pageState ? visibleRecords.slice(pageState.start, pageState.end) : visibleRecords;
+  // Fewer records than the smallest page means nothing to page through; the
+  // controls would only be noise under a four-row list.
+  const showPaging = Boolean(pageState && paginationHrefFor && paginationLabels && visibleRecords.length > CATALOG_PAGE_SIZES[0]);
   const visibleKindLabel = selectedPartType
     ? partTypeLabelFor(selectedPartType)
     : selectedKind === "all" || !selectedKind
@@ -127,9 +164,13 @@ export function GenerationCatalogBrowser({
   const prefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
   const formIdSuffix = selectedGeneration.replace(/[^a-zA-Z0-9_-]/g, "-");
 
+  // A filter change starts over at page 1 but keeps the reader's page size.
+  const keptPageSize = pagination && pagination.pageSize !== CATALOG_DEFAULT_PAGE_SIZE
+    ? String(pagination.pageSize)
+    : undefined;
   const hrefFor = (params: Record<string, string | undefined>) => {
     const query = new URLSearchParams();
-    for (const [key, value] of Object.entries(params)) {
+    for (const [key, value] of Object.entries({ ...params, [CATALOG_SIZE_PARAM]: keptPageSize })) {
       if (value) query.set(key, value);
     }
     const queryString = query.toString();
@@ -141,7 +182,10 @@ export function GenerationCatalogBrowser({
     <section className={styles.browser} aria-label={labels.heading}>
       {/* No heading here: the page's own <h1> already names this, and two
           titles saying the same thing was the first thing on the page. */}
-      <p className={styles.lede}>{visibleKindLabel} · {recordCountLabel(visibleRecords.length)}</p>
+      <p className={styles.lede}>
+        {visibleKindLabel} · {recordCountLabel(visibleRecords.length)}
+        {showPaging && pageState && pageRangeLabel ? <> · {pageRangeLabel(pageState.start + 1, pageState.end)}</> : null}
+      </p>
 
       {/* M3 outlined text field and selects. The label follows the control in
           the DOM because the floating label is driven by `:placeholder-shown`
@@ -192,6 +236,7 @@ export function GenerationCatalogBrowser({
         </div>
         <input type="hidden" name="catalogKind" value={selectedKind ?? "part"} />
         {selectedPartType ? <input type="hidden" name="catalogPartType" value={selectedPartType} /> : null}
+        {keptPageSize ? <input type="hidden" name={CATALOG_SIZE_PARAM} value={keptPageSize} /> : null}
         <button type="submit" className={`${styles.searchSubmit} m3-button m3-button--filled m3-state`}>
           {labels.searchSubmitLabel ?? "Search"}
         </button>
@@ -280,9 +325,9 @@ export function GenerationCatalogBrowser({
         </div>
       ) : null}
 
-      {renderRecords ? renderRecords(visibleRecords) : (
+      {renderRecords ? renderRecords(pageRecords) : (
         <ul className={styles.recordGrid} aria-label={labels.heading}>
-          {visibleRecords.map((record) => {
+          {pageRecords.map((record) => {
             const image = recordImageFor?.(record);
             const related = recordRelatedFor?.(record);
             return (
@@ -314,6 +359,17 @@ export function GenerationCatalogBrowser({
         </ul>
       )}
 
+      {showPaging && pageState && paginationHrefFor && paginationLabels ? (
+        <PaginationControls
+          page={pageState.page}
+          pageSize={pageState.pageSize}
+          totalPages={pageState.totalPages}
+          sizes={CATALOG_PAGE_SIZES}
+          hrefFor={paginationHrefFor}
+          labels={paginationLabels}
+          ariaLabel={labels.heading}
+        />
+      ) : null}
     </section>
   );
 }

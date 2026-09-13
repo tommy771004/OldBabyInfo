@@ -241,3 +241,110 @@ describe("GenerationCatalogBrowser", () => {
   });
 
 });
+
+describe("GenerationCatalogBrowser pagination", () => {
+  afterEach(cleanup);
+
+  const manyParts = Array.from({ length: 23 }, (_, index) => ({
+    id: `x:part:blade-${index + 1}`,
+    generationId: "x" as const,
+    system: "cx",
+    kind: "part" as const,
+    partType: "main_blade",
+    name: `Blade ${String(index + 1).padStart(2, "0")}`,
+    aliases: [],
+    components: [],
+    sourceId: "fixture-source",
+    sourceRecordId: `part:blade-${index + 1}`,
+    sourceUrl: "https://example.com/catalog",
+    sourceVersion: "fixture:1",
+    verificationStatus: "officially_verified" as const,
+    publicationStatus: "accepted" as const,
+  }));
+  const paginationLabels = {
+    pageSize: "Records per page",
+    pageStatus: (page: number, totalPages: number) => `Page ${page} of ${totalPages}`,
+    previousPage: "Previous page",
+    nextPage: "Next page",
+  };
+  const hrefFor = (page: number, pageSize: number) => `/en/parts?catalogGeneration=x&catalogPage=${page}&catalogSize=${pageSize}`;
+
+  it("shows one page of records while counting the whole list", () => {
+    render(
+      <GenerationCatalogBrowser
+        locale="en"
+        generations={generations}
+        systems={systems}
+        records={manyParts}
+        selectedGeneration="x"
+        selectedKind="part"
+        recordCountLabel={(count) => `${count} records`}
+        pagination={{ page: 2, pageSize: 10 }}
+        paginationHrefFor={hrefFor}
+        paginationLabels={paginationLabels}
+        pageRangeLabel={(start, end) => `showing ${start}–${end}`}
+        labels={labels}
+      />,
+    );
+
+    const grid = screen.getByRole("list", { name: "Parts Catalog" });
+    expect(within(grid).getAllByRole("link").map((link) => link.textContent)).toEqual(
+      manyParts.slice(10, 20).map((record) => record.name),
+    );
+    // The lede counts everything the filters admit, not the slice on screen.
+    expect(screen.getByText(/23 records/)).toHaveTextContent("showing 11–20");
+    expect(screen.getByRole("link", { name: "Previous page" })).toHaveAttribute("href", hrefFor(1, 10));
+    expect(screen.getByRole("link", { name: "Next page" })).toHaveAttribute("href", hrefFor(3, 10));
+    expect(screen.getByText("Page 2 of 3")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "10" })).toHaveAttribute("aria-current", "true");
+    expect(screen.getByRole("link", { name: "50" })).toHaveAttribute("href", hrefFor(1, 50));
+  });
+
+  it("clamps a page past the end and keeps the chosen size in filter links", () => {
+    render(
+      <GenerationCatalogBrowser
+        locale="en"
+        generations={generations}
+        systems={systems}
+        records={manyParts}
+        selectedGeneration="x"
+        selectedKind="part"
+        pagination={{ page: 9, pageSize: 20 }}
+        paginationHrefFor={hrefFor}
+        paginationLabels={paginationLabels}
+        labels={labels}
+      />,
+    );
+
+    const grid = screen.getByRole("list", { name: "Parts Catalog" });
+    expect(within(grid).getAllByRole("link")).toHaveLength(3);
+    expect(screen.getByText("Page 2 of 2")).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Next page" })).not.toBeInTheDocument();
+    // Changing a filter goes back to page 1 but does not forget the page size.
+    expect(screen.getByRole("link", { name: "Beyblade Burst" })).toHaveAttribute(
+      "href",
+      "/en/parts?catalogGeneration=burst&catalogSize=20",
+    );
+    expect(screen.getByRole("search").querySelector('input[name="catalogSize"]')).toHaveValue("20");
+  });
+
+  it("renders no paging controls when everything fits on the smallest page", () => {
+    render(
+      <GenerationCatalogBrowser
+        locale="en"
+        generations={generations}
+        systems={systems}
+        records={records}
+        selectedGeneration="x"
+        selectedKind="part"
+        pagination={{ page: 1, pageSize: 10 }}
+        paginationHrefFor={hrefFor}
+        paginationLabels={paginationLabels}
+        labels={labels}
+      />,
+    );
+
+    expect(screen.queryByText("Records per page")).not.toBeInTheDocument();
+    expect(screen.queryByText(/Page 1 of 1/)).not.toBeInTheDocument();
+  });
+});

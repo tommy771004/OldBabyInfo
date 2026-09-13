@@ -2,6 +2,7 @@ import type { Assessment, AssessmentKind } from "@/lib/assessments/schema.ts";
 import { ASSESSMENT_PAGE_SIZES, type AssessmentPaginationState } from "@/lib/assessments/pagination.ts";
 import styles from "./assessment-tracer.module.css";
 import { ExternalLink } from "./external-link.tsx";
+import { PaginationControls } from "./pagination-controls.tsx";
 
 export interface AssessmentTracerLabels {
   heading: string;
@@ -76,45 +77,15 @@ function AssessmentPagination({
   pagination: AssessmentPaginationState & { pathname: string };
   labels: AssessmentTracerLabels;
 }) {
-  const queryHref = (page: number, pageSize: number) =>
-    `${pagination.pathname}?assessmentPage=${page}&assessmentSize=${pageSize}`;
-
   return (
-    <nav className={styles.pagination} aria-label={labels.heading}>
-      {/* Page size is a choice with a visible state, so it is a set of M3
-          filter chips; the page controls are text buttons. */}
-      <div className={styles.pageSizes} aria-label={labels.pageSize}>
-        <span className={styles.pageSizesLabel}>{labels.pageSize}</span>
-        {ASSESSMENT_PAGE_SIZES.map((pageSize) => (
-          <a
-            key={pageSize}
-            className="m3-chip m3-state"
-            href={queryHref(1, pageSize)}
-            aria-current={pagination.pageSize === pageSize ? "true" : undefined}
-          >
-            {pageSize}
-          </a>
-        ))}
-      </div>
-      <div className={styles.pageControls}>
-        {pagination.page > 1 ? (
-          <a className="m3-button m3-button--text m3-state" href={queryHref(pagination.page - 1, pagination.pageSize)}>
-            {labels.previousPage}
-          </a>
-        ) : (
-          <span className="m3-button m3-button--text" aria-disabled="true">{labels.previousPage}</span>
-        )}
-        <span className={styles.pageStatus} aria-live="polite">
-          {labels.pageStatus(pagination.page, pagination.totalPages)}
-        </span>
-        {pagination.page < pagination.totalPages ? (
-          <a className="m3-button m3-button--text m3-state" href={queryHref(pagination.page + 1, pagination.pageSize)}>
-            {labels.nextPage}
-          </a>
-        ) : (
-          <span className="m3-button m3-button--text" aria-disabled="true">{labels.nextPage}</span>
-        )}
-      </div>
-    </nav>
+    <PaginationControls
+      page={pagination.page}
+      pageSize={pagination.pageSize}
+      totalPages={pagination.totalPages}
+      sizes={ASSESSMENT_PAGE_SIZES}
+      hrefFor={(page, pageSize) => `${pagination.pathname}?assessmentPage=${page}&assessmentSize=${pageSize}`}
+      labels={labels}
+      ariaLabel={labels.heading}
+    />
   );
 }

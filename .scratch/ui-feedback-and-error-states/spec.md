@@ -1,6 +1,6 @@
 # 介面改善方案：資訊層級、操作回饋、錯誤處理
 
-Status: proposed
+Status: needs-triage
 Date: 2026-09-13
 Scope: 公開路由（首頁、/parts、Part 詳情、/combo、/meta、/events）；不動 `styleguide` / `color-demo` / `stadium-demo`。
 
@@ -8,11 +8,11 @@ Scope: 公開路由（首頁、/parts、Part 詳情、/combo、/meta、/events�
 
 ## 量測方法
 
-- 站台：`npm run dev` 的本機版（本次量測時用 `PORT=3210`，避開另一個 session 在 3000 埠的伺服器），程式碼是 2026-09-13 的工作樹（含未提交的 combo-builder / battle-search / site-header 修改）。
+- 站台：`npm run dev` 的本機版（本次量測時用 `PORT=3210`，避開另一個 session 在 3000 埠的伺服器），程式碼是 2026-09-13 的工作樹（量測當時 combo-builder / battle-search / site-header 的修改尚未提交，之後由另一個 session 提交為 df33331）。
 - 工具：Playwright（`node_modules/playwright`），1440×1000 與 390×844 兩種視窗。桌機用 Chrome UA，手機用 iPhone Safari UA；`src/lib/security/guard.ts` 會擋 HeadlessChrome 的預設 UA，這點不改。
-- 腳本：`probe/*.mjs`。每支頂端有 `PORT` 讀取，`cd .scratch/ui-feedback-and-error-states && PORT=3000 node probe/shoot.mjs` 即可重跑。截圖輸出到 `probe/shots/`（不入版本庫）。
+- 腳本：`probe/*.mjs`。每支頂端有 `PORT` 讀取，`cd .scratch/ui-feedback-and-error-states && PORT=3000 node probe/shoot.mjs` 即可重跑。截圖輸出到 `.scratch/ui-feedback-and-error-states/shots/`（已 gitignore）。
 - 「被蓋住」的判定：對每一個 `[role=option]` / 連結中心點做 `document.elementFromPoint`，回傳的元素不在該控制項內就算被蓋住；再用真實的 `mouse.click` / `touchscreen.tap` 確認是否選得到。
-- 對比度未重新計算：本次沒有引入任何新色碼，全部沿用 `m3.css` 已在 `anti-slop-contract.test.ts` 裡斷言過的角色配對。
+- 對比度：本次沒有引入任何新色碼，沿用 `m3.css` 已在 `anti-slop-contract.test.ts` 裡斷言過的角色配對。原型裡唯一新的配對是 `error`（strike）文字放在表單底上：在 `surface-container-low`（#ebd9bf）用 WCAG 公式實測 4.52:1，只剛過 AA，所以原型把表單底改成 `surface-container-lowest`（surface-50，ADR-0008 實測 5.59:1）。正式站若採用 H1，這個訊息不能放在比 container-lowest 更深的底色上。
 
 ## 一、發現總表
 
@@ -125,7 +125,7 @@ Scope: 公開路由（首頁、/parts、Part 詳情、/combo、/meta、/events�
 
 ## 五、原型與可用性測試
 
-原型只做一個，針對不確定性最高的兩個假設（H1、H2），其他項目用測試計畫而不是原型。原型在 `.scratch/ui-feedback-and-error-states/prototype/`（同一份也發佈成 Artifact 方便傳給受測者）。它用正式站的 `colors.css`、`m3.css`、`m3-components.css` 與三支自架字型，沒有自己的色碼；零件資料取自 `data/parts.json`（190 筆 X Part）與 `data/generation-catalog.json` 裡 40 筆其他世代的 Part（只有名稱，沒有 Stat，原型也就不顯示 Stat）。原型頂端有「提案／現況」切換，讓同一位受測者兩種都看。
+原型只做一個，針對不確定性最高的兩個假設（H1、H2），其他項目用測試計畫而不是原型。原型在 `.scratch/ui-feedback-and-error-states/prototype/`（同一份發佈成 Artifact 方便傳給受測者：https://claude.ai/code/artifact/171c9aff-dee4-4e7b-aae5-25afd0421575 ，預設私人，要分享請從頁面的 share 選單開）。它用正式站的 `colors.css`、`m3.css`、`m3-components.css` 與三支自架字型，沒有自己的色碼；零件資料取自 `data/parts.json`（190 筆 X Part）與 `data/generation-catalog.json` 裡 40 筆其他世代的 Part（只有名稱，沒有 Stat，原型也就不顯示 Stat）。原型頂端有「提案／現況」切換，讓同一位受測者兩種都看。
 
 ### 測試 A：搜尋回饋與無結果復原（H1、H2）
 

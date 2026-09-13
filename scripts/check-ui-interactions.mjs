@@ -4,7 +4,7 @@
  * A control that looks interactive and does nothing is worse than no control,
  * and neither the type checker nor the unit tests can tell the difference.
  * This drives the real pages: filter chips, tabs, text fields and selects,
- * the disclosure rows, the Combo builder, the top app bar's current-page
+ * the disclosure rows, the Parts paging, the Combo builder, the top app bar's current-page
  * state, and the phone navigation pill.
  *
  * Needs `npm run dev` (or `next start`) running. `PORT` overrides 3000.
@@ -49,6 +49,23 @@ check("text field label floats on input", labelBefore !== labelAfter, `${labelBe
 await page.locator("button.m3-button--filled").first().click();
 await page.waitForLoadState("networkidle");
 check("parts search submits", page.url().includes("catalogQuery=dran"), page.url());
+
+// ---- Parts: the list is paged; next page and page size are real links
+await page.goto(`${base}/zh-TW/parts`, { waitUntil: "networkidle" });
+const firstRow = await page.locator("table tbody tr td").nth(1).innerText();
+await page.locator("a.m3-button", { hasText: "下一頁" }).click();
+await page.waitForLoadState("networkidle");
+const secondRow = await page.locator("table tbody tr td").nth(1).innerText();
+check("parts next page navigates", page.url().includes("catalogPage=2") && firstRow !== secondRow, page.url());
+await page.locator("a.m3-chip", { hasText: /^50$/ }).click();
+await page.waitForLoadState("networkidle");
+check("parts page size chip navigates", page.url().includes("catalogSize=50") && await page.locator("table tbody tr").count() === 50, page.url());
+check("selected page size carries a current state", await page.locator('a.m3-chip[aria-current="true"]', { hasText: /^50$/ }).count() === 1);
+// A search across every Generation must stay across every Generation on page 2.
+await page.goto(`${base}/zh-TW/parts?catalogQuery=dran&catalogGeneration=&catalogKind=part`, { waitUntil: "networkidle" });
+await page.locator("a.m3-button", { hasText: "下一頁" }).click();
+await page.waitForLoadState("networkidle");
+check("cross-generation search keeps its scope on the next page", /catalogGeneration=(&|$)/.test(page.url()) && page.url().includes("catalogPage=2"), page.url());
 
 // ---- Events: select filter navigates, tab switches, details opens
 await page.goto(`${base}/zh-TW/events`, { waitUntil: "networkidle" });

@@ -13,6 +13,14 @@ import {
   type GenerationId,
 } from "@/lib/generation-catalog/schema.ts";
 import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
+import {
+  CATALOG_DEFAULT_PAGE_SIZE,
+  CATALOG_PAGE_PARAM,
+  CATALOG_SIZE_PARAM,
+  parseCatalogPage,
+  parseCatalogPageSize,
+  type CatalogPageSize,
+} from "@/lib/generation-catalog/pagination.ts";
 import { selectCatalogRecordsForPage } from "@/lib/generation-catalog/payload.ts";
 import {
   GenerationCatalogBrowser,
@@ -105,6 +113,12 @@ export default async function PartsPage({
     : undefined;
   const catalogQuery = firstParam(catalogParams.catalogQuery);
   const selectedPartType = firstParam(catalogParams.catalogPartType);
+  // The requested page is clamped inside the browser, which is where the
+  // visible total is known; the size is fixed here so every link can carry it.
+  const pagination = {
+    page: parseCatalogPage(firstParam(catalogParams[CATALOG_PAGE_PARAM])),
+    pageSize: parseCatalogPageSize(firstParam(catalogParams[CATALOG_SIZE_PARAM])),
+  };
   const hasCatalogGeneration = generationIdSchema.safeParse(catalogGeneration).success;
   const hasCatalogSearchParams = ["catalogQuery", "catalogSystem", "catalogKind", "catalogPartType"]
     .some((key) => catalogParams[key] !== undefined);
@@ -185,6 +199,7 @@ export default async function PartsPage({
       facets={facets}
       facetValues={facetValues}
       factsForRecord={factsForRecord}
+      pagination={pagination}
     />
   );
 }
@@ -438,6 +453,7 @@ function PartsPageBody({
   facets,
   facetValues,
   factsForRecord,
+  pagination,
 }: {
   locale: Locale;
   state: FilterSortState;
@@ -453,6 +469,7 @@ function PartsPageBody({
   facets: CatalogFacetState;
   facetValues: ReturnType<typeof availableFacetValues>;
   factsForRecord: (record: GenerationCatalogRecord) => CatalogRowFacts;
+  pagination: { page: number; pageSize: CatalogPageSize };
 }) {
   const t = useTranslations("PartsPage");
   const localePrefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
@@ -477,11 +494,27 @@ function PartsPageBody({
     (selectedKind === "part" || selectedKind === "beyblade") &&
     !searchAcrossGenerations;
   const tabQuery = {
-    catalogGeneration: selectedGeneration,
+    // A search across every Generation has no selected one; an empty value
+    // round-trips as "search everywhere" instead of quietly narrowing the
+    // next page to BEYBLADE X.
+    catalogGeneration: searchAcrossGenerations ? "" : selectedGeneration,
     ...(selectedSystem ? { catalogSystem: selectedSystem } : {}),
     catalogKind: selectedKind,
     ...(selectedPartType ? { catalogPartType: selectedPartType } : {}),
     ...(searchQuery ? { catalogQuery: searchQuery } : {}),
+    // Sort, facet and tab links start over at page 1 but keep the page size.
+    ...(pagination.pageSize !== CATALOG_DEFAULT_PAGE_SIZE ? { [CATALOG_SIZE_PARAM]: String(pagination.pageSize) } : {}),
+  };
+  const paginationHrefFor = (page: number, pageSize: CatalogPageSize) => {
+    const query = new URLSearchParams({
+      ...tabQuery,
+      ...catalogFacetQuery(facets),
+      ...(state.sort ? { sort: state.sort, dir: state.direction } : {}),
+    });
+    query.delete(CATALOG_SIZE_PARAM);
+    if (pageSize !== CATALOG_DEFAULT_PAGE_SIZE) query.set(CATALOG_SIZE_PARAM, String(pageSize));
+    if (page > 1) query.set(CATALOG_PAGE_PARAM, String(page));
+    return `${localePrefix}/parts?${query.toString()}`;
   };
   const sortQueryFor = (field: SortField, direction: SortDirection) => ({
     ...tabQuery,
@@ -542,6 +575,15 @@ function PartsPageBody({
         recordRelatedFor={(record) => factsForRecord(record).related}
         recordImageFor={recordImageFor}
         facetFilters={facetRows}
+        pagination={pagination}
+        paginationHrefFor={paginationHrefFor}
+        paginationLabels={{
+          pageSize: t("catalog_page_size"),
+          pageStatus: (page, totalPages) => t("catalog_page_status", { page, totalPages }),
+          previousPage: t("catalog_previous_page"),
+          nextPage: t("catalog_next_page"),
+        }}
+        pageRangeLabel={(start, end) => t("catalog_page_range", { start, end })}
         renderRecords={showStatTable
           ? (records) => (
             <CatalogPartTable

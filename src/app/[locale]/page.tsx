@@ -340,7 +340,6 @@ function HomeContent({
             <Link href="/events">{t("nav_events")}</Link>
             <Link href="/discussion">{t("nav_discussion")}</Link>
             <Link href="/login">{t("nav_login")}</Link>
-            <a href="#terms">{t("nav_terms")}</a>
           </nav>
           <LocaleSwitcher />
         </div>

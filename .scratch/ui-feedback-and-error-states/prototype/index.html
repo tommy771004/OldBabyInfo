@@ -56,10 +56,10 @@
     display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 18rem) auto;
     gap: 0.75rem; align-items: start;
     padding: 0.75rem; border-radius: var(--md-sys-shape-corner-large);
-    background: var(--md-sys-color-surface-container-low);
+    background: var(--md-sys-color-surface-container-lowest); /* strike 在 surface-50 上 5.59:1（ADR-0008），在 container-low 上只有 4.52 */
   }
   form.search .m3-button { min-height: 3.5rem; align-self: start; }
-  form.search .m3-field { --m3-field-bg: var(--md-sys-color-surface-container-low); }
+  form.search .m3-field { --m3-field-bg: var(--md-sys-color-surface-container-lowest); }
   /* 原生 search 的取消鈕是瀏覽器藍色，不在色階上；正式站也該關掉 */
   input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
 
@@ -109,7 +109,8 @@
     th.hide-m, td.hide-m { display: none; }
   }
 </style>
-
+</head>
+<body>
 <div class="page">
   <div class="bench" role="group" aria-label="原型設定">
     <strong>原型</strong>
@@ -228,7 +229,7 @@
     const hasStats = list.some((r) => r.stats);
     const head = `<tr><th>種類</th><th>名稱</th>${hasStats ? `<th class="num">Attack</th><th class="num">Defense</th><th class="num">Stamina</th>` : `<th class="hide-m">世代</th>`}</tr>`;
     const body = list.map((r) => {
-      const type = TYPE[r.type] || r.type.replace(/_/g, " ");
+      const type = TYPE[r.type] || r.type.replace(/_/g, " ").replace(/^\w/, (c) => c.toUpperCase());
       const name = r.zh ? `<span class="name">${escapeHtml(r.zh)}</span><span class="sub">${escapeHtml(r.en)}${r.ja ? " · " + escapeHtml(r.ja) : ""}</span>` : `<span class="name">${escapeHtml(r.en)}</span>`;
       const cells = hasStats
         ? (r.stats ? `<td class="num">${r.stats.attack}</td><td class="num">${r.stats.defense}</td><td class="num">${r.stats.stamina}</td>` : `<td class="num">—</td><td class="num">—</td><td class="num">—</td>`)
@@ -277,4 +278,5 @@
 })();
 </script>
 
+</body>
 </html>
