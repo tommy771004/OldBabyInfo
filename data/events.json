@@ -21418,5 +21418,47 @@
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
     "sourceExcerpt": "724,失控事務所,0978 251 929,新北市泰山區全興里仁愛路76號1樓,2026/10/17,20:00,32,線上,公開 (6歲以上)\r",
     "results": null
+  },
+  {
+    "id": "b4-g3-2026-09-2026-10-06-0000-屏東夢想街-725",
+    "tier": "G3",
+    "venueName": "屏東夢想街",
+    "venueAddress": "屏東市康定街9之23號",
+    "date": "2026-10-06",
+    "time": "00:00",
+    "capacity": 24,
+    "registrationMethod": "either",
+    "ageCategory": "通常 (6~12歲)",
+    "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
+    "sourceExcerpt": "725,屏東夢想街,938881189,屏東市康定街9之23號,2026/10/6,0:00,24,皆可,通常 (6~12歲)\r",
+    "results": null
+  },
+  {
+    "id": "b4-g3-2026-09-2026-10-13-0000-屏東夢想街-726",
+    "tier": "G3",
+    "venueName": "屏東夢想街",
+    "venueAddress": "屏東市康定街9之23號",
+    "date": "2026-10-13",
+    "time": "00:00",
+    "capacity": 24,
+    "registrationMethod": "either",
+    "ageCategory": "通常 (6~12歲)",
+    "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
+    "sourceExcerpt": "726,屏東夢想街,938881189,屏東市康定街9之23號,2026/10/13,0:00,24,皆可,通常 (6~12歲)\r",
+    "results": null
+  },
+  {
+    "id": "b4-g3-2026-09-2026-10-20-0000-屏東夢想街-727",
+    "tier": "G3",
+    "venueName": "屏東夢想街",
+    "venueAddress": "屏東市康定街9之23號",
+    "date": "2026-10-20",
+    "time": "00:00",
+    "capacity": 24,
+    "registrationMethod": "either",
+    "ageCategory": "公開 (6歲以上)",
+    "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
+    "sourceExcerpt": "727,屏東夢想街,938881189,屏東市康定街9之23號,2026/10/20,0:00,24,皆可,公開 (6歲以上)\r",
+    "results": null
   }
 ]
