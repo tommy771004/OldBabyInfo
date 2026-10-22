@@ -8,3 +8,4 @@
 - Cross-generation Catalog 仍以 repo JSON 為單一真實來源，但普通 Generation browse/detail route 只載入目前 Generation 的 accepted records；跨世代搜尋在伺服器端先篩選，再只傳搜尋結果。
 - 2026-07-26 的測量為 1,942 筆 accepted records、1,172,555 bytes；最大單一 Generation 為 Burst 591,751 bytes，低於 650,000-byte regression budget，因此目前不需改用資料庫或重新開 ADR。
 - 若任一 Generation payload 超過 650,000 bytes，`npm test` 的 payload budget assertion 會失敗，屆時必須重新評估此 ADR。
+- Catalog 記錄頁的 ja / en 版本自 2026-10-22 起改為首次請求時渲染並快取，見 [ADR-0015](0015-catalog-prerenders-default-locale-only.md)；資料仍是 repo JSON，不進資料庫。

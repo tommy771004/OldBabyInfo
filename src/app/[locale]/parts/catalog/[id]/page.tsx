@@ -6,15 +6,19 @@ import { requireLocale } from "@/i18n/require-locale.ts";
 import { pageMetadata } from "@/lib/seo.ts";
 import { GenerationCatalogRecordBody } from "./record-body.tsx";
 
-export const dynamicParams = false;
+/**
+ * Only the default locale is prerendered (ADR-0015). ja and en Catalog pages
+ * render on their first request and are cached from then on, so a deployment
+ * carries ~2,100 of these pages instead of ~6,400. Unknown ids still 404 —
+ * through `notFound()` below rather than through `dynamicParams = false`.
+ */
+export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return routing.locales.flatMap((locale) =>
-    getAllPublishableGenerationCatalogRecords().map((record) => ({
-      locale,
-      id: record.id,
-    })),
-  );
+  return getAllPublishableGenerationCatalogRecords().map((record) => ({
+    locale: routing.defaultLocale,
+    id: record.id,
+  }));
 }
 
 export async function generateMetadata({
