@@ -17402,35 +17402,7 @@
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-2000-卡庫桌遊店-438",
-    "tier": "G3",
-    "venueName": "卡庫桌遊店",
-    "venueAddress": "高雄市岡山區柳橋西路一段８１號",
-    "date": "2026-10-17",
-    "time": "20:00",
-    "capacity": 32,
-    "registrationMethod": "onsite",
-    "ageCategory": "通常 (6~12歲)",
-    "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "438,卡庫桌遊店,0906-528-208,高雄市岡山區柳橋西路一段８１號,2026/10/17,20:00,32,現場,通常 (6~12歲)\r",
-    "results": null
-  },
-  {
-    "id": "b4-g3-2026-09-2026-10-24-2000-卡庫桌遊店-439",
-    "tier": "G3",
-    "venueName": "卡庫桌遊店",
-    "venueAddress": "高雄市岡山區柳橋西路一段８１號",
-    "date": "2026-10-24",
-    "time": "20:00",
-    "capacity": 32,
-    "registrationMethod": "onsite",
-    "ageCategory": "公開 (6歲以上)",
-    "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "439,卡庫桌遊店,0906-528-208,高雄市岡山區柳橋西路一段８１號,2026/10/24,20:00,32,現場,公開 (6歲以上)\r",
-    "results": null
-  },
-  {
-    "id": "b4-g3-2026-09-2026-09-06-1300-華泰玩具城-宜蘭門市-440",
+    "id": "b4-g3-2026-09-2026-09-06-1300-華泰玩具城-宜蘭門市-438",
     "tier": "G3",
     "venueName": "華泰玩具城-宜蘭門市",
     "venueAddress": "宜蘭市大新里民權路一段2號",
@@ -17440,11 +17412,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "440,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/9/6,13:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "438,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/9/6,13:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1400-華泰玩具城-宜蘭門市-441",
+    "id": "b4-g3-2026-09-2026-09-06-1400-華泰玩具城-宜蘭門市-439",
     "tier": "G3",
     "venueName": "華泰玩具城-宜蘭門市",
     "venueAddress": "宜蘭市大新里民權路一段2號",
@@ -17454,11 +17426,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "441,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/9/6,14:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "439,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/9/6,14:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1300-華泰玩具城-宜蘭門市-442",
+    "id": "b4-g3-2026-09-2026-09-20-1300-華泰玩具城-宜蘭門市-440",
     "tier": "G3",
     "venueName": "華泰玩具城-宜蘭門市",
     "venueAddress": "宜蘭市大新里民權路一段2號",
@@ -17468,11 +17440,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "442,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/9/20,13:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "440,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/9/20,13:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1400-華泰玩具城-宜蘭門市-443",
+    "id": "b4-g3-2026-09-2026-09-20-1400-華泰玩具城-宜蘭門市-441",
     "tier": "G3",
     "venueName": "華泰玩具城-宜蘭門市",
     "venueAddress": "宜蘭市大新里民權路一段2號",
@@ -17482,11 +17454,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "443,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/9/20,14:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "441,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/9/20,14:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1300-華泰玩具城-宜蘭門市-444",
+    "id": "b4-g3-2026-09-2026-10-04-1300-華泰玩具城-宜蘭門市-442",
     "tier": "G3",
     "venueName": "華泰玩具城-宜蘭門市",
     "venueAddress": "宜蘭市大新里民權路一段2號",
@@ -17496,11 +17468,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "444,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/10/4,13:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "442,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/10/4,13:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1400-華泰玩具城-宜蘭門市-445",
+    "id": "b4-g3-2026-09-2026-10-04-1400-華泰玩具城-宜蘭門市-443",
     "tier": "G3",
     "venueName": "華泰玩具城-宜蘭門市",
     "venueAddress": "宜蘭市大新里民權路一段2號",
@@ -17510,11 +17482,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "445,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/10/4,14:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "443,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/10/4,14:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1300-華泰玩具城-宜蘭門市-446",
+    "id": "b4-g3-2026-09-2026-10-18-1300-華泰玩具城-宜蘭門市-444",
     "tier": "G3",
     "venueName": "華泰玩具城-宜蘭門市",
     "venueAddress": "宜蘭市大新里民權路一段2號",
@@ -17524,11 +17496,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "446,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/10/18,13:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "444,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/10/18,13:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1400-華泰玩具城-宜蘭門市-447",
+    "id": "b4-g3-2026-09-2026-10-18-1400-華泰玩具城-宜蘭門市-445",
     "tier": "G3",
     "venueName": "華泰玩具城-宜蘭門市",
     "venueAddress": "宜蘭市大新里民權路一段2號",
@@ -17538,11 +17510,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "447,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/10/18,14:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "445,華泰玩具城-宜蘭門市,03-9385090,宜蘭市大新里民權路一段2號,2026/10/18,14:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-09-1900-獅星瘋樂園-448",
+    "id": "b4-g3-2026-09-2026-09-09-1900-獅星瘋樂園-446",
     "tier": "G3",
     "venueName": "獅星瘋樂園",
     "venueAddress": "宜蘭縣宜蘭市神農路一段89號",
@@ -17552,11 +17524,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "448,獅星瘋樂園,0916-202628,宜蘭縣宜蘭市神農路一段89號,2026/9/9,19:00,64,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "446,獅星瘋樂園,0916-202628,宜蘭縣宜蘭市神農路一段89號,2026/9/9,19:00,64,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-13-1900-獅星瘋樂園-449",
+    "id": "b4-g3-2026-09-2026-10-13-1900-獅星瘋樂園-447",
     "tier": "G3",
     "venueName": "獅星瘋樂園",
     "venueAddress": "宜蘭縣宜蘭市神農路一段89號",
@@ -17566,11 +17538,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "449,獅星瘋樂園,0916-202628,宜蘭縣宜蘭市神農路一段89號,2026/10/13,19:00,64,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "447,獅星瘋樂園,0916-202628,宜蘭縣宜蘭市神農路一段89號,2026/10/13,19:00,64,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1530-興義發-450",
+    "id": "b4-g3-2026-09-2026-09-12-1530-興義發-448",
     "tier": "G3",
     "venueName": "興義發",
     "venueAddress": "嘉義市中正路433號",
@@ -17580,11 +17552,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "450,興義發,05-2271576,嘉義市中正路433號,2026/9/12,15:30,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "448,興義發,05-2271576,嘉義市中正路433號,2026/9/12,15:30,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1530-興義發-451",
+    "id": "b4-g3-2026-09-2026-09-12-1530-興義發-449",
     "tier": "G3",
     "venueName": "興義發",
     "venueAddress": "嘉義市中正路433號",
@@ -17594,11 +17566,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "451,興義發,05-2271576,嘉義市中正路433號,2026/9/12,15:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "449,興義發,05-2271576,嘉義市中正路433號,2026/9/12,15:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1530-興義發-452",
+    "id": "b4-g3-2026-09-2026-09-26-1530-興義發-450",
     "tier": "G3",
     "venueName": "興義發",
     "venueAddress": "嘉義市中正路433號",
@@ -17608,11 +17580,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "452,興義發,05-2271576,嘉義市中正路433號,2026/9/26,15:30,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "450,興義發,05-2271576,嘉義市中正路433號,2026/9/26,15:30,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1530-興義發-453",
+    "id": "b4-g3-2026-09-2026-09-26-1530-興義發-451",
     "tier": "G3",
     "venueName": "興義發",
     "venueAddress": "嘉義市中正路433號",
@@ -17622,11 +17594,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "453,興義發,05-2271576,嘉義市中正路433號,2026/9/26,15:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "451,興義發,05-2271576,嘉義市中正路433號,2026/9/26,15:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-10-1530-興義發-454",
+    "id": "b4-g3-2026-09-2026-10-10-1530-興義發-452",
     "tier": "G3",
     "venueName": "興義發",
     "venueAddress": "嘉義市中正路433號",
@@ -17636,11 +17608,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "454,興義發,05-2271576,嘉義市中正路433號,2026/10/10,15:30,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "452,興義發,05-2271576,嘉義市中正路433號,2026/10/10,15:30,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-10-1530-興義發-455",
+    "id": "b4-g3-2026-09-2026-10-10-1530-興義發-453",
     "tier": "G3",
     "venueName": "興義發",
     "venueAddress": "嘉義市中正路433號",
@@ -17650,11 +17622,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "455,興義發,05-2271576,嘉義市中正路433號,2026/10/10,15:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "453,興義發,05-2271576,嘉義市中正路433號,2026/10/10,15:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-24-1530-興義發-456",
+    "id": "b4-g3-2026-09-2026-10-24-1530-興義發-454",
     "tier": "G3",
     "venueName": "興義發",
     "venueAddress": "嘉義市中正路433號",
@@ -17664,11 +17636,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "456,興義發,05-2271576,嘉義市中正路433號,2026/10/24,15:30,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "454,興義發,05-2271576,嘉義市中正路433號,2026/10/24,15:30,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-24-1530-興義發-457",
+    "id": "b4-g3-2026-09-2026-10-24-1530-興義發-455",
     "tier": "G3",
     "venueName": "興義發",
     "venueAddress": "嘉義市中正路433號",
@@ -17678,11 +17650,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "457,興義發,05-2271576,嘉義市中正路433號,2026/10/24,15:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "455,興義發,05-2271576,嘉義市中正路433號,2026/10/24,15:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-05-1430-88玩具-458",
+    "id": "b4-g3-2026-09-2026-09-05-1430-88玩具-456",
     "tier": "G3",
     "venueName": "88玩具",
     "venueAddress": "嘉義市西區文化路953號-2一樓",
@@ -17692,11 +17664,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "458,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/9/5,14:30,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "456,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/9/5,14:30,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-05-1430-88玩具-459",
+    "id": "b4-g3-2026-09-2026-09-05-1430-88玩具-457",
     "tier": "G3",
     "venueName": "88玩具",
     "venueAddress": "嘉義市西區文化路953號-2一樓",
@@ -17706,11 +17678,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "459,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/9/5,14:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "457,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/9/5,14:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1430-88玩具-460",
+    "id": "b4-g3-2026-09-2026-09-19-1430-88玩具-458",
     "tier": "G3",
     "venueName": "88玩具",
     "venueAddress": "嘉義市西區文化路953號-2一樓",
@@ -17720,11 +17692,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "460,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/9/19,14:30,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "458,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/9/19,14:30,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1430-88玩具-461",
+    "id": "b4-g3-2026-09-2026-09-19-1430-88玩具-459",
     "tier": "G3",
     "venueName": "88玩具",
     "venueAddress": "嘉義市西區文化路953號-2一樓",
@@ -17734,11 +17706,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "461,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/9/19,14:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "459,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/9/19,14:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1430-88玩具-462",
+    "id": "b4-g3-2026-09-2026-10-17-1430-88玩具-460",
     "tier": "G3",
     "venueName": "88玩具",
     "venueAddress": "嘉義市西區文化路953號-2一樓",
@@ -17748,11 +17720,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "462,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/10/17,14:30,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "460,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/10/17,14:30,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1430-88玩具-463",
+    "id": "b4-g3-2026-09-2026-10-17-1430-88玩具-461",
     "tier": "G3",
     "venueName": "88玩具",
     "venueAddress": "嘉義市西區文化路953號-2一樓",
@@ -17762,11 +17734,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "463,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/10/17,14:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "461,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/10/17,14:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-31-1430-88玩具-464",
+    "id": "b4-g3-2026-09-2026-10-31-1430-88玩具-462",
     "tier": "G3",
     "venueName": "88玩具",
     "venueAddress": "嘉義市西區文化路953號-2一樓",
@@ -17776,11 +17748,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "464,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/10/31,14:30,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "462,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/10/31,14:30,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-31-1430-88玩具-465",
+    "id": "b4-g3-2026-09-2026-10-31-1430-88玩具-463",
     "tier": "G3",
     "venueName": "88玩具",
     "venueAddress": "嘉義市西區文化路953號-2一樓",
@@ -17790,11 +17762,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "465,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/10/31,14:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "463,88玩具,05-2336688,嘉義市西區文化路953號-2一樓,2026/10/31,14:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1300-華泰玩具花蓮店-466",
+    "id": "b4-g3-2026-09-2026-09-12-1300-華泰玩具花蓮店-464",
     "tier": "G3",
     "venueName": "華泰玩具花蓮店",
     "venueAddress": "花蓮市和平路589巷2號",
@@ -17804,11 +17776,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "466,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/9/12,13:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "464,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/9/12,13:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1400-華泰玩具花蓮店-467",
+    "id": "b4-g3-2026-09-2026-09-12-1400-華泰玩具花蓮店-465",
     "tier": "G3",
     "venueName": "華泰玩具花蓮店",
     "venueAddress": "花蓮市和平路589巷2號",
@@ -17818,11 +17790,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "467,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/9/12,14:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "465,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/9/12,14:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1300-華泰玩具花蓮店-468",
+    "id": "b4-g3-2026-09-2026-09-19-1300-華泰玩具花蓮店-466",
     "tier": "G3",
     "venueName": "華泰玩具花蓮店",
     "venueAddress": "花蓮市和平路589巷2號",
@@ -17832,11 +17804,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "468,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/9/19,13:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "466,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/9/19,13:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1400-華泰玩具花蓮店-469",
+    "id": "b4-g3-2026-09-2026-09-19-1400-華泰玩具花蓮店-467",
     "tier": "G3",
     "venueName": "華泰玩具花蓮店",
     "venueAddress": "花蓮市和平路589巷2號",
@@ -17846,11 +17818,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "469,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/9/19,14:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "467,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/9/19,14:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-02-1800-華泰玩具花蓮店-470",
+    "id": "b4-g3-2026-09-2026-10-02-1800-華泰玩具花蓮店-468",
     "tier": "G3",
     "venueName": "華泰玩具花蓮店",
     "venueAddress": "花蓮市和平路589巷2號",
@@ -17860,11 +17832,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "470,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/10/2,18:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "468,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/10/2,18:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-02-1900-華泰玩具花蓮店-471",
+    "id": "b4-g3-2026-09-2026-10-02-1900-華泰玩具花蓮店-469",
     "tier": "G3",
     "venueName": "華泰玩具花蓮店",
     "venueAddress": "花蓮市和平路589巷2號",
@@ -17874,11 +17846,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "471,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/10/2,19:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "469,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/10/2,19:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1300-華泰玩具花蓮店-472",
+    "id": "b4-g3-2026-09-2026-10-17-1300-華泰玩具花蓮店-470",
     "tier": "G3",
     "venueName": "華泰玩具花蓮店",
     "venueAddress": "花蓮市和平路589巷2號",
@@ -17888,11 +17860,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "472,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/10/17,13:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "470,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/10/17,13:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1400-華泰玩具花蓮店-473",
+    "id": "b4-g3-2026-09-2026-10-17-1400-華泰玩具花蓮店-471",
     "tier": "G3",
     "venueName": "華泰玩具花蓮店",
     "venueAddress": "花蓮市和平路589巷2號",
@@ -17902,11 +17874,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "473,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/10/17,14:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "471,華泰玩具花蓮店,03-8360767,花蓮市和平路589巷2號,2026/10/17,14:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-05-1000-鼎捷國際-474",
+    "id": "b4-g3-2026-09-2026-09-05-1000-鼎捷國際-472",
     "tier": "G3",
     "venueName": "鼎捷國際",
     "venueAddress": "811高雄市楠梓區藍田里援中路2-1號",
@@ -17916,11 +17888,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "474,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/9/5,10:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "472,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/9/5,10:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-05-1000-鼎捷國際-475",
+    "id": "b4-g3-2026-09-2026-09-05-1000-鼎捷國際-473",
     "tier": "G3",
     "venueName": "鼎捷國際",
     "venueAddress": "811高雄市楠梓區藍田里援中路2-1號",
@@ -17930,11 +17902,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "475,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/9/5,10:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "473,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/9/5,10:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1000-鼎捷國際-476",
+    "id": "b4-g3-2026-09-2026-09-19-1000-鼎捷國際-474",
     "tier": "G3",
     "venueName": "鼎捷國際",
     "venueAddress": "811高雄市楠梓區藍田里援中路2-1號",
@@ -17944,11 +17916,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "476,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/9/19,10:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "474,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/9/19,10:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1000-鼎捷國際-477",
+    "id": "b4-g3-2026-09-2026-09-19-1000-鼎捷國際-475",
     "tier": "G3",
     "venueName": "鼎捷國際",
     "venueAddress": "811高雄市楠梓區藍田里援中路2-1號",
@@ -17958,11 +17930,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "477,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/9/19,10:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "475,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/9/19,10:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1000-鼎捷國際-478",
+    "id": "b4-g3-2026-09-2026-10-03-1000-鼎捷國際-476",
     "tier": "G3",
     "venueName": "鼎捷國際",
     "venueAddress": "811高雄市楠梓區藍田里援中路2-1號",
@@ -17972,11 +17944,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "478,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/10/3,10:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "476,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/10/3,10:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1000-鼎捷國際-479",
+    "id": "b4-g3-2026-09-2026-10-03-1000-鼎捷國際-477",
     "tier": "G3",
     "venueName": "鼎捷國際",
     "venueAddress": "811高雄市楠梓區藍田里援中路2-1號",
@@ -17986,11 +17958,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "479,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/10/3,10:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "477,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/10/3,10:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1000-鼎捷國際-480",
+    "id": "b4-g3-2026-09-2026-10-17-1000-鼎捷國際-478",
     "tier": "G3",
     "venueName": "鼎捷國際",
     "venueAddress": "811高雄市楠梓區藍田里援中路2-1號",
@@ -18000,11 +17972,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "480,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/10/17,10:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "478,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/10/17,10:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1000-鼎捷國際-481",
+    "id": "b4-g3-2026-09-2026-10-17-1000-鼎捷國際-479",
     "tier": "G3",
     "venueName": "鼎捷國際",
     "venueAddress": "811高雄市楠梓區藍田里援中路2-1號",
@@ -18014,11 +17986,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "481,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/10/17,10:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "479,鼎捷國際,07-3643800,811高雄市楠梓區藍田里援中路2-1號,2026/10/17,10:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1300-華泰童趣村-482",
+    "id": "b4-g3-2026-09-2026-09-13-1300-華泰童趣村-480",
     "tier": "G3",
     "venueName": "華泰童趣村",
     "venueAddress": "宜蘭市南門里武營街75號",
@@ -18028,11 +18000,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "482,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/9/13,13:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "480,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/9/13,13:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1400-華泰童趣村-483",
+    "id": "b4-g3-2026-09-2026-09-13-1400-華泰童趣村-481",
     "tier": "G3",
     "venueName": "華泰童趣村",
     "venueAddress": "宜蘭市南門里武營街75號",
@@ -18042,11 +18014,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "483,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/9/13,14:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "481,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/9/13,14:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1300-華泰童趣村-484",
+    "id": "b4-g3-2026-09-2026-09-27-1300-華泰童趣村-482",
     "tier": "G3",
     "venueName": "華泰童趣村",
     "venueAddress": "宜蘭市南門里武營街75號",
@@ -18056,11 +18028,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "484,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/9/27,13:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "482,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/9/27,13:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1400-華泰童趣村-485",
+    "id": "b4-g3-2026-09-2026-09-27-1400-華泰童趣村-483",
     "tier": "G3",
     "venueName": "華泰童趣村",
     "venueAddress": "宜蘭市南門里武營街75號",
@@ -18070,11 +18042,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "485,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/9/27,14:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "483,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/9/27,14:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1300-華泰童趣村-486",
+    "id": "b4-g3-2026-09-2026-10-11-1300-華泰童趣村-484",
     "tier": "G3",
     "venueName": "華泰童趣村",
     "venueAddress": "宜蘭市南門里武營街75號",
@@ -18084,11 +18056,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "486,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/10/11,13:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "484,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/10/11,13:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1400-華泰童趣村-487",
+    "id": "b4-g3-2026-09-2026-10-11-1400-華泰童趣村-485",
     "tier": "G3",
     "venueName": "華泰童趣村",
     "venueAddress": "宜蘭市南門里武營街75號",
@@ -18098,11 +18070,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "487,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/10/11,14:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "485,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/10/11,14:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1300-華泰童趣村-488",
+    "id": "b4-g3-2026-09-2026-10-25-1300-華泰童趣村-486",
     "tier": "G3",
     "venueName": "華泰童趣村",
     "venueAddress": "宜蘭市南門里武營街75號",
@@ -18112,11 +18084,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "488,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/10/25,13:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "486,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/10/25,13:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1400-華泰童趣村-489",
+    "id": "b4-g3-2026-09-2026-10-25-1400-華泰童趣村-487",
     "tier": "G3",
     "venueName": "華泰童趣村",
     "venueAddress": "宜蘭市南門里武營街75號",
@@ -18126,11 +18098,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "489,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/10/25,14:00,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "487,華泰童趣村,0966-512-260,宜蘭市南門里武營街75號,2026/10/25,14:00,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1500-toyworld新店碧潭-490",
+    "id": "b4-g3-2026-09-2026-09-06-1500-toyworld新店碧潭-488",
     "tier": "G3",
     "venueName": "ToyWorld新店碧潭",
     "venueAddress": "新北市新店區北宜路一段16號2樓",
@@ -18140,11 +18112,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "490,ToyWorld新店碧潭,02-7730-0990,新北市新店區北宜路一段16號2樓,2026/9/6,15:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "488,ToyWorld新店碧潭,02-7730-0990,新北市新店區北宜路一段16號2樓,2026/9/6,15:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-17-1800-toyworld新店碧潭-491",
+    "id": "b4-g3-2026-09-2026-09-17-1800-toyworld新店碧潭-489",
     "tier": "G3",
     "venueName": "ToyWorld新店碧潭",
     "venueAddress": "新北市新店區北宜路一段16號2樓",
@@ -18154,11 +18126,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "491,ToyWorld新店碧潭,02-7730-0990,新北市新店區北宜路一段16號2樓,2026/9/17,18:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "489,ToyWorld新店碧潭,02-7730-0990,新北市新店區北宜路一段16號2樓,2026/9/17,18:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1500-toyworld新店碧潭-492",
+    "id": "b4-g3-2026-09-2026-10-04-1500-toyworld新店碧潭-490",
     "tier": "G3",
     "venueName": "ToyWorld新店碧潭",
     "venueAddress": "新北市新店區北宜路一段16號2樓",
@@ -18168,11 +18140,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "492,ToyWorld新店碧潭,02-7730-0990,新北市新店區北宜路一段16號2樓,2026/10/4,15:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "490,ToyWorld新店碧潭,02-7730-0990,新北市新店區北宜路一段16號2樓,2026/10/4,15:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1500-toyworld新店碧潭-493",
+    "id": "b4-g3-2026-09-2026-10-18-1500-toyworld新店碧潭-491",
     "tier": "G3",
     "venueName": "ToyWorld新店碧潭",
     "venueAddress": "新北市新店區北宜路一段16號2樓",
@@ -18182,11 +18154,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "493,ToyWorld新店碧潭,02-7730-0990,新北市新店區北宜路一段16號2樓,2026/10/18,15:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "491,ToyWorld新店碧潭,02-7730-0990,新北市新店區北宜路一段16號2樓,2026/10/18,15:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1400-玩具e哥新莊昌隆-494",
+    "id": "b4-g3-2026-09-2026-09-06-1400-玩具e哥新莊昌隆-492",
     "tier": "G3",
     "venueName": "玩具e哥新莊昌隆",
     "venueAddress": "新北市新莊區昌隆街83號1樓",
@@ -18196,11 +18168,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "494,玩具e哥新莊昌隆,02-77050779,新北市新莊區昌隆街83號1樓,2026/9/6,14:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "492,玩具e哥新莊昌隆,02-77050779,新北市新莊區昌隆街83號1樓,2026/9/6,14:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-28-1400-玩具e哥新莊昌隆-495",
+    "id": "b4-g3-2026-09-2026-09-28-1400-玩具e哥新莊昌隆-493",
     "tier": "G3",
     "venueName": "玩具e哥新莊昌隆",
     "venueAddress": "新北市新莊區昌隆街83號1樓",
@@ -18210,11 +18182,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "495,玩具e哥新莊昌隆,02-77050779,新北市新莊區昌隆街83號1樓,2026/9/28,14:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "493,玩具e哥新莊昌隆,02-77050779,新北市新莊區昌隆街83號1樓,2026/9/28,14:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1400-玩具e哥土城立德-496",
+    "id": "b4-g3-2026-09-2026-09-06-1400-玩具e哥土城立德-494",
     "tier": "G3",
     "venueName": "玩具e哥土城立德",
     "venueAddress": "新北市土城區立德路105號",
@@ -18224,11 +18196,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "496,玩具e哥土城立德,02-7727-5017,新北市土城區立德路105號,2026/9/6,14:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "494,玩具e哥土城立德,02-7727-5017,新北市土城區立德路105號,2026/9/6,14:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1400-玩具e哥土城立德-497",
+    "id": "b4-g3-2026-09-2026-09-20-1400-玩具e哥土城立德-495",
     "tier": "G3",
     "venueName": "玩具e哥土城立德",
     "venueAddress": "新北市土城區立德路105號",
@@ -18238,11 +18210,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "497,玩具e哥土城立德,02-7727-5017,新北市土城區立德路105號,2026/9/20,14:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "495,玩具e哥土城立德,02-7727-5017,新北市土城區立德路105號,2026/9/20,14:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-09-1800-玩具e哥桃園三民店-498",
+    "id": "b4-g3-2026-09-2026-09-09-1800-玩具e哥桃園三民店-496",
     "tier": "G3",
     "venueName": "玩具E哥桃園三民店",
     "venueAddress": "桃園市桃園區三民路三段448-1號1F",
@@ -18252,11 +18224,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "498,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/9/9,18:00,24,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "496,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/9/9,18:00,24,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1200-玩具e哥桃園三民店-499",
+    "id": "b4-g3-2026-09-2026-09-13-1200-玩具e哥桃園三民店-497",
     "tier": "G3",
     "venueName": "玩具E哥桃園三民店",
     "venueAddress": "桃園市桃園區三民路三段448-1號1F",
@@ -18266,11 +18238,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "499,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/9/13,12:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "497,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/9/13,12:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1200-玩具e哥桃園三民店-500",
+    "id": "b4-g3-2026-09-2026-09-26-1200-玩具e哥桃園三民店-498",
     "tier": "G3",
     "venueName": "玩具E哥桃園三民店",
     "venueAddress": "桃園市桃園區三民路三段448-1號1F",
@@ -18280,11 +18252,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "500,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/9/26,12:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "498,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/9/26,12:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1500-玩具e哥桃園三民店-501",
+    "id": "b4-g3-2026-09-2026-09-26-1500-玩具e哥桃園三民店-499",
     "tier": "G3",
     "venueName": "玩具E哥桃園三民店",
     "venueAddress": "桃園市桃園區三民路三段448-1號1F",
@@ -18294,11 +18266,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "501,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/9/26,15:00,24,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "499,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/9/26,15:00,24,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-10-1200-玩具e哥桃園三民店-502",
+    "id": "b4-g3-2026-09-2026-10-10-1200-玩具e哥桃園三民店-500",
     "tier": "G3",
     "venueName": "玩具E哥桃園三民店",
     "venueAddress": "桃園市桃園區三民路三段448-1號1F",
@@ -18308,11 +18280,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "502,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/10/10,12:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "500,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/10/10,12:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-24-1200-玩具e哥桃園三民店-503",
+    "id": "b4-g3-2026-09-2026-10-24-1200-玩具e哥桃園三民店-501",
     "tier": "G3",
     "venueName": "玩具E哥桃園三民店",
     "venueAddress": "桃園市桃園區三民路三段448-1號1F",
@@ -18322,11 +18294,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "503,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/10/24,12:00,24,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "501,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/10/24,12:00,24,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1200-玩具e哥桃園三民店-504",
+    "id": "b4-g3-2026-09-2026-10-25-1200-玩具e哥桃園三民店-502",
     "tier": "G3",
     "venueName": "玩具E哥桃園三民店",
     "venueAddress": "桃園市桃園區三民路三段448-1號1F",
@@ -18336,11 +18308,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "504,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/10/25,12:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "502,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/10/25,12:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1500-玩具e哥桃園三民店-505",
+    "id": "b4-g3-2026-09-2026-10-25-1500-玩具e哥桃園三民店-503",
     "tier": "G3",
     "venueName": "玩具E哥桃園三民店",
     "venueAddress": "桃園市桃園區三民路三段448-1號1F",
@@ -18350,11 +18322,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "505,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/10/25,15:00,24,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "503,玩具E哥桃園三民店,03-2727726,桃園市桃園區三民路三段448-1號1F,2026/10/25,15:00,24,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-05-1400-玩具e哥-台北康寧店-506",
+    "id": "b4-g3-2026-09-2026-09-05-1400-玩具e哥-台北康寧店-504",
     "tier": "G3",
     "venueName": "玩具e哥 台北康寧店",
     "venueAddress": "台北市內湖區康寧路三段74號2樓",
@@ -18364,11 +18336,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "506,玩具e哥 台北康寧店,02-77297576,台北市內湖區康寧路三段74號2樓,2026/9/5,14:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "504,玩具e哥 台北康寧店,02-77297576,台北市內湖區康寧路三段74號2樓,2026/9/5,14:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1400-玩具e哥-台北康寧店-507",
+    "id": "b4-g3-2026-09-2026-09-12-1400-玩具e哥-台北康寧店-505",
     "tier": "G3",
     "venueName": "玩具e哥 台北康寧店",
     "venueAddress": "台北市內湖區康寧路三段74號2樓",
@@ -18378,11 +18350,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "507,玩具e哥 台北康寧店,02-77297576,台北市內湖區康寧路三段74號2樓,2026/9/12,14:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "505,玩具e哥 台北康寧店,02-77297576,台北市內湖區康寧路三段74號2樓,2026/9/12,14:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1300-玩具e哥土城裕民-508",
+    "id": "b4-g3-2026-09-2026-09-13-1300-玩具e哥土城裕民-506",
     "tier": "G3",
     "venueName": "玩具e哥土城裕民",
     "venueAddress": "新北市土城區裕民路116號b1",
@@ -18392,11 +18364,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "508,玩具e哥土城裕民,02-77302664,新北市土城區裕民路116號b1,2026/9/13,13:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "506,玩具e哥土城裕民,02-77302664,新北市土城區裕民路116號b1,2026/9/13,13:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1300-玩具e哥土城裕民-509",
+    "id": "b4-g3-2026-09-2026-09-27-1300-玩具e哥土城裕民-507",
     "tier": "G3",
     "venueName": "玩具e哥土城裕民",
     "venueAddress": "新北市土城區裕民路116號b1",
@@ -18406,11 +18378,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "509,玩具e哥土城裕民,02-77302664,新北市土城區裕民路116號b1,2026/9/27,13:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "507,玩具e哥土城裕民,02-77302664,新北市土城區裕民路116號b1,2026/9/27,13:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1300-玩具e哥土城裕民-510",
+    "id": "b4-g3-2026-09-2026-10-11-1300-玩具e哥土城裕民-508",
     "tier": "G3",
     "venueName": "玩具e哥土城裕民",
     "venueAddress": "新北市土城區裕民路116號b1",
@@ -18420,11 +18392,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "510,玩具e哥土城裕民,02-77302664,新北市土城區裕民路116號b1,2026/10/11,13:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "508,玩具e哥土城裕民,02-77302664,新北市土城區裕民路116號b1,2026/10/11,13:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1300-玩具e哥土城裕民-511",
+    "id": "b4-g3-2026-09-2026-10-25-1300-玩具e哥土城裕民-509",
     "tier": "G3",
     "venueName": "玩具e哥土城裕民",
     "venueAddress": "新北市土城區裕民路116號b1",
@@ -18434,11 +18406,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "511,玩具e哥土城裕民,02-77302664,新北市土城區裕民路116號b1,2026/10/25,13:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "509,玩具e哥土城裕民,02-77302664,新北市土城區裕民路116號b1,2026/10/25,13:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1300-toy-world-新莊佳瑪-512",
+    "id": "b4-g3-2026-09-2026-09-06-1300-toy-world-新莊佳瑪-510",
     "tier": "G3",
     "venueName": "TOY WORLD 新莊佳瑪",
     "venueAddress": "新北市新莊區幸福路763號3樓",
@@ -18448,11 +18420,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "512,TOY WORLD 新莊佳瑪,02-7730-9506,新北市新莊區幸福路763號3樓,2026/9/6,13:00,16,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "510,TOY WORLD 新莊佳瑪,02-7730-9506,新北市新莊區幸福路763號3樓,2026/9/6,13:00,16,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1300-toy-world-新莊佳瑪-513",
+    "id": "b4-g3-2026-09-2026-09-27-1300-toy-world-新莊佳瑪-511",
     "tier": "G3",
     "venueName": "TOY WORLD 新莊佳瑪",
     "venueAddress": "新北市新莊區幸福路763號3樓",
@@ -18462,11 +18434,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "513,TOY WORLD 新莊佳瑪,02-7730-9506,新北市新莊區幸福路763號3樓,2026/9/27,13:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "511,TOY WORLD 新莊佳瑪,02-7730-9506,新北市新莊區幸福路763號3樓,2026/9/27,13:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-09-1300-toy-world-新莊佳瑪-514",
+    "id": "b4-g3-2026-09-2026-10-09-1300-toy-world-新莊佳瑪-512",
     "tier": "G3",
     "venueName": "TOY WORLD 新莊佳瑪",
     "venueAddress": "新北市新莊區幸福路763號3樓",
@@ -18476,11 +18448,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "514,TOY WORLD 新莊佳瑪,02-7730-9506,新北市新莊區幸福路763號3樓,2026/10/9,13:00,16,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "512,TOY WORLD 新莊佳瑪,02-7730-9506,新北市新莊區幸福路763號3樓,2026/10/9,13:00,16,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-24-1300-toy-world-新莊佳瑪-515",
+    "id": "b4-g3-2026-09-2026-10-24-1300-toy-world-新莊佳瑪-513",
     "tier": "G3",
     "venueName": "TOY WORLD 新莊佳瑪",
     "venueAddress": "新北市新莊區幸福路763號3樓",
@@ -18490,11 +18462,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "515,TOY WORLD 新莊佳瑪,02-7730-9506,新北市新莊區幸福路763號3樓,2026/10/24,13:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "513,TOY WORLD 新莊佳瑪,02-7730-9506,新北市新莊區幸福路763號3樓,2026/10/24,13:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-16-1400-玩具e哥雲林虎尾店-516",
+    "id": "b4-g3-2026-09-2026-09-16-1400-玩具e哥雲林虎尾店-514",
     "tier": "G3",
     "venueName": "玩具E哥雲林虎尾店",
     "venueAddress": "雲林縣虎尾鎮立德路6號",
@@ -18504,11 +18476,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "516,玩具E哥雲林虎尾店,05-770-6615,雲林縣虎尾鎮立德路6號,2026/9/16,14:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "514,玩具E哥雲林虎尾店,05-770-6615,雲林縣虎尾鎮立德路6號,2026/9/16,14:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1700-toy-world-春日佳瑪店-517",
+    "id": "b4-g3-2026-09-2026-09-20-1700-toy-world-春日佳瑪店-515",
     "tier": "G3",
     "venueName": "TOY WORLD 春日佳瑪店",
     "venueAddress": "桃園區春日路618-1號B1樓",
@@ -18518,11 +18490,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "517,TOY WORLD 春日佳瑪店,03-2714090,桃園區春日路618-1號B1樓,2026/9/20,17:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "515,TOY WORLD 春日佳瑪店,03-2714090,桃園區春日路618-1號B1樓,2026/9/20,17:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1700-toy-world-春日佳瑪店-518",
+    "id": "b4-g3-2026-09-2026-09-26-1700-toy-world-春日佳瑪店-516",
     "tier": "G3",
     "venueName": "TOY WORLD 春日佳瑪店",
     "venueAddress": "桃園區春日路618-1號B1樓",
@@ -18532,11 +18504,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "518,TOY WORLD 春日佳瑪店,03-2714090,桃園區春日路618-1號B1樓,2026/9/26,17:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "516,TOY WORLD 春日佳瑪店,03-2714090,桃園區春日路618-1號B1樓,2026/9/26,17:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1700-toy-world-春日佳瑪店-519",
+    "id": "b4-g3-2026-09-2026-10-17-1700-toy-world-春日佳瑪店-517",
     "tier": "G3",
     "venueName": "TOY WORLD 春日佳瑪店",
     "venueAddress": "桃園區春日路618-1號B1樓",
@@ -18546,11 +18518,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "519,TOY WORLD 春日佳瑪店,03-2714090,桃園區春日路618-1號B1樓,2026/10/17,17:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "517,TOY WORLD 春日佳瑪店,03-2714090,桃園區春日路618-1號B1樓,2026/10/17,17:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1700-toy-world-春日佳瑪店-520",
+    "id": "b4-g3-2026-09-2026-10-25-1700-toy-world-春日佳瑪店-518",
     "tier": "G3",
     "venueName": "TOY WORLD 春日佳瑪店",
     "venueAddress": "桃園區春日路618-1號B1樓",
@@ -18560,11 +18532,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "520,TOY WORLD 春日佳瑪店,03-2714090,桃園區春日路618-1號B1樓,2026/10/25,17:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "518,TOY WORLD 春日佳瑪店,03-2714090,桃園區春日路618-1號B1樓,2026/10/25,17:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1300-玩具e哥文山忠順店-521",
+    "id": "b4-g3-2026-09-2026-09-12-1300-玩具e哥文山忠順店-519",
     "tier": "G3",
     "venueName": "玩具e哥文山忠順店",
     "venueAddress": "台北市文山區忠順街二段段22號1樓",
@@ -18574,11 +18546,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "521,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/9/12,13:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "519,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/9/12,13:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1300-玩具e哥文山忠順店-522",
+    "id": "b4-g3-2026-09-2026-09-13-1300-玩具e哥文山忠順店-520",
     "tier": "G3",
     "venueName": "玩具e哥文山忠順店",
     "venueAddress": "台北市文山區忠順街二段段22號1樓",
@@ -18588,11 +18560,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "522,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/9/13,13:00,8,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "520,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/9/13,13:00,8,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1530-玩具e哥文山忠順店-523",
+    "id": "b4-g3-2026-09-2026-09-20-1530-玩具e哥文山忠順店-521",
     "tier": "G3",
     "venueName": "玩具e哥文山忠順店",
     "venueAddress": "台北市文山區忠順街二段段22號1樓",
@@ -18602,11 +18574,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "523,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/9/20,15:30,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "521,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/9/20,15:30,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1530-玩具e哥文山忠順店-524",
+    "id": "b4-g3-2026-09-2026-09-26-1530-玩具e哥文山忠順店-522",
     "tier": "G3",
     "venueName": "玩具e哥文山忠順店",
     "venueAddress": "台北市文山區忠順街二段段22號1樓",
@@ -18616,11 +18588,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "524,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/9/26,15:30,8,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "522,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/9/26,15:30,8,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-10-1300-玩具e哥文山忠順店-525",
+    "id": "b4-g3-2026-09-2026-10-10-1300-玩具e哥文山忠順店-523",
     "tier": "G3",
     "venueName": "玩具e哥文山忠順店",
     "venueAddress": "台北市文山區忠順街二段段22號1樓",
@@ -18630,11 +18602,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "525,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/10/10,13:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "523,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/10/10,13:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1300-玩具e哥文山忠順店-526",
+    "id": "b4-g3-2026-09-2026-10-11-1300-玩具e哥文山忠順店-524",
     "tier": "G3",
     "venueName": "玩具e哥文山忠順店",
     "venueAddress": "台北市文山區忠順街二段段22號1樓",
@@ -18644,11 +18616,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "526,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/10/11,13:00,8,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "524,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/10/11,13:00,8,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1530-玩具e哥文山忠順店-527",
+    "id": "b4-g3-2026-09-2026-10-17-1530-玩具e哥文山忠順店-525",
     "tier": "G3",
     "venueName": "玩具e哥文山忠順店",
     "venueAddress": "台北市文山區忠順街二段段22號1樓",
@@ -18658,11 +18630,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "527,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/10/17,15:30,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "525,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/10/17,15:30,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-24-1530-玩具e哥文山忠順店-528",
+    "id": "b4-g3-2026-09-2026-10-24-1530-玩具e哥文山忠順店-526",
     "tier": "G3",
     "venueName": "玩具e哥文山忠順店",
     "venueAddress": "台北市文山區忠順街二段段22號1樓",
@@ -18672,11 +18644,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "528,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/10/24,15:30,8,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "526,玩具e哥文山忠順店,02-7729-0831,台北市文山區忠順街二段段22號1樓,2026/10/24,15:30,8,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-05-1300-玩具e哥新店建國店-529",
+    "id": "b4-g3-2026-09-2026-09-05-1300-玩具e哥新店建國店-527",
     "tier": "G3",
     "venueName": "玩具e哥新店建國店",
     "venueAddress": "新北市新店區建國路268號1樓",
@@ -18686,11 +18658,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "529,玩具e哥新店建國店,02-7730-7032,新北市新店區建國路268號1樓,2026/9/5,13:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "527,玩具e哥新店建國店,02-7730-7032,新北市新店區建國路268號1樓,2026/9/5,13:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1300-玩具e哥新店建國店-530",
+    "id": "b4-g3-2026-09-2026-09-26-1300-玩具e哥新店建國店-528",
     "tier": "G3",
     "venueName": "玩具e哥新店建國店",
     "venueAddress": "新北市新店區建國路268號1樓",
@@ -18700,11 +18672,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "530,玩具e哥新店建國店,02-7730-7032,新北市新店區建國路268號1樓,2026/9/26,13:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "528,玩具e哥新店建國店,02-7730-7032,新北市新店區建國路268號1樓,2026/9/26,13:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1300-玩具e哥新店建國店-531",
+    "id": "b4-g3-2026-09-2026-10-03-1300-玩具e哥新店建國店-529",
     "tier": "G3",
     "venueName": "玩具e哥新店建國店",
     "venueAddress": "新北市新店區建國路268號1樓",
@@ -18714,11 +18686,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "531,玩具e哥新店建國店,02-7730-7032,新北市新店區建國路268號1樓,2026/10/3,13:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "529,玩具e哥新店建國店,02-7730-7032,新北市新店區建國路268號1樓,2026/10/3,13:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-24-1300-玩具e哥新店建國店-532",
+    "id": "b4-g3-2026-09-2026-10-24-1300-玩具e哥新店建國店-530",
     "tier": "G3",
     "venueName": "玩具e哥新店建國店",
     "venueAddress": "新北市新店區建國路268號1樓",
@@ -18728,11 +18700,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "532,玩具e哥新店建國店,02-7730-7032,新北市新店區建國路268號1樓,2026/10/24,13:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "530,玩具e哥新店建國店,02-7730-7032,新北市新店區建國路268號1樓,2026/10/24,13:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1300-玩具e哥新店中央店-533",
+    "id": "b4-g3-2026-09-2026-09-20-1300-玩具e哥新店中央店-531",
     "tier": "G3",
     "venueName": "玩具e哥新店中央店",
     "venueAddress": "新北市新店區中央路159號1樓",
@@ -18742,11 +18714,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "533,玩具e哥新店中央店,02-7730-3050,新北市新店區中央路159號1樓,2026/9/20,13:00,24,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "531,玩具e哥新店中央店,02-7730-3050,新北市新店區中央路159號1樓,2026/9/20,13:00,24,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1300-玩具e哥新店中央店-534",
+    "id": "b4-g3-2026-09-2026-10-17-1300-玩具e哥新店中央店-532",
     "tier": "G3",
     "venueName": "玩具e哥新店中央店",
     "venueAddress": "新北市新店區中央路159號1樓",
@@ -18756,11 +18728,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "534,玩具e哥新店中央店,02-7730-3050,新北市新店區中央路159號1樓,2026/10/17,13:00,24,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "532,玩具e哥新店中央店,02-7730-3050,新北市新店區中央路159號1樓,2026/10/17,13:00,24,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1400-toy-world-竹南佳瑪店-535",
+    "id": "b4-g3-2026-09-2026-09-06-1400-toy-world-竹南佳瑪店-533",
     "tier": "G3",
     "venueName": "TOY WORLD 竹南佳瑪店",
     "venueAddress": "苗栗縣竹南鎮博愛街62號3樓",
@@ -18770,11 +18742,11 @@
     "registrationMethod": "phone",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "535,TOY WORLD 竹南佳瑪店,03- 777-5587,苗栗縣竹南鎮博愛街62號3樓,2026/9/6,14:00,24,電話,公開 (6歲以上)\r",
+    "sourceExcerpt": "533,TOY WORLD 竹南佳瑪店,03- 777-5587,苗栗縣竹南鎮博愛街62號3樓,2026/9/6,14:00,24,電話,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1400-toy-world-竹南佳瑪店-536",
+    "id": "b4-g3-2026-09-2026-10-11-1400-toy-world-竹南佳瑪店-534",
     "tier": "G3",
     "venueName": "TOY WORLD 竹南佳瑪店",
     "venueAddress": "苗栗縣竹南鎮博愛街62號3樓",
@@ -18784,11 +18756,11 @@
     "registrationMethod": "phone",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "536,TOY WORLD 竹南佳瑪店,03- 777-5587,苗栗縣竹南鎮博愛街62號3樓,2026/10/11,14:00,24,電話,公開 (6歲以上)\r",
+    "sourceExcerpt": "534,TOY WORLD 竹南佳瑪店,03- 777-5587,苗栗縣竹南鎮博愛街62號3樓,2026/10/11,14:00,24,電話,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-07-1900-玩具e哥桃園南崁店-537",
+    "id": "b4-g3-2026-09-2026-09-07-1900-玩具e哥桃園南崁店-535",
     "tier": "G3",
     "venueName": "玩具e哥桃園南崁店",
     "venueAddress": "桃園市蘆竹區中正路1號5樓",
@@ -18798,11 +18770,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "537,玩具e哥桃園南崁店,(03)271-6400,桃園市蘆竹區中正路1號5樓,2026/9/7,19:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "535,玩具e哥桃園南崁店,(03)271-6400,桃園市蘆竹區中正路1號5樓,2026/9/7,19:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-14-1900-玩具e哥桃園南崁店-538",
+    "id": "b4-g3-2026-09-2026-09-14-1900-玩具e哥桃園南崁店-536",
     "tier": "G3",
     "venueName": "玩具e哥桃園南崁店",
     "venueAddress": "桃園市蘆竹區中正路1號5樓",
@@ -18812,11 +18784,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "538,玩具e哥桃園南崁店,(03)271-6400,桃園市蘆竹區中正路1號5樓,2026/9/14,19:00,24,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "536,玩具e哥桃園南崁店,(03)271-6400,桃園市蘆竹區中正路1號5樓,2026/9/14,19:00,24,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-12-1900-玩具e哥桃園南崁店-539",
+    "id": "b4-g3-2026-09-2026-10-12-1900-玩具e哥桃園南崁店-537",
     "tier": "G3",
     "venueName": "玩具e哥桃園南崁店",
     "venueAddress": "桃園市蘆竹區中正路1號5樓",
@@ -18826,11 +18798,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "539,玩具e哥桃園南崁店,(03)271-6400,桃園市蘆竹區中正路1號5樓,2026/10/12,19:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "537,玩具e哥桃園南崁店,(03)271-6400,桃園市蘆竹區中正路1號5樓,2026/10/12,19:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-19-1900-玩具e哥桃園南崁店-540",
+    "id": "b4-g3-2026-09-2026-10-19-1900-玩具e哥桃園南崁店-538",
     "tier": "G3",
     "venueName": "玩具e哥桃園南崁店",
     "venueAddress": "桃園市蘆竹區中正路1號5樓",
@@ -18840,11 +18812,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "540,玩具e哥桃園南崁店,(03)271-6400,桃園市蘆竹區中正路1號5樓,2026/10/19,19:00,24,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "538,玩具e哥桃園南崁店,(03)271-6400,桃園市蘆竹區中正路1號5樓,2026/10/19,19:00,24,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1400-toyworld-新竹6-541",
+    "id": "b4-g3-2026-09-2026-09-27-1400-toyworld-新竹6-539",
     "tier": "G3",
     "venueName": "TOYWORLD 新竹6+",
     "venueAddress": "新竹縣竹北市復興三路二段168號3樓",
@@ -18854,11 +18826,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "541,TOYWORLD 新竹6+,03-6218253,新竹縣竹北市復興三路二段168號3樓,2026/9/27,14:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "539,TOYWORLD 新竹6+,03-6218253,新竹縣竹北市復興三路二段168號3樓,2026/9/27,14:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1400-toyworld-新竹6-542",
+    "id": "b4-g3-2026-09-2026-10-04-1400-toyworld-新竹6-540",
     "tier": "G3",
     "venueName": "TOYWORLD 新竹6+",
     "venueAddress": "新竹縣竹北市復興三路二段168號3樓",
@@ -18868,11 +18840,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "542,TOYWORLD 新竹6+,03-6218253,新竹縣竹北市復興三路二段168號3樓,2026/10/4,14:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "540,TOYWORLD 新竹6+,03-6218253,新竹縣竹北市復興三路二段168號3樓,2026/10/4,14:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1310-玩具e哥台中文心-543",
+    "id": "b4-g3-2026-09-2026-09-12-1310-玩具e哥台中文心-541",
     "tier": "G3",
     "venueName": "玩具e哥台中文心",
     "venueAddress": "台中市北屯區文心路四段225號",
@@ -18882,11 +18854,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "543,玩具e哥台中文心,(04)3707-6188,台中市北屯區文心路四段225號,2026/9/12,13:10,16,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "541,玩具e哥台中文心,(04)3707-6188,台中市北屯區文心路四段225號,2026/9/12,13:10,16,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1610-玩具e哥台中文心-544",
+    "id": "b4-g3-2026-09-2026-09-12-1610-玩具e哥台中文心-542",
     "tier": "G3",
     "venueName": "玩具e哥台中文心",
     "venueAddress": "台中市北屯區文心路四段225號",
@@ -18896,11 +18868,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "544,玩具e哥台中文心,(04)3707-6188,台中市北屯區文心路四段225號,2026/9/12,16:10,24,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "542,玩具e哥台中文心,(04)3707-6188,台中市北屯區文心路四段225號,2026/9/12,16:10,24,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1310-玩具e哥台中文心-545",
+    "id": "b4-g3-2026-09-2026-10-17-1310-玩具e哥台中文心-543",
     "tier": "G3",
     "venueName": "玩具e哥台中文心",
     "venueAddress": "台中市北屯區文心路四段225號",
@@ -18910,11 +18882,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "545,玩具e哥台中文心,(04)3707-6188,台中市北屯區文心路四段225號,2026/10/17,13:10,16,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "543,玩具e哥台中文心,(04)3707-6188,台中市北屯區文心路四段225號,2026/10/17,13:10,16,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1610-玩具e哥台中文心-546",
+    "id": "b4-g3-2026-09-2026-10-17-1610-玩具e哥台中文心-544",
     "tier": "G3",
     "venueName": "玩具e哥台中文心",
     "venueAddress": "台中市北屯區文心路四段225號",
@@ -18924,11 +18896,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "546,玩具e哥台中文心,(04)3707-6188,台中市北屯區文心路四段225號,2026/10/17,16:10,24,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "544,玩具e哥台中文心,(04)3707-6188,台中市北屯區文心路四段225號,2026/10/17,16:10,24,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1400-玩具e哥-苑裡為公店-547",
+    "id": "b4-g3-2026-09-2026-09-26-1400-玩具e哥-苑裡為公店-545",
     "tier": "G3",
     "venueName": "玩具e哥 苑裡為公店",
     "venueAddress": "苗栗縣苑裡鎮苑南里為公路65-2號1F",
@@ -18938,11 +18910,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "547,玩具e哥 苑裡為公店,037-775034,苗栗縣苑裡鎮苑南里為公路65-2號1F,2026/9/26,14:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "545,玩具e哥 苑裡為公店,037-775034,苗栗縣苑裡鎮苑南里為公路65-2號1F,2026/9/26,14:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1400-玩具e哥-苑裡為公店-548",
+    "id": "b4-g3-2026-09-2026-10-11-1400-玩具e哥-苑裡為公店-546",
     "tier": "G3",
     "venueName": "玩具e哥 苑裡為公店",
     "venueAddress": "苗栗縣苑裡鎮苑南里為公路65-2號1F",
@@ -18952,11 +18924,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "548,玩具e哥 苑裡為公店,037-775034,苗栗縣苑裡鎮苑南里為公路65-2號1F,2026/10/11,14:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "546,玩具e哥 苑裡為公店,037-775034,苗栗縣苑裡鎮苑南里為公路65-2號1F,2026/10/11,14:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1400-玩具e哥-平鎮大潤發-549",
+    "id": "b4-g3-2026-09-2026-10-17-1400-玩具e哥-平鎮大潤發-547",
     "tier": "G3",
     "venueName": "玩具e哥-平鎮大潤發",
     "venueAddress": "桃園市平鎮區南勢里南東路57-1號2樓",
@@ -18966,11 +18938,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "549,玩具e哥-平鎮大潤發,03-271-3650,桃園市平鎮區南勢里南東路57-1號2樓,2026/10/17,14:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "547,玩具e哥-平鎮大潤發,03-271-3650,桃園市平鎮區南勢里南東路57-1號2樓,2026/10/17,14:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1800-玩具e哥-桃園北埔店-550",
+    "id": "b4-g3-2026-09-2026-09-12-1800-玩具e哥-桃園北埔店-548",
     "tier": "G3",
     "venueName": "玩具e哥 桃園北埔店",
     "venueAddress": "桃園市桃園區北埔路36號2樓",
@@ -18980,11 +18952,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "550,玩具e哥 桃園北埔店,03-273-9917,桃園市桃園區北埔路36號2樓,2026/9/12,18:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "548,玩具e哥 桃園北埔店,03-273-9917,桃園市桃園區北埔路36號2樓,2026/9/12,18:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1800-玩具e哥-桃園北埔店-551",
+    "id": "b4-g3-2026-09-2026-09-26-1800-玩具e哥-桃園北埔店-549",
     "tier": "G3",
     "venueName": "玩具e哥 桃園北埔店",
     "venueAddress": "桃園市桃園區北埔路36號2樓",
@@ -18994,11 +18966,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "551,玩具e哥 桃園北埔店,03-273-9917,桃園市桃園區北埔路36號2樓,2026/9/26,18:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "549,玩具e哥 桃園北埔店,03-273-9917,桃園市桃園區北埔路36號2樓,2026/9/26,18:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1800-玩具e哥-桃園北埔店-552",
+    "id": "b4-g3-2026-09-2026-10-17-1800-玩具e哥-桃園北埔店-550",
     "tier": "G3",
     "venueName": "玩具e哥 桃園北埔店",
     "venueAddress": "桃園市桃園區北埔路36號2樓",
@@ -19008,11 +18980,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "552,玩具e哥 桃園北埔店,03-273-9917,桃園市桃園區北埔路36號2樓,2026/10/17,18:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "550,玩具e哥 桃園北埔店,03-273-9917,桃園市桃園區北埔路36號2樓,2026/10/17,18:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-24-1800-玩具e哥-桃園北埔店-553",
+    "id": "b4-g3-2026-09-2026-10-24-1800-玩具e哥-桃園北埔店-551",
     "tier": "G3",
     "venueName": "玩具e哥 桃園北埔店",
     "venueAddress": "桃園市桃園區北埔路36號2樓",
@@ -19022,11 +18994,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "553,玩具e哥 桃園北埔店,03-273-9917,桃園市桃園區北埔路36號2樓,2026/10/24,18:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "551,玩具e哥 桃園北埔店,03-273-9917,桃園市桃園區北埔路36號2樓,2026/10/24,18:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1400-玩具e哥-漢民樂家康-554",
+    "id": "b4-g3-2026-09-2026-09-06-1400-玩具e哥-漢民樂家康-552",
     "tier": "G3",
     "venueName": "玩具e哥 漢民樂家康",
     "venueAddress": "高雄市小港區山明里漢民路798號1樓",
@@ -19036,11 +19008,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "554,玩具e哥 漢民樂家康,07-974-3500,高雄市小港區山明里漢民路798號1樓,2026/9/6,14:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "552,玩具e哥 漢民樂家康,07-974-3500,高雄市小港區山明里漢民路798號1樓,2026/9/6,14:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1400-玩具e哥-漢民樂家康-555",
+    "id": "b4-g3-2026-09-2026-10-03-1400-玩具e哥-漢民樂家康-553",
     "tier": "G3",
     "venueName": "玩具e哥 漢民樂家康",
     "venueAddress": "高雄市小港區山明里漢民路798號1樓",
@@ -19050,11 +19022,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "555,玩具e哥 漢民樂家康,07-974-3500,高雄市小港區山明里漢民路798號1樓,2026/10/3,14:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "553,玩具e哥 漢民樂家康,07-974-3500,高雄市小港區山明里漢民路798號1樓,2026/10/3,14:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1300-玩具e哥花蓮萬家福-556",
+    "id": "b4-g3-2026-09-2026-09-20-1300-玩具e哥花蓮萬家福-554",
     "tier": "G3",
     "venueName": "玩具e哥花蓮萬家福",
     "venueAddress": "花蓮縣新城鄉嘉里路15號1樓",
@@ -19064,11 +19036,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "556,玩具e哥花蓮萬家福,03-8900390,花蓮縣新城鄉嘉里路15號1樓,2026/9/20,13:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "554,玩具e哥花蓮萬家福,03-8900390,花蓮縣新城鄉嘉里路15號1樓,2026/9/20,13:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-09-1300-玩具e哥花蓮萬家福-557",
+    "id": "b4-g3-2026-09-2026-10-09-1300-玩具e哥花蓮萬家福-555",
     "tier": "G3",
     "venueName": "玩具e哥花蓮萬家福",
     "venueAddress": "花蓮縣新城鄉嘉里路15號1樓",
@@ -19078,11 +19050,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "557,玩具e哥花蓮萬家福,03-8900390,花蓮縣新城鄉嘉里路15號1樓,2026/10/9,13:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "555,玩具e哥花蓮萬家福,03-8900390,花蓮縣新城鄉嘉里路15號1樓,2026/10/9,13:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1500-陳媽媽玩具-竹北店-558",
+    "id": "b4-g3-2026-09-2026-09-06-1500-陳媽媽玩具-竹北店-556",
     "tier": "G3",
     "venueName": "陳媽媽玩具-竹北店",
     "venueAddress": "新竹縣竹北市莊敬北路278號",
@@ -19092,11 +19064,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "558,陳媽媽玩具-竹北店,03-668-3738,新竹縣竹北市莊敬北路278號,2026/9/6,15:00,24,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "556,陳媽媽玩具-竹北店,03-668-3738,新竹縣竹北市莊敬北路278號,2026/9/6,15:00,24,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1700-陳媽媽玩具-竹北店-559",
+    "id": "b4-g3-2026-09-2026-09-06-1700-陳媽媽玩具-竹北店-557",
     "tier": "G3",
     "venueName": "陳媽媽玩具-竹北店",
     "venueAddress": "新竹縣竹北市莊敬北路278號",
@@ -19106,11 +19078,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "559,陳媽媽玩具-竹北店,03-668-3738,新竹縣竹北市莊敬北路278號,2026/9/6,17:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "557,陳媽媽玩具-竹北店,03-668-3738,新竹縣竹北市莊敬北路278號,2026/9/6,17:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1500-陳媽媽玩具-竹北店-560",
+    "id": "b4-g3-2026-09-2026-10-04-1500-陳媽媽玩具-竹北店-558",
     "tier": "G3",
     "venueName": "陳媽媽玩具-竹北店",
     "venueAddress": "新竹縣竹北市莊敬北路278號",
@@ -19120,11 +19092,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "560,陳媽媽玩具-竹北店,03-668-3738,新竹縣竹北市莊敬北路278號,2026/10/4,15:00,24,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "558,陳媽媽玩具-竹北店,03-668-3738,新竹縣竹北市莊敬北路278號,2026/10/4,15:00,24,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1700-陳媽媽玩具-竹北店-561",
+    "id": "b4-g3-2026-09-2026-10-04-1700-陳媽媽玩具-竹北店-559",
     "tier": "G3",
     "venueName": "陳媽媽玩具-竹北店",
     "venueAddress": "新竹縣竹北市莊敬北路278號",
@@ -19134,11 +19106,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "561,陳媽媽玩具-竹北店,03-668-3738,新竹縣竹北市莊敬北路278號,2026/10/4,17:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "559,陳媽媽玩具-竹北店,03-668-3738,新竹縣竹北市莊敬北路278號,2026/10/4,17:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1500-陳媽媽玩具-中和店-562",
+    "id": "b4-g3-2026-09-2026-09-13-1500-陳媽媽玩具-中和店-560",
     "tier": "G3",
     "venueName": "陳媽媽玩具-中和店",
     "venueAddress": "新北市中和區建一路251號",
@@ -19148,11 +19120,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "562,陳媽媽玩具-中和店,02-2221-7688,新北市中和區建一路251號,2026/9/13,15:00,24,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "560,陳媽媽玩具-中和店,02-2221-7688,新北市中和區建一路251號,2026/9/13,15:00,24,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1700-陳媽媽玩具-中和店-563",
+    "id": "b4-g3-2026-09-2026-09-13-1700-陳媽媽玩具-中和店-561",
     "tier": "G3",
     "venueName": "陳媽媽玩具-中和店",
     "venueAddress": "新北市中和區建一路251號",
@@ -19162,11 +19134,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "563,陳媽媽玩具-中和店,02-2221-7688,新北市中和區建一路251號,2026/9/13,17:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "561,陳媽媽玩具-中和店,02-2221-7688,新北市中和區建一路251號,2026/9/13,17:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1500-陳媽媽玩具-中和店-564",
+    "id": "b4-g3-2026-09-2026-10-11-1500-陳媽媽玩具-中和店-562",
     "tier": "G3",
     "venueName": "陳媽媽玩具-中和店",
     "venueAddress": "新北市中和區建一路251號",
@@ -19176,11 +19148,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "564,陳媽媽玩具-中和店,02-2221-7688,新北市中和區建一路251號,2026/10/11,15:00,24,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "562,陳媽媽玩具-中和店,02-2221-7688,新北市中和區建一路251號,2026/10/11,15:00,24,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1700-陳媽媽玩具-中和店-565",
+    "id": "b4-g3-2026-09-2026-10-11-1700-陳媽媽玩具-中和店-563",
     "tier": "G3",
     "venueName": "陳媽媽玩具-中和店",
     "venueAddress": "新北市中和區建一路251號",
@@ -19190,11 +19162,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "565,陳媽媽玩具-中和店,02-2221-7688,新北市中和區建一路251號,2026/10/11,17:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "563,陳媽媽玩具-中和店,02-2221-7688,新北市中和區建一路251號,2026/10/11,17:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1500-陳媽媽玩具-中華店-566",
+    "id": "b4-g3-2026-09-2026-09-20-1500-陳媽媽玩具-中華店-564",
     "tier": "G3",
     "venueName": "陳媽媽玩具-中華店",
     "venueAddress": "新北市土城區中華路二段122號",
@@ -19204,11 +19176,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "566,陳媽媽玩具-中華店,02-2268-7886,新北市土城區中華路二段122號,2026/9/20,15:00,24,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "564,陳媽媽玩具-中華店,02-2268-7886,新北市土城區中華路二段122號,2026/9/20,15:00,24,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1700-陳媽媽玩具-中華店-567",
+    "id": "b4-g3-2026-09-2026-09-20-1700-陳媽媽玩具-中華店-565",
     "tier": "G3",
     "venueName": "陳媽媽玩具-中華店",
     "venueAddress": "新北市土城區中華路二段122號",
@@ -19218,11 +19190,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "567,陳媽媽玩具-中華店,02-2268-7886,新北市土城區中華路二段122號,2026/9/20,17:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "565,陳媽媽玩具-中華店,02-2268-7886,新北市土城區中華路二段122號,2026/9/20,17:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1500-陳媽媽玩具-中華店-568",
+    "id": "b4-g3-2026-09-2026-10-18-1500-陳媽媽玩具-中華店-566",
     "tier": "G3",
     "venueName": "陳媽媽玩具-中華店",
     "venueAddress": "新北市土城區中華路二段122號",
@@ -19232,11 +19204,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "568,陳媽媽玩具-中華店,02-2268-7886,新北市土城區中華路二段122號,2026/10/18,15:00,24,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "566,陳媽媽玩具-中華店,02-2268-7886,新北市土城區中華路二段122號,2026/10/18,15:00,24,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1700-陳媽媽玩具-中華店-569",
+    "id": "b4-g3-2026-09-2026-10-18-1700-陳媽媽玩具-中華店-567",
     "tier": "G3",
     "venueName": "陳媽媽玩具-中華店",
     "venueAddress": "新北市土城區中華路二段122號",
@@ -19246,11 +19218,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "569,陳媽媽玩具-中華店,02-2268-7886,新北市土城區中華路二段122號,2026/10/18,17:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "567,陳媽媽玩具-中華店,02-2268-7886,新北市土城區中華路二段122號,2026/10/18,17:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1500-陳媽媽玩具-新店門市-570",
+    "id": "b4-g3-2026-09-2026-09-27-1500-陳媽媽玩具-新店門市-568",
     "tier": "G3",
     "venueName": "陳媽媽玩具-新店門市",
     "venueAddress": "新北市新店區復興路43號",
@@ -19260,11 +19232,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "570,陳媽媽玩具-新店門市,02-2219-1383,新北市新店區復興路43號,2026/9/27,15:00,24,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "568,陳媽媽玩具-新店門市,02-2219-1383,新北市新店區復興路43號,2026/9/27,15:00,24,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1700-陳媽媽玩具-新店門市-571",
+    "id": "b4-g3-2026-09-2026-09-27-1700-陳媽媽玩具-新店門市-569",
     "tier": "G3",
     "venueName": "陳媽媽玩具-新店門市",
     "venueAddress": "新北市新店區復興路43號",
@@ -19274,11 +19246,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "571,陳媽媽玩具-新店門市,02-2219-1383,新北市新店區復興路43號,2026/9/27,17:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "569,陳媽媽玩具-新店門市,02-2219-1383,新北市新店區復興路43號,2026/9/27,17:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1500-陳媽媽玩具-新店門市-572",
+    "id": "b4-g3-2026-09-2026-10-25-1500-陳媽媽玩具-新店門市-570",
     "tier": "G3",
     "venueName": "陳媽媽玩具-新店門市",
     "venueAddress": "新北市新店區復興路43號",
@@ -19288,11 +19260,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "572,陳媽媽玩具-新店門市,02-2219-1383,新北市新店區復興路43號,2026/10/25,15:00,24,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "570,陳媽媽玩具-新店門市,02-2219-1383,新北市新店區復興路43號,2026/10/25,15:00,24,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1700-陳媽媽玩具-新店門市-573",
+    "id": "b4-g3-2026-09-2026-10-25-1700-陳媽媽玩具-新店門市-571",
     "tier": "G3",
     "venueName": "陳媽媽玩具-新店門市",
     "venueAddress": "新北市新店區復興路43號",
@@ -19302,11 +19274,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "573,陳媽媽玩具-新店門市,02-2219-1383,新北市新店區復興路43號,2026/10/25,17:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "571,陳媽媽玩具-新店門市,02-2219-1383,新北市新店區復興路43號,2026/10/25,17:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-11-2000-多米文化廣場-阿蓮店-574",
+    "id": "b4-g3-2026-09-2026-09-11-2000-多米文化廣場-阿蓮店-572",
     "tier": "G3",
     "venueName": "多米文化廣場-阿蓮店",
     "venueAddress": "高雄市阿蓮區中正路483號",
@@ -19316,11 +19288,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "574,多米文化廣場-阿蓮店,0972-506976,高雄市阿蓮區中正路483號,2026/9/11,20:00,60,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "572,多米文化廣場-阿蓮店,0972-506976,高雄市阿蓮區中正路483號,2026/9/11,20:00,60,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-25-2000-多米文化廣場-阿蓮店-575",
+    "id": "b4-g3-2026-09-2026-09-25-2000-多米文化廣場-阿蓮店-573",
     "tier": "G3",
     "venueName": "多米文化廣場-阿蓮店",
     "venueAddress": "高雄市阿蓮區中正路483號",
@@ -19330,11 +19302,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "575,多米文化廣場-阿蓮店,0972-506976,高雄市阿蓮區中正路483號,2026/9/25,20:00,60,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "573,多米文化廣場-阿蓮店,0972-506976,高雄市阿蓮區中正路483號,2026/9/25,20:00,60,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-09-2000-多米文化廣場-阿蓮店-576",
+    "id": "b4-g3-2026-09-2026-10-09-2000-多米文化廣場-阿蓮店-574",
     "tier": "G3",
     "venueName": "多米文化廣場-阿蓮店",
     "venueAddress": "高雄市阿蓮區中正路483號",
@@ -19344,11 +19316,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "576,多米文化廣場-阿蓮店,0972-506976,高雄市阿蓮區中正路483號,2026/10/9,20:00,60,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "574,多米文化廣場-阿蓮店,0972-506976,高雄市阿蓮區中正路483號,2026/10/9,20:00,60,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-30-2000-多米文化廣場-阿蓮店-577",
+    "id": "b4-g3-2026-09-2026-10-30-2000-多米文化廣場-阿蓮店-575",
     "tier": "G3",
     "venueName": "多米文化廣場-阿蓮店",
     "venueAddress": "高雄市阿蓮區中正路483號",
@@ -19358,11 +19330,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "577,多米文化廣場-阿蓮店,0972-506976,高雄市阿蓮區中正路483號,2026/10/30,20:00,60,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "575,多米文化廣場-阿蓮店,0972-506976,高雄市阿蓮區中正路483號,2026/10/30,20:00,60,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-09-2000-瑪利玩具-578",
+    "id": "b4-g3-2026-09-2026-09-09-2000-瑪利玩具-576",
     "tier": "G3",
     "venueName": "瑪利玩具",
     "venueAddress": "桃園市大溪區員林路二段358號",
@@ -19372,11 +19344,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "578,瑪利玩具,03-3806139,桃園市大溪區員林路二段358號 ,2026/9/9,20:00,48,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "576,瑪利玩具,03-3806139,桃園市大溪區員林路二段358號 ,2026/9/9,20:00,48,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-23-2000-瑪利玩具-579",
+    "id": "b4-g3-2026-09-2026-09-23-2000-瑪利玩具-577",
     "tier": "G3",
     "venueName": "瑪利玩具",
     "venueAddress": "桃園市大溪區員林路二段358號",
@@ -19386,11 +19358,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "579,瑪利玩具,03-3806139,桃園市大溪區員林路二段358號 ,2026/9/23,20:00,48,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "577,瑪利玩具,03-3806139,桃園市大溪區員林路二段358號 ,2026/9/23,20:00,48,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-07-2000-瑪利玩具-580",
+    "id": "b4-g3-2026-09-2026-10-07-2000-瑪利玩具-578",
     "tier": "G3",
     "venueName": "瑪利玩具",
     "venueAddress": "桃園市大溪區員林路二段358號",
@@ -19400,11 +19372,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "580,瑪利玩具,03-3806139,桃園市大溪區員林路二段358號 ,2026/10/7,20:00,48,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "578,瑪利玩具,03-3806139,桃園市大溪區員林路二段358號 ,2026/10/7,20:00,48,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-21-2000-瑪利玩具-581",
+    "id": "b4-g3-2026-09-2026-10-21-2000-瑪利玩具-579",
     "tier": "G3",
     "venueName": "瑪利玩具",
     "venueAddress": "桃園市大溪區員林路二段358號",
@@ -19414,11 +19386,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "581,瑪利玩具,03-3806139,桃園市大溪區員林路二段358號 ,2026/10/21,20:00,48,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "579,瑪利玩具,03-3806139,桃園市大溪區員林路二段358號 ,2026/10/21,20:00,48,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1730-翻轉點子桌遊館-582",
+    "id": "b4-g3-2026-09-2026-09-12-1730-翻轉點子桌遊館-580",
     "tier": "G3",
     "venueName": "翻轉點子桌遊館",
     "venueAddress": "台南市善化區中正路382號之3 二樓",
@@ -19428,11 +19400,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "582,翻轉點子桌遊館,0915691117,台南市善化區中正路382號之3 二樓,2026/9/12,17:30,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "580,翻轉點子桌遊館,0915691117,台南市善化區中正路382號之3 二樓,2026/9/12,17:30,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1730-翻轉點子桌遊館-583",
+    "id": "b4-g3-2026-09-2026-09-26-1730-翻轉點子桌遊館-581",
     "tier": "G3",
     "venueName": "翻轉點子桌遊館",
     "venueAddress": "台南市善化區中正路382號之3 二樓",
@@ -19442,11 +19414,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "583,翻轉點子桌遊館,0915691117,台南市善化區中正路382號之3 二樓,2026/9/26,17:30,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "581,翻轉點子桌遊館,0915691117,台南市善化區中正路382號之3 二樓,2026/9/26,17:30,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1730-翻轉點子桌遊館-584",
+    "id": "b4-g3-2026-09-2026-10-03-1730-翻轉點子桌遊館-582",
     "tier": "G3",
     "venueName": "翻轉點子桌遊館",
     "venueAddress": "台南市善化區中正路382號之3 二樓",
@@ -19456,11 +19428,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "584,翻轉點子桌遊館,0915691117,台南市善化區中正路382號之3 二樓,2026/10/3,17:30,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "582,翻轉點子桌遊館,0915691117,台南市善化區中正路382號之3 二樓,2026/10/3,17:30,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-10-1730-翻轉點子桌遊館-585",
+    "id": "b4-g3-2026-09-2026-10-10-1730-翻轉點子桌遊館-583",
     "tier": "G3",
     "venueName": "翻轉點子桌遊館",
     "venueAddress": "台南市善化區中正路382號之3 二樓",
@@ -19470,11 +19442,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "585,翻轉點子桌遊館,0915691117,台南市善化區中正路382號之3 二樓,2026/10/10,17:30,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "583,翻轉點子桌遊館,0915691117,台南市善化區中正路382號之3 二樓,2026/10/10,17:30,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1430-創q-space-高雄夢時代店-586",
+    "id": "b4-g3-2026-09-2026-09-06-1430-創q-space-高雄夢時代店-584",
     "tier": "G3",
     "venueName": "創Q space-高雄夢時代店",
     "venueAddress": "高雄市前鎮區中華五路789號2樓 (夢時代購物中心)",
@@ -19484,11 +19456,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "586,創Q space-高雄夢時代店,07-821-2551,高雄市前鎮區中華五路789號2樓 (夢時代購物中心),2026/9/6,14:30,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "584,創Q space-高雄夢時代店,07-821-2551,高雄市前鎮區中華五路789號2樓 (夢時代購物中心),2026/9/6,14:30,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1430-創q-space-高雄夢時代店-587",
+    "id": "b4-g3-2026-09-2026-10-25-1430-創q-space-高雄夢時代店-585",
     "tier": "G3",
     "venueName": "創Q space-高雄夢時代店",
     "venueAddress": "高雄市前鎮區中華五路789號2樓 (夢時代購物中心)",
@@ -19498,11 +19470,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "587,創Q space-高雄夢時代店,07-821-2551,高雄市前鎮區中華五路789號2樓 (夢時代購物中心),2026/10/25,14:30,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "585,創Q space-高雄夢時代店,07-821-2551,高雄市前鎮區中華五路789號2樓 (夢時代購物中心),2026/10/25,14:30,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-09-1300-金寶貝童車玩具城-588",
+    "id": "b4-g3-2026-09-2026-09-09-1300-金寶貝童車玩具城-586",
     "tier": "G3",
     "venueName": "金寶貝童車玩具城",
     "venueAddress": "新竹市東區三民里民族路137號",
@@ -19512,11 +19484,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "588,金寶貝童車玩具城,03-543-8569,新竹市東區三民里民族路137號,2026/9/9,13:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "586,金寶貝童車玩具城,03-543-8569,新竹市東區三民里民族路137號,2026/9/9,13:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-23-1300-金寶貝童車玩具城-589",
+    "id": "b4-g3-2026-09-2026-09-23-1300-金寶貝童車玩具城-587",
     "tier": "G3",
     "venueName": "金寶貝童車玩具城",
     "venueAddress": "新竹市東區三民里民族路137號",
@@ -19526,11 +19498,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "589,金寶貝童車玩具城,03-543-8569,新竹市東區三民里民族路137號,2026/9/23,13:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "587,金寶貝童車玩具城,03-543-8569,新竹市東區三民里民族路137號,2026/9/23,13:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-07-1300-金寶貝童車玩具城-590",
+    "id": "b4-g3-2026-09-2026-10-07-1300-金寶貝童車玩具城-588",
     "tier": "G3",
     "venueName": "金寶貝童車玩具城",
     "venueAddress": "新竹市東區三民里民族路137號",
@@ -19540,11 +19512,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "590,金寶貝童車玩具城,03-543-8569,新竹市東區三民里民族路137號,2026/10/7,13:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "588,金寶貝童車玩具城,03-543-8569,新竹市東區三民里民族路137號,2026/10/7,13:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-21-1300-金寶貝童車玩具城-591",
+    "id": "b4-g3-2026-09-2026-10-21-1300-金寶貝童車玩具城-589",
     "tier": "G3",
     "venueName": "金寶貝童車玩具城",
     "venueAddress": "新竹市東區三民里民族路137號",
@@ -19554,11 +19526,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "591,金寶貝童車玩具城,03-543-8569,新竹市東區三民里民族路137號,2026/10/21,13:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "589,金寶貝童車玩具城,03-543-8569,新竹市東區三民里民族路137號,2026/10/21,13:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-05-1900-金門-胖豬珠-胖基地pgd-592",
+    "id": "b4-g3-2026-09-2026-09-05-1900-金門-胖豬珠-胖基地pgd-590",
     "tier": "G3",
     "venueName": "金門-胖豬珠(胖基地PGD)",
     "venueAddress": "金門縣金城鎮民生路27巷1號",
@@ -19568,11 +19540,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "592,金門-胖豬珠(胖基地PGD),0963-377-223,金門縣金城鎮民生路27巷1號,2026/9/5,19:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "590,金門-胖豬珠(胖基地PGD),0963-377-223,金門縣金城鎮民生路27巷1號,2026/9/5,19:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1900-金門-胖豬珠-胖基地pgd-593",
+    "id": "b4-g3-2026-09-2026-09-19-1900-金門-胖豬珠-胖基地pgd-591",
     "tier": "G3",
     "venueName": "金門-胖豬珠(胖基地PGD)",
     "venueAddress": "金門縣金城鎮民生路27巷1號",
@@ -19582,11 +19554,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "593,金門-胖豬珠(胖基地PGD),0963-377-223,金門縣金城鎮民生路27巷1號,2026/9/19,19:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "591,金門-胖豬珠(胖基地PGD),0963-377-223,金門縣金城鎮民生路27巷1號,2026/9/19,19:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-10-1900-金門-胖豬珠-胖基地pgd-594",
+    "id": "b4-g3-2026-09-2026-10-10-1900-金門-胖豬珠-胖基地pgd-592",
     "tier": "G3",
     "venueName": "金門-胖豬珠(胖基地PGD)",
     "venueAddress": "金門縣金城鎮民生路27巷1號",
@@ -19596,11 +19568,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "594,金門-胖豬珠(胖基地PGD),0963-377-223,金門縣金城鎮民生路27巷1號,2026/10/10,19:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "592,金門-胖豬珠(胖基地PGD),0963-377-223,金門縣金城鎮民生路27巷1號,2026/10/10,19:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1900-金門-胖豬珠-胖基地pgd-595",
+    "id": "b4-g3-2026-09-2026-10-17-1900-金門-胖豬珠-胖基地pgd-593",
     "tier": "G3",
     "venueName": "金門-胖豬珠(胖基地PGD)",
     "venueAddress": "金門縣金城鎮民生路27巷1號",
@@ -19610,11 +19582,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "595,金門-胖豬珠(胖基地PGD),0963-377-223,金門縣金城鎮民生路27巷1號,2026/10/17,19:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "593,金門-胖豬珠(胖基地PGD),0963-377-223,金門縣金城鎮民生路27巷1號,2026/10/17,19:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-02-1900-孩子玩伴-關埔店-596",
+    "id": "b4-g3-2026-09-2026-09-02-1900-孩子玩伴-關埔店-594",
     "tier": "G3",
     "venueName": "孩子玩伴-關埔店",
     "venueAddress": "新竹市東區關新路85號",
@@ -19624,11 +19596,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "596, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/9/2,19:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "594, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/9/2,19:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-09-1900-孩子玩伴-關埔店-597",
+    "id": "b4-g3-2026-09-2026-09-09-1900-孩子玩伴-關埔店-595",
     "tier": "G3",
     "venueName": "孩子玩伴-關埔店",
     "venueAddress": "新竹市東區關新路85號",
@@ -19638,11 +19610,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "597, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/9/9,19:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "595, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/9/9,19:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-23-1900-孩子玩伴-關埔店-598",
+    "id": "b4-g3-2026-09-2026-09-23-1900-孩子玩伴-關埔店-596",
     "tier": "G3",
     "venueName": "孩子玩伴-關埔店",
     "venueAddress": "新竹市東區關新路85號",
@@ -19652,11 +19624,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "598, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/9/23,19:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "596, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/9/23,19:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-30-1900-孩子玩伴-關埔店-599",
+    "id": "b4-g3-2026-09-2026-09-30-1900-孩子玩伴-關埔店-597",
     "tier": "G3",
     "venueName": "孩子玩伴-關埔店",
     "venueAddress": "新竹市東區關新路85號",
@@ -19666,11 +19638,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "599, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/9/30,19:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "597, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/9/30,19:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-07-1900-孩子玩伴-關埔店-600",
+    "id": "b4-g3-2026-09-2026-10-07-1900-孩子玩伴-關埔店-598",
     "tier": "G3",
     "venueName": "孩子玩伴-關埔店",
     "venueAddress": "新竹市東區關新路85號",
@@ -19680,11 +19652,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "600, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/10/7,19:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "598, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/10/7,19:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-14-1900-孩子玩伴-關埔店-601",
+    "id": "b4-g3-2026-09-2026-10-14-1900-孩子玩伴-關埔店-599",
     "tier": "G3",
     "venueName": "孩子玩伴-關埔店",
     "venueAddress": "新竹市東區關新路85號",
@@ -19694,11 +19666,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "601, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/10/14,19:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "599, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/10/14,19:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-21-1900-孩子玩伴-關埔店-602",
+    "id": "b4-g3-2026-09-2026-10-21-1900-孩子玩伴-關埔店-600",
     "tier": "G3",
     "venueName": "孩子玩伴-關埔店",
     "venueAddress": "新竹市東區關新路85號",
@@ -19708,11 +19680,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "602, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/10/21,19:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "600, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/10/21,19:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-28-1900-孩子玩伴-關埔店-603",
+    "id": "b4-g3-2026-09-2026-10-28-1900-孩子玩伴-關埔店-601",
     "tier": "G3",
     "venueName": "孩子玩伴-關埔店",
     "venueAddress": "新竹市東區關新路85號",
@@ -19722,11 +19694,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "603, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/10/28,19:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "601, 孩子玩伴-關埔店,36667686,新竹市東區關新路85號,2026/10/28,19:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-01-1900-孩子玩伴-香山店-604",
+    "id": "b4-g3-2026-09-2026-09-01-1900-孩子玩伴-香山店-602",
     "tier": "G3",
     "venueName": "孩子玩伴-香山店",
     "venueAddress": "新竹市香山區牛埔東路188號",
@@ -19736,11 +19708,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "604,孩子玩伴-香山店,35309900,新竹市香山區牛埔東路188號,2026/9/1,19:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "602,孩子玩伴-香山店,35309900,新竹市香山區牛埔東路188號,2026/9/1,19:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-15-1900-孩子玩伴-香山店-605",
+    "id": "b4-g3-2026-09-2026-09-15-1900-孩子玩伴-香山店-603",
     "tier": "G3",
     "venueName": "孩子玩伴-香山店",
     "venueAddress": "新竹市香山區牛埔東路188號",
@@ -19750,11 +19722,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "605,孩子玩伴-香山店,35309900,新竹市香山區牛埔東路188號,2026/9/15,19:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "603,孩子玩伴-香山店,35309900,新竹市香山區牛埔東路188號,2026/9/15,19:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-06-1900-孩子玩伴-香山店-606",
+    "id": "b4-g3-2026-09-2026-10-06-1900-孩子玩伴-香山店-604",
     "tier": "G3",
     "venueName": "孩子玩伴-香山店",
     "venueAddress": "新竹市香山區牛埔東路188號",
@@ -19764,11 +19736,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "606,孩子玩伴-香山店,35309900,新竹市香山區牛埔東路188號,2026/10/6,19:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "604,孩子玩伴-香山店,35309900,新竹市香山區牛埔東路188號,2026/10/6,19:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-27-1900-孩子玩伴-香山店-607",
+    "id": "b4-g3-2026-09-2026-10-27-1900-孩子玩伴-香山店-605",
     "tier": "G3",
     "venueName": "孩子玩伴-香山店",
     "venueAddress": "新竹市香山區牛埔東路188號",
@@ -19778,11 +19750,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "607,孩子玩伴-香山店,35309900,新竹市香山區牛埔東路188號,2026/10/27,19:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "605,孩子玩伴-香山店,35309900,新竹市香山區牛埔東路188號,2026/10/27,19:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1300-孩子玩伴-竹北店-608",
+    "id": "b4-g3-2026-09-2026-09-06-1300-孩子玩伴-竹北店-606",
     "tier": "G3",
     "venueName": "孩子玩伴-竹北店",
     "venueAddress": "新竹縣竹北市縣政二路157號",
@@ -19792,11 +19764,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "608,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/9/6,13:00,32,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "606,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/9/6,13:00,32,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1500-孩子玩伴-竹北店-609",
+    "id": "b4-g3-2026-09-2026-09-06-1500-孩子玩伴-竹北店-607",
     "tier": "G3",
     "venueName": "孩子玩伴-竹北店",
     "venueAddress": "新竹縣竹北市縣政二路157號",
@@ -19806,11 +19778,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "609,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/9/6,15:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "607,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/9/6,15:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1300-孩子玩伴-竹北店-610",
+    "id": "b4-g3-2026-09-2026-09-27-1300-孩子玩伴-竹北店-608",
     "tier": "G3",
     "venueName": "孩子玩伴-竹北店",
     "venueAddress": "新竹縣竹北市縣政二路157號",
@@ -19820,11 +19792,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "610,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/9/27,13:00,32,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "608,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/9/27,13:00,32,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1500-孩子玩伴-竹北店-611",
+    "id": "b4-g3-2026-09-2026-09-27-1500-孩子玩伴-竹北店-609",
     "tier": "G3",
     "venueName": "孩子玩伴-竹北店",
     "venueAddress": "新竹縣竹北市縣政二路157號",
@@ -19834,11 +19806,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "611,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/9/27,15:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "609,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/9/27,15:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1300-孩子玩伴-竹北店-612",
+    "id": "b4-g3-2026-09-2026-10-04-1300-孩子玩伴-竹北店-610",
     "tier": "G3",
     "venueName": "孩子玩伴-竹北店",
     "venueAddress": "新竹縣竹北市縣政二路157號",
@@ -19848,11 +19820,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "612,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/10/4,13:00,32,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "610,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/10/4,13:00,32,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1500-孩子玩伴-竹北店-613",
+    "id": "b4-g3-2026-09-2026-10-04-1500-孩子玩伴-竹北店-611",
     "tier": "G3",
     "venueName": "孩子玩伴-竹北店",
     "venueAddress": "新竹縣竹北市縣政二路157號",
@@ -19862,11 +19834,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "613,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/10/4,15:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "611,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/10/4,15:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1300-孩子玩伴-竹北店-614",
+    "id": "b4-g3-2026-09-2026-10-25-1300-孩子玩伴-竹北店-612",
     "tier": "G3",
     "venueName": "孩子玩伴-竹北店",
     "venueAddress": "新竹縣竹北市縣政二路157號",
@@ -19876,11 +19848,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "614,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/10/25,13:00,32,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "612,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/10/25,13:00,32,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1500-孩子玩伴-竹北店-615",
+    "id": "b4-g3-2026-09-2026-10-25-1500-孩子玩伴-竹北店-613",
     "tier": "G3",
     "venueName": "孩子玩伴-竹北店",
     "venueAddress": "新竹縣竹北市縣政二路157號",
@@ -19890,11 +19862,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "615,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/10/25,15:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "613,孩子玩伴-竹北店,35586777,新竹縣竹北市縣政二路157號,2026/10/25,15:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1300-孩子玩伴頭份店-616",
+    "id": "b4-g3-2026-09-2026-09-19-1300-孩子玩伴頭份店-614",
     "tier": "G3",
     "venueName": "孩子玩伴頭份店",
     "venueAddress": "苗栗縣頭份市中華路1381號",
@@ -19904,11 +19876,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "616,孩子玩伴頭份店,37695138,苗栗縣頭份市中華路1381號,2026/9/19,13:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "614,孩子玩伴頭份店,37695138,苗栗縣頭份市中華路1381號,2026/9/19,13:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1500-孩子玩伴頭份店-617",
+    "id": "b4-g3-2026-09-2026-09-19-1500-孩子玩伴頭份店-615",
     "tier": "G3",
     "venueName": "孩子玩伴頭份店",
     "venueAddress": "苗栗縣頭份市中華路1381號",
@@ -19918,11 +19890,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "617,孩子玩伴頭份店,37695138,苗栗縣頭份市中華路1381號,2026/9/19,15:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "615,孩子玩伴頭份店,37695138,苗栗縣頭份市中華路1381號,2026/9/19,15:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1300-孩子玩伴頭份店-618",
+    "id": "b4-g3-2026-09-2026-10-18-1300-孩子玩伴頭份店-616",
     "tier": "G3",
     "venueName": "孩子玩伴頭份店",
     "venueAddress": "苗栗縣頭份市中華路1381號",
@@ -19932,11 +19904,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "618,孩子玩伴頭份店,37695138,苗栗縣頭份市中華路1381號,2026/10/18,13:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "616,孩子玩伴頭份店,37695138,苗栗縣頭份市中華路1381號,2026/10/18,13:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1500-孩子玩伴頭份店-619",
+    "id": "b4-g3-2026-09-2026-10-18-1500-孩子玩伴頭份店-617",
     "tier": "G3",
     "venueName": "孩子玩伴頭份店",
     "venueAddress": "苗栗縣頭份市中華路1381號",
@@ -19946,11 +19918,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "619,孩子玩伴頭份店,37695138,苗栗縣頭份市中華路1381號,2026/10/18,15:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "617,孩子玩伴頭份店,37695138,苗栗縣頭份市中華路1381號,2026/10/18,15:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-0800-嬡迪-620",
+    "id": "b4-g3-2026-09-2026-09-13-0800-嬡迪-618",
     "tier": "G3",
     "venueName": "嬡迪",
     "venueAddress": "桃園市大園區大興路107號",
@@ -19960,11 +19932,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "620,嬡迪,955673615,桃園市大園區大興路107號,2026/9/13,8:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "618,嬡迪,955673615,桃園市大園區大興路107號,2026/9/13,8:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1000-嬡迪-621",
+    "id": "b4-g3-2026-09-2026-09-13-1000-嬡迪-619",
     "tier": "G3",
     "venueName": "嬡迪",
     "venueAddress": "桃園市大園區大興路107號",
@@ -19974,11 +19946,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "621,嬡迪,955673615,桃園市大園區大興路107號,2026/9/13,10:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "619,嬡迪,955673615,桃園市大園區大興路107號,2026/9/13,10:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1400-嬡迪-622",
+    "id": "b4-g3-2026-09-2026-09-13-1400-嬡迪-620",
     "tier": "G3",
     "venueName": "嬡迪",
     "venueAddress": "桃園市大園區大興路107號",
@@ -19988,11 +19960,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "622,嬡迪,955673615,桃園市大園區大興路107號,2026/9/13,14:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "620,嬡迪,955673615,桃園市大園區大興路107號,2026/9/13,14:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1600-嬡迪-623",
+    "id": "b4-g3-2026-09-2026-09-13-1600-嬡迪-621",
     "tier": "G3",
     "venueName": "嬡迪",
     "venueAddress": "桃園市大園區大興路107號",
@@ -20002,11 +19974,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "623,嬡迪,955673615,桃園市大園區大興路107號,2026/9/13,16:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "621,嬡迪,955673615,桃園市大園區大興路107號,2026/9/13,16:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1500-無限領域-624",
+    "id": "b4-g3-2026-09-2026-09-12-1500-無限領域-622",
     "tier": "G3",
     "venueName": "無限領域",
     "venueAddress": "臺南市東區北門路一段62號",
@@ -20016,11 +19988,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "624,無限領域,06-221-5472,臺南市東區北門路一段62號,2026/9/12,15:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "622,無限領域,06-221-5472,臺南市東區北門路一段62號,2026/9/12,15:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1500-無限領域-625",
+    "id": "b4-g3-2026-09-2026-09-19-1500-無限領域-623",
     "tier": "G3",
     "venueName": "無限領域",
     "venueAddress": "臺南市東區北門路一段62號",
@@ -20030,11 +20002,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "625,無限領域,06-221-5472,臺南市東區北門路一段62號,2026/9/19,15:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "623,無限領域,06-221-5472,臺南市東區北門路一段62號,2026/9/19,15:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1500-無限領域-626",
+    "id": "b4-g3-2026-09-2026-10-03-1500-無限領域-624",
     "tier": "G3",
     "venueName": "無限領域",
     "venueAddress": "臺南市東區北門路一段62號",
@@ -20044,11 +20016,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "626,無限領域,06-221-5472,臺南市東區北門路一段62號,2026/10/3,15:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "624,無限領域,06-221-5472,臺南市東區北門路一段62號,2026/10/3,15:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1500-無限領域-627",
+    "id": "b4-g3-2026-09-2026-10-17-1500-無限領域-625",
     "tier": "G3",
     "venueName": "無限領域",
     "venueAddress": "臺南市東區北門路一段62號",
@@ -20058,11 +20030,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "627,無限領域,06-221-5472,臺南市東區北門路一段62號,2026/10/17,15:00,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "625,無限領域,06-221-5472,臺南市東區北門路一段62號,2026/10/17,15:00,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1040-金佳商行-628",
+    "id": "b4-g3-2026-09-2026-09-12-1040-金佳商行-626",
     "tier": "G3",
     "venueName": "金佳商行",
     "venueAddress": "台南市佳里區中和街87號",
@@ -20072,11 +20044,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "628,金佳商行,06-722-7692,台南市佳里區中和街87號,2026/9/12,10:40,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "626,金佳商行,06-722-7692,台南市佳里區中和街87號,2026/9/12,10:40,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1040-金佳商行-629",
+    "id": "b4-g3-2026-09-2026-09-19-1040-金佳商行-627",
     "tier": "G3",
     "venueName": "金佳商行",
     "venueAddress": "台南市佳里區中和街87號",
@@ -20086,11 +20058,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "629,金佳商行,06-722-7692,台南市佳里區中和街87號,2026/9/19,10:40,16,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "627,金佳商行,06-722-7692,台南市佳里區中和街87號,2026/9/19,10:40,16,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1040-金佳商行-630",
+    "id": "b4-g3-2026-09-2026-10-03-1040-金佳商行-628",
     "tier": "G3",
     "venueName": "金佳商行",
     "venueAddress": "台南市佳里區中和街87號",
@@ -20100,11 +20072,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "630,金佳商行,06-722-7692,台南市佳里區中和街87號,2026/10/3,10:40,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "628,金佳商行,06-722-7692,台南市佳里區中和街87號,2026/10/3,10:40,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-24-1040-金佳商行-631",
+    "id": "b4-g3-2026-09-2026-10-24-1040-金佳商行-629",
     "tier": "G3",
     "venueName": "金佳商行",
     "venueAddress": "台南市佳里區中和街87號",
@@ -20114,11 +20086,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "631,金佳商行,06-722-7692,台南市佳里區中和街87號,2026/10/24,10:40,16,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "629,金佳商行,06-722-7692,台南市佳里區中和街87號,2026/10/24,10:40,16,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-10-1930-雄大書局-休閒館-632",
+    "id": "b4-g3-2026-09-2026-09-10-1930-雄大書局-休閒館-630",
     "tier": "G3",
     "venueName": "雄大書局-休閒館",
     "venueAddress": "高雄市前金區中華四路312號",
@@ -20128,11 +20100,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "632,雄大書局-休閒館,07-221-0012,高雄市前金區中華四路312號,2026/9/10,19:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "630,雄大書局-休閒館,07-221-0012,高雄市前金區中華四路312號,2026/9/10,19:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-24-1930-雄大書局-休閒館-633",
+    "id": "b4-g3-2026-09-2026-09-24-1930-雄大書局-休閒館-631",
     "tier": "G3",
     "venueName": "雄大書局-休閒館",
     "venueAddress": "高雄市前金區中華四路312號",
@@ -20142,11 +20114,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "633,雄大書局-休閒館,07-221-0012,高雄市前金區中華四路312號,2026/9/24,19:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "631,雄大書局-休閒館,07-221-0012,高雄市前金區中華四路312號,2026/9/24,19:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-08-1930-雄大書局-休閒館-634",
+    "id": "b4-g3-2026-09-2026-10-08-1930-雄大書局-休閒館-632",
     "tier": "G3",
     "venueName": "雄大書局-休閒館",
     "venueAddress": "高雄市前金區中華四路312號",
@@ -20156,11 +20128,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "634,雄大書局-休閒館,07-221-0012,高雄市前金區中華四路312號,2026/10/8,19:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "632,雄大書局-休閒館,07-221-0012,高雄市前金區中華四路312號,2026/10/8,19:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-22-1930-雄大書局-休閒館-635",
+    "id": "b4-g3-2026-09-2026-10-22-1930-雄大書局-休閒館-633",
     "tier": "G3",
     "venueName": "雄大書局-休閒館",
     "venueAddress": "高雄市前金區中華四路312號",
@@ -20170,11 +20142,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "635,雄大書局-休閒館,07-221-0012,高雄市前金區中華四路312號,2026/10/22,19:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "633,雄大書局-休閒館,07-221-0012,高雄市前金區中華四路312號,2026/10/22,19:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-04-2000-玖零玩具-636",
+    "id": "b4-g3-2026-09-2026-09-04-2000-玖零玩具-634",
     "tier": "G3",
     "venueName": "玖零玩具",
     "venueAddress": "台南市中西區民權路一段1號",
@@ -20184,11 +20156,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "636,玖零玩具,06-220-8911,台南市中西區民權路一段1號,2026/9/4,20:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "634,玖零玩具,06-220-8911,台南市中西區民權路一段1號,2026/9/4,20:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-18-2000-玖零玩具-637",
+    "id": "b4-g3-2026-09-2026-09-18-2000-玖零玩具-635",
     "tier": "G3",
     "venueName": "玖零玩具",
     "venueAddress": "台南市中西區民權路一段1號",
@@ -20198,11 +20170,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "637,玖零玩具,06-220-8911,台南市中西區民權路一段1號,2026/9/18,20:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "635,玖零玩具,06-220-8911,台南市中西區民權路一段1號,2026/9/18,20:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-02-2000-玖零玩具-638",
+    "id": "b4-g3-2026-09-2026-10-02-2000-玖零玩具-636",
     "tier": "G3",
     "venueName": "玖零玩具",
     "venueAddress": "台南市中西區民權路一段1號",
@@ -20212,11 +20184,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "638,玖零玩具,06-220-8911,台南市中西區民權路一段1號,2026/10/2,20:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "636,玖零玩具,06-220-8911,台南市中西區民權路一段1號,2026/10/2,20:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-16-2000-玖零玩具-639",
+    "id": "b4-g3-2026-09-2026-10-16-2000-玖零玩具-637",
     "tier": "G3",
     "venueName": "玖零玩具",
     "venueAddress": "台南市中西區民權路一段1號",
@@ -20226,11 +20198,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "639,玖零玩具,06-220-8911,台南市中西區民權路一段1號,2026/10/16,20:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "637,玖零玩具,06-220-8911,台南市中西區民權路一段1號,2026/10/16,20:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-04-2230-怪獸電玩-640",
+    "id": "b4-g3-2026-09-2026-09-04-2230-怪獸電玩-638",
     "tier": "G3",
     "venueName": "怪獸電玩",
     "venueAddress": "新北市永和區中山路一段146號",
@@ -20240,11 +20212,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "640,怪獸電玩,0902297207,新北市永和區中山路一段146號,2026/9/4,22:30,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "638,怪獸電玩,0902297207,新北市永和區中山路一段146號,2026/9/4,22:30,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-22-2130-怪獸電玩-641",
+    "id": "b4-g3-2026-09-2026-09-22-2130-怪獸電玩-639",
     "tier": "G3",
     "venueName": "怪獸電玩",
     "venueAddress": "新北市永和區中山路一段146號",
@@ -20254,11 +20226,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "641,怪獸電玩,0902297207,新北市永和區中山路一段146號,2026/9/22,21:30,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "639,怪獸電玩,0902297207,新北市永和區中山路一段146號,2026/9/22,21:30,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-06-2200-怪獸電玩-642",
+    "id": "b4-g3-2026-09-2026-10-06-2200-怪獸電玩-640",
     "tier": "G3",
     "venueName": "怪獸電玩",
     "venueAddress": "新北市永和區中山路一段146號",
@@ -20268,11 +20240,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "642,怪獸電玩,0902297207,新北市永和區中山路一段146號,2026/10/6,22:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "640,怪獸電玩,0902297207,新北市永和區中山路一段146號,2026/10/6,22:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-20-2200-怪獸電玩-643",
+    "id": "b4-g3-2026-09-2026-10-20-2200-怪獸電玩-641",
     "tier": "G3",
     "venueName": "怪獸電玩",
     "venueAddress": "新北市永和區中山路一段146號",
@@ -20282,11 +20254,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "643,怪獸電玩,0902297207,新北市永和區中山路一段146號,2026/10/20,22:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "641,怪獸電玩,0902297207,新北市永和區中山路一段146號,2026/10/20,22:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1500-芃芃玩具店-644",
+    "id": "b4-g3-2026-09-2026-09-06-1500-芃芃玩具店-642",
     "tier": "G3",
     "venueName": "芃芃玩具店",
     "venueAddress": "台北市大同區太原路100號",
@@ -20296,11 +20268,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "644,芃芃玩具店,25565505,台北市大同區太原路100號,2026/9/6,15:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "642,芃芃玩具店,25565505,台北市大同區太原路100號,2026/9/6,15:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1700-芃芃玩具店-645",
+    "id": "b4-g3-2026-09-2026-09-06-1700-芃芃玩具店-643",
     "tier": "G3",
     "venueName": "芃芃玩具店",
     "venueAddress": "台北市大同區太原路100號",
@@ -20310,11 +20282,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "645,芃芃玩具店,25565505,台北市大同區太原路100號,2026/9/6,17:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "643,芃芃玩具店,25565505,台北市大同區太原路100號,2026/9/6,17:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1500-芃芃玩具店-646",
+    "id": "b4-g3-2026-09-2026-09-20-1500-芃芃玩具店-644",
     "tier": "G3",
     "venueName": "芃芃玩具店",
     "venueAddress": "台北市大同區太原路100號",
@@ -20324,11 +20296,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "646,芃芃玩具店,25565505,台北市大同區太原路100號,2026/9/20,15:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "644,芃芃玩具店,25565505,台北市大同區太原路100號,2026/9/20,15:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1700-芃芃玩具店-647",
+    "id": "b4-g3-2026-09-2026-09-20-1700-芃芃玩具店-645",
     "tier": "G3",
     "venueName": "芃芃玩具店",
     "venueAddress": "台北市大同區太原路100號",
@@ -20338,11 +20310,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "647,芃芃玩具店,25565505,台北市大同區太原路100號,2026/9/20,17:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "645,芃芃玩具店,25565505,台北市大同區太原路100號,2026/9/20,17:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1500-芃芃玩具店-648",
+    "id": "b4-g3-2026-09-2026-10-04-1500-芃芃玩具店-646",
     "tier": "G3",
     "venueName": "芃芃玩具店",
     "venueAddress": "台北市大同區太原路100號",
@@ -20352,11 +20324,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "648,芃芃玩具店,25565505,台北市大同區太原路100號,2026/10/4,15:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "646,芃芃玩具店,25565505,台北市大同區太原路100號,2026/10/4,15:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1700-芃芃玩具店-649",
+    "id": "b4-g3-2026-09-2026-10-04-1700-芃芃玩具店-647",
     "tier": "G3",
     "venueName": "芃芃玩具店",
     "venueAddress": "台北市大同區太原路100號",
@@ -20366,11 +20338,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "649,芃芃玩具店,25565505,台北市大同區太原路100號,2026/10/4,17:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "647,芃芃玩具店,25565505,台北市大同區太原路100號,2026/10/4,17:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1500-芃芃玩具店-650",
+    "id": "b4-g3-2026-09-2026-10-18-1500-芃芃玩具店-648",
     "tier": "G3",
     "venueName": "芃芃玩具店",
     "venueAddress": "台北市大同區太原路100號",
@@ -20380,11 +20352,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "650,芃芃玩具店,25565505,台北市大同區太原路100號,2026/10/18,15:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "648,芃芃玩具店,25565505,台北市大同區太原路100號,2026/10/18,15:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1700-芃芃玩具店-651",
+    "id": "b4-g3-2026-09-2026-10-18-1700-芃芃玩具店-649",
     "tier": "G3",
     "venueName": "芃芃玩具店",
     "venueAddress": "台北市大同區太原路100號",
@@ -20394,11 +20366,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "651,芃芃玩具店,25565505,台北市大同區太原路100號,2026/10/18,17:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "649,芃芃玩具店,25565505,台北市大同區太原路100號,2026/10/18,17:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-05-1930-康順企業行-652",
+    "id": "b4-g3-2026-09-2026-09-05-1930-康順企業行-650",
     "tier": "G3",
     "venueName": "康順企業行",
     "venueAddress": "新北市三重區仁化街5號1樓",
@@ -20408,11 +20380,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "652,康順企業行,02-2987-7373,新北市三重區仁化街5號1樓,2026/9/5,19:30,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "650,康順企業行,02-2987-7373,新北市三重區仁化街5號1樓,2026/9/5,19:30,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1930-康順企業行-653",
+    "id": "b4-g3-2026-09-2026-09-12-1930-康順企業行-651",
     "tier": "G3",
     "venueName": "康順企業行",
     "venueAddress": "新北市三重區仁化街5號1樓",
@@ -20422,11 +20394,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "653,康順企業行,02-2987-7373,新北市三重區仁化街5號1樓,2026/9/12,19:30,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "651,康順企業行,02-2987-7373,新北市三重區仁化街5號1樓,2026/9/12,19:30,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1930-康順企業行-654",
+    "id": "b4-g3-2026-09-2026-10-03-1930-康順企業行-652",
     "tier": "G3",
     "venueName": "康順企業行",
     "venueAddress": "新北市三重區仁化街5號1樓",
@@ -20436,11 +20408,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "654,康順企業行,02-2987-7373,新北市三重區仁化街5號1樓,2026/10/3,19:30,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "652,康順企業行,02-2987-7373,新北市三重區仁化街5號1樓,2026/10/3,19:30,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-10-1930-康順企業行-655",
+    "id": "b4-g3-2026-09-2026-10-10-1930-康順企業行-653",
     "tier": "G3",
     "venueName": "康順企業行",
     "venueAddress": "新北市三重區仁化街5號1樓",
@@ -20450,11 +20422,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "655,康順企業行,02-2987-7373,新北市三重區仁化街5號1樓,2026/10/10,19:30,32,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "653,康順企業行,02-2987-7373,新北市三重區仁化街5號1樓,2026/10/10,19:30,32,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-05-1400-蒙面加菲貓-656",
+    "id": "b4-g3-2026-09-2026-09-05-1400-蒙面加菲貓-654",
     "tier": "G3",
     "venueName": "蒙面加菲貓",
     "venueAddress": "114臺北市內湖區港華街89號",
@@ -20464,11 +20436,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "656,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/9/5,14:00,16,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "654,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/9/5,14:00,16,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1400-蒙面加菲貓-657",
+    "id": "b4-g3-2026-09-2026-09-06-1400-蒙面加菲貓-655",
     "tier": "G3",
     "venueName": "蒙面加菲貓",
     "venueAddress": "114臺北市內湖區港華街89號",
@@ -20478,11 +20450,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "657,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/9/6,14:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "655,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/9/6,14:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1400-蒙面加菲貓-658",
+    "id": "b4-g3-2026-09-2026-09-19-1400-蒙面加菲貓-656",
     "tier": "G3",
     "venueName": "蒙面加菲貓",
     "venueAddress": "114臺北市內湖區港華街89號",
@@ -20492,11 +20464,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "658,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/9/19,14:00,16,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "656,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/9/19,14:00,16,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1400-蒙面加菲貓-659",
+    "id": "b4-g3-2026-09-2026-09-20-1400-蒙面加菲貓-657",
     "tier": "G3",
     "venueName": "蒙面加菲貓",
     "venueAddress": "114臺北市內湖區港華街89號",
@@ -20506,11 +20478,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "659,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/9/20,14:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "657,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/9/20,14:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1400-蒙面加菲貓-660",
+    "id": "b4-g3-2026-09-2026-10-03-1400-蒙面加菲貓-658",
     "tier": "G3",
     "venueName": "蒙面加菲貓",
     "venueAddress": "114臺北市內湖區港華街89號",
@@ -20520,11 +20492,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "660,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/10/3,14:00,16,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "658,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/10/3,14:00,16,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1400-蒙面加菲貓-661",
+    "id": "b4-g3-2026-09-2026-10-04-1400-蒙面加菲貓-659",
     "tier": "G3",
     "venueName": "蒙面加菲貓",
     "venueAddress": "114臺北市內湖區港華街89號",
@@ -20534,11 +20506,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "661,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/10/4,14:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "659,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/10/4,14:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1400-蒙面加菲貓-662",
+    "id": "b4-g3-2026-09-2026-10-17-1400-蒙面加菲貓-660",
     "tier": "G3",
     "venueName": "蒙面加菲貓",
     "venueAddress": "114臺北市內湖區港華街89號",
@@ -20548,11 +20520,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "662,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/10/17,14:00,16,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "660,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/10/17,14:00,16,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1400-蒙面加菲貓-663",
+    "id": "b4-g3-2026-09-2026-10-18-1400-蒙面加菲貓-661",
     "tier": "G3",
     "venueName": "蒙面加菲貓",
     "venueAddress": "114臺北市內湖區港華街89號",
@@ -20562,11 +20534,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "663,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/10/18,14:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "661,蒙面加菲貓,0918 087 752,114臺北市內湖區港華街89號,2026/10/18,14:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1630-頑聚plus-664",
+    "id": "b4-g3-2026-09-2026-09-06-1630-頑聚plus-662",
     "tier": "G3",
     "venueName": "頑聚PLUS",
     "venueAddress": "新北市蘆洲區民權路6-1號",
@@ -20576,11 +20548,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "664,頑聚PLUS,0927152788,新北市蘆洲區民權路6-1號,2026/9/6,16:30,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "662,頑聚PLUS,0927152788,新北市蘆洲區民權路6-1號,2026/9/6,16:30,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1400-頑聚plus-665",
+    "id": "b4-g3-2026-09-2026-09-13-1400-頑聚plus-663",
     "tier": "G3",
     "venueName": "頑聚PLUS",
     "venueAddress": "新北市蘆洲區民權路6-1號",
@@ -20590,11 +20562,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "665,頑聚PLUS,0927152788,新北市蘆洲區民權路6-1號,2026/9/13,14:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "663,頑聚PLUS,0927152788,新北市蘆洲區民權路6-1號,2026/9/13,14:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1400-頑聚plus-666",
+    "id": "b4-g3-2026-09-2026-10-04-1400-頑聚plus-664",
     "tier": "G3",
     "venueName": "頑聚PLUS",
     "venueAddress": "新北市蘆洲區民權路6-1號",
@@ -20604,11 +20576,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "666,頑聚PLUS,0927152788,新北市蘆洲區民權路6-1號,2026/10/4,14:00,16,線上,通常 (6~12歲)\r",
+    "sourceExcerpt": "664,頑聚PLUS,0927152788,新北市蘆洲區民權路6-1號,2026/10/4,14:00,16,線上,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1400-頑聚plus-667",
+    "id": "b4-g3-2026-09-2026-10-11-1400-頑聚plus-665",
     "tier": "G3",
     "venueName": "頑聚PLUS",
     "venueAddress": "新北市蘆洲區民權路6-1號",
@@ -20618,11 +20590,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "667,頑聚PLUS,0927152788,新北市蘆洲區民權路6-1號,2026/10/11,14:00,16,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "665,頑聚PLUS,0927152788,新北市蘆洲區民權路6-1號,2026/10/11,14:00,16,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1600-瘋桌遊楠梓店-668",
+    "id": "b4-g3-2026-09-2026-09-06-1600-瘋桌遊楠梓店-666",
     "tier": "G3",
     "venueName": "瘋桌遊楠梓店",
     "venueAddress": "高雄市楠梓區宏昌街2號",
@@ -20632,11 +20604,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "668,瘋桌遊楠梓店,973366968,高雄市楠梓區宏昌街2號,2026/9/6,16:00,64,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "666,瘋桌遊楠梓店,973366968,高雄市楠梓區宏昌街2號,2026/9/6,16:00,64,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1600-瘋桌遊楠梓店-669",
+    "id": "b4-g3-2026-09-2026-09-20-1600-瘋桌遊楠梓店-667",
     "tier": "G3",
     "venueName": "瘋桌遊楠梓店",
     "venueAddress": "高雄市楠梓區宏昌街2號",
@@ -20646,11 +20618,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "669,瘋桌遊楠梓店,973366969,高雄市楠梓區宏昌街2號,2026/9/20,16:00,64,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "667,瘋桌遊楠梓店,973366969,高雄市楠梓區宏昌街2號,2026/9/20,16:00,64,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-05-1330-雄大書局-鼎山店-670",
+    "id": "b4-g3-2026-09-2026-09-05-1330-雄大書局-鼎山店-668",
     "tier": "G3",
     "venueName": "雄大書局-鼎山店",
     "venueAddress": "高雄市三民區灣成里鼎山街217號",
@@ -20660,11 +20632,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "670,雄大書局-鼎山店 ,73943135,高雄市三民區灣成里鼎山街217號,2026/9/5,13:30,16,線上(抽選),通常 (6~12歲)\r",
+    "sourceExcerpt": "668,雄大書局-鼎山店 ,73943135,高雄市三民區灣成里鼎山街217號,2026/9/5,13:30,16,線上(抽選),通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1330-雄大書局-鼎山店-671",
+    "id": "b4-g3-2026-09-2026-09-12-1330-雄大書局-鼎山店-669",
     "tier": "G3",
     "venueName": "雄大書局-鼎山店",
     "venueAddress": "高雄市三民區灣成里鼎山街217號",
@@ -20674,11 +20646,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "671,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/9/12,13:30,16,線上(抽選),通常 (6~12歲)\r",
+    "sourceExcerpt": "669,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/9/12,13:30,16,線上(抽選),通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1330-雄大書局-鼎山店-672",
+    "id": "b4-g3-2026-09-2026-09-19-1330-雄大書局-鼎山店-670",
     "tier": "G3",
     "venueName": "雄大書局-鼎山店",
     "venueAddress": "高雄市三民區灣成里鼎山街217號",
@@ -20688,11 +20660,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "672,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/9/19,13:30,16,線上(抽選),公開 (6歲以上)\r",
+    "sourceExcerpt": "670,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/9/19,13:30,16,線上(抽選),公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1330-雄大書局-鼎山店-673",
+    "id": "b4-g3-2026-09-2026-09-26-1330-雄大書局-鼎山店-671",
     "tier": "G3",
     "venueName": "雄大書局-鼎山店",
     "venueAddress": "高雄市三民區灣成里鼎山街217號",
@@ -20702,11 +20674,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "673,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/9/26,13:30,16,線上(抽選),公開 (6歲以上)\r",
+    "sourceExcerpt": "671,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/9/26,13:30,16,線上(抽選),公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1330-雄大書局-鼎山店-674",
+    "id": "b4-g3-2026-09-2026-10-03-1330-雄大書局-鼎山店-672",
     "tier": "G3",
     "venueName": "雄大書局-鼎山店",
     "venueAddress": "高雄市三民區灣成里鼎山街217號",
@@ -20716,11 +20688,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "674,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/10/3,13:30,16,線上(抽選),通常 (6~12歲)\r",
+    "sourceExcerpt": "672,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/10/3,13:30,16,線上(抽選),通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-10-1330-雄大書局-鼎山店-675",
+    "id": "b4-g3-2026-09-2026-10-10-1330-雄大書局-鼎山店-673",
     "tier": "G3",
     "venueName": "雄大書局-鼎山店",
     "venueAddress": "高雄市三民區灣成里鼎山街217號",
@@ -20730,11 +20702,11 @@
     "registrationMethod": "online",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "675,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/10/10,13:30,16,線上(抽選),通常 (6~12歲)\r",
+    "sourceExcerpt": "673,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/10/10,13:30,16,線上(抽選),通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1330-雄大書局-鼎山店-676",
+    "id": "b4-g3-2026-09-2026-10-17-1330-雄大書局-鼎山店-674",
     "tier": "G3",
     "venueName": "雄大書局-鼎山店",
     "venueAddress": "高雄市三民區灣成里鼎山街217號",
@@ -20744,11 +20716,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "676,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/10/17,13:30,16,線上(抽選),公開 (6歲以上)\r",
+    "sourceExcerpt": "674,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/10/17,13:30,16,線上(抽選),公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-24-1330-雄大書局-鼎山店-677",
+    "id": "b4-g3-2026-09-2026-10-24-1330-雄大書局-鼎山店-675",
     "tier": "G3",
     "venueName": "雄大書局-鼎山店",
     "venueAddress": "高雄市三民區灣成里鼎山街217號",
@@ -20758,11 +20730,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "677,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/10/24,13:30,16,線上(抽選),公開 (6歲以上)\r",
+    "sourceExcerpt": "675,雄大書局-鼎山店 ,73943136,高雄市三民區灣成里鼎山街217號,2026/10/24,13:30,16,線上(抽選),公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1900-卡豆生活休閒館-678",
+    "id": "b4-g3-2026-09-2026-09-06-1900-卡豆生活休閒館-676",
     "tier": "G3",
     "venueName": "卡豆生活休閒館",
     "venueAddress": "高雄市岡山區中山北路100號",
@@ -20772,11 +20744,11 @@
     "registrationMethod": "either",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "678,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/9/6,19:00,64,皆可,公開 (6歲以上)\r",
+    "sourceExcerpt": "676,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/9/6,19:00,64,皆可,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1900-卡豆生活休閒館-679",
+    "id": "b4-g3-2026-09-2026-09-13-1900-卡豆生活休閒館-677",
     "tier": "G3",
     "venueName": "卡豆生活休閒館",
     "venueAddress": "高雄市岡山區中山北路100號",
@@ -20786,11 +20758,11 @@
     "registrationMethod": "either",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "679,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/9/13,19:00,64,皆可,公開 (6歲以上)\r",
+    "sourceExcerpt": "677,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/9/13,19:00,64,皆可,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1900-卡豆生活休閒館-680",
+    "id": "b4-g3-2026-09-2026-09-20-1900-卡豆生活休閒館-678",
     "tier": "G3",
     "venueName": "卡豆生活休閒館",
     "venueAddress": "高雄市岡山區中山北路100號",
@@ -20800,11 +20772,11 @@
     "registrationMethod": "either",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "680,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/9/20,19:00,64,皆可,通常 (6~12歲)\r",
+    "sourceExcerpt": "678,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/9/20,19:00,64,皆可,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1900-卡豆生活休閒館-681",
+    "id": "b4-g3-2026-09-2026-09-27-1900-卡豆生活休閒館-679",
     "tier": "G3",
     "venueName": "卡豆生活休閒館",
     "venueAddress": "高雄市岡山區中山北路100號",
@@ -20814,11 +20786,11 @@
     "registrationMethod": "either",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "681,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/9/27,19:00,64,皆可,通常 (6~12歲)\r",
+    "sourceExcerpt": "679,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/9/27,19:00,64,皆可,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1900-卡豆生活休閒館-682",
+    "id": "b4-g3-2026-09-2026-10-04-1900-卡豆生活休閒館-680",
     "tier": "G3",
     "venueName": "卡豆生活休閒館",
     "venueAddress": "高雄市岡山區中山北路100號",
@@ -20828,11 +20800,11 @@
     "registrationMethod": "either",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "682,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/10/4,19:00,64,皆可,公開 (6歲以上)\r",
+    "sourceExcerpt": "680,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/10/4,19:00,64,皆可,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1900-卡豆生活休閒館-683",
+    "id": "b4-g3-2026-09-2026-10-11-1900-卡豆生活休閒館-681",
     "tier": "G3",
     "venueName": "卡豆生活休閒館",
     "venueAddress": "高雄市岡山區中山北路100號",
@@ -20842,11 +20814,11 @@
     "registrationMethod": "either",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "683,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/10/11,19:00,64,皆可,公開 (6歲以上)\r",
+    "sourceExcerpt": "681,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/10/11,19:00,64,皆可,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1900-卡豆生活休閒館-684",
+    "id": "b4-g3-2026-09-2026-10-18-1900-卡豆生活休閒館-682",
     "tier": "G3",
     "venueName": "卡豆生活休閒館",
     "venueAddress": "高雄市岡山區中山北路100號",
@@ -20856,11 +20828,11 @@
     "registrationMethod": "either",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "684,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/10/18,19:00,64,皆可,通常 (6~12歲)\r",
+    "sourceExcerpt": "682,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/10/18,19:00,64,皆可,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1900-卡豆生活休閒館-685",
+    "id": "b4-g3-2026-09-2026-10-25-1900-卡豆生活休閒館-683",
     "tier": "G3",
     "venueName": "卡豆生活休閒館",
     "venueAddress": "高雄市岡山區中山北路100號",
@@ -20870,11 +20842,11 @@
     "registrationMethod": "either",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "685,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/10/25,19:00,64,皆可,通常 (6~12歲)\r",
+    "sourceExcerpt": "683,卡豆生活休閒館,07-6219775,高雄市岡山區中山北路100號,2026/10/25,19:00,64,皆可,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-05-1700-布魯思-嫩江店-686",
+    "id": "b4-g3-2026-09-2026-09-05-1700-布魯思-嫩江店-684",
     "tier": "G3",
     "venueName": "布魯思-嫩江店",
     "venueAddress": "高雄市三民區嫩江街74號2樓",
@@ -20884,11 +20856,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "686,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/9/5,17:00,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "684,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/9/5,17:00,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1700-布魯思-嫩江店-687",
+    "id": "b4-g3-2026-09-2026-09-19-1700-布魯思-嫩江店-685",
     "tier": "G3",
     "venueName": "布魯思-嫩江店",
     "venueAddress": "高雄市三民區嫩江街74號2樓",
@@ -20898,11 +20870,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "687,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/9/19,17:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "685,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/9/19,17:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1700-布魯思-嫩江店-688",
+    "id": "b4-g3-2026-09-2026-10-03-1700-布魯思-嫩江店-686",
     "tier": "G3",
     "venueName": "布魯思-嫩江店",
     "venueAddress": "高雄市三民區嫩江街74號2樓",
@@ -20912,11 +20884,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "688,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/10/3,17:00,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "686,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/10/3,17:00,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-10-1700-布魯思-嫩江店-689",
+    "id": "b4-g3-2026-09-2026-10-10-1700-布魯思-嫩江店-687",
     "tier": "G3",
     "venueName": "布魯思-嫩江店",
     "venueAddress": "高雄市三民區嫩江街74號2樓",
@@ -20926,11 +20898,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "689,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/10/10,17:00,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "687,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/10/10,17:00,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1700-布魯思-嫩江店-690",
+    "id": "b4-g3-2026-09-2026-10-11-1700-布魯思-嫩江店-688",
     "tier": "G3",
     "venueName": "布魯思-嫩江店",
     "venueAddress": "高雄市三民區嫩江街74號2樓",
@@ -20940,11 +20912,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "690,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/10/11,17:00,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "688,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/10/11,17:00,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1700-布魯思-嫩江店-691",
+    "id": "b4-g3-2026-09-2026-10-17-1700-布魯思-嫩江店-689",
     "tier": "G3",
     "venueName": "布魯思-嫩江店",
     "venueAddress": "高雄市三民區嫩江街74號2樓",
@@ -20954,11 +20926,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "691,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/10/17,17:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "689,布魯思-嫩江店,925273761,高雄市三民區嫩江街74號2樓,2026/10/17,17:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-12-1700-布魯思-三多店-692",
+    "id": "b4-g3-2026-09-2026-09-12-1700-布魯思-三多店-690",
     "tier": "G3",
     "venueName": "布魯思-三多店",
     "venueAddress": "高雄市前鎮區三多三路213號8樓",
@@ -20968,11 +20940,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "692,布魯思-三多店,925273761,高雄市前鎮區三多三路213號8樓,2026/9/12,17:00,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "690,布魯思-三多店,925273761,高雄市前鎮區三多三路213號8樓,2026/9/12,17:00,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-26-1700-布魯思-三多店-693",
+    "id": "b4-g3-2026-09-2026-09-26-1700-布魯思-三多店-691",
     "tier": "G3",
     "venueName": "布魯思-三多店",
     "venueAddress": "高雄市前鎮區三多三路213號8樓",
@@ -20982,11 +20954,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "693,布魯思-三多店,925273761,高雄市前鎮區三多三路213號8樓,2026/9/26,17:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "691,布魯思-三多店,925273761,高雄市前鎮區三多三路213號8樓,2026/9/26,17:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-24-1700-布魯思-三多店-694",
+    "id": "b4-g3-2026-09-2026-10-24-1700-布魯思-三多店-692",
     "tier": "G3",
     "venueName": "布魯思-三多店",
     "venueAddress": "高雄市前鎮區三多三路213號8樓",
@@ -20996,11 +20968,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "694,布魯思-三多店,925273761,高雄市前鎮區三多三路213號8樓,2026/10/24,17:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "692,布魯思-三多店,925273761,高雄市前鎮區三多三路213號8樓,2026/10/24,17:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1700-布魯思-三多店-695",
+    "id": "b4-g3-2026-09-2026-10-25-1700-布魯思-三多店-693",
     "tier": "G3",
     "venueName": "布魯思-三多店",
     "venueAddress": "高雄市前鎮區三多三路213號8樓",
@@ -21010,11 +20982,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "695,布魯思-三多店,925273761,高雄市前鎮區三多三路213號8樓,2026/10/25,17:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "693,布魯思-三多店,925273761,高雄市前鎮區三多三路213號8樓,2026/10/25,17:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1700-布魯思-左營店-696",
+    "id": "b4-g3-2026-09-2026-09-06-1700-布魯思-左營店-694",
     "tier": "G3",
     "venueName": "布魯思-左營店",
     "venueAddress": "高雄市左營區孟子路288號2樓",
@@ -21024,11 +20996,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "696,布魯思-左營店,925273761,高雄市左營區孟子路288號2樓,2026/9/6,17:00,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "694,布魯思-左營店,925273761,高雄市左營區孟子路288號2樓,2026/9/6,17:00,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1700-布魯思-左營店-697",
+    "id": "b4-g3-2026-09-2026-09-20-1700-布魯思-左營店-695",
     "tier": "G3",
     "venueName": "布魯思-左營店",
     "venueAddress": "高雄市左營區孟子路288號2樓",
@@ -21038,11 +21010,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "697,布魯思-左營店,925273761,高雄市左營區孟子路288號2樓,2026/9/20,17:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "695,布魯思-左營店,925273761,高雄市左營區孟子路288號2樓,2026/9/20,17:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-04-1700-布魯思-左營店-698",
+    "id": "b4-g3-2026-09-2026-10-04-1700-布魯思-左營店-696",
     "tier": "G3",
     "venueName": "布魯思-左營店",
     "venueAddress": "高雄市左營區孟子路288號2樓",
@@ -21052,11 +21024,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "698,布魯思-左營店,925273761,高雄市左營區孟子路288號2樓,2026/10/4,17:00,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "696,布魯思-左營店,925273761,高雄市左營區孟子路288號2樓,2026/10/4,17:00,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-18-1700-布魯思-左營店-699",
+    "id": "b4-g3-2026-09-2026-10-18-1700-布魯思-左營店-697",
     "tier": "G3",
     "venueName": "布魯思-左營店",
     "venueAddress": "高雄市左營區孟子路288號2樓",
@@ -21066,11 +21038,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "699,布魯思-左營店,925273761,高雄市左營區孟子路288號2樓,2026/10/18,17:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "697,布魯思-左營店,925273761,高雄市左營區孟子路288號2樓,2026/10/18,17:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1700-布魯思-福華店-700",
+    "id": "b4-g3-2026-09-2026-09-13-1700-布魯思-福華店-698",
     "tier": "G3",
     "venueName": "布魯思-福華店",
     "venueAddress": "高雄市新興區七賢一路311號B1",
@@ -21080,11 +21052,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "700,布魯思-福華店,925273761,高雄市新興區七賢一路311號B1,2026/9/13,17:00,32,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "698,布魯思-福華店,925273761,高雄市新興區七賢一路311號B1,2026/9/13,17:00,32,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1700-布魯思-福華店-701",
+    "id": "b4-g3-2026-09-2026-09-27-1700-布魯思-福華店-699",
     "tier": "G3",
     "venueName": "布魯思-福華店",
     "venueAddress": "高雄市新興區七賢一路311號B1",
@@ -21094,11 +21066,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "701,布魯思-福華店,925273761,高雄市新興區七賢一路311號B1,2026/9/27,17:00,32,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "699,布魯思-福華店,925273761,高雄市新興區七賢一路311號B1,2026/9/27,17:00,32,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-06-1800-前衛者模型-702",
+    "id": "b4-g3-2026-09-2026-09-06-1800-前衛者模型-700",
     "tier": "G3",
     "venueName": "前衛者模型",
     "venueAddress": "鳳山區光華路41號",
@@ -21108,11 +21080,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "702,前衛者模型,918633626,鳳山區光華路41號,2026/9/6,18:00,24,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "700,前衛者模型,918633626,鳳山區光華路41號,2026/9/6,18:00,24,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1800-前衛者模型-703",
+    "id": "b4-g3-2026-09-2026-09-13-1800-前衛者模型-701",
     "tier": "G3",
     "venueName": "前衛者模型",
     "venueAddress": "鳳山區光華路41號",
@@ -21122,11 +21094,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "703,前衛者模型,918633626,鳳山區光華路41號,2026/9/13,18:00,24,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "701,前衛者模型,918633626,鳳山區光華路41號,2026/9/13,18:00,24,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-1800-前衛者模型-704",
+    "id": "b4-g3-2026-09-2026-09-19-1800-前衛者模型-702",
     "tier": "G3",
     "venueName": "前衛者模型",
     "venueAddress": "鳳山區光華路41號",
@@ -21136,11 +21108,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "704,前衛者模型,918633626,鳳山區光華路41號,2026/9/19,18:00,24,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "702,前衛者模型,918633626,鳳山區光華路41號,2026/9/19,18:00,24,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-27-1800-前衛者模型-705",
+    "id": "b4-g3-2026-09-2026-09-27-1800-前衛者模型-703",
     "tier": "G3",
     "venueName": "前衛者模型",
     "venueAddress": "鳳山區光華路41號",
@@ -21150,11 +21122,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "705,前衛者模型,918633626,鳳山區光華路41號,2026/9/27,18:00,24,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "703,前衛者模型,918633626,鳳山區光華路41號,2026/9/27,18:00,24,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-03-1800-前衛者模型-706",
+    "id": "b4-g3-2026-09-2026-10-03-1800-前衛者模型-704",
     "tier": "G3",
     "venueName": "前衛者模型",
     "venueAddress": "鳳山區光華路41號",
@@ -21164,11 +21136,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "706,前衛者模型,918633626,鳳山區光華路41號,2026/10/3,18:00,24,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "704,前衛者模型,918633626,鳳山區光華路41號,2026/10/3,18:00,24,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1800-前衛者模型-707",
+    "id": "b4-g3-2026-09-2026-10-11-1800-前衛者模型-705",
     "tier": "G3",
     "venueName": "前衛者模型",
     "venueAddress": "鳳山區光華路41號",
@@ -21178,11 +21150,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "707,前衛者模型,918633626,鳳山區光華路41號,2026/10/11,18:00,24,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "705,前衛者模型,918633626,鳳山區光華路41號,2026/10/11,18:00,24,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-1800-前衛者模型-708",
+    "id": "b4-g3-2026-09-2026-10-17-1800-前衛者模型-706",
     "tier": "G3",
     "venueName": "前衛者模型",
     "venueAddress": "鳳山區光華路41號",
@@ -21192,11 +21164,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "708,前衛者模型,918633626,鳳山區光華路41號,2026/10/17,18:00,24,現場,通常 (6~12歲)\r",
+    "sourceExcerpt": "706,前衛者模型,918633626,鳳山區光華路41號,2026/10/17,18:00,24,現場,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-25-1800-前衛者模型-709",
+    "id": "b4-g3-2026-09-2026-10-25-1800-前衛者模型-707",
     "tier": "G3",
     "venueName": "前衛者模型",
     "venueAddress": "鳳山區光華路41號",
@@ -21206,11 +21178,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "709,前衛者模型,918633626,鳳山區光華路41號,2026/10/25,18:00,24,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "707,前衛者模型,918633626,鳳山區光華路41號,2026/10/25,18:00,24,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-13-1330-日興模型玩具-710",
+    "id": "b4-g3-2026-09-2026-09-13-1330-日興模型玩具-708",
     "tier": "G3",
     "venueName": "日興模型玩具",
     "venueAddress": "屏東市豐田里建豐路257號",
@@ -21220,11 +21192,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "710,日興模型玩具,08-7378856,屏東市豐田里建豐路257號,2026/9/13,13:30,24,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "708,日興模型玩具,08-7378856,屏東市豐田里建豐路257號,2026/9/13,13:30,24,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-1330-日興模型玩具-711",
+    "id": "b4-g3-2026-09-2026-10-11-1330-日興模型玩具-709",
     "tier": "G3",
     "venueName": "日興模型玩具",
     "venueAddress": "屏東市豐田里建豐路257號",
@@ -21234,11 +21206,11 @@
     "registrationMethod": "onsite",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "711,日興模型玩具,08-7378856,屏東市豐田里建豐路257號,2026/10/11,13:30,24,現場,公開 (6歲以上)\r",
+    "sourceExcerpt": "709,日興模型玩具,08-7378856,屏東市豐田里建豐路257號,2026/10/11,13:30,24,現場,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-03-2000-檔案島-712",
+    "id": "b4-g3-2026-09-2026-09-03-2000-檔案島-710",
     "tier": "G3",
     "venueName": "檔案島",
     "venueAddress": "高雄市三民區松江街35號",
@@ -21248,11 +21220,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "712,檔案島,07-3136161,高雄市三民區松江街35號,2026/9/3,20:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "710,檔案島,07-3136161,高雄市三民區松江街35號,2026/9/3,20:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-10-2000-檔案島-713",
+    "id": "b4-g3-2026-09-2026-09-10-2000-檔案島-711",
     "tier": "G3",
     "venueName": "檔案島",
     "venueAddress": "高雄市三民區松江街35號",
@@ -21262,11 +21234,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "713,檔案島,07-3136161,高雄市三民區松江街35號,2026/9/10,20:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "711,檔案島,07-3136161,高雄市三民區松江街35號,2026/9/10,20:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-17-2000-檔案島-714",
+    "id": "b4-g3-2026-09-2026-09-17-2000-檔案島-712",
     "tier": "G3",
     "venueName": "檔案島",
     "venueAddress": "高雄市三民區松江街35號",
@@ -21276,11 +21248,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "714,檔案島,07-3136161,高雄市三民區松江街35號,2026/9/17,20:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "712,檔案島,07-3136161,高雄市三民區松江街35號,2026/9/17,20:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-24-2000-檔案島-715",
+    "id": "b4-g3-2026-09-2026-09-24-2000-檔案島-713",
     "tier": "G3",
     "venueName": "檔案島",
     "venueAddress": "高雄市三民區松江街35號",
@@ -21290,11 +21262,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "715,檔案島,07-3136161,高雄市三民區松江街35號,2026/9/24,20:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "713,檔案島,07-3136161,高雄市三民區松江街35號,2026/9/24,20:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-01-2000-檔案島-716",
+    "id": "b4-g3-2026-09-2026-10-01-2000-檔案島-714",
     "tier": "G3",
     "venueName": "檔案島",
     "venueAddress": "高雄市三民區松江街35號",
@@ -21304,11 +21276,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "716,檔案島,07-3136161,高雄市三民區松江街35號,2026/10/1,20:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "714,檔案島,07-3136161,高雄市三民區松江街35號,2026/10/1,20:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-08-2000-檔案島-717",
+    "id": "b4-g3-2026-09-2026-10-08-2000-檔案島-715",
     "tier": "G3",
     "venueName": "檔案島",
     "venueAddress": "高雄市三民區松江街35號",
@@ -21318,11 +21290,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "717,檔案島,07-3136161,高雄市三民區松江街35號,2026/10/8,20:00,16,門市社群,公開 (6歲以上)\r",
+    "sourceExcerpt": "715,檔案島,07-3136161,高雄市三民區松江街35號,2026/10/8,20:00,16,門市社群,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-15-2000-檔案島-718",
+    "id": "b4-g3-2026-09-2026-10-15-2000-檔案島-716",
     "tier": "G3",
     "venueName": "檔案島",
     "venueAddress": "高雄市三民區松江街35號",
@@ -21332,11 +21304,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "718,檔案島,07-3136161,高雄市三民區松江街35號,2026/10/15,20:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "716,檔案島,07-3136161,高雄市三民區松江街35號,2026/10/15,20:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-22-2000-檔案島-719",
+    "id": "b4-g3-2026-09-2026-10-22-2000-檔案島-717",
     "tier": "G3",
     "venueName": "檔案島",
     "venueAddress": "高雄市三民區松江街35號",
@@ -21346,11 +21318,11 @@
     "registrationMethod": "store_community",
     "ageCategory": "通常 (6~12歲)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "719,檔案島,07-3136161,高雄市三民區松江街35號,2026/10/22,20:00,16,門市社群,通常 (6~12歲)\r",
+    "sourceExcerpt": "717,檔案島,07-3136161,高雄市三民區松江街35號,2026/10/22,20:00,16,門市社群,通常 (6~12歲)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-1400-高鑫玩具-720",
+    "id": "b4-g3-2026-09-2026-09-20-1400-高鑫玩具-718",
     "tier": "G3",
     "venueName": "高鑫玩具",
     "venueAddress": "桃園市中壢區中山路132號地下1樓",
@@ -21360,11 +21332,11 @@
     "registrationMethod": "either",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "720,高鑫玩具,4220869,桃園市中壢區中山路132號地下1樓,2026/9/20,14:00,32,皆可,公開 (6歲以上)\r",
+    "sourceExcerpt": "718,高鑫玩具,4220869,桃園市中壢區中山路132號地下1樓,2026/9/20,14:00,32,皆可,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-19-2000-失控事務所-721",
+    "id": "b4-g3-2026-09-2026-09-19-2000-失控事務所-719",
     "tier": "G3",
     "venueName": "失控事務所",
     "venueAddress": "新北市泰山區全興里仁愛路76號1樓",
@@ -21374,11 +21346,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "721,失控事務所,0978 251 929,新北市泰山區全興里仁愛路76號1樓,2026/9/19,20:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "719,失控事務所,0978 251 929,新北市泰山區全興里仁愛路76號1樓,2026/9/19,20:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-09-20-2000-失控事務所-722",
+    "id": "b4-g3-2026-09-2026-09-20-2000-失控事務所-720",
     "tier": "G3",
     "venueName": "失控事務所",
     "venueAddress": "新北市泰山區全興里仁愛路76號1樓",
@@ -21388,11 +21360,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "722,失控事務所,0978 251 929,新北市泰山區全興里仁愛路76號1樓,2026/9/20,20:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "720,失控事務所,0978 251 929,新北市泰山區全興里仁愛路76號1樓,2026/9/20,20:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-11-2000-失控事務所-723",
+    "id": "b4-g3-2026-09-2026-10-11-2000-失控事務所-721",
     "tier": "G3",
     "venueName": "失控事務所",
     "venueAddress": "新北市泰山區全興里仁愛路76號1樓",
@@ -21402,11 +21374,11 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "723,失控事務所,0978 251 929,新北市泰山區全興里仁愛路76號1樓,2026/10/11,20:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "721,失控事務所,0978 251 929,新北市泰山區全興里仁愛路76號1樓,2026/10/11,20:00,32,線上,公開 (6歲以上)\r",
     "results": null
   },
   {
-    "id": "b4-g3-2026-09-2026-10-17-2000-失控事務所-724",
+    "id": "b4-g3-2026-09-2026-10-17-2000-失控事務所-722",
     "tier": "G3",
     "venueName": "失控事務所",
     "venueAddress": "新北市泰山區全興里仁愛路76號1樓",
@@ -21416,7 +21388,49 @@
     "registrationMethod": "online",
     "ageCategory": "公開 (6歲以上)",
     "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
-    "sourceExcerpt": "724,失控事務所,0978 251 929,新北市泰山區全興里仁愛路76號1樓,2026/10/17,20:00,32,線上,公開 (6歲以上)\r",
+    "sourceExcerpt": "722,失控事務所,0978 251 929,新北市泰山區全興里仁愛路76號1樓,2026/10/17,20:00,32,線上,公開 (6歲以上)\r",
+    "results": null
+  },
+  {
+    "id": "b4-g3-2026-09-2026-10-06-0000-屏東夢想街-723",
+    "tier": "G3",
+    "venueName": "屏東夢想街",
+    "venueAddress": "屏東市康定街9之23號",
+    "date": "2026-10-06",
+    "time": "00:00",
+    "capacity": 24,
+    "registrationMethod": "either",
+    "ageCategory": "通常 (6~12歲)",
+    "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
+    "sourceExcerpt": "723,屏東夢想街,938881189,屏東市康定街9之23號,2026/10/6,0:00,24,皆可,通常 (6~12歲)\r",
+    "results": null
+  },
+  {
+    "id": "b4-g3-2026-09-2026-10-13-0000-屏東夢想街-724",
+    "tier": "G3",
+    "venueName": "屏東夢想街",
+    "venueAddress": "屏東市康定街9之23號",
+    "date": "2026-10-13",
+    "time": "00:00",
+    "capacity": 24,
+    "registrationMethod": "either",
+    "ageCategory": "通常 (6~12歲)",
+    "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
+    "sourceExcerpt": "724,屏東夢想街,938881189,屏東市康定街9之23號,2026/10/13,0:00,24,皆可,通常 (6~12歲)\r",
+    "results": null
+  },
+  {
+    "id": "b4-g3-2026-09-2026-10-20-0000-屏東夢想街-725",
+    "tier": "G3",
+    "venueName": "屏東夢想街",
+    "venueAddress": "屏東市康定街9之23號",
+    "date": "2026-10-20",
+    "time": "00:00",
+    "capacity": 24,
+    "registrationMethod": "either",
+    "ageCategory": "公開 (6歲以上)",
+    "sourceUrl": "https://docs.google.com/spreadsheets/d/1MSSZJZKCqDWmPcfIuI4iNLNXU0nyD2VIAU0gr0iBzv8",
+    "sourceExcerpt": "725,屏東夢想街,938881189,屏東市康定街9之23號,2026/10/20,0:00,24,皆可,公開 (6歲以上)\r",
     "results": null
   }
 ]
