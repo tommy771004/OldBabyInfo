@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { routing, type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
+import { ClientMessagesProvider } from "@/i18n/client-messages-provider.tsx";
 import { getAllParts, getPartBySlug } from "@/lib/parts/repository.ts";
 import { parseComboSlugs } from "@/lib/parts/combo-query.ts";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
@@ -74,7 +75,9 @@ function ComboPageBody({
         <h1 className={styles.title}>{t("title")}</h1>
         <p className={styles.intro}>{t("intro")}</p>
       </header>
-      <ComboBuilder blade={blade} ratchet={ratchet} bit={bit} allParts={allParts} locale={locale} />
+      <ClientMessagesProvider route="combo">
+        <ComboBuilder blade={blade} ratchet={ratchet} bit={bit} allParts={allParts} locale={locale} />
+      </ClientMessagesProvider>
     </main>
   );
 }

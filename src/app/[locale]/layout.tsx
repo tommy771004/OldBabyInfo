@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { NextIntlClientProvider } from "next-intl";
 import { routing, type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
+import { ClientMessagesProvider } from "@/i18n/client-messages-provider.tsx";
 import { JsonLd, localizedSeoCopy, pageMetadata, siteJsonLd } from "@/lib/seo.ts";
 import { accentFont, bodyFont, displayFont } from "../fonts.ts";
 import { SiteHeader } from "@/components/site-header.tsx";
@@ -39,10 +39,10 @@ export default async function LocaleLayout({
     >
       <body>
         <JsonLd data={siteJsonLd(typedLocale)} />
-        <NextIntlClientProvider>
+        <ClientMessagesProvider>
           <SiteHeader />
           {children}
-        </NextIntlClientProvider>
+        </ClientMessagesProvider>
         <ScrapeTrapLink />
       </body>
     </html>
