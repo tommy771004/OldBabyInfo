@@ -67,3 +67,15 @@ export function classifyUserAgent(userAgent: string | null | undefined): UserAge
 export function isRefusedClass(uaClass: UserAgentClass): boolean {
   return uaClass === "scripted" || uaClass === "harvester";
 }
+
+/**
+ * Google's ownership check for Search Console's HTML-tag method. It fetches
+ * `/` and looks for the `google-site-verification` meta tag on that very
+ * response, so it must not be bounced to `/en` or `/ja` by the device-language
+ * redirect. Forging this UA buys nothing but the zh-TW home page.
+ */
+const SITE_VERIFICATION_FETCHER = /google-site-verification/i;
+
+export function isSiteVerificationFetcher(userAgent: string | null | undefined): boolean {
+  return SITE_VERIFICATION_FETCHER.test(userAgent ?? "");
+}

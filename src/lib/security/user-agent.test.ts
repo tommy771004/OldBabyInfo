@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { classifyUserAgent, isRefusedClass } from "./user-agent.ts";
+import { classifyUserAgent, isRefusedClass, isSiteVerificationFetcher } from "./user-agent.ts";
 
 const CHROME =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
@@ -53,5 +53,23 @@ describe("classifyUserAgent", () => {
     expect(isRefusedClass("browser")).toBe(false);
     expect(isRefusedClass("search-crawler")).toBe(false);
     expect(isRefusedClass("unidentified")).toBe(false);
+  });
+});
+
+describe("isSiteVerificationFetcher", () => {
+  it("recognises Search Console's HTML-tag verifier", () => {
+    expect(isSiteVerificationFetcher("Mozilla/5.0 (compatible; Google-Site-Verification/1.0)")).toBe(true);
+  });
+
+  it("leaves Googlebot and browsers to the normal locale redirect", () => {
+    expect(isSiteVerificationFetcher("Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)")).toBe(
+      false,
+    );
+    expect(isSiteVerificationFetcher(CHROME)).toBe(false);
+    expect(isSiteVerificationFetcher(null)).toBe(false);
+  });
+
+  it("is still allowed through the guard rather than refused", () => {
+    expect(isRefusedClass(classifyUserAgent("Mozilla/5.0 (compatible; Google-Site-Verification/1.0)"))).toBe(false);
   });
 });
