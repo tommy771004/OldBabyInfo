@@ -5,11 +5,15 @@ import { clientKeyFrom, denialMessage, evaluateRequest } from "./lib/security/gu
 import { applySecurityHeaders } from "./lib/security/headers.ts";
 import { createRateLimiter } from "./lib/security/rate-limit.ts";
 import { shouldLocalizePath } from "./lib/security/request-scope.ts";
+import { isSiteVerificationFetcher } from "./lib/security/user-agent.ts";
 
 // Keep the device-language redirect for the unprefixed entry point. Explicit
 // /ja and /en URLs remain stable and crawlable, so language detection never
 // hides a locale variant from search engines.
 const intlMiddleware = createMiddleware(routing);
+// Search Console's verifier must read the meta tag off `/` itself, so it gets
+// the same routing minus the language redirect: `/` stays the zh-TW home page.
+const verificationIntlMiddleware = createMiddleware({ ...routing, localeDetection: false });
 
 /**
  * Per-instance and therefore best-effort — see the note in rate-limit.ts.
@@ -22,11 +26,12 @@ const isProduction = process.env.NODE_ENV === "production";
 
 export default function middleware(request: NextRequest): NextResponse {
   const { pathname } = request.nextUrl;
+  const userAgent = request.headers.get("user-agent");
 
   const decision = evaluateRequest(
     {
       pathname,
-      userAgent: request.headers.get("user-agent"),
+      userAgent,
       clientKey: clientKeyFrom(request.headers),
       now: Date.now(),
     },
@@ -50,7 +55,8 @@ export default function middleware(request: NextRequest): NextResponse {
     return response;
   }
 
-  const response = shouldLocalizePath(pathname) ? intlMiddleware(request) : NextResponse.next();
+  const localize = isSiteVerificationFetcher(userAgent) ? verificationIntlMiddleware : intlMiddleware;
+  const response = shouldLocalizePath(pathname) ? localize(request) : NextResponse.next();
   applySecurityHeaders(response.headers, { isProduction });
   return response;
 }
