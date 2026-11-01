@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-09-07T14:15:28.599Z",
+  "capturedAt": "2026-11-01T22:06:47.357Z",
   "sources": [
     {
       "id": "takaratomy-history",
@@ -19,8 +19,8 @@
         "burst",
         "x"
       ],
-      "sourceVersion": "sha256:49aac3b9ddd52245966880516bfa8cd3c3230e0c18762e7caaa6871ce061f38a",
-      "contentHash": "sha256:49aac3b9ddd52245966880516bfa8cd3c3230e0c18762e7caaa6871ce061f38a"
+      "sourceVersion": "sha256:6833bf980ff03ecfd9b27204da6b9cb5fa17b30e09038fce8e28ea35ff880fae",
+      "contentHash": "sha256:6833bf980ff03ecfd9b27204da6b9cb5fa17b30e09038fce8e28ea35ff880fae"
     },
     {
       "id": "takaratomy-burst-products",
