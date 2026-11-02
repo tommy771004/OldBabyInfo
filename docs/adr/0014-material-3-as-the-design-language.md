@@ -29,6 +29,8 @@ M3 的 scheme 本來就是「一組 tonal palette + 一組角色」。這個站�
 
 **手機導覽是膠囊，不是 M3 的滿版 docked bar**（站方決定，2026-09-07）。形狀是站上自己的，行為是 M3 的：active indicator、state layer，以及 M3 的 `label-visibility: selected`——只有你正在看的那個目的地會顯示文字，其餘只有字符；按下或 tab 到某一個時，它也會先說出自己的名字。文字是 CSS 隱藏而非移除，每一項都帶 `aria-label`，所以無障礙名稱不受影響。
 
+修訂（站方決定，2026-11-02）：膠囊仍是四角全圓，但不再離底部 0.9rem 浮著，而是貼齊下緣，只讓出 iPhone 的 home indicator 安全區域；最左邊加了「首頁」，共五項。
+
 ## 順帶修掉的三件事（都是量測出來的，不是看出來的）
 
 1. **中文標題根本沒有用到 Taipei Sans TC Bold。** 標題只寫了 `var(--font-display), serif`，而 Combat 只有拉丁字母，所以每一個中文標題實際上是掉到讀者作業系統剛好裝了什麼明體。ADR-0006 白紙黑字寫的是 Taipei Sans TC Bold。現在每個 display／headline 角色都是 `--font-display` 後面接 `--font-body`。

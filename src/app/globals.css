@@ -99,17 +99,17 @@ select {
   }
 }
 
-/* Room for the floating navigation pill (mobile-nav.module.css), which is
-   fixed over the page rather than in flow — its own height, the gap it
-   floats in, and a gutter so the last line of a page does not stop dead
-   against its top edge. */
+/* Room for the navigation pill (mobile-nav.module.css), which is fixed
+   over the page on its bottom edge rather than in flow — its own height and
+   a gutter so the last line of a page does not stop dead against its top
+   edge. */
 @media (max-width: 640px) {
   html {
-    scroll-padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+    scroll-padding-bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
   }
 
   body {
-    padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
   }
 }
 

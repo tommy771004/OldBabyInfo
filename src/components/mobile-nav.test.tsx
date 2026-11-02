@@ -19,12 +19,12 @@ describe("task-oriented mobile navigation", () => {
     route.pathname = "/parts/dran-sword";
     render(<NextIntlClientProvider locale={locale} messages={messages}><MobileNav /></NextIntlClientProvider>);
     const links = within(screen.getByRole("navigation")).getAllByRole("link");
-    expect(links.map(link => link.getAttribute("href"))).toEqual(["/parts", "/combo", "/events", "/guides"]);
+    expect(links.map(link => link.getAttribute("href"))).toEqual(["/", "/parts", "/combo", "/events", "/guides"]);
     for (const link of links) expect(link.textContent?.trim()).toBeTruthy();
-    expect(links[0]).toHaveAttribute("aria-current", "page");
+    expect(links[1]).toHaveAttribute("aria-current", "page");
     expect(links.filter(link => link.hasAttribute("aria-current"))).toHaveLength(1);
   });
-  it.each([["/combo", "/combo"], ["/meta", "/events"], ["/guides/start", "/guides"], ["/parts-other", null]] as const)("marks the appropriate task for %s", (pathname, expected) => {
+  it.each([["/", "/"], ["/combo", "/combo"], ["/meta", "/events"], ["/guides/start", "/guides"], ["/parts-other", null]] as const)("marks the appropriate task for %s", (pathname, expected) => {
     route.pathname = pathname;
     render(<NextIntlClientProvider locale="en" messages={en}><MobileNav /></NextIntlClientProvider>);
     const current = screen.getAllByRole("link").filter(link => link.hasAttribute("aria-current"));

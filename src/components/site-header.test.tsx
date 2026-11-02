@@ -52,8 +52,11 @@ describe("SiteHeader", () => {
       // Wide navigation and its mobile counterpart retain reachable links.
       expect(screen.getAllByRole("link", { name: label })).toHaveLength(2);
     }
-    // The wordmark now links home at every viewport.
-    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
+    // The wordmark links home at every viewport; on a phone the bar's first
+    // item does too, within thumb reach.
+    const homes = screen.getAllByRole("link", { name: "Home" });
+    expect(homes).toHaveLength(2);
+    for (const home of homes) expect(home).toHaveAttribute("href", "/");
     expect(screen.getAllByRole("link", { name: "Sign in" })).toHaveLength(2);
 
     const localeSelect = screen.getByRole("combobox", { name: "Language" });

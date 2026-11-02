@@ -5,13 +5,16 @@ import { Link, usePathname } from "@/i18n/navigation.ts";
 import { NavIcon, type NavIconName } from "./nav-icons.tsx";
 import styles from "./mobile-nav.module.css";
 
-/** Core lookup tasks stay visible. Home, account, discussion and terms
- * remain reachable from the shared header. */
+/** Home first, then the core lookup tasks. Account and discussion remain
+ * reachable from the shared header. Home is in the bar (owner-decided,
+ * 2026-11-02) because the header's wordmark is the only other way back,
+ * and that is at the top of a page the thumb is at the bottom of. */
 const ITEMS: Array<{
   href: string;
   icon: NavIconName;
-  labelKey: "mobile_parts" | "mobile_combo" | "mobile_events" | "mobile_guides";
+  labelKey: "nav_home" | "mobile_parts" | "mobile_combo" | "mobile_events" | "mobile_guides";
 }> = [
+  { href: "/", icon: "home", labelKey: "nav_home" },
   { href: "/parts", icon: "parts", labelKey: "mobile_parts" },
   { href: "/combo", icon: "combo", labelKey: "mobile_combo" },
   { href: "/events", icon: "events", labelKey: "mobile_events" },
@@ -35,7 +38,10 @@ export function MobileNav() {
   return (
     <nav className={`${styles.bar} m3-dark`} aria-label={t("nav_label")}>
       {ITEMS.map((item) => {
-        const current = pathname === item.href || pathname.startsWith(`${item.href}/`)
+        // Home is current on "/" alone — every path starts with "/".
+        const current = item.href === "/"
+          ? pathname === "/"
+          : pathname === item.href || pathname.startsWith(`${item.href}/`)
           || (item.href === "/events" && pathname === "/meta");
         return (
           <Link

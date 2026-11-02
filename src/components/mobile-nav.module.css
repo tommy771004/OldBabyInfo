@@ -2,8 +2,10 @@
  * The floating navigation pill, with Material 3's navigation-bar behaviour
  * inside it.
  *
- * Shape is the site's own (owner-decided): a contained pill floating above
- * the page rather than M3's full-width docked bar. Because it genuinely
+ * Shape is the site's own (owner-decided): a contained pill rather than M3's
+ * full-width docked bar. It sits on the bottom edge — clear of the iPhone
+ * home indicator, nothing more (owner-decided, 2026-11-02; it used to float
+ * 0.9rem higher). Because it genuinely
  * floats over live scrolling content it says so physically — a translucent
  * fill that samples what is behind it, a bright specular top edge and a dark
  * lower edge so the pill reads as a thick piece of glass, and M3's
@@ -29,7 +31,7 @@
   .bar {
     position: fixed;
     z-index: 40;
-    bottom: calc(0.9rem + env(safe-area-inset-bottom, 0px));
+    bottom: env(safe-area-inset-bottom, 0px);
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -77,6 +79,14 @@
   transition: color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
 }
 
+/* Five destinations on a 320px phone: at the full padding the pill ran
+   ~10px wider than the screen allows and the last item was cut off. */
+@media (max-width: 380px) {
+  .item {
+    padding: 0 0.6rem;
+  }
+}
+
 /*
  * M3's active indicator. It is drawn behind an icon that is already on
  * screen and it grows from the centre of the slot, so nothing's visibility
@@ -114,7 +124,7 @@
  * Label visibility follows the destination, not the pointer: the item you
  * are on names itself and the others are their glyph alone. `display: none`
  * rather than a collapsed width, so an unselected item is exactly its icon
- * and the pill stays the width of four thumbs.
+ * and the pill stays the width of five thumbs.
  */
 .label {
   position: relative;
