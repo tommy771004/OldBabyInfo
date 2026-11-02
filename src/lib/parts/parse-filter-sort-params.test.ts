@@ -2,25 +2,19 @@ import { describe, expect, it } from "vitest";
 import { parseFilterSortParams } from "./parse-filter-sort-params";
 
 describe("parseFilterSortParams", () => {
-  it("defaults to no type filter and ascending direction when nothing is given", () => {
+  it("defaults to no sort and ascending direction when nothing is given", () => {
     expect(parseFilterSortParams({})).toEqual({
-      type: undefined,
       sort: undefined,
       direction: "asc",
     });
   });
 
-  it("parses a valid type", () => {
-    expect(parseFilterSortParams({ type: "bit" }).type).toBe("bit");
-  });
-
-  it("ignores an invalid type rather than throwing on a hand-edited URL", () => {
-    expect(parseFilterSortParams({ type: "lock_chip" }).type).toBeUndefined();
+  it("does not carry the retired `type` filter", () => {
+    expect(parseFilterSortParams({ type: "bit" })).not.toHaveProperty("type");
   });
 
   it("parses a valid sort field and direction", () => {
     expect(parseFilterSortParams({ sort: "attack", dir: "desc" })).toEqual({
-      type: undefined,
       sort: "attack",
       direction: "desc",
     });

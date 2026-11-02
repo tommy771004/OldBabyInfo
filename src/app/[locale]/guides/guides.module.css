@@ -15,29 +15,10 @@
 
 /* Masthead ------------------------------------------------------------- */
 
-/*
- * No `overflow: hidden` anywhere here, and the drawing is sized to sit fully
- * inside the column: a container edge must never be able to shave a line off
- * it. An earlier pass cropped it and the result read as a broken fragment,
- * not a composition.
- */
-.masthead {
-  position: relative;
-  display: grid;
-  align-content: center;
-  min-height: 18.5rem;
-  padding: 1.5rem 0 2.5rem;
-}
-.mastheadText { position: relative; z-index: 1; max-width: 27rem; }
+/* The layout and the drawing are the shared PageMasthead (size="feature",
+   subject="ridge"); only the lead copy is styled here.
 
-.title {
-  margin: 0;
-  font-family: var(--md-sys-typescale-display-small-font);
-  font-size: var(--md-sys-typescale-display-small-size);
-  font-weight: var(--md-sys-typescale-display-small-weight);
-  line-height: var(--md-sys-typescale-display-small-line-height);
-}
-/* Measured with the real WCAG formula, not eyeballed (ADR-0008): 70% ink
+   Measured with the real WCAG formula, not eyeballed (ADR-0008): 70% ink
    composited on --surface-100 is 5.98:1, well over the 4.5 AA floor while
    staying clearly quieter than the 13.9:1 title. */
 .lead {
@@ -47,22 +28,6 @@
   line-height: 1.8;
   text-wrap: pretty;
   color: var(--md-sys-color-on-surface-variant);
-}
-
-/*
- * Decorative, so it takes a tonal ink rather than the accent: a drawn
- * structure, not a coloured graphic competing with the title. It sits clear
- * of the text column, so no line of copy ever crosses it.
- */
-.ridge {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  translate: 0 -50%;
-  width: 17.5rem;
-  height: 17.5rem;
-  color: var(--md-sys-color-on-surface-variant);
-  pointer-events: none;
 }
 
 /* The reading path ----------------------------------------------------- */
@@ -152,14 +117,6 @@
 
 @media (max-width: 720px) {
   .page { padding-top: 2rem; }
-  /*
-   * Beside the title there is no room for the drawing on a phone, so it takes
-   * its own band above the copy at a size where the ridge, the notch and the
-   * pocket all still read. Reduced, never cropped.
-   */
-  .masthead { min-height: 0; padding-top: 0; }
-  .ridge { position: static; translate: none; width: 11rem; height: 11rem; margin: 0 0 1rem; }
-  .mastheadText { max-width: 100%; }
   .entry { padding: 1.25rem; }
   .item { padding: 1.35rem .25rem; }
   .sections { gap: .3rem 1.25rem; }

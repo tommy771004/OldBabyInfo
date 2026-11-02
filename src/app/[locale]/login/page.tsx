@@ -3,6 +3,7 @@ import { auth, signIn, signOut } from "@/auth";
 import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
+import { PageMasthead } from "@/components/page-masthead.tsx";
 import styles from "./login.module.css";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 
@@ -35,8 +36,9 @@ export default async function LoginPage({
   if (!configured) {
     return (
       <main className={styles.page}>
-        <h1>{t("title")}</h1>
-        <p>{t("notConfigured")}</p>
+        <PageMasthead title={t("title")}>
+          <p>{t("notConfigured")}</p>
+        </PageMasthead>
       </main>
     );
   }
@@ -50,8 +52,9 @@ export default async function LoginPage({
 
     return (
       <main className={styles.page}>
-        <h1>{t("signedInTitle")}</h1>
-        <p>{t("signedInAs", { name: session.user.name ?? t("player") })}</p>
+        <PageMasthead title={t("signedInTitle")}>
+          <p>{t("signedInAs", { name: session.user.name ?? t("player") })}</p>
+        </PageMasthead>
         <form action={signOutAction}>
           <button type="submit" className="m3-button m3-button--outlined m3-state">{t("signOut")}</button>
         </form>
@@ -71,8 +74,9 @@ export default async function LoginPage({
 
   return (
     <main className={styles.page}>
-      <h1>{t("title")}</h1>
-      <p>{t("privacy")}</p>
+      <PageMasthead title={t("title")}>
+        <p>{t("privacy")}</p>
+      </PageMasthead>
       {googleConfigured ? (
         <form action={signInAction}>
           <button type="submit" className="m3-button m3-button--filled m3-state">{t("continueWithGoogle")}</button>

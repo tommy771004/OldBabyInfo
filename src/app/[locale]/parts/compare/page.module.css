@@ -13,13 +13,6 @@
   padding: 2.5rem 0 6rem;
 }
 
-.page h1 {
-  margin: 0 0 2.5rem;
-  font-family: var(--md-sys-typescale-display-small-font);
-  font-size: var(--md-sys-typescale-display-small-size);
-  font-weight: var(--md-sys-typescale-display-small-weight);
-  line-height: var(--md-sys-typescale-display-small-line-height);
-}
 
 /* ── 1 vs 1 duel ──────────────────────────────────────────────────────── */
 
@@ -449,10 +442,6 @@
   .page {
     width: min(100% - 1.25rem, 72rem);
     padding-top: 1.75rem;
-  }
-
-  .page h1 {
-    margin-bottom: 2rem;
   }
 
   .duelSubjects {

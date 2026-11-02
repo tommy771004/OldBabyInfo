@@ -20,7 +20,15 @@ import type { Part } from "@/lib/parts/schema.ts";
 import { PartDetailCore } from "./part-detail-body.tsx";
 import styles from "./part-detail.module.css";
 
-export const dynamic = "force-dynamic";
+/* Stats, names and images are static JSON; only the discussion threads and
+   shop listings come from Neon. Those may lag by up to five minutes
+   (owner-decided, 2026-11-02) — a Part page is a reference page, and
+   re-rendering it plus two database reads for every view and every crawler
+   hit was the largest share of the site's function CPU. Every slug is still
+   built ahead of time by `generateStaticParams` below, so the build reads
+   Neon once per page when `DATABASE_URL` is set (`optionalRead` keeps a
+   failed read from failing the build). */
+export const revalidate = 300;
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>

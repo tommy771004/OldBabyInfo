@@ -1,0 +1,78 @@
+/*
+ * Shared page masthead. The copy and the stadium mark sit in two grid
+ * columns, so no line of copy can ever run under the drawing, and nothing
+ * here clips: a container edge must never be able to shave a line off the
+ * mark (an earlier, cropped pass read as a broken fragment).
+ */
+.masthead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 2rem;
+  margin: 0 0 2rem;
+}
+
+.unmarked { grid-template-columns: minmax(0, 1fr); }
+
+.text > :last-child { margin-bottom: 0; }
+
+/* Where you are, not a decorative eyebrow: `/parts` names the Generation the
+   whole page is scoped to. M3 label-medium. */
+.kicker {
+  margin: 0 0 0.35rem;
+  color: var(--md-sys-color-primary);
+  font-family: var(--md-sys-typescale-label-medium-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  letter-spacing: 0.12em;
+}
+
+/* Two classes deep on purpose: the route modules still style the copy they
+   pass in, and none of them may out-rank the title. */
+.masthead .title {
+  margin: 0;
+  font-family: var(--md-sys-typescale-display-small-font);
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+  /* Long titles (a guide article, "where to buy <Part>") break into even
+     lines rather than leaving one word on the last. */
+  text-wrap: balance;
+}
+
+.masthead .title + * { margin-top: 1rem; }
+
+/*
+ * Decorative, so it takes a tonal ink rather than the accent: a drawn
+ * structure, not a coloured graphic competing with the title.
+ */
+.mark {
+  display: block;
+  color: var(--md-sys-color-on-surface-variant);
+  pointer-events: none;
+}
+
+.compact .mark { width: 8rem; height: 8rem; }
+
+.feature {
+  min-height: 18.5rem;
+  padding: 1.5rem 0 2.5rem;
+  margin-bottom: 0;
+}
+.feature .mark { width: 17.5rem; height: 17.5rem; }
+
+@media (max-width: 720px) {
+  .masthead { column-gap: 1rem; margin-bottom: 1.5rem; }
+  /* Beside the title there is room for a small mark on a data page: the
+     list below is what the reader came for, so the drawing never takes a
+     band of its own there. */
+  .compact { align-items: start; }
+  .compact .mark { width: 4.5rem; height: 4.5rem; }
+  /*
+   * Guides has no list waiting below, so its larger drawing takes its own
+   * band above the copy at a size where the ridge, the notch and the pocket
+   * all still read. Reduced, never cropped.
+   */
+  .feature { grid-template-columns: minmax(0, 1fr); min-height: 0; padding-top: 0; }
+  .feature .mark { grid-row: 1; width: 11rem; height: 11rem; margin: 0 0 1rem; }
+}

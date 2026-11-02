@@ -11,6 +11,7 @@ import { getPartById } from "@/lib/parts/repository.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { slugify } from "@/lib/parts/slug.ts";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
+import { PageMasthead } from "@/components/page-masthead.tsx";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -56,10 +57,11 @@ function MetaStandingBody({
 
   return (
     <main className={styles.page}>
-      <h1>{t("title")}</h1>
-      <p className={styles.intro}>{t("intro")}</p>
-      <p className={styles.note}>{t("no_tier_list_note")}</p>
-      <p className={styles.note}>{t("sample_scope_note")}</p>
+      <PageMasthead title={t("title")} subject="exits">
+        <p className={styles.intro}>{t("intro")}</p>
+        <p className={styles.note}>{t("no_tier_list_note")}</p>
+        <p className={styles.note}>{t("sample_scope_note")}</p>
+      </PageMasthead>
 
       {standings.length === 0 ? (
         <section className={styles.empty}>

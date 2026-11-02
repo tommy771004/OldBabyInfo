@@ -17,6 +17,7 @@ import {
   productCodeOf,
 } from "@/lib/generation-catalog/beyblade-name.ts";
 import { CatalogStats } from "@/components/catalog-stats.tsx";
+import { MastheadFrame } from "@/components/page-masthead.tsx";
 import styles from "./page.module.css";
 
 /**
@@ -78,7 +79,7 @@ export function GenerationCatalogRecordBody({
         </nav>
       )}
 
-      <header className={styles.header}>
+      <MastheadFrame className={styles.header}>
         <p className={styles.kicker}>
           {productCode ? <span className={styles.code}>{productCode}</span> : null}
           {kindLabel}
@@ -87,7 +88,7 @@ export function GenerationCatalogRecordBody({
           ? <h2 id={headingId} className={styles.name}>{composedName ?? record.name}</h2>
           : <h1 id={headingId} className={styles.name}>{composedName ?? record.name}</h1>}
         {composedName ? <p className={styles.modelName}>{record.name}</p> : null}
-      </header>
+      </MastheadFrame>
 
       {image && imagePart ? (
         <figure className={styles.figure}>

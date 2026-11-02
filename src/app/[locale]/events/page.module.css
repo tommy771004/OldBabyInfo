@@ -12,13 +12,6 @@
   padding: 2.5rem 0 6rem;
 }
 
-.page h1 {
-  margin: 0 0 0.75rem;
-  font-family: var(--md-sys-typescale-display-small-font);
-  font-size: var(--md-sys-typescale-display-small-size);
-  font-weight: var(--md-sys-typescale-display-small-weight);
-  line-height: var(--md-sys-typescale-display-small-line-height);
-}
 
 .intro {
   max-width: 55ch;

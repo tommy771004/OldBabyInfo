@@ -82,6 +82,9 @@ const records = [
   },
 ];
 
+/** The page builds tab links; the fixture only has to show which tab. */
+const tabHref = (tab: { kind: string; partType?: string }) => `#tab-${tab.kind}${tab.partType ? `-${tab.partType}` : ""}`;
+
 const labels = {
   heading: "Parts Catalog",
   generationLabel: "Generation",
@@ -105,14 +108,15 @@ describe("GenerationCatalogBrowser", () => {
   afterEach(cleanup);
 
   it.each([
-    ["x", false, ["", "cx"]],
-    ["burst", false, ["", "burst"]],
-    ["x", true, ["", "cx", "burst"]],
-  ] as const)("limits System options for %s (across generations: %s)", (generation, across, expected) => {
+    ["x", false],
+    ["burst", false],
+    ["x", true],
+  ] as const)("offers one search scope for %s (across generations: %s)", (generation, across) => {
     render(<GenerationCatalogBrowser
       locale="en"
       generations={generations}
-      systems={[...systems, { id: "burst", generationId: "burst", nameEn: "Burst", partTypes: ["layer"], compatibilityRules: [] }]}
+      systems={systems}
+      tabHrefFor={tabHref}
       records={records}
       selectedGeneration={generation}
       searchAcrossGenerations={across}
@@ -122,9 +126,34 @@ describe("GenerationCatalogBrowser", () => {
     const form = screen.getByRole("search");
     expect(form).toHaveAttribute("method", "get");
     expect(form).toHaveAttribute("action", "/en/parts");
-    expect(screen.getByRole("combobox", { name: "Generation" })).toHaveValue(across ? "" : generation);
-    const system = screen.getByRole("combobox", { name: "System" });
-    expect(within(system).getAllByRole("option").map((option) => (option as HTMLOptionElement).value)).toEqual(expected);
+    const scope = screen.getByRole("combobox", { name: "Search scope" });
+    expect(scope).toHaveAttribute("name", "catalogGeneration");
+    expect(scope).toHaveValue(across ? "" : generation);
+    expect(within(scope).getAllByRole("option").map((option) => [(option as HTMLOptionElement).value, option.textContent]))
+      .toEqual([[generation, "This generation"], ["", "All generations"]]);
+    // The Generation and System chip rows are the only pickers for those;
+    // the form no longer duplicates either.
+    expect(within(form).getAllByRole("combobox")).toHaveLength(1);
+  });
+
+  it.each([
+    [false, "cx"],
+    [true, null],
+  ] as const)("keeps the selected System on a search only within one Generation (across: %s)", (across, expected) => {
+    render(<GenerationCatalogBrowser
+      locale="en"
+      generations={generations}
+      systems={systems}
+      tabHrefFor={tabHref}
+      records={records}
+      selectedGeneration="x"
+      selectedSystem="cx"
+      searchAcrossGenerations={across}
+      labels={labels}
+    />);
+
+    const hidden = screen.getByRole("search").querySelector('input[type="hidden"][name="catalogSystem"]');
+    expect(hidden?.getAttribute("value") ?? null).toBe(expected);
   });
 
   it("distinguishes complete Beyblades from Parts and navigates their composition", () => {
@@ -133,6 +162,7 @@ describe("GenerationCatalogBrowser", () => {
         locale="en"
         generations={generations}
         systems={systems}
+        tabHrefFor={tabHref}
         records={records}
         selectedGeneration="x"
         selectedSystem="cx"
@@ -163,13 +193,18 @@ describe("GenerationCatalogBrowser", () => {
     );
   });
 
-  it("narrows the list to one Part kind", () => {
+  it("shows exactly the records the page passed, in the page's order", () => {
+    // The page filters and sorts; a second filter here once disagreed with
+    // it. Records outside the selected Generation, System and tab still
+    // render if the page admitted them.
+    const passed = [records[1]!, { ...records[0]!, generationId: "burst" as const, system: "burst-standard", id: "burst:part:x" }];
     render(
       <GenerationCatalogBrowser
         locale="en"
         generations={generations}
         systems={systems}
-        records={records}
+        tabHrefFor={tabHref}
+        records={passed}
         selectedGeneration="x"
         selectedSystem="cx"
         selectedKind="part"
@@ -179,12 +214,11 @@ describe("GenerationCatalogBrowser", () => {
     );
 
     const grid = screen.getByRole("list", { name: "Parts Catalog" });
-    expect(within(grid).getAllByRole("link").map((link) => link.textContent)).toEqual(["Main Blade"]);
+    expect(within(grid).getAllByRole("link").map((link) => link.textContent)).toEqual(["CX-01", "Main Blade"]);
   });
 
-  it("searches multilingual aliases across Generations and labels every result kind", () => {
-    const crossGenerationRecords = [
-      ...records,
+  it("presents an all-Generations search as belonging to no one Generation", () => {
+    const dranSwords = [
       {
         id: "x:beyblade:dran-sword",
         generationId: "x" as const,
@@ -224,8 +258,11 @@ describe("GenerationCatalogBrowser", () => {
         locale="ja"
         generations={generations}
         systems={systems}
-        records={crossGenerationRecords}
+        tabHrefFor={(tab) => `/ja/parts?catalogGeneration=&catalogKind=${tab.kind}&catalogQuery=ドランソード`}
+        records={dranSwords}
         selectedGeneration="x"
+        selectedSystem="cx"
+        selectedKind="beyblade"
         searchQuery="ドランソード"
         searchAcrossGenerations
         labels={{ ...labels, searchLabel: "Catalog search", searchPlaceholder: "Search catalog" }}
@@ -233,11 +270,20 @@ describe("GenerationCatalogBrowser", () => {
     );
 
     expect(screen.getByRole("searchbox", { name: "Catalog search" })).toHaveValue("ドランソード");
-    expect(screen.getAllByRole("search").some((form) => form.getAttribute("action") === "/ja/parts")).toBe(true);
     expect(screen.getAllByRole("link", { name: "Dran Sword" })).toHaveLength(2);
-    expect(screen.getAllByText("Complete Beyblades").length).toBeGreaterThanOrEqual(2);
-    // The kind selection lives in the tab bar, not in the search form.
-    expect(screen.getAllByRole("navigation", { name: "Entity type" }).length).toBeGreaterThan(0);
+    // No Generation chip claims the search, and the System row — each System
+    // belongs to one Generation — is not offered.
+    const generationNav = screen.getByRole("navigation", { name: "Generation" });
+    expect(within(generationNav).queryAllByRole("link", { current: "page" })).toHaveLength(0);
+    expect(screen.queryByRole("navigation", { name: "System" })).not.toBeInTheDocument();
+    expect(screen.queryByText(/incompatible with other Systems/)).not.toBeInTheDocument();
+    // Tab links are the page's, so they keep the search and its scope rather
+    // than falling back to BEYBLADE X.
+    const tabs = screen.getByRole("navigation", { name: "Entity type" });
+    expect(within(tabs).getByRole("link", { current: "page" })).toHaveAttribute(
+      "href",
+      "/ja/parts?catalogGeneration=&catalogKind=beyblade&catalogQuery=ドランソード",
+    );
   });
 
 });
@@ -275,6 +321,7 @@ describe("GenerationCatalogBrowser pagination", () => {
         locale="en"
         generations={generations}
         systems={systems}
+        tabHrefFor={tabHref}
         records={manyParts}
         selectedGeneration="x"
         selectedKind="part"
@@ -306,6 +353,7 @@ describe("GenerationCatalogBrowser pagination", () => {
         locale="en"
         generations={generations}
         systems={systems}
+        tabHrefFor={tabHref}
         records={manyParts}
         selectedGeneration="x"
         selectedKind="part"
@@ -334,6 +382,7 @@ describe("GenerationCatalogBrowser pagination", () => {
         locale="en"
         generations={generations}
         systems={systems}
+        tabHrefFor={tabHref}
         records={manyParts}
         selectedGeneration="x"
         selectedKind="part"
@@ -362,6 +411,7 @@ describe("GenerationCatalogBrowser pagination", () => {
         locale="en"
         generations={generations}
         systems={systems}
+        tabHrefFor={tabHref}
         records={records}
         selectedGeneration="x"
         selectedKind="part"

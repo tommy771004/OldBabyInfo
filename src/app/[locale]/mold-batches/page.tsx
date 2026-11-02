@@ -7,9 +7,10 @@ import { MoldBatchLookup } from "@/components/mold-batch-lookup.tsx";
 import { MoldBatchSourceGuidance } from "@/components/mold-batch-source-guidance.tsx";
 import { getMoldBatchCoverage } from "@/lib/mold-batch/lookup.ts";
 import { getMoldBatchGuidance } from "@/lib/mold-batch/guidance.ts";
-import { getAllParts } from "@/lib/parts/repository.ts";
+import { getAllPartsForClient } from "@/lib/parts/repository.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
+import { PageMasthead } from "@/components/page-masthead.tsx";
 import styles from "./mold-batches.module.css";
 
 export function generateStaticParams() {
@@ -32,7 +33,8 @@ export default async function MoldBatchesPage({
 }) {
   const { locale } = await requireLocale(params);
 
-  const parts = getAllParts();
+  // MoldBatchLookup is a client component and never shows provenance.
+  const parts = getAllPartsForClient();
   const coverage = getMoldBatchCoverage(parts);
   const guidance = getMoldBatchGuidance()[0];
   if (!guidance) throw new Error("Mold Batch source guidance is missing");
@@ -51,7 +53,7 @@ function MoldBatchesContent({
   guidance,
 }: {
   locale: Locale;
-  parts: ReturnType<typeof getAllParts>;
+  parts: ReturnType<typeof getAllPartsForClient>;
   partNames: Record<string, string>;
   coverage: ReturnType<typeof getMoldBatchCoverage>;
   guidance: ReturnType<typeof getMoldBatchGuidance>[number];
@@ -63,7 +65,7 @@ function MoldBatchesContent({
       <p className={styles.backLink}>
         <Link href="/parts">{t("backToParts")}</Link>
       </p>
-      <h1>{t("title")}</h1>
+      <PageMasthead title={t("title")} />
 
       <MoldBatchLookup
         parts={parts}

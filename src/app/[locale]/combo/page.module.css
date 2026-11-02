@@ -18,18 +18,7 @@
 
 /* Masthead ------------------------------------------------------------- */
 
-.masthead {
-  max-width: 34rem;
-  margin-bottom: 2.5rem;
-}
 
-.title {
-  margin: 0;
-  font-family: var(--md-sys-typescale-display-small-font);
-  font-size: var(--md-sys-typescale-display-small-size);
-  font-weight: var(--md-sys-typescale-display-small-weight);
-  line-height: var(--md-sys-typescale-display-small-line-height);
-}
 
 .intro {
   margin: 1rem 0 0;

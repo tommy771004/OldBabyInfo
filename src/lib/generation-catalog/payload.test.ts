@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { getCatalogPayloadBudget, selectCatalogRecordsForPage } from "./payload.ts";
+import { getCatalogPayloadBudget } from "./payload.ts";
+import { searchGenerationCatalog } from "./search.ts";
 import type { GenerationCatalogRecord } from "./schema.ts";
 
 const records: GenerationCatalogRecord[] = [
@@ -38,9 +39,11 @@ const records: GenerationCatalogRecord[] = [
 ];
 
 describe("catalog payload selection", () => {
+  // `/parts` browses and searches through the same call; only whether a
+  // Generation is given differs.
   it("loads only the active Generation for browse pages and all accepted records for search", () => {
-    expect(selectCatalogRecordsForPage(records, "x", false).map((record) => record.id)).toEqual(["x:part:blade"]);
-    expect(selectCatalogRecordsForPage(records, "x", true).map((record) => record.id)).toEqual([
+    expect(searchGenerationCatalog(records, "", { generationId: "x" }).map((record) => record.id)).toEqual(["x:part:blade"]);
+    expect(searchGenerationCatalog(records, "").map((record) => record.id)).toEqual([
       "x:part:blade",
       "burst:part:blade",
     ]);

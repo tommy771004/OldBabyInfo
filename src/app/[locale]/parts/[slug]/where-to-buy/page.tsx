@@ -4,15 +4,30 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation.ts";
 import { WhereToBuyList } from "@/components/where-to-buy-list.tsx";
 import { createNeonStockListingReader } from "@/lib/stock/neon-store.ts";
-import { getPartBySlug } from "@/lib/parts/repository.ts";
+import { getAllParts, getPartBySlug } from "@/lib/parts/repository.ts";
+import { routing } from "@/i18n/routing";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import { slugify } from "@/lib/parts/slug.ts";
 import { pageMetadata } from "@/lib/seo.ts";
+import { PageMasthead } from "@/components/page-masthead.tsx";
 import styles from "./where-to-buy.module.css";
 import { optionalRead } from "@/lib/db/optional-read.ts";
 
-export const dynamic = "force-dynamic";
+/* Shop listings may lag by up to five minutes, the same window as the Part
+   page it belongs to (owner-decided, 2026-11-02). */
+export const revalidate = 300;
+
+/* Every page is built ahead of time, like the Part page above it. Building
+   on first visit instead (an empty list here) cached `/en` and `/ja` but
+   never the unprefixed zh-TW address, which reaches this route through the
+   locale rewrite in middleware — measured on `next start`, 2026-11-02. The
+   cost is one listings read per page at build when `DATABASE_URL` is set. */
+export function generateStaticParams() {
+  return routing.locales.flatMap((locale) =>
+    getAllParts().map((part) => ({ locale, slug: slugify(part.nameEn) })),
+  );
+}
 
 export async function generateMetadata({
   params,
@@ -74,7 +89,7 @@ function WhereToBuyContent({
       <p>
         <Link href={`/parts/${partSlug}`}>{t("backToPart")}</Link>
       </p>
-      <h1>{t("title", { partName })}</h1>
+      <PageMasthead title={t("title", { partName })} />
       {!databaseConfigured ? <p className={styles.notice}>{t("databaseUnavailable")}</p> : null}
       <WhereToBuyList
         listings={listings}

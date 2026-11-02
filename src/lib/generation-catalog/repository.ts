@@ -1,5 +1,4 @@
 import catalogJson from "../../../data/generation-catalog.json" with { type: "json" };
-import needsReviewJson from "../../../data/generation-catalog-needs-review.json" with { type: "json" };
 import {
   generationCatalogSnapshotSchema,
   type GenerationCatalogRecord,
@@ -11,7 +10,6 @@ import type { Part } from "../parts/schema.ts";
 import { buildXCatalogCrosswalk, type XCatalogCrosswalk } from "./legacy-x-bridge.ts";
 
 const catalog = generationCatalogSnapshotSchema.parse(catalogJson);
-const needsReview = generationCatalogSnapshotSchema.parse(needsReviewJson);
 const publishableCatalogRecords = catalog.records.filter(
   (record) => record.publicationStatus === "accepted" && record.verificationStatus !== "needs_review",
 );
@@ -42,10 +40,6 @@ export function getGenerationCatalogRecords(
   generationId: GenerationId,
 ): GenerationCatalogRecord[] {
   return catalog.records.filter((record) => record.generationId === generationId);
-}
-
-export function getGenerationCatalogNeedsReview(): GenerationCatalogRecord[] {
-  return needsReview.records;
 }
 
 export function getLegacyPartForCatalogRecord(recordId: string): Part | undefined {

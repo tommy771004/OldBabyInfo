@@ -8,6 +8,7 @@ import { BladeSilhouette } from "@/components/blade-silhouette.tsx";
 import { RatchetSilhouette } from "@/components/ratchet-silhouette.tsx";
 import { BitSilhouette } from "@/components/bit-silhouette.tsx";
 import { MoldBatchVariants } from "@/components/mold-batch-variants.tsx";
+import { ArenaMark } from "@/components/arena-mark.tsx";
 import { AssessmentTracer } from "@/components/assessment-tracer.tsx";
 import { Link } from "@/i18n/navigation.ts";
 import { wingCountFor, hasObservedWingCount } from "@/lib/parts/blade-wing-count.ts";
@@ -91,6 +92,11 @@ export function PartDetailCore({
           </dl>
         </div>
         <div className={styles.partVisual}>
+          {/* The Part sits in the bowl: the same stadium plan every other
+              page carries beside its title, here under the one thing this
+              page is about, in the same top-right place. */}
+          <div className={styles.visualField}>
+          <ArenaMark className={styles.fieldMark} />
           {image ? (
             /* This photo is the page's subject and sits above the fold;
                lazy-loading it meant the first thing a reader looks for was
@@ -103,6 +109,7 @@ export function PartDetailCore({
           ) : part.type === "bit" && part.playstyle ? (
             <BitSilhouette playstyle={part.playstyle} label={tp(`silhouette_bit_${part.playstyle}`)} />
           ) : null}
+          </div>
           <p>{image ? t("image_disclaimer") : t("image_missing")}</p>
         </div>
       </section>

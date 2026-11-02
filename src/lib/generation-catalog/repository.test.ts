@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
   getAllGenerationCatalogRecords,
-  getGenerationCatalogNeedsReview,
   getGenerationCatalogRecords,
   getGenerationCatalogSnapshot,
   getXCatalogCrosswalk,
   getLegacyPartForCatalogRecord,
 } from "./repository.ts";
+import { getGenerationCatalogNeedsReview } from "./needs-review.ts";
 
 describe("generation catalog repository", () => {
   it("loads the committed accepted and Needs Review snapshots", () => {

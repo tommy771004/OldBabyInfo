@@ -7,7 +7,7 @@ import { BattleSearch } from "@/components/battle-search.tsx";
 import { PlaystyleSymbol } from "@/components/type-symbols.tsx";
 import { DiagonalArrow } from "@/components/diagonal-arrow.tsx";
 import { LocaleSwitcher } from "@/components/locale-switcher.tsx";
-import { getAllParts, getPartById, getPartImage } from "@/lib/parts/repository.ts";
+import { getAllParts, getAllPartsForClient, getPartById, getPartImage } from "@/lib/parts/repository.ts";
 import { defaultBattleCombos } from "@/lib/parts/battle-subjects.ts";
 import { filterByType, sortParts } from "@/lib/parts/filter-sort.ts";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
@@ -73,10 +73,13 @@ const TERMS_CLAUSES: ReadonlyArray<{
   { key: "report" },
 ];
 
-/* The promotion slot is read per request from a database this repo does not
-   own, so the page can no longer be built once and served forever. Same
-   trade the discussion feed and the Part pages already make. */
-export const dynamic = "force-dynamic";
+/* The promotion slot comes from a database this repo does not own, so the
+   page cannot be built once and served forever — but it does not need a
+   fresh render per visitor either. Rebuilt at most every five minutes
+   (owner-decided, 2026-11-02): an offer switched on or off shows up within
+   that window, and every visit in between is a cached page instead of a
+   function invocation. Same window as the Part pages. */
+export const revalidate = 300;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -116,8 +119,8 @@ export default async function HomePage({
     <HomeContent
       locale={locale}
       offers={offers}
-      allParts={parts}
-      combos={defaultBattleCombos(parts)}
+      allParts={getAllPartsForClient()}
+      combos={defaultBattleCombos(getAllPartsForClient())}
       partImages={Object.fromEntries(
         parts.flatMap((part) => {
           const image = getPartImage(part.id);

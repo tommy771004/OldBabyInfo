@@ -7,12 +7,7 @@ import {
   getGenerationCatalogSnapshot,
   getLegacyPartForCatalogRecord,
 } from "@/lib/generation-catalog/repository.ts";
-import {
-  generationIdSchema,
-  type GenerationCatalogRecord,
-  type GenerationId,
-} from "@/lib/generation-catalog/schema.ts";
-import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
+import type { GenerationCatalogRecord } from "@/lib/generation-catalog/schema.ts";
 import {
   CATALOG_DEFAULT_PAGE_SIZE,
   CATALOG_PAGE_PARAM,
@@ -21,7 +16,6 @@ import {
   parseCatalogPageSize,
   type CatalogPageSize,
 } from "@/lib/generation-catalog/pagination.ts";
-import { selectCatalogRecordsForPage } from "@/lib/generation-catalog/payload.ts";
 import {
   GenerationCatalogBrowser,
   type CatalogFacetRow,
@@ -40,7 +34,6 @@ import type { Playstyle } from "@/lib/parts/schema.ts";
 import {
   humanizePartType,
   projectedRecordsFirst,
-  publishableCatalogRecords,
   sortCatalogPartRecords,
   withProjectedSearchAliases,
   type CatalogSortValue,
@@ -63,7 +56,29 @@ import { weightRangeOf } from "@/lib/parts/part-weight.ts";
 import type { CatalogRowFacts } from "./catalog-part-table.tsx";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { CatalogPartTable } from "./catalog-part-table.tsx";
+import { PageMasthead } from "@/components/page-masthead.tsx";
+import { buildCatalogRelations, type CatalogRelations } from "@/lib/generation-catalog/relations.ts";
+import {
+  catalogViewQuery,
+  firstParam,
+  parseCatalogView,
+  selectCatalogView,
+  type CatalogView,
+} from "@/lib/parts/catalog-view.ts";
 import styles from "./page.module.css";
+
+/*
+ * Everything below depends only on the committed JSON (ADR-0001), never on
+ * the request, so it is built once per server instance. It used to be
+ * rebuilt on every request — and the relation scan inside it was N² — which
+ * made `/parts?sort=…` the most expensive render on the site.
+ */
+const SEARCHABLE_RECORDS = withProjectedSearchAliases(
+  getAllPublishableGenerationCatalogRecords(),
+  getLegacyPartForCatalogRecord,
+);
+const PART_NAME_INDEX = buildPartNameIndex(getAllParts());
+const CATALOG_RELATIONS = buildCatalogRelations(SEARCHABLE_RECORDS);
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -102,60 +117,23 @@ export default async function PartsPage({
 
   const catalogParams = await searchParams;
   const state = parseFilterSortParams(catalogParams);
-  const catalogGeneration = firstParam(catalogParams.catalogGeneration);
-  const selectedGeneration: GenerationId = generationIdSchema.safeParse(catalogGeneration).success
-    ? catalogGeneration as GenerationId
-    : "x";
-  const selectedSystem = firstParam(catalogParams.catalogSystem);
-  const selectedKindParam = firstParam(catalogParams.catalogKind);
-  const selectedKind = selectedKindParam === "all" || selectedKindParam === "beyblade" || selectedKindParam === "part" || selectedKindParam === "release" || selectedKindParam === "equipment"
-    ? selectedKindParam
-    : undefined;
-  const catalogQuery = firstParam(catalogParams.catalogQuery);
-  const selectedPartType = firstParam(catalogParams.catalogPartType);
+  // The URL is read and the Catalog filtered here, once; the browser below
+  // only pages and renders what this admits (see catalog-view.ts).
+  const view = parseCatalogView(catalogParams);
   // The requested page is clamped inside the browser, which is where the
   // visible total is known; the size is fixed here so every link can carry it.
   const pagination = {
     page: parseCatalogPage(firstParam(catalogParams[CATALOG_PAGE_PARAM])),
     pageSize: parseCatalogPageSize(firstParam(catalogParams[CATALOG_SIZE_PARAM])),
   };
-  const hasCatalogGeneration = generationIdSchema.safeParse(catalogGeneration).success;
-  const hasCatalogSearchParams = ["catalogQuery", "catalogSystem", "catalogKind", "catalogPartType"]
-    .some((key) => catalogParams[key] !== undefined);
   const catalog = getGenerationCatalogSnapshot();
-  const searchAcrossGenerations = hasCatalogSearchParams && !hasCatalogGeneration;
   // One list, built from the Catalog and carrying the X Stats where a Part
-  // projection exists — the two used to be stacked as separate sections. The
-  // projected names are folded in before the search runs, so a query for
-  // 蒼龍神劍 reaches the record that only knows itself as "Dran Sword".
-  const searchableRecords = withProjectedSearchAliases(
-    getAllPublishableGenerationCatalogRecords(),
-    getLegacyPartForCatalogRecord,
-  );
-  const foundRecords = hasCatalogSearchParams
-    ? searchGenerationCatalog(searchableRecords, catalogQuery ?? "", {
-      generationId: hasCatalogGeneration ? selectedGeneration : undefined,
-      system: selectedSystem,
-      kind: selectedKind === "all" ? undefined : selectedKind,
-      partType: selectedPartType,
-    })
-    : selectCatalogRecordsForPage(searchableRecords, selectedGeneration, false);
-  const publishable = publishableCatalogRecords(foundRecords);
-  // The tab bar counts the Generation (and System, and search hit) pool
-  // *before* the selected tab narrows it, so every tab stays reachable and
-  // its count answers "how many are there under this tab".
-  const tabRecords = publishableCatalogRecords(
-    catalogQuery !== undefined || searchAcrossGenerations
-      ? searchGenerationCatalog(searchableRecords, catalogQuery ?? "", {
-        generationId: searchAcrossGenerations ? undefined : selectedGeneration,
-        system: selectedSystem,
-      })
-      : selectCatalogRecordsForPage(searchableRecords, selectedGeneration, false)
-        .filter((record) => !selectedSystem || record.system === selectedSystem),
-  );
-  const partNameIndex = buildPartNameIndex(getAllParts());
-  const relatedForRecord = makeRelatedSummary(locale, partNameIndex, searchableRecords);
-  const factsForRecord = makeRowFacts(locale, partNameIndex, relatedForRecord);
+  // projection exists. The projected names are folded in before the search
+  // runs (SEARCHABLE_RECORDS), so a query for 蒼龍神劍 reaches the record
+  // that only knows itself as "Dran Sword".
+  const { records: publishable, tabPool: tabRecords } = selectCatalogView(SEARCHABLE_RECORDS, view);
+  const relatedForRecord = makeRelatedSummary(locale, PART_NAME_INDEX, CATALOG_RELATIONS);
+  const factsForRecord = makeRowFacts(locale, PART_NAME_INDEX, relatedForRecord);
   const facets = parseCatalogFacetParams({
     playstyle: firstParam(catalogParams.playstyle),
     spin: firstParam(catalogParams.spin),
@@ -178,10 +156,7 @@ export default async function PartsPage({
     : projectedRecordsFirst(faceted, (record) => factsForRecord(record).attack !== undefined);
   // Facet chips offer only values present before facet filtering, so picking
   // one never leaves the row showing options that would empty the page.
-  const facetValues = availableFacetValues(
-    publishable.filter((record) => !selectedPartType || record.partType === selectedPartType),
-    getLegacyPartForCatalogRecord,
-  );
+  const facetValues = availableFacetValues(publishable, getLegacyPartForCatalogRecord);
 
   return (
     <PartsPageBody
@@ -190,22 +165,13 @@ export default async function PartsPage({
       catalog={catalog}
       catalogRecords={browserRecords}
       tabRecords={tabRecords}
-      selectedGeneration={selectedGeneration}
-      selectedSystem={selectedSystem}
-      selectedKind={selectedKind ?? "part"}
-      selectedPartType={selectedPartType}
-      searchQuery={catalogQuery}
-      searchAcrossGenerations={searchAcrossGenerations}
+      view={view}
       facets={facets}
       facetValues={facetValues}
       factsForRecord={factsForRecord}
       pagination={pagination}
     />
   );
-}
-
-function firstParam(value: string | string[] | undefined): string | undefined {
-  return Array.isArray(value) ? value[0] : value;
 }
 
 /**
@@ -222,36 +188,53 @@ function makeRowFacts(
   partNameIndex: PartNameIndex,
   relatedForRecord: (record: GenerationCatalogRecord) => string | undefined,
 ) {
+  // A sort asks for the same row's facts on every comparison; one answer
+  // per record per request is enough.
+  const memo = new Map<GenerationCatalogRecord, CatalogRowFacts>();
   return (record: GenerationCatalogRecord): CatalogRowFacts => {
-    const part = getLegacyPartForCatalogRecord(record.id);
-    if (part) {
-      return {
-        name: localizedNameOf(part, locale),
-        href: `/parts/${slugify(part.nameEn)}`,
-        attack: part.stats.attack,
-        defense: part.stats.defense,
-        stamina: part.stats.stamina,
-        xDash: part.type === "bit" ? part.stats.xDash : undefined,
-        burstResistance: part.type === "bit" ? part.stats.burstResistance : undefined,
-        weight: weightRangeOf(part),
-        releaseAt: part.releaseAt,
-        related: relatedForRecord(record),
-      };
+    let facts = memo.get(record);
+    if (!facts) {
+      facts = rowFactsOf(record, locale, partNameIndex, relatedForRecord);
+      memo.set(record, facts);
     }
+    return facts;
+  };
+}
 
-    const combo = composeBeybladeStats(record, partNameIndex);
-    const assembled = composeBeybladeWeight(record, partNameIndex);
+function rowFactsOf(
+  record: GenerationCatalogRecord,
+  locale: Locale,
+  partNameIndex: PartNameIndex,
+  relatedForRecord: (record: GenerationCatalogRecord) => string | undefined,
+): CatalogRowFacts {
+  const part = getLegacyPartForCatalogRecord(record.id);
+  if (part) {
     return {
-      name: composeBeybladeName(record, partNameIndex, locale) ?? record.name,
-      href: `/parts/catalog/${encodeURIComponent(record.id)}`,
-      attack: combo?.attack,
-      defense: combo?.defense,
-      stamina: combo?.stamina,
-      xDash: combo?.xDash,
-      burstResistance: combo?.burstResistance,
-      weight: assembled === undefined ? undefined : { min: assembled, max: assembled },
+      name: localizedNameOf(part, locale),
+      href: `/parts/${slugify(part.nameEn)}`,
+      attack: part.stats.attack,
+      defense: part.stats.defense,
+      stamina: part.stats.stamina,
+      xDash: part.type === "bit" ? part.stats.xDash : undefined,
+      burstResistance: part.type === "bit" ? part.stats.burstResistance : undefined,
+      weight: weightRangeOf(part),
+      releaseAt: part.releaseAt,
       related: relatedForRecord(record),
     };
+  }
+
+  const combo = composeBeybladeStats(record, partNameIndex);
+  const assembled = composeBeybladeWeight(record, partNameIndex);
+  return {
+    name: composeBeybladeName(record, partNameIndex, locale) ?? record.name,
+    href: `/parts/catalog/${encodeURIComponent(record.id)}`,
+    attack: combo?.attack,
+    defense: combo?.defense,
+    stamina: combo?.stamina,
+    xDash: combo?.xDash,
+    burstResistance: combo?.burstResistance,
+    weight: assembled === undefined ? undefined : { min: assembled, max: assembled },
+    related: relatedForRecord(record),
   };
 }
 
@@ -260,7 +243,7 @@ function makeRowFacts(
 function makeRelatedSummary(
   locale: Locale,
   partNameIndex: PartNameIndex,
-  records: GenerationCatalogRecord[],
+  relations: CatalogRelations,
 ) {
   const nameFor = (record: GenerationCatalogRecord) => {
     const legacy = getLegacyPartForCatalogRecord(record.id);
@@ -282,18 +265,11 @@ function makeRelatedSummary(
     }
 
     if (record.kind === "part") {
-      return namesFor(records.filter((candidate) => candidate.kind === "beyblade" && candidate.components.some((component) =>
-        component.recordId === record.id ||
-        (component.partType === record.partType && component.name === record.name),
-      )));
+      return namesFor(relations.beybladesUsing(record));
     }
 
     if (record.kind === "release") {
-      const related = [
-        ...(record.releaseOf ? records.filter((candidate) => candidate.id === record.releaseOf) : []),
-        ...(record.containsRecordIds ?? []).flatMap((id) => records.filter((candidate) => candidate.id === id)),
-      ];
-      return namesFor(related);
+      return namesFor(relations.releaseRelated(record));
     }
 
     return undefined;
@@ -444,12 +420,7 @@ function PartsPageBody({
   catalog,
   catalogRecords,
   tabRecords,
-  selectedGeneration,
-  selectedSystem,
-  selectedKind,
-  selectedPartType,
-  searchQuery,
-  searchAcrossGenerations,
+  view,
   facets,
   facetValues,
   factsForRecord,
@@ -460,12 +431,7 @@ function PartsPageBody({
   catalog: ReturnType<typeof getGenerationCatalogSnapshot>;
   catalogRecords: GenerationCatalogRecord[];
   tabRecords: GenerationCatalogRecord[];
-  selectedGeneration: GenerationId;
-  selectedSystem?: string;
-  selectedKind: "all" | "beyblade" | "part" | "release" | "equipment";
-  selectedPartType?: string;
-  searchQuery?: string;
-  searchAcrossGenerations?: boolean;
+  view: CatalogView;
   facets: CatalogFacetState;
   facetValues: ReturnType<typeof availableFacetValues>;
   factsForRecord: (record: GenerationCatalogRecord) => CatalogRowFacts;
@@ -479,7 +445,7 @@ function PartsPageBody({
   const partTypeLabelFor = (partType: string) => partTypeLabels[partType] ?? humanizePartType(partType);
   // A complete Beyblade's own name is a run-together model string; the card
   // shows what its Parts spell out instead.
-  const partNameIndex = buildPartNameIndex(getAllParts());
+  const partNameIndex = PART_NAME_INDEX;
   const recordNameFor = (record: GenerationCatalogRecord) =>
     composeBeybladeName(record, partNameIndex, locale) ?? record.name;
   const recordImageFor = (record: GenerationCatalogRecord) => {
@@ -490,21 +456,16 @@ function PartsPageBody({
 
   // Both the Parts and the complete Beyblades of a Generation carry numbers
   // worth lining up in columns; the card grid is for everything else.
-  const showStatTable = selectedGeneration === "x" &&
-    (selectedKind === "part" || selectedKind === "beyblade") &&
-    !searchAcrossGenerations;
-  const tabQuery = {
-    // A search across every Generation has no selected one; an empty value
-    // round-trips as "search everywhere" instead of quietly narrowing the
-    // next page to BEYBLADE X.
-    catalogGeneration: searchAcrossGenerations ? "" : selectedGeneration,
-    ...(selectedSystem ? { catalogSystem: selectedSystem } : {}),
-    catalogKind: selectedKind,
-    ...(selectedPartType ? { catalogPartType: selectedPartType } : {}),
-    ...(searchQuery ? { catalogQuery: searchQuery } : {}),
-    // Sort, facet and tab links start over at page 1 but keep the page size.
-    ...(pagination.pageSize !== CATALOG_DEFAULT_PAGE_SIZE ? { [CATALOG_SIZE_PARAM]: String(pagination.pageSize) } : {}),
-  };
+  const showStatTable = view.generation === "x" &&
+    (view.kind === "part" || view.kind === "beyblade") &&
+    !view.acrossGenerations;
+  const tabQuery = catalogViewQuery(view, pagination.pageSize);
+  // A tab switch keeps the Generation scope, the System and the search, and
+  // drops the facets and sort: those belong to the tab being left.
+  const tabHrefFor = (tab: { kind: CatalogView["kind"]; partType?: string }) =>
+    `${localePrefix}/parts?${new URLSearchParams(
+      catalogViewQuery({ ...view, kind: tab.kind, partType: tab.partType }, pagination.pageSize),
+    ).toString()}`;
   const paginationHrefFor = (page: number, pageSize: CatalogPageSize) => {
     const query = new URLSearchParams({
       ...tabQuery,
@@ -531,7 +492,7 @@ function PartsPageBody({
     return `${localePrefix}/parts?${query.toString()}`;
   };
   const facetRows = buildFacetRows({
-    partType: selectedPartType,
+    partType: view.partType,
     facets,
     values: facetValues,
     facetHref,
@@ -552,10 +513,10 @@ function PartsPageBody({
 
   return (
     <main className={styles.page}>
-      <header className={styles.pageHeader}>
-        <p className={styles.kicker}>CATALOG / {selectedGeneration.toUpperCase()}</p>
-        <h1>{t("title")}</h1>
-      </header>
+      <PageMasthead
+        title={t("title")}
+        kicker={`CATALOG / ${view.acrossGenerations ? "ALL" : view.generation.replace(/_/g, " ").toUpperCase()}`}
+      />
 
       <GenerationCatalogBrowser
         locale={locale}
@@ -563,12 +524,13 @@ function PartsPageBody({
         systems={catalog.systems}
         records={catalogRecords}
         tabRecords={tabRecords}
-        selectedGeneration={selectedGeneration}
-        selectedSystem={selectedSystem}
-        selectedKind={selectedKind}
-        selectedPartType={selectedPartType}
-        searchQuery={searchQuery}
-        searchAcrossGenerations={searchAcrossGenerations}
+        tabHrefFor={tabHrefFor}
+        selectedGeneration={view.generation}
+        selectedSystem={view.system}
+        selectedKind={view.kind}
+        selectedPartType={view.partType}
+        searchQuery={view.query}
+        searchAcrossGenerations={view.acrossGenerations}
         recordCountLabel={(count) => t("catalog_record_count", { count })}
         partTypeLabelFor={partTypeLabelFor}
         recordNameFor={recordNameFor}
@@ -629,6 +591,9 @@ function PartsPageBody({
           searchLabel: t("catalog_search"),
           searchPlaceholder: t("catalog_search_placeholder"),
           searchSubmitLabel: t("catalog_search_submit"),
+          searchScopeLabel: t("catalog_search_scope"),
+          scopeCurrentLabel: t("catalog_scope_current"),
+          scopeAllLabel: t("catalog_scope_all"),
           legacyPartLabel: t("catalog_legacy_part"),
           relatedLabel: t("catalog_related"),
         }}

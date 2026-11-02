@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { DiscussionFeed } from "@/components/discussion-feed.tsx";
 import { routing, type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
+import { PageMasthead } from "@/components/page-masthead.tsx";
 import styles from "./discussion.module.css";
 import { localizedNameOf } from "@/lib/parts/localized-name.ts";
 import { getAllParts } from "@/lib/parts/repository.ts";
@@ -69,7 +70,7 @@ function DiscussionPageContent({ items }: { items: ReturnType<typeof latestThrea
   const t = useTranslations("DiscussionPage");
   return (
     <main className={styles.page}>
-      <h1>{t("title")}</h1>
+      <PageMasthead title={t("title")} />
       <DiscussionFeed
         items={items}
         labels={{

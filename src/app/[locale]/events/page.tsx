@@ -20,6 +20,7 @@ import { safeExternalUrl } from "@/lib/security/external-url.ts";
 import { taipeiTodayIso } from "@/lib/events/today.ts";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { CalendarFilters as FilterForm } from "./calendar-filters.tsx";
+import { PageMasthead } from "@/components/page-masthead.tsx";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -84,9 +85,10 @@ function EventsPageBody({
 
   return (
     <main className={styles.page}>
-      <h1>{t("title")}</h1>
-      <p className={styles.intro}>{t("intro")}</p>
-      <p className={styles.intro}>{t("coverage_note")}</p>
+      <PageMasthead title={t("title")} subject="launch">
+        <p className={styles.intro}>{t("intro")}</p>
+        <p className={styles.intro}>{t("coverage_note")}</p>
+      </PageMasthead>
 
       <nav className={styles.scopeTabs} aria-label={t("title")}>
         {(["upcoming", "past"] as const).map((scope) => (

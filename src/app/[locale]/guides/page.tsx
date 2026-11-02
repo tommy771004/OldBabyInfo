@@ -4,8 +4,8 @@ import { routing } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import { Link } from "@/i18n/navigation.ts";
 import { getAllGuides } from "@/lib/guides/repository.ts";
-import { GuidesRidge } from "@/components/guides-ridge.tsx";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
+import { PageMasthead } from "@/components/page-masthead.tsx";
 import styles from "./guides.module.css";
 
 export function generateStaticParams() {
@@ -39,15 +39,11 @@ function GuidesPageBody({ guides }: { guides: ReturnType<typeof getAllGuides> })
 
   return (
     <main className={styles.page}>
-      <header className={styles.masthead}>
-        <GuidesRidge className={styles.ridge} />
-        <div className={styles.mastheadText}>
-          <h1 className={styles.title}>{t("title")}</h1>
-          {guides.length > 0 ? (
-            <p className={styles.lead}>{t("lead", { count: guides.length })}</p>
-          ) : null}
-        </div>
-      </header>
+      <PageMasthead title={t("title")} subject="ridge" size="feature">
+        {guides.length > 0 ? (
+          <p className={styles.lead}>{t("lead", { count: guides.length })}</p>
+        ) : null}
+      </PageMasthead>
 
       {entry === undefined ? (
         <div className={styles.empty}>

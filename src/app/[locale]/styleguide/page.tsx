@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
 import { StadiumSignature } from "@/components/stadium-signature.tsx";
+import { ArenaMark, type ArenaSubject } from "@/components/arena-mark.tsx";
 import { ColorSwatches } from "./color-swatches.tsx";
 import { CheckIcon, SearchIcon } from "@/components/ui-icons.tsx";
 
@@ -169,6 +170,28 @@ export default async function StyleguidePage({
             <span className={className}>零件庫 Dran Sword 60</span>
           </div>
         ))}
+      </section>
+
+      <section>
+        <h2>Page mark — 每頁的場地平面</h2>
+        <p>
+          <code>PageMasthead</code> 標題旁的那一個。同一張場地，各頁加重自己的那個結構；上排場邊、下排 <code>.m3-dark</code>。
+        </p>
+        {[false, true].map((dark) => (
+          <div
+            key={String(dark)}
+            className={dark ? "m3-dark" : undefined}
+            style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", padding: "1.5rem", borderRadius: 28, marginTop: "1rem" }}
+          >
+            {(["field", "ridge", "launch", "exits", "xtreme-line", "duel"] satisfies ArenaSubject[]).map((subject) => (
+              <figure key={subject} style={{ margin: 0, color: "var(--md-sys-color-on-surface-variant)" }}>
+                <ArenaMark subject={subject} className="styleguide-arena-mark" />
+                <figcaption className="m3-label-medium">{subject}</figcaption>
+              </figure>
+            ))}
+          </div>
+        ))}
+        <style>{`.styleguide-arena-mark { display: block; width: 8rem; height: 8rem; }`}</style>
       </section>
 
       <section>

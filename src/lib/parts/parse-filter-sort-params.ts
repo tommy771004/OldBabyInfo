@@ -1,6 +1,5 @@
-import type { PartType, SortDirection, SortField } from "./filter-sort.ts";
+import type { SortDirection, SortField } from "./filter-sort.ts";
 
-const VALID_TYPES: PartType[] = ["blade", "ratchet", "bit"];
 const VALID_FIELDS: SortField[] = [
   "attack",
   "defense",
@@ -11,8 +10,14 @@ const VALID_FIELDS: SortField[] = [
   "weight",
 ];
 
+/**
+ * The sort the `/parts` table carries in its URL. There used to be a `type`
+ * filter here too (`?type=blade`), left over from the Part-only list; the
+ * Catalog replaced it with `catalogPartType` and nothing read it any more, so
+ * the old parameter now simply does nothing rather than being parsed and
+ * dropped.
+ */
 export interface FilterSortState {
-  type: PartType | undefined;
   sort: SortField | undefined;
   direction: SortDirection;
 }
@@ -26,12 +31,10 @@ export interface FilterSortState {
 export function parseFilterSortParams(
   searchParams: Record<string, string | string[] | undefined>,
 ): FilterSortState {
-  const rawType = firstValue(searchParams.type);
   const rawSort = firstValue(searchParams.sort);
   const rawDir = firstValue(searchParams.dir);
 
   return {
-    type: isPartType(rawType) ? rawType : undefined,
     sort: isSortField(rawSort) ? rawSort : undefined,
     direction: rawDir === "desc" ? "desc" : "asc",
   };
@@ -39,10 +42,6 @@ export function parseFilterSortParams(
 
 function firstValue(v: string | string[] | undefined): string | undefined {
   return Array.isArray(v) ? v[0] : v;
-}
-
-function isPartType(v: string | undefined): v is PartType {
-  return VALID_TYPES.includes(v as PartType);
 }
 
 function isSortField(v: string | undefined): v is SortField {

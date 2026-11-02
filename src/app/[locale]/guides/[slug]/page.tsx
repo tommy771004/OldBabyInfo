@@ -10,6 +10,7 @@ import { Link } from "@/i18n/navigation.ts";
 import { getAllGuides, getGuideBySlug } from "@/lib/guides/repository.ts";
 import { extractHeadings } from "@/lib/guides/headings.ts";
 import { pageMetadata } from "@/lib/seo.ts";
+import { PageMasthead } from "@/components/page-masthead.tsx";
 import styles from "./guide.module.css";
 
 export function generateStaticParams() {
@@ -81,8 +82,9 @@ function GuideDetailBody({
         <Link href="/guides">{t("back_to_guides")}</Link>
       </p>
 
-      <h1>{title}</h1>
-      <p className={styles.description}>{description}</p>
+      <PageMasthead title={title} subject="ridge">
+        <p className={styles.description}>{description}</p>
+      </PageMasthead>
 
       {headings.length > 0 ? (
         <nav aria-label={t("toc_heading")} className={styles.toc}>

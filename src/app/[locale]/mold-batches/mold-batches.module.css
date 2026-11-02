@@ -8,12 +8,6 @@
   margin: 0 0 3rem;
 }
 
-.page h1 {
-  max-width: 12ch;
-  margin: 0 0 1rem;
-  font-size: clamp(2.5rem, 7vw, 5rem);
-  line-height: 0.98;
-}
 
 .intro {
   max-width: 48ch;

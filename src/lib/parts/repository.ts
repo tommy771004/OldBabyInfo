@@ -36,6 +36,27 @@ export function getAllParts(): Part[] {
   return parts;
 }
 
+/**
+ * Every Part as it may cross into a client component — the same records
+ * with `provenance` left on the server.
+ *
+ * Provenance is two thirds of the Part data by size, and no client widget
+ * reads it: the search box, the Combo builder and the compare picker only
+ * need names, aliases and Stats. Handing them `getAllParts()` serialised it
+ * into every render of `/`, `/combo` and `/parts/compare`. It is not removed
+ * from the data (ADR-0010) and still renders wherever a page actually shows
+ * it, on the server.
+ */
+const clientParts: Part[] = parts.map((part) => {
+  const { provenance, ...withoutProvenance } = part;
+  void provenance;
+  return withoutProvenance as Part;
+});
+
+export function getAllPartsForClient(): Part[] {
+  return clientParts;
+}
+
 export function getPartById(id: string): Part | undefined {
   return parts.find((p) => p.id === id);
 }

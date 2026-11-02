@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { routing, type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
-import { getAllParts, getPartBySlug } from "@/lib/parts/repository.ts";
+import { getAllParts, getAllPartsForClient, getPartBySlug } from "@/lib/parts/repository.ts";
 import { parseCompareSlugs } from "@/lib/parts/compare-query.ts";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import { CompareTable } from "./compare-table.tsx";
 import { CompareDuel } from "./compare-duel.tsx";
 import type { Part } from "@/lib/parts/schema.ts";
+import { PageMasthead } from "@/components/page-masthead.tsx";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -37,7 +38,7 @@ export default async function ComparePage({
     .map((slug) => getPartBySlug(slug))
     .filter((p): p is NonNullable<typeof p> => p !== undefined);
 
-  return <ComparePageBody parts={parts} allParts={getAllParts()} locale={locale} />;
+  return <ComparePageBody parts={parts} allParts={getAllPartsForClient()} locale={locale} />;
 }
 
 function ComparePageBody({
@@ -53,7 +54,9 @@ function ComparePageBody({
   const duelParts = parts.length === 2 ? [parts[0]!, parts[1]!] as [Part, Part] : undefined;
   return (
     <main className={styles.page}>
-      <h1>{t("title")}</h1>
+      {/* The duel view draws the whole arena right below; the mark would
+          be the same field twice. */}
+      <PageMasthead title={t("title")} subject="duel" mark={duelParts === undefined} />
       {duelParts ? (
         <CompareDuel parts={duelParts} allParts={allParts} locale={locale} />
       ) : (

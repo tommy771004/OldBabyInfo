@@ -6,8 +6,7 @@ import type {
 } from "@/lib/generation-catalog/schema.ts";
 import Image from "next/image";
 import Link from "next/link";
-import { searchGenerationCatalog } from "@/lib/generation-catalog/search.ts";
-import { catalogTabsOf, isTabSelected } from "@/lib/generation-catalog/tabs.ts";
+import { catalogTabsOf, isTabSelected, type CatalogTab } from "@/lib/generation-catalog/tabs.ts";
 import { CheckIcon } from "./ui-icons.tsx";
 import {
   CATALOG_DEFAULT_PAGE_SIZE,
@@ -41,6 +40,10 @@ export interface GenerationCatalogBrowserLabels {
   searchLabel?: string;
   searchPlaceholder?: string;
   searchSubmitLabel?: string;
+  /** The search form's one scope control: this Generation or all four. */
+  searchScopeLabel?: string;
+  scopeCurrentLabel?: string;
+  scopeAllLabel?: string;
   legacyPartLabel?: string;
   relatedLabel?: string;
 }
@@ -49,13 +52,22 @@ interface GenerationCatalogBrowserProps {
   locale: string;
   generations: GenerationDefinition[];
   systems: GenerationSystem[];
+  /**
+   * The list to show, exactly as the page filtered and sorted it. This
+   * component never filters: it used to repeat the page's search with its
+   * own copy of the rules, and the two copies disagreed about what an
+   * all-Generations search was.
+   */
   records: GenerationCatalogRecord[];
   /**
    * The pool the tab bar counts, before the selected tab narrows it — the
    * `records` prop arrives already filtered to one tab, which would leave the
-   * bar showing a single tab and no way back out.
+   * bar showing a single tab and no way back out. Defaults to `records`.
    */
   tabRecords?: GenerationCatalogRecord[];
+  /** Builds a tab's link. The page owns the URL (search, scope, page size),
+   *  so the page builds it, the same way it builds the page links. */
+  tabHrefFor: (tab: CatalogTab) => string;
   selectedGeneration: GenerationId;
   selectedSystem?: string;
   selectedKind?: "all" | GenerationCatalogRecord["kind"];
@@ -104,6 +116,7 @@ export function GenerationCatalogBrowser({
   systems,
   records,
   tabRecords,
+  tabHrefFor,
   selectedGeneration,
   selectedSystem,
   selectedKind,
@@ -123,22 +136,9 @@ export function GenerationCatalogBrowser({
   pageRangeLabel,
   labels,
 }: GenerationCatalogBrowserProps) {
-  const generationRecords = records.filter((record) => record.generationId === selectedGeneration);
   const generationSystems = systems.filter((system) => system.generationId === selectedGeneration);
-  const systemOptions = searchAcrossGenerations ? systems : generationSystems;
   const selectedSystemDefinition = generationSystems.find((system) => system.id === selectedSystem);
-  const visibleRecords = searchAcrossGenerations || searchQuery !== undefined
-    ? searchGenerationCatalog(records, searchQuery ?? "", {
-      generationId: searchAcrossGenerations ? undefined : selectedGeneration,
-      system: selectedSystem,
-      kind: selectedKind === "all" ? undefined : selectedKind,
-      partType: selectedPartType,
-    })
-    : generationRecords.filter((record) =>
-      (!selectedSystem || record.system === selectedSystem) &&
-      (selectedKind === "all" || !selectedKind || record.kind === selectedKind) &&
-      (!selectedPartType || record.partType === selectedPartType),
-    );
+  const visibleRecords = records;
   // Paging happens on the final visible list; a page past its end lands on
   // the last page rather than an empty one.
   const pageState = pagination
@@ -158,10 +158,7 @@ export function GenerationCatalogBrowser({
       : kindLabel(selectedKind, labels);
   // Tab counts describe the same pool the list is drawn from, so a search
   // turns the tab bar into a per-category hit count instead of going stale.
-  const tabBase = tabRecords ?? (searchAcrossGenerations
-    ? records
-    : generationRecords.filter((record) => !selectedSystem || record.system === selectedSystem));
-  const tabs = catalogTabsOf(tabBase, generationSystems);
+  const tabs = catalogTabsOf(tabRecords ?? records, generationSystems);
   const prefix = locale === "zh-TW" ? "" : `/${encodeURIComponent(locale)}`;
   const formIdSuffix = selectedGeneration.replace(/[^a-zA-Z0-9_-]/g, "-");
 
@@ -177,6 +174,10 @@ export function GenerationCatalogBrowser({
     const queryString = query.toString();
     return `${prefix}/parts${queryString ? `?${queryString}` : ""}`;
   };
+  // An all-Generations search is in no one Generation: no chip claims it,
+  // and the System row (each System belongs to one Generation) steps aside.
+  const currentGeneration = searchAcrossGenerations ? undefined : selectedGeneration;
+  const showSystems = !searchAcrossGenerations && generationSystems.length > 0;
   const recordHref = (recordId: string) => `${prefix}/parts/catalog/${encodeURIComponent(recordId)}`;
 
   return (
@@ -207,34 +208,30 @@ export function GenerationCatalogBrowser({
             {labels.searchLabel ?? "Search catalog"}
           </label>
         </div>
+        {/* One scope control, not a Generation picker and a System picker:
+            both of those are already the chip rows below, and two widgets
+            writing the same parameter disagreed as soon as one was changed.
+            What only the form can offer is searching every Generation at
+            once, so that is the one choice left here. The empty value is
+            the page's "all Generations" signal. */}
         <div className={`${styles.field} m3-field m3-field--select`}>
           <select
             className="m3-field__input"
-            id={`catalog-generation-filter-${formIdSuffix}`}
+            id={`catalog-search-scope-${formIdSuffix}`}
             name="catalogGeneration"
             defaultValue={searchAcrossGenerations ? "" : selectedGeneration}
           >
-            <option value="">{labels.allLabel}</option>
-            {generations.map((generation) => <option key={generation.id} value={generation.id}>{generation.nameEn}</option>)}
+            <option value={selectedGeneration}>{labels.scopeCurrentLabel ?? "This generation"}</option>
+            <option value="">{labels.scopeAllLabel ?? "All generations"}</option>
           </select>
-          <label className="m3-field__label" htmlFor={`catalog-generation-filter-${formIdSuffix}`}>
-            {labels.generationLabel}
+          <label className="m3-field__label" htmlFor={`catalog-search-scope-${formIdSuffix}`}>
+            {labels.searchScopeLabel ?? "Search scope"}
           </label>
         </div>
-        <div className={`${styles.field} m3-field m3-field--select`}>
-          <select
-            className="m3-field__input"
-            id={`catalog-system-filter-${formIdSuffix}`}
-            name="catalogSystem"
-            defaultValue={selectedSystem ?? ""}
-          >
-            <option value="">{labels.allLabel}</option>
-            {systemOptions.map((system) => <option key={system.id} value={system.id}>{system.nameEn}</option>)}
-          </select>
-          <label className="m3-field__label" htmlFor={`catalog-system-filter-${formIdSuffix}`}>
-            {labels.systemLabel}
-          </label>
-        </div>
+        {/* The System chip stays applied to a search within this Generation.
+            Across Generations it would mean nothing (every System belongs to
+            one Generation), and the page ignores it there. */}
+        {selectedSystem && !searchAcrossGenerations ? <input type="hidden" name="catalogSystem" value={selectedSystem} /> : null}
         <input type="hidden" name="catalogKind" value={selectedKind ?? "part"} />
         {selectedPartType ? <input type="hidden" name="catalogPartType" value={selectedPartType} /> : null}
         {keptPageSize ? <input type="hidden" name={CATALOG_SIZE_PARAM} value={keptPageSize} /> : null}
@@ -249,15 +246,15 @@ export function GenerationCatalogBrowser({
             key={generation.id}
             className="m3-chip m3-state"
             href={hrefFor({ catalogGeneration: generation.id })}
-            aria-current={generation.id === selectedGeneration ? "page" : undefined}
+            aria-current={generation.id === currentGeneration ? "page" : undefined}
           >
-            {generation.id === selectedGeneration ? <CheckIcon /> : null}
+            {generation.id === currentGeneration ? <CheckIcon /> : null}
             {generation.nameEn}
           </a>
         ))}
       </nav>
 
-      {generationSystems.length > 0 ? (
+      {showSystems ? (
         <nav className={styles.navGroup} aria-label={labels.systemLabel}>
           <a
             className="m3-chip m3-state"
@@ -280,7 +277,7 @@ export function GenerationCatalogBrowser({
           ))}
         </nav>
       ) : null}
-      {selectedSystemDefinition ? (
+      {showSystems && selectedSystemDefinition ? (
         <p data-catalog-compatibility>{selectedSystemDefinition.compatibilityRules.join(" ")}</p>
       ) : null}
 
@@ -289,12 +286,7 @@ export function GenerationCatalogBrowser({
           <a
             key={`${tab.kind}:${tab.partType ?? ""}`}
             className="m3-tab m3-state"
-            href={hrefFor({
-              catalogGeneration: selectedGeneration,
-              catalogSystem: selectedSystem,
-              catalogKind: tab.kind,
-              catalogPartType: tab.partType,
-            })}
+            href={tabHrefFor(tab)}
             aria-current={isTabSelected(tab, selectedKind, selectedPartType) ? "page" : undefined}
           >
             {tab.partType ? partTypeLabelFor(tab.partType) : kindLabel(tab.kind, labels)}

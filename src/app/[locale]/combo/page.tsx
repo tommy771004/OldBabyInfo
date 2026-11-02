@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { routing, type Locale } from "@/i18n/routing";
 import { requireLocale } from "@/i18n/require-locale.ts";
-import { getAllParts, getPartBySlug } from "@/lib/parts/repository.ts";
+import { getAllPartsForClient, getPartBySlug } from "@/lib/parts/repository.ts";
 import { parseComboSlugs } from "@/lib/parts/combo-query.ts";
 import { localizedSeoCopy, pageMetadata } from "@/lib/seo.ts";
 import type { Part } from "@/lib/parts/schema.ts";
 import { ComboBuilder } from "./combo-builder.tsx";
+import { PageMasthead } from "@/components/page-masthead.tsx";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -49,7 +50,7 @@ export default async function ComboPage({
   const bit = resolveSlot(slugs.bit, "bit");
 
   return (
-    <ComboPageBody blade={blade} ratchet={ratchet} bit={bit} allParts={getAllParts()} locale={locale} />
+    <ComboPageBody blade={blade} ratchet={ratchet} bit={bit} allParts={getAllPartsForClient()} locale={locale} />
   );
 }
 
@@ -70,10 +71,9 @@ function ComboPageBody({
 
   return (
     <main className={styles.page}>
-      <header className={styles.masthead}>
-        <h1 className={styles.title}>{t("title")}</h1>
+      <PageMasthead title={t("title")} subject="xtreme-line">
         <p className={styles.intro}>{t("intro")}</p>
-      </header>
+      </PageMasthead>
       <ComboBuilder blade={blade} ratchet={ratchet} bit={bit} allParts={allParts} locale={locale} />
     </main>
   );
