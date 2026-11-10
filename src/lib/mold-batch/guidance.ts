@@ -1,5 +1,6 @@
 import { z } from "zod";
 import guidanceJson from "../../../data/mold-batch-guidance.json";
+import { loadStaticData } from "../data/static-data.ts";
 
 const guidanceSchema = z.strictObject({
   id: z.string().min(1),
@@ -18,11 +19,11 @@ const guidanceSchema = z.strictObject({
   capturedAt: z.iso.datetime({ offset: true }),
 });
 
-const guidanceFileSchema = z.array(guidanceSchema);
+export const guidanceFileSchema = z.array(guidanceSchema);
 
 export type MoldBatchGuidance = z.infer<typeof guidanceSchema>;
 
-const guidance = guidanceFileSchema.parse(guidanceJson);
+const guidance = loadStaticData(guidanceFileSchema, guidanceJson);
 
 export function getMoldBatchGuidance(): MoldBatchGuidance[] {
   return guidance.map((entry) => ({

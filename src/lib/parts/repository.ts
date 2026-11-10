@@ -3,13 +3,16 @@ import partsJson from "../../../data/parts.json" with { type: "json" };
 import partImagesJson from "../../../data/part-images.json" with { type: "json" };
 import { partsFileSchema, type Part } from "./schema.ts";
 import { slugify } from "./slug.ts";
+import { loadStaticData } from "../data/static-data.ts";
 
 /**
- * Validated once at module load. Per ADR-0001, Part data ships as static
- * repo JSON and is baked in at build time — an invalid seed file fails the
- * build immediately here rather than surfacing as a runtime error.
+ * Validated at module load during the build, dev and tests (see
+ * static-data.ts for why not in a deployed function). Per ADR-0001, Part
+ * data ships as static repo JSON and is baked in at build time — an invalid
+ * seed file fails the build immediately here rather than surfacing as a
+ * runtime error.
  */
-const parts: Part[] = partsFileSchema.parse(partsJson);
+const parts: Part[] = loadStaticData(partsFileSchema, partsJson);
 
 const partImageSchema = z.object({
   /** Local path under public/. Original remote origin remains explicit in
@@ -27,10 +30,13 @@ const partImageSchema = z.object({
   licenseUrl: z.url().nullable(),
 });
 
+export const partImagesFileSchema = z.record(z.string(), partImageSchema);
+
 /** Product photos, keyed by Part id. Not every Part needs a photo. */
-const partImages: Record<string, z.infer<typeof partImageSchema>> = z
-  .record(z.string(), partImageSchema)
-  .parse(partImagesJson);
+const partImages: Record<string, z.infer<typeof partImageSchema>> = loadStaticData(
+  partImagesFileSchema,
+  partImagesJson,
+);
 
 export function getAllParts(): Part[] {
   return parts;
