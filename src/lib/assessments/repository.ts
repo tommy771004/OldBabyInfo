@@ -1,7 +1,8 @@
 import assessmentsJson from "../../../data/assessments.json";
 import { assessmentsFileSchema, type Assessment } from "./schema.ts";
+import { loadStaticData } from "../data/static-data.ts";
 
-const assessments = assessmentsFileSchema.parse(assessmentsJson);
+const assessments = loadStaticData(assessmentsFileSchema, assessmentsJson);
 
 function compareAssessments(left: Assessment, right: Assessment): number {
   const attributionOrder = left.attributionStatus === right.attributionStatus

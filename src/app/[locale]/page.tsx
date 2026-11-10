@@ -74,12 +74,21 @@ const TERMS_CLAUSES: ReadonlyArray<{
 ];
 
 /* The promotion slot comes from a database this repo does not own, so the
-   page cannot be built once and served forever — but it does not need a
-   fresh render per visitor either. Rebuilt at most every five minutes
-   (owner-decided, 2026-11-02): an offer switched on or off shows up within
-   that window, and every visit in between is a cached page instead of a
-   function invocation. Same window as the Part pages. */
-export const revalidate = 300;
+   page cannot be built once and served forever — and neither can the next
+   event, which is picked against today's Taipei date. Neither needs a fresh
+   render per visitor. Rebuilt at most once an hour (owner-decided,
+   2026-11-10, was five minutes from 2026-11-02): an offer switched on or
+   off, or the next event rolling over at midnight, shows up within that
+   window.
+
+   Why an hour and not five minutes: traffic is sparse, so almost every
+   regeneration lands on a cold instance (96% cold in production), and a
+   cold render of this page costs roughly 300 ms of CPU against 10–40 ms
+   warm. At five minutes that was ~74 regenerations per 12 h and nearly all
+   of the site's function CPU. Moving the slot into its own route handler
+   was measured and rejected: a cold tiny route still costs ~200 ms and
+   would run just as often, so only the interval moves the number. */
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

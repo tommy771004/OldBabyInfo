@@ -8,8 +8,9 @@ import {
 import { getAllParts } from "../parts/repository.ts";
 import type { Part } from "../parts/schema.ts";
 import { buildXCatalogCrosswalk, type XCatalogCrosswalk } from "./legacy-x-bridge.ts";
+import { loadStaticData } from "../data/static-data.ts";
 
-const catalog = generationCatalogSnapshotSchema.parse(catalogJson);
+const catalog = loadStaticData(generationCatalogSnapshotSchema, catalogJson);
 const publishableCatalogRecords = catalog.records.filter(
   (record) => record.publicationStatus === "accepted" && record.verificationStatus !== "needs_review",
 );
