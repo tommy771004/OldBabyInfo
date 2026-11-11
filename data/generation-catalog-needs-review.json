@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-09-07T14:15:28.599Z",
+  "capturedAt": "2026-11-08T22:11:48.672Z",
   "sources": [
     {
       "id": "takaratomy-history",
@@ -19,8 +19,8 @@
         "burst",
         "x"
       ],
-      "sourceVersion": "sha256:49aac3b9ddd52245966880516bfa8cd3c3230e0c18762e7caaa6871ce061f38a",
-      "contentHash": "sha256:49aac3b9ddd52245966880516bfa8cd3c3230e0c18762e7caaa6871ce061f38a"
+      "sourceVersion": "sha256:da711869e8dc2534d449fda3e3392c098df282c46a8bfca3105e6fe4f02b2889",
+      "contentHash": "sha256:da711869e8dc2534d449fda3e3392c098df282c46a8bfca3105e6fe4f02b2889"
     },
     {
       "id": "takaratomy-burst-products",
@@ -36,8 +36,8 @@
       "generationIds": [
         "burst"
       ],
-      "sourceVersion": "sha256:b010317a842130a2371fd8731d1db9c6394e7be4fc293431c59813d0c82397fb",
-      "contentHash": "sha256:b010317a842130a2371fd8731d1db9c6394e7be4fc293431c59813d0c82397fb"
+      "sourceVersion": "sha256:1f87f0a8d6dac8a6fb68690dc45247991b51b291af27bc241b5c0d3d5d73f50a",
+      "contentHash": "sha256:1f87f0a8d6dac8a6fb68690dc45247991b51b291af27bc241b5c0d3d5d73f50a"
     },
     {
       "id": "beyblade-fandom",
